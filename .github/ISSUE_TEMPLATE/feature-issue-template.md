@@ -1,6 +1,6 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Feature Issue Template
+about: Template for describing developer tasks
 title: "[FRONT-TASK] Create a feature"
 labels: enhancement
 assignees: ''
