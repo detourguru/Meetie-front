@@ -24,7 +24,24 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
+    "husky": "^9.1.4",
+    "lint-staged": "^15.2.7",
     "prettier": "^3.3.3",
     "typescript": "^4.9.5"
+  },
+  "lint-staged": {
+    "apps/**/*.{js,jsx,ts,tsx,css,scss}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "packages/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
