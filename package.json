@@ -1,0 +1,13 @@
+{
+  "name": "meetie-monorepo",
+  "packageManager": "yarn@4.1.1",
+  "scripts": {
+    "dev:service": "turbo run dev --filter=meetie-service",
+    "dev:design-system": "turbo run dev --filter=meetie-design-system",
+    "storybook": "turbo run storybook --filter=meetie-design-system"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ]
+}
