@@ -2,12 +2,29 @@
   "name": "meetie-monorepo",
   "packageManager": "yarn@4.1.1",
   "scripts": {
+    "dev": "turbo dev",
     "dev:service": "turbo run dev --filter=meetie-service",
     "dev:design-system": "turbo run dev --filter=meetie-design-system",
-    "storybook": "turbo run storybook --filter=meetie-design-system"
+    "storybook": "turbo run storybook --filter=meetie-design-system",
+    "lint": "turbo lint",
+    "lint:service": "turbo lint --filter=meetie-service",
+    "lint:design-system": "turbo lint --filter=meetie-design-system",
+    "format": "turbo format",
+    "format:service": "turbo format --filter=meetie-service",
+    "format:design-system": "turbo format --filter=meetie-design-system"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@types/eslint": "^8.56.2",
+    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/parser": "^6.19.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3",
+    "typescript": "^4.9.5"
+  }
 }
