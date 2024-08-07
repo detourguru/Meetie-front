@@ -9424,6 +9424,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react-dom", "npm:18.3.0"],\
           ["eslint", "npm:8.57.0"],\
           ["next", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:14.2.5"],\
+          ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0"],\
           ["postcss", "npm:8.4.40"],\
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
@@ -9828,6 +9829,32 @@ const RAW_RUNTIME_STATE =
           "react-dom",\
           "react",\
           "sass"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["next-themes", [\
+      ["npm:0.3.0", {\
+        "packageLocation": "./.yarn/cache/next-themes-npm-0.3.0-624efd7b90-72bd670ad6.zip/node_modules/next-themes/",\
+        "packageDependencies": [\
+          ["next-themes", "npm:0.3.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0", {\
+        "packageLocation": "./.yarn/__virtual__/next-themes-virtual-2cb5feba36/0/cache/next-themes-npm-0.3.0-624efd7b90-72bd670ad6.zip/node_modules/next-themes/",\
+        "packageDependencies": [\
+          ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0"],\
+          ["@types/react", "npm:18.3.3"],\
+          ["@types/react-dom", "npm:18.3.0"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\
