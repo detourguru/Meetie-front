@@ -4,7 +4,7 @@ export default function LoginPage() {
   return (
     <div className="flex flex-col h-screen">
       <main className="flex flex-col h-full">
-        <article className="flex flex-col h-full items-center p-[20px]">
+        <article className="flex flex-col h-full items-center p-[16px]">
           {/* title */}
           <div className="w-full mb-[22px] mt-[44px]">
             <div className="w-[100px] h-[100px] bg-primary-400">손</div>
