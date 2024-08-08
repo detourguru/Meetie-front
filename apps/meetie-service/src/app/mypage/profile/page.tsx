@@ -29,22 +29,22 @@ export default function ProfilePage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="font-bold px-2">성명</p>
+          <p className="font-bold px-4">성명</p>
           <input
             id="name"
             name="name"
             type="text"
-            className="border-2 rounded-md border-gray-100 bg-gray-50 mx-2 px-4 py-3 focus:outline-none"
+            className="border-2 rounded-md border-gray-100 bg-gray-50 mx-4 px-4 py-3 focus:outline-none"
           />
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="font-bold px-2">자기 소개</p>
+          <p className="font-bold px-4">자기 소개</p>
           <textarea
             id="introduce"
             name="introduce"
             rows={3}
-            className="border-2 rounded-md border-gray-100 bg-gray-50 text-regular-14 mx-2 p-4 focus:outline-none"
+            className="border-2 rounded-md border-gray-100 bg-gray-50 text-regular-14 mx-4 p-4 focus:outline-none"
           />
         </div>
       </section>
@@ -55,12 +55,12 @@ export default function ProfilePage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="text-bold-18 px-2">하이라이트 뱃지</p>
-          <p className="px-2 text-regular-16 mb-3 text-gray-300">
+          <p className="text-bold-18 px-4">하이라이트 뱃지</p>
+          <p className="px-4 text-regular-16 mb-3 text-gray-300">
             # 저는 소통을 잘하고 추진력이 넘쳐요
           </p>
 
-          <div className="flex flex-nowrap gap-4 overflow-x-scroll">
+          <div className="px-4 flex flex-nowrap gap-4 overflow-x-scroll">
             <div className="flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-info-500 rounded-lg bg-primary-50">
               <img src="" alt="badge" width={100} height={100} />
               <span className="font-bold text-info-200">레벨 3</span>
@@ -82,8 +82,8 @@ export default function ProfilePage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="text-bold-18 px-2">스터디 관련 태그</p>
-          <div className="flex flex-wrap gap-4">
+          <p className="text-bold-18 px-4">스터디 관련 태그</p>
+          <div className="px-4 flex flex-wrap gap-4">
             <div className="flex flex-row gap-1.5 py-1.5 px-3 border border-gray-200 rounded-lg">
               <span className="text-regular-16 text-gray-300">#강의 완강</span>
               <span className="text-regular-16 text-gray-300">x</span>
@@ -108,11 +108,11 @@ export default function ProfilePage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <p className="text-bold-18 px-2">스터디 경험</p>
-          <p className="px-2 text-regular-16 text-gray-300 mb-3">
+          <p className="text-bold-18 px-4">스터디 경험</p>
+          <p className="px-4 text-regular-16 text-gray-300 mb-3">
             # 스터디 만근수당 받아야 겠는데요?!
           </p>
-          <div className="flex flex-nowrap gap-4 overflow-x-scroll">
+          <div className="px-4 flex flex-nowrap gap-4 overflow-x-scroll">
             <div>
               <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-info-500 rounded-lg bg-primary-50">
                 <div className="flex flex-col gap-2">
@@ -145,7 +145,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 px-2">
+        <div className="flex flex-col gap-2 px-4">
           <p className="text-bold-18">받은 스터디 매너 평가</p>
           <p className="text-regular-16 mb-3 text-gray-300"># 김서희님은 친절왕!</p>
           <article className="flex flex-row gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
