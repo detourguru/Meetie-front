@@ -208,7 +208,7 @@ export default function MyPage() {
               <article className="flex flex-row justify-between items-center">
                 <p className="font-medium text-base relative">
                   공지사항
-                  <div className="absolute h-2 w-2 rounded-full top-0 right-[-8px] bg-red-500" />
+                  <span className="absolute h-2 w-2 rounded-full top-0 right-[-8px] bg-red-500" />
                 </p>
                 <div>next</div>
               </article>
