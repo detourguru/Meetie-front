@@ -17,7 +17,7 @@ export default function MyPage() {
             <p className="text-bold-20">김서희님</p>
           </div>
         </div>
-        <Link href="/profile">
+        <Link href="mypage/profile">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
             <p className="text-medium-12 text-info-500">공개용 프로필</p>
           </button>
