@@ -19,8 +19,6 @@ export default function AbilityPage() {
         </button>
       </div>
 
-      <button onClick={() => setIsOpen(true)}>open</button>
-
       <article className="border border-info-600/10 rounded-lg bg-info-150 px-6 py-3 my-5 mx-4">
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-col gap-0.5">
@@ -50,15 +48,24 @@ export default function AbilityPage() {
         </div>
 
         <div className="grid grid-cols-3">
-          <article className="flex flex-col gap-2.5 items-center mr-auto mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={69.63} height={69.63} />
             <p className="text-medium-14 text-gray-300">댓뉴비</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">댓러너</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center ml-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center ml-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">댓마스터</p>
           </article>
@@ -72,15 +79,24 @@ export default function AbilityPage() {
         </div>
 
         <div className="grid grid-cols-3">
-          <article className="flex flex-col gap-2.5 items-center mr-auto mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={72.15} height={72.15} />
             <p className="text-medium-14 text-gray-300">나눔 뉴비</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">나눔 러너</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center ml-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center ml-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">나눔 마스터</p>
           </article>
@@ -94,15 +110,24 @@ export default function AbilityPage() {
         </div>
 
         <div className="grid grid-cols-3">
-          <article className="flex flex-col gap-2.5 items-center mr-auto mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={72.15} height={72.15} />
             <p className="text-medium-14 text-gray-300">피드백 뉴비</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">피드백 러너</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center ml-auto mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center ml-auto mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">피드백 마스터</p>
           </article>
@@ -116,15 +141,24 @@ export default function AbilityPage() {
         </div>
 
         <div className="grid grid-cols-3">
-          <article className="flex flex-col gap-2.5 items-center mr-auto mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={72.15} height={72.15} />
             <p className="text-medium-14 text-gray-300">밋티 뉴비</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">밋티 러너</p>
           </article>
-          <article className="flex flex-col gap-2.5 items-center ml-auto mt-auto">
+          <article
+            className="flex flex-col gap-2.5 items-center ml-auto mt-auto"
+            onClick={() => setIsOpen(true)}
+          >
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">밋티 마스터</p>
           </article>
