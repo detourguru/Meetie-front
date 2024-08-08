@@ -67,7 +67,7 @@ export default function MyPage() {
       </div>
 
       {/* 내 능력 현황 */}
-      <Link href="/ability">
+      <Link href="/mypage/ability">
         <div className="flex flex-col gap-7 mt-8 mb-12">
           <div className="flex flex-row justify-between items-center px-3.5">
             <header className="font-bold text-lg">내 능력 현황</header>
