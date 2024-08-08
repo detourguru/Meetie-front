@@ -135,18 +135,21 @@ export default function AbilityPage() {
         className={
           " fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out " +
           (isOpen
-            ? "transition-opacity opacity-100 duration-500 translate-y-0  "
-            : "transition-all delay-500 opacity-0 translate-y-full  ")
+            ? "transition-opacity opacity-100 duration-500 translate-y-0"
+            : "transition-all delay-500 opacity-0 translate-y-full")
         }
       >
         <section
           className={
-            " bottom-0 absolute rounded-t-lg bg-white w-full shadow-xl delay-400 duration-500 ease-in-out transition-all transform overflow-y-scroll" +
+            "bottom-0 absolute rounded-t-lg bg-white w-[375px] shadow-xl delay-400 duration-500 ease-in-out transition-all transform overflow-y-scroll flex" +
             (isOpen ? " translate-y-0 " : " translate-y-full ")
           }
-          style={{ height: "calc(90dvh - 40px)" }}
+          style={{ height: "calc(90dvh - 40px)", left: "calc(50dvw - 187.5px)" }}
         >
-          <article className="relative w-screen space-y-6 bg-[#434343]/5">
+          <article
+            className="relative w-[375px] space-y-6 bg-[#434343]/5"
+            style={{ height: "calc(90dvh - 40px)" }}
+          >
             <div
               className="p-4 cursor-pointer bg-[#434343]/0 hover:bg-gray-50 dark:hover:bg-gray-700 sticky top-0"
               data-drawer-toggle="drawer-swipe"
