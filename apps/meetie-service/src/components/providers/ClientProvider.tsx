@@ -5,7 +5,7 @@ import { ThemeProvider } from "./ThemeProvider";
 
 export function ClientProvider({ children }: PropsWithChildren) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
       {children}
     </ThemeProvider>
   );
