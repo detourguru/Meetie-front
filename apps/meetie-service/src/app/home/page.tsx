@@ -7,10 +7,10 @@ export default function HomePage() {
         <article className="flex flex-col h-full items-center pt-[104px]">
           <div className="flex flex-col items-center gap-[8px] mb-[60px]">
             <p className="font-semibold text-[18px]">같은 목표로 공부중인 유저</p>
-            <p className=" text-blue2 font-extrabold text-[24px] text-[#5a5cfe]">124,368 명</p>
+            <p className=" text-blue2 font-extrabold text-[24px] text-[#7677FF]">124,368 명</p>
           </div>
 
-          <div className="mb-[70px] w-[212px] h-[240px] bg-[#5a5cfe]">로켓 이미지</div>
+          <div className="mb-[70px] w-[212px] h-[240px] bg-[#7677FF]">로켓 이미지</div>
 
           <div className="flex justify-center items-center gap-[23px]">
             <button className="w-[46px] h-[46px] rounded-full bg-black text-white">N</button>
@@ -23,7 +23,7 @@ export default function HomePage() {
         </article>
       </main>
 
-      <footer className="flex justify-center items-center gap-[12px] h-[16px] text-[#999999] text-[12px] mt-auto mb-[120px]">
+      <footer className="flex justify-center items-center gap-[12px] h-[16px] text-[#ADB5BD] text-[12px] mt-auto mb-[120px]">
         <div>회원가입하기</div>
         <span>|</span>
         <div>아이디 찾기</div>
