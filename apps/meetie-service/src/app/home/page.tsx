@@ -1,0 +1,35 @@
+import Link from "next/link";
+
+export default function HomePage() {
+  return (
+    <div className="flex flex-col h-screen">
+      <main className="flex flex-col h-full">
+        <article className="flex flex-col h-full items-center pt-[104px]">
+          <div className="flex flex-col items-center gap-[8px] mb-[60px]">
+            <p className="font-semibold text-[18px]">같은 목표로 공부중인 유저</p>
+            <p className=" text-blue2 font-extrabold text-[24px] text-[#5a5cfe]">124,368 명</p>
+          </div>
+
+          <div className="mb-[70px] w-[212px] h-[240px] bg-[#5a5cfe]">로켓 이미지</div>
+
+          <div className="flex justify-center items-center gap-[23px]">
+            <button className="w-[46px] h-[46px] rounded-full bg-black text-white">N</button>
+            <button className="w-[46px] h-[46px] rounded-full bg-black text-white">C</button>
+            <button className="w-[46px] h-[46px] rounded-full bg-black text-white">G</button>
+            <Link href={"/login"}>
+              <button className="w-[46px] h-[46px] rounded-full bg-black text-white">...</button>
+            </Link>
+          </div>
+        </article>
+      </main>
+
+      <footer className="flex justify-center items-center gap-[12px] h-[16px] text-[#999999] text-[12px] mt-auto mb-[120px]">
+        <div>회원가입하기</div>
+        <span>|</span>
+        <div>아이디 찾기</div>
+        <span>|</span>
+        <div>비밀번호찾기</div>
+      </footer>
+    </div>
+  );
+}
