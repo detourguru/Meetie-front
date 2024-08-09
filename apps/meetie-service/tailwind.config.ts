@@ -55,6 +55,7 @@ const config: Config = {
       "medium-14": ["14px", { lineHeight: "140%", fontWeight: 500 }],
       "medium-12": ["12px", { lineHeight: "140%", fontWeight: 500 }],
       "medium-10": ["10px", { lineHeight: "140%", fontWeight: 500 }],
+      "medium-8": ["8px", { lineHeight: "140%", fontWeight: 500 }],
       "regular-16": ["16px", { lineHeight: "140%", fontWeight: 400 }],
       "regular-14": ["14px", { lineHeight: "140%", fontWeight: 400 }],
       "regular-12": ["12px", { lineHeight: "140%", fontWeight: 400 }],
