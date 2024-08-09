@@ -1,3 +1,9 @@
+import Button from "@/components/common/Button/Button";
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <Button variant="outlinePrimary" size="lg">
+      button
+    </Button>
+  );
 }

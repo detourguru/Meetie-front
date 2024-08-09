@@ -4122,6 +4122,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-variance-authority@npm:^0.7.0":
+  version: 0.7.0
+  resolution: "class-variance-authority@npm:0.7.0"
+  dependencies:
+    clsx: "npm:2.0.0"
+  checksum: 10c0/e11c57edf4bf50ef1c97bae41d68885afbaaedba26c48b7cc5dfb033390fed7012147e9532168d8c4f3497fce4dff15e20e6e60b8c9c9a4b0fe26b0e804513db
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -4197,6 +4206,20 @@ __metadata:
   version: 1.0.4
   resolution: "clone@npm:1.0.4"
   checksum: 10c0/2176952b3649293473999a95d7bebfc9dc96410f6cbd3d2595cf12fd401f63a4bf41a7adbfd3ab2ff09ed60cb9870c58c6acdd18b87767366fabfc163700f13b
+  languageName: node
+  linkType: hard
+
+"clsx@npm:2.0.0":
+  version: 2.0.0
+  resolution: "clsx@npm:2.0.0"
+  checksum: 10c0/c09f43b3144a0b7826b6b11b6a111b2c7440831004eecc02d333533c5e58ef0aa5f2dce071d3b25fbb8c8ea97b45df96c74bcc1d51c8c2027eb981931107b0cd
+  languageName: node
+  linkType: hard
+
+"clsx@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "clsx@npm:2.1.1"
+  checksum: 10c0/c4c8eb865f8c82baab07e71bfa8897c73454881c4f99d6bc81585aecd7c441746c1399d08363dc096c550cceaf97bd4ce1e8854e1771e9998d9f94c4fe075839
   languageName: node
   linkType: hard
 
@@ -6733,6 +6756,8 @@ __metadata:
     "@types/node": "npm:^20"
     "@types/react": "npm:^18"
     "@types/react-dom": "npm:^18"
+    class-variance-authority: "npm:^0.7.0"
+    clsx: "npm:^2.1.1"
     eslint: "npm:^8.57.0"
     next: "npm:14.2.5"
     next-themes: "npm:^0.3.0"
@@ -6740,6 +6765,7 @@ __metadata:
     prettier: "npm:^3.3.3"
     react: "npm:^18"
     react-dom: "npm:^18"
+    tailwind-merge: "npm:^2.4.0"
     tailwindcss: "npm:^3.4.1"
     typescript: "npm:^5"
   languageName: unknown
@@ -8814,6 +8840,13 @@ __metadata:
     "@pkgr/core": "npm:^0.1.0"
     tslib: "npm:^2.6.2"
   checksum: 10c0/d8b89e1bf30ba3ffb469d8418c836ad9c0c062bf47028406b4d06548bc66af97155ea2303b96c93bf5c7c0f0d66153a6fbd6924c76521b434e6a9898982abc2e
+  languageName: node
+  linkType: hard
+
+"tailwind-merge@npm:^2.4.0":
+  version: 2.4.0
+  resolution: "tailwind-merge@npm:2.4.0"
+  checksum: 10c0/77bd20647d08db78a0bdf7b57d4b904479aee7727f44570f8834d62a1aa56f42d7ae68ac959e3d610c9f188aa164eeefb6c43df4f0c8bb7cfc3418e1575bfecb
   languageName: node
   linkType: hard
 

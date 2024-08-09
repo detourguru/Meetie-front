@@ -31,6 +31,7 @@ const config: Config = {
       "bold-24": ["24px", { lineHeight: "140%", fontWeight: 700 }],
       "bold-20": ["20px", { lineHeight: "140%", fontWeight: 700 }],
       "bold-18": ["18px", { lineHeight: "140%", fontWeight: 700 }],
+      "bold-16": ["16px", { lineHeight: "140%", fontWeight: 700 }],
       "bold-14": ["14px", { lineHeight: "140%", fontWeight: 700 }],
       "semibold-24": ["24px", { lineHeight: "140%", fontWeight: 600 }],
       "semibold-20": ["20px", { lineHeight: "140%", fontWeight: 600 }],

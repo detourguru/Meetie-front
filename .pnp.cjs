@@ -6399,6 +6399,16 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["class-variance-authority", [\
+      ["npm:0.7.0", {\
+        "packageLocation": "./.yarn/cache/class-variance-authority-npm-0.7.0-1a63840197-e11c57edf4.zip/node_modules/class-variance-authority/",\
+        "packageDependencies": [\
+          ["class-variance-authority", "npm:0.7.0"],\
+          ["clsx", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["clean-stack", [\
       ["npm:2.2.0", {\
         "packageLocation": "./.yarn/cache/clean-stack-npm-2.2.0-a8ce435a5c-1f90262d5f.zip/node_modules/clean-stack/",\
@@ -6484,6 +6494,22 @@ const RAW_RUNTIME_STATE =
           ["is-plain-object", "npm:2.0.4"],\
           ["kind-of", "npm:6.0.3"],\
           ["shallow-clone", "npm:3.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["clsx", [\
+      ["npm:2.0.0", {\
+        "packageLocation": "./.yarn/cache/clsx-npm-2.0.0-afafbbe44a-c09f43b314.zip/node_modules/clsx/",\
+        "packageDependencies": [\
+          ["clsx", "npm:2.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:2.1.1", {\
+        "packageLocation": "./.yarn/cache/clsx-npm-2.1.1-96125b98be-c4c8eb865f.zip/node_modules/clsx/",\
+        "packageDependencies": [\
+          ["clsx", "npm:2.1.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -9422,6 +9448,8 @@ const RAW_RUNTIME_STATE =
           ["@types/node", "npm:20.14.14"],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["class-variance-authority", "npm:0.7.0"],\
+          ["clsx", "npm:2.1.1"],\
           ["eslint", "npm:8.57.0"],\
           ["next", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:14.2.5"],\
           ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0"],\
@@ -9429,6 +9457,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:18.3.1"],\
+          ["tailwind-merge", "npm:2.4.0"],\
           ["tailwindcss", "npm:3.4.7"],\
           ["typescript", "patch:typescript@npm%3A5.5.4#optional!builtin<compat/typescript>::version=5.5.4&hash=5adc0c"]\
         ],\
@@ -11792,6 +11821,15 @@ const RAW_RUNTIME_STATE =
           ["synckit", "npm:0.9.1"],\
           ["@pkgr/core", "npm:0.1.1"],\
           ["tslib", "npm:2.6.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["tailwind-merge", [\
+      ["npm:2.4.0", {\
+        "packageLocation": "./.yarn/cache/tailwind-merge-npm-2.4.0-be8d0b173f-77bd20647d.zip/node_modules/tailwind-merge/",\
+        "packageDependencies": [\
+          ["tailwind-merge", "npm:2.4.0"]\
         ],\
         "linkType": "HARD"\
       }]\
