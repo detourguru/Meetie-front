@@ -39,28 +39,34 @@ export default function MyPage() {
       {/* 내 정보 */}
       <div className="flex flex-col gap-3 px-4 mt-9">
         <header className="text-bold-18">내 정보</header>
-        <section className="flex flex-row justify-evenly items-center border border-primary-200 rounded-lg py-9 bg-primary-50">
-          <article className="flex flex-col gap-3 items-center">
-            <div className="w-10 h-10 rounded-full">badge</div>
-            <div className="flex flex-col gap-2 items-center">
-              <p className="text-info-200 text-regular-16">스터디</p>
-              <p className="text-bold-18">2</p>
+        <section className="flex items-center border border-primary-200 rounded-lg py-9 bg-primary-50">
+          <article className="flex-1">
+            <div className="flex flex-col gap-3 items-center">
+              <div className="w-10 h-10 rounded-full">badge</div>
+              <div className="flex flex-col gap-2 items-center">
+                <p className="text-info-200 text-regular-16">스터디</p>
+                <p className="text-bold-18">2</p>
+              </div>
             </div>
           </article>
           <div className="h-2.5 border border-primary-200" />
-          <article className="flex flex-col gap-3 items-center">
-            <div className="w-10 h-10 rounded-full">badge</div>
-            <div className="flex flex-col gap-2 items-center">
-              <p className="text-info-200 text-regular-16">스크랩</p>
-              <p className="text-bold-18">2</p>
+          <article className="flex-1 flex-col gap-3 items-center">
+            <div className="flex flex-col gap-3 items-center">
+              <div className="w-10 h-10 rounded-full">badge</div>
+              <div className="flex flex-col gap-2 items-center">
+                <p className="text-info-200 text-regular-16">스크랩</p>
+                <p className="text-bold-18">2</p>
+              </div>
             </div>
           </article>
           <div className="h-2.5 border border-primary-200" />
-          <article className="flex flex-col gap-3 items-center">
-            <div className="w-10 h-10 rounded-full">badge</div>
-            <div className="flex flex-col gap-2 items-center">
-              <p className="text-info-200 text-regular-16">스터디 친구</p>
-              <p className="text-bold-18">2</p>
+          <article className="flex-1">
+            <div className="flex flex-col gap-3 items-center">
+              <div className="w-10 h-10 rounded-full">badge</div>
+              <div className="flex flex-col gap-2 items-center">
+                <p className="text-info-200 text-regular-16">스터디 친구</p>
+                <p className="text-bold-18">2</p>
+              </div>
             </div>
           </article>
         </section>
