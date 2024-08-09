@@ -9,7 +9,7 @@ export default function MyPage() {
       </div>
 
       {/* 프로필 카드 */}
-      <div className="flex justify-between items-end mt-10 px-4">
+      <div className="flex justify-between mt-10 px-4">
         <div className="flex gap-4 items-center">
           <img src="" alt="profile" width={61} height={61} className="rounded-full" />
           <div className="flex flex-col gap-1 items-start">
@@ -17,7 +17,7 @@ export default function MyPage() {
             <p className="text-bold-20">김서희님</p>
           </div>
         </div>
-        <Link href="mypage/profile">
+        <Link href="mypage/profile" className="self-end">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
             <p className="text-medium-12 text-primary-450">공개용 프로필</p>
           </button>
