@@ -19,7 +19,7 @@ export default function MyPage() {
         </div>
         <Link href="mypage/profile">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
-            <p className="text-medium-12 text-info-500">공개용 프로필</p>
+            <p className="text-medium-12 text-primary-450">공개용 프로필</p>
           </button>
         </Link>
       </div>
@@ -27,7 +27,7 @@ export default function MyPage() {
       {/* 일정 */}
       <div className="flex flex-row justify-between mt-9 mx-4 border border-primary-200 rounded bg-[#F9F9F9] px-5 py-4">
         <div className="flex gap-3.5 items-center">
-          <p className="text-info-400 text-medium-14">피그마 팔로업 회의</p>
+          <p className="text-primary-350 text-medium-14">피그마 팔로업 회의</p>
           <div className="h-2.5 border border-primary-200" />
         </div>
         <div className="flex gap-1 items-center">
@@ -44,7 +44,7 @@ export default function MyPage() {
             <div className="flex flex-col gap-3 items-center">
               <div className="w-10 h-10 rounded-full">badge</div>
               <div className="flex flex-col gap-2 items-center">
-                <p className="text-info-200 text-regular-16">스터디</p>
+                <p className="text-blue-300 text-regular-16">스터디</p>
                 <p className="text-bold-18">2</p>
               </div>
             </div>
@@ -54,7 +54,7 @@ export default function MyPage() {
             <div className="flex flex-col gap-3 items-center">
               <div className="w-10 h-10 rounded-full">badge</div>
               <div className="flex flex-col gap-2 items-center">
-                <p className="text-info-200 text-regular-16">스크랩</p>
+                <p className="text-blue-300 text-regular-16">스크랩</p>
                 <p className="text-bold-18">2</p>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function MyPage() {
             <div className="flex flex-col gap-3 items-center">
               <div className="w-10 h-10 rounded-full">badge</div>
               <div className="flex flex-col gap-2 items-center">
-                <p className="text-info-200 text-regular-16">스터디 친구</p>
+                <p className="text-blue-300 text-regular-16">스터디 친구</p>
                 <p className="text-bold-18">2</p>
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function MyPage() {
               <img src="debate" alt="debate" width={74.7} height={74.3} />
               <div className="flex flex-col gap-2 items-center">
                 <p className="text-semibold-12">토론 뱃지</p>
-                <div className="px-2 py-1 bg-info-300 rounded-lg text-white text-medium-12 opacity-50">
+                <div className="px-2 py-1 bg-blue-400 rounded-lg text-white text-medium-12 opacity-50">
                   레벨 1
                 </div>
               </div>
@@ -111,7 +111,7 @@ export default function MyPage() {
               <img src="feedback" alt="feedback" width={74.7} height={74.3} />
               <div className="flex flex-col gap-2 items-center">
                 <p className="text-semibold-12">피드백 뱃지</p>
-                <div className="px-2 py-1 bg-info-300 rounded-lg text-white text-medium-12">
+                <div className="px-2 py-1 bg-blue-400 rounded-lg text-white text-medium-12">
                   레벨 2
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function MyPage() {
       </Link>
 
       <div>
-        <div className="h-2 bg-info-50" />
+        <div className="h-2 bg-blue-50" />
       </div>
 
       <div className="flex flex-col gap-8 mt-8 mb-12 px-4">
@@ -134,7 +134,7 @@ export default function MyPage() {
                 <div className="flex flex-row gap-2 items-center">
                   <img src="book" alt="book" width={11.2} height={14} />
                   <p className="text-medium-16 text-gray-600">참여 중인 스터디</p>
-                  <div className="w-5 h-5 rounded-full bg-info-100">
+                  <div className="w-5 h-5 rounded-full bg-blue-100">
                     <p className="text-semibold-16 text-primary-500 text-center">2</p>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ export default function MyPage() {
       </div>
 
       <div>
-        <div className="h-2 bg-info-50" />
+        <div className="h-2 bg-blue-50" />
       </div>
 
       <div className="flex flex-col gap-8 mt-8 mb-12 px-4">

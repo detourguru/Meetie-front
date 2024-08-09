@@ -19,7 +19,7 @@ export default function AbilityPage() {
         </button>
       </div>
 
-      <article className="border border-info-600/10 rounded-lg bg-info-150 px-6 py-3 my-5 mx-4">
+      <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 my-5 mx-4">
         <div className="flex flex-row justify-between items-center">
           <div className="flex flex-col gap-0.5">
             <p className="text-regular-12 text-gray-300">축하합니다!</p>
@@ -33,12 +33,12 @@ export default function AbilityPage() {
         <header className="text-semibold-18 text-gray-500">내 뱃지</header>
         <div className="flex flex-row gap-1">
           <img src="" alt="clock" />
-          <p className="text-medium-12 text-info-200">업데이트 매일 오전</p>
+          <p className="text-medium-12 text-blue-300">업데이트 매일 오전</p>
         </div>
       </article>
 
       <div>
-        <div className="h-2 bg-info-50" />
+        <div className="h-2 bg-blue-50" />
       </div>
 
       <section className="flex flex-col mx-5 mt-8 gap-4">
@@ -195,7 +195,7 @@ export default function AbilityPage() {
                 <header className="text-medium-16 text-gray-500">밋티 뱃지</header>
                 <div className="flex flex-col items-center gap-3">
                   <h1 className="text-bold-24 text-gray-400">모두가 믿고 따르는 리더쉽!</h1>
-                  <p className="text-regular-14 whitespace-pre-wrap text-center text-info-200">
+                  <p className="text-regular-14 whitespace-pre-wrap text-center text-blue-300">
                     {"3가지 퀘스트 완수로\n나의 IT 스터디 방장 능력이 상승했어요"}
                   </p>
                 </div>
@@ -218,7 +218,7 @@ export default function AbilityPage() {
                 <div className="flex flex-col gap-[13px]">
                   <article className="flex flex-col gap-1.5">
                     <header className="text-semibold-14 text-gray-600">500XP 모으기</header>
-                    <div className="border border-info-150 rounded-full p-1 bg-info-300/10">
+                    <div className="border border-blue-200 rounded-full p-1 bg-blue-400/10">
                       <div className="text-center rounded-full bg-primary-500 h-3">
                         <p className="text-medium-14 text-white leading-3">500/500</p>
                       </div>
@@ -227,7 +227,7 @@ export default function AbilityPage() {
 
                   <article className="flex flex-col gap-1.5">
                     <header className="text-semibold-14 text-gray-600">피드백 50회 하기</header>
-                    <div className="border border-info-150 rounded-full p-1 bg-info-300/10">
+                    <div className="border border-blue-200 rounded-full p-1 bg-blue-400/10">
                       <div className="text-center rounded-full bg-primary-500 h-3">
                         <p className="text-medium-14 text-white leading-3">50/50</p>
                       </div>
@@ -236,7 +236,7 @@ export default function AbilityPage() {
 
                   <article className="flex flex-col gap-1.5">
                     <header className="text-semibold-14 text-gray-600">방장 5회 달성</header>
-                    <div className="border border-info-150 rounded-full p-1 bg-info-300/10">
+                    <div className="border border-blue-200 rounded-full p-1 bg-blue-400/10">
                       <div className="text-center rounded-full bg-primary-500 h-3">
                         <p className="text-medium-14 text-white leading-3">5/5</p>
                       </div>

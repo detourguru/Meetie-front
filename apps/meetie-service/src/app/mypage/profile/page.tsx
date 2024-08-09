@@ -17,7 +17,7 @@ export default function ProfilePage() {
       <article className="py-5 flex">
         <div className="flex relative border rounded-full border-slate-200 mx-auto">
           <img src="" alt="profile image" width={150} height={150} />
-          <div className="absolute rounded-full bg-info-300 bottom-0 right-0">
+          <div className="absolute rounded-full bg-blue-400 bottom-0 right-0">
             <img width={40} height={40} src="" alt="image" />
           </div>
         </div>
@@ -61,21 +61,21 @@ export default function ProfilePage() {
           </p>
 
           <div className="px-4 flex flex-nowrap gap-4 overflow-x-scroll">
-            <div className="flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-info-500 rounded-lg bg-primary-50">
+            <div className="flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-primary-450 rounded-lg bg-primary-50">
               <img src="" alt="badge" width={100} height={100} />
-              <span className="font-bold text-info-200">레벨 3</span>
+              <span className="font-bold text-blue-300">레벨 3</span>
               <h1 className="font-bold text-gray-700">밋티 마스터</h1>
             </div>
 
-            <div className="flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-info-500 rounded-lg bg-primary-50">
+            <div className="flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-primary-450 rounded-lg bg-primary-50">
               <img src="" alt="badge" width={100} height={100} />
-              <span className="font-bold text-info-200">레벨 3</span>
+              <span className="font-bold text-blue-300">레벨 3</span>
               <h1 className="font-bold text-gray-700">댓글 마스터</h1>
             </div>
 
             <div className="flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-primary-200 rounded-lg bg-primary-50">
               <img src="" alt="badge" width={100} height={100} />
-              <span className="font-bold text-info-200">레벨 1</span>
+              <span className="font-bold text-blue-300">레벨 1</span>
               <h1 className="font-bold text-gray-700">토론 마스터</h1>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function ProfilePage() {
               <span className="text-regular-16 text-gray-300">x</span>
             </div>
 
-            <div className="flex flex-row gap-1.5 py-1.5 px-3 border border-info-500 bg-primary-100 rounded-lg">
+            <div className="flex flex-row gap-1.5 py-1.5 px-3 border border-primary-450 bg-primary-100 rounded-lg">
               <span className="text-regular-16 text-gray-300">#</span>
               <span className="text-regular-16 text-gray-300">추가</span>
             </div>
@@ -114,13 +114,13 @@ export default function ProfilePage() {
           </p>
           <div className="px-4 flex flex-nowrap gap-4 overflow-x-scroll">
             <div>
-              <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-info-500 rounded-lg bg-primary-50">
+              <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-primary-450 rounded-lg bg-primary-50">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-between">
                     <p className="text-bold-18 whitespace-pre-wrap">{"피그마 초급\n실습 스터디"}</p>
                     <img src="" alt="lock" width={30} height={30} />
                   </div>
-                  <div className="flex w-fit rounded-xl px-3 py-2 bg-info-400">
+                  <div className="flex w-fit rounded-xl px-3 py-2 bg-primary-350">
                     <span className="text-semibold-12 text-white">만족 점수 80점</span>
                   </div>
                 </div>
@@ -129,13 +129,13 @@ export default function ProfilePage() {
             </div>
 
             <div>
-              <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-info-500 rounded-lg bg-primary-50">
+              <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-primary-450 rounded-lg bg-primary-50">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-row justify-between">
                     <p className="text-bold-18 whitespace-pre-wrap">{"디자인 기획\n실습 스터디"}</p>
                     <img src="" alt="lock" width={30} height={30} />
                   </div>
-                  <div className="flex w-fit rounded-xl px-3 py-2 bg-info-400">
+                  <div className="flex w-fit rounded-xl px-3 py-2 bg-primary-350">
                     <span className="text-semibold-12 text-white">만족 점수 80점</span>
                   </div>
                 </div>
