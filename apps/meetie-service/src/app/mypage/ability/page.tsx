@@ -12,7 +12,7 @@ export default function AbilityPage() {
 
   return (
     <>
-      <div className="flex flex-row justify-between items-center h-10 pl-1.5 pr-3">
+      <div className="flex justify-between items-center h-10 pl-1.5 pr-3">
         <button onClick={() => router.back()}>
           <img src="" alt="back" width={40} />
         </button>
@@ -23,7 +23,7 @@ export default function AbilityPage() {
       </div>
 
       <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 my-5 mx-4">
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex justify-between items-center">
           <div className="flex flex-col gap-0.5">
             <p className="text-regular-12 text-gray-300">축하합니다!</p>
             <p className="text-semibold-14 text-gray-500">새로운 뱃지가 추가 됐어요!</p>
@@ -32,9 +32,9 @@ export default function AbilityPage() {
         </div>
       </article>
 
-      <article className="flex flex-row justify-between items-center px-5 py-3">
+      <article className="flex justify-between items-center px-5 py-3">
         <header className="text-semibold-18 text-gray-500">내 뱃지</header>
-        <div className="flex flex-row gap-1">
+        <div className="flex gap-1">
           <img src="" alt="clock" />
           <p className="text-medium-12 text-blue-300">업데이트 매일 오전</p>
         </div>
@@ -45,7 +45,7 @@ export default function AbilityPage() {
       </div>
 
       <section className="flex flex-col mx-5 mt-8 gap-4">
-        <div className="flex flex-row gap-1 items-center">
+        <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">댓글 뱃지</header>
           <img src="" alt="badge" width={16} height={16} />
         </div>
@@ -70,7 +70,7 @@ export default function AbilityPage() {
       </section>
 
       <section className="flex flex-col mx-5 mt-8 gap-4">
-        <div className="flex flex-row gap-1 items-center">
+        <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">나눔 뱃지</header>
           <img src="" alt="badge" width={16} height={16} />
         </div>
@@ -95,7 +95,7 @@ export default function AbilityPage() {
       </section>
 
       <section className="flex flex-col mx-5 mt-8 gap-4">
-        <div className="flex flex-row gap-1 items-center">
+        <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">피드백 뱃지</header>
           <img src="" alt="badge" width={16} height={16} />
         </div>
@@ -123,7 +123,7 @@ export default function AbilityPage() {
       </section>
 
       <section className="flex flex-col mx-5 mt-8 gap-4  mb-[60px]">
-        <div className="flex flex-row gap-1 items-center">
+        <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">밋티 뱃지</header>
           <img src="" alt="badge" width={16} height={16} />
         </div>

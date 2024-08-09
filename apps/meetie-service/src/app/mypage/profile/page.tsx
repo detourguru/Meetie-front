@@ -6,7 +6,7 @@ export default function ProfilePage() {
   const router = useRouter();
   return (
     <>
-      <div className="flex flex-row justify-between items-center h-10 px-1">
+      <div className="flex justify-between items-center h-10 px-1">
         <button onClick={() => router.back()}>
           <img src="" alt="back" width={40} />
         </button>
@@ -84,17 +84,17 @@ export default function ProfilePage() {
         <div className="flex flex-col gap-2">
           <p className="text-bold-18 px-4">스터디 관련 태그</p>
           <div className="px-4 flex flex-wrap gap-4">
-            <div className="flex flex-row gap-1.5 py-1.5 px-3 border border-gray-200 rounded-lg">
+            <div className="flex gap-1.5 py-1.5 px-3 border border-gray-200 rounded-lg">
               <span className="text-regular-16 text-gray-300">#강의 완강</span>
               <span className="text-regular-16 text-gray-300">x</span>
             </div>
 
-            <div className="flex flex-row gap-1.5 py-1.5 px-3 border border-gray-200 rounded-lg">
+            <div className="flex gap-1.5 py-1.5 px-3 border border-gray-200 rounded-lg">
               <span className="text-regular-16 text-gray-300">#강의 완강</span>
               <span className="text-regular-16 text-gray-300">x</span>
             </div>
 
-            <div className="flex flex-row gap-1.5 py-1.5 px-3 border border-primary-450 bg-primary-100 rounded-lg">
+            <div className="flex gap-1.5 py-1.5 px-3 border border-primary-450 bg-primary-100 rounded-lg">
               <span className="text-regular-16 text-gray-300">#</span>
               <span className="text-regular-16 text-gray-300">추가</span>
             </div>
@@ -116,7 +116,7 @@ export default function ProfilePage() {
             <div>
               <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-primary-450 rounded-lg bg-primary-50">
                 <div className="flex flex-col gap-2">
-                  <div className="flex flex-row justify-between">
+                  <div className="flex justify-between">
                     <p className="text-bold-18 whitespace-pre-wrap">{"피그마 초급\n실습 스터디"}</p>
                     <img src="" alt="lock" width={30} height={30} />
                   </div>
@@ -131,7 +131,7 @@ export default function ProfilePage() {
             <div>
               <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-primary-450 rounded-lg bg-primary-50">
                 <div className="flex flex-col gap-2">
-                  <div className="flex flex-row justify-between">
+                  <div className="flex justify-between">
                     <p className="text-bold-18 whitespace-pre-wrap">{"디자인 기획\n실습 스터디"}</p>
                     <img src="" alt="lock" width={30} height={30} />
                   </div>
@@ -148,7 +148,7 @@ export default function ProfilePage() {
         <div className="flex flex-col gap-2 px-4">
           <p className="text-bold-18">받은 스터디 매너 평가</p>
           <p className="text-regular-16 mb-3 text-gray-300"># 김서희님은 친절왕!</p>
-          <article className="flex flex-row gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
+          <article className="flex gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
             <div className="border rounded-full">
               <img src="" alt="manner" width={40} height={40} />
             </div>
@@ -156,7 +156,7 @@ export default function ProfilePage() {
             <p className="font-bold text-primary-500">11</p>
           </article>
 
-          <article className="flex flex-row gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
+          <article className="flex gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
             <div className="border rounded-full">
               <img src="" alt="manner" width={40} height={40} />
             </div>
@@ -164,7 +164,7 @@ export default function ProfilePage() {
             <p className="font-bold text-primary-500">8</p>
           </article>
 
-          <article className="flex flex-row gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
+          <article className="flex gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
             <div className="border rounded-full">
               <img src="" alt="manner" width={40} height={40} />
             </div>
@@ -172,7 +172,7 @@ export default function ProfilePage() {
             <p className="font-bold text-primary-500">2</p>
           </article>
 
-          <article className="flex flex-row gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
+          <article className="flex gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">
             <div className="border rounded-full">
               <img src="" alt="manner" width={40} height={40} />
             </div>

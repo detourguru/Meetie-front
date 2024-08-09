@@ -3,14 +3,14 @@ import Link from "next/link";
 export default function MyPage() {
   return (
     <>
-      <div className="flex flex-row justify-between items-center px-4 h-10">
+      <div className="flex justify-between items-center px-4 h-10">
         <p className="text-bold-20">마이페이지</p>
         <div>alarm</div>
       </div>
 
       {/* 프로필 카드 */}
-      <div className="flex flex-row justify-between items-end mt-10 px-4">
-        <div className="flex flex-row gap-4 items-center">
+      <div className="flex justify-between items-end mt-10 px-4">
+        <div className="flex gap-4 items-center">
           <img src="" alt="profile" width={61} height={61} className="rounded-full" />
           <div className="flex flex-col gap-1 items-start">
             <p className="text-medium-16 text-gray-400">디자이너</p>
@@ -25,7 +25,7 @@ export default function MyPage() {
       </div>
 
       {/* 일정 */}
-      <div className="flex flex-row justify-between mt-9 mx-4 border border-primary-200 rounded bg-[#F9F9F9] px-5 py-4">
+      <div className="flex justify-between mt-9 mx-4 border border-primary-200 rounded bg-[#F9F9F9] px-5 py-4">
         <div className="flex gap-3.5 items-center">
           <p className="text-primary-350 text-medium-14">피그마 팔로업 회의</p>
           <div className="h-2.5 border border-primary-200" />
@@ -75,7 +75,7 @@ export default function MyPage() {
       {/* 내 능력 현황 */}
       <Link href="/mypage/ability">
         <div className="flex flex-col gap-7 mt-8 mb-12">
-          <div className="flex flex-row justify-between items-center px-3.5">
+          <div className="flex justify-between items-center px-3.5">
             <header className="text-bold-18">내 능력 현황</header>
             <div className="text-[#CECECE]">next</div>
           </div>
@@ -130,8 +130,8 @@ export default function MyPage() {
           <header className="text-bold-18">내 스터디</header>
           <ul className="flex flex-col gap-4">
             <li>
-              <article className="flex flex-row justify-between items-center">
-                <div className="flex flex-row gap-2 items-center">
+              <article className="flex justify-between items-center">
+                <div className="flex gap-2 items-center">
                   <img src="book" alt="book" width={11.2} height={14} />
                   <p className="text-medium-16 text-gray-600">참여 중인 스터디</p>
                   <div className="w-5 h-5 rounded-full bg-blue-100">
@@ -143,8 +143,8 @@ export default function MyPage() {
             </li>
 
             <li>
-              <article className="flex flex-row justify-between items-center">
-                <div className="flex flex-row gap-2 items-center">
+              <article className="flex justify-between items-center">
+                <div className="flex gap-2 items-center">
                   <img src="book" alt="book" width={11.2} height={14} />
                   <p className="text-medium-16 text-gray-600">지난 스터디</p>
                   <p className="text-semibold-16 text-center">8</p>
@@ -162,8 +162,8 @@ export default function MyPage() {
           <header className="text-bold-18">관심 보인 스터디</header>
           <ul className="flex flex-col gap-4">
             <li>
-              <article className="flex flex-row justify-between items-center">
-                <div className="flex flex-row gap-2 items-center">
+              <article className="flex justify-between items-center">
+                <div className="flex gap-2 items-center">
                   <img src="book" alt="book" width={11.2} height={14} />
                   <p className="text-medium-16 text-gray-600">최근 방문</p>
                 </div>
@@ -172,8 +172,8 @@ export default function MyPage() {
             </li>
 
             <li>
-              <article className="flex flex-row justify-between items-center">
-                <div className="flex flex-row gap-2 items-center">
+              <article className="flex justify-between items-center">
+                <div className="flex gap-2 items-center">
                   <img src="book" alt="book" width={11.2} height={14} />
                   <p className="text-medium-16 text-gray-600">관심 스터디</p>
                   <p className="text-semibold-16 text-center">8</p>
@@ -195,21 +195,21 @@ export default function MyPage() {
           <header className="text-bold-18">고객 센터</header>
           <ul className="flex flex-col gap-4">
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600">FAQ</p>
                 <div>next</div>
               </article>
             </li>
 
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600">문의하기</p>
                 <div>next</div>
               </article>
             </li>
 
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600 relative">
                   공지사항
                   <span className="absolute h-2 w-2 rounded-full top-0 right-[-8px] bg-red-500" />
@@ -227,25 +227,25 @@ export default function MyPage() {
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600">회원 정보 수정</p>
                 <div>next</div>
               </article>
             </li>
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600">비밀번호 설정</p>
                 <div>next</div>
               </article>
             </li>
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600">마케팅 개인정보 제 3자 제공동의</p>
                 <div>next</div>
               </article>
             </li>
             <li>
-              <article className="flex flex-row justify-between items-center">
+              <article className="flex justify-between items-center">
                 <p className="text-medium-16 text-gray-600">회원 탈퇴</p>
                 <div>next</div>
               </article>
