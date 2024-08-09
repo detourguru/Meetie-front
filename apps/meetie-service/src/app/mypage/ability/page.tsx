@@ -5,7 +5,10 @@ import { useState } from "react";
 
 export default function AbilityPage() {
   const router = useRouter();
+
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleClick = () => setIsOpen(true);
 
   return (
     <>
@@ -50,22 +53,16 @@ export default function AbilityPage() {
         <div className="grid grid-cols-3">
           <article
             className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
-            onClick={() => setIsOpen(true)}
+            onClick={handleClick}
           >
             <img src="" alt="newbie" width={69.63} height={69.63} />
             <p className="text-medium-14 text-gray-300">댓뉴비</p>
           </article>
-          <article
-            className="flex flex-col gap-2.5 items-center mt-auto"
-            onClick={() => setIsOpen(true)}
-          >
+          <article className="flex flex-col gap-2.5 items-center mt-auto" onClick={handleClick}>
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">댓러너</p>
           </article>
-          <article
-            className="flex flex-col gap-2.5 items-center ml-auto"
-            onClick={() => setIsOpen(true)}
-          >
+          <article className="flex flex-col gap-2.5 items-center ml-auto" onClick={handleClick}>
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">댓마스터</p>
           </article>
@@ -81,22 +78,16 @@ export default function AbilityPage() {
         <div className="grid grid-cols-3">
           <article
             className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
-            onClick={() => setIsOpen(true)}
+            onClick={handleClick}
           >
             <img src="" alt="newbie" width={72.15} height={72.15} />
             <p className="text-medium-14 text-gray-300">나눔 뉴비</p>
           </article>
-          <article
-            className="flex flex-col gap-2.5 items-center mt-auto"
-            onClick={() => setIsOpen(true)}
-          >
+          <article className="flex flex-col gap-2.5 items-center mt-auto" onClick={handleClick}>
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">나눔 러너</p>
           </article>
-          <article
-            className="flex flex-col gap-2.5 items-center ml-auto"
-            onClick={() => setIsOpen(true)}
-          >
+          <article className="flex flex-col gap-2.5 items-center ml-auto" onClick={handleClick}>
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">나눔 마스터</p>
           </article>
@@ -112,21 +103,18 @@ export default function AbilityPage() {
         <div className="grid grid-cols-3">
           <article
             className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
-            onClick={() => setIsOpen(true)}
+            onClick={handleClick}
           >
             <img src="" alt="newbie" width={72.15} height={72.15} />
             <p className="text-medium-14 text-gray-300">피드백 뉴비</p>
           </article>
-          <article
-            className="flex flex-col gap-2.5 items-center mt-auto"
-            onClick={() => setIsOpen(true)}
-          >
+          <article className="flex flex-col gap-2.5 items-center mt-auto" onClick={handleClick}>
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">피드백 러너</p>
           </article>
           <article
             className="flex flex-col gap-2.5 items-center ml-auto mt-auto"
-            onClick={() => setIsOpen(true)}
+            onClick={handleClick}
           >
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">피드백 마스터</p>
@@ -143,21 +131,18 @@ export default function AbilityPage() {
         <div className="grid grid-cols-3">
           <article
             className="flex flex-col gap-2.5 items-center mr-auto mt-auto"
-            onClick={() => setIsOpen(true)}
+            onClick={handleClick}
           >
             <img src="" alt="newbie" width={72.15} height={72.15} />
             <p className="text-medium-14 text-gray-300">밋티 뉴비</p>
           </article>
-          <article
-            className="flex flex-col gap-2.5 items-center mt-auto"
-            onClick={() => setIsOpen(true)}
-          >
+          <article className="flex flex-col gap-2.5 items-center mt-auto" onClick={handleClick}>
             <img src="" alt="newbie" width={88.9} height={84.58} />
             <p className="text-medium-14 text-gray-300">밋티 러너</p>
           </article>
           <article
             className="flex flex-col gap-2.5 items-center ml-auto mt-auto"
-            onClick={() => setIsOpen(true)}
+            onClick={handleClick}
           >
             <img src="" alt="newbie" width={95.74} height={94} />
             <p className="text-medium-14 text-gray-300">밋티 마스터</p>
