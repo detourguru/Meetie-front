@@ -1,14 +1,6 @@
-export default function OnBoardingTwoPage() {
+export default function OnBoardingSecondStep() {
   return (
     <article className="flex flex-col h-full w-full items-center p-[16px]">
-      <div className="w-full pt-[54px]">
-        <h1 className="text-semibold-24 text-start mb-[20px]">
-          <span className="block">김서희님의</span>
-          <span className="block">스터디 목적은 무엇인가요?</span>
-        </h1>
-        <p className="text-gray-200 text-regular-14">중복선택도 가능해요</p>
-      </div>
-
       <div className="w-full pt-[60px] flex flex-col gap-[12px] justify-center items-start text-regular-16">
         <label className="flex items-center gap-[8px] border border-gray-100 p-[10px] rounded-lg peer-checked:bg-primary-400 peer-checked:text-primary-500 peer-checked:border-primary-500">
           <input
