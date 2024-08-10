@@ -31,10 +31,18 @@ export default function OnBoardingPage() {
   ];
 
   const handlePrevStep = () => {
+    if (step === 1) {
+      return;
+    }
+
     navigate.push(`/onBoarding/${step - 1}`);
   };
 
   const handleNextStep = () => {
+    if (step === 4) {
+      return;
+    }
+
     navigate.push(`/onBoarding/${step + 1}`);
   };
 
