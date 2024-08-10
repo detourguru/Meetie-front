@@ -1,10 +1,15 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import OnBoardingFirstStep from "@/components/onBoardings/OnBoardingFirstStep";
+import OnBoardingFourthStep from "@/components/onBoardings/OnBoardingFourthStep";
+import OnBoardingSecondStep from "@/components/onBoardings/OnBoardingSecondStep";
+import OnBoardingThirdStep from "@/components/onBoardings/OnBoardingThirdStep";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function OnBoardingPage() {
   const pathName = usePathname();
-  const step = pathName.split("/").pop();
+  const navigate = useRouter();
+  const step = Number(pathName.split("/").pop());
 
   const QUESTION = [
     {
@@ -25,6 +30,14 @@ export default function OnBoardingPage() {
     },
   ];
 
+  const handlePrevStep = () => {
+    navigate.push(`/onBoarding/${step - 1}`);
+  };
+
+  const handleNextStep = () => {
+    navigate.push(`/onBoarding/${step + 1}`);
+  };
+
   return (
     <div className="flex flex-col h-full">
       <div className="p-[16px] flex justify-between items-center text-gray-200 text-medium-14">
@@ -37,14 +50,15 @@ export default function OnBoardingPage() {
       <main className="flex flex-col h-max">
         <div className="w-full pt-[54px] px-[16px]">
           <h1 className="text-semibold-24 text-start mb-[20px]">
-            <span className="block">{step && QUESTION[parseInt(step) - 1].TITLE.FIRST}</span>
-            <span className="block">{step && QUESTION[parseInt(step) - 1].TITLE.SECOND}</span>
+            <span className="block">{step && QUESTION[step - 1].TITLE.FIRST}</span>
+            <span className="block">{step && QUESTION[step - 1].TITLE.SECOND}</span>
           </h1>
-          <p className="text-gray-200 text-regular-14">
-            {step && QUESTION[parseInt(step) - 1].SUBTEXT}
-          </p>
+          <p className="text-gray-200 text-regular-14">{step && QUESTION[step - 1].SUBTEXT}</p>
         </div>
-        {/* 컴포넌트로 대체 */}
+        {step === 1 && <OnBoardingFirstStep />}
+        {step === 2 && <OnBoardingSecondStep />}
+        {step === 3 && <OnBoardingThirdStep />}
+        {step === 4 && <OnBoardingFourthStep />}
       </main>
 
       <div className="mt-auto px-[16px] pb-[42px]">
@@ -52,11 +66,17 @@ export default function OnBoardingPage() {
           내용은 다시 수정할 수 있어요!
         </p>
         <div className="flex items-center gap-[14px]">
-          <button className="text-bold-16 w-[124px] h-[49px] text-gray-200 border-gray-100 border rounded-lg">
+          <button
+            onClick={handlePrevStep}
+            className="text-bold-16 w-[124px] h-[49px] text-gray-200 border-gray-100 border rounded-lg"
+          >
             이전
           </button>
-          <button className="text-bold-16 bg-primary-300 text-white w-[206px] h-[49px] rounded-lg">
-            다음
+          <button
+            onClick={handleNextStep}
+            className="text-bold-16 bg-primary-300 text-white w-[206px] h-[49px] rounded-lg"
+          >
+            {step !== 4 ? "다음" : "이제 마지막에요"}
           </button>
         </div>
       </div>
