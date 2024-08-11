@@ -3,13 +3,13 @@ import { useState } from "react";
 export default function OnBoardingFourthStep() {
   const PERIODS = ["1개월 이내", "1개월 ~ 3개월", "3개월 ~ 6개월", "6개월 이상"];
 
-  const [clickedPeriod, setClickedPeriod] = useState<string[]>([]);
+  const [clickedPeriod, setClickedPeriod] = useState<string>("");
 
   const handleClickPeriod = (newPeriod: string) => {
-    if (clickedPeriod.includes(newPeriod)) {
-      setClickedPeriod((prevs) => prevs.filter((prev) => prev !== newPeriod));
+    if (clickedPeriod !== newPeriod) {
+      setClickedPeriod(newPeriod);
     } else {
-      setClickedPeriod((prev) => [...prev, newPeriod]);
+      setClickedPeriod("");
     }
   };
   return (
