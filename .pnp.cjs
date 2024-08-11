@@ -9452,7 +9452,7 @@ const RAW_RUNTIME_STATE =
           ["clsx", "npm:2.1.1"],\
           ["eslint", "npm:8.57.0"],\
           ["next", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:14.2.5"],\
-          ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0"],\
+          ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.2.1"],\
           ["postcss", "npm:8.4.40"],\
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
@@ -9863,25 +9863,29 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["next-themes", [\
-      ["npm:0.3.0", {\
-        "packageLocation": "./.yarn/cache/next-themes-npm-0.3.0-624efd7b90-72bd670ad6.zip/node_modules/next-themes/",\
+      ["npm:0.2.1", {\
+        "packageLocation": "./.yarn/cache/next-themes-npm-0.2.1-16a440cf6e-979dec0a2d.zip/node_modules/next-themes/",\
         "packageDependencies": [\
-          ["next-themes", "npm:0.3.0"]\
+          ["next-themes", "npm:0.2.1"]\
         ],\
         "linkType": "SOFT"\
       }],\
-      ["virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0", {\
-        "packageLocation": "./.yarn/__virtual__/next-themes-virtual-2cb5feba36/0/cache/next-themes-npm-0.3.0-624efd7b90-72bd670ad6.zip/node_modules/next-themes/",\
+      ["virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.2.1", {\
+        "packageLocation": "./.yarn/__virtual__/next-themes-virtual-b496ae538e/0/cache/next-themes-npm-0.2.1-16a440cf6e-979dec0a2d.zip/node_modules/next-themes/",\
         "packageDependencies": [\
-          ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.3.0"],\
+          ["next-themes", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:0.2.1"],\
+          ["@types/next", null],\
           ["@types/react", "npm:18.3.3"],\
           ["@types/react-dom", "npm:18.3.0"],\
+          ["next", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:14.2.5"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:bcc8c3373e98e6df64883ef89759f9238039657ade61353566a5c00c6832c58a809e3890d5675b83ab71d03acd573940eee91a67f0d82f13e2211c1af1645a53#npm:18.3.1"]\
         ],\
         "packagePeers": [\
+          "@types/next",\
           "@types/react-dom",\
           "@types/react",\
+          "next",\
           "react-dom",\
           "react"\
         ],\
