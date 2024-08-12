@@ -28,8 +28,8 @@ export default function OnBoardingThirdStep() {
   };
 
   return (
-    <article className="flex flex-col h-full w-full items-center p-[16px]">
-      <div className="flex flex-wrap gap-[8px]">
+    <div className="flex flex-col h-full w-full items-center px-[16px]">
+      <div className="flex flex-wrap pt-[60px] gap-[8px]">
         {STYLES.map((style) => (
           // 공통 컴포넌트로 변경
           <button
@@ -44,6 +44,6 @@ export default function OnBoardingThirdStep() {
           + 직접 입력하기
         </button>
       </div>
-    </article>
+    </div>
   );
 }

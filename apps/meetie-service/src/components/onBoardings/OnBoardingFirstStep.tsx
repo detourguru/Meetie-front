@@ -11,7 +11,7 @@ export default function OnBoardingFirstStep() {
   };
 
   return (
-    <article className="flex flex-col h-full w-full items-center p-[16px]">
+    <div className="flex flex-col h-full w-full items-center px-[16px]">
       <div className="flex justify-center items-center w-full gap-[8px] pt-[60px]">
         <button
           value="designer"
@@ -50,6 +50,6 @@ export default function OnBoardingFirstStep() {
           <div>기획자</div>
         </button>
       </div>
-    </article>
+    </div>
   );
 }

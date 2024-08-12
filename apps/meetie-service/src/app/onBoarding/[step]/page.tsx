@@ -51,15 +51,15 @@ export default function OnBoardingPage() {
         <p>
           <span className="text-black">{currentStepIndex + 1}</span>/4
         </p>
-        <button className="uppercase ">skip</button>
+        <button>SKIP</button>
       </div>
 
       <article className="flex flex-col h-max">
         <div className="w-full pt-[54px] px-[16px]">
-          <h1 className="text-semibold-24 text-start mb-[20px]">
-            <span className="block">{QUESTION[currentStepIndex].TITLE.FIRST}</span>
-            <span className="block">{QUESTION[currentStepIndex].TITLE.SECOND}</span>
-          </h1>
+          <span className="mb-[20px]">
+            <h1 className="text-semibold-24">{QUESTION[currentStepIndex].TITLE.FIRST}</h1>
+            <h1 className="text-semibold-24">{QUESTION[currentStepIndex].TITLE.SECOND}</h1>
+          </span>
           <p className="text-gray-200 text-regular-14">{QUESTION[currentStepIndex].SUBTEXT}</p>
         </div>
         {currentStepIndex === 0 && <OnBoardingFirstStep />}

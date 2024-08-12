@@ -13,7 +13,7 @@ export default function OnBoardingFourthStep() {
     }
   };
   return (
-    <article className="flex flex-col h-full w-full items-center p-[16px]">
+    <div className="flex flex-col h-full w-full items-center px-[16px]">
       <div className="w-full pt-[60px] flex flex-col gap-[12px] justify-center items-start text-regular-16">
         {PERIODS.map((period) => (
           <button
@@ -28,6 +28,6 @@ export default function OnBoardingFourthStep() {
           </button>
         ))}
       </div>
-    </article>
+    </div>
   );
 }

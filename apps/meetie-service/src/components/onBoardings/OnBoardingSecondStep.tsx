@@ -14,7 +14,7 @@ export default function OnBoardingSecondStep() {
   };
 
   return (
-    <article className="flex flex-col h-full w-full items-center p-[16px]">
+    <div className="flex flex-col h-full w-full items-center px-[16px]">
       <div className="w-full pt-[60px] flex flex-col gap-[12px] justify-center items-start text-regular-16">
         {PURPOSES.map((purpose) => (
           // 공통 컴포넌트로 변경
@@ -33,6 +33,6 @@ export default function OnBoardingSecondStep() {
           + 직접 입력하기
         </button>
       </div>
-    </article>
+    </div>
   );
 }
