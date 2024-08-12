@@ -10,12 +10,14 @@ export default function MyPage() {
     <>
       <div className="flex justify-between items-center px-4 h-10">
         <p className="text-bold-20">마이페이지</p>
+        {/* TODO: 아이콘 변경 예쩡 */}
         <div>alarm</div>
       </div>
 
       {/* 프로필 카드 */}
       <div className="flex justify-between mt-10 px-4">
         <div className="flex gap-4 items-center">
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="" alt="profile" width={61} height={61} className="rounded-full" />
           <div className="flex flex-col gap-1 items-start">
             <p className="text-medium-16 text-gray-400">디자이너</p>
@@ -37,6 +39,7 @@ export default function MyPage() {
           </p>
         </div>
         <div className="flex gap-1 items-center">
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="clock" alt="clock" width={16} height={14} className="text-[#A180F4]" />
           <p className="text-[#645294] text-medium-14">오늘 오후 8:30 PM</p>
         </div>
@@ -57,6 +60,7 @@ export default function MyPage() {
         <section className="flex flex-col gap-7 mt-8 mb-12">
           <div className="flex justify-between items-center px-3.5">
             <header className="text-bold-18">내 능력 현황</header>
+            {/* TODO: 아이콘 변경 예쩡 */}
             <div className="text-[#CECECE]">next</div>
           </div>
           <div className="grid grid-cols-4 px-4">
@@ -78,6 +82,7 @@ export default function MyPage() {
             <MenuListItem
               navigateTo="study/joining"
               title="참여 중인 스터디"
+              // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
               isPrimary
               studyCount={2}
@@ -86,6 +91,7 @@ export default function MyPage() {
             <MenuListItem
               navigateTo="study/last"
               title="지난 스터디"
+              // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
               studyCount={8}
             />
@@ -101,12 +107,14 @@ export default function MyPage() {
             <MenuListItem
               navigateTo="interest/recent"
               title="최근 방문"
+              // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
             />
 
             <MenuListItem
               navigateTo="interest"
               title="관심 스터디"
+              // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
               studyCount={8}
             />

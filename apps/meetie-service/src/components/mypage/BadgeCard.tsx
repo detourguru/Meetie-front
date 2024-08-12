@@ -12,6 +12,7 @@ const BadgeCard = ({ level, type, isNew, showLevel }: IBadgeCardProps) => {
   return (
     <>
       <article className="flex flex-col gap-3.5 items-center">
+        {/* TODO: svg 아이콘으로 변경 예정 */}
         <img src="comment" alt="comment" />
         <div className="flex flex-col gap-2 items-center">
           <p

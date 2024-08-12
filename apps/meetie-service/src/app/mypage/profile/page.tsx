@@ -11,8 +11,10 @@ export default function ProfilePage() {
 
       <article className="py-5 flex">
         <div className="flex relative border rounded-full border-slate-200 mx-auto">
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="" alt="profile image" width={150} height={150} />
           <div className="absolute rounded-full bg-blue-400 bottom-0 right-0">
+            {/* TODO: svg 아이콘으로 변경 예정 */}
             <img width={40} height={40} src="" alt="image" />
           </div>
         </div>

@@ -15,6 +15,7 @@ const Header = ({ title, infoIcon }: IHeaderProps) => {
     <>
       <div className="flex justify-between items-center h-10 pl-1.5 pr-3">
         <button onClick={() => router.back()}>
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="" alt="back" width={40} />
         </button>
         <header className="text-bold-18">{title}</header>

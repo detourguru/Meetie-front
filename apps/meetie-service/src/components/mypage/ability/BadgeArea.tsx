@@ -24,6 +24,7 @@ const BadgeArea = ({ badges }: IBadgeAreaProps) => {
       <section className="flex flex-col mx-5 mt-8 gap-4">
         <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">{badges.type} 뱃지</header>
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="" alt="badge" width={16} height={16} />
         </div>
 
@@ -33,6 +34,7 @@ const BadgeArea = ({ badges }: IBadgeAreaProps) => {
               className="flex flex-col gap-2.5 items-center mt-auto first:mr-auto last:ml-auto"
               onClick={() => handleClick(badge)}
             >
+              {/* TODO: svg 아이콘으로 변경 예정 */}
               <img src="" alt="newbie" width={69.63} height={69.63} />
               <p className="text-medium-14 text-gray-300">{badge.title}</p>
             </article>

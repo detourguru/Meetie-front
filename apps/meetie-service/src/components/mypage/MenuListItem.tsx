@@ -54,6 +54,7 @@ const MenuListItem = ({
         <li>
           <article className="flex justify-between items-center">
             <ItemContent />
+            {/* TODO: 아이콘 변경 예쩡 */}
             <div>next</div>
           </article>
         </li>

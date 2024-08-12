@@ -41,6 +41,7 @@ const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: IBadgeDr
               <div className="flex flex-col gap-4 rounded-lg bg-white px-9 py-5">
                 <div className="flex flex-col items-center">
                   <div className="flex flex-col items-center gap-4">
+                    {/* TODO: svg 아이콘으로 변경 예정 */}
                     <img src="" alt="badge" width={140} height={140} />
                     <div className="flex flex-col gap-2 items-center">
                       <div className="p-1 border border-primary-500 rounded-lg">

@@ -13,6 +13,7 @@ export default function AbilityPage() {
         title="내 능력 현황"
         infoIcon={
           <button>
+            {/* TODO: svg 아이콘으로 변경 예정 */}
             <img src="" alt="info" width={40} />
           </button>
         }
@@ -24,6 +25,7 @@ export default function AbilityPage() {
             <p className="text-regular-12 text-gray-300">축하합니다!</p>
             <p className="text-semibold-14 text-gray-500">새로운 뱃지가 추가 됐어요!</p>
           </div>
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="" alt="alarm" className="w-[50px] h-[50px]" />
         </div>
       </article>
@@ -31,6 +33,7 @@ export default function AbilityPage() {
       <article className="flex justify-between items-center px-5 py-3">
         <header className="text-semibold-18 text-gray-500">내 뱃지</header>
         <div className="flex gap-1">
+          {/* TODO: svg 아이콘으로 변경 예정 */}
           <img src="" alt="clock" />
           <p className="text-medium-12 text-blue-300">업데이트 매일 오전</p>
         </div>

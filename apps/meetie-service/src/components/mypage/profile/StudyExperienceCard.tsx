@@ -12,6 +12,7 @@ const StudyExperienceCard = ({ attendanceRate, satisfaction, title }: IStudyExpe
           <div className="flex flex-col gap-2">
             <div className="flex justify-between">
               <p className="text-bold-18 whitespace-pre-wrap">{title}</p>
+              {/* TODO: svg 아이콘으로 변경 예정 */}
               <img src="" alt="lock" width={30} height={30} />
             </div>
             <div className="flex w-fit rounded-xl px-3 py-2 bg-primary-350">
