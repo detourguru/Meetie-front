@@ -9,7 +9,7 @@ const Gnb = () => {
       {GNB_DATA.map((gnbData) => (
         <div className="flex flex-col items-center" key={gnbData.text}>
           <Image src={gnbData.icon} alt="icon" width={24} height={24} />
-          <span className="text-medium-12">{gnbData.text}</span>
+          <span className="text-medium-12 text-primary-500">{gnbData.text}</span>
         </div>
       ))}
     </div>
