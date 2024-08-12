@@ -25,7 +25,8 @@ export default function LoginPage() {
             />
             아이디 저장
           </label>
-          <Link href={"/walkThrough"}>
+          <Link href="/walkThrough">
+            {/* todo icon 추가 예정 */}
             <button
               type="button"
               className="w-full bg-primary-500 h-[50px] text-white rounded-lg mt-[16px]"
