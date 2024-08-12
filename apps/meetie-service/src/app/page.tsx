@@ -1,9 +1,10 @@
+import LoginBottom from "@/components/loginBottom/LoginBottom";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen">
-      <Link href="/login">
+    <Link href="/login">
+      <div className="flex flex-col h-screen">
         <main className="flex flex-col h-full">
           <article className="flex flex-col h-full items-center pt-[104px]">
             <div className="flex flex-col items-center gap-[8px] mb-[60px]">
@@ -24,12 +25,8 @@ export default function Home() {
           </article>
         </main>
 
-        <div className="flex justify-center items-center h-[16px] text-gray-200 text-medium-12 mt-auto mb-[120px]">
-          <div>회원가입하기</div>
-          <div className="before:content-['|'] before:mx-[12px]">아이디 찾기</div>
-          <div className="before:content-['|'] before:mx-[12px]">비밀번호찾기</div>
-        </div>
-      </Link>
-    </div>
+        <LoginBottom />
+      </div>
+    </Link>
   );
 }

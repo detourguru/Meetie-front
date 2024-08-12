@@ -1,3 +1,4 @@
+import LoginBottom from "@/components/loginBottom/LoginBottom";
 import Link from "next/link";
 
 export default function LoginPage() {
@@ -58,13 +59,7 @@ export default function LoginPage() {
         </article>
       </main>
 
-      <footer className="flex justify-center items-center gap-[12px] h-[16px] text-gray-200 text-medium-12 mt-auto mb-[120px]">
-        <div>회원가입하기</div>
-        <span>|</span>
-        <div>아이디 찾기</div>
-        <span>|</span>
-        <div>비밀번호찾기</div>
-      </footer>
+      <LoginBottom />
     </div>
   );
 }
