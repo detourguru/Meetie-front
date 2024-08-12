@@ -9,11 +9,10 @@ export default function LoginPage() {
     <main className="flex flex-col h-full">
       <article className="flex flex-col h-full items-center p-[16px]">
         <div className="w-full mb-[22px] mt-[44px]">
+          {/* todo icon 변경 예정 */}
           <div className="w-[100px] h-[100px] bg-primary-400">손</div>
-          <h1 className="text-start text-semibold-24 ">
-            <span className="block">반가워요!</span>
-            <span className="">밋티에 오신 것을 환영해요</span>
-          </h1>
+          <h1 className="text-semibold-24">반가워요!</h1>
+          <h1 className="text-semibold-24">밋티에 오신 것을 환영해요</h1>
         </div>
 
         <form className="w-full [&>*]:mb-[12px] mb-[33px]">
