@@ -2,6 +2,9 @@ import LoginBottom from "@/components/loginBottom/LoginBottom";
 import Link from "next/link";
 
 export default function LoginPage() {
+  const inputClassName =
+    "py-[14px] px-[16px] text-regular-16 placeholder:text-gray-200 border border-gray-100 rounded-lg w-full outline-none";
+
   return (
     <main className="flex flex-col h-full">
       <article className="flex flex-col h-full items-center p-[16px]">
@@ -14,15 +17,8 @@ export default function LoginPage() {
         </div>
 
         <form className="w-full [&>*]:mb-[12px] mb-[33px]">
-          <input
-            type="text"
-            placeholder="hellomeetie@gmail.com"
-            className="py-[14px] px-[16px] text-regular-16 placeholder:text-gray-200 border border-gray-100 rounded-lg w-full outline-none"
-          />
-          <input
-            type="password"
-            className="py-[14px] px-[16px] text-regular-16 border border-gray-100 rounded-lg outline-none w-full"
-          />
+          <input type="text" placeholder="hellomeetie@gmail.com" className={inputClassName} />
+          <input type="password" placeholder="************" className={inputClassName} />
           <label className="flex items-center text-gray-200 text-medium-14">
             <input
               type="checkbox"
