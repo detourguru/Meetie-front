@@ -2,16 +2,16 @@
 
 import { useState } from "react";
 import BadgeDrawer from "./BadgeDrawer";
-import type { TBadge, TBadges } from "@/types/badge";
+import type { BadgeType, BadgesType } from "@/types/badge";
 
-interface IBadgeAreaProps {
-  badges: TBadges;
+interface BadgeAreaProps {
+  badges: BadgesType;
 }
 
-const BadgeArea = ({ badges }: IBadgeAreaProps) => {
-  const [selectedBadge, setselectedBadge] = useState<undefined | TBadge>();
+const BadgeArea = ({ badges }: BadgeAreaProps) => {
+  const [selectedBadge, setselectedBadge] = useState<undefined | BadgeType>();
 
-  const handleClick = (badge: TBadge) => {
+  const handleClick = (badge: BadgeType) => {
     setselectedBadge(badge);
   };
 

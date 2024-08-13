@@ -1,9 +1,9 @@
-interface IToggleProps {
+interface ToggleProps {
   checked: boolean;
   title?: string;
 }
 
-const Toggle = ({ checked, title }: IToggleProps) => {
+const Toggle = ({ checked, title }: ToggleProps) => {
   return (
     <>
       <label className="inline-flex items-center cursor-pointer">

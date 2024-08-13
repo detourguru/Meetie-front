@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import Toggle from "./Toggle";
 
-interface IMenuListItemProps {
+interface MenuListItemProps {
   title: string;
   icon?: ReactNode;
   isUpdated?: boolean;
@@ -18,7 +18,7 @@ const MenuListItem = ({
   isPrimary,
   navigateTo,
   studyCount,
-}: IMenuListItemProps) => {
+}: MenuListItemProps) => {
   const ItemContent = () => (
     <div className="flex gap-2 items-center">
       {icon}

@@ -1,6 +1,6 @@
-import type { TBadges } from "@/types/badge";
+import type { BadgesType } from "@/types/badge";
 
-export const COMMENT: TBadges = {
+export const COMMENT: BadgesType = {
   type: "댓글",
   badges: [
     { title: "댓뉴비", level: 1 },
@@ -9,7 +9,7 @@ export const COMMENT: TBadges = {
   ],
 };
 
-export const SHARE: TBadges = {
+export const SHARE: BadgesType = {
   type: "나눔",
   badges: [
     { title: "나눔 뉴비", level: 1 },
@@ -18,7 +18,7 @@ export const SHARE: TBadges = {
   ],
 };
 
-export const FEEDBACK: TBadges = {
+export const FEEDBACK: BadgesType = {
   type: "피드백",
   badges: [
     { title: "피드 뉴비", level: 1 },
@@ -27,7 +27,7 @@ export const FEEDBACK: TBadges = {
   ],
 };
 
-export const MEETIE: TBadges = {
+export const MEETIE: BadgesType = {
   type: "밋티",
   badges: [
     { title: "밋티 뉴비", level: 1 },
@@ -36,4 +36,4 @@ export const MEETIE: TBadges = {
   ],
 };
 
-export const BADGESE: TBadges[] = [COMMENT, SHARE, FEEDBACK, MEETIE];
+export const BADGESE: BadgesType[] = [COMMENT, SHARE, FEEDBACK, MEETIE];

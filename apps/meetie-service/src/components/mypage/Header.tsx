@@ -3,12 +3,12 @@
 import { useRouter } from "next/navigation";
 import type { ReactNode } from "react";
 
-interface IHeaderProps {
+interface HeaderProps {
   title: string;
   infoIcon?: ReactNode;
 }
 
-const Header = ({ title, infoIcon }: IHeaderProps) => {
+const Header = ({ title, infoIcon }: HeaderProps) => {
   const router = useRouter();
 
   return (

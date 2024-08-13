@@ -1,9 +1,9 @@
-interface IEvaluationCardProps {
+interface EvaluationCardProps {
   content: string;
   count: number;
 }
 
-const EvaluationCard = ({ content, count }: IEvaluationCardProps) => {
+const EvaluationCard = ({ content, count }: EvaluationCardProps) => {
   return (
     <>
       <article className="flex gap-3 items-center py-4 px-5 border border-primary-300 rounded-b-lg rounded-tr-lg">

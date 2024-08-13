@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 
-interface IInformationCardProps {
+interface InformationCardProps {
   count: number;
   icon: ReactNode;
   type: string;
 }
 
-const InformationCard = ({ count, icon, type }: IInformationCardProps) => {
+const InformationCard = ({ count, icon, type }: InformationCardProps) => {
   return (
     <>
       <article className="flex flex-col gap-3 items-center relative after:h-2.5 after:absolute after:top-12 after:-right-0 after:border after:border-primary-200 last:after:hidden">

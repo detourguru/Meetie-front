@@ -1,10 +1,10 @@
-export type TBadges = {
+export interface BadgesType {
   type: string;
-  badges: TBadge[];
-};
+  badges: BadgeType[];
+}
 
-export type TBadge = {
+export interface BadgeType {
   title: string;
   level: number;
   // icon: ReactNode;
-};
+}

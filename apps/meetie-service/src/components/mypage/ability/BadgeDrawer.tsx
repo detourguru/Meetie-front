@@ -1,12 +1,12 @@
-import type { TBadge } from "@/types/badge";
+import type { BadgeType } from "@/types/badge";
 
-export interface IBadgeDrawerProps {
-  selectedBadge?: TBadge;
+export interface BadgeDrawerProps {
+  selectedBadge?: BadgeType;
   selectedBadgeType: string;
   closeDrawer: () => void;
 }
 
-const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: IBadgeDrawerProps) => {
+const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: BadgeDrawerProps) => {
   return (
     <>
       <main

@@ -1,11 +1,11 @@
-interface IBadgeCardProps {
+interface BadgeCardProps {
   level: number;
   type: string;
   isNew?: boolean;
   showLevel?: boolean;
 }
 
-const BadgeCard = ({ level, type, isNew, showLevel }: IBadgeCardProps) => {
+const BadgeCard = ({ level, type, isNew, showLevel }: BadgeCardProps) => {
   const bgColor = level === 3 ? "bg-primary-500" : "bg-blue-400";
   const opacity = level === 1 && "opacity-50";
 
