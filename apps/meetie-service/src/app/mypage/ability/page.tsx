@@ -1,6 +1,6 @@
-import BadgeArea from "@/components/mypage/ability/BadgeArea";
-import Header from "@/components/mypage/Header";
-import ThickDivider from "@/components/mypage/dividers/ThickDivider";
+import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
+import Header from "@/components/MyPage/Header/Header";
+import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import { BADGESE } from "@/constants/badges";
 import type { BadgeType } from "@/types/badge";
 

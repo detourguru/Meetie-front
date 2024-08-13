@@ -17,11 +17,11 @@ const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: BadgeDra
         }`}
       >
         <section
-          className={`bottom-0 absolute rounded-t-lg bg-white w-[375px] top-10 shadow-xl delay-400 duration-500 ease-in-out transition-all transform overflow-y-scroll flex ${selectedBadge ? " translate-y-0 " : " translate-y-full "}`}
+          className={`bottom-0 absolute rounded-t-lg bg-white w-[375px] top-10 shadow-xl delay-400 duration-500 ease-in-out transition-all transform flex ${selectedBadge ? " translate-y-0 " : " translate-y-full "}`}
           style={{ left: "calc(50dvw - 187.5px)" }}
         >
           <article
-            className="relative w-[375px] space-y-6 bg-gray-400/5 overflow-scroll"
+            className="relative w-[375px] space-y-6 bg-gray-400/5 overflow-scroll hidden-scrollbar"
             // style={{ height: "calc(90dvh - 40px)" }}/
           >
             <div className="p-4 cursor-pointer sticky top-0" data-drawer-toggle="drawer-swipe">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import BadgeDrawer from "./BadgeDrawer";
+import BadgeDrawer from "../BadgeDrawer/BadgeDrawer";
 import type { BadgeType, BadgesType } from "@/types/badge";
 
 interface BadgeAreaProps {

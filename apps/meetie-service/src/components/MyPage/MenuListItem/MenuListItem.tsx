@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import Toggle from "./Toggle";
+import Toggle from "../Toggle/Toggle";
 
 interface MenuListItemProps {
   title: string;

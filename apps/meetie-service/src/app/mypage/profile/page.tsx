@@ -1,8 +1,8 @@
-import EvaluationCard from "@/components/mypage/profile/EvaluationCard";
-import Header from "@/components/mypage/Header";
-import HighlightBadge from "@/components/mypage/profile/HighlightBadge";
-import StudyExperienceCard from "@/components/mypage/profile/StudyExperienceCard";
-import StudyTag from "@/components/mypage/profile/StudyTag";
+import EvaluationCard from "@/components/MyPage/Profile/EvaluationCard/EvaluationCard";
+import Header from "@/components/MyPage/Header/Header";
+import HighlightBadge from "@/components/MyPage/Profile/HighlightBadge/HighlightBadge";
+import StudyExperienceCard from "@/components/MyPage/Profile/StudyExperienceCard/StudyExperienceCard";
+import StudyTag from "@/components/MyPage/Profile/StudyTag/StudyTag";
 
 export default function ProfilePage() {
   return (

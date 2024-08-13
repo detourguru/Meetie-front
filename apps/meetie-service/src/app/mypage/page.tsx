@@ -1,9 +1,9 @@
 import Link from "next/link";
-import BadgeCard from "@/components/mypage/BadgeCard";
-import Divider from "@/components/mypage/dividers/Divider";
-import InformationCard from "@/components/mypage/InformationCard";
-import MenuListItem from "@/components/mypage/MenuListItem";
-import ThickDivider from "@/components/mypage/dividers/ThickDivider";
+import BadgeCard from "@/components/MyPage/BadgeCard/BadgeCard";
+import Divider from "@/components/MyPage/dividers/Divider/Divider";
+import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
+import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
+import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 
 export default function MyPage() {
   return (
