@@ -36,4 +36,4 @@ export const MEETIE: BadgesType = {
   ],
 };
 
-export const BADGESE: BadgesType[] = [COMMENT, SHARE, FEEDBACK, MEETIE];
+export const BADGE_DATA: BadgesType[] = [COMMENT, SHARE, FEEDBACK, MEETIE];

@@ -1,7 +1,7 @@
 import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
 import Header from "@/components/MyPage/Header/Header";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
-import { BADGESE } from "@/constants/badges";
+import { BADGE_DATA } from "@/constants/badges";
 
 export default function AbilityPage() {
   return (
@@ -38,7 +38,7 @@ export default function AbilityPage() {
 
       <ThickDivider />
 
-      {BADGESE.map((badges) => (
+      {BADGE_DATA.map((badges) => (
         <BadgeArea badges={badges} />
       ))}
     </>
