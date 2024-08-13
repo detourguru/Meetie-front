@@ -143,7 +143,7 @@ export default function MyPage() {
           <ul className="flex flex-col gap-4">
             <MenuListItem navigateTo="mypage/profile" title="회원 정보 수정" />
             <MenuListItem navigateTo="mypage/password" title="비밀번호 설정" />
-            <MenuListItem title="마케팅 개인정보 제 3자 제공동의" />
+            <MenuListItem title="마케팅 개인정보 제 3자 제공동의" isToggle={true} />
             <MenuListItem navigateTo="mypage/withdraw" title="회원 탈퇴" />
           </ul>
         </div>
