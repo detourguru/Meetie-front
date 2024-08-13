@@ -64,10 +64,10 @@ export default function MyPage() {
             <div className="text-[#CECECE]">next</div>
           </div>
           <div className="grid grid-cols-4 px-4">
-            <BadgeCard type="댓글" level={3} showLevel />
-            <BadgeCard type="토론" level={1} showLevel />
-            <BadgeCard type="방장" level={3} showLevel />
-            <BadgeCard type="피드백" level={2} showLevel />
+            <BadgeCard type="댓글" level={3} />
+            <BadgeCard type="토론" level={1} />
+            <BadgeCard type="방장" level={3} />
+            <BadgeCard type="피드백" level={2} />
           </div>
         </section>
       </Link>
