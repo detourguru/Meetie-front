@@ -18,10 +18,10 @@ export default function WalkThroughPage() {
     },
   ];
 
-  const [number, setNumber] = useState(0);
+  const [walkThroughNumber, setwalkThroughNumber] = useState(0);
 
   const handleClickNumber = (newNum: number) => {
-    setNumber(newNum);
+    setwalkThroughNumber(newNum);
   };
 
   return (
@@ -33,29 +33,26 @@ export default function WalkThroughPage() {
 
         <div className="w-full pt-[54px]">
           <h1 className="text-semibold-24 text-start mb-[20px]">
-            <span className="block">{EXPLAIN[number].TITLE.FIRST}</span>
-            <span className="block">{EXPLAIN[number].TITLE.SECOND}</span>
+            <span className="block">{EXPLAIN[walkThroughNumber].TITLE.FIRST}</span>
+            <span className="block">{EXPLAIN[walkThroughNumber].TITLE.SECOND}</span>
           </h1>
-          {EXPLAIN[number].SUBTEXT.map((text) => (
-            <p className="text-regular-14">{text}</p>
+          {EXPLAIN[walkThroughNumber].SUBTEXT.map((text, index) => (
+            <p key={`walkthroughSubText${index}`} className="text-regular-14">
+              {text}
+            </p>
           ))}
         </div>
 
         <div className="w-[375px] h-[375px] bg-primary-400">사진</div>
 
         <div className="flex gap-[16px]">
-          <button
-            onClick={() => handleClickNumber(0)}
-            className={`w-[10px] h-[10px] rounded-full ${number === 0 ? "bg-primary-400" : "bg-gray-100"}`}
-          ></button>
-          <button
-            onClick={() => handleClickNumber(1)}
-            className={`w-[10px] h-[10px] rounded-full ${number === 1 ? "bg-primary-400" : "bg-gray-100"}`}
-          ></button>
-          <button
-            onClick={() => handleClickNumber(2)}
-            className={`w-[10px] h-[10px] rounded-full ${number === 2 ? "bg-primary-400" : "bg-gray-100"}`}
-          ></button>
+          {Array.from({ length: 3 }, (_, index) => (
+            <button
+              onClick={() => handleClickNumber(index)}
+              className={`w-[10px] h-[10px] rounded-full ${walkThroughNumber === index ? "bg-primary-400" : "bg-gray-100"}`}
+              key={`button${index}`}
+            />
+          ))}
         </div>
 
         <button
