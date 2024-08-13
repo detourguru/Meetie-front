@@ -49,9 +49,9 @@ export default function MyPage() {
       <div className="flex flex-col gap-3 px-4 mt-9">
         <header className="text-bold-18">내 정보</header>
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
-          <InformationCard count={2} icon={<div className="h-10">icon</div>} type="스터디" />
-          <InformationCard count={9} icon={<div className="h-10">icon</div>} type="스크랩" />
-          <InformationCard count={13} icon={<div className="h-10">icon</div>} type="스터디 친구" />
+          <InformationCard count={2} icon={<div className="h-10">icon</div>} title="스터디" />
+          <InformationCard count={9} icon={<div className="h-10">icon</div>} title="스크랩" />
+          <InformationCard count={13} icon={<div className="h-10">icon</div>} title="스터디 친구" />
         </section>
       </div>
 
