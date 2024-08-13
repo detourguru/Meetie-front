@@ -4,6 +4,7 @@ import Divider from "@/components/MyPage/dividers/Divider/Divider";
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
+import { PATH } from "@/constants/path";
 
 export default function MyPage() {
   return (
@@ -24,7 +25,7 @@ export default function MyPage() {
             <p className="text-bold-20">김서희님</p>
           </div>
         </div>
-        <Link href="mypage/profile" className="self-end">
+        <Link href={PATH.PROFILE} className="self-end">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
             <p className="text-medium-12 text-primary-450">공개용 프로필</p>
           </button>
@@ -56,7 +57,7 @@ export default function MyPage() {
       </div>
 
       {/* 내 능력 현황 */}
-      <Link href="/mypage/ability">
+      <Link href={PATH.ABILITY}>
         <section className="flex flex-col gap-7 mt-8 mb-12">
           <div className="flex justify-between items-center px-3.5">
             <header className="text-bold-18">내 능력 현황</header>
@@ -80,7 +81,7 @@ export default function MyPage() {
           <header className="text-bold-18">내 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo="study/joining"
+              navigateTo={PATH.JOINING_STUDY}
               title="참여 중인 스터디"
               // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
@@ -89,7 +90,7 @@ export default function MyPage() {
             />
 
             <MenuListItem
-              navigateTo="study/last"
+              navigateTo={PATH.LAST_STUDY}
               title="지난 스터디"
               // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
@@ -105,14 +106,14 @@ export default function MyPage() {
           <header className="text-bold-18">관심 보인 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo="interest/recent"
+              navigateTo={PATH.INTEREST_RECENT_VISIT}
               title="최근 방문"
               // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
             />
 
             <MenuListItem
-              navigateTo="interest"
+              navigateTo={PATH.INTEREST}
               title="관심 스터디"
               // TODO: svg 아이콘으로 변경 예정
               icon={<img src="book" alt="book" width={11.2} height={14} />}
@@ -129,9 +130,9 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">고객 센터</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem navigateTo="faq" title="FAQ" />
-            <MenuListItem navigateTo="inquiry" title="문의하기" />
-            <MenuListItem navigateTo="notification" title="공지사항" isUpdated />
+            <MenuListItem navigateTo={PATH.FAQ} title="FAQ" />
+            <MenuListItem navigateTo={PATH.INQUIRY} title="문의하기" />
+            <MenuListItem navigateTo={PATH.NOTI} title="공지사항" isUpdated />
           </ul>
         </div>
 
@@ -141,10 +142,10 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem navigateTo="mypage/profile" title="회원 정보 수정" />
-            <MenuListItem navigateTo="mypage/password" title="비밀번호 설정" />
+            <MenuListItem navigateTo={PATH.PROFILE} title="회원 정보 수정" />
+            <MenuListItem navigateTo={PATH.PASSWORD} title="비밀번호 설정" />
             <MenuListItem title="마케팅 개인정보 제 3자 제공동의" isToggle={true} />
-            <MenuListItem navigateTo="mypage/withdraw" title="회원 탈퇴" />
+            <MenuListItem navigateTo={PATH.WITHDRAW} title="회원 탈퇴" />
           </ul>
         </div>
       </div>
