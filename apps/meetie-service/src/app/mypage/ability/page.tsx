@@ -2,9 +2,6 @@ import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
 import Header from "@/components/MyPage/Header/Header";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import { BADGESE } from "@/constants/badges";
-import type { BadgeType } from "@/types/badge";
-
-export type TSelectedBadge = { type: string; badge: BadgeType };
 
 export default function AbilityPage() {
   return (
