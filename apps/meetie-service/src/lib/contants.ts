@@ -1,4 +1,5 @@
 export const GNB_DATA = [
+  // TODO
   // id값, link 추후 페이지 네이밍에 맞춰서 변경
   // 따라서 disbaled, enabled icon도 추후 적용
   {
