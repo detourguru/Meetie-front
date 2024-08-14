@@ -1,10 +1,13 @@
 import type { BadgeType } from "@/types/badge";
+import BadgeIcon from "../../BadgeIcon/BadgeIcon";
 
 export interface BadgeDrawerProps {
   selectedBadge?: BadgeType;
   selectedBadgeType: string;
   closeDrawer: () => void;
 }
+
+const ICON_WIDTH_AND_HEIGHT = 140;
 
 const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: BadgeDrawerProps) => {
   return (
@@ -40,8 +43,13 @@ const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: BadgeDra
             <div className="flex flex-col gap-4 rounded-lg bg-white px-9 py-5">
               <div className="flex flex-col items-center">
                 <div className="flex flex-col items-center gap-4">
-                  {/* TODO: svg 아이콘으로 변경 예정 */}
-                  <img src="" alt="badge" width={140} height={140} />
+                  <BadgeIcon
+                    src={selectedBadge?.icon ?? ""}
+                    alt={selectedBadge?.title ?? ""}
+                    size="xl"
+                    width={ICON_WIDTH_AND_HEIGHT}
+                    height={ICON_WIDTH_AND_HEIGHT}
+                  />
                   <div className="flex flex-col gap-2 items-center">
                     <div className="p-1 border border-primary-500 rounded-lg">
                       <span className="text-medium-14 text-primary-500">

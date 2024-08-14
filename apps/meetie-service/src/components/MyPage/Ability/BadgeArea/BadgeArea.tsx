@@ -1,12 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import BadgeDrawer from "../BadgeDrawer/BadgeDrawer";
 import type { BadgeType, BadgesType } from "@/types/badge";
+import BadgeDrawer from "../BadgeDrawer/BadgeDrawer";
+import BadgeIcon from "../../BadgeIcon/BadgeIcon";
 
 interface BadgeAreaProps {
   badges: BadgesType;
 }
+
+const ICON_SIZE = [70, 88, 95];
 
 const BadgeArea = ({ badges }: BadgeAreaProps) => {
   const [selectedBadge, setselectedBadge] = useState<undefined | BadgeType>();
@@ -28,14 +31,19 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
           <img src="" alt="badge" width={16} height={16} />
         </div>
 
-        <div className="grid grid-cols-3">
+        <div className="flex justify-between bg-white">
           {badges.badges.map((badge) => (
             <article
               className="flex flex-col gap-2.5 items-center mt-auto first:mr-auto last:ml-auto"
               onClick={() => handleClick(badge)}
             >
-              {/* TODO: svg 아이콘으로 변경 예정 */}
-              <img src="" alt="newbie" width={69.63} height={69.63} />
+              <BadgeIcon
+                src={badge.icon}
+                alt={badge.title}
+                size="lg"
+                width={ICON_SIZE[badge.level - 1]}
+                height={ICON_SIZE[badge.level - 1]}
+              />
               <p className="text-medium-14 text-gray-300">{badge.title}</p>
             </article>
           ))}
