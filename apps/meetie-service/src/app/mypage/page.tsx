@@ -66,8 +66,8 @@ export default function MyPage() {
           </div>
           <div className="grid grid-cols-4 px-4">
             <BadgeCard type="댓글" level={3} />
-            <BadgeCard type="토론" level={1} />
-            <BadgeCard type="방장" level={3} />
+            <BadgeCard type="나눔" title="토론" level={1} />
+            <BadgeCard type="밋티" title="방장" level={3} />
             <BadgeCard type="피드백" level={2} />
           </div>
         </section>
