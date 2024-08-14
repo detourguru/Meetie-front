@@ -6,5 +6,5 @@ export interface BadgesType {
 export interface BadgeType {
   title: string;
   level: number;
-  // icon: ReactNode;
+  icon: string;
 }
