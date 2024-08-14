@@ -20,19 +20,18 @@ export default function OnBoardingThirdStep() {
   const [clickedStyle, setClickedStyle] = useState<string[]>([]);
 
   const handleClickStyle = (newStyle: string) => {
-    if (clickedStyle.includes(newStyle)) {
-      setClickedStyle((prevs) => prevs.filter((prev) => prev !== newStyle));
-    } else {
-      setClickedStyle((prev) => [...prev, newStyle]);
-    }
+    clickedStyle.includes(newStyle)
+      ? setClickedStyle((prevs) => prevs.filter((prev) => prev !== newStyle))
+      : setClickedStyle((prev) => [...prev, newStyle]);
   };
 
   return (
     <div className="flex flex-col h-full w-full items-center px-[16px]">
       <div className="flex flex-wrap pt-[60px] gap-[8px]">
-        {STYLES.map((style) => (
-          // 공통 컴포넌트로 변경
+        {STYLES.map((style, index) => (
+          // TODO: 공통 컴포넌트로 변경
           <button
+            key={`style${index}`}
             value={style}
             onClick={() => handleClickStyle(style)}
             className={`flex items-center gap-[8px] border p-[10px] rounded-lg ${clickedStyle.includes(style) ? "border-primary-500 bg-primary-200 text-primary-500" : "border-gray-100"}`}
