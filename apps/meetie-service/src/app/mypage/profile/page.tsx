@@ -58,9 +58,9 @@ export default function ProfilePage() {
           </p>
 
           <div className="px-4 flex flex-nowrap gap-4 overflow-x-scroll hidden-scrollbar">
-            <HighlightBadge title="밋티 마스터" level={3} selected />
-            <HighlightBadge title="댓글 마스터" level={3} selected />
-            <HighlightBadge title="토론 마스터" level={3} />
+            <HighlightBadge type="밋티" level={3} selected />
+            <HighlightBadge type="댓글" level={3} selected />
+            <HighlightBadge type="나눔" level={3} />
           </div>
         </div>
 
