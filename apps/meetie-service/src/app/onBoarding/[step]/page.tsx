@@ -55,7 +55,7 @@ export default function OnBoardingPage() {
       </div>
 
       <article className="flex flex-col h-max">
-        <div className="w-full pt-[54px] px-[16px]">
+        <div className="w-full pt-[54px] px-4">
           <span className="mb-[20px]">
             <h1 className="text-semibold-24">{QUESTION[currentStepIndex].TITLE.FIRST}</h1>
             <h1 className="text-semibold-24">{QUESTION[currentStepIndex].TITLE.SECOND}</h1>
@@ -68,7 +68,7 @@ export default function OnBoardingPage() {
         {currentStepIndex === 3 && <OnBoardingFourthStep />}
       </article>
 
-      <div className="mt-auto px-[16px] pb-[42px]">
+      <div className="mt-auto px-4 pb-[42px]">
         <p className="text-center text-gray-200 text-medium-12 mb-[13px]">
           내용은 다시 수정할 수 있어요!
         </p>

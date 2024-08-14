@@ -1,9 +1,9 @@
 export default function OnBoardingCompletePage() {
   return (
     <main className="flex flex-col h-screen">
-      <article className="flex flex-col h-full w-full items-center px-[20px]">
+      <article className="flex flex-col items-center w-full h-full px-5">
         <div className="w-full pt-[82px]">
-          <h1 className="text-semibold-24 text-start mb-[20px]">
+          <h1 className="mb-4 text-semibold-24 text-start">
             <span className="block">김서희님의</span>
             <span className="block">공개 프로필이 생성되었어요 👏</span>
           </h1>

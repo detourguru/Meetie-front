@@ -7,7 +7,7 @@ export default function Home() {
       <div className="flex flex-col h-screen">
         <main className="flex flex-col h-full">
           <article className="flex flex-col h-full items-center pt-[104px]">
-            <div className="flex flex-col items-center gap-[8px] mb-[60px]">
+            <div className="flex flex-col items-center gap-2 mb-[60px]">
               <p className="text-semibold-18">같은 목표로 공부중인 유저</p>
               <p className="text-bold-24 text-primary-400">124,368 명</p>
             </div>

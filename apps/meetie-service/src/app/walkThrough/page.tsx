@@ -26,13 +26,13 @@ export default function WalkThroughPage() {
 
   return (
     <main className="flex flex-col h-screen">
-      <article className="flex relative flex-col h-full w-full items-center px-[16px]">
-        <div className="absolute top-0 right-0 p-[16px]">
+      <article className="relative flex flex-col items-center w-full h-full px-4">
+        <div className="absolute top-0 right-0 p-4">
           <button className="font-normal text-gray-200 uppercase text-medium-14">skip</button>
         </div>
 
         <div className="w-full pt-[54px]">
-          <h1 className="text-semibold-24 text-start mb-[20px]">
+          <h1 className="mb-5 text-semibold-24 text-start">
             <span className="block">{EXPLAIN[walkThroughNumber].TITLE.FIRST}</span>
             <span className="block">{EXPLAIN[walkThroughNumber].TITLE.SECOND}</span>
           </h1>
@@ -45,7 +45,7 @@ export default function WalkThroughPage() {
 
         <div className="w-[375px] h-[375px] bg-primary-400">사진</div>
 
-        <div className="flex gap-[16px]">
+        <div className="flex gap-4">
           {Array.from({ length: 3 }, (_, index) => (
             <button
               onClick={() => handleClickNumber(index)}
