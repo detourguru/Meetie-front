@@ -3,8 +3,10 @@ import Image from "next/image";
 import Header from "@/components/common/Header/Header";
 import ProgressBar from "@/components/common/ProgressBar/ProgressBar";
 import Input from "@/components/common/Input/Input";
+import Textarea from "@/components/common/Textarea/Textarea";
 
 export default function CreateStudyPage() {
+  const inputTitleClassName = "text-bold-16 mb-[10px]";
   return (
     <>
       <Header>
@@ -19,10 +21,10 @@ export default function CreateStudyPage() {
 
       <div className="px-4 pt-9">
         <div className="flex flex-col gap-9">
-          <div className="flex flex-col gap-[10px]">
-            <h2 className="text-bold-16">모집 직군</h2>
-            <div className="rounded-lg px-4 py-3 border border-[#c4c4c4] text-blue-300 text-regular-14 flex justify-between">
-              모집 직군을 선택해주세요.
+          <div>
+            <h2 className={inputTitleClassName}>모집 직군</h2>
+            <div className="rounded-lg px-4 py-3 border border-[#c4c4c4] flex justify-between h-[50px]">
+              <p className="text-blue-300 text-regular-14">모집 직군을 선택해주세요.</p>
               <Image
                 src="/svg/ic-study-down-arrow.svg"
                 alt="downArrowIcon"
@@ -31,9 +33,20 @@ export default function CreateStudyPage() {
               />
             </div>
           </div>
-          <div className="flex flex-col gap-[10px]">
-            <h2 className="text-bold-16">주제</h2>
+          <div>
+            <h2 className={inputTitleClassName}>주제</h2>
             <Input placeholder="스터디의 주제를 작성해주세요." maxLength={20} />
+            <span className="float-end text-regular-14 text-blue-300 mt-1">0/20</span>
+          </div>
+          <div>
+            <h2 className={inputTitleClassName}>목표</h2>
+            <Input placeholder="스터디의 목표를 간단히 작성해주세요." maxLength={20} />
+            <span className="float-end text-regular-14 text-blue-300 mt-1">0/20</span>
+          </div>
+          <div>
+            <h2 className={inputTitleClassName}>소개</h2>
+            <Textarea placeholder="스터디를 설명해보세요." />
+            <span className="float-end text-regular-14 text-blue-300 mt-1">0/100</span>
           </div>
         </div>
       </div>
