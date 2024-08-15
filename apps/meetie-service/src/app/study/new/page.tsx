@@ -10,6 +10,8 @@ export default function CreateStudyPage() {
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
+  const disabled = true;
+
   return (
     <>
       <Header>
@@ -58,8 +60,8 @@ export default function CreateStudyPage() {
         <Button variant="outline" size="sm">
           <p className="text-bold-16 text-[#adb5bd]">이전</p>
         </Button>
-        <Button>
-          <p className="text-bold-16 text-white">다음</p>
+        <Button disabled>
+          <p className="text-bold-16 text-white">{disabled ? "내용이 부족해요!" : "다음"}</p>
         </Button>
       </div>
     </>
