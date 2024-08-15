@@ -40,14 +40,14 @@ export default function Home() {
                 width={77}
                 height={88}
                 alt="gear"
-                className="absolute bottom-0 left-0"
+                className="absolute bottom-0 left-0 blur-[1.5px]"
               />
               <Image
                 src="/svg/ic-home-message.svg"
                 width={102}
                 height={142}
                 alt="message"
-                className="absolute bottom-0 right-0"
+                className="absolute bottom-0 right-0 blur-[1.5px]"
               />
             </div>
 

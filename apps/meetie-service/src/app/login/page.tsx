@@ -53,7 +53,6 @@ export default function LoginPage() {
           OR
         </p>
 
-        {/* todo icon 변경 예정 */}
         <div className="flex justify-center items-center gap-[23px]">
           <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
           <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
