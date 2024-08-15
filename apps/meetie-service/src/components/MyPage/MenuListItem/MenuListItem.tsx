@@ -1,8 +1,9 @@
 "use client";
 
 import type { ReactNode } from "react";
-import Toggle from "../Toggle/Toggle";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Toggle from "../Toggle/Toggle";
 
 interface MenuListItemProps {
   title: string;
@@ -48,8 +49,12 @@ const MenuListItem = ({
             </div>
           )}
         </div>
-        {/* TODO: 아이콘 변경 예쩡 */}
-        {isToggle === undefined ? <div>next</div> : <Toggle checked={isToggle} />}
+
+        {isToggle === undefined ? (
+          <Image src="svg/ic-arrow-right.svg" alt="arrow right" width={24} height={24} />
+        ) : (
+          <Toggle checked={isToggle} />
+        )}
       </article>
     </li>
   );
