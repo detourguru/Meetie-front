@@ -24,7 +24,7 @@ interface HeaderRightTextButtonProps extends HeaderButtonPropsType {
 const Header = ({ children, backgroundColor }: HeaderProps) => {
   return (
     <div
-      className={`w-[375px] h-10 flex justify-center items-center fixed top-0 left-[50%] translate-x-[-50%] px-3 ${backgroundColor ? backgroundColor : "bg-white"}`}
+      className={`w-[375px] h-10 flex justify-center items-center fixed top-0 left-[50%] translate-x-[-50%] px-3 z-50 ${backgroundColor ? backgroundColor : "bg-white"}`}
     >
       {children}
     </div>
