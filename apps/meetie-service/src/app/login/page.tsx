@@ -1,8 +1,17 @@
+"use client";
+
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function LoginPage() {
+  const [isCheckedSave, setIsCheckedSave] = useState(false);
+
+  const handleCLickSave = () => {
+    setIsCheckedSave((prev) => !prev);
+  };
+
   const inputClassName =
     "py-[14px] px-[16px] text-regular-16 placeholder:text-gray-200 border border-gray-100 rounded-lg w-full outline-none";
 
@@ -18,13 +27,18 @@ export default function LoginPage() {
         <form className="w-full [&>*]:mb-3 mb-[33px]">
           <input type="text" placeholder="hellomeetie@gmail.com" className={inputClassName} />
           <input type="password" placeholder="************" className={inputClassName} />
-          <label className="flex items-center text-gray-200 text-medium-14">
-            <input
-              type="checkbox"
-              className="mr-[6px] rounded-[4px] w-[18px] h-[18px] appearance-none border-gray-200 border bg-white checked:bg-primary-300 checked:border-0"
-            />
+          <button
+            onClick={() => handleCLickSave()}
+            type="button"
+            className="flex items-center text-gray-200 text-medium-14 gap-[6px]"
+          >
+            {isCheckedSave ? (
+              <Image src="/svg/ic-login-check.svg" width={18} height={18} alt="check" />
+            ) : (
+              <Image src="/svg/ic-login-check-disabled.svg" width={18} height={18} alt="check" />
+            )}
             아이디 저장
-          </label>
+          </button>
           <Link href="/walkThrough">
             <button
               type="button"
@@ -41,9 +55,9 @@ export default function LoginPage() {
 
         {/* todo icon 변경 예정 */}
         <div className="flex justify-center items-center gap-[23px]">
-          <button className="w-[46px] h-[46px] rounded-full bg-black text-white">N</button>
-          <button className="w-[46px] h-[46px] rounded-full bg-black text-white">C</button>
-          <button className="w-[46px] h-[46px] rounded-full bg-black text-white">G</button>
+          <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
+          <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
+          <Image src="/svg/ic-login-google.svg" width={46} height={46} alt="google_login" />
         </div>
       </article>
 
