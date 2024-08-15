@@ -2,8 +2,6 @@ import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 import Image from "next/image";
 import Link from "next/link";
 
-import Hand from "../../../public/svg/ic-login-hand.svg";
-
 export default function LoginPage() {
   const inputClassName =
     "py-[14px] px-[16px] text-regular-16 placeholder:text-gray-200 border border-gray-100 rounded-lg w-full outline-none";
@@ -12,7 +10,7 @@ export default function LoginPage() {
     <main className="flex flex-col h-full">
       <article className="flex flex-col items-center h-full p-4">
         <div className="w-full mb-[22px] mt-11">
-          <Image src={Hand} alt="hand" />
+          <Image src="/svg/ic-login-hand.svg" width={85} height={85} alt="hand" />
           <h1 className="text-semibold-24">반가워요!</h1>
           <h1 className="text-semibold-24">밋티에 오신 것을 환영해요</h1>
         </div>
@@ -28,7 +26,6 @@ export default function LoginPage() {
             아이디 저장
           </label>
           <Link href="/walkThrough">
-            {/* todo icon 추가 예정 */}
             <button
               type="button"
               className="w-full bg-primary-500 h-[50px] text-white rounded-lg mt-4"
