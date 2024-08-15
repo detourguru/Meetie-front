@@ -1,5 +1,11 @@
 import LoginBottom from "@/components/loginBottom/LoginBottom";
+import Image from "next/image";
 import Link from "next/link";
+
+import Email from "../../public/svg/ic-login-email.svg";
+import Google from "../../public/svg/ic-login-google.svg";
+import Kakao from "../../public/svg/ic-login-kakao.svg";
+import Naver from "../../public/svg/ic-login-naver.svg";
 
 export default function Home() {
   return (
@@ -15,12 +21,11 @@ export default function Home() {
             {/* todo 이미지 변경 예정 */}
             <div className="mb-[70px] w-[212px] h-[240px] bg-primary-400">로켓 이미지</div>
 
-            {/* todo icon 변경 예정 */}
             <div className="flex justify-center items-center gap-[23px]">
-              <button className="w-[46px] h-[46px] rounded-full bg-black text-white">N</button>
-              <button className="w-[46px] h-[46px] rounded-full bg-black text-white">C</button>
-              <button className="w-[46px] h-[46px] rounded-full bg-black text-white">G</button>
-              <button className="w-[46px] h-[46px] rounded-full bg-black text-white">...</button>
+              <Image src={Naver} width={46} height={46} alt="naver_login" />
+              <Image src={Kakao} width={46} height={46} alt="kakao_login" />
+              <Image src={Google} width={46} height={46} alt="google_login" />
+              <Image src={Email} width={46} height={46} alt="email_login" />
             </div>
           </article>
         </main>
