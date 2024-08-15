@@ -1,4 +1,4 @@
-import LoginBottom from "@/components/loginBottom/LoginBottom";
+import LoginBottom from "@/components/LoginBottom/LoginBottom";
 import Image from "next/image";
 import Link from "next/link";
 

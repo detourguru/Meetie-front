@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function OnBoardingFourthStep() {
+export default function FourthStep() {
   const PERIODS = ["1개월 이내", "1개월 ~ 3개월", "3개월 ~ 6개월", "6개월 이상"];
 
   const [clickedPeriod, setClickedPeriod] = useState<string>("");

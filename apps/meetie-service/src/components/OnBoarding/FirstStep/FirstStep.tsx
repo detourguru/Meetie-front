@@ -3,7 +3,7 @@ import { useState } from "react";
 const JOBS = ["designer", "developer", "planner"];
 const JOBS_KR = ["디자이너", "개발자", "기획자"];
 
-export default function OnBoardingFirstStep() {
+export default function FirstStep() {
   const [clickedJob, setClickedJob] = useState<string | null>(null);
 
   const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

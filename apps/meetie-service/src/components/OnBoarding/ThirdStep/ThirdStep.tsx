@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function OnBoardingThirdStep() {
+export default function ThirdStep() {
   const STYLES = [
     "주도적인",
     "열정적인",

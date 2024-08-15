@@ -1,9 +1,9 @@
 "use client";
 
-import OnBoardingFirstStep from "@/components/onBoardings/OnBoardingFirstStep";
-import OnBoardingFourthStep from "@/components/onBoardings/OnBoardingFourthStep";
-import OnBoardingSecondStep from "@/components/onBoardings/OnBoardingSecondStep";
-import OnBoardingThirdStep from "@/components/onBoardings/OnBoardingThirdStep";
+import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
+import FourthStep from "@/components/OnBoarding/FourthStep/FourthStep";
+import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
+import ThirdStep from "@/components/OnBoarding/ThirdStep/ThirdStep";
 import { notFound, useParams, useRouter } from "next/navigation";
 
 const QUESTION = [
@@ -62,10 +62,10 @@ export default function OnBoardingPage() {
           </span>
           <p className="text-gray-200 text-regular-14">{QUESTION[currentStepIndex].SUBTEXT}</p>
         </div>
-        {currentStepIndex === 0 && <OnBoardingFirstStep />}
-        {currentStepIndex === 1 && <OnBoardingSecondStep />}
-        {currentStepIndex === 2 && <OnBoardingThirdStep />}
-        {currentStepIndex === 3 && <OnBoardingFourthStep />}
+        {currentStepIndex === 0 && <FirstStep />}
+        {currentStepIndex === 1 && <SecondStep />}
+        {currentStepIndex === 2 && <ThirdStep />}
+        {currentStepIndex === 3 && <FourthStep />}
       </article>
 
       <div className="mt-auto px-4 pb-[42px]">

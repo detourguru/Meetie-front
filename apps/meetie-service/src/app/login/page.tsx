@@ -1,4 +1,4 @@
-import LoginBottom from "@/components/loginBottom/LoginBottom";
+import LoginBottom from "@/components/LoginBottom/LoginBottom";
 import Link from "next/link";
 
 export default function LoginPage() {
