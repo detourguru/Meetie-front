@@ -24,7 +24,6 @@ export default function Home() {
               <p className="text-bold-24 text-primary-400">124,368 명</p>
             </div>
 
-            {/* todo 이미지 변경 예정 */}
             <div className="mb-2 w-full h-[303px] relative">
               <Image src={Chat} alt="chat" className="absolute top-[10px] right-[60px]" />
               <Image src={Rocket} alt="rocket" className="z-10 absolute top-0 left-[100px]" />

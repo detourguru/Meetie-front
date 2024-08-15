@@ -1,5 +1,8 @@
 import LoginBottom from "@/components/LoginBottom/LoginBottom";
+import Image from "next/image";
 import Link from "next/link";
+
+import Hand from "../../../public/svg/ic-login-hand.svg";
 
 export default function LoginPage() {
   const inputClassName =
@@ -9,8 +12,7 @@ export default function LoginPage() {
     <main className="flex flex-col h-full">
       <article className="flex flex-col items-center h-full p-4">
         <div className="w-full mb-[22px] mt-11">
-          {/* todo icon 변경 예정 */}
-          <div className="w-[100px] h-[100px] bg-primary-400">손</div>
+          <Image src={Hand} alt="hand" />
           <h1 className="text-semibold-24">반가워요!</h1>
           <h1 className="text-semibold-24">밋티에 오신 것을 환영해요</h1>
         </div>
