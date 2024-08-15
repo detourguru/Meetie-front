@@ -1,12 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 
 export default function WalkThroughPage() {
   const EXPLAIN = [
     {
-      TITLE: { FIRST: "김서희님이 관심있는", SECOND: "직무는 무엇인가요?" },
-      SUBTEXT: ["선택한 직무를 바탕으로 스터디를 추천해줄게요!"],
+      TITLE: { FIRST: "다양한 IT직군과의", SECOND: "견고한 스터디를 경험해보세요." },
+      SUBTEXT: ["다른 학습자들과 소통하며 함께 성장하세요!"],
     },
     {
       TITLE: { FIRST: "다른 학습자들과", SECOND: "함께 고민을 나눠보세요." },
@@ -43,9 +44,18 @@ export default function WalkThroughPage() {
           ))}
         </div>
 
-        <div className="w-[375px] h-[375px] bg-primary-400">사진</div>
+        <div className="relative w-full h-max">
+          <Image src="/svg/ic-walk-through-phone.svg" width={460} height={385} alt="phone" />
+          <Image
+            src="/svg/ic-walk-through-gear.svg"
+            width={91}
+            height={104}
+            alt="phone"
+            className="absolute top-0 right-0 blur-[1.5px]"
+          />
+        </div>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 mt-auto mb-[42px]">
           {Array.from({ length: 3 }, (_, index) => (
             <button
               onClick={() => handleClickNumber(index)}
@@ -57,7 +67,7 @@ export default function WalkThroughPage() {
 
         <button
           type="button"
-          className="w-full bg-primary-500 text-semibold-16 h-[49px] text-white rounded-lg mt-auto mb-[42px]"
+          className="w-full bg-primary-500 text-semibold-16 h-[49px] text-white rounded-lg mb-[40px]"
         >
           나와 비슷한 팀원 찾기
         </button>
