@@ -1,6 +1,8 @@
 "use client";
 
-import Image from "next/image";
+import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage";
+import MegaPhoneImage from "@/components/WalkThrough/MegaPhoneImage/MegaPhoneImage";
+import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
 import { useState } from "react";
 
 export default function WalkThroughPage() {
@@ -45,14 +47,9 @@ export default function WalkThroughPage() {
         </div>
 
         <div className="relative w-full h-max">
-          <Image src="/svg/ic-walk-through-phone.svg" width={460} height={385} alt="phone" />
-          <Image
-            src="/svg/ic-walk-through-gear.svg"
-            width={91}
-            height={104}
-            alt="phone"
-            className="absolute top-0 right-0 blur-[1.5px]"
-          />
+          {walkThroughNumber === 0 && <PhoneImage />}
+          {walkThroughNumber === 1 && <MegaPhoneImage />}
+          {walkThroughNumber === 2 && <CalendarImage />}
         </div>
 
         <div className="flex gap-4 mt-auto mb-[42px]">
