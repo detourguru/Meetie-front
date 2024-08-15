@@ -1,3 +1,4 @@
+import Image from "next/image";
 import EvaluationCard from "@/components/MyPage/Profile/EvaluationCard/EvaluationCard";
 import Header from "@/components/MyPage/Header/Header";
 import HighlightBadge from "@/components/MyPage/Profile/HighlightBadge/HighlightBadge";
@@ -7,15 +8,20 @@ import StudyTag from "@/components/MyPage/Profile/StudyTag/StudyTag";
 export default function ProfilePage() {
   return (
     <>
+      {/* TODO: 공통 헤더 컴포넌트 적용 예정 */}
       <Header title="공개용 프로필 수정" />
 
       <article className="py-5 flex">
         <div className="flex relative border rounded-full border-slate-200 mx-auto">
-          {/* TODO: svg 아이콘으로 변경 예정 */}
-          <img src="" alt="profile image" width={150} height={150} />
-          <div className="absolute rounded-full bg-blue-400 bottom-0 right-0">
-            {/* TODO: svg 아이콘으로 변경 예정 */}
-            <img width={40} height={40} src="" alt="image" />
+          <Image
+            src="/img/img-user-profile.png"
+            alt="profile"
+            width={120}
+            height={120}
+            className="rounded-full"
+          />
+          <div className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2">
+            <Image src="/svg/ic-camera.svg" alt="camera" width={16} height={16} />
           </div>
         </div>
       </article>

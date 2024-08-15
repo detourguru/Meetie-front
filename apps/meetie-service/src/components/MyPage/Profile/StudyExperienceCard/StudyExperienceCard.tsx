@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface IStudyExperienceCard {
   attendanceRate: number;
   satisfaction: number;
@@ -7,14 +9,13 @@ interface IStudyExperienceCard {
 const StudyExperienceCard = ({ attendanceRate, satisfaction, title }: IStudyExperienceCard) => {
   return (
     <div>
-      <div className="flex flex-col w-44 gap-5 px-3 py-2 border-2 border-primary-450 rounded-lg bg-primary-50">
-        <div className="flex flex-col gap-2">
-          <div className="flex justify-between">
+      <div className="flex flex-col w-44 gap-8 p-4 border-2 border-primary-450 rounded-lg bg-primary-50">
+        <div className="flex flex-col gap-2.5">
+          <div className="flex justify-between items-start">
             <p className="text-bold-18 whitespace-pre-wrap">{title}</p>
-            {/* TODO: svg 아이콘으로 변경 예정 */}
-            <img src="" alt="lock" width={30} height={30} />
+            <Image src="/svg/ic-unlock.svg" alt="unlock" width={18} height={18} />
           </div>
-          <div className="flex w-fit rounded-xl px-3 py-2 bg-primary-350">
+          <div className="flex w-fit rounded-lg py-1 px-2.5 bg-[#9470ED]">
             <span className="text-semibold-12 text-white">만족 점수 {satisfaction}점</span>
           </div>
         </div>
