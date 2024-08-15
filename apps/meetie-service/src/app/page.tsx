@@ -7,6 +7,12 @@ import Google from "../../public/svg/ic-login-google.svg";
 import Kakao from "../../public/svg/ic-login-kakao.svg";
 import Naver from "../../public/svg/ic-login-naver.svg";
 
+import Chat from "../../public/svg/ic-home-chat.svg";
+import Computer from "../../public/svg/ic-home-computer.svg";
+import Gear from "../../public/svg/ic-home-gear.svg";
+import Message from "../../public/svg/ic-home-message.svg";
+import Rocket from "../../public/svg/ic-home-rocket.svg";
+
 export default function Home() {
   return (
     <Link href="/login">
@@ -19,7 +25,17 @@ export default function Home() {
             </div>
 
             {/* todo 이미지 변경 예정 */}
-            <div className="mb-[70px] w-[212px] h-[240px] bg-primary-400">로켓 이미지</div>
+            <div className="mb-2 w-full h-[303px] relative">
+              <Image src={Chat} alt="chat" className="absolute top-[10px] right-[60px]" />
+              <Image src={Rocket} alt="rocket" className="z-10 absolute top-0 left-[100px]" />
+              <Image
+                src={Computer}
+                alt="computer"
+                className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-[160px]"
+              />
+              <Image src={Gear} alt="gear" className="absolute bottom-0 left-0" />
+              <Image src={Message} alt="message" className="absolute bottom-0 right-0" />
+            </div>
 
             <div className="flex justify-center items-center gap-[23px]">
               <Image src={Naver} width={46} height={46} alt="naver_login" />
