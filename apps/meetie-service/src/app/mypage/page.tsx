@@ -7,17 +7,16 @@ import InformationCard from "@/components/MyPage/InformationCard/InformationCard
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import ClockIcon from "@/components/MyPage/Clockcon";
+import Header from "@/components/common/Header/Header";
 
 export default function MyPage() {
   return (
     <>
-      {/* TODO: 헤더 컴포넌트 적용 예정 */}
-      <div className="flex justify-between items-center px-4 h-10">
-        <p className="text-bold-20">마이페이지</p>
-        <div className="relative after:absolute after:top-0 after:-right-0.5 after:w-2 after:h-2 after:rounded-full after:bg-red-500">
-          <Image src="/svg/ic-alarm.svg" alt="alarm" width={16} height={19} />
-        </div>
-      </div>
+      <Header>
+        <Header.Title>마이페이지</Header.Title>
+        {/* TODO: alarm 업데이트 여부에 따라 다른 아이콘 표시 "svg/ic-alarm.svg" */}
+        <Header.RightButton icon="/svg/ic-alarm-updated.svg" />
+      </Header>
 
       {/* 프로필 카드 */}
       <div className="flex justify-between mt-10 px-4">
