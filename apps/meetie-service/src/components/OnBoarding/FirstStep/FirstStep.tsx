@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 
 const JOBS = ["designer", "developer", "planner"];
@@ -24,8 +25,7 @@ export default function FirstStep() {
                 : "bg-gray-50 text-regular-16"
             }`}
           >
-            {/* TODO: icon 추가 예정 */}
-            <div>아이콘</div>
+            <Image src={`/svg/ic-onboarding-${job}.svg`} width={24} height={24} alt={job} />
             <p>{JOBS_KR[index]}</p>
           </button>
         ))}
