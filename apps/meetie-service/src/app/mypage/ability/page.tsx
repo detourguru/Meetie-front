@@ -1,4 +1,6 @@
+import Image from "next/image";
 import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
+import ClockIcon from "@/components/MyPage/Clockcon";
 import Header from "@/components/MyPage/Header/Header";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import { BADGE_DATA } from "@/constants/badges";
@@ -6,11 +8,11 @@ import { BADGE_DATA } from "@/constants/badges";
 export default function AbilityPage() {
   return (
     <>
+      {/* TODO: 공통 헤더 컴포넌트 적용 예정 */}
       <Header
         title="내 능력 현황"
         infoIcon={
           <button>
-            {/* TODO: svg 아이콘으로 변경 예정 */}
             <img src="" alt="info" width={40} />
           </button>
         }
@@ -22,16 +24,14 @@ export default function AbilityPage() {
             <p className="text-regular-12 text-gray-300">축하합니다!</p>
             <p className="text-semibold-14 text-gray-500">새로운 뱃지가 추가 됐어요!</p>
           </div>
-          {/* TODO: svg 아이콘으로 변경 예정 */}
-          <img src="" alt="alarm" className="w-[50px] h-[50px]" />
+          <Image src="/img/img-megaphone.png" alt="megaphone" width={50} height={50} />
         </div>
       </article>
 
       <article className="flex justify-between items-center px-5 py-3">
         <header className="text-semibold-18 text-gray-500">내 뱃지</header>
-        <div className="flex gap-1">
-          {/* TODO: svg 아이콘으로 변경 예정 */}
-          <img src="" alt="clock" />
+        <div className="flex gap-1 items-center">
+          <ClockIcon color="#82829B" width="12" height="11" />
           <p className="text-medium-12 text-blue-300">업데이트 매일 오전</p>
         </div>
       </article>

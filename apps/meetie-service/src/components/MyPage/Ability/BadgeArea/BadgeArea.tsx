@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import type { BadgeType, BadgesType } from "@/types/badge";
 import BadgeDrawer from "../BadgeDrawer/BadgeDrawer";
@@ -27,8 +28,7 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
       <section className="flex flex-col mx-5 mt-8 gap-4">
         <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">{badges.type} 뱃지</header>
-          {/* TODO: svg 아이콘으로 변경 예정 */}
-          <img src="" alt="badge" width={16} height={16} />
+          <Image src="/svg/ic-verified.svg" alt="verified" width={16} height={16} />
         </div>
 
         <div className="flex justify-between bg-white">
