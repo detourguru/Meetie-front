@@ -1,5 +1,5 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
 import { cva, type VariantProps } from "class-variance-authority";
 
@@ -35,8 +35,8 @@ const TagButton = React.forwardRef<HTMLButtonElement, TagButtonProps>(
           <Image
             src={
               variant === "select"
-                ? "svg/ic-tag-button-check.svg"
-                : "svg/ic-tag-button-check-disabled.svg"
+                ? "/svg/ic-tag-button-check.svg"
+                : "/svg/ic-tag-button-check-disabled.svg"
             }
             alt="tag-button-icon"
             width={20}

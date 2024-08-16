@@ -12,18 +12,18 @@ export const GNB_DATA = [
     text: "탐색",
     link: "/search",
     icon: "/svg/ic-gnb-search.svg",
-    disabledIcon: "svg/ic-gnb-search-disabled.svg",
+    disabledIcon: "/svg/ic-gnb-search-disabled.svg",
   },
   {
     text: "커뮤니티",
     link: "/community",
     icon: "/svg/ic-gnb-community.svg",
-    disabledIcon: "svg/ic-gnb-community-disabled.svg",
+    disabledIcon: "/svg/ic-gnb-community-disabled.svg",
   },
   {
     text: "마이",
     link: "/my",
     icon: "/svg/ic-gnb-my.svg",
-    disabledIcon: "svg/ic-gnb-my-disabled.svg",
+    disabledIcon: "/svg/ic-gnb-my-disabled.svg",
   },
 ];
