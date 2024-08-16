@@ -1,4 +1,5 @@
 import Button from "@/components/common/Button/Button";
+import Image from "next/image";
 
 export default function OnBoardingCompletePage() {
   return (
@@ -12,8 +13,36 @@ export default function OnBoardingCompletePage() {
           <p className="text-gray-200 text-regular-14">나와 딱 맞는 스터디를 찾으러 떠나볼까요?</p>
         </div>
 
-        {/* TODO: #18 badge icon으로 변경 예정 */}
-        <div className="w-[146px] h-[203px] mt-[77px] bg-primary-300">프로필 사진</div>
+        <div className="relative w-[150px] h-[204px] mt-[77px]">
+          <Image
+            src="/svg/ic-onboarding-complete-back.svg"
+            width={146}
+            height={204}
+            alt="back"
+            className="absolute top-0"
+          />
+
+          <Image
+            src="/svg/ic-onboarding-complete-front.svg"
+            width={146}
+            height={204}
+            alt="front"
+            className="absolute top-0 transform animate-tilt backdrop-blur-[1.7px]"
+          />
+          <div className="absolute top-0 flex flex-col items-center transform left-3 whitespace-nowrap animate-tilt">
+            {/* TODO: #18 badge icon으로 변경 예정 */}
+            <Image
+              src="/img/img-jake-profile.png"
+              width={48}
+              height={48}
+              alt="profile"
+              className="mt-11"
+            />
+            <p className="text-semibold-14 mt-[6.5px]">김서희님</p>
+            <p className="text-semibold-12">디자이너</p>
+            <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
+          </div>
+        </div>
 
         <Button size="xl" className="mb-[42px] mt-auto">
           <span className="text-white text-semibold-16">확인하러 가기</span>
