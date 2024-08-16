@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/common/Button/Button";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,12 +41,9 @@ export default function LoginPage() {
             아이디 저장
           </button>
           <Link href="/walkThrough">
-            <button
-              type="button"
-              className="w-full bg-primary-500 h-[50px] text-white rounded-lg mt-4"
-            >
+            <Button size="xl" className="text-white">
               로그인
-            </button>
+            </Button>
           </Link>
         </form>
 
