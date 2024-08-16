@@ -1,6 +1,6 @@
 import Image from "next/image";
 import EvaluationCard from "@/components/MyPage/Profile/EvaluationCard/EvaluationCard";
-import Header from "@/components/MyPage/Header/Header";
+import MyPageHeader from "@/components/MyPage/MyPageHeader/MyPageHeader";
 import HighlightBadge from "@/components/MyPage/Profile/HighlightBadge/HighlightBadge";
 import StudyExperienceCard from "@/components/MyPage/Profile/StudyExperienceCard/StudyExperienceCard";
 import StudyTag from "@/components/MyPage/Profile/StudyTag/StudyTag";
@@ -9,9 +9,9 @@ export default function ProfilePage() {
   return (
     <>
       {/* TODO: 공통 헤더 컴포넌트 적용 예정 */}
-      <Header title="공개용 프로필 수정" />
+      <MyPageHeader title="공개용 프로필 수정" />
 
-      <article className="py-5 flex">
+      <article className="py-5 mt-14 flex">
         <div className="flex relative border rounded-full border-slate-200 mx-auto">
           <Image
             src="/img/img-user-profile.png"

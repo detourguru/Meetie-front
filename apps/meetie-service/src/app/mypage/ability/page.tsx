@@ -1,24 +1,16 @@
 import Image from "next/image";
 import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
 import ClockIcon from "@/components/MyPage/Clockcon";
-import Header from "@/components/MyPage/Header/Header";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
+import MyPageHeader from "@/components/MyPage/MyPageHeader/MyPageHeader";
 import { BADGE_DATA } from "@/constants/badges";
 
 export default function AbilityPage() {
   return (
     <>
-      {/* TODO: 공통 헤더 컴포넌트 적용 예정 */}
-      <Header
-        title="내 능력 현황"
-        infoIcon={
-          <button>
-            <img src="" alt="info" width={40} />
-          </button>
-        }
-      />
+      <MyPageHeader title="내 능력 현황" infoIcon="/svg/ic-header-question.svg" />
 
-      <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 my-5 mx-4">
+      <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 mb-5 mt-14 mx-4">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-0.5">
             <p className="text-regular-12 text-gray-300">축하합니다!</p>
@@ -38,9 +30,11 @@ export default function AbilityPage() {
 
       <ThickDivider />
 
-      {BADGE_DATA.map((badges) => (
-        <BadgeArea badges={badges} />
-      ))}
+      <div className="flex flex-col my-8 gap-8">
+        {BADGE_DATA.map((badges) => (
+          <BadgeArea badges={badges} />
+        ))}
+      </div>
     </>
   );
 }

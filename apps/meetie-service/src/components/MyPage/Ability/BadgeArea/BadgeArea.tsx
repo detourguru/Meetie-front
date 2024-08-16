@@ -25,7 +25,7 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
 
   return (
     <>
-      <section className="flex flex-col mx-5 mt-8 gap-4">
+      <section className="flex flex-col mx-5 gap-4">
         <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">{badges.type} 뱃지</header>
           <Image src="/svg/ic-verified.svg" alt="verified" width={16} height={16} />
