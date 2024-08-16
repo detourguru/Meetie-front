@@ -2,6 +2,7 @@
 
 import Button from "@/components/common/Button/Button";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
+import { PATH } from "@/constants/path";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -40,7 +41,7 @@ export default function LoginPage() {
             )}
             아이디 저장
           </button>
-          <Link href="/walkThrough">
+          <Link href={PATH.WALKTHROUGH}>
             <Button size="xl" className="text-white">
               로그인
             </Button>

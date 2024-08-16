@@ -1,6 +1,10 @@
 export const PATH = {
   HOME: "/",
 
+  LOGIN: "/login",
+
+  WALKTHROUGH: "/walkThrough",
+
   ONBOARDING: "/onBoarding",
 
   MYPAGE: "/mypage",

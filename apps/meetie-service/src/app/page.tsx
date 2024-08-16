@@ -1,10 +1,11 @@
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
+import { PATH } from "@/constants/path";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <Link href="/login">
+    <Link href={PATH.LOGIN}>
       <div className="flex flex-col h-screen">
         <main className="flex flex-col h-full">
           <article className="flex flex-col h-full items-center pt-[104px]">
