@@ -37,7 +37,7 @@ const BadgeIcon = ({ variant, size, ...props }: BadgeIconProps) => {
     <>
       <div className="relative">
         <div className={cn(badgeIconVariants({ variant, size }))}></div>
-        <Image {...props} />
+        <Image {...props} priority={true} />
       </div>
     </>
   );
