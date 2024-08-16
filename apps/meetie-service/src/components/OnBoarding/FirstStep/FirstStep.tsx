@@ -1,8 +1,6 @@
+import { JOBS, JOBS_KR } from "@/constants/onBoarding";
 import Image from "next/image";
 import { useState } from "react";
-
-const JOBS = ["designer", "developer", "planner"];
-const JOBS_KR = ["디자이너", "개발자", "기획자"];
 
 export default function FirstStep() {
   const [clickedJob, setClickedJob] = useState<string | null>(null);

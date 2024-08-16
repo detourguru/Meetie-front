@@ -1,23 +1,8 @@
 import TagButton from "@/components/common/TagButton/TagButton";
+import { STYLES } from "@/constants/onBoarding";
 import { useState } from "react";
 
 export default function ThirdStep() {
-  const STYLES = [
-    "주도적인",
-    "열정적인",
-    "손이 빠른",
-    "시간을 지키는",
-    "꼼꼼한",
-    "모험적인",
-    "신중한",
-    "커뮤니케이션에 능숙한",
-    "논리적인",
-    "파워 J",
-    " 분석적인",
-    "동기부여가 필요한",
-    "완벽주의",
-  ];
-
   const [clickedStyle, setClickedStyle] = useState<string[]>([]);
 
   const handleClickStyle = (newStyle: string) => {

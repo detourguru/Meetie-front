@@ -1,6 +1,8 @@
 export const PATH = {
   HOME: "/",
 
+  ONBOARDING: "/onBoarding",
+
   MYPAGE: "/mypage",
   ABILITY: "/mypage/ability",
   PROFILE: "/mypage/profile",

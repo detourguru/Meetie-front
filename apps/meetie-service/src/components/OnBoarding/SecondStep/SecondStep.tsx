@@ -1,9 +1,8 @@
 import TagButton from "@/components/common/TagButton/TagButton";
+import { PURPOSES } from "@/constants/onBoarding";
 import { useState } from "react";
 
 export default function SecondStep() {
-  const PURPOSES = ["자기 개발", "툴 능력 향상", "해당 분야의 네트워킹 확장", "취미"];
-
   const [clickedPurpose, setClickedPurpose] = useState<string[]>([]);
 
   const handleClickPurpose = (newPurpose: string) => {
