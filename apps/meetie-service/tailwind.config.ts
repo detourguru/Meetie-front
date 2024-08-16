@@ -47,6 +47,15 @@ const config: Config = {
         white: "var(--white)",
         black: "var(--black)",
       },
+      animation: {
+        tilt: "tilt 0.5s ease-in-out forwards",
+      },
+      keyframes: {
+        tilt: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(12deg)" },
+        },
+      },
     },
     fontSize: {
       "bold-24": ["24px", { lineHeight: "140%", fontWeight: 700 }],
