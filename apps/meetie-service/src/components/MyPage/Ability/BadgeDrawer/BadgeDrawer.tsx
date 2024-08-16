@@ -12,7 +12,7 @@ const ICON_WIDTH_AND_HEIGHT = 140;
 const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: BadgeDrawerProps) => {
   return (
     <main
-      className={`fixed overflow-hidden z-10 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out ${
+      className={`fixed overflow-hidden z-50 bg-gray-900 bg-opacity-25 inset-0 transform ease-in-out ${
         selectedBadge
           ? "transition-opacity opacity-100 duration-500 translate-y-0"
           : "transition-all delay-500 opacity-0 translate-y-full"
@@ -22,10 +22,7 @@ const BadgeDrawer = ({ selectedBadge, selectedBadgeType, closeDrawer }: BadgeDra
         className={`bottom-0 absolute rounded-t-lg bg-white w-[375px] top-10 shadow-xl delay-400 duration-500 ease-in-out transition-all transform flex ${selectedBadge ? " translate-y-0 " : " translate-y-full "}`}
         style={{ left: "calc(50dvw - 187.5px)" }}
       >
-        <article
-          className="relative w-[375px] space-y-6 bg-gray-400/5 overflow-scroll hidden-scrollbar"
-          // style={{ height: "calc(90dvh - 40px)" }}/
-        >
+        <article className="relative w-[375px] space-y-6 bg-gray-400/5 overflow-scroll hidden-scrollbar">
           <div className="p-4 cursor-pointer sticky top-0" data-drawer-toggle="drawer-swipe">
             <span className="absolute w-8 h-1 -translate-x-1/2 bg-gray-300 rounded-lg top-3 left-1/2 dark:bg-gray-600"></span>
           </div>
