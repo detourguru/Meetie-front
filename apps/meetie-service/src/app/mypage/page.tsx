@@ -8,6 +8,7 @@ import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import ClockIcon from "@/components/MyPage/Clockcon";
 import Header from "@/components/common/Header/Header";
+import Gnb from "@/components/common/Gnb/Gnb";
 
 export default function MyPage() {
   return (
@@ -140,7 +141,7 @@ export default function MyPage() {
 
       <ThickDivider />
 
-      <div className="flex flex-col gap-8 mt-8 mb-12 px-4">
+      <div className="flex flex-col gap-8 mt-8 mb-16 px-4">
         {/* 고객 센터 */}
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">고객 센터</header>
@@ -164,6 +165,8 @@ export default function MyPage() {
           </ul>
         </div>
       </div>
+
+      <Gnb />
     </>
   );
 }
