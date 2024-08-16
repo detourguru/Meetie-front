@@ -1,3 +1,4 @@
+import TagButton from "@/components/common/TagButton/TagButton";
 import { useState } from "react";
 
 export default function SecondStep() {
@@ -12,25 +13,19 @@ export default function SecondStep() {
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center px-[16px]">
-      <div className="w-full pt-[60px] flex flex-col gap-[12px] justify-center items-start text-regular-16">
+    <div className="flex flex-col items-center w-full h-full px-4">
+      <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">
         {PURPOSES.map((purpose, index) => (
-          // TODO: 공통 컴포넌트로 변경 예정
-          <button
+          <TagButton
             key={`purpose${index}`}
-            value={purpose}
+            hasIcon
+            variant={clickedPurpose.includes(purpose) ? "select" : "default"}
             onClick={() => handleClickPurpose(purpose)}
-            className={`flex items-center gap-[8px] border p-[10px] rounded-lg ${clickedPurpose.includes(purpose) ? "border-primary-500 bg-primary-200 text-primary-500" : "border-gray-100"}`}
           >
-            <div
-              className={`w-[20px] h-[20px] rounded-full ${clickedPurpose.includes(purpose) ? "bg-primary-500" : "bg-gray-100"}`}
-            />
             {purpose}
-          </button>
+          </TagButton>
         ))}
-        <button className="flex items-center border border-gray-100 p-[10px] text-gray-200 bg-gray-50 rounded-lg">
-          + 직접 입력하기
-        </button>
+        <TagButton variant="add" />
       </div>
     </div>
   );

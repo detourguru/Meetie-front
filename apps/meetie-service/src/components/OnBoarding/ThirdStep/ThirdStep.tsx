@@ -1,3 +1,4 @@
+import TagButton from "@/components/common/TagButton/TagButton";
 import { useState } from "react";
 
 export default function ThirdStep() {
@@ -26,22 +27,20 @@ export default function ThirdStep() {
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center px-[16px]">
-      <div className="flex flex-wrap pt-[60px] gap-[8px]">
+    <div className="flex flex-col items-center w-full h-full px-4">
+      <div className="flex flex-wrap pt-[60px] gap-2">
         {STYLES.map((style, index) => (
-          // TODO: 공통 컴포넌트로 변경
-          <button
+          <TagButton
             key={`style${index}`}
-            value={style}
+            variant={clickedStyle.includes(style) ? "select" : "default"}
             onClick={() => handleClickStyle(style)}
-            className={`flex items-center gap-[8px] border p-[10px] rounded-lg ${clickedStyle.includes(style) ? "border-primary-500 bg-primary-200 text-primary-500" : "border-gray-100"}`}
           >
             {style}
-          </button>
+          </TagButton>
         ))}
-        <button className="flex items-center border border-gray-100 p-[10px] text-gray-200 bg-gray-50 rounded-lg">
-          + 직접 입력하기
-        </button>
+      </div>
+      <div className="w-full pt-3">
+        <TagButton variant="add" />
       </div>
     </div>
   );
