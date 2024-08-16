@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/common/Button/Button";
 import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage";
 import MegaPhoneImage from "@/components/WalkThrough/MegaPhoneImage/MegaPhoneImage";
 import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
@@ -62,12 +63,9 @@ export default function WalkThroughPage() {
           ))}
         </div>
 
-        <button
-          type="button"
-          className="w-full bg-primary-500 text-semibold-16 h-[49px] text-white rounded-lg mb-[40px]"
-        >
-          나와 비슷한 팀원 찾기
-        </button>
+        <Button type="button" size="xl" className="mb-[40px]">
+          <span className="text-white text-semibold-16">나와 비슷한 팀원 찾기</span>
+        </Button>
       </article>
     </main>
   );
