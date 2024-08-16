@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/components/common/Button/Button";
 import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
 import FourthStep from "@/components/OnBoarding/FourthStep/FourthStep";
 import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
@@ -73,18 +74,12 @@ export default function OnBoardingPage() {
           내용은 다시 수정할 수 있어요!
         </p>
         <div className="flex items-center gap-[14px]">
-          <button
-            onClick={handlePrevStep}
-            className="text-bold-16 w-[124px] h-[49px] text-gray-200 border-gray-100 border rounded-lg"
-          >
-            이전
-          </button>
-          <button
-            onClick={handleNextStep}
-            className="text-bold-16 bg-primary-300 text-white w-[206px] h-[49px] rounded-lg"
-          >
-            {currentStepIndex !== 3 ? "다음" : "이제 마지막에요"}
-          </button>
+          <Button variant="outline" size="sm" onClick={() => handlePrevStep()}>
+            <span className="text-gray-200 text-bold-16">이전</span>
+          </Button>
+          <Button onClick={() => handleNextStep()}>
+            <span className="text-white text-bold-16">다음</span>
+          </Button>
         </div>
       </div>
     </main>
