@@ -22,25 +22,21 @@ export default function OnBoardingCompletePage() {
             className="absolute top-0"
           />
 
-          <Image
-            src="/svg/ic-onboarding-complete-front.svg"
-            width={146}
-            height={204}
-            alt="front"
-            className="absolute top-0 transform animate-tilt backdrop-blur-[1.7px]"
-          />
-          <div className="absolute top-0 flex flex-col items-center transform left-3 whitespace-nowrap animate-tilt">
-            {/* TODO: #18 badge icon으로 변경 예정 */}
+          <div className="relative flex justify-center w-full transform animate-tilt">
             <Image
-              src="/img/img-jake-profile.png"
-              width={48}
-              height={48}
-              alt="profile"
-              className="mt-11"
+              src="/svg/ic-onboarding-complete-front.svg"
+              width={146}
+              height={204}
+              alt="front"
+              className="backdrop-blur-[1.7px]"
             />
-            <p className="text-semibold-14 mt-[6.5px]">김서희님</p>
-            <p className="text-semibold-12">디자이너</p>
-            <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
+            <div className="absolute top-0 flex flex-col items-center justify-center pt-11 whitespace-nowrap">
+              {/* TODO: #18 badge icon으로 변경 예정 */}
+              <Image src="/img/img-jake-profile.png" width={48} height={48} alt="profile" />
+              <p className="text-semibold-14 mt-[6.5px]">김서희님</p>
+              <p className="text-semibold-12">디자이너</p>
+              <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
+            </div>
           </div>
         </div>
 
