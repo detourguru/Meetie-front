@@ -13,7 +13,7 @@ export default function OnBoardingCompletePage() {
           <p className="text-gray-200 text-regular-14">나와 딱 맞는 스터디를 찾으러 떠나볼까요?</p>
         </div>
 
-        <div className="relative w-[150px] h-[204px] mt-[77px]">
+        <div className="relative w-[150px] mt-[77px]">
           <Image
             src="/svg/ic-onboarding-complete-back.svg"
             width={146}
@@ -38,6 +38,13 @@ export default function OnBoardingCompletePage() {
               <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
             </div>
           </div>
+          <Image
+            src="/svg/ic-onboarding-profile-shadow.svg"
+            width={162}
+            height={15}
+            alt="profile shadow"
+            className="mt-[47px]"
+          />
         </div>
 
         <Button size="xl" className="mb-[42px] mt-auto">
