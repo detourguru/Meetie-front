@@ -2,27 +2,18 @@ import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 
-import {
-  Sheet,
-  SheetContent,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/common/Sheet/Sheet";
+import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
 interface JobSheetProps {
-  trigger?: React.ReactNode;
   isOpen: boolean;
   onInteractOutside?: () => void;
 }
 
-const JobSheet = ({ trigger, isOpen, onInteractOutside }: JobSheetProps) => {
+const JobSheet = ({ isOpen, onInteractOutside }: JobSheetProps) => {
   const listClassName = "h-[58px] py-5 px-4 [&_p]:text-semibold-16 flex justify-between";
 
   return (
     <Sheet open={isOpen}>
-      {trigger && <SheetTrigger asChild>{trigger}</SheetTrigger>}
-
       <SheetContent
         className="rounded-tl-lg rounded-tr-lg pb-8"
         onInteractOutside={() => {
@@ -30,9 +21,7 @@ const JobSheet = ({ trigger, isOpen, onInteractOutside }: JobSheetProps) => {
         }}
       >
         <SheetHeader className="items-center justify-center pt-[14px] pb-[32px] ">
-          <SheetTitle>
-            <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
-          </SheetTitle>
+          <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
         </SheetHeader>
 
         <div className="px-5">
