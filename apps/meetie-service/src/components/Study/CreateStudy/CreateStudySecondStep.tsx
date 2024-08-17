@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import Input from "@/components/common/Input/Input";
 import Textarea from "@/components/common/Textarea/Textarea";
+import Tag from "@/components/common/Tag/Tag";
 
 const CreateStudySecondStep = () => {
   const inputTitleClassName = "text-bold-16 mb-[10px]";
@@ -62,18 +63,10 @@ const CreateStudySecondStep = () => {
       <div>
         <span className="text-regular-14 text-[#434343]">준식님 이런 태그는 어떠세요?</span>
         <div className="flex gap-2 mt-2">
-          <div className="py-[6px] px-[10px] bg-[#f7f3ff] rounded-lg">
-            <span className="text-[#434343] text-regular-14">피그마</span>
-          </div>
-          <div className="py-[6px] px-[10px] bg-[#f7f3ff] rounded-lg">
-            <span className="text-[#434343] text-regular-14">디자이너</span>
-          </div>
-          <div className="py-[6px] px-[10px] bg-[#f7f3ff] rounded-lg">
-            <span className="text-[#434343] text-regular-14">UX/UI</span>
-          </div>
-          <div className="py-[6px] px-[10px] bg-[#f7f3ff] rounded-lg">
-            <span className="text-[#434343] text-regular-14">온라인 강의</span>
-          </div>
+          <Tag text="피그마" />
+          <Tag text="디자이너" />
+          <Tag text="UX/UI" />
+          <Tag text="온라인 강의" />
         </div>
       </div>
     </div>
