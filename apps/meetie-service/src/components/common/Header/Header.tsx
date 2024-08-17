@@ -60,7 +60,7 @@ const HeaderRightButton = ({ icon, handleButtonClick }: HeaderRightButtonProps) 
 
 const HeaderRightText = ({ nowStep }: { nowStep: number }) => {
   return (
-    <p className="text-medium-12 absolute right-3 text-[#9d9d9d]">
+    <p className="text-medium-12 absolute right-3 text-gray-250">
       <span className="text-[#313131]">{nowStep}</span> / 2
     </p>
   );

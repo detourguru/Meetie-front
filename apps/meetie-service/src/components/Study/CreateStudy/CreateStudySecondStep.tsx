@@ -56,7 +56,7 @@ const CreateStudySecondStep = () => {
           <h2 className={inputTitleClassName}>관련 태그</h2>
           <Input placeholder="태그를 작성해주세요." maxLength={8} />
         </div>
-        <span className="text-regular-12 text-[#9d9d9d]">한 개당 최대 8자로 10개까지 가능해요</span>
+        <span className="text-regular-12 text-gray-250">한 개당 최대 8자로 10개까지 가능해요</span>
       </div>
 
       <div>
