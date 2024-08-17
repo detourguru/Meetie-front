@@ -20,8 +20,17 @@ export default function LoginPage() {
   return (
     <main className="flex flex-col h-full">
       <article className="flex flex-col items-center h-full p-4">
-        <div className="w-full mb-[22px] mt-11">
-          <Image src="/svg/ic-login-hand.svg" width={85} height={85} alt="hand" />
+        <div className="w-full mb-[22px]">
+          <div className="relative w-[100px] h-[100px] bg-white -rotate-3 p-0.5">
+            <div className="absolute w-[85px] h-[85px] bg-blue-400 mix-blend-hue z-10" />
+            <Image
+              src="/svg/ic-login-hand.svg"
+              width={85}
+              height={85}
+              alt="hand"
+              className="absolute"
+            />
+          </div>
           <h1 className="text-semibold-24">반가워요!</h1>
           <h1 className="text-semibold-24">밋티에 오신 것을 환영해요</h1>
         </div>
