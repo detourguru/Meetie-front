@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${Pretendard.className} w-screen flex justify-center`}>
         <ClientProvider>
-          <div className="max-w-[375px] w-full h-dvh overflow-y-auto overflow-x-hidden">
+          <div className="max-w-[375px] w-full h-dvh overflow-y-auto overflow-x-hidden hidden-scrollbar">
             {children}
           </div>
         </ClientProvider>
