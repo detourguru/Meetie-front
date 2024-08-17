@@ -6,7 +6,7 @@ export const GNB_DATA = [
     text: "스터디룸",
     link: "/study-room",
     icon: "/svg/ic-gnb-study-room.svg",
-    disabledIcon: "svg/ic-gnb-study-room-disabled.svg",
+    disabledIcon: "/svg/ic-gnb-study-room-disabled.svg",
   },
   {
     text: "탐색",
