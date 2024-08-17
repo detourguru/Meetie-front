@@ -43,13 +43,3 @@
     --gray-600: #000417;
   }
 }
-
-/* scrollbar hide */
-.hidden-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE, Edge */
-}
-
-.hidden-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}

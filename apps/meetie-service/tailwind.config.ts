@@ -1,5 +1,12 @@
 import type { Config } from "tailwindcss";
 
+type PluginAPI = {
+  addUtilities: (
+    utilities: Record<string, object>,
+    options?: { respectPrefix?: boolean; respectImportant?: boolean },
+  ) => void;
+};
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -66,6 +73,19 @@ const config: Config = {
       "regular-10": ["10px", { lineHeight: "140%", fontWeight: 400 }],
     },
   },
-  plugins: [],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }: PluginAPI) {
+      addUtilities({
+        ".hidden-scrollbar": {
+          "scrollbar-width": "none",
+          "-ms-overflow-style": "none",
+        },
+        ".hidden-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+      });
+    },
+  ],
 };
 export default config;
