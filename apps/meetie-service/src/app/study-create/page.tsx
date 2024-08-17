@@ -6,7 +6,7 @@ import Input from "@/components/common/Input/Input";
 import Textarea from "@/components/common/Textarea/Textarea";
 import Button from "@/components/common/Button/Button";
 
-export default function CreateStudyPage() {
+export default function CretaeStudyPage() {
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
