@@ -37,7 +37,17 @@ export default function LoginPage() {
 
         <form className="w-full [&>*]:mb-3 mb-[33px]">
           <input type="text" placeholder="hellomeetie@gmail.com" className={inputClassName} />
-          <input type="password" placeholder="************" className={inputClassName} />
+          <div className="relative">
+            <input type="password" placeholder="************" className={inputClassName} />
+            <Image
+              src="/svg/ic-login-close-eye.svg"
+              width={24}
+              height={24}
+              alt="close eye"
+              className="absolute transform -translate-y-1/2 cursor-pointer right-3 top-1/2"
+            />
+          </div>
+
           <button
             onClick={() => handleCLickSave()}
             type="button"
