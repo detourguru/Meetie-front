@@ -41,7 +41,7 @@ const HeaderLeftButton = ({ isCloseIcon, handleButtonClick }: HeaderLeftButtonPr
   return (
     <button className="absolute left-3" onClick={handleButtonClick}>
       <Image
-        src={isCloseIcon ? "svg/ic-header-close.svg" : "svg/ic-header-left-arrow.svg"}
+        src={isCloseIcon ? "/svg/ic-header-close.svg" : "/svg/ic-header-left-arrow.svg"}
         alt="leftButtonIcon"
         width={24}
         height={24}
