@@ -31,8 +31,8 @@ export default function AbilityPage() {
       <ThickDivider />
 
       <div className="flex flex-col my-8 gap-8">
-        {BADGE_DATA.map((badges) => (
-          <BadgeArea badges={badges} />
+        {BADGE_DATA.map((badges, index) => (
+          <BadgeArea badges={badges} key={`badge/${index}`} />
         ))}
       </div>
     </>

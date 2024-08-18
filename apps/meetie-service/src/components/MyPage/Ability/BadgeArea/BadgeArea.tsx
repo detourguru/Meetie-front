@@ -32,8 +32,9 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
         </div>
 
         <div className="flex justify-between bg-white">
-          {badges.badges.map((badge) => (
+          {badges.badges.map((badge, index) => (
             <article
+              key={`${badges.type}/${index}`}
               className="flex flex-col gap-2.5 items-center mt-auto first:mr-auto last:ml-auto"
               onClick={() => handleClick(badge)}
             >
