@@ -1,3 +1,4 @@
+import Avatar from "@/components/common/Avatar/Avatar";
 import Header from "@/components/common/Header/Header";
 import Tag from "@/components/common/Tag/Tag";
 
@@ -23,6 +24,8 @@ export default function StudyDetailPage() {
           <Tag text="UX/UI" />
           <Tag text="온라인 강의" />
         </div>
+
+        <Avatar src="/img/img-profile-example.png" size="sm" />
       </div>
     </>
   );
