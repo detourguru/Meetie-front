@@ -41,6 +41,7 @@ const config: Config = {
           250: "var(--gray-250)",
           300: "var(--gray-300)",
           400: "rgb(from var(--gray-400) r g b / <alpha-value>)",
+          450: "var(--gray-450)",
           500: "var(--gray-500)",
           600: "var(--gray-600)",
         },

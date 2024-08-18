@@ -61,7 +61,7 @@ const CreateStudySecondStep = () => {
       </div>
 
       <div>
-        <span className="text-regular-14 text-[#434343]">준식님 이런 태그는 어떠세요?</span>
+        <span className="text-regular-14 text-gray-450">준식님 이런 태그는 어떠세요?</span>
         <div className="flex gap-2 mt-2">
           <Tag text="피그마" />
           <Tag text="디자이너" />
