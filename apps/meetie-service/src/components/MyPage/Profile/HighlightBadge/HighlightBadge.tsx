@@ -15,7 +15,7 @@ const HighlightBadge = ({ level, type, selected }: HighlightBadgeProps) => {
 
   return (
     <div
-      className={`flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 border-primary-${selected ? "450" : "200"} rounded-lg bg-primary-50`}
+      className={`flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 rounded-lg bg-primary-50 ${selected ? "border-primary-450" : "border-primary-200"}`}
     >
       <div className="w-[73px]">
         <BadgeIcon
