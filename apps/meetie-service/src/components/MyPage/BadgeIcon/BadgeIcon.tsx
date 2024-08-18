@@ -34,12 +34,10 @@ interface BadgeIconProps extends VariantProps<typeof badgeIconVariants> {
 
 const BadgeIcon = ({ variant, size, ...props }: BadgeIconProps) => {
   return (
-    <>
-      <div className="relative">
-        <div className={cn(badgeIconVariants({ variant, size }))}></div>
-        <Image {...props} priority={true} />
-      </div>
-    </>
+    <div className="relative">
+      <div className={cn(badgeIconVariants({ variant, size }))} />
+      <Image {...props} priority />
+    </div>
   );
 };
 
