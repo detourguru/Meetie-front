@@ -1,6 +1,6 @@
 import Image from "next/image";
 import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
-import ClockIcon from "@/components/MyPage/Clockcon";
+import ClockIcon from "@/components/MyPage/ClockIcon";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import MyPageHeader from "@/components/MyPage/MyPageHeader/MyPageHeader";
 import { BADGE_DATA } from "@/constants/badges";

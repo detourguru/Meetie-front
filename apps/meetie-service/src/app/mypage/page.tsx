@@ -6,7 +6,7 @@ import Divider from "@/components/MyPage/dividers/Divider/Divider";
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
-import ClockIcon from "@/components/MyPage/Clockcon";
+import ClockIcon from "@/components/MyPage/ClockIcon";
 import Header from "@/components/common/Header/Header";
 import Gnb from "@/components/common/Gnb/Gnb";
 
