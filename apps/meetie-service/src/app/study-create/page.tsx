@@ -20,11 +20,11 @@ export default function CretaeStudyPage() {
         <ProgressBar width={step === "first" ? "w-[50%]" : "w-[100%]"} />
       </div>
 
-      <div className="px-4 py-[86px]">
+      <div className="px-4 pt-[86px] pb-[120px]">
         {step === "first" ? <CreateStudyFirstStep /> : <CreateStudySecondStep />}
       </div>
 
-      <div className="flex gap-3 px-4 py-3 mt-14 fixed bottom-0 bg-white">
+      <div className="flex gap-3 px-4 py-3 fixed bottom-0 bg-white">
         <Button variant="outline" size="sm">
           <p className="text-bold-16 text-[#adb5bd]">이전</p>
         </Button>
