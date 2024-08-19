@@ -57,10 +57,10 @@ export default function OnBoardingPage() {
           내용은 다시 수정할 수 있어요!
         </p>
         <div className="flex items-center gap-[14px]">
-          <Button variant="outline" size="sm" onClick={() => handlePrevStep()}>
+          <Button variant="outline" size="sm" onClick={handlePrevStep}>
             <span className="text-gray-200 text-bold-16">이전</span>
           </Button>
-          <Button onClick={() => handleNextStep()}>
+          <Button onClick={handleNextStep}>
             <span className="text-white text-bold-16">다음</span>
           </Button>
         </div>
