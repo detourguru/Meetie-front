@@ -2,7 +2,7 @@ import TagButton from "@/components/common/TagButton/TagButton";
 import { PERIODS_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
 
-export default function FourthStep() {
+const FourthStep = () => {
   const [clickedPeriod, setClickedPeriod] = useState<string>("");
 
   const handleClickPeriod = (newPeriod: string) => {
@@ -25,4 +25,6 @@ export default function FourthStep() {
       </div>
     </div>
   );
-}
+};
+
+export default FourthStep;

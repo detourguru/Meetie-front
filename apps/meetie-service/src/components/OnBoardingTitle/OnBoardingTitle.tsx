@@ -1,4 +1,4 @@
-interface TitleDataTypes {
+interface TitleDataType {
   TITLE: {
     FIRST: string;
     SECOND: string;
@@ -7,7 +7,7 @@ interface TitleDataTypes {
 }
 
 interface OnBoardingTitleProps {
-  textData: TitleDataTypes[];
+  textData: TitleDataType[];
   index: number;
   subTextColor?: "text-black" | "text-gray-200";
 }

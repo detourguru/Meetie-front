@@ -2,7 +2,7 @@ import TagButton from "@/components/common/TagButton/TagButton";
 import { STYLES_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
 
-export default function ThirdStep() {
+const ThirdStep = () => {
   const [clickedStyle, setClickedStyle] = useState<string[]>([]);
 
   const handleClickStyle = (newStyle: string) => {
@@ -29,4 +29,6 @@ export default function ThirdStep() {
       </div>
     </div>
   );
-}
+};
+
+export default ThirdStep;

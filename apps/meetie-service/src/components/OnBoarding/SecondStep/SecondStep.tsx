@@ -2,7 +2,7 @@ import TagButton from "@/components/common/TagButton/TagButton";
 import { PURPOSES_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
 
-export default function SecondStep() {
+const SecondStep = () => {
   const [clickedPurpose, setClickedPurpose] = useState<string[]>([]);
 
   const handleClickPurpose = (newPurpose: string) => {
@@ -28,4 +28,6 @@ export default function SecondStep() {
       </div>
     </div>
   );
-}
+};
+
+export default SecondStep;

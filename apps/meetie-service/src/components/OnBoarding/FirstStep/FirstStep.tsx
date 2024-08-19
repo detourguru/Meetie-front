@@ -2,7 +2,7 @@ import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function FirstStep() {
+const FirstStep = () => {
   const [clickedJob, setClickedJob] = useState<string | null>(null);
 
   const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -30,4 +30,6 @@ export default function FirstStep() {
       </div>
     </div>
   );
-}
+};
+
+export default FirstStep;
