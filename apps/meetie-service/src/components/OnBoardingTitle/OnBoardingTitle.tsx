@@ -18,7 +18,7 @@ const OnBoardingTitle = ({
   subTextColor = "text-black",
 }: OnBoardingTitleProps) => {
   return (
-    <div className="w-full pt-[54px] px-4">
+    <div className="w-full pt-[54px]">
       <div className="mb-[20px]">
         <h1 className="text-semibold-24">{textData[index].TITLE.FIRST}</h1>
         <h1 className="text-semibold-24">{textData[index].TITLE.SECOND}</h1>
