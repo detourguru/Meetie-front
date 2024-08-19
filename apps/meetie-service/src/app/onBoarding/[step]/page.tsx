@@ -5,6 +5,7 @@ import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
 import FourthStep from "@/components/OnBoarding/FourthStep/FourthStep";
 import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
 import ThirdStep from "@/components/OnBoarding/ThirdStep/ThirdStep";
+import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 import { QUESTION_DATA, STEPS_DATA } from "@/constants/onBoarding";
 
 import { PATH } from "@/constants/path";
@@ -40,14 +41,13 @@ export default function OnBoardingPage() {
         <button>SKIP</button>
       </div>
 
-      <article className="flex flex-col h-max">
-        <div className="w-full pt-[54px] px-4">
-          <span className="mb-[20px]">
-            <h1 className="text-semibold-24">{QUESTION_DATA[currentStepIndex].TITLE.FIRST}</h1>
-            <h1 className="text-semibold-24">{QUESTION_DATA[currentStepIndex].TITLE.SECOND}</h1>
-          </span>
-          <p className="text-gray-200 text-regular-14">{QUESTION_DATA[currentStepIndex].SUBTEXT}</p>
-        </div>
+      <article className="flex flex-col px-4 h-max">
+        <OnBoardingTitle
+          textData={QUESTION_DATA}
+          index={currentStepIndex}
+          subTextColor="text-gray-200"
+        />
+
         {currentStepIndex === 0 && <FirstStep />}
         {currentStepIndex === 1 && <SecondStep />}
         {currentStepIndex === 2 && <ThirdStep />}

@@ -1,6 +1,7 @@
 "use client";
 
 import Button from "@/components/common/Button/Button";
+import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage";
 import MegaPhoneImage from "@/components/WalkThrough/MegaPhoneImage/MegaPhoneImage";
 import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
@@ -21,17 +22,7 @@ export default function WalkThroughPage() {
           <button className="font-normal text-gray-200 uppercase text-medium-14">skip</button>
         </div>
 
-        <div className="w-full pt-[54px]">
-          <h1 className="mb-5 text-semibold-24 text-start">
-            <span className="block">{EXPLAIN_DATA[walkThroughNumber].TITLE.FIRST}</span>
-            <span className="block">{EXPLAIN_DATA[walkThroughNumber].TITLE.SECOND}</span>
-          </h1>
-          {EXPLAIN_DATA[walkThroughNumber].SUBTEXT.map((text, index) => (
-            <p key={`walkthroughSubText${index}`} className="text-regular-14">
-              {text}
-            </p>
-          ))}
-        </div>
+        <OnBoardingTitle textData={EXPLAIN_DATA} index={walkThroughNumber} />
 
         <div className="relative w-full h-max">
           {walkThroughNumber === 0 && <PhoneImage />}

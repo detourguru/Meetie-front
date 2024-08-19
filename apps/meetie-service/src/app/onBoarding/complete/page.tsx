@@ -1,17 +1,13 @@
 import Button from "@/components/common/Button/Button";
+import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
+import { COMPLETE_DATA } from "@/constants/onBoarding";
 import Image from "next/image";
 
 export default function OnBoardingCompletePage() {
   return (
     <main className="flex flex-col h-screen">
       <article className="flex flex-col items-center w-full h-full px-5">
-        <div className="w-full pt-[82px]">
-          <span className="mb-4">
-            <h1 className="text-semibold-24">김서희님의</h1>
-            <h1 className="text-semibold-24">공개 프로필이 생성되었어요 👏</h1>
-          </span>
-          <p className="text-gray-200 text-regular-14">나와 딱 맞는 스터디를 찾으러 떠나볼까요?</p>
-        </div>
+        <OnBoardingTitle textData={COMPLETE_DATA} index={0} subTextColor="text-gray-200" />
 
         <div className="relative w-[150px] mt-[77px]">
           <Image
