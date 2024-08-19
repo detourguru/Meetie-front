@@ -1,3 +1,5 @@
+import Button from "../common/Button/Button";
+
 const CalendarDeadline = () => {
   return (
     <div className="relative bg-white rounded-lg border border-[#E0DDF1] px-4 py-5 mt-3 mb-4">
@@ -8,9 +10,9 @@ const CalendarDeadline = () => {
       <div className="absolute top-4 right-4 flex items-center justify-center w-[50px] h-[50px] bg-white border-[5px] border-primary-500 rounded-full">
         <p className="text-bold-12 text-center text-primary-500">100%</p>
       </div>
-      <button className="w-full mt-8 py-[10px] text-semibold-16 text-white bg-[#8655FF] rounded-lg">
-        인증하기
-      </button>
+      <Button className="w-full mt-8 py-[10px]" variant="secondary">
+        <span className="text-white text-semibold-16">인증하기</span>
+      </Button>
     </div>
   );
 };

@@ -1,3 +1,4 @@
+import Button from "@/components/common/Button/Button";
 import Image from "next/image";
 import UserImg from "/public/img/img-user-profile.png";
 
@@ -55,9 +56,9 @@ export default function Confirm() {
         </div>
       </section>
       <section>
-        <button className="w-full h-[50px] mt-6  mb-3 bg-primary-500 rounded-lg text-semibold-16 text-white">
-          인증하기
-        </button>
+        <Button className="w-full mt-6 mb-3">
+          <span className="text-semibold-16 text-white">인증하기</span>
+        </Button>
         <p className="text-regular-14 text-[#82829B] text-center underline">임시 저장</p>
       </section>
     </main>
