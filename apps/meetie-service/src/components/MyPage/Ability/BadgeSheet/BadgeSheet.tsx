@@ -2,6 +2,7 @@ import type { BadgeType } from "@/types/badge";
 
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 import BadgeIcon from "../../BadgeIcon/BadgeIcon";
+import AchieveProgressBar from "../AchieveProgressBar/AchieveProgressBar";
 
 interface BadgeSheetProps {
   isOpen: boolean;
@@ -68,29 +69,17 @@ const BadgeSheet = ({
             <div className="flex flex-col gap-[13px]">
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">500XP 모으기</header>
-                <div className="border border-blue-200 rounded-full p-1 bg-blue-400/10">
-                  <div className="text-center rounded-full bg-primary-500 h-3">
-                    <p className="text-medium-14 text-white leading-3">500/500</p>
-                  </div>
-                </div>
+                <AchieveProgressBar total={500} achievedCount={200} />
               </article>
 
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">피드백 50회 하기</header>
-                <div className="border border-blue-200 rounded-full p-1 bg-blue-400/10">
-                  <div className="text-center rounded-full bg-primary-500 h-3">
-                    <p className="text-medium-14 text-white leading-3">50/50</p>
-                  </div>
-                </div>
+                <AchieveProgressBar total={50} achievedCount={30} />
               </article>
 
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">방장 5회 달성</header>
-                <div className="border border-blue-200 rounded-full p-1 bg-blue-400/10">
-                  <div className="text-center rounded-full bg-primary-500 h-3">
-                    <p className="text-medium-14 text-white leading-3">5/5</p>
-                  </div>
-                </div>
+                <AchieveProgressBar total={5} achievedCount={5} />
               </article>
             </div>
           </div>
