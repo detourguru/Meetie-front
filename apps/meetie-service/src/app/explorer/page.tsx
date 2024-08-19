@@ -7,16 +7,16 @@ import { useState } from "react";
 import Image from "next/image";
 import FilteringMembers from "@/components/Main/FilteringMembers";
 
-function page() {
+function Page() {
   const [activeTab, setActiveTab] = useState("study");
   const [filterActive, setFilterActive] = useState(false);
   const isCurrentTabDefault = activeTab === "study" ? true : false;
 
-  function showSelectedTabHandler(tab: string) {
+  function HandleShowSelectedTab(tab: string) {
     setActiveTab(tab);
   }
 
-  function toggleFilterAreaHandler() {
+  function HandleToggleFilterArea() {
     setFilterActive(!filterActive);
   }
 
@@ -44,7 +44,7 @@ function page() {
               >
                 <a
                   id="study"
-                  onClick={(e) => showSelectedTabHandler(e.currentTarget.id)}
+                  onClick={(e) => HandleShowSelectedTab(e.currentTarget.id)}
                   href="#"
                   className="inline-block py-4"
                 >
@@ -56,7 +56,7 @@ function page() {
               >
                 <a
                   id="member"
-                  onClick={(e) => showSelectedTabHandler(e.currentTarget.id)}
+                  onClick={(e) => HandleShowSelectedTab(e.currentTarget.id)}
                   href="#"
                   className="inline-block p-4"
                 >
@@ -76,7 +76,7 @@ function page() {
                   <Badge className="border-gray-100 text-[#82829B]">3-5</Badge>
                   <Badge className="border-gray-100 text-[#82829B]">#UXUI</Badge>
                 </div>
-                <div className="m-1 w-6 h-6 text-gray-500" onClick={toggleFilterAreaHandler}>
+                <div className="m-1 w-6 h-6 text-gray-500" onClick={HandleToggleFilterArea}>
                   <Image src="/svg/ic-filter.svg" alt="icon" width={24} height={24} />
                 </div>
               </div>
@@ -189,7 +189,7 @@ function page() {
                 초기화
               </button>
               <button
-                onClick={toggleFilterAreaHandler}
+                onClick={HandleToggleFilterArea}
                 className="active:scale-95 rounded-lg bg-primary-500 px-8 py-2 font-medium text-white outline-none focus:ring hover:opacity-90"
               >
                 적용
@@ -201,4 +201,4 @@ function page() {
     </>
   );
 }
-export default page;
+export default Page;
