@@ -1,8 +1,6 @@
 import React from "react";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Image from "next/image";
-import thinkingFace from "../../../../public/image/img-thinking_face.png";
-import wavingHand from "../../../../public/image/img-waving_hand.png";
 import Link from "next/link";
 import Header from "@/components/common/Header/Header";
 import CheckBox from "@/components/Study/CheckBox";
@@ -46,7 +44,7 @@ export default function Page() {
               </div>
               <Image
                 className="opacity-75 object-contain"
-                src={thinkingFace}
+                src="/img/img-thinking_face.png"
                 width={70}
                 height={70}
                 alt="thinking face"
@@ -65,7 +63,7 @@ export default function Page() {
               <div>
                 <Image
                   className="opacity-75"
-                  src={wavingHand}
+                  src="/img/img-waving_hand.png"
                   width={55}
                   height={55}
                   alt="waving hand"
