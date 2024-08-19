@@ -1,4 +1,7 @@
 function ToggleSwitch({ children }: { children: React.ReactNode }) {
+  {
+    /* TODO: 공통 컴포넌트로 대체예정 */
+  }
   return (
     <>
       <div className="flex justify-end mb-6">

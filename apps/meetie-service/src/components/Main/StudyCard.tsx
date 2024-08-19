@@ -9,6 +9,7 @@ function StudyCard() {
       </div>
       <h2 className="text-bold-14 text-gray-500 mb-3">자바 중급 스터디 모집</h2>
       <div className="mb-8">
+        {/* TODO: 공통 컴포넌트로 변경예정 */}
         <span className="bg-[#EBE9F5] text-[#41364A] text-medium-12 me-2 px-2.5 py-0.5 rounded">
           북 스터디
         </span>

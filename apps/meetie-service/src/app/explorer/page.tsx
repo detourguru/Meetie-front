@@ -1,6 +1,6 @@
 "use client";
 import ToggleSwitch from "@/components/Main/ToggleSwitch";
-import Badge from "@/components/Main/Badge";
+import HashTag from "@/components/Main/HashTag";
 import Filter from "@/components/Main/Filter";
 import FilteringStudies from "@/components/Main/FilteringStudies";
 import { useState } from "react";
@@ -69,12 +69,12 @@ function Page() {
             <div className="relative p-4">
               <div className="flex justify-between mb-4">
                 <div className="text-nowrap overflow-x-auto no-scrollbar">
-                  <Badge className="border-primary-500 text-primary-500">전체</Badge>
-                  <Badge className="border-gray-100 text-[#82829B]">#IT</Badge>
-                  <Badge className="border-gray-100 text-[#82829B]">#디자이너</Badge>
-                  <Badge className="border-gray-100 text-[#82829B]">#피그마</Badge>
-                  <Badge className="border-gray-100 text-[#82829B]">3-5</Badge>
-                  <Badge className="border-gray-100 text-[#82829B]">#UXUI</Badge>
+                  <HashTag className="border-primary-500 text-primary-500">전체</HashTag>
+                  <HashTag className="border-gray-100 text-[#82829B]">#IT</HashTag>
+                  <HashTag className="border-gray-100 text-[#82829B]">#디자이너</HashTag>
+                  <HashTag className="border-gray-100 text-[#82829B]">#피그마</HashTag>
+                  <HashTag className="border-gray-100 text-[#82829B]">3-5</HashTag>
+                  <HashTag className="border-gray-100 text-[#82829B]">#UXUI</HashTag>
                 </div>
                 <div className="m-1 w-6 h-6 text-gray-500" onClick={HandleToggleFilterArea}>
                   <Image src="/svg/ic-filter.svg" alt="icon" width={24} height={24} />
@@ -114,18 +114,18 @@ function Page() {
                   <Image src="/svg/ic-refresh.svg" alt="icon" width={24} height={24} />
                 </div>
                 <div className="text-nowrap ml-2 overflow-x-auto no-scrollbar">
-                  <Badge close={true} className="border-primary-500 text-primary-500">
+                  <HashTag close={true} className="border-primary-500 text-primary-500">
                     직무
-                  </Badge>
-                  <Badge close={true} className="border-primary-500 text-primary-500">
+                  </HashTag>
+                  <HashTag close={true} className="border-primary-500 text-primary-500">
                     스터디 목적
-                  </Badge>
-                  <Badge close={true} className="border-primary-500 text-primary-500">
+                  </HashTag>
+                  <HashTag close={true} className="border-primary-500 text-primary-500">
                     작업 스타일
-                  </Badge>
-                  <Badge close={true} className="border-primary-500 text-primary-500">
+                  </HashTag>
+                  <HashTag close={true} className="border-primary-500 text-primary-500">
                     스터디 기간
-                  </Badge>
+                  </HashTag>
                 </div>
               </div>
               <div className="flex justify-between mb-4">
