@@ -2,12 +2,14 @@
 import ToggleSwitch from "@/components/Main/ToggleSwitch";
 import HashTag from "@/components/Main/HashTag";
 import Filter from "@/components/Main/Filter";
-import FilteringStudies from "@/components/Main/FilteringStudies";
 import { useState } from "react";
 import Image from "next/image";
 import FilteringMembers from "@/components/Main/FilteringMembers";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
+import CheckBox from "@/components/Main/CheckBox";
+import PageConter from "@/components/Main/PageCounter";
+import StudyCard from "@/components/Main/StudyCard";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState("study");
@@ -98,17 +100,23 @@ export default function Page() {
                 </div>
               </div>
               <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
-              <FilteringStudies>모집중만 보기</FilteringStudies>
-
-              <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
               <div>
+                <div className="flex justify-between mb-[27px]">
+                  <CheckBox>모집중만 보기</CheckBox>
+                  <PageConter current={1} total={6} />
+                </div>
+                <StudyCard />
+              </div>
+              <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
+              <div className="flex justify-between">
                 <h1 className="text-bold-18">
                   서희님과 비슷한 사용자가
                   <br />
                   방금 지원했어요
                 </h1>
-                <FilteringStudies />
+                <PageConter current={1} total={6} />
               </div>
+              <StudyCard />
             </div>
           )}
           {!isCurrentTabDefault && (
@@ -140,9 +148,10 @@ export default function Page() {
                 </span>
               </div>
               <div className="-ml-4 -mr-4 bg-[#F5F5FF]">
-                <div className="p-4">
-                  <FilteringMembers />
+                <div className="p-4 flex justify-end">
+                  <PageConter current={1} total={4} />
                 </div>
+                <FilteringMembers />
               </div>
             </div>
           )}

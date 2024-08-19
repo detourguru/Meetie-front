@@ -4,8 +4,10 @@ import Image from "next/image";
 import thinkingFace from "../../../public/image/img-thinking_face.png";
 import wavingHand from "../../../public/image/img-waving_hand.png";
 import Link from "next/link";
-import FilteringStudies from "@/components/Main/FilteringStudies";
 import Header from "@/components/common/Header/Header";
+import CheckBox from "@/components/Main/CheckBox";
+import PageConter from "@/components/Main/PageCounter";
+import StudyCard from "@/components/Main/StudyCard";
 
 export default function Page() {
   return (
@@ -79,7 +81,11 @@ export default function Page() {
             <br />
             스터디룸
           </h1>
-          <FilteringStudies>모집중만 보기</FilteringStudies>
+          <div className="flex justify-between mb-[27px]">
+            <CheckBox>모집중만 보기</CheckBox>
+            <PageConter current={1} total={6} />
+          </div>
+          <StudyCard />
         </article>
         <div className="mt-[60px]">
           <Gnb />
