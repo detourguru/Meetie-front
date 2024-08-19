@@ -1,4 +1,4 @@
-export const EXPLAIN = [
+export const EXPLAIN_DATA = [
   {
     TITLE: { FIRST: "다양한 IT직군과의", SECOND: "견고한 스터디를 경험해보세요." },
     SUBTEXT: ["다른 학습자들과 소통하며 함께 성장하세요!"],

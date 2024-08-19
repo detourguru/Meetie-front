@@ -1,5 +1,5 @@
 import TagButton from "@/components/common/TagButton/TagButton";
-import { PURPOSES } from "@/constants/onBoarding";
+import { PURPOSES_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
 
 export default function SecondStep() {
@@ -14,7 +14,7 @@ export default function SecondStep() {
   return (
     <div className="flex flex-col items-center w-full h-full px-4">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">
-        {PURPOSES.map((purpose, index) => (
+        {PURPOSES_DATA.map((purpose, index) => (
           <TagButton
             key={`purpose${index}`}
             hasIcon

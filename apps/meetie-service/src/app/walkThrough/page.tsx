@@ -4,7 +4,7 @@ import Button from "@/components/common/Button/Button";
 import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage";
 import MegaPhoneImage from "@/components/WalkThrough/MegaPhoneImage/MegaPhoneImage";
 import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
-import { EXPLAIN } from "@/constants/walkThrough";
+import { EXPLAIN_DATA } from "@/constants/walkThrough";
 import { useState } from "react";
 
 export default function WalkThroughPage() {
@@ -23,10 +23,10 @@ export default function WalkThroughPage() {
 
         <div className="w-full pt-[54px]">
           <h1 className="mb-5 text-semibold-24 text-start">
-            <span className="block">{EXPLAIN[walkThroughNumber].TITLE.FIRST}</span>
-            <span className="block">{EXPLAIN[walkThroughNumber].TITLE.SECOND}</span>
+            <span className="block">{EXPLAIN_DATA[walkThroughNumber].TITLE.FIRST}</span>
+            <span className="block">{EXPLAIN_DATA[walkThroughNumber].TITLE.SECOND}</span>
           </h1>
-          {EXPLAIN[walkThroughNumber].SUBTEXT.map((text, index) => (
+          {EXPLAIN_DATA[walkThroughNumber].SUBTEXT.map((text, index) => (
             <p key={`walkthroughSubText${index}`} className="text-regular-14">
               {text}
             </p>

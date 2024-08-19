@@ -1,5 +1,5 @@
 // onBoarding page
-export const QUESTION = [
+export const QUESTION_DATA = [
   {
     TITLE: { FIRST: "김서희님이 관심있는", SECOND: "직무는 무엇인가요?" },
     SUBTEXT: "선택한 직무를 바탕으로 스터디를 추천해줄게요!",
@@ -18,17 +18,17 @@ export const QUESTION = [
   },
 ];
 
-export const STEPS = ["job", "purpose", "style", "period"];
+export const STEPS_DATA = ["job", "purpose", "style", "period"];
 
 // job
-export const JOBS = ["designer", "developer", "planner"];
-export const JOBS_KR = ["디자이너", "개발자", "기획자"];
+export const JOBS_DATA = ["designer", "developer", "planner"];
+export const JOBS_KR_DATA = ["디자이너", "개발자", "기획자"];
 
 // purpose
-export const PURPOSES = ["자기 개발", "툴 능력 향상", "해당 분야의 네트워킹 확장", "취미"];
+export const PURPOSES_DATA = ["자기 개발", "툴 능력 향상", "해당 분야의 네트워킹 확장", "취미"];
 
 // style
-export const STYLES = [
+export const STYLES_DATA = [
   "주도적인",
   "열정적인",
   "손이 빠른",
@@ -45,4 +45,4 @@ export const STYLES = [
 ];
 
 // period
-export const PERIODS = ["1개월 이내", "1개월 ~ 3개월", "3개월 ~ 6개월", "6개월 이상"];
+export const PERIODS_DATA = ["1개월 이내", "1개월 ~ 3개월", "3개월 ~ 6개월", "6개월 이상"];

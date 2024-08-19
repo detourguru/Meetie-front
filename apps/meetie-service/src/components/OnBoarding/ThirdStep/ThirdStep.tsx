@@ -1,5 +1,5 @@
 import TagButton from "@/components/common/TagButton/TagButton";
-import { STYLES } from "@/constants/onBoarding";
+import { STYLES_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
 
 export default function ThirdStep() {
@@ -14,7 +14,7 @@ export default function ThirdStep() {
   return (
     <div className="flex flex-col items-center w-full h-full px-4">
       <div className="flex flex-wrap pt-[60px] gap-2">
-        {STYLES.map((style, index) => (
+        {STYLES_DATA.map((style, index) => (
           <TagButton
             key={`style${index}`}
             variant={clickedStyle.includes(style) ? "select" : "default"}

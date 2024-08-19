@@ -5,8 +5,8 @@ import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
 import FourthStep from "@/components/OnBoarding/FourthStep/FourthStep";
 import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
 import ThirdStep from "@/components/OnBoarding/ThirdStep/ThirdStep";
+import { QUESTION_DATA, STEPS_DATA } from "@/constants/onBoarding";
 
-import { QUESTION, STEPS } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
 import { notFound, useParams, useRouter } from "next/navigation";
@@ -15,17 +15,19 @@ export default function OnBoardingPage() {
   const navigate = useRouter();
   const params = useParams();
   const step = params.step as string;
-  const currentStepIndex = STEPS.indexOf(step);
+  const currentStepIndex = STEPS_DATA.indexOf(step);
 
   const handlePrevStep = () => {
-    currentStepIndex === 0 || navigate.push(`${PATH.ONBOARDING}/${STEPS[currentStepIndex - 1]}`);
+    currentStepIndex === 0 ||
+      navigate.push(`${PATH.ONBOARDING}/${STEPS_DATA[currentStepIndex - 1]}`);
   };
 
   const handleNextStep = () => {
-    currentStepIndex === 3 || navigate.push(`${PATH.ONBOARDING}/${STEPS[currentStepIndex + 1]}`);
+    currentStepIndex === 3 ||
+      navigate.push(`${PATH.ONBOARDING}/${STEPS_DATA[currentStepIndex + 1]}`);
   };
 
-  if (!STEPS.includes(step)) {
+  if (!STEPS_DATA.includes(step)) {
     return notFound();
   }
 
@@ -41,10 +43,10 @@ export default function OnBoardingPage() {
       <article className="flex flex-col h-max">
         <div className="w-full pt-[54px] px-4">
           <span className="mb-[20px]">
-            <h1 className="text-semibold-24">{QUESTION[currentStepIndex].TITLE.FIRST}</h1>
-            <h1 className="text-semibold-24">{QUESTION[currentStepIndex].TITLE.SECOND}</h1>
+            <h1 className="text-semibold-24">{QUESTION_DATA[currentStepIndex].TITLE.FIRST}</h1>
+            <h1 className="text-semibold-24">{QUESTION_DATA[currentStepIndex].TITLE.SECOND}</h1>
           </span>
-          <p className="text-gray-200 text-regular-14">{QUESTION[currentStepIndex].SUBTEXT}</p>
+          <p className="text-gray-200 text-regular-14">{QUESTION_DATA[currentStepIndex].SUBTEXT}</p>
         </div>
         {currentStepIndex === 0 && <FirstStep />}
         {currentStepIndex === 1 && <SecondStep />}

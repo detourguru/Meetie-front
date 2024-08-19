@@ -1,5 +1,5 @@
 import TagButton from "@/components/common/TagButton/TagButton";
-import { PERIODS } from "@/constants/onBoarding";
+import { PERIODS_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
 
 export default function FourthStep() {
@@ -12,7 +12,7 @@ export default function FourthStep() {
   return (
     <div className="flex flex-col items-center w-full h-full px-4">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">
-        {PERIODS.map((period, index) => (
+        {PERIODS_DATA.map((period, index) => (
           <TagButton
             key={`period${index}`}
             hasIcon

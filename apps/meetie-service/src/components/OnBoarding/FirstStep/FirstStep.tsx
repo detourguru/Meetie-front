@@ -1,4 +1,4 @@
-import { JOBS, JOBS_KR } from "@/constants/onBoarding";
+import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ export default function FirstStep() {
   return (
     <div className="flex flex-col h-full w-full items-center px-[16px]">
       <div className="flex justify-center items-center w-full gap-[8px] pt-[60px]">
-        {JOBS.map((job, index) => (
+        {JOBS_DATA.map((job, index) => (
           <button
             key={`jobs${index}`}
             value={job}
@@ -24,7 +24,7 @@ export default function FirstStep() {
             }`}
           >
             <Image src={`/svg/ic-onboarding-${job}.svg`} width={24} height={24} alt={job} />
-            <p>{JOBS_KR[index]}</p>
+            <p>{JOBS_KR_DATA[index]}</p>
           </button>
         ))}
       </div>
