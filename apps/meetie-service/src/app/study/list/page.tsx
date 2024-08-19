@@ -1,13 +1,13 @@
 import React from "react";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Image from "next/image";
-import thinkingFace from "../../../public/image/img-thinking_face.png";
-import wavingHand from "../../../public/image/img-waving_hand.png";
+import thinkingFace from "../../../../public/image/img-thinking_face.png";
+import wavingHand from "../../../../public/image/img-waving_hand.png";
 import Link from "next/link";
 import Header from "@/components/common/Header/Header";
-import CheckBox from "@/components/Main/CheckBox";
-import PageConter from "@/components/Main/PageCounter";
-import StudyCard from "@/components/Main/StudyCard";
+import CheckBox from "@/components/Study/CheckBox";
+import PageConter from "@/components/Study/PageCounter";
+import StudyCard from "@/components/Study/StudyCard";
 
 export default function Page() {
   return (
@@ -38,7 +38,7 @@ export default function Page() {
                 </h2>
                 <h1 className="text-bold-18 mb-3">스터디 탐색하기</h1>
                 <Link
-                  href={"/explorer"}
+                  href={"/study/explorer"}
                   className="button bg-[#E3E3FA] text-[#4A5999] text-medium-12 p-2 rounded-lg"
                 >
                   바로가기
