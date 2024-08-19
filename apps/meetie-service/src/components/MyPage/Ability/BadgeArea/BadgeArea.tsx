@@ -2,9 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
+
 import type { BadgeType, BadgesType } from "@/types/badge";
-import BadgeDrawer from "../BadgeDrawer/BadgeDrawer";
+import { useOverlay } from "@/hooks/common/useOverlay";
+
 import BadgeIcon from "../../BadgeIcon/BadgeIcon";
+import BadgeSheet from "../BadgeSheet/BadgeSheet";
 
 interface BadgeAreaProps {
   badges: BadgesType;
@@ -13,14 +16,13 @@ interface BadgeAreaProps {
 const ICON_SIZE = [70, 88, 95];
 
 const BadgeArea = ({ badges }: BadgeAreaProps) => {
+  const { isOpen, handleOpen, handleClose } = useOverlay();
+
   const [selectedBadge, setselectedBadge] = useState<undefined | BadgeType>();
 
   const handleClick = (badge: BadgeType) => {
     setselectedBadge(badge);
-  };
-
-  const handleClose = () => {
-    setselectedBadge(undefined);
+    handleOpen();
   };
 
   return (
@@ -51,10 +53,11 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
         </div>
       </section>
 
-      <BadgeDrawer
+      <BadgeSheet
+        isOpen={isOpen}
         selectedBadge={selectedBadge}
         selectedBadgeType={badges.type}
-        closeDrawer={handleClose}
+        onInteractOutside={handleClose}
       />
     </>
   );
