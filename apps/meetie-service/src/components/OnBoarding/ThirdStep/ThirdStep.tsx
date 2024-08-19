@@ -12,7 +12,7 @@ export default function ThirdStep() {
   };
 
   return (
-    <div className="flex flex-col items-center w-full h-full px-4">
+    <div className="flex flex-col items-center w-full h-full">
       <div className="flex flex-wrap pt-[60px] gap-2">
         {STYLES_DATA.map((style, index) => (
           <TagButton

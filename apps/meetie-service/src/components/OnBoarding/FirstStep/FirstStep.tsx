@@ -10,7 +10,7 @@ export default function FirstStep() {
   };
 
   return (
-    <div className="flex flex-col h-full w-full items-center px-[16px]">
+    <div className="flex flex-col items-center w-full h-full">
       <div className="flex justify-center items-center w-full gap-[8px] pt-[60px]">
         {JOBS_DATA.map((job, index) => (
           <button

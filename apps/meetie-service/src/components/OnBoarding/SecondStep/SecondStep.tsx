@@ -12,7 +12,7 @@ export default function SecondStep() {
   };
 
   return (
-    <div className="flex flex-col items-center w-full h-full px-4">
+    <div className="flex flex-col items-center w-full h-full">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">
         {PURPOSES_DATA.map((purpose, index) => (
           <TagButton
