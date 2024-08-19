@@ -1,5 +1,5 @@
-import ConfirmComment from "@/components/ConfirmComment/ConfirmComment";
-import ConfirmEmoji from "@/components/ConfirmEmoji/ConfirmEmoji";
+import ConfirmComment from "@/components/StudyRoom/ConfirmComment/ConfirmComment";
+import ConfirmEmoji from "@/components/StudyRoom/ConfirmEmoji/ConfirmEmoji";
 import Image from "next/image";
 import UserImg from "/public/img/img-user-profile.png";
 
