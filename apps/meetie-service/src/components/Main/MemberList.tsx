@@ -1,7 +1,7 @@
 import Image from "next/image";
 import MemberCard from "./MemberCard";
 
-const FilteringMembers = () => {
+const MemberList = () => {
   return (
     <>
       <div className="p-4 w-full grid grid-rows-2 grid-cols-2 gap-2">
@@ -73,4 +73,4 @@ const FilteringMembers = () => {
     </>
   );
 };
-export default FilteringMembers;
+export default MemberList;

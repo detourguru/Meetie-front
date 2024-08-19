@@ -4,7 +4,7 @@ import HashTag from "@/components/Main/HashTag";
 import Filter from "@/components/Main/Filter";
 import { useState } from "react";
 import Image from "next/image";
-import FilteringMembers from "@/components/Main/FilteringMembers";
+import MemberList from "@/components/Main/MemberList";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import CheckBox from "@/components/Main/CheckBox";
@@ -151,7 +151,7 @@ export default function Page() {
                 <div className="p-4 flex justify-end">
                   <PageConter current={1} total={4} />
                 </div>
-                <FilteringMembers />
+                <MemberList />
               </div>
             </div>
           )}

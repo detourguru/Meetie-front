@@ -1,4 +1,9 @@
-const PageConter = ({ current, total }: { current: number; total: number }) => {
+interface PageCounterType {
+  current: number;
+  total: number;
+}
+
+const PageConter = ({ current, total }: PageCounterType) => {
   return (
     <>
       <div>
