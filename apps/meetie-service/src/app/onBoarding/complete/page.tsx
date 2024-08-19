@@ -19,16 +19,25 @@ export default function OnBoardingCompletePage() {
           />
 
           <div className="relative flex justify-center w-full transform animate-tilt">
-            <Image
-              src="/svg/ic-onboarding-complete-front.svg"
-              width={146}
-              height={204}
-              alt="front"
-              className="backdrop-blur-[1.7px]"
-            />
-            <div className="absolute top-0 flex flex-col items-center justify-center pt-11 whitespace-nowrap">
-              {/* TODO: #18 badge icon으로 변경 예정 */}
-              <Image src="/img/img-jake-profile.png" width={48} height={48} alt="profile" />
+            <div className="w-[146px] h-[204px] rounded-lg bg-blue-200" />
+            <div className="absolute top-0 flex flex-col items-center justify-center pt-6 whitespace-nowrap">
+              <div className="relative w-[80px] h-[80px] flex justify-center bg-blue-200">
+                <div className="absolute w-[80px] h-[80px] bg-blue-400 mix-blend-hue z-10" />
+                <Image
+                  src="/svg/ic-badge-nanum-master.svg"
+                  width={76}
+                  height={75}
+                  alt="meetie master"
+                />
+                <Image
+                  src="/img/img-user-profile.png"
+                  width={48}
+                  height={48}
+                  alt="profile"
+                  priority
+                  className="absolute top-[25px] z-20"
+                />
+              </div>
               <p className="text-semibold-14 mt-[6.5px]">김서희님</p>
               <p className="text-semibold-12">디자이너</p>
               <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
