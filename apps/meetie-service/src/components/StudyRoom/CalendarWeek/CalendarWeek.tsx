@@ -29,15 +29,6 @@ const CalendarWeek = () => {
         <p className="px-[13px] py-[8px] bg-[#F4F4F4] border border-[#EAEAEA] rounded-full">8</p>
         <p className="px-[13px] py-[8px] bg-[#F4F4F4] border border-[#EAEAEA] rounded-full">9</p>
       </div>
-      {/* 일정 컴포넌트? */}
-      <div className="flex items-center mt-5">
-        <div className="w-[3px] h-5 mr-2 bg-[#7876E3]"></div>
-        <span>회의</span>
-      </div>
-      <div className="flex items-center mt-4 bg-[#3F3FFF]/10 rounded-md">
-        <div className="w-[3px] h-5 mr-2 bg-[#7876E3]"></div>
-        <span>과제제출</span>
-      </div>
     </section>
   );
 };

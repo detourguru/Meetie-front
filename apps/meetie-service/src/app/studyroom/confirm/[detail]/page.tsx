@@ -1,3 +1,4 @@
+import Header from "@/components/common/Header/Header";
 import ConfirmComment from "@/components/StudyRoom/ConfirmComment/ConfirmComment";
 import ConfirmEmoji from "@/components/StudyRoom/ConfirmEmoji/ConfirmEmoji";
 import Image from "next/image";
@@ -6,12 +7,11 @@ import UserImg from "/public/img/img-user-profile.png";
 export default function ConfirmDetail() {
   return (
     <>
-      <header className="flex items-center justify-between px-4 pt-10 h-[92px] bg-white border-b-2 border-[#DFDFDF]">
-        <Image src="/svg/ic-calendar-back-arrow.svg" alt="icon" width={10} height={18} />
-        <p className="text-bold-18">과제 인증</p>
-        <div></div>
-      </header>
-      <section className="px-4 pt-6 pb-10">
+      <Header>
+        <Header.Title hasButton={true}>과제 인증</Header.Title>
+        <Header.LeftButton />
+      </Header>
+      <section className="px-4 pt-14 pb-10">
         <div className="flex justify-between">
           <div className="flex items-center gap-2">
             <Image src={UserImg} alt="user Imges" width={42} height={42} />
@@ -69,24 +69,24 @@ export default function ConfirmDetail() {
           오전 9:00 ･ 2024.6.4 ･ 14일차 과제
         </span>
       </section>
-      <section className="px-4 pt-3 pb-5">
-        <h4 className="text-semibold-14 text-[#434343]">
-          표정 <span className="text-[#8655FF]">2</span> ･ 댓글
-          <span className="text-[#8655FF]"> 1</span>
-        </h4>
-        <div className="flex gap-2 mt-4">
-          <button>
-            <div className="flex items-center justify-center w-10 h-10 bg-[#F3F3F3] border border-[#ddd] rounded-full">
-              <Image src="/svg/ic-calendar-emoji.svg" alt="icon" width={22} height={22} />
-            </div>
-          </button>
-          <ConfirmEmoji />
+      <section className="mb-[85px]">
+        <div className="px-4 pt-3 pb-5">
+          <h4 className="text-semibold-14 text-[#434343]">
+            표정 <span className="text-[#8655FF]">2</span> ･ 댓글
+            <span className="text-[#8655FF]"> 1</span>
+          </h4>
+          <div className="flex gap-2 mt-4">
+            <button>
+              <div className="flex items-center justify-center w-10 h-10 bg-[#F3F3F3] border border-[#ddd] rounded-full">
+                <Image src="/svg/ic-calendar-emoji.svg" alt="icon" width={22} height={22} />
+              </div>
+            </button>
+            <ConfirmEmoji />
+          </div>
         </div>
+        <ConfirmComment />
       </section>
-      {/* 댓글 */}
-      <ConfirmComment />
-      {/* 댓글남기기 */}
-      <section className="relative flex items-center bg-white px-4 pt-5 pb-6">
+      <section className="fixed w-[375px] bottom-0 flex items-center bg-white px-4 pt-5 pb-6 border-t border-[#EFEFEF]">
         <div className="w-8 h-8 rounded-full mr-[10px]">
           <Image src={UserImg} alt="user image" width={32} height={32} />
         </div>

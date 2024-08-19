@@ -1,9 +1,10 @@
 import CalendarDeadline from "@/components/StudyRoom/CalendarDeadline/CalendarDeadline";
 import CalendarSchedule from "@/components/StudyRoom/CalendarSchedule/CalendarSchedule";
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
+import CalendarCheck from "@/components/StudyRoom/CalendarCheck/CalendarCheck";
 import Image from "next/image";
 
-const Calendar = () => {
+const CalendarTab = () => {
   return (
     <>
       <section className="bg-white">
@@ -14,6 +15,7 @@ const Calendar = () => {
           </span>
         </section>
         <CalendarWeek />
+        <CalendarCheck />
       </section>
       <section className="px-4 pt-[34px]">
         <h4 className="text-bold-18">✍️ 다가오는 일정</h4>
@@ -36,4 +38,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default CalendarTab;
