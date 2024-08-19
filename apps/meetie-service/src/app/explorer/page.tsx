@@ -1,11 +1,11 @@
 "use client";
-import ToggleSwitch from "@/app/components/ToggleSwitch";
-import Badge from "../components/Badge";
-import Filter from "../components/Filter";
-import FilteringStudies from "../components/FilteringStudies";
+import ToggleSwitch from "@/components/Main/ToggleSwitch";
+import Badge from "@/components/Main/Badge";
+import Filter from "@/components/Main/Filter";
+import FilteringStudies from "@/components/Main/FilteringStudies";
 import { useState } from "react";
 import Image from "next/image";
-import FilteringMembers from "../components/FilteringMembers";
+import FilteringMembers from "@/components/Main/FilteringMembers";
 
 function page() {
   const [activeTab, setActiveTab] = useState("study");
