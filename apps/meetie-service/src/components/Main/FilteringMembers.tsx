@@ -1,3 +1,4 @@
+import Image from "next/image";
 import MemberCard from "./MemberCard";
 
 function FilteringMembers() {
@@ -13,7 +14,7 @@ function FilteringMembers() {
       <div className="w-full grid grid-rows-2 grid-cols-2 gap-2">
         <MemberCard>
           <div className="flex justify-center">
-            <img
+            <Image
               className="bg-black rounded-full"
               src="/svg/ic-member.png"
               alt="icon"
@@ -29,7 +30,7 @@ function FilteringMembers() {
         </MemberCard>
         <MemberCard>
           <div className="flex justify-center">
-            <img
+            <Image
               className="bg-black rounded-full"
               src="/svg/ic-member.png"
               alt="icon"
@@ -45,7 +46,7 @@ function FilteringMembers() {
         </MemberCard>
         <MemberCard>
           <div className="flex justify-center">
-            <img
+            <Image
               className="bg-black rounded-full"
               src="/svg/ic-member.png"
               alt="icon"
@@ -61,7 +62,7 @@ function FilteringMembers() {
         </MemberCard>
         <MemberCard>
           <div className="flex justify-center">
-            <img
+            <Image
               className="bg-black rounded-full"
               src="/svg/ic-member.png"
               alt="icon"
