@@ -69,12 +69,12 @@ const BadgeSheet = ({
             <div className="flex flex-col gap-[13px]">
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">500XP 모으기</header>
-                <AchieveProgressBar total={500} achievedCount={200} />
+                <AchieveProgressBar total={500} achievedCount={300} />
               </article>
 
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">피드백 50회 하기</header>
-                <AchieveProgressBar total={50} achievedCount={30} />
+                <AchieveProgressBar total={50} achievedCount={20} />
               </article>
 
               <article className="flex flex-col gap-1.5">
