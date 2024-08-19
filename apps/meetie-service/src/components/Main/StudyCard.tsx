@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function StudyCard() {
+const StudyCard = () => {
   return (
     <div className="mb-4 max-w-full border-2 border-[#F5F5F5] block px-4 py-5 bg-white rounded-lg">
       <div className="flex justify-between">
@@ -39,5 +39,5 @@ function StudyCard() {
       </div>
     </div>
   );
-}
+};
 export default StudyCard;

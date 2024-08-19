@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-function MemberCard({ children }: { children: React.ReactNode }) {
+const MemberCard = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className="p-2 bg-white h-[220px] rounded-lg">
@@ -16,5 +16,5 @@ function MemberCard({ children }: { children: React.ReactNode }) {
       </div>
     </>
   );
-}
+};
 export default MemberCard;

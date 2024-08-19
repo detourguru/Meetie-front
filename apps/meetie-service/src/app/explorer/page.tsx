@@ -6,8 +6,10 @@ import FilteringStudies from "@/components/Main/FilteringStudies";
 import { useState } from "react";
 import Image from "next/image";
 import FilteringMembers from "@/components/Main/FilteringMembers";
+import Gnb from "@/components/common/Gnb/Gnb";
+import Header from "@/components/common/Header/Header";
 
-function Page() {
+export default function Page() {
   const [activeTab, setActiveTab] = useState("study");
   const [filterActive, setFilterActive] = useState(false);
   const isCurrentTabDefault = activeTab === "study" ? true : false;
@@ -25,8 +27,10 @@ function Page() {
       <div className="relative">
         <div>
           <div className="relative p-4">
-            <h1 className="text-bold-18 mb-[14px]">탐색하기</h1>
-            <div className="relative">
+            <Header>
+              <Header.Title>탐색하기</Header.Title>
+            </Header>
+            <div className="mt-10 relative">
               <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <Image src="/svg/ic-search.svg" alt="icon" width={20} height={20} />
               </div>
@@ -143,6 +147,7 @@ function Page() {
             </div>
           )}
         </div>
+        {/* TODO: 공통 컴포넌트로 대체 */}
         <Filter className={filterActive ? "" : "hidden"}>
           <div>
             <h2 className="text-bold-18">필터</h2>
@@ -197,8 +202,10 @@ function Page() {
             </div>
           </div>
         </Filter>
+        <div className="mt-[60px]">
+          <Gnb />
+        </div>
       </div>
     </>
   );
 }
-export default Page;

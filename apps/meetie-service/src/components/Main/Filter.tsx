@@ -1,9 +1,9 @@
 import type { DetailedHTMLProps, HTMLAttributes } from "react";
 
-function Filter({
+const Filter = ({
   children,
   ...rest
-}: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) {
+}: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
   return (
     <>
       <div {...rest}>
@@ -14,5 +14,5 @@ function Filter({
       </div>
     </>
   );
-}
+};
 export default Filter;

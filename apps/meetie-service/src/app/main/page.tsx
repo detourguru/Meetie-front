@@ -5,13 +5,17 @@ import thinkingFace from "../../../public/image/img-thinking_face.png";
 import wavingHand from "../../../public/image/img-waving_hand.png";
 import Link from "next/link";
 import FilteringStudies from "@/components/Main/FilteringStudies";
+import Header from "@/components/common/Header/Header";
 
-export default function Main() {
+export default function Page() {
   return (
     <>
-      <div className="p-4 bg-[#F5F5F5]">
-        {/* 가지고 있는 스터디룸 조회 */}
-        <div>
+      <div className="p-3 bg-[#F5F5F5]">
+        <Header backgroundColor="bg-[#F5F5F5]">
+          <Header.Title>스터디룸</Header.Title>
+          <Header.RightButton icon="svg/ic-header-question.svg" />
+        </Header>
+        <article>
           <div className="flex justify-between mb-[11px]">
             <h1 className="text-bold-18">스터디룸</h1>
             <Image src="/svg/ic-help.svg" alt="icon" width={24} height={24} />
@@ -67,18 +71,20 @@ export default function Main() {
               </div>
             </div>
           </Link>
-        </div>
+        </article>
         {/* 스터디룸 목록 */}
-        <div>
+        <article>
           <h1 className="text-bold-18 mb-5">
             지금 떠오르고 있는
             <br />
             스터디룸
           </h1>
           <FilteringStudies>모집중만 보기</FilteringStudies>
+        </article>
+        <div className="mt-[60px]">
+          <Gnb />
         </div>
       </div>
-      <Gnb />
     </>
   );
 }

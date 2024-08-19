@@ -1,6 +1,6 @@
 import StudyCard from "./StudyCard";
 
-function FilterWithCount({ children }: { children?: React.ReactNode }) {
+const FilteringStudies = ({ children }: { children?: React.ReactNode }) => {
   const isChildrenExist = children === undefined ? false : true;
   const flex = isChildrenExist ? "justify-between" : "justify-end";
   return (
@@ -27,5 +27,5 @@ function FilterWithCount({ children }: { children?: React.ReactNode }) {
       <StudyCard />
     </>
   );
-}
-export default FilterWithCount;
+};
+export default FilteringStudies;

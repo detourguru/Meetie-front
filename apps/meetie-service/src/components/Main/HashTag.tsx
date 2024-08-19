@@ -5,7 +5,7 @@ interface HashTagPropsType extends React.PropsWithChildren {
   className: string;
 }
 
-export default function HashTag({ close, children, ...props }: HashTagPropsType) {
+const HashTag = ({ close, children, ...props }: HashTagPropsType) => {
   const spanStyle = props.className;
   return (
     <span
@@ -23,4 +23,6 @@ export default function HashTag({ close, children, ...props }: HashTagPropsType)
       )}
     </span>
   );
-}
+};
+
+export default HashTag;

@@ -1,7 +1,7 @@
 import Image from "next/image";
 import MemberCard from "./MemberCard";
 
-function FilteringMembers() {
+const FilteringMembers = () => {
   return (
     <>
       <div className={`mb-[27px] flex justify-end`}>
@@ -79,5 +79,5 @@ function FilteringMembers() {
       </div>
     </>
   );
-}
+};
 export default FilteringMembers;

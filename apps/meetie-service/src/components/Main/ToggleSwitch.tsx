@@ -1,4 +1,4 @@
-function ToggleSwitch({ children }: { children: React.ReactNode }) {
+const ToggleSwitch = ({ children }: { children: React.ReactNode }) => {
   {
     /* TODO: 공통 컴포넌트로 대체예정 */
   }
@@ -13,5 +13,5 @@ function ToggleSwitch({ children }: { children: React.ReactNode }) {
       </div>
     </>
   );
-}
+};
 export default ToggleSwitch;
