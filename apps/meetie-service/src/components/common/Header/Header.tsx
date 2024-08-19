@@ -19,6 +19,7 @@ interface HeaderRightButtonProps extends HeaderButtonPropsType {
 
 interface HeaderRightTextButtonProps extends HeaderButtonPropsType {
   isComplete?: boolean;
+  children?: React.ReactNode;
 }
 
 const Header = ({ children, backgroundColor }: HeaderProps) => {
@@ -66,12 +67,20 @@ const HeaderRightText = ({ nowStep }: { nowStep: number }) => {
   );
 };
 
-const HeaderRightTextButton = ({ isComplete, handleButtonClick }: HeaderRightTextButtonProps) => {
+const HeaderRightTextButton = ({
+  isComplete,
+  children,
+  handleButtonClick,
+}: HeaderRightTextButtonProps) => {
   return (
     <button className="absolute right-3" onClick={handleButtonClick}>
-      <p className={`text-medium-14 ${isComplete ? "text-primary-500" : "text-black"}`}>
-        {isComplete ? "완료" : "취소"}
-      </p>
+      {children ? (
+        children
+      ) : (
+        <p className={`text-medium-14 ${isComplete ? "text-primary-500" : "text-black"}`}>
+          {isComplete ? "완료" : "취소"}
+        </p>
+      )}
     </button>
   );
 };
