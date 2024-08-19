@@ -15,7 +15,7 @@ export default function Page() {
       <div className="p-3 bg-[#F5F5F5]">
         <Header backgroundColor="bg-[#F5F5F5]">
           <Header.Title>스터디룸</Header.Title>
-          <Header.RightButton icon="svg/ic-header-question.svg" />
+          <Header.RightButton icon="/svg/ic-header-question.svg" />
         </Header>
         <article>
           <div className="flex justify-between mb-[11px]">
