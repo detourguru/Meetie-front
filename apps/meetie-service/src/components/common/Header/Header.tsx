@@ -33,7 +33,7 @@ const Header = ({ children, backgroundColor }: HeaderProps) => {
 
 const HeaderTitle = ({ children, hasButton }: HeaderProps) => {
   return (
-    <h1 className={`text-bold-18 text-[#212529 ${hasButton ? "mr-0" : "mr-auto"}`}>{children}</h1>
+    <h1 className={`text-bold-18 text-[#212529] ${hasButton ? "mr-0" : "mr-auto"}`}>{children}</h1>
   );
 };
 
