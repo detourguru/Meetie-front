@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
@@ -7,6 +9,8 @@ import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
+import { PATH } from "@/constants/path";
+
 export default function UserProfilePage() {
   return (
     <>
@@ -14,7 +18,9 @@ export default function UserProfilePage() {
         <Header.LeftButton />
         <Header.Title hasButton>오픈 프로필</Header.Title>
         <Header.RightTextButton>
-          <p className="text-medium-14 text-black">수정</p>
+          <Link href={PATH.USER_PROFILE_EDIT(1)}>
+            <p className="text-medium-14 text-black">수정</p>
+          </Link>
         </Header.RightTextButton>
       </Header>
 

@@ -36,7 +36,7 @@ export default function MyPage() {
             <p className="text-bold-20">김서희님</p>
           </div>
         </div>
-        <Link href={PATH.PROFILE} className="self-end">
+        <Link href={PATH.USER_PROFILE(1)} className="self-end">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
             <p className="text-medium-12 text-primary-450">공개용 프로필</p>
           </button>
@@ -74,7 +74,7 @@ export default function MyPage() {
       <Link href={PATH.ABILITY}>
         <section className="flex flex-col gap-7 mt-8 mb-12">
           <div className="flex justify-between items-center px-3.5">
-            <header className="text-bold-18">내 능력 현황</header>
+            <h3 className="text-bold-18">내 능력 현황</h3>
             <Image src="svg/ic-thick-arrow-right.svg" alt="next" width={8} height={14} />
           </div>
           <div className="grid grid-cols-4 px-4">
@@ -160,7 +160,7 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem navigateTo={PATH.PROFILE} title="회원 정보 수정" />
+            <MenuListItem navigateTo={PATH.USER_PROFILE(1)} title="회원 정보 수정" />
             <MenuListItem navigateTo={PATH.PASSWORD} title="비밀번호 설정" />
             <MenuListItem title="마케팅 개인정보 제 3자 제공동의" isToggle={true} />
             <MenuListItem navigateTo={PATH.WITHDRAW} title="회원 탈퇴" />
