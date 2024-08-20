@@ -1,3 +1,8 @@
+// 테스트용
+"use client";
+
+import { useState } from "react";
+
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
 import ProgressBar from "@/components/common/ProgressBar/ProgressBar";
@@ -5,8 +10,14 @@ import CreateStudyFirstStep from "@/components/Study/CreateStudy/CreateStudyFirs
 import CreateStudySecondStep from "@/components/Study/CreateStudy/CreateStudySecondStep";
 
 export default function CreateStudyPage() {
-  const disabled = true;
-  const step = "first";
+  const disabled = false;
+  // 테스트용
+  const [step, setStep] = useState("first");
+
+  // 테스트용
+  const handleTest = () => {
+    step === "first" ? setStep("second") : setStep("first");
+  };
 
   return (
     <>
@@ -28,7 +39,7 @@ export default function CreateStudyPage() {
         <Button variant="outline" size="sm">
           <p className="text-bold-16 text-[#adb5bd]">이전</p>
         </Button>
-        <Button disabled>
+        <Button disabled={disabled} onClick={handleTest}>
           <p className="text-bold-16 text-white">{disabled ? "내용이 부족해요!" : "다음"}</p>
         </Button>
       </div>

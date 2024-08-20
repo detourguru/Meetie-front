@@ -1,4 +1,8 @@
+import Link from "next/link";
+
 import Button from "@/components/common/Button/Button";
+
+import { PATH } from "@/constants/path";
 
 const FooterBtn = () => {
   return (
@@ -10,9 +14,12 @@ const FooterBtn = () => {
           <span className="text-[#707070]">4명</span>
         </p>
       </div>
-      <Button variant="disabled" size="md">
-        <p className="text-bold-16 text-white">아직 대기 인원이 없습니다</p>
-      </Button>
+      {/* // 테스트용 */}
+      <Link href={PATH.STUDY_REQUEST(1)}>
+        <Button variant="disabled" size="md">
+          <p className="text-bold-16 text-white">아직 대기 인원이 없습니다</p>
+        </Button>
+      </Link>
     </div>
   );
 };
