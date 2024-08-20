@@ -1,6 +1,8 @@
-import TagButton from "@/components/common/TagButton/TagButton";
-import { PERIODS_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
+
+import TagButton from "@/components/common/TagButton/TagButton";
+
+import { PERIODS_DATA } from "@/constants/onBoarding";
 
 const FourthStep = () => {
   const [clickedPeriod, setClickedPeriod] = useState<string>("");

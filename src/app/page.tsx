@@ -1,7 +1,9 @@
-import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
-import { PATH } from "@/constants/path";
 import Image from "next/image";
 import Link from "next/link";
+
+import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
+
+import { PATH } from "@/constants/path";
 
 export default function Home() {
   return (

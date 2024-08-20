@@ -1,6 +1,8 @@
-import { BADGE_DATA } from "@/constants/badges";
 import { twJoin } from "tailwind-merge";
+
 import BadgeIcon from "../BadgeIcon/BadgeIcon";
+
+import { BADGE_DATA } from "@/constants/badges";
 
 interface BadgeCardProps {
   level: number;

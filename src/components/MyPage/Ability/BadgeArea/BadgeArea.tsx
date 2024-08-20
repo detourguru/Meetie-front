@@ -1,13 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 
-import type { BadgeType, BadgesType } from "@/types/badge";
-import { useOverlay } from "@/hooks/common/useOverlay";
+import { useState } from "react";
 
 import BadgeIcon from "../../BadgeIcon/BadgeIcon";
 import BadgeSheet from "../BadgeSheet/BadgeSheet";
+
+import { useOverlay } from "@/hooks/common/useOverlay";
+
+import type { BadgeType, BadgesType } from "@/types/badge";
 
 interface BadgeAreaProps {
   badges: BadgesType;

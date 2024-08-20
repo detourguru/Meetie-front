@@ -1,16 +1,16 @@
 "use client";
 
+import { notFound, useParams, useRouter } from "next/navigation";
+
 import Button from "@/components/common/Button/Button";
 import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
 import FourthStep from "@/components/OnBoarding/FourthStep/FourthStep";
 import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
 import ThirdStep from "@/components/OnBoarding/ThirdStep/ThirdStep";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
+
 import { QUESTION_DATA, STEPS_DATA } from "@/constants/onBoarding";
-
 import { PATH } from "@/constants/path";
-
-import { notFound, useParams, useRouter } from "next/navigation";
 
 export default function OnBoardingPage() {
   const navigate = useRouter();

@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 import Button from "@/components/common/Button/Button";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
+
 import { COMPLETE_DATA } from "@/constants/onBoarding";
-import Image from "next/image";
 
 export default function OnBoardingCompletePage() {
   return (

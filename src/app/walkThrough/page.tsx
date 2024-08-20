@@ -1,12 +1,14 @@
 "use client";
 
+import { useState } from "react";
+
 import Button from "@/components/common/Button/Button";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage";
 import MegaPhoneImage from "@/components/WalkThrough/MegaPhoneImage/MegaPhoneImage";
 import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
+
 import { EXPLAIN_DATA } from "@/constants/walkThrough";
-import { useState } from "react";
 
 export default function WalkThroughPage() {
   const [walkThroughNumber, setwalkThroughNumber] = useState(0);

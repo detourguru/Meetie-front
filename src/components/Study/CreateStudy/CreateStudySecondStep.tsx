@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 import Input from "@/components/common/Input/Input";
-import Textarea from "@/components/common/Textarea/Textarea";
 import Tag from "@/components/common/Tag/Tag";
+import Textarea from "@/components/common/Textarea/Textarea";
 
 const CreateStudySecondStep = () => {
   const inputTitleClassName = "text-bold-16 mb-[10px]";

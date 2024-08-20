@@ -1,5 +1,6 @@
-import Button from "@/components/common/Button/Button";
 import Image from "next/image";
+
+import Button from "@/components/common/Button/Button";
 
 export default function ConfirmSuccess() {
   return (

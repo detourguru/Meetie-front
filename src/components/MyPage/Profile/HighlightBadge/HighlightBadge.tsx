@@ -1,5 +1,6 @@
-import { BADGE_DATA } from "@/constants/badges";
 import BadgeIcon from "../../BadgeIcon/BadgeIcon";
+
+import { BADGE_DATA } from "@/constants/badges";
 
 interface HighlightBadgeProps {
   type: string;

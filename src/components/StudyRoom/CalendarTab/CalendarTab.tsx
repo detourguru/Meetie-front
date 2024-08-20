@@ -1,8 +1,9 @@
+import Image from "next/image";
+
+import CalendarCheck from "@/components/StudyRoom/CalendarCheck/CalendarCheck";
 import CalendarDeadline from "@/components/StudyRoom/CalendarDeadline/CalendarDeadline";
 import CalendarSchedule from "@/components/StudyRoom/CalendarSchedule/CalendarSchedule";
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
-import CalendarCheck from "@/components/StudyRoom/CalendarCheck/CalendarCheck";
-import Image from "next/image";
 
 const CalendarTab = () => {
   return (

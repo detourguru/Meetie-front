@@ -1,8 +1,9 @@
+import Image from "next/image";
+
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 // import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
-import Image from "next/image";
 
 export default function StudyRoom() {
   return (

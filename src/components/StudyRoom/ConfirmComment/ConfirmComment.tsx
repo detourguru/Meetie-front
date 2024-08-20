@@ -1,4 +1,5 @@
 import Image from "next/image";
+
 import UserImg from "/public/img/img-user-profile.png";
 
 const ConfirmComment = () => {

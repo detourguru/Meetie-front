@@ -1,8 +1,9 @@
-import ToggleSwitch from "@/components/Study/ToggleSwitch";
 import Image from "next/image";
+
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import ExplorerTab from "@/components/Study/Explorer/ExplorerTab";
+import ToggleSwitch from "@/components/Study/ToggleSwitch";
 
 export default function Page() {
   return (

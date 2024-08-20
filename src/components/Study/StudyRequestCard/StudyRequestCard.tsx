@@ -1,5 +1,5 @@
-import Tag from "@/components/common/Tag/Tag";
 import Avatar from "@/components/common/Avatar/Avatar";
+import Tag from "@/components/common/Tag/Tag";
 
 interface StudyRequestCardProps {
   date: string;

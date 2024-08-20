@@ -1,8 +1,9 @@
-import type { BadgeType } from "@/types/badge";
-
-import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 import BadgeIcon from "../../BadgeIcon/BadgeIcon";
 import AchieveProgressBar from "../AchieveProgressBar/AchieveProgressBar";
+
+import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
+
+import type { BadgeType } from "@/types/badge";
 
 interface BadgeSheetProps {
   isOpen: boolean;

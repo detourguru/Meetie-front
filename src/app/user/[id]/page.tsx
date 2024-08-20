@@ -1,11 +1,11 @@
-import Header from "@/components/common/Header/Header";
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
+import Header from "@/components/common/Header/Header";
 import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
-import TagList from "@/components/Profile/TagList/TagList";
-import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
+import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
+import TagList from "@/components/Profile/TagList/TagList";
 
 export default function UserProfilePage() {
   return (

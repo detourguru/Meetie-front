@@ -1,7 +1,9 @@
-import React from "react";
-import Gnb from "@/components/common/Gnb/Gnb";
 import Image from "next/image";
 import Link from "next/link";
+
+import React from "react";
+
+import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import CheckBox from "@/components/Study/CheckBox";
 import PageConter from "@/components/Study/PageCounter";

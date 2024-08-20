@@ -1,6 +1,8 @@
-import TagButton from "@/components/common/TagButton/TagButton";
-import { STYLES_DATA } from "@/constants/onBoarding";
 import { useState } from "react";
+
+import TagButton from "@/components/common/TagButton/TagButton";
+
+import { STYLES_DATA } from "@/constants/onBoarding";
 
 const ThirdStep = () => {
   const [clickedStyle, setClickedStyle] = useState<string[]>([]);

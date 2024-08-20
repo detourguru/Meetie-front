@@ -1,6 +1,7 @@
+import Image from "next/image";
+
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
 import TaskConfirm from "@/components/StudyRoom/TaskConfirm/TaskConfirm";
-import Image from "next/image";
 
 const TaskTab = () => {
   return (

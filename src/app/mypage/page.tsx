@@ -1,14 +1,16 @@
-import Link from "next/link";
 import Image from "next/image";
-import { PATH } from "@/constants/path";
+import Link from "next/link";
+
+import Gnb from "@/components/common/Gnb/Gnb";
+import Header from "@/components/common/Header/Header";
 import BadgeCard from "@/components/MyPage/BadgeCard/BadgeCard";
+import ClockIcon from "@/components/MyPage/ClockIcon";
 import Divider from "@/components/MyPage/dividers/Divider/Divider";
+import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
-import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
-import ClockIcon from "@/components/MyPage/ClockIcon";
-import Header from "@/components/common/Header/Header";
-import Gnb from "@/components/common/Gnb/Gnb";
+
+import { PATH } from "@/constants/path";
 
 export default function MyPage() {
   return (

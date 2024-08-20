@@ -1,7 +1,8 @@
 "use client";
 
-import Header from "@/components/common/Header/Header";
 import { useRouter } from "next/navigation";
+
+import Header from "@/components/common/Header/Header";
 
 interface HeaderProps {
   title: string;

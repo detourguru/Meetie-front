@@ -1,6 +1,8 @@
-import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 import Image from "next/image";
+
 import { useState } from "react";
+
+import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 
 const FirstStep = () => {
   const [clickedJob, setClickedJob] = useState<string | null>(null);

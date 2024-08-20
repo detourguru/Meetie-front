@@ -1,7 +1,9 @@
+import Image from "next/image";
+
 import Header from "@/components/common/Header/Header";
 import ConfirmComment from "@/components/StudyRoom/ConfirmComment/ConfirmComment";
 import ConfirmEmoji from "@/components/StudyRoom/ConfirmEmoji/ConfirmEmoji";
-import Image from "next/image";
+
 import UserImg from "/public/img/img-user-profile.png";
 
 export default function ConfirmDetail() {

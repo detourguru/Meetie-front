@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
-import Image from "next/image";
+
 import UserImg from "/public/img/img-user-profile.png";
 
 export default function Confirm() {
