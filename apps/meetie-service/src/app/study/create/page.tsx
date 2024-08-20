@@ -4,7 +4,7 @@ import Button from "@/components/common/Button/Button";
 import CreateStudyFirstStep from "@/components/Study/CreateStudy/CreateStudyFirstStep";
 import CreateStudySecondStep from "@/components/Study/CreateStudy/CreateStudySecondStep";
 
-export default function CretaeStudyPage() {
+export default function CreateStudyPage() {
   const disabled = true;
   const step = "first";
 
