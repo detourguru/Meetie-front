@@ -28,7 +28,7 @@ const BadgeSheet = ({
         }}
       >
         <SheetHeader className="items-center justify-center py-[14px] sticky top-0 bg-[#f9f9f9]">
-          <div className="w-[34px] h-[5px] rounded-[2.5px] bg-[#615B86]" />
+          <div className="w-[34px] h-[5px] rounded-[2.5px] bg-[#bfbfc1]" />
         </SheetHeader>
 
         <div className="flex flex-col gap-6 mx-8 pb-5 pt-6">
