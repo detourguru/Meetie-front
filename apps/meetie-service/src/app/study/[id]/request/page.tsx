@@ -13,8 +13,14 @@ export default function StudyRequestPage() {
 
       <div className="w-full h-[1px] bg-gray-250 mt-10" />
 
-      <StudyRequestCard date="2024년 06월 07일" />
-      <StudyRequestCard date="2024년 06월 08일" />
+      <div className="pb-[140px]">
+        <StudyRequestCard date="2024년 06월 07일" />
+        <StudyRequestCard date="2024년 06월 08일" />
+        <StudyRequestCard date="2024년 06월 08일" />
+        <StudyRequestCard date="2024년 06월 08일" />
+        <StudyRequestCard date="2024년 06월 08일" />
+        <StudyRequestCard date="2024년 06월 08일" />
+      </div>
 
       <FooterBtn />
     </>

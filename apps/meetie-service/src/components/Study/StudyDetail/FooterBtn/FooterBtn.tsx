@@ -2,7 +2,7 @@ import Button from "@/components/common/Button/Button";
 
 const FooterBtn = () => {
   return (
-    <div className="fixed bottom-0 bg-white px-4 py-6 flex gap-5 items-center">
+    <div className="fixed bottom-0 bg-white px-4 py-6 flex gap-5 items-center border-t border-[#dddddd]">
       <div className="flex flex-col items-center">
         <p className="text-medium-12 text-blue-300">참여가능인원</p>
         <p className="text-medium-18">
