@@ -1,11 +1,18 @@
+"use client"; // 이후 삭제
+
 import Image from "next/image";
+
+import { useState } from "react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
-// import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
+import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
 export default function StudyRoom() {
+  // 테스트용
+  const [tab, setTab] = useState("calendar");
+
   return (
     <>
       <Header backgroundColor="bg-[#EBE9F5]">
@@ -39,12 +46,27 @@ export default function StudyRoom() {
         </section>
         {/* tab */}
         <div className="h-[46px] grid grid-cols-3 items-center bg-white text-[#82829B] text-medium-16 text-center leading-[46px]">
-          <p className="border-b-2 border-primary-500 text-primary-500">캘린더</p>
-          <p>과제</p>
+          <p
+            className="border-b-2 border-primary-500 text-primary-500"
+            //테스트용
+            onClick={() => setTab("calendar")}
+          >
+            캘린더
+          </p>
+          <p
+            // 테스트용
+            onClick={() => setTab("task")}
+          >
+            과제
+          </p>
           <p>채팅</p>
         </div>
-        {/* <CalendarTab /> */}
-        <TaskTab />
+
+        {/* 테스트용 */}
+        {tab == "calendar" ? <CalendarTab /> : <TaskTab />}
+
+        {/* <CalendarTab />
+        <TaskTab /> */}
       </main>
       <Gnb />
     </>
