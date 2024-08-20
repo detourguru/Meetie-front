@@ -56,7 +56,7 @@ export default function OnBoardingCompletePage() {
           />
         </div>
 
-        <Link href={PATH.STUDY_LIST} className="mt-auto mb-[42px]">
+        <Link href={PATH.STUDY_ROOM_LIST} className="mt-auto mb-[42px]">
           <Button size="xl">
             <span className="text-white text-semibold-16">스터디 찾으러 가기</span>
           </Button>

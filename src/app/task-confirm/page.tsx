@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
+
+import { PATH } from "@/constants/path";
 
 import UserImg from "/public/img/img-user-profile.png";
 
@@ -65,9 +68,11 @@ export default function Confirm() {
           </div>
         </section>
         <section>
-          <Button className="w-full mt-6 mb-3">
-            <span className="text-semibold-16 text-white">인증하기</span>
-          </Button>
+          <Link href={PATH.TASK_CONFIRM_SUCCESS}>
+            <Button className="w-full mt-6 mb-3">
+              <span className="text-semibold-16 text-white">인증하기</span>
+            </Button>
+          </Link>
           <p className="text-regular-14 text-[#82829B] text-center underline">임시 저장</p>
         </section>
       </main>

@@ -14,13 +14,13 @@ const Gnb = () => {
         <Link href={gnbData.link} key={gnbData.text}>
           <div className="flex flex-col items-center">
             <Image
-              src={pathname.startsWith(gnbData.link) ? gnbData.icon : gnbData.disabledIcon}
+              src={pathname.startsWith(gnbData.rootLink) ? gnbData.icon : gnbData.disabledIcon}
               alt="icon"
               width={24}
               height={24}
             />
             <span
-              className={`text-medium-12 ${pathname.startsWith(gnbData.link) ? "text-primary-500" : "text-blue-300"}`}
+              className={`text-medium-12 ${pathname.startsWith(gnbData.rootLink) ? "text-primary-500" : "text-blue-300"}`}
             >
               {gnbData.text}
             </span>

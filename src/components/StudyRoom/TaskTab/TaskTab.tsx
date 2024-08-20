@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
 import TaskConfirm from "@/components/StudyRoom/TaskConfirm/TaskConfirm";
+
+import { PATH } from "@/constants/path";
 
 const TaskTab = () => {
   return (
@@ -29,10 +32,12 @@ const TaskTab = () => {
             #과제 인증을 완료한 팀원들을 확인해 보세요.
           </span>
           <TaskConfirm />
-          <button className="w-full h-11 mt-6 mb-[34px] flex items-center justify-center gap-2 border border-dotted border-[#686868] rounded-lg text-regular-14 text-[#82829B]">
-            <Image src="/svg/ic-confirm-plus.svg" alt="icon" width={20} height={20} />
-            과제 인증하기
-          </button>
+          <Link href={PATH.TASK_CONFIRM}>
+            <button className="w-full h-11 mt-6 mb-[34px] flex items-center justify-center gap-2 border border-dotted border-[#686868] rounded-lg text-regular-14 text-[#82829B]">
+              <Image src="/svg/ic-confirm-plus.svg" alt="icon" width={20} height={20} />
+              과제 인증하기
+            </button>
+          </Link>
         </section>
         <section className="pt-6 pb-20 px-4 border-t-4 border-[#EDEDED]">
           <div className="flex items-center justify-between px-3 py-3 border border-[#DCD8EF] rounded-lg">

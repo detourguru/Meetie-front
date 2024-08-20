@@ -3,9 +3,9 @@ export const PATH = {
 
   LOGIN: "/login",
 
-  WALKTHROUGH: "/walkThrough",
+  WALKTHROUGH: "/walk-through",
 
-  ONBOARDING: (step: string) => `/onBoarding/${step}`,
+  ONBOARDING: (step: string) => `/on-boarding/${step}`,
 
   MYPAGE: "/mypage",
   ABILITY: "/mypage/ability",
@@ -15,11 +15,15 @@ export const PATH = {
   USER_PROFILE: (userId: number) => `/user/${userId}`,
   USER_PROFILE_EDIT: (userId: number) => `/user/${userId}/edit`,
 
-  STUDY_LIST: "/study/list",
-  STUDY_EXPLORER: "/study/explorer",
+  STUDY_ROOM_LIST: "/study-room/list",
+  STUDY_EXPLORER: "/study-explorer",
   STUDY_CREATE: "/study/create",
   STUDY: (studyId: number) => `/study/${studyId}`,
   STUDY_REQUEST: (studyId: number) => `/study/${studyId}/request`,
+
+  TASK_CONFIRM: "/task-confirm",
+  TASK_CONFIRM_SUCCESS: "/task-confirm/success",
+  TASK_CONFIRM_ID: (taskId: number) => `/task-confirm/${taskId}`,
 
   JOINING_STUDY: "/study/joining",
   LAST_STUDY: "/study/last",
