@@ -44,9 +44,9 @@ const CreateStudySecondStep = () => {
         <div>
           <h2 className={inputTitleClassName}>스터디 모집 인원</h2>
           <div className="rounded-lg px-4 py-3 border border-[#c4c4c4] flex justify-between h-[50px]">
-            <Image src="/svg/ic-study-minus.svg" alt="downArrowIcon" width={16} height={16} />
+            <Image src="/svg/ic-study-minus.svg" alt="minusIcon" width={16} height={16} />
             <p>1</p>
-            <Image src="/svg/ic-study-plus.svg" alt="downArrowIcon" width={20} height={20} />
+            <Image src="/svg/ic-study-plus.svg" alt="plusIcon" width={20} height={20} />
           </div>
         </div>
         <span className="text-[#7876e3] text-regular-12">4~8명이 적당한 스터디 인원이에요</span>
