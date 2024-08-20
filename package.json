@@ -1,26 +1,34 @@
 {
-  "name": "meetie-monorepo",
+  "name": "meetie-service",
   "packageManager": "yarn@4.1.1",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "turbo dev",
-    "dev:service": "turbo run dev --filter=meetie-service",
-    "dev:design-system": "turbo run dev --filter=meetie-design-system",
-    "storybook": "turbo run storybook --filter=meetie-design-system",
-    "lint": "turbo lint",
-    "lint:service": "turbo lint --filter=meetie-service",
-    "lint:design-system": "turbo lint --filter=meetie-design-system",
-    "format": "turbo format",
-    "format:service": "turbo format --filter=meetie-service",
-    "format:design-system": "turbo format --filter=meetie-design-system"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
+    "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
+    "format": "prettier --write"
   },
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "next": "14.2.5",
+    "next-themes": "^0.2.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwind-merge": "^2.4.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@types/eslint": "^8.56.2",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.19.0",
     "@typescript-eslint/parser": "^6.19.0",
     "eslint": "^8.57.0",
@@ -28,7 +36,9 @@
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
+    "postcss": "^8",
     "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.1",
     "typescript": "^4.9.5"
   },
   "lint-staged": {

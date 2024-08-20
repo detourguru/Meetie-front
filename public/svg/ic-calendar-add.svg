@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none">
+    <path
+    fill="#000"
+    fill-opacity=".8"
+    fill-rule="evenodd"
+    d="M15.586 6.562c.38 0 .687.308.687.688v17.5a.687.687 0 1 1-1.374 0V7.25c0-.38.307-.688.687-.688Z"
+    clip-rule="evenodd"
+    />
+    <path
+    fill="#000"
+    fill-opacity=".8"
+    fill-rule="evenodd"
+    d="M6.148 16c0-.38.308-.688.688-.688h17.5a.687.687 0 1 1 0 1.376h-17.5A.688.688 0 0 1 6.148 16Z"
+    clip-rule="evenodd"
+    />
+</svg>

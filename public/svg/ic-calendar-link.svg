@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="37" height="39" fill="none">
+    <path
+    stroke="#fff"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="1.769"
+    d="m5.052 25.94.226-.251c-1.24 1.308-3.29 4.695-1.567 7.783 1.573 2.821 5.35 2.966 7.492 2.63a3.29 3.29 0 0 0 1.064-.38l11.695-6.394c.17-.092.334-.197.486-.316 2.911-2.28 3.199-4.558 2.17-7.433"
+    />
+    <rect
+    width="25.43"
+    height="13.129"
+    x="1.179"
+    y=".34"
+    stroke="#fff"
+    stroke-width="1.729"
+    rx="6.564"
+    transform="matrix(.87745 -.47968 .48712 .87333 4.998 14.124)"
+    />
+</svg>
