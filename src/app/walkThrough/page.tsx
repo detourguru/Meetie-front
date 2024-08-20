@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
@@ -8,13 +10,26 @@ import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage"
 import MegaPhoneImage from "@/components/WalkThrough/MegaPhoneImage/MegaPhoneImage";
 import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
 
+import { PATH } from "@/constants/path";
 import { EXPLAIN_DATA } from "@/constants/walkThrough";
 
 export default function WalkThroughPage() {
+  const router = useRouter();
+
   const [walkThroughNumber, setwalkThroughNumber] = useState(0);
 
-  const handleClickNumber = (newNum: number) => {
-    setwalkThroughNumber(newNum);
+  const handleNextButtonClick = () => {
+    if (walkThroughNumber === 2) {
+      router.push(PATH.ONBOARDING("job"));
+
+      return;
+    }
+
+    setwalkThroughNumber((prev) => prev + 1);
+  };
+
+  const handleDotClick = (through: number) => {
+    setwalkThroughNumber(through);
   };
 
   return (
@@ -35,14 +50,14 @@ export default function WalkThroughPage() {
         <div className="flex gap-4 mt-auto mb-[42px]">
           {Array.from({ length: 3 }, (_, index) => (
             <button
-              onClick={() => handleClickNumber(index)}
+              onClick={() => handleDotClick(index)}
               className={`w-[10px] h-[10px] rounded-full ${walkThroughNumber === index ? "bg-primary-400" : "bg-gray-100"}`}
               key={`button${index}`}
             />
           ))}
         </div>
 
-        <Button type="button" size="xl" className="mb-[40px]">
+        <Button type="button" size="xl" className="mb-[40px]" onClick={handleNextButtonClick}>
           <span className="text-white text-semibold-16">나와 비슷한 팀원 찾기</span>
         </Button>
       </article>

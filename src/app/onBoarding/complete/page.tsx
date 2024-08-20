@@ -1,9 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
 import { COMPLETE_DATA } from "@/constants/onBoarding";
+import { PATH } from "@/constants/path";
 
 export default function OnBoardingCompletePage() {
   return (
@@ -54,9 +56,11 @@ export default function OnBoardingCompletePage() {
           />
         </div>
 
-        <Button size="xl" className="mb-[42px] mt-auto">
-          <span className="text-white text-semibold-16">확인하러 가기</span>
-        </Button>
+        <Link href={PATH.STUDY_LIST} className="mt-auto mb-[42px]">
+          <Button size="xl">
+            <span className="text-white text-semibold-16">스터디 찾으러 가기</span>
+          </Button>
+        </Link>
       </article>
     </main>
   );

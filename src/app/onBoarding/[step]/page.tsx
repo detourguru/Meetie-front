@@ -13,19 +13,21 @@ import { QUESTION_DATA, STEPS_DATA } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
 export default function OnBoardingPage() {
-  const navigate = useRouter();
+  const router = useRouter();
   const params = useParams();
   const step = params.step as string;
   const currentStepIndex = STEPS_DATA.indexOf(step);
 
   const handlePrevStep = () => {
-    currentStepIndex === 0 ||
-      navigate.push(`${PATH.ONBOARDING}/${STEPS_DATA[currentStepIndex - 1]}`);
+    currentStepIndex === 0 || router.push(`${PATH.ONBOARDING(STEPS_DATA[currentStepIndex - 1])}`);
   };
 
   const handleNextStep = () => {
-    currentStepIndex === 3 ||
-      navigate.push(`${PATH.ONBOARDING}/${STEPS_DATA[currentStepIndex + 1]}`);
+    currentStepIndex === 3 || router.push(`${PATH.ONBOARDING(STEPS_DATA[currentStepIndex + 1])}`);
+  };
+
+  const handleMoveComplete = () => {
+    router.push(PATH.ONBOARDING("complete"));
   };
 
   if (!STEPS_DATA.includes(step)) {
@@ -62,8 +64,10 @@ export default function OnBoardingPage() {
           <Button variant="outline" size="sm" onClick={handlePrevStep}>
             <span className="text-gray-200 text-bold-16">이전</span>
           </Button>
-          <Button onClick={handleNextStep}>
-            <span className="text-white text-bold-16">다음</span>
+          <Button onClick={currentStepIndex === 3 ? handleMoveComplete : handleNextStep}>
+            <span className="text-white text-bold-16">
+              {currentStepIndex === 3 ? "완료" : "다음"}
+            </span>
           </Button>
         </div>
       </div>
