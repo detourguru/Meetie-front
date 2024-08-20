@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import EvaluationCard from "@/components/MyPage/Profile/EvaluationCard/EvaluationCard";
 import Header from "@/components/common/Header/Header";
 import Divider from "@/components/common/Divider/Divider";
-import StudyExperienceCard from "@/components/MyPage/Profile/StudyExperienceCard/StudyExperienceCard";
+import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import Avatar from "@/components/common/Avatar/Avatar";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import TagList from "@/components/Profile/TagList/TagList";
+import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 
 export default function ProfilePage() {
   return (
@@ -57,36 +57,8 @@ export default function ProfilePage() {
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList isEdit />
       <TagList isEdit />
-
-      <section className="flex flex-col gap-5 mb-10">
-        <div className="flex flex-col gap-2">
-          <p className="text-bold-18 px-4">스터디 경험</p>
-          <p className="px-4 text-regular-16 text-gray-300 mb-3">
-            # 스터디 만근수당 받아야 겠는데요?!
-          </p>
-          <div className="px-4 flex flex-nowrap gap-4 overflow-x-scroll hidden-scrollbar">
-            <StudyExperienceCard
-              attendanceRate={100}
-              satisfaction={80}
-              title={"피그마 초급\n실습 스터디"}
-            />
-            <StudyExperienceCard
-              attendanceRate={100}
-              satisfaction={80}
-              title={"디자인 기획\n실습 스터디"}
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2 px-4">
-          <p className="text-bold-18">받은 스터디 매너 평가</p>
-          <p className="text-regular-16 mb-3 text-gray-300"># 김서희님은 친절왕!</p>
-          <EvaluationCard content="친절하고 열정이 넘쳐요 😘" count={11} />
-          <EvaluationCard content="정보를 잘 공유해줘요 😘" count={8} />
-          <EvaluationCard content="피드백을 구체적으로 잘해줘요 😘" count={2} />
-          <EvaluationCard content="시간 약속을 너무 잘 지켜요 😘" count={5} />
-        </div>
-      </section>
+      <ExperienceList />
+      <EvaluationList />
     </>
   );
 }

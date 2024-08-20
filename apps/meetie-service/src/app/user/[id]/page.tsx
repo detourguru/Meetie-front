@@ -4,6 +4,8 @@ import Divider from "@/components/common/Divider/Divider";
 import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import TagList from "@/components/Profile/TagList/TagList";
+import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
+import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 
 export default function UserProfilePage() {
   return (
@@ -47,6 +49,8 @@ export default function UserProfilePage() {
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
       <TagList />
+      <ExperienceList />
+      <EvaluationList />
     </>
   );
 }
