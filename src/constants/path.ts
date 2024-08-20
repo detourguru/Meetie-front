@@ -14,6 +14,9 @@ export const PATH = {
   WITHDRAW: "/mypage/withdraw",
 
   STUDY_LIST: "/study/list",
+  STUDY_EXPLORER: "/study/explorer",
+  STUDY_CREATE: "/study/create",
+  STUDY: (studyId: number) => `/study/${studyId}`,
   JOINING_STUDY: "/study/joining",
   LAST_STUDY: "/study/last",
   INTEREST: "/study/interested",
