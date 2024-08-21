@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 import { useState } from "react";
 
@@ -10,10 +11,27 @@ import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
 import { PATH } from "@/constants/path";
 
+import { createClient } from "@/utils/supabase/client";
+
 export default function LoginPage() {
+  const supabase = createClient();
+
   const [isCheckedSave, setIsCheckedSave] = useState(false);
 
-  const handleCLickSave = () => {
+  const handleSignInWithKakao = async () => {
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: "kakao",
+      options: {
+        redirectTo: `http://localhost:3000/auth/callback`,
+      },
+    });
+
+    if (error) redirect("/");
+
+    redirect(data.url);
+  };
+
+  const handleClickSave = () => {
     setIsCheckedSave((prev) => !prev);
   };
 
@@ -52,7 +70,7 @@ export default function LoginPage() {
           </div>
 
           <button
-            onClick={() => handleCLickSave()}
+            onClick={handleClickSave}
             type="button"
             className="flex items-center text-gray-200 text-medium-14 gap-[6px]"
           >
@@ -76,7 +94,9 @@ export default function LoginPage() {
 
         <div className="flex justify-center items-center gap-[23px]">
           <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
-          <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
+          <button onClick={handleSignInWithKakao}>
+            <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
+          </button>
           <Image src="/svg/ic-login-google.svg" width={46} height={46} alt="google_login" />
         </div>
       </article>
