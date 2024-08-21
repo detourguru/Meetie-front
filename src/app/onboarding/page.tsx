@@ -17,8 +17,22 @@ import { PATH } from "@/constants/path";
 export default function OnBoardingPage() {
   const router = useRouter();
   const [step, setStep] = useState("job");
+  const [job, setJob] = useState<string | null>(null);
 
   const currentStepIndex = STEPS_DATA.indexOf(step);
+
+  const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setJob(e.currentTarget.value);
+  };
+
+  const buttonVariant = () => {
+    if (currentStepIndex === 0 && job === null) {
+      return "disabled";
+    }
+    // else if(currentStepIndex === 1)
+
+    return "default";
+  };
 
   const handlePrevStep = () => {
     currentStepIndex === 0 || setStep(STEPS_DATA[currentStepIndex - 1]);
@@ -44,7 +58,7 @@ export default function OnBoardingPage() {
       <article className="flex flex-col px-4 h-max">
         <OnBoardingTitle textData={QUESTION_DATA} index={0} subTextColor="text-gray-200" />
 
-        {currentStepIndex === 0 && <FirstStep />}
+        {currentStepIndex === 0 && <FirstStep clickedJob={job} handleClickJob={handleClickJob} />}
         {currentStepIndex === 1 && <SecondStep />}
         {currentStepIndex === 2 && <ThirdStep />}
         {currentStepIndex === 3 && <FourthStep />}
@@ -58,7 +72,10 @@ export default function OnBoardingPage() {
           <Button variant="outline" size="sm" onClick={handlePrevStep}>
             <span className="text-gray-200 text-bold-16">이전</span>
           </Button>
-          <Button onClick={currentStepIndex === 3 ? handleMoveComplete : handleNextStep}>
+          <Button
+            variant={buttonVariant()}
+            onClick={currentStepIndex === 3 ? handleMoveComplete : handleNextStep}
+          >
             <span className="text-white text-bold-16">
               {currentStepIndex === 3 ? "완료" : "다음"}
             </span>
