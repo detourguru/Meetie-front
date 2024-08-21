@@ -18,6 +18,7 @@ export default function ProfilePage() {
     introduce:
       "안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅🔥",
     profileImage: "",
+    badge: "",
   });
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +41,13 @@ export default function ProfilePage() {
     setProfilForm({
       ...profileForm,
       [name]: value,
+    });
+  };
+
+  const handleClickBadge = (badge: string) => {
+    setProfilForm({
+      ...profileForm,
+      badge,
     });
   };
 
@@ -100,7 +108,7 @@ export default function ProfilePage() {
       </section>
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
-      <BadgeList isEdit />
+      <BadgeList isEdit selected={profileForm.badge} handleClick={handleClickBadge} />
       <TagList isEdit />
       <ExperienceList />
       <EvaluationList />

@@ -1,14 +1,16 @@
-import BadgeIcon from "../../BadgeIcon/BadgeIcon";
+"use client";
 
 import { BADGE_DATA } from "@/constants/badges";
+import BadgeIcon from "../../BadgeIcon/BadgeIcon";
 
 interface HighlightBadgeProps {
   type: string;
   level: number;
   selected?: boolean;
+  handleClick?: (badge: string) => void;
 }
 
-const HighlightBadge = ({ level, type, selected }: HighlightBadgeProps) => {
+const HighlightBadge = ({ level, type, selected, handleClick }: HighlightBadgeProps) => {
   const widthAndHeight = level === 1 ? 61 : 73;
   const badge = BADGE_DATA.find((badges) => badges.type === type)?.badges.find(
     (badge) => badge.level === level,
@@ -17,6 +19,7 @@ const HighlightBadge = ({ level, type, selected }: HighlightBadgeProps) => {
   return (
     <div
       className={`flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 rounded-lg bg-primary-50 ${selected ? "border-primary-450" : "border-primary-200"}`}
+      onClick={() => handleClick && handleClick(type)}
     >
       <div className="w-[73px]">
         <BadgeIcon
