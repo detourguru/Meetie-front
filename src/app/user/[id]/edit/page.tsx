@@ -31,9 +31,11 @@ export default function ProfilePage() {
   });
 
   const handleAddTag = (tag: string) => {
+    const tagSet = new Set([...profileForm.tags, tag]);
+
     setProfilForm({
       ...profileForm,
-      tags: [...profileForm.tags, tag],
+      tags: [...Array.from(tagSet)],
     });
   };
 
