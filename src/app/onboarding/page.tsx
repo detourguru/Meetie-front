@@ -27,26 +27,6 @@ export default function OnBoardingPage() {
   // TODO: 로그인 기능 추가 후 해당 유저 정보로 수정
   const name = "유의진";
 
-  const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setJob(e.currentTarget.value);
-  };
-
-  const handleClickPurpose = (newPurpose: string) => {
-    purpose.includes(newPurpose)
-      ? setPurpose((prevs) => prevs.filter((prev) => prev !== newPurpose))
-      : setPurpose((prev) => [...prev, newPurpose]);
-  };
-
-  const handleClickStyle = (newStyle: string) => {
-    style.includes(newStyle)
-      ? setStyle((prevs) => prevs.filter((prev) => prev !== newStyle))
-      : setStyle((prev) => [...prev, newStyle]);
-  };
-
-  const handleClickPeriod = (newPeriod: string) => {
-    period !== newPeriod ? setPeriod(newPeriod) : setPeriod("");
-  };
-
   const buttonVariant = () => {
     if (currentStepIndex === 0 && !job) {
       return "disabled";
@@ -78,6 +58,7 @@ export default function OnBoardingPage() {
       return;
     }
     const data = { job, purpose, style, period };
+    console.log(data);
 
     try {
       const response = await fetch("/api/onboarding", {
@@ -116,16 +97,10 @@ export default function OnBoardingPage() {
           subTextColor="text-gray-200"
         />
 
-        {currentStepIndex === 0 && <FirstStep clickedJob={job} handleClickJob={handleClickJob} />}
-        {currentStepIndex === 1 && (
-          <SecondStep clickedPurpose={purpose} handleClickPurpose={handleClickPurpose} />
-        )}
-        {currentStepIndex === 2 && (
-          <ThirdStep clickedStyle={style} handleClickStyle={handleClickStyle} />
-        )}
-        {currentStepIndex === 3 && (
-          <FourthStep clickedPeriod={period} handleClickPeriod={handleClickPeriod} />
-        )}
+        {currentStepIndex === 0 && <FirstStep clickedJob={job} setJob={setJob} />}
+        {currentStepIndex === 1 && <SecondStep clickedPurpose={purpose} setPurpose={setPurpose} />}
+        {currentStepIndex === 2 && <ThirdStep clickedStyle={style} setStyle={setStyle} />}
+        {currentStepIndex === 3 && <FourthStep clickedPeriod={period} setPeriod={setPeriod} />}
       </article>
 
       <div className="mt-auto px-4 pb-[42px]">

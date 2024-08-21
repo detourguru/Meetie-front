@@ -1,13 +1,21 @@
+import type { Dispatch, SetStateAction } from "react";
+
 import TagButton from "@/components/common/TagButton/TagButton";
 
 import { STYLES_DATA } from "@/constants/onBoarding";
 
 interface ThirdStepProp {
   clickedStyle: string[];
-  handleClickStyle: (newStyle: string) => void;
+  setStyle: Dispatch<SetStateAction<string[]>>;
 }
 
-const ThirdStep = ({ clickedStyle, handleClickStyle }: ThirdStepProp) => {
+const ThirdStep = ({ clickedStyle, setStyle }: ThirdStepProp) => {
+  const handleClickStyle = (newStyle: string) => {
+    clickedStyle.includes(newStyle)
+      ? setStyle((prevs) => prevs.filter((prev) => prev !== newStyle))
+      : setStyle((prev) => [...prev, newStyle]);
+  };
+
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex flex-wrap pt-[60px] gap-2">

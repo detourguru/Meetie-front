@@ -1,13 +1,19 @@
 import Image from "next/image";
 
+import type { Dispatch, SetStateAction } from "react";
+
 import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 
 interface FirstStepProp {
   clickedJob: string;
-  handleClickJob: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  setJob: Dispatch<SetStateAction<string>>;
 }
 
-const FirstStep = ({ clickedJob, handleClickJob }: FirstStepProp) => {
+const FirstStep = ({ clickedJob, setJob }: FirstStepProp) => {
+  const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    setJob(e.currentTarget.value);
+  };
+
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex justify-center items-center w-full gap-[8px] pt-[60px]">
