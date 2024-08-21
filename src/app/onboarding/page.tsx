@@ -18,6 +18,9 @@ export default function OnBoardingPage() {
   const router = useRouter();
   const [step, setStep] = useState("job");
   const [job, setJob] = useState<string | null>(null);
+  const [purpose, setPurpose] = useState<string[]>([]);
+  const [style, setStyle] = useState<string[]>([]);
+  const [period, setPeriod] = useState<string | null>(null);
 
   const currentStepIndex = STEPS_DATA.indexOf(step);
 
@@ -25,11 +28,32 @@ export default function OnBoardingPage() {
     setJob(e.currentTarget.value);
   };
 
+  const handleClickPurpose = (newPurpose: string) => {
+    purpose.includes(newPurpose)
+      ? setPurpose((prevs) => prevs.filter((prev) => prev !== newPurpose))
+      : setPurpose((prev) => [...prev, newPurpose]);
+  };
+
+  const handleClickStyle = (newStyle: string) => {
+    style.includes(newStyle)
+      ? setStyle((prevs) => prevs.filter((prev) => prev !== newStyle))
+      : setStyle((prev) => [...prev, newStyle]);
+  };
+
+  const handleClickPeriod = (newPeriod: string) => {
+    period !== newPeriod ? setPeriod(newPeriod) : setPeriod(null);
+  };
+
   const buttonVariant = () => {
     if (currentStepIndex === 0 && job === null) {
       return "disabled";
+    } else if (currentStepIndex === 1 && purpose.length === 0) {
+      return "disabled";
+    } else if (currentStepIndex === 2 && style.length === 0) {
+      return "disabled";
+    } else if (currentStepIndex === 3 && period === null) {
+      return "disabled";
     }
-    // else if(currentStepIndex === 1)
 
     return "default";
   };
@@ -59,9 +83,15 @@ export default function OnBoardingPage() {
         <OnBoardingTitle textData={QUESTION_DATA} index={0} subTextColor="text-gray-200" />
 
         {currentStepIndex === 0 && <FirstStep clickedJob={job} handleClickJob={handleClickJob} />}
-        {currentStepIndex === 1 && <SecondStep />}
-        {currentStepIndex === 2 && <ThirdStep />}
-        {currentStepIndex === 3 && <FourthStep />}
+        {currentStepIndex === 1 && (
+          <SecondStep clickedPurpose={purpose} handleClickPurpose={handleClickPurpose} />
+        )}
+        {currentStepIndex === 2 && (
+          <ThirdStep clickedStyle={style} handleClickStyle={handleClickStyle} />
+        )}
+        {currentStepIndex === 3 && (
+          <FourthStep clickedPeriod={period} handleClickPeriod={handleClickPeriod} />
+        )}
       </article>
 
       <div className="mt-auto px-4 pb-[42px]">

@@ -1,18 +1,13 @@
-import { useState } from "react";
-
 import TagButton from "@/components/common/TagButton/TagButton";
 
 import { PURPOSES_DATA } from "@/constants/onBoarding";
 
-const SecondStep = () => {
-  const [clickedPurpose, setClickedPurpose] = useState<string[]>([]);
+interface SecondStepProp {
+  clickedPurpose: string[];
+  handleClickPurpose: (newPurpose: string) => void;
+}
 
-  const handleClickPurpose = (newPurpose: string) => {
-    clickedPurpose.includes(newPurpose)
-      ? setClickedPurpose((prevs) => prevs.filter((prev) => prev !== newPurpose))
-      : setClickedPurpose((prev) => [...prev, newPurpose]);
-  };
-
+const SecondStep = ({ clickedPurpose, handleClickPurpose }: SecondStepProp) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">

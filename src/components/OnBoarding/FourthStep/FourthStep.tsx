@@ -1,16 +1,13 @@
-import { useState } from "react";
-
 import TagButton from "@/components/common/TagButton/TagButton";
 
 import { PERIODS_DATA } from "@/constants/onBoarding";
 
-const FourthStep = () => {
-  const [clickedPeriod, setClickedPeriod] = useState<string>("");
+interface FourthStepProp {
+  clickedPeriod: string | null;
+  handleClickPeriod: (newPeriod: string) => void;
+}
 
-  const handleClickPeriod = (newPeriod: string) => {
-    clickedPeriod !== newPeriod ? setClickedPeriod(newPeriod) : setClickedPeriod("");
-  };
-
+const FourthStep = ({ clickedPeriod, handleClickPeriod }: FourthStepProp) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">
@@ -18,7 +15,7 @@ const FourthStep = () => {
           <TagButton
             key={`period${index}`}
             hasIcon
-            variant={clickedPeriod.includes(period) ? "select" : "default"}
+            variant={clickedPeriod && clickedPeriod.includes(period) ? "select" : "default"}
             onClick={() => handleClickPeriod(period)}
           >
             {period}

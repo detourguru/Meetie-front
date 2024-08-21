@@ -1,18 +1,13 @@
-import { useState } from "react";
-
 import TagButton from "@/components/common/TagButton/TagButton";
 
 import { STYLES_DATA } from "@/constants/onBoarding";
 
-const ThirdStep = () => {
-  const [clickedStyle, setClickedStyle] = useState<string[]>([]);
+interface ThirdStepProp {
+  clickedStyle: string[];
+  handleClickStyle: (newStyle: string) => void;
+}
 
-  const handleClickStyle = (newStyle: string) => {
-    clickedStyle.includes(newStyle)
-      ? setClickedStyle((prevs) => prevs.filter((prev) => prev !== newStyle))
-      : setClickedStyle((prev) => [...prev, newStyle]);
-  };
-
+const ThirdStep = ({ clickedStyle, handleClickStyle }: ThirdStepProp) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex flex-wrap pt-[60px] gap-2">
