@@ -5,7 +5,7 @@ export const PATH = {
 
   WALKTHROUGH: "/walk-through",
 
-  ONBOARDING: (step: string) => `/on-boarding/${step}`,
+  ONBOARDING: (step: string) => `/onboarding/${step}`,
 
   MYPAGE: "/mypage",
   ABILITY: "/mypage/ability",
