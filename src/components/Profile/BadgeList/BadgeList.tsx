@@ -13,7 +13,7 @@ const BadgeList = ({ isEdit, selected, handleClick }: BadgeListProps) => {
       <p className="text-bold-18">{isEdit ? "대표 뱃지 설정" : "하이라이트 뱃지"}</p>
 
       <div className="flex flex-nowrap gap-4 overflow-x-scroll hidden-scrollbar">
-        {/* 뱃지 클릭시 select 변경 기능 state로 구현 */}
+        {/* TODO: 뱃지 달성 조건 확립 후 달성 기준에 따른 레벨 적용 */}
         {BADGE_DATA.map((badge) => (
           <HighlightBadge
             key={badge.type}
