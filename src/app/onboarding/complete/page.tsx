@@ -4,12 +4,26 @@ import Link from "next/link";
 import Button from "@/components/common/Button/Button";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
-import { COMPLETE_DATA } from "@/constants/onBoarding";
+import { COMPLETE_DATA, JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
-export default function OnBoardingCompletePage() {
+export default async function OnBoardingCompletePage() {
   // TODO: 로그인 기능 추가 후 해당 유저 이름으로 변경
   const name = "유의진";
+
+  const response = await fetch("http://localhost:3000/api/onboarding", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+  const result = await response.json();
+
+  // TODO: DB 연결되면 수정 예정
+  const data: { job: string; purpose: string[]; style: string[]; period: string } = result.data;
+  const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.job)];
+  // TODO: 글자 수 길어질 때 어떻게 할지 고민
+  const styles: string = data.style.map((style: string) => style).join("﹒");
 
   return (
     <main className="flex flex-col h-screen">
@@ -36,6 +50,7 @@ export default function OnBoardingCompletePage() {
                   height={75}
                   alt="meetie master"
                 />
+                {/* TODO: 로그인 기능 추가 후 해당 유저 프로필로 변경 */}
                 <Image
                   src="/img/img-user-profile.png"
                   width={48}
@@ -46,8 +61,8 @@ export default function OnBoardingCompletePage() {
                 />
               </div>
               <p className="text-semibold-14 mt-[6.5px]">{name}님</p>
-              <p className="text-semibold-12">디자이너</p>
-              <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
+              <p className="text-semibold-12">{job}</p>
+              <p className="text-regular-12 mt-[19px]">{styles}</p>
             </div>
           </div>
           <Image

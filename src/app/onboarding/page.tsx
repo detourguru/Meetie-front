@@ -60,7 +60,7 @@ export default function OnBoardingPage() {
     const data = { job, purpose, style, period };
 
     try {
-      const response = await fetch("/api/onboarding", {
+      const response = await fetch("http://localhost:3000/api/onboarding", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
