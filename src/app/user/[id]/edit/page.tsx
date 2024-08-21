@@ -12,13 +12,22 @@ import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
+interface ProfileFormType {
+  name: string;
+  introduce: string;
+  profileImage: string;
+  badge: string;
+  tags: string[];
+}
+
 export default function ProfilePage() {
-  const [profileForm, setProfilForm] = useState({
+  const [profileForm, setProfilForm] = useState<ProfileFormType>({
     name: "제이크",
     introduce:
       "안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅🔥",
     profileImage: "",
     badge: "",
+    tags: [],
   });
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,6 +57,13 @@ export default function ProfilePage() {
     setProfilForm({
       ...profileForm,
       badge,
+    });
+  };
+
+  const handleAddTag = (tag: string) => {
+    setProfilForm({
+      ...profileForm,
+      tags: [...profileForm.tags, tag],
     });
   };
 
@@ -109,7 +125,7 @@ export default function ProfilePage() {
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList isEdit selected={profileForm.badge} handleClick={handleClickBadge} />
-      <TagList isEdit />
+      <TagList tags={profileForm.tags} isEdit handleAddTag={handleAddTag} />
       <ExperienceList />
       <EvaluationList />
     </>

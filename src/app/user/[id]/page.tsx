@@ -54,7 +54,7 @@ export default function UserProfilePage() {
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
-      <TagList />
+      <TagList tags={["강의 완강"]} />
       <ExperienceList />
       <EvaluationList />
     </>
