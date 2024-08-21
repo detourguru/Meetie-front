@@ -15,7 +15,8 @@ import TagList from "@/components/Profile/TagList/TagList";
 export default function ProfilePage() {
   const [profileForm, setProfilForm] = useState({
     name: "제이크",
-    introduction: "",
+    introduce:
+      "안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅🔥",
     profileImage: "",
   });
 
@@ -34,7 +35,7 @@ export default function ProfilePage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setProfilForm({
       ...profileForm,
@@ -91,8 +92,8 @@ export default function ProfilePage() {
           <textarea
             id="introduce"
             name="introduce"
-            value="안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고
-            싶습니다 화이팅🔥"
+            value={profileForm.introduce}
+            onChange={handleChange}
             className="border-2 rounded-md border-gray-100 bg-gray-50 text-regular-14 p-4 focus:outline-none"
           />
         </div>
