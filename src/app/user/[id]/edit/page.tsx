@@ -30,19 +30,11 @@ export default function ProfilePage() {
     tags: [],
   });
 
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilForm({
-          ...profileForm,
-          profileImage: reader.result as string,
-        });
-      };
-      reader.readAsDataURL(file);
-    }
+  const handleAddTag = (tag: string) => {
+    setProfilForm({
+      ...profileForm,
+      tags: [...profileForm.tags, tag],
+    });
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -60,11 +52,26 @@ export default function ProfilePage() {
     });
   };
 
-  const handleAddTag = (tag: string) => {
+  const handleDeleteTag = (tag: string) => {
     setProfilForm({
       ...profileForm,
-      tags: [...profileForm.tags, tag],
+      tags: profileForm.tags.filter((t) => t !== tag),
     });
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilForm({
+          ...profileForm,
+          profileImage: reader.result as string,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -124,8 +131,16 @@ export default function ProfilePage() {
       </section>
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
+
       <BadgeList isEdit selected={profileForm.badge} handleClick={handleClickBadge} />
-      <TagList tags={profileForm.tags} isEdit handleAddTag={handleAddTag} />
+
+      <TagList
+        tags={profileForm.tags}
+        isEdit
+        handleAddTag={handleAddTag}
+        handleDeleteTag={handleDeleteTag}
+      />
+
       <ExperienceList />
       <EvaluationList />
     </>
