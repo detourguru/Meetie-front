@@ -27,7 +27,7 @@ export default function WalkThroughPage() {
 
   const handleNextButtonClick = () => {
     if (walkThroughNumber === 2) {
-      router.push(PATH.ONBOARDING("job"));
+      router.push(PATH.ONBOARDING);
 
       return;
     }

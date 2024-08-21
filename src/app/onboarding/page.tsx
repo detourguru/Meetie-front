@@ -1,6 +1,8 @@
 "use client";
 
-import { notFound, useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
+
+import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
 import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
@@ -14,25 +16,21 @@ import { PATH } from "@/constants/path";
 
 export default function OnBoardingPage() {
   const router = useRouter();
-  const params = useParams();
-  const step = params.step as string;
+  const [step, setStep] = useState("job");
+
   const currentStepIndex = STEPS_DATA.indexOf(step);
 
   const handlePrevStep = () => {
-    currentStepIndex === 0 || router.push(`${PATH.ONBOARDING(STEPS_DATA[currentStepIndex - 1])}`);
+    currentStepIndex === 0 || setStep(STEPS_DATA[currentStepIndex - 1]);
   };
 
   const handleNextStep = () => {
-    currentStepIndex === 3 || router.push(`${PATH.ONBOARDING(STEPS_DATA[currentStepIndex + 1])}`);
+    currentStepIndex === 3 || setStep(STEPS_DATA[currentStepIndex + 1]);
   };
 
   const handleMoveComplete = () => {
-    router.push(PATH.ONBOARDING("complete"));
+    router.push(PATH.ONBOARDING_COMPLETE);
   };
-
-  if (!STEPS_DATA.includes(step)) {
-    return notFound();
-  }
 
   return (
     <main className="flex flex-col h-full">
@@ -44,11 +42,7 @@ export default function OnBoardingPage() {
       </div>
 
       <article className="flex flex-col px-4 h-max">
-        <OnBoardingTitle
-          textData={QUESTION_DATA}
-          index={currentStepIndex}
-          subTextColor="text-gray-200"
-        />
+        <OnBoardingTitle textData={QUESTION_DATA} index={0} subTextColor="text-gray-200" />
 
         {currentStepIndex === 0 && <FirstStep />}
         {currentStepIndex === 1 && <SecondStep />}
