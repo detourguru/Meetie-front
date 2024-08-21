@@ -24,6 +24,9 @@ export default function OnBoardingPage() {
 
   const currentStepIndex = STEPS_DATA.indexOf(step);
 
+  // TODO: 로그인 기능 추가 후 해당 유저 정보로 수정
+  const name = "유의진";
+
   const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setJob(e.currentTarget.value);
   };
@@ -84,7 +87,11 @@ export default function OnBoardingPage() {
       </div>
 
       <article className="flex flex-col px-4 h-max">
-        <OnBoardingTitle textData={QUESTION_DATA} index={0} subTextColor="text-gray-200" />
+        <OnBoardingTitle
+          textData={QUESTION_DATA(name)}
+          index={currentStepIndex}
+          subTextColor="text-gray-200"
+        />
 
         {currentStepIndex === 0 && <FirstStep clickedJob={job} handleClickJob={handleClickJob} />}
         {currentStepIndex === 1 && (
