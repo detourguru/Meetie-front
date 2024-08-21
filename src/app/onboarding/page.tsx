@@ -17,10 +17,10 @@ import { PATH } from "@/constants/path";
 export default function OnBoardingPage() {
   const router = useRouter();
   const [step, setStep] = useState("job");
-  const [job, setJob] = useState<string | null>(null);
+  const [job, setJob] = useState<string>("");
   const [purpose, setPurpose] = useState<string[]>([]);
   const [style, setStyle] = useState<string[]>([]);
-  const [period, setPeriod] = useState<string | null>(null);
+  const [period, setPeriod] = useState<string>("");
 
   const currentStepIndex = STEPS_DATA.indexOf(step);
 
@@ -44,17 +44,17 @@ export default function OnBoardingPage() {
   };
 
   const handleClickPeriod = (newPeriod: string) => {
-    period !== newPeriod ? setPeriod(newPeriod) : setPeriod(null);
+    period !== newPeriod ? setPeriod(newPeriod) : setPeriod("");
   };
 
   const buttonVariant = () => {
-    if (currentStepIndex === 0 && job === null) {
+    if (currentStepIndex === 0 && !job) {
       return "disabled";
     } else if (currentStepIndex === 1 && purpose.length === 0) {
       return "disabled";
     } else if (currentStepIndex === 2 && style.length === 0) {
       return "disabled";
-    } else if (currentStepIndex === 3 && period === null) {
+    } else if (currentStepIndex === 3 && !period) {
       return "disabled";
     }
 
@@ -73,11 +73,30 @@ export default function OnBoardingPage() {
     currentStepIndex === 3 || setStep(STEPS_DATA[currentStepIndex + 1]);
   };
 
-  const handleMoveComplete = () => {
+  const handlePostOnboardingData = async () => {
     if (buttonVariant() === "disabled") {
       return;
     }
+    const data = { job, purpose, style, period };
 
+    try {
+      const response = await fetch("/api/onboarding", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        router.push(PATH.ONBOARDING_COMPLETE);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleMoveComplete = () => {
     router.push(PATH.ONBOARDING_COMPLETE);
   };
 
@@ -119,7 +138,7 @@ export default function OnBoardingPage() {
           </Button>
           <Button
             variant={buttonVariant()}
-            onClick={currentStepIndex === 3 ? handleMoveComplete : handleNextStep}
+            onClick={currentStepIndex === 3 ? handlePostOnboardingData : handleNextStep}
           >
             <span className="text-white text-bold-16">
               {currentStepIndex === 3

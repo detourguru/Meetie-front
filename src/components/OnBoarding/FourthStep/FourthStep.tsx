@@ -3,7 +3,7 @@ import TagButton from "@/components/common/TagButton/TagButton";
 import { PERIODS_DATA } from "@/constants/onBoarding";
 
 interface FourthStepProp {
-  clickedPeriod: string | null;
+  clickedPeriod: string;
   handleClickPeriod: (newPeriod: string) => void;
 }
 

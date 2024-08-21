@@ -3,7 +3,7 @@ import Image from "next/image";
 import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 
 interface FirstStepProp {
-  clickedJob: string | null;
+  clickedJob: string;
   handleClickJob: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
