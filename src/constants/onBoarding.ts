@@ -48,9 +48,9 @@ export const STYLES_DATA = [
 export const PERIODS_DATA = ["1개월 이내", "1개월 ~ 3개월", "3개월 ~ 6개월", "6개월 이상"];
 
 // complete
-export const COMPLETE_DATA = [
+export const COMPLETE_DATA = (name: string) => [
   {
-    TITLE: { FIRST: "김서희님의", SECOND: "공개 프로필이 생성되었어요 👏" },
+    TITLE: { FIRST: `${name}님의`, SECOND: "공개 프로필이 생성되었어요 👏" },
     SUBTEXT: ["나와 딱 맞는 스터디를 찾으러 떠나볼까요?"],
   },
 ];

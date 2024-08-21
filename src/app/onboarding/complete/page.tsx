@@ -8,10 +8,13 @@ import { COMPLETE_DATA } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
 export default function OnBoardingCompletePage() {
+  // TODO: 로그인 기능 추가 후 해당 유저 이름으로 변경
+  const name = "유의진";
+
   return (
     <main className="flex flex-col h-screen">
       <article className="flex flex-col items-center w-full h-full px-5">
-        <OnBoardingTitle textData={COMPLETE_DATA} index={0} subTextColor="text-gray-200" />
+        <OnBoardingTitle textData={COMPLETE_DATA(name)} index={0} subTextColor="text-gray-200" />
 
         <div className="relative w-[150px] mt-[77px]">
           <Image
@@ -42,7 +45,7 @@ export default function OnBoardingCompletePage() {
                   className="absolute top-[25px] z-20"
                 />
               </div>
-              <p className="text-semibold-14 mt-[6.5px]">김서희님</p>
+              <p className="text-semibold-14 mt-[6.5px]">{name}님</p>
               <p className="text-semibold-12">디자이너</p>
               <p className="text-regular-12 mt-[19px]">뉴비, 열정적인, 손이 빠른</p>
             </div>
