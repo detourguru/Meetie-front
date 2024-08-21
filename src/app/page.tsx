@@ -5,14 +5,7 @@ import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
 import { PATH } from "@/constants/path";
 
-import { createClient } from "@/utils/supabase/server";
-
 export default function Home() {
-  const supabase = createClient();
-  (async () => {
-    const user = await supabase.auth.getUser();
-    console.log(user.data);
-  })();
   return (
     <Link href={PATH.LOGIN}>
       <div className="flex flex-col h-screen">
@@ -65,7 +58,6 @@ export default function Home() {
               <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
               <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
               <Image src="/svg/ic-login-google.svg" width={46} height={46} alt="google_login" />
-              <Image src="/svg/ic-login-email.svg" width={46} height={46} alt="email_login" />
             </div>
           </article>
         </main>

@@ -12,14 +12,16 @@ import { PATH } from "@/constants/path";
 
 import { createClient } from "@/utils/supabase/client";
 
+type SocialProviderType = "google" | "kakao";
+
 export default function LoginPage() {
   const supabase = createClient();
 
   const [isCheckedSave, setIsCheckedSave] = useState(false);
 
-  const handleSignInWithKakao = async () => {
+  const handleSignInWithOAuth = async (provider: SocialProviderType) => {
     await supabase.auth.signInWithOAuth({
-      provider: "kakao",
+      provider,
       options: {
         redirectTo: `http://localhost:3000/auth/callback`,
       },
@@ -88,11 +90,21 @@ export default function LoginPage() {
         </p>
 
         <div className="flex justify-center items-center gap-[23px]">
-          <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
-          <button onClick={async () => await handleSignInWithKakao()}>
-            <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
-          </button>
-          <Image src="/svg/ic-login-google.svg" width={46} height={46} alt="google_login" />
+          <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver" />
+          <Image
+            src="/svg/ic-login-kakao.svg"
+            width={46}
+            height={46}
+            alt="kakao_login"
+            onClick={() => handleSignInWithOAuth("kakao")}
+          />
+          <Image
+            src="/svg/ic-login-google.svg"
+            width={46}
+            height={46}
+            alt="google_login"
+            onClick={() => handleSignInWithOAuth("google")}
+          />
         </div>
       </article>
 
