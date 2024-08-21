@@ -13,7 +13,7 @@ export default function Home() {
           <article className="flex flex-col h-full items-center pt-[104px]">
             <div className="flex flex-col items-center gap-2 mb-[60px]">
               <p className="text-semibold-18">같은 목표로 공부중인 유저</p>
-              <p className="text-bold-24 text-primary-400">124,368 명</p>
+              <p className="text-bold-24 text-[#7677FF]">124,368 명</p>
             </div>
 
             <div className="mb-2 w-full h-[303px] relative">
