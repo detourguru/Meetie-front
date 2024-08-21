@@ -63,6 +63,10 @@ export default function OnBoardingPage() {
   };
 
   const handleNextStep = () => {
+    if (buttonVariant() === "disabled") {
+      return;
+    }
+
     currentStepIndex === 3 || setStep(STEPS_DATA[currentStepIndex + 1]);
   };
 
@@ -107,7 +111,11 @@ export default function OnBoardingPage() {
             onClick={currentStepIndex === 3 ? handleMoveComplete : handleNextStep}
           >
             <span className="text-white text-bold-16">
-              {currentStepIndex === 3 ? "완료" : "다음"}
+              {currentStepIndex === 3
+                ? period
+                  ? "작성이 완료되었어요!"
+                  : "이제 마지막이에요"
+                : "다음"}
             </span>
           </Button>
         </div>
