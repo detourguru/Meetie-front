@@ -5,7 +5,14 @@ import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
 import { PATH } from "@/constants/path";
 
+import { createClient } from "@/utils/supabase/server";
+
 export default function Home() {
+  const supabase = createClient();
+  (async () => {
+    const user = await supabase.auth.getUser();
+    console.log(user.data);
+  })();
   return (
     <Link href={PATH.LOGIN}>
       <div className="flex flex-col h-screen">

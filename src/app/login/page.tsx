@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import { useState } from "react";
 
@@ -19,16 +18,12 @@ export default function LoginPage() {
   const [isCheckedSave, setIsCheckedSave] = useState(false);
 
   const handleSignInWithKakao = async () => {
-    const { data, error } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: "kakao",
       options: {
         redirectTo: `http://localhost:3000/auth/callback`,
       },
     });
-
-    if (error) redirect("/");
-
-    redirect(data.url);
   };
 
   const handleClickSave = () => {
@@ -94,7 +89,7 @@ export default function LoginPage() {
 
         <div className="flex justify-center items-center gap-[23px]">
           <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
-          <button onClick={handleSignInWithKakao}>
+          <button onClick={async () => await handleSignInWithKakao()}>
             <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
           </button>
           <Image src="/svg/ic-login-google.svg" width={46} height={46} alt="google_login" />

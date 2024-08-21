@@ -13,7 +13,14 @@ import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
 import { PATH } from "@/constants/path";
 import { EXPLAIN_DATA } from "@/constants/walkThrough";
 
+import { createClient } from "@/utils/supabase/client";
+
 export default function WalkThroughPage() {
+  const supabase = createClient();
+  (async () => {
+    const { data } = await supabase.auth.getUser();
+    console.log(data);
+  })();
   const router = useRouter();
 
   const [walkThroughNumber, setwalkThroughNumber] = useState(0);

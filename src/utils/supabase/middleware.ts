@@ -34,11 +34,18 @@ export async function updateSession(request: NextRequest) {
 
   if (
     !user &&
-    !request.nextUrl.pathname.startsWith("/login") &&
-    !request.nextUrl.pathname.startsWith("/auth")
+    request.nextUrl.pathname !== "/login" &&
+    request.nextUrl.pathname !== "/" &&
+    request.nextUrl.pathname !== "/auth/redirect"
   ) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
+    return NextResponse.redirect(url);
+  }
+
+  if (user && (request.nextUrl.pathname === "/login" || request.nextUrl.pathname === "/")) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/auth/redirect";
     return NextResponse.redirect(url);
   }
 
