@@ -16,7 +16,7 @@ import { PATH } from "@/constants/path";
 
 export default function OnBoardingPage() {
   const router = useRouter();
-  const [step, setStep] = useState("job");
+  const [step, setStep] = useState<"job" | "purpose" | "style" | "period">("job");
   const [job, setJob] = useState<string>("");
   const [purpose, setPurpose] = useState<string[]>([]);
   const [style, setStyle] = useState<string[]>([]);
@@ -28,13 +28,13 @@ export default function OnBoardingPage() {
   const name = "유의진";
 
   const buttonVariant = () => {
-    if (currentStepIndex === 0 && !job) {
+    if (step === "job" && !job) {
       return "disabled";
-    } else if (currentStepIndex === 1 && purpose.length === 0) {
+    } else if (step === "purpose" && purpose.length === 0) {
       return "disabled";
-    } else if (currentStepIndex === 2 && style.length === 0) {
+    } else if (step === "style" && style.length === 0) {
       return "disabled";
-    } else if (currentStepIndex === 3 && !period) {
+    } else if (step === "period" && !period) {
       return "disabled";
     }
 
@@ -42,7 +42,7 @@ export default function OnBoardingPage() {
   };
 
   const handlePrevStep = () => {
-    currentStepIndex === 0 || setStep(STEPS_DATA[currentStepIndex - 1]);
+    step === "job" || setStep(STEPS_DATA[currentStepIndex - 1]);
   };
 
   const handleNextStep = () => {
@@ -50,7 +50,7 @@ export default function OnBoardingPage() {
       return;
     }
 
-    currentStepIndex === 3 || setStep(STEPS_DATA[currentStepIndex + 1]);
+    step === "period" || setStep(STEPS_DATA[currentStepIndex + 1]);
   };
 
   const handlePostOnboardingData = async () => {
@@ -58,7 +58,6 @@ export default function OnBoardingPage() {
       return;
     }
     const data = { job, purpose, style, period };
-    console.log(data);
 
     try {
       const response = await fetch("/api/onboarding", {
@@ -97,10 +96,10 @@ export default function OnBoardingPage() {
           subTextColor="text-gray-200"
         />
 
-        {currentStepIndex === 0 && <FirstStep clickedJob={job} setJob={setJob} />}
-        {currentStepIndex === 1 && <SecondStep clickedPurpose={purpose} setPurpose={setPurpose} />}
-        {currentStepIndex === 2 && <ThirdStep clickedStyle={style} setStyle={setStyle} />}
-        {currentStepIndex === 3 && <FourthStep clickedPeriod={period} setPeriod={setPeriod} />}
+        {step === "job" && <FirstStep clickedJob={job} setJob={setJob} />}
+        {step === "purpose" && <SecondStep clickedPurpose={purpose} setPurpose={setPurpose} />}
+        {step === "style" && <ThirdStep clickedStyle={style} setStyle={setStyle} />}
+        {step === "period" && <FourthStep clickedPeriod={period} setPeriod={setPeriod} />}
       </article>
 
       <div className="mt-auto px-4 pb-[42px]">
@@ -113,14 +112,10 @@ export default function OnBoardingPage() {
           </Button>
           <Button
             variant={buttonVariant()}
-            onClick={currentStepIndex === 3 ? handlePostOnboardingData : handleNextStep}
+            onClick={step === "period" ? handlePostOnboardingData : handleNextStep}
           >
             <span className="text-white text-bold-16">
-              {currentStepIndex === 3
-                ? period
-                  ? "작성이 완료되었어요!"
-                  : "이제 마지막이에요"
-                : "다음"}
+              {step === "period" ? (period ? "작성이 완료되었어요!" : "이제 마지막이에요") : "다음"}
             </span>
           </Button>
         </div>

@@ -18,7 +18,7 @@ export const QUESTION_DATA = (name: string) => [
   },
 ];
 
-export const STEPS_DATA = ["job", "purpose", "style", "period"];
+export const STEPS_DATA = ["job", "purpose", "style", "period"] as const;
 
 // job
 export const JOBS_DATA = ["designer", "developer", "planner"];
