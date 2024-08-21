@@ -39,11 +39,11 @@ export default async function OnBoardingCompletePage() {
             className="absolute top-0"
           />
 
-          <div className="relative flex justify-center w-full transform animate-tilt">
-            <div className="w-[146px] h-[204px] rounded-lg bg-blue-200" />
+          <div className="relative flex justify-center w-full transform animate-tilt backdrop-blur-[2px]">
+            <div className="w-[146px] h-[204px] border border-gray-100 rounded-lg bg-[#FAFAFF]/70" />
             <div className="absolute top-0 flex flex-col items-center justify-center pt-6 whitespace-nowrap">
-              <div className="relative w-[80px] h-[80px] flex justify-center bg-blue-200">
-                <div className="absolute w-[80px] h-[80px] bg-blue-400 mix-blend-hue z-10" />
+              <div className="relative w-[80px] h-[80px] flex justify-center bg-gradient-to-tr from-[#FAFAFF]/60 to-[#FAFAFF]/45">
+                <div className="absolute w-[80px] h-[80px] bg-[#0017E2] mix-blend-hue z-10" />
                 <Image
                   src="/svg/ic-badge-nanum-master.svg"
                   width={76}
@@ -61,7 +61,7 @@ export default async function OnBoardingCompletePage() {
                 />
               </div>
               <p className="text-semibold-14 mt-[6.5px]">{name}님</p>
-              <p className="text-semibold-12">{job}</p>
+              <p className="text-semibold-10">{job}</p>
               <p className="text-regular-12 mt-[19px]">{styles}</p>
             </div>
           </div>
