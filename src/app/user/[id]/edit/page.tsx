@@ -81,6 +81,7 @@ export default function ProfilePage() {
       <Header>
         <Header.LeftButton />
         <Header.Title hasButton>프로필 수정</Header.Title>
+        {/* TODO: 프로필 저장 로직 구현 */}
         <Header.RightTextButton>
           <p className="text-medium-14 text-black">완료</p>
         </Header.RightTextButton>
@@ -143,6 +144,7 @@ export default function ProfilePage() {
         handleDeleteTag={handleDeleteTag}
       />
 
+      {/* TODO: 스터디 공개 여부 구현 */}
       <ExperienceList />
       <EvaluationList />
     </>
