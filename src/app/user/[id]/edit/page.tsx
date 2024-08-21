@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import { useState } from "react";
+import React, { useState } from "react";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
@@ -32,6 +32,14 @@ export default function ProfilePage() {
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setProfilForm({
+      ...profileForm,
+      [name]: value,
+    });
   };
 
   return (
@@ -72,7 +80,8 @@ export default function ProfilePage() {
             id="name"
             name="name"
             type="text"
-            value="제이크"
+            value={profileForm.name}
+            onChange={handleChange}
             className="border-2 rounded-md border-gray-100 bg-gray-50 px-4 py-3 focus:outline-none"
           />
         </div>
