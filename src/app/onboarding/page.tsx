@@ -83,7 +83,7 @@ export default function OnBoardingPage() {
         <p>
           <span className="text-black">{currentStepIndex + 1}</span>/4
         </p>
-        <button>SKIP</button>
+        <button onClick={handleMoveComplete}>SKIP</button>
       </div>
 
       <article className="flex flex-col px-4 h-max">
