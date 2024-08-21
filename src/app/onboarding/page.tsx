@@ -74,6 +74,10 @@ export default function OnBoardingPage() {
   };
 
   const handleMoveComplete = () => {
+    if (buttonVariant() === "disabled") {
+      return;
+    }
+
     router.push(PATH.ONBOARDING_COMPLETE);
   };
 
