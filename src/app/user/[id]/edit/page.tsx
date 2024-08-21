@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+
+import { useState } from "react";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
@@ -9,6 +13,27 @@ import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
 export default function ProfilePage() {
+  const [profileForm, setProfilForm] = useState({
+    name: "제이크",
+    introduction: "",
+    profileImage: "",
+  });
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files && e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setProfilForm({
+          ...profileForm,
+          profileImage: reader.result as string,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <>
       <Header>
@@ -22,10 +47,20 @@ export default function ProfilePage() {
       <article className="pt-[68px] pb-5 px-4">
         <div className="flex justify-center">
           <div className="relative">
-            <Avatar src="/img/img-user-profile.png" size="lg" outline="primary" />
-            <div className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2">
-              <Image src="/svg/ic-camera.svg" alt="camera" width={16} height={16} />
-            </div>
+            <Avatar src={profileForm.profileImage} size="lg" outline="primary" />
+            <label
+              htmlFor="profileImage"
+              className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2"
+            >
+              <Image src={"/svg/ic-camera.svg"} alt="camera" width={16} height={16} />
+            </label>
+            <input
+              type="file"
+              id="profileImage"
+              name="profileImage"
+              className="hidden"
+              onChange={handleImageUpload}
+            />
           </div>
         </div>
       </article>
