@@ -37,6 +37,7 @@ export const MENU_ITEMS_DATA = {
     icon: <Image src="/svg/ic-study-interested.svg" alt="intersted" width={15} height={15} />,
     navigateTo: PATH.STUDY_INTEREST_LIST,
   },
+
   FAQ: {
     title: "FAQ",
     navigateTo: PATH.FAQ,
@@ -49,6 +50,7 @@ export const MENU_ITEMS_DATA = {
     title: "공지사항",
     navigateTo: PATH.NOTI,
   },
+
   PROFIL_EDIT: {
     title: "회원 정보 수정",
   },

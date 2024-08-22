@@ -62,19 +62,19 @@ export default function MyPage() {
         <header className="text-bold-18">내 정보</header>
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
           <InformationCard
-            navigateTo={PATH.STUDY_JOINING_LIST}
             count={2}
             informationData={INFORMATIONS_DATA.STUDY}
+            navigateTo={PATH.STUDY_JOINING_LIST}
           />
           <InformationCard
-            navigateTo={PATH.STUDY_INTEREST_LIST}
             count={9}
             informationData={INFORMATIONS_DATA.SCRAP}
+            navigateTo={PATH.STUDY_INTEREST_LIST}
           />
           <InformationCard
-            navigateTo={PATH.USER_FOLLOW_LIST(1)}
             count={13}
             informationData={INFORMATIONS_DATA.FOLLOW}
+            navigateTo={PATH.USER_FOLLOW_LIST(1)}
           />
         </section>
       </div>
