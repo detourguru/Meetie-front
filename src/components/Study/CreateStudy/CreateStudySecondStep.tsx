@@ -74,7 +74,11 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
       <div>
         <h2 className={inputTitleClassName}>정기 일정</h2>
         <div className="flex gap-3">
-          <Input placeholder="날짜 선택" onClick={openWeekSheet} />
+          <Input
+            placeholder="날짜 선택"
+            onClick={openWeekSheet}
+            value={createStudyForm.week || ""}
+          />
           <Input placeholder="오전 00시 00분" />
         </div>
       </div>
@@ -122,7 +126,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         isEndDate
       />
 
-      <WeekSheet isOpen={isWeekSheetOpen} onInteractOutside={closeWeekSheet} />
+      <WeekSheet
+        isOpen={isWeekSheetOpen}
+        onInteractOutside={closeWeekSheet}
+        createStudyForm={createStudyForm}
+        updateInputValue={updateInputValue}
+      />
     </div>
   );
 };

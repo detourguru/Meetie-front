@@ -18,7 +18,7 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
       curriculum: "",
       startDate: null,
       endDate: null,
-      schedule: "",
+      week: "",
       personCount: 0,
       tagList: [],
     },

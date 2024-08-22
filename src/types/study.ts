@@ -6,7 +6,7 @@ export interface CreateStudyFormRequestType {
   curriculum: string;
   startDate: Date | null;
   endDate: Date | null;
-  schedule: string;
+  week: string;
   personCount: number;
   tagList: string[];
 }
