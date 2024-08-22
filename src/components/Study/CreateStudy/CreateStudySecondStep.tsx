@@ -1,16 +1,16 @@
 import Image from "next/image";
 
-import Calendar from "@/components/common/Calendar/Calendar";
 import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
+import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/CalendarSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 import type { CreateStudyStepProps } from "@/types/study";
 
 const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) => {
-  const { isOpen, handleOpen } = useOverlay();
+  const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
@@ -30,13 +30,13 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
 
       <div className="flex flex-col gap-3">
         <div className="flex gap-3">
-          <div className="w-[50%] relative" onClick={handleOpen}>
+          <div className="w-[50%] relative">
             <h2 className={inputTitleClassName}>시작일</h2>
-            <Input placeholder="날짜 선택" />
+            <Input placeholder="날짜 선택" onClick={handleOpen} />
           </div>
           <div className="w-[50%]">
             <h2 className={inputTitleClassName}>종료일</h2>
-            <Input placeholder="날짜 선택" />
+            <Input placeholder="날짜 선택" onClick={handleOpen} />
           </div>
         </div>
         <span className="text-[#7876e3] text-regular-12">
@@ -82,11 +82,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         </div>
       </div>
 
-      {isOpen && (
-        <div className="absolute top-0 left-0">
-          <Calendar />
-        </div>
-      )}
+      <CalendarSheet isOpen={isOpen} onInteractOutside={handleClose} />
     </div>
   );
 };

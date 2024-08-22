@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/commo
 
 import { cn } from "@/lib/utils";
 
+import type { CommonSheetProps } from "@/types/common";
 import type { CreateStudyFormRequestType } from "@/types/study";
 
 const POSITION_DATA = [
@@ -21,9 +22,7 @@ const POSITION_DATA = [
   },
 ];
 
-interface PositionSheetProps {
-  isOpen: boolean;
-  onInteractOutside?: () => void;
+interface PositionSheetProps extends CommonSheetProps {
   createStudyForm: CreateStudyFormRequestType;
   updateInputValue: <Key extends keyof CreateStudyFormRequestType>(
     key: Key,

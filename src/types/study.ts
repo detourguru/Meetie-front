@@ -10,3 +10,11 @@ export interface CreateStudyFormRequestType {
   personCount: number;
   tagList: string[];
 }
+
+export interface CreateStudyStepProps {
+  createStudyForm: CreateStudyFormRequestType;
+  updateInputValue: <Key extends keyof CreateStudyFormRequestType>(
+    key: Key,
+    value: CreateStudyFormRequestType[Key],
+  ) => void;
+}

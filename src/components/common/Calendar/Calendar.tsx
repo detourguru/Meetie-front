@@ -1,70 +1,71 @@
-import Image from "next/image";
+import { useState, useCallback } from "react";
 
-import { useMemo, Fragment } from "react";
+import { format, addMonths, subMonths, startOfMonth, startOfWeek, addDays } from "date-fns";
 
-import { startOfMonth, addDays, format, getDay, getDaysInMonth } from "date-fns";
-
-import CalendarCard from "@/components/common/Calendar/CalendarCard";
-
-import { useCalendar } from "@/hooks/common/useCalendar";
+import CalendarHeader from "@/components/common/Calendar/CalendarHeader";
 
 const WEEK_DAY = ["일", "월", "화", "수", "목", "금", "토"];
 
-const Calendar = () => {
-  const { currentDate, handlePrevDate, handleNextDate } = useCalendar();
+const Calender = () => {
+  const [currentMonth, setCurrentMonth] = useState(new Date());
 
-  const CalendarDateCards = useMemo(() => {
-    const monthStart = startOfMonth(currentDate);
-    const daysInMonth = getDaysInMonth(currentDate);
-    const firstDayOfMonth = getDay(monthStart);
+  const monthStart = startOfMonth(currentMonth);
+  const startDate = startOfWeek(monthStart);
+  const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
+  const nowMonth = new Date();
 
-    const calendarArray = Array.from({ length: daysInMonth + firstDayOfMonth }, (_, i) => {
-      if (i < firstDayOfMonth) {
-        return "";
-      }
-      return addDays(monthStart, i - firstDayOfMonth);
-    });
+  const handlePrevMonth = useCallback(() => {
+    if (currentMonth <= nowMonth) {
+      setCurrentMonth(nowMonth);
+    } else {
+      setCurrentMonth(subMonths(currentMonth, 1));
+    }
+  }, [currentMonth]);
 
-    return calendarArray.map((day, index) => {
+  const handleNextMonth = useCallback(() => {
+    setCurrentMonth(addMonths(currentMonth, 1));
+  }, [currentMonth]);
+
+  const handleDayText = useCallback(() => {
+    return dayList.map((dayData) => {
       return (
-        <Fragment key={day ? format(day, "yyyymd") : index}>
-          <CalendarCard day={day} />
-        </Fragment>
+        <div
+          key={dayData.toString()}
+          className="flex justify-center items-center w-[44px] h-[44px]"
+          //   css={dayStyle(
+          //     isSameMonth(monthStart, dayData),
+          //     false,
+          //     isSameDay(startDay, dayData),
+          //     isSameDay(endDay, dayData),
+          //   )}
+        >
+          <p className="flex justify-center items-center w-[30px] h-[30px]">
+            {format(dayData, "d")}
+          </p>
+        </div>
       );
     });
-  }, [currentDate]);
+  }, [currentMonth]);
 
   return (
-    <div className="w-[280px] mt-10">
-      <div className="flex items-center justify-between">
-        <p className="text-regular-14">{format(currentDate, "yyyy년 M월")}</p>
-        <div className="flex">
-          <Image
-            src="/svg/ic-calendar-left-arrow.svg"
-            alt="leftArrowIcon"
-            width={20}
-            height={20}
-            onClick={handlePrevDate}
-          />
-          <Image
-            src="/svg/ic-calendar-right-arrow.svg"
-            alt="leftArrowIcon"
-            width={20}
-            height={20}
-            onClick={handleNextDate}
-          />
-        </div>
-      </div>
-      <div className="grid my-auto grid-cols-7">
-        {WEEK_DAY.map((day) => (
-          <div className="flex justify-center items-center" key={day}>
-            {day}
+    <>
+      <CalendarHeader
+        currentMonth={currentMonth}
+        handlePrevMonth={handlePrevMonth}
+        handleNextMonth={handleNextMonth}
+      />
+
+      <div className="grid my-auto grid-cols-7 mx-5">
+        {WEEK_DAY.map((week) => (
+          <div key={week} className="flex items-center justify-center w-[44px] h-[44px]">
+            {week}
           </div>
         ))}
-        {CalendarDateCards}
+
+        {handleDayText()}
       </div>
-    </div>
+    </>
   );
 };
 
-export default Calendar;
+export default Calender;
