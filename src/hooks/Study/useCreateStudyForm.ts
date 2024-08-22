@@ -1,0 +1,49 @@
+import { useState, useCallback } from "react";
+
+import type { CreateStudyFormRequestType } from "@/types/study";
+
+interface UseCreateStudyFormProps {
+  initialData?: CreateStudyFormRequestType;
+}
+
+export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => {
+  const [step, setStep] = useState("first");
+
+  const [createStudyForm, setCreateStudyForm] = useState(
+    initialData ?? {
+      position: [],
+      topic: "",
+      goal: "",
+      introduce: "",
+      curriculum: "",
+      startDate: "",
+      endDate: "",
+      schedule: "",
+      personCount: 0,
+      tagList: [],
+    },
+  );
+
+  const handleMoveStep = (step: "first" | "second") => {
+    setStep(step);
+  };
+
+  const updateInputValue = useCallback(
+    <Key extends keyof CreateStudyFormRequestType>(
+      key: Key,
+      value: CreateStudyFormRequestType[Key],
+    ) => {
+      setCreateStudyForm((prevCreateStudyForm) => {
+        const data = {
+          ...prevCreateStudyForm,
+          [key]: value,
+        };
+
+        return data;
+      });
+    },
+    [],
+  );
+
+  return { step, createStudyForm, updateInputValue, handleMoveStep };
+};
