@@ -20,7 +20,9 @@ export default function Page() {
     <>
       <Header>
         <Header.Title>스터디룸</Header.Title>
-        <Header.RightButton icon="/svg/ic-header-question.svg" />
+        <Tooltip message="가지고 있는 스터디룸을 확인할 수 있습니다.">
+          <Header.RightButton icon="/svg/ic-header-question.svg" />
+        </Tooltip>
       </Header>
       <article className="mx-4">
         <div className="mt-[50px] mb-[32px]">
