@@ -7,7 +7,7 @@ interface UseCreateStudyFormProps {
 }
 
 export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => {
-  const [step, setStep] = useState("first");
+  const [step, setStep] = useState("second");
 
   const [createStudyForm, setCreateStudyForm] = useState(
     initialData ?? {

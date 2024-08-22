@@ -1,12 +1,17 @@
 import Image from "next/image";
 
+import Calendar from "@/components/common/Calendar/Calendar";
 import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
 
+import { useOverlay } from "@/hooks/common/useOverlay";
+
 import type { CreateStudyStepProps } from "@/types/study";
 
 const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) => {
+  const { isOpen, handleOpen } = useOverlay();
+
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
@@ -25,7 +30,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
 
       <div className="flex flex-col gap-3">
         <div className="flex gap-3">
-          <div className="w-[50%]">
+          <div className="w-[50%] relative" onClick={handleOpen}>
             <h2 className={inputTitleClassName}>시작일</h2>
             <Input placeholder="날짜 선택" />
           </div>
@@ -76,6 +81,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
           <Tag text="온라인 강의" />
         </div>
       </div>
+
+      {isOpen && (
+        <div className="absolute top-0 left-0">
+          <Calendar />
+        </div>
+      )}
     </div>
   );
 };
