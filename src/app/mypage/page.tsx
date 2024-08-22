@@ -60,9 +60,20 @@ export default function MyPage() {
       <div className="flex flex-col gap-3 px-4 mt-9">
         <header className="text-bold-18">내 정보</header>
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
-          <InformationCard count={2} iconUrl="/svg/ic-mypage-bookmark.svg" title="스터디" />
-          <InformationCard count={9} iconUrl="/svg/ic-mypage-scrap.svg" title="스크랩" />
           <InformationCard
+            navigateTo={PATH.STUDY_JOINING_LIST}
+            count={2}
+            iconUrl="/svg/ic-mypage-bookmark.svg"
+            title="스터디"
+          />
+          <InformationCard
+            navigateTo={PATH.STUDY_INTEREST_LIST}
+            count={9}
+            iconUrl="/svg/ic-mypage-scrap.svg"
+            title="스크랩"
+          />
+          <InformationCard
+            navigateTo={PATH.USER_FOLLOW_LIST(1)}
             count={13}
             iconUrl="/svg/ic-mypage-study-friends.svg"
             title="스터디 친구"
@@ -94,7 +105,7 @@ export default function MyPage() {
           <header className="text-bold-18">내 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo={PATH.JOINING_STUDY}
+              navigateTo={PATH.STUDY_JOINING_LIST}
               title="참여 중인 스터디"
               icon={<Image src="/svg/ic-joining-study.svg" alt="joning" width={11} height={14} />}
               isPrimary
@@ -102,7 +113,7 @@ export default function MyPage() {
             />
 
             <MenuListItem
-              navigateTo={PATH.LAST_STUDY}
+              navigateTo={PATH.STUDY_LAST_LIST}
               title="지난 스터디"
               icon={<Image src="/svg/ic-last-study.svg" alt="last" width={11} height={10} />}
               studyCount={8}
@@ -117,7 +128,8 @@ export default function MyPage() {
           <header className="text-bold-18">관심 보인 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo={PATH.INTEREST_RECENT_VISIT}
+              // TODO: 최근 방문한 관심 스터디 ID로 수정
+              navigateTo={PATH.STUDY(1)}
               title="최근 방문"
               icon={
                 <Image
@@ -130,7 +142,7 @@ export default function MyPage() {
             />
 
             <MenuListItem
-              navigateTo={PATH.INTEREST}
+              navigateTo={PATH.STUDY_INTEREST_LIST}
               title="관심 스터디"
               icon={
                 <Image src="/svg/ic-study-interested.svg" alt="intersted" width={15} height={15} />
