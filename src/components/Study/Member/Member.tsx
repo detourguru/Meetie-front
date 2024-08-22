@@ -17,7 +17,7 @@ const Member = ({ image, name, field, description }: MemberType) => {
         <div className="flex justify-center">
           <Image
             className="bg-black rounded-full"
-            src="/svg/ic-member.png"
+            src="/svg/ic-member.svg"
             alt="icon"
             width={60}
             height={60}
