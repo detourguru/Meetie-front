@@ -1,12 +1,30 @@
 import Image from "next/image";
 
+import type { ReactNode } from "react";
+import { useState } from "react";
+
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 // import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
+interface TabType {
+  id: string;
+  label: string;
+  content: ReactNode;
+}
+const tabs: TabType[] = [
+  { id: "calTab", label: "캘린더", content: <CalendarTab /> },
+  { id: "taskTab", label: "과제", content: <TaskTab /> },
+  { id: "chatTab", label: "채팅", content: <></> },
+];
 export default function StudyRoom() {
+  const [activeTab, setActiveTab] = useState("calTab");
+  const activeTabClassName = "border-b-2 border-primary-500 text-primary-500";
+  function handleTabClick(tabId: string) {
+    setActiveTab(tabId);
+  }
   return (
     <>
       <Header backgroundColor="bg-[#EBE9F5]">

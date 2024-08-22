@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import CalendarCheck from "@/components/StudyRoom/CalendarCheck/CalendarCheck";
 import CalendarDeadline from "@/components/StudyRoom/CalendarDeadline/CalendarDeadline";
 import CalendarSchedule from "@/components/StudyRoom/CalendarSchedule/CalendarSchedule";
@@ -25,16 +23,7 @@ const CalendarTab = () => {
         </span>
         <CalendarSchedule />
       </section>
-      <section className="px-4 pt-[34px] mb-[60px]">
-        <h4 className="text-bold-18 inline">
-          🚨 마감 직전 과제 <span className="text-[#E12C78]">2</span>
-        </h4>
-        <div className="w-fit flex items-center gap-1 float-right text-semibold-10 text-[#D43477] bg-[#FF2C84]/10 px-2 py-1 rounded-[4px]">
-          <Image src="/svg/ic-calendar-clock.svg" alt="icon" width={11} height={12} />
-          <span>인증 마감까지 ･ 08:23:22</span>
-        </div>
-        <CalendarDeadline />
-      </section>
+      <CalendarDeadline />
     </>
   );
 };
