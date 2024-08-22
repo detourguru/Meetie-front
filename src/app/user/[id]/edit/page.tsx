@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 
-import React, { useCallback, useState } from "react";
-
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
@@ -12,60 +10,10 @@ import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
-interface ProfileFormType {
-  name: string;
-  introduce: string;
-  profileImage: string;
-  badge: string;
-  tags: string[];
-}
-
-export type UpdateProfileFormType = <Key extends keyof ProfileFormType>(
-  key: Key,
-  value: ProfileFormType[Key],
-) => void;
+import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
 export default function ProfilePage() {
-  const [profileForm, setProfilForm] = useState<ProfileFormType>({
-    name: "제이크",
-    introduce:
-      "안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅🔥",
-    profileImage: "/svg/ic-user.svg",
-    badge: "",
-    tags: [],
-  });
-
-  const handleImageUpload = (files: FileList | null): Promise<string> => {
-    return new Promise((resolve) => {
-      const file = files && files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-
-        reader.onload = () => {
-          const result = reader.result as string;
-          resolve(result);
-        };
-
-        reader.onerror = () => {
-          resolve(profileForm.profileImage);
-        };
-      } else {
-        resolve(profileForm.profileImage);
-      }
-    });
-  };
-
-  const updateProfileForm: UpdateProfileFormType = useCallback((key, value) => {
-    setProfilForm((prevProfileForm) => {
-      const data = {
-        ...prevProfileForm,
-        [key]: value,
-      };
-
-      return data;
-    });
-  }, []);
+  const { profileForm, handleImageUpload, updateProfileForm } = useEditProfileForm({});
 
   return (
     <>
@@ -125,7 +73,7 @@ export default function ProfilePage() {
             id="introduce"
             name="introduce"
             value={profileForm.introduce}
-            onChange={(e) => updateProfileForm("name", e.target.value)}
+            onChange={(e) => updateProfileForm("introduce", e.target.value)}
             className="border-2 rounded-md border-gray-100 bg-gray-50 text-regular-14 p-4 focus:outline-none"
           />
         </div>

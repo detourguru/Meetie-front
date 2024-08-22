@@ -2,7 +2,7 @@ import HighlightBadge from "@/components/MyPage/Profile/HighlightBadge/Highlight
 
 import { BADGE_DATA } from "@/constants/badges";
 
-import type { UpdateProfileFormType } from "@/app/user/[id]/edit/page";
+import type { UpdateProfileFormType } from "@/types/profile";
 
 interface BadgeListProps {
   isEdit?: boolean;

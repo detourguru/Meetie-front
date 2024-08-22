@@ -2,7 +2,7 @@ import CreateTagSection from "../CreateTagSection/CreateTagSection";
 
 import ProfileTag from "@/components/Profile/ProfileTag/ProfileTag";
 
-import type { UpdateProfileFormType } from "@/app/user/[id]/edit/page";
+import type { UpdateProfileFormType } from "@/types/profile";
 
 interface TagListProps {
   tags: string[];
@@ -20,12 +20,13 @@ const TagList = ({ tags, isEdit, handleChange }: TagListProps) => {
           <ProfileTag
             key={`tag-${index}`}
             title={tag}
-            handleDeleteTag={() =>
+            handleDeleteTag={
               handleChange &&
-              handleChange(
-                "tags",
-                tags.filter((t) => t !== tag),
-              )
+              (() =>
+                handleChange(
+                  "tags",
+                  tags.filter((t) => t !== tag),
+                ))
             }
           />
         ))}

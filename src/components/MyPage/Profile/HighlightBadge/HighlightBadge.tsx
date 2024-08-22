@@ -4,7 +4,7 @@ import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 
 import { BADGE_DATA } from "@/constants/badges";
 
-import type { UpdateProfileFormType } from "@/app/user/[id]/edit/page";
+import type { UpdateProfileFormType } from "@/types/profile";
 
 interface HighlightBadgeProps {
   type: string;
