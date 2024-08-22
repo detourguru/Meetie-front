@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 
 import type { Dispatch, SetStateAction } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from "@/components/common/Button/Button";
 import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
@@ -15,8 +15,12 @@ import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 import { QUESTION_DATA, STEPS_DATA } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
+import { createClient } from "@/utils/supabase/client";
+
 export default function OnBoardingPage() {
   const router = useRouter();
+  const supabase = createClient();
+
   const [step, setStep] = useState<"job" | "purpose" | "style" | "period">("job");
 
   // TODO: 객체화 state 사용, hook으로 분리
@@ -25,7 +29,7 @@ export default function OnBoardingPage() {
   const [style, setStyle] = useState<string[]>([]);
   const [period, setPeriod] = useState<string>("");
 
-  const currentStepIndex = STEPS_DATA.indexOf(step);
+  const [userName, setUserName] = useState("밋티");
 
   // TODO: state 객체화 되면 수정
   const isFilled =
@@ -35,7 +39,7 @@ export default function OnBoardingPage() {
     (step === "period" && period.length !== 0);
 
   // TODO: 로그인 기능 추가 후 해당 유저 정보로 수정
-  const name = "유의진";
+  const currentStepIndex = STEPS_DATA.indexOf(step);
 
   // TODO: state 객체화 되면 수정
   const handleStringClick = (
@@ -89,6 +93,20 @@ export default function OnBoardingPage() {
     router.push(PATH.ONBOARDING_COMPLETE);
   };
 
+  useEffect(() => {
+    (async () => {
+      const user = (await supabase.auth.getUser()).data.user;
+
+      if (!user) {
+        // TODO: 에러 추가
+        return;
+      }
+
+      const { name } = user.user_metadata;
+      setUserName(name);
+    })();
+  }, []);
+
   return (
     <main className="flex flex-col h-full">
       <div className="p-[16px] flex justify-between items-center text-gray-200 text-medium-14">
@@ -100,7 +118,7 @@ export default function OnBoardingPage() {
 
       <article className="flex flex-col px-4 h-max">
         <OnBoardingTitle
-          textData={QUESTION_DATA(name)}
+          textData={QUESTION_DATA(userName)}
           index={currentStepIndex}
           subTextColor="text-gray-200"
         />
