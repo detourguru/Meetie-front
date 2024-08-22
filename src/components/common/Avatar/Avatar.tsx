@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-const avatarVariants = cva("rounded-[100%]", {
+const avatarVariants = cva("rounded-[100%] overflow-hidden", {
   variants: {
     outline: {
       default: "",
@@ -34,7 +34,13 @@ const Avatar = ({ src, className, outline, size, ...props }: AvatarProps) => {
 
   return (
     <div className={cn(avatarVariants({ outline, size, className }))} {...props}>
-      <Image src={src} alt="profileImage" width={newSize} height={newSize} />
+      <Image
+        src={src}
+        alt="profileImage"
+        width={newSize}
+        height={newSize}
+        className="w-full h-full object-cover"
+      />
     </div>
   );
 };

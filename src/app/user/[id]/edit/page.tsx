@@ -29,12 +29,7 @@ export default function ProfilePage() {
       <article className="pt-[68px] pb-5 px-4">
         <div className="flex justify-center">
           <div className="relative">
-            <Avatar
-              src={profileForm.profileImage}
-              size="lg"
-              outline="primary"
-              className="overflow-hidden"
-            />
+            <Avatar src={profileForm.profileImage} size="lg" outline="primary" />
             <label
               htmlFor="profileImage"
               className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2"
