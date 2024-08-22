@@ -4,7 +4,9 @@ import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
 
-const CreateStudySecondStep = () => {
+import type { CreateStudyStepProps } from "@/types/study";
+
+const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) => {
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
@@ -12,7 +14,12 @@ const CreateStudySecondStep = () => {
     <div className="flex flex-col gap-9">
       <div>
         <h2 className={inputTitleClassName}>진행방식과 커리큘럼</h2>
-        <Textarea placeholder="스터디를 설명해보세요." maxLength={300} />
+        <Textarea
+          placeholder="커리큘럼을 입력해주세요."
+          maxLength={300}
+          value={createStudyForm.curriculum}
+          onChange={(e) => updateInputValue("curriculum", e.target.value)}
+        />
         <span className={inputLengthTextClassName}>0/300</span>
       </div>
 

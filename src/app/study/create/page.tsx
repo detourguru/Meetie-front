@@ -41,7 +41,10 @@ export default function CreateStudyPage() {
             updateInputValue={updateInputValue}
           />
         ) : (
-          <CreateStudySecondStep />
+          <CreateStudySecondStep
+            createStudyForm={createStudyForm}
+            updateInputValue={updateInputValue}
+          />
         )}
       </div>
 

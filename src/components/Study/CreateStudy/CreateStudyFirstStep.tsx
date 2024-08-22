@@ -8,17 +8,9 @@ import PositionSheet from "@/components/Study/CreateStudy/PositionSheet/Position
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
-import type { CreateStudyFormRequestType } from "@/types/study";
+import type { CreateStudyStepProps } from "@/types/study";
 
-interface CreateStudyFirstStepProps {
-  createStudyForm: CreateStudyFormRequestType;
-  updateInputValue: <Key extends keyof CreateStudyFormRequestType>(
-    key: Key,
-    value: CreateStudyFormRequestType[Key],
-  ) => void;
-}
-
-const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudyFirstStepProps) => {
+const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
@@ -65,7 +57,7 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
       <div>
         <h2 className={inputTitleClassName}>소개</h2>
         <Textarea
-          placeholder="스터디를 설명해보세요."
+          placeholder="스터디를 소개해보세요."
           maxLength={100}
           value={createStudyForm.introduce}
           onChange={(e) => updateInputValue("introduce", e.target.value)}
