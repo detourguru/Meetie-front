@@ -1,7 +1,7 @@
 import BadgeIcon from "../../BadgeIcon/BadgeIcon";
 import AchieveProgressBar from "../AchieveProgressBar/AchieveProgressBar";
 
-import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/common/Sheet/Sheet";
 
 import type { BadgeType } from "@/types/badge";
 
@@ -23,11 +23,13 @@ const BadgeSheet = ({
   return (
     <Sheet open={isOpen}>
       <SheetContent
+        aria-describedby={undefined}
         className="rounded-tl-lg rounded-tr-lg pb-8 px-1 h-[90%] overflow-scroll hidden-scrollbar"
         onInteractOutside={() => {
           onInteractOutside && onInteractOutside();
         }}
       >
+        <SheetTitle className="hidden" />
         <SheetHeader className="items-center justify-center py-[14px] sticky top-0 bg-[#f9f9f9]">
           <div className="w-[34px] h-[5px] rounded-[2.5px] bg-[#bfbfc1]" />
         </SheetHeader>
