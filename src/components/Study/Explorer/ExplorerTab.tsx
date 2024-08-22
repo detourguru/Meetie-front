@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import CheckBox from "../CheckBox";
-import Filter from "../Filter";
+import FilterSheet from "../FilterSheet";
 import HashTag from "../HashTag";
 import MemberList from "../Member/MemberList";
 import PageConter from "../PageCounter";
@@ -45,7 +45,7 @@ const ExplorerTab = () => {
               <HashTag className="border-gray-100 text-[#82829B]">3-5</HashTag>
               <HashTag className="border-gray-100 text-[#82829B]">#UXUI</HashTag>
             </div>
-            <div className="m-1 w-6 h-6 text-gray-500" onClick={HandleToggleFilterArea}>
+            <div className="m-1 w-6 h-6 text-gray-500" onClick={handleOpen}>
               <Image src="/svg/ic-filter.svg" alt="icon" width={24} height={24} />
             </div>
           </div>
@@ -119,61 +119,7 @@ const ExplorerTab = () => {
           </div>
         </div>
       )}
-      {/* TODO: 공통 컴포넌트로 대체 */}
-      <Filter className={filterActive ? "" : "hidden"}>
-        <div>
-          <h2 className="text-bold-18">필터</h2>
-          <p className="text-regular-16">상세한 필터로 원하는 스터디를 찾아보세요!</p>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            <div className="flex flex-col">
-              <label htmlFor="manufacturer" className="text-stone-600 text-sm font-medium">
-                검색어
-              </label>
-              <input
-                type="manufacturer"
-                id="manufacturer"
-                placeholder="검색어를 입력해주세요"
-                className="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              />
-            </div>
-            <div className="flex flex-col">
-              <label htmlFor="date" className="text-stone-600 text-sm font-medium">
-                스터디 시작 일자
-              </label>
-              <input
-                type="date"
-                id="date"
-                className="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              />
-            </div>
-
-            <div className="flex flex-col">
-              <label htmlFor="status" className="text-stone-600 text-sm font-medium">
-                카테고리
-              </label>
-              <select
-                id="status"
-                className="mt-2 block w-full rounded-md border border-gray-200 px-2 py-2 shadow-sm outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
-              >
-                <option>개발</option>
-                <option>디자인</option>
-                <option>UIUX</option>
-              </select>
-            </div>
-          </div>
-          <div className="mt-6 grid w-full grid-cols-2 justify-end space-x-4 md:flex">
-            <button className="active:scale-95 rounded-lg bg-gray-200 px-8 py-2 font-medium text-white outline-none focus:ring hover:opacity-90">
-              초기화
-            </button>
-            <button
-              onClick={HandleToggleFilterArea}
-              className="active:scale-95 rounded-lg bg-primary-500 px-8 py-2 font-medium text-white outline-none focus:ring hover:opacity-90"
-            >
-              적용
-            </button>
-          </div>
-        </div>
-      </Filter>
+      <FilterSheet isOpen={isOpen} onInteractOutside={handleClose} />
     </>
   );
 };
