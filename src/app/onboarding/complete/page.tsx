@@ -40,11 +40,15 @@ export default function OnBoardingCompletePage() {
         },
       });
       const result = await res.json();
-      const data: { job: string; purpose: string[]; style: string[]; period: string } = result.data;
-      const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.job)];
+      const data: { position: string; styles: string } = result.data;
+
+      // TODO: job -> position 모두 변경 예정
+      const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.position)];
       setJob(job);
       // TODO: 글자 수 길어질 때 어떻게 할지 고민
-      const styles: string = data.style.map((style: string) => style).join("﹒");
+      const styles: string = JSON.parse(data.styles)
+        .map((style: string) => style)
+        .join("﹒");
       setStyles(styles);
       setIsLoading(false);
     })();
@@ -69,6 +73,7 @@ export default function OnBoardingCompletePage() {
               width={146}
               height={204}
               alt="back"
+              priority
               className="absolute top-0"
             />
 

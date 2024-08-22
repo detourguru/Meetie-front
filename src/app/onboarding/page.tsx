@@ -69,7 +69,7 @@ export default function OnBoardingPage() {
   };
 
   const handlePostOnboardingData = async () => {
-    const data = { position: job, purpose, style, period };
+    const data = { position: job, purposes: purpose, styles: style, period };
 
     // TODO: 함수 모듈화
     try {
