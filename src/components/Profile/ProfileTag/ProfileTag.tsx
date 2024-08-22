@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface ProfileTagProps {
   title: string;
-  handleDeleteTag?: (tag: string) => void;
+  handleDeleteTag?: () => void;
 }
 
 const ProfileTag = ({ title, handleDeleteTag }: ProfileTagProps) => {
@@ -10,7 +10,7 @@ const ProfileTag = ({ title, handleDeleteTag }: ProfileTagProps) => {
     <div className={`flex gap-1.5 items-center py-1.5 px-3 border rounded-lg border-gray-200`}>
       <span className="text-regular-16 text-gray-300"># {title}</span>
       {handleDeleteTag && (
-        <button onClick={() => handleDeleteTag(title)}>
+        <button onClick={handleDeleteTag}>
           <Image src="/svg/ic-header-close.svg" alt="close" width={14} height={14} />
         </button>
       )}

@@ -2,24 +2,44 @@ import CreateTagSection from "../CreateTagSection/CreateTagSection";
 
 import ProfileTag from "@/components/Profile/ProfileTag/ProfileTag";
 
+import type { UpdateProfileFormType } from "@/app/user/[id]/edit/page";
+
 interface TagListProps {
   tags: string[];
   isEdit?: boolean;
-  handleAddTag?: (tag: string) => void;
-  handleDeleteTag?: (tag: string) => void;
+  handleChange?: UpdateProfileFormType;
 }
 
-const TagList = ({ tags, isEdit, handleAddTag, handleDeleteTag }: TagListProps) => {
+const TagList = ({ tags, isEdit, handleChange }: TagListProps) => {
   return (
     <div className="flex flex-col gap-2 px-4 mt-8">
       <p className="text-bold-18">스터디 태그 {isEdit && "추가"}</p>
 
       <div className="flex flex-wrap gap-3">
         {tags.map((tag, index) => (
-          <ProfileTag key={`tag-${index}`} title={tag} handleDeleteTag={handleDeleteTag} />
+          <ProfileTag
+            key={`tag-${index}`}
+            title={tag}
+            handleDeleteTag={() =>
+              handleChange &&
+              handleChange(
+                "tags",
+                tags.filter((t) => t !== tag),
+              )
+            }
+          />
         ))}
 
-        {handleAddTag && <CreateTagSection hadleCreateTag={handleAddTag} />}
+        {handleChange && (
+          <CreateTagSection
+            hadleCreateTag={(newTag) =>
+              handleChange(
+                "tags",
+                tags.concat(newTag).filter((t, index) => tags.concat(newTag).indexOf(t) === index),
+              )
+            }
+          />
+        )}
       </div>
     </div>
   );

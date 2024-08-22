@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
@@ -20,6 +20,11 @@ interface ProfileFormType {
   tags: string[];
 }
 
+export type UpdateProfileFormType = <Key extends keyof ProfileFormType>(
+  key: Key,
+  value: ProfileFormType[Key],
+) => void;
+
 export default function ProfilePage() {
   const [profileForm, setProfilForm] = useState<ProfileFormType>({
     name: "제이크",
@@ -30,51 +35,37 @@ export default function ProfilePage() {
     tags: [],
   });
 
-  const handleAddTag = (tag: string) => {
-    const tagSet = new Set([...profileForm.tags, tag]);
+  const handleImageUpload = (files: FileList | null): Promise<string> => {
+    return new Promise((resolve) => {
+      const file = files && files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
 
-    setProfilForm({
-      ...profileForm,
-      tags: [...Array.from(tagSet)],
+        reader.onload = () => {
+          const result = reader.result as string;
+          resolve(result);
+        };
+
+        reader.onerror = () => {
+          resolve("");
+        };
+      } else {
+        resolve("");
+      }
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setProfilForm({
-      ...profileForm,
-      [name]: value,
-    });
-  };
-
-  const handleClickBadge = (badge: string) => {
-    setProfilForm({
-      ...profileForm,
-      badge,
-    });
-  };
-
-  const handleDeleteTag = (tag: string) => {
-    setProfilForm({
-      ...profileForm,
-      tags: profileForm.tags.filter((t) => t !== tag),
-    });
-  };
-
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setProfilForm({
-          ...profileForm,
-          profileImage: reader.result as string,
-        });
+  const updateProfileForm: UpdateProfileFormType = useCallback((key, value) => {
+    setProfilForm((prevProfileForm) => {
+      const data = {
+        ...prevProfileForm,
+        [key]: value,
       };
-      reader.readAsDataURL(file);
-    }
-  };
+
+      return data;
+    });
+  }, []);
 
   return (
     <>
@@ -102,7 +93,9 @@ export default function ProfilePage() {
               id="profileImage"
               name="profileImage"
               className="hidden"
-              onChange={handleImageUpload}
+              onChange={async (e) =>
+                updateProfileForm("profileImage", await handleImageUpload(e.target.files))
+              }
             />
           </div>
         </div>
@@ -116,7 +109,7 @@ export default function ProfilePage() {
             name="name"
             type="text"
             value={profileForm.name}
-            onChange={handleChange}
+            onChange={(e) => updateProfileForm("name", e.target.value)}
             className="border-2 rounded-md border-gray-100 bg-gray-50 px-4 py-3 focus:outline-none"
           />
         </div>
@@ -127,7 +120,7 @@ export default function ProfilePage() {
             id="introduce"
             name="introduce"
             value={profileForm.introduce}
-            onChange={handleChange}
+            onChange={(e) => updateProfileForm("name", e.target.value)}
             className="border-2 rounded-md border-gray-100 bg-gray-50 text-regular-14 p-4 focus:outline-none"
           />
         </div>
@@ -135,14 +128,9 @@ export default function ProfilePage() {
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
 
-      <BadgeList isEdit selected={profileForm.badge} handleClick={handleClickBadge} />
+      <BadgeList isEdit selected={profileForm.badge} handleClick={updateProfileForm} />
 
-      <TagList
-        tags={profileForm.tags}
-        isEdit
-        handleAddTag={handleAddTag}
-        handleDeleteTag={handleDeleteTag}
-      />
+      <TagList tags={profileForm.tags} isEdit handleChange={updateProfileForm} />
 
       {/* TODO: 스터디 공개 여부 구현 */}
       <ExperienceList />

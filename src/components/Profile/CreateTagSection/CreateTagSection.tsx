@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 
 interface CreateTagSectionProps {
-  hadleCreateTag: (tag: string) => void;
+  hadleCreateTag: (newTag: string) => void;
 }
 
 const CreateTagSection = ({ hadleCreateTag }: CreateTagSectionProps) => {

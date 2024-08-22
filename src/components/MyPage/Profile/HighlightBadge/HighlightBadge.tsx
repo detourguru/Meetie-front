@@ -4,11 +4,13 @@ import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 
 import { BADGE_DATA } from "@/constants/badges";
 
+import type { UpdateProfileFormType } from "@/app/user/[id]/edit/page";
+
 interface HighlightBadgeProps {
   type: string;
   level: number;
   selected?: boolean;
-  handleClick?: (badge: string) => void;
+  handleClick?: UpdateProfileFormType;
 }
 
 const HighlightBadge = ({ level, type, selected, handleClick }: HighlightBadgeProps) => {
@@ -20,7 +22,7 @@ const HighlightBadge = ({ level, type, selected, handleClick }: HighlightBadgePr
   return (
     <div
       className={`flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 rounded-lg bg-primary-50 ${selected ? "border-primary-450" : "border-primary-200"}`}
-      onClick={() => handleClick && handleClick(type)}
+      onClick={() => handleClick && handleClick("badge", type)}
     >
       <div className="w-[73px]">
         <BadgeIcon
