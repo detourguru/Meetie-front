@@ -4,6 +4,7 @@ import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
 import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/CalendarSheet";
+import WeekSheet from "@/components/Study/CreateStudy/WeekSheet/WeekSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
@@ -22,6 +23,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
     isOpen: isEndDateCalendarOpen,
     handleOpen: openEndDateCalendar,
     handleClose: closeEndDateCalendar,
+  } = useOverlay();
+
+  const {
+    isOpen: isWeekSheetOpen,
+    handleOpen: openWeekSheet,
+    handleClose: closeWeekSheet,
   } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
@@ -67,7 +74,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
       <div>
         <h2 className={inputTitleClassName}>정기 일정</h2>
         <div className="flex gap-3">
-          <Input placeholder="날짜 선택" />
+          <Input placeholder="날짜 선택" onClick={openWeekSheet} />
           <Input placeholder="오전 00시 00분" />
         </div>
       </div>
@@ -114,6 +121,8 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         updateInputValue={updateInputValue}
         isEndDate
       />
+
+      <WeekSheet isOpen={isWeekSheetOpen} onInteractOutside={closeWeekSheet} />
     </div>
   );
 };
