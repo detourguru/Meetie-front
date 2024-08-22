@@ -12,7 +12,13 @@ const ExperienceCard = ({ attendanceRate, satisfaction, title }: ExperienceCardP
       <div className="flex flex-col gap-2.5">
         <div className="flex justify-between items-start">
           <p className="text-bold-18 whitespace-pre-wrap">{title}</p>
-          <Image src="/svg/ic-unlock.svg" alt="unlock" width={18} height={18} />
+          <Image
+            src="/svg/ic-unlock.svg"
+            alt="unlock"
+            width={18}
+            height={18}
+            className="w-[18px] h-[18px]"
+          />
         </div>
         <div className="flex w-fit rounded-lg py-1 px-2.5 bg-[#9470ED]">
           <span className="text-semibold-12 text-white">만족 점수 {satisfaction}점</span>
