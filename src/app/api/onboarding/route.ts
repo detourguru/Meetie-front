@@ -1,20 +1,28 @@
-let result = {};
-
 import { NextResponse } from "next/server";
+
+import { createClient } from "@/utils/supabase/server";
+
+interface postDataTypes {
+  position: string;
+  purpose: string[];
+  style: string[];
+  period: string;
+}
 
 export async function POST(request: Request) {
   try {
-    const data = await request.json();
+    const supabase = createClient();
+    const postData: postDataTypes = await request.json();
 
-    if (data) {
-      result = data;
-      return new Response(JSON.stringify({ message: "ok", status: 200 }));
+    const { error } = await supabase.from("onboarding").insert([postData]);
+
+    if (!error) {
+      return NextResponse.json({ message: "ok", status: 200 });
     }
 
-    return new Response(JSON.stringify({ message: "error", status: 400 }));
+    return NextResponse.json({ message: "error", status: 400 });
   } catch (err) {
-    // TODO: error 구체화
-    return new Response(JSON.stringify({ message: "error", status: 500 }));
+    return NextResponse.json({ message: "error", status: 500 });
   }
 }
 
@@ -28,11 +36,12 @@ export async function GET() {
     };
 
     // 임시 데이터 반환
-    if (Object.keys(result).length === 0) {
-      return NextResponse.json({ message: "ok", status: 200, data });
-    }
+    return NextResponse.json({ message: "ok", status: 200, data });
+    // if (Object.keys(result).length === 0) {
+    //   return NextResponse.json({ message: "ok", status: 200, data });
+    // }
 
-    return NextResponse.json({ message: "ok", status: 200, data: result });
+    // return NextResponse.json({ message: "ok", status: 200, data: result });
   } catch (error) {
     return NextResponse.json({ message: "error", status: 500 });
   }
