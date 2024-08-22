@@ -10,6 +10,7 @@ import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 
+import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
 
 export default function MyPage() {
@@ -63,20 +64,17 @@ export default function MyPage() {
           <InformationCard
             navigateTo={PATH.STUDY_JOINING_LIST}
             count={2}
-            iconUrl="/svg/ic-mypage-bookmark.svg"
-            title="스터디"
+            informationData={INFORMATIONS_DATA.STUDY}
           />
           <InformationCard
             navigateTo={PATH.STUDY_INTEREST_LIST}
             count={9}
-            iconUrl="/svg/ic-mypage-scrap.svg"
-            title="스크랩"
+            informationData={INFORMATIONS_DATA.SCRAP}
           />
           <InformationCard
             navigateTo={PATH.USER_FOLLOW_LIST(1)}
             count={13}
-            iconUrl="/svg/ic-mypage-study-friends.svg"
-            title="스터디 친구"
+            informationData={INFORMATIONS_DATA.FOLLOW}
           />
         </section>
       </div>
@@ -104,20 +102,9 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">내 스터디</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem
-              navigateTo={PATH.STUDY_JOINING_LIST}
-              title="참여 중인 스터디"
-              icon={<Image src="/svg/ic-joining-study.svg" alt="joning" width={11} height={14} />}
-              isPrimary
-              studyCount={2}
-            />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.JOINING} isPrimary studyCount={2} />
 
-            <MenuListItem
-              navigateTo={PATH.STUDY_LAST_LIST}
-              title="지난 스터디"
-              icon={<Image src="/svg/ic-last-study.svg" alt="last" width={11} height={10} />}
-              studyCount={8}
-            />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.PAST} studyCount={8} />
           </ul>
         </div>
 
@@ -130,25 +117,10 @@ export default function MyPage() {
             <MenuListItem
               // TODO: 최근 방문한 관심 스터디 ID로 수정
               navigateTo={PATH.STUDY(1)}
-              title="최근 방문"
-              icon={
-                <Image
-                  src="/svg/ic-study-recent-visit.svg"
-                  alt="recent visit"
-                  width={15}
-                  height={15}
-                />
-              }
+              menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
 
-            <MenuListItem
-              navigateTo={PATH.STUDY_INTEREST_LIST}
-              title="관심 스터디"
-              icon={
-                <Image src="/svg/ic-study-interested.svg" alt="intersted" width={15} height={15} />
-              }
-              studyCount={8}
-            />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.INTEREST} studyCount={8} />
           </ul>
         </div>
       </div>
@@ -160,9 +132,9 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">고객 센터</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem navigateTo={PATH.FAQ} title="FAQ" />
-            <MenuListItem navigateTo={PATH.INQUIRY} title="문의하기" />
-            <MenuListItem navigateTo={PATH.NOTI} title="공지사항" isUpdated />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.FAQ} />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.INQUIRY} />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.NOTIFICATION} isUpdated />
           </ul>
         </div>
 
@@ -172,10 +144,13 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem navigateTo={PATH.USER_PROFILE_EDIT(1)} title="회원 정보 수정" />
-            <MenuListItem navigateTo={PATH.PASSWORD} title="비밀번호 설정" />
-            <MenuListItem title="마케팅 개인정보 제 3자 제공동의" isToggle={true} />
-            <MenuListItem navigateTo={PATH.WITHDRAW} title="회원 탈퇴" />
+            <MenuListItem
+              navigateTo={PATH.USER_PROFILE_EDIT(1)}
+              menuItemData={MENU_ITEMS_DATA.PROFIL_EDIT}
+            />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.INFORMATION_AGREEMENT} isToggle={true} />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.WITHDRAW} />
           </ul>
         </div>
       </div>

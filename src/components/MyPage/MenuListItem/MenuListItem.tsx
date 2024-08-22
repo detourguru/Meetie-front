@@ -7,9 +7,14 @@ import type { ReactNode } from "react";
 
 import Toggle from "../Toggle/Toggle";
 
-interface MenuListItemProps {
+interface MenuItemDataType {
   title: string;
   icon?: ReactNode;
+  navigateTo?: string;
+}
+
+interface MenuListItemProps {
+  menuItemData: MenuItemDataType;
   isToggle?: boolean;
   isUpdated?: boolean;
   isPrimary?: boolean;
@@ -18,8 +23,7 @@ interface MenuListItemProps {
 }
 
 const MenuListItem = ({
-  title,
-  icon,
+  menuItemData,
   isToggle,
   isUpdated,
   isPrimary,
@@ -29,7 +33,9 @@ const MenuListItem = ({
   const router = useRouter();
 
   const handleClick = () => {
-    if (navigateTo) {
+    if (menuItemData.navigateTo) {
+      router.push(menuItemData.navigateTo);
+    } else if (navigateTo) {
       router.push(navigateTo);
     }
     // TODO: 토글 on/off 구현
@@ -37,13 +43,13 @@ const MenuListItem = ({
 
   return (
     <li onClick={handleClick}>
-      <article className="flex justify-between items-center">
+      <article className="flex justify-between items-center cursor-pointer">
         <div className="flex gap-2 items-center">
-          {icon}
+          {menuItemData.icon}
           <p
             className={`text-medium-16 text-gray-600 ${isUpdated && "relative after:absolute after:h-2 after:w-2 after:rounded-full after:top-0 after:-right-2 after:bg-red-500"}`}
           >
-            {title}
+            {menuItemData.title}
           </p>
           {studyCount && (
             <div className={isPrimary ? "w-5 h-5 rounded-full bg-blue-100 text-primary-500" : ""}>
