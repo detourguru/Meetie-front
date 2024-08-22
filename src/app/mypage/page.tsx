@@ -172,7 +172,7 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
-            <MenuListItem navigateTo={PATH.USER_PROFILE(1)} title="회원 정보 수정" />
+            <MenuListItem navigateTo={PATH.USER_PROFILE_EDIT(1)} title="회원 정보 수정" />
             <MenuListItem navigateTo={PATH.PASSWORD} title="비밀번호 설정" />
             <MenuListItem title="마케팅 개인정보 제 3자 제공동의" isToggle={true} />
             <MenuListItem navigateTo={PATH.WITHDRAW} title="회원 탈퇴" />
