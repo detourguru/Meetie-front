@@ -30,7 +30,7 @@ export default function ProfilePage() {
     name: "제이크",
     introduce:
       "안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고 싶습니다 화이팅🔥",
-    profileImage: "",
+    profileImage: "/svg/ic-user.svg",
     badge: "",
     tags: [],
   });
@@ -48,10 +48,10 @@ export default function ProfilePage() {
         };
 
         reader.onerror = () => {
-          resolve("");
+          resolve(profileForm.profileImage);
         };
       } else {
-        resolve("");
+        resolve(profileForm.profileImage);
       }
     });
   };
@@ -81,7 +81,12 @@ export default function ProfilePage() {
       <article className="pt-[68px] pb-5 px-4">
         <div className="flex justify-center">
           <div className="relative">
-            <Avatar src={profileForm.profileImage} size="lg" outline="primary" />
+            <Avatar
+              src={profileForm.profileImage}
+              size="lg"
+              outline="primary"
+              className="overflow-hidden"
+            />
             <label
               htmlFor="profileImage"
               className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2"
