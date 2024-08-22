@@ -1,11 +1,12 @@
-let result = {};
+// let result = {};
 
 export async function POST(request: Request) {
   try {
     const data = await request.json();
+    // console.log("post", data);
 
     if (data) {
-      result = data;
+      // result = data;
       return new Response(JSON.stringify({ message: "ok", status: 200 }));
     }
 
@@ -18,17 +19,23 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    const data = {
-      job: "developer",
-      purpose: ["자기 개발"],
-      style: ["주도적인", "열정적인"],
-      period: "1개월 이내",
-    };
-    if (!result) {
-      return new Response(JSON.stringify({ message: "ok", status: 200, data }));
-    }
+    // const data = {
+    //   job: "developer",
+    //   purpose: ["자기 개발"],
+    //   style: ["주도적인", "열정적인"],
+    //   period: "1개월 이내",
+    // };
+    // if (!result) {
+    //   return new Response(JSON.stringify({ message: "ok", status: 200, data }));
+    // }
+    // const data = await res.json()
 
-    return new Response(JSON.stringify({ message: "ok", status: 200, data: result }));
+    // return new Response(JSON.stringify({ data }));
+
+    // return NextResponse.json({ data });
+
+    // return new Response(JSON.stringify({ message: "ok", status: 200, data }));
+    return new Response("adsadas");
   } catch (error) {
     // TODO: error 구체화
     return new Response(JSON.stringify({ message: "error", status: 500 }));

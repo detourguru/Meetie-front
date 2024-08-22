@@ -1,15 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
-import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
-import { COMPLETE_DATA, JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
-export default async function OnBoardingCompletePage() {
-  // TODO: 로그인 기능 추가 후 해당 유저 이름으로 변경
-  const name = "유의진";
+// import { createClient } from "@/utils/supabase/client";
 
   // TODO: fetch 함수 모듈화
   const response = await fetch("http://localhost:3000/api/onboarding", {
@@ -21,15 +19,15 @@ export default async function OnBoardingCompletePage() {
   const result = await response.json();
 
   // TODO: DB 연결되면 수정 예정
-  const data: { job: string; purpose: string[]; style: string[]; period: string } = result.data;
-  const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.job)];
-  // TODO: 글자 수 길어질 때 어떻게 할지 고민
-  const styles: string = data.style.map((style: string) => style).join("﹒");
+  // const data: { job: string; purpose: string[]; style: string[]; period: string } = result.data;
+  // const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.job)];
+  // // TODO: 글자 수 길어질 때 어떻게 할지 고민
+  // const styles: string = data.style.map((style: string) => style).join("﹒");
 
   return (
     <main className="flex flex-col h-screen">
       <article className="flex flex-col items-center w-full h-full px-5">
-        <OnBoardingTitle textData={COMPLETE_DATA(name)} index={0} subTextColor="text-gray-200" />
+        {/* <OnBoardingTitle textData={COMPLETE_DATA(name)} index={0} subTextColor="text-gray-200" /> */}
 
         <div className="relative w-[150px] mt-[77px]">
           <Image
@@ -54,6 +52,7 @@ export default async function OnBoardingCompletePage() {
                 {/* TODO: 로그인 기능 추가 후 해당 유저 프로필로 변경 */}
                 <Image
                   src="/img/img-user-profile.png"
+                  // src={avatar_url}
                   width={48}
                   height={48}
                   alt="profile"
@@ -61,9 +60,11 @@ export default async function OnBoardingCompletePage() {
                   className="absolute top-[25px] z-20"
                 />
               </div>
-              <p className="text-semibold-14 mt-[6.5px]">{name}님</p>
-              <p className="text-semibold-10">{job}</p>
-              <p className="text-regular-12 mt-[19px]">{styles}</p>
+              {/* <p className="text-semibold-14 mt-[6.5px]">{name}님</p> */}
+              {/* <p className="text-semibold-10">{job}</p> */}
+              <p className="text-semibold-10">{"dd"}</p>
+              {/* <p className="text-regular-12 mt-[19px]">{styles}</p> */}
+              <p className="text-regular-12 mt-[19px]">{"dd"}</p>
             </div>
           </div>
           <Image
