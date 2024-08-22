@@ -15,6 +15,8 @@ export const PATH = {
 
   USER_PROFILE: (userId: number) => `/user/${userId}`,
   USER_PROFILE_EDIT: (userId: number) => `/user/${userId}/edit`,
+  // TODO: 페이지 생성 후 PATH 수정
+  USER_FOLLOW_LIST: (userId: number) => `/user/${userId}/follow-list`,
 
   STUDY_ROOM_LIST: "/study-room/list",
   STUDY_EXPLORER: "/study-explorer",
@@ -26,10 +28,10 @@ export const PATH = {
   TASK_CONFIRM_SUCCESS: "/task-confirm/success",
   TASK_CONFIRM_ID: (taskId: number) => `/task-confirm/${taskId}`,
 
-  JOINING_STUDY: "/study/joining",
-  LAST_STUDY: "/study/last",
-  INTEREST: "/study/interested",
-  INTEREST_RECENT_VISIT: "/study/interested/recent",
+  // TODO: 페이지 생성 후 PATH 수정
+  STUDY_JOINING_LIST: "/study/joining", // 참여중인 스터디 리스트
+  STUDY_LAST_LIST: "/study/last", // 종료된 스터디 리스트
+  STUDY_INTEREST_LIST: "/study/interested", // 북마크한 관심 스터디 리스트
 
   FAQ: "/faq",
   INQUIRY: "/inquiry",
