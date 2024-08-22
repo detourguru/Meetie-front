@@ -3,11 +3,11 @@ import Image from "next/image";
 
 import { useState } from "react";
 
-import FilterSheet from "./FilterSheet";
-import CheckBox from "../CheckBox";
-import MemberList from "../Member/MemberList";
-import PageConter from "../PageCounter";
-import HashTag from "../StudyRoomList/HashTag";
+import CheckBox from "@/components/Study/CheckBox";
+import FilterSheet from "@/components/Study/Explorer/FilterSheet";
+import MemberList from "@/components/Study/Member/MemberList";
+import PageConter from "@/components/Study/PageCounter";
+import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import { useOverlay } from "@/hooks/common/useOverlay";
@@ -66,7 +66,7 @@ const ExplorerTab = () => {
             {/* <StudyCard /> */}
           </div>
           <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
-          <div className="flex justify-between">
+          <div className="flex justify-between mb-[27px]">
             <h1 className="text-bold-18">
               서희님과 비슷한 사용자가
               <br />
