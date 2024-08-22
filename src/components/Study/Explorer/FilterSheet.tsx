@@ -1,4 +1,4 @@
-import { Sheet, SheetContent, SheetHeader } from "../common/Sheet/Sheet";
+import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
 interface FilterSheetProps {
   isOpen: boolean;

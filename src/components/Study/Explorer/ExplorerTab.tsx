@@ -3,23 +3,18 @@ import Image from "next/image";
 
 import { useState } from "react";
 
+import FilterSheet from "./FilterSheet";
 import CheckBox from "../CheckBox";
-import FilterSheet from "../FilterSheet";
-import HashTag from "../HashTag";
 import MemberList from "../Member/MemberList";
 import PageConter from "../PageCounter";
-// import StudyCard from "../StudyCard";
+import HashTag from "../StudyRoomList/HashTag";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+import { useOverlay } from "@/hooks/common/useOverlay";
 
 const ExplorerTab = () => {
   const [currentTab, setCurrentTab] = useState("study");
-
-  const [filterActive, setFilterActive] = useState(false);
-
-  function HandleToggleFilterArea() {
-    setFilterActive(!filterActive);
-  }
+  const { isOpen, handleOpen, handleClose } = useOverlay();
 
   return (
     <>
