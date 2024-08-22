@@ -3,13 +3,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import type { ReactNode } from "react";
-
 import Toggle from "../Toggle/Toggle";
 
 interface MenuItemDataType {
   title: string;
-  icon?: ReactNode;
+  icon?: string;
   navigateTo?: string;
 }
 
@@ -45,7 +43,9 @@ const MenuListItem = ({
     <li onClick={handleClick}>
       <article className="flex justify-between items-center cursor-pointer">
         <div className="flex gap-2 items-center">
-          {menuItemData.icon}
+          {menuItemData.icon && (
+            <Image src={menuItemData.icon} alt="study menu" width={15} height={15} />
+          )}
           <p
             className={`text-medium-16 text-gray-600 ${isUpdated && "relative after:absolute after:h-2 after:w-2 after:rounded-full after:top-0 after:-right-2 after:bg-red-500"}`}
           >

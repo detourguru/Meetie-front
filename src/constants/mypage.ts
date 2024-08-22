@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { PATH } from "./path";
 
 export const INFORMATIONS_DATA = {
@@ -20,21 +18,21 @@ export const INFORMATIONS_DATA = {
 export const MENU_ITEMS_DATA = {
   JOINING: {
     title: "참여 중인 스터디",
-    icon: <Image src="/svg/ic-joining-study.svg" alt="joning" width={11} height={14} />,
+    icon: "/svg/ic-joining-study.svg",
     navigateTo: PATH.STUDY_JOINING_LIST,
   },
   PAST: {
     title: "지난 스터디",
-    icon: <Image src="/svg/ic-last-study.svg" alt="joning" width={11} height={14} />,
+    icon: "/svg/ic-last-study.svg",
     navigateTo: PATH.STUDY_LAST_LIST,
   },
   RECENT_VISIT: {
     title: "최근 방문",
-    icon: <Image src="/svg/ic-study-recent-visit.svg" alt="recent visit" width={15} height={15} />,
+    icon: "/svg/ic-study-recent-visit.svg",
   },
   INTEREST: {
     title: "관심 스터디",
-    icon: <Image src="/svg/ic-study-interested.svg" alt="intersted" width={15} height={15} />,
+    icon: "/svg/ic-study-interested.svg",
     navigateTo: PATH.STUDY_INTEREST_LIST,
   },
 
