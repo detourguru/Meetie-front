@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/commo
 import { cn } from "@/lib/utils";
 
 import type { CommonSheetProps } from "@/types/common";
-import type { CreateStudyFormRequestType } from "@/types/study";
+import type { CreateStudyFormRequestType, CreateStudyUpdateHandlerType } from "@/types/study";
 
 const POSITION_DATA = [
   {
@@ -24,10 +24,7 @@ const POSITION_DATA = [
 
 interface PositionSheetProps extends CommonSheetProps {
   createStudyForm: CreateStudyFormRequestType;
-  updateInputValue: <Key extends keyof CreateStudyFormRequestType>(
-    key: Key,
-    value: CreateStudyFormRequestType[Key],
-  ) => void;
+  updateInputValue: CreateStudyUpdateHandlerType;
 }
 
 const PositionSheet = ({

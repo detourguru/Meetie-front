@@ -2,8 +2,19 @@ import Calendar from "@/components/common/Calendar/Calendar";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/common/Sheet/Sheet";
 
 import type { CommonSheetProps } from "@/types/common";
+import type { CreateStudyUpdateHandlerType } from "@/types/study";
 
-const CalendarSheet = ({ isOpen, onInteractOutside }: CommonSheetProps) => {
+interface CalendarSheetProps extends CommonSheetProps {
+  updateInputValue: CreateStudyUpdateHandlerType;
+  isEndDate?: boolean;
+}
+
+const CalendarSheet = ({
+  isOpen,
+  onInteractOutside,
+  updateInputValue,
+  isEndDate,
+}: CalendarSheetProps) => {
   return (
     <Sheet open={isOpen}>
       <SheetContent
@@ -18,7 +29,11 @@ const CalendarSheet = ({ isOpen, onInteractOutside }: CommonSheetProps) => {
           </SheetTitle>
         </SheetHeader>
 
-        <Calendar />
+        <Calendar
+          updateInputValue={updateInputValue}
+          onInteractOutside={onInteractOutside}
+          isEndDate={isEndDate}
+        />
       </SheetContent>
     </Sheet>
   );

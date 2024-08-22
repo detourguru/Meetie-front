@@ -4,8 +4,8 @@ export interface CreateStudyFormRequestType {
   goal: string;
   introduce: string;
   curriculum: string;
-  startDate: string;
-  endDate: string;
+  startDate: Date | null;
+  endDate: Date | null;
   schedule: string;
   personCount: number;
   tagList: string[];
@@ -13,8 +13,10 @@ export interface CreateStudyFormRequestType {
 
 export interface CreateStudyStepProps {
   createStudyForm: CreateStudyFormRequestType;
-  updateInputValue: <Key extends keyof CreateStudyFormRequestType>(
-    key: Key,
-    value: CreateStudyFormRequestType[Key],
-  ) => void;
+  updateInputValue: CreateStudyUpdateHandlerType;
 }
+
+export type CreateStudyUpdateHandlerType = <Key extends keyof CreateStudyFormRequestType>(
+  key: Key,
+  value: CreateStudyFormRequestType[Key],
+) => void;

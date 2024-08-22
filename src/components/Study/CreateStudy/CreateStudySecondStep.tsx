@@ -7,10 +7,22 @@ import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/Calendar
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
+import { convertDate } from "@/utils/date";
+
 import type { CreateStudyStepProps } from "@/types/study";
 
 const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) => {
-  const { isOpen, handleOpen, handleClose } = useOverlay();
+  const {
+    isOpen: isStartDateCalendarOpen,
+    handleOpen: openStartDateCalendar,
+    handleClose: closeStartDateCalendar,
+  } = useOverlay();
+
+  const {
+    isOpen: isEndDateCalendarOpen,
+    handleOpen: openEndDateCalendar,
+    handleClose: closeEndDateCalendar,
+  } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
@@ -32,11 +44,19 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         <div className="flex gap-3">
           <div className="w-[50%] relative">
             <h2 className={inputTitleClassName}>시작일</h2>
-            <Input placeholder="날짜 선택" onClick={handleOpen} />
+            <Input
+              placeholder="날짜 선택"
+              onClick={openStartDateCalendar}
+              value={convertDate(createStudyForm.startDate) || ""}
+            />
           </div>
           <div className="w-[50%]">
             <h2 className={inputTitleClassName}>종료일</h2>
-            <Input placeholder="날짜 선택" onClick={handleOpen} />
+            <Input
+              placeholder="날짜 선택"
+              onClick={openEndDateCalendar}
+              value={convertDate(createStudyForm.endDate) || ""}
+            />
           </div>
         </div>
         <span className="text-[#7876e3] text-regular-12">
@@ -82,7 +102,18 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         </div>
       </div>
 
-      <CalendarSheet isOpen={isOpen} onInteractOutside={handleClose} />
+      <CalendarSheet
+        isOpen={isStartDateCalendarOpen}
+        onInteractOutside={closeStartDateCalendar}
+        updateInputValue={updateInputValue}
+      />
+
+      <CalendarSheet
+        isOpen={isEndDateCalendarOpen}
+        onInteractOutside={closeEndDateCalendar}
+        updateInputValue={updateInputValue}
+        isEndDate
+      />
     </div>
   );
 };

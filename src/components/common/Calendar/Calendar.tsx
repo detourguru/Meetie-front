@@ -1,13 +1,43 @@
 import Image from "next/image";
 
-import { format } from "date-fns";
+import { useCallback } from "react";
+
+import { format, isSameMonth, isSunday, isSaturday, isToday } from "date-fns";
 
 import { WEEK_DAY } from "@/constants/common";
 
 import { useCalendar } from "@/hooks/common/useCalendar";
 
-const Calender = () => {
-  const { currentMonth, handlePrevMonth, handleNextMonth, handleDayText } = useCalendar();
+import type { CreateStudyUpdateHandlerType } from "@/types/study";
+
+interface CalendarProps {
+  updateInputValue: CreateStudyUpdateHandlerType;
+  onInteractOutside?: () => void;
+  isEndDate?: boolean;
+}
+
+const Calender = ({ updateInputValue, onInteractOutside, isEndDate }: CalendarProps) => {
+  const { currentMonth, dayList, monthStart, handlePrevMonth, handleNextMonth } = useCalendar();
+
+  const handleDayText = useCallback(() => {
+    return dayList.map((dayData) => (
+      <div
+        key={dayData.toString()}
+        className="flex justify-center items-center w-[44px] h-[44px]"
+        onClick={() => {
+          isEndDate ? updateInputValue("endDate", dayData) : updateInputValue("startDate", dayData);
+
+          onInteractOutside && onInteractOutside();
+        }}
+      >
+        <p
+          className={`${isSameMonth(monthStart, dayData) ? (isSunday(dayData) ? "text-[#ff0000]" : isSaturday(dayData) ? "text-[#0000ff]" : "text-black") : "text-[#999999]"} ${isToday(dayData) && "rounded-full bg-[#0176f9] text-white"} flex justify-center items-center w-[30px] h-[30px] text-semibold-16`}
+        >
+          {format(dayData, "d")}
+        </p>
+      </div>
+    ));
+  }, [currentMonth]);
 
   return (
     <>
