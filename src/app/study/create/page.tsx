@@ -9,9 +9,18 @@ import CreateStudySecondStep from "@/components/Study/CreateStudy/CreateStudySec
 import { useCreateStudyForm } from "@/hooks/Study/useCreateStudyForm";
 
 export default function CreateStudyPage() {
-  const disabled = false;
+  const {
+    step,
+    createStudyForm,
+    firstStepEmpty,
+    secondStepEmpty,
+    handleMoveStep,
+    updateInputValue,
+  } = useCreateStudyForm({});
 
-  const { step, createStudyForm, handleMoveStep, updateInputValue } = useCreateStudyForm({});
+  const buttonDisabled = step === "first" ? firstStepEmpty : secondStepEmpty;
+
+  console.log(createStudyForm);
 
   return (
     <>
@@ -44,8 +53,11 @@ export default function CreateStudyPage() {
         >
           <p className="text-bold-16 text-[#adb5bd]">이전</p>
         </Button>
-        <Button disabled={disabled} onClick={() => step === "first" && handleMoveStep("second")}>
-          <p className="text-bold-16 text-white">{disabled ? "내용이 부족해요!" : "다음"}</p>
+        <Button
+          disabled={buttonDisabled}
+          onClick={() => step === "first" && handleMoveStep("second")}
+        >
+          <p className="text-bold-16 text-white">{buttonDisabled ? "내용이 부족해요!" : "다음"}</p>
         </Button>
       </div>
     </>

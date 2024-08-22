@@ -45,5 +45,21 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
     [],
   );
 
-  return { step, createStudyForm, updateInputValue, handleMoveStep };
+  const firstStepEmpty =
+    step === "first" &&
+    (createStudyForm.position.length === 0 ||
+      createStudyForm.topic === "" ||
+      createStudyForm.goal === "" ||
+      createStudyForm.introduce === "");
+
+  const secondStepEmpty = true;
+
+  return {
+    step,
+    createStudyForm,
+    firstStepEmpty,
+    secondStepEmpty,
+    updateInputValue,
+    handleMoveStep,
+  };
 };

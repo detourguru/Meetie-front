@@ -68,6 +68,7 @@ const PositionSheet = ({
       <SheetContent
         className="rounded-tl-lg rounded-tr-lg pb-8"
         onInteractOutside={() => {
+          setPositionList(createStudyForm.position);
           onInteractOutside && onInteractOutside();
         }}
       >
@@ -90,6 +91,7 @@ const PositionSheet = ({
               <li
                 className={cn(listClassName, "border-b border-[#dfdfdf] last-of-type:border-none")}
                 onClick={() => handleSelectPosition(data.position)}
+                key={data.position}
               >
                 <p>{data.position}</p>
                 <Image

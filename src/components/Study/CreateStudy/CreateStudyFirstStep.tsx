@@ -47,6 +47,7 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
         <Input
           placeholder="스터디의 주제를 작성해주세요."
           maxLength={20}
+          value={createStudyForm.topic}
           onChange={(e) => updateInputValue("topic", e.target.value)}
         />
         <span className={inputLengthTextClassName}>{createStudyForm.topic.length}/20</span>
@@ -56,6 +57,7 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
         <Input
           placeholder="스터디의 목표를 간단히 작성해주세요."
           maxLength={20}
+          value={createStudyForm.goal}
           onChange={(e) => updateInputValue("goal", e.target.value)}
         />
         <span className={inputLengthTextClassName}>{createStudyForm.goal.length}/20</span>
@@ -65,6 +67,7 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
         <Textarea
           placeholder="스터디를 설명해보세요."
           maxLength={100}
+          value={createStudyForm.introduce}
           onChange={(e) => updateInputValue("introduce", e.target.value)}
         />
         <span className={inputLengthTextClassName}>{createStudyForm.introduce.length}/100</span>
