@@ -1,61 +1,36 @@
-import { useState, useCallback } from "react";
+import Image from "next/image";
 
-import {
-  format,
-  addMonths,
-  subMonths,
-  startOfMonth,
-  startOfWeek,
-  addDays,
-  isSameMonth,
-  isSunday,
-  isSaturday,
-  isToday,
-} from "date-fns";
+import { format } from "date-fns";
 
-import CalendarHeader from "@/components/common/Calendar/CalendarHeader";
+import { WEEK_DAY } from "@/constants/common";
 
-const WEEK_DAY = ["일", "월", "화", "수", "목", "금", "토"];
+import { useCalendar } from "@/hooks/common/useCalendar";
 
 const Calender = () => {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-
-  const monthStart = startOfMonth(currentMonth);
-  const startDate = startOfWeek(monthStart);
-  const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
-  const nowMonth = new Date();
-
-  const handlePrevMonth = useCallback(() => {
-    if (currentMonth <= nowMonth) {
-      setCurrentMonth(nowMonth);
-    } else {
-      setCurrentMonth(subMonths(currentMonth, 1));
-    }
-  }, [currentMonth]);
-
-  const handleNextMonth = useCallback(() => {
-    setCurrentMonth(addMonths(currentMonth, 1));
-  }, [currentMonth]);
-
-  const handleDayText = useCallback(() => {
-    return dayList.map((dayData) => (
-      <div key={dayData.toString()} className="flex justify-center items-center w-[44px] h-[44px]">
-        <p
-          className={`${isSameMonth(monthStart, dayData) ? (isSunday(dayData) ? "text-[#ff0000]" : isSaturday(dayData) ? "text-[#0000ff]" : "text-black") : "text-[#999999]"} ${isToday(dayData) && "rounded-full bg-[#0176f9] text-white"} flex justify-center items-center w-[30px] h-[30px] text-semibold-16`}
-        >
-          {format(dayData, "d")}
-        </p>
-      </div>
-    ));
-  }, [currentMonth]);
+  const { currentMonth, handlePrevMonth, handleNextMonth, handleDayText } = useCalendar();
 
   return (
     <>
-      <CalendarHeader
-        currentMonth={currentMonth}
-        handlePrevMonth={handlePrevMonth}
-        handleNextMonth={handleNextMonth}
-      />
+      <div className="flex items-center justify-center gap-5">
+        <Image
+          src="/svg/ic-calendar-left-arrow.svg"
+          alt="leftArrowIcon"
+          width={30}
+          height={30}
+          onClick={handlePrevMonth}
+        />
+        <div className="flex items-center justify-center gap-4 ">
+          <p className="text-bold-18">{format(currentMonth, "yyyy")}년</p>
+          <p className="text-bold-18">{format(currentMonth, "M")}월</p>
+        </div>
+        <Image
+          src="/svg/ic-calendar-right-arrow.svg"
+          alt="leftArrowIcon"
+          width={30}
+          height={30}
+          onClick={handleNextMonth}
+        />
+      </div>
 
       <div className="grid my-auto grid-cols-7 mx-5 mt-4">
         {WEEK_DAY.map((week) => (
