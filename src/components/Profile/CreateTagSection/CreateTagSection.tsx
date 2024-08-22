@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+
 import { useRef, useState } from "react";
 
 interface CreateTagSectionProps {

@@ -1,4 +1,5 @@
 import HighlightBadge from "@/components/MyPage/Profile/HighlightBadge/HighlightBadge";
+
 import { BADGE_DATA } from "@/constants/badges";
 
 interface BadgeListProps {

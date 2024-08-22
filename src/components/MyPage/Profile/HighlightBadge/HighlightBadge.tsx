@@ -1,7 +1,8 @@
 "use client";
 
 import { BADGE_DATA } from "@/constants/badges";
-import BadgeIcon from "../../BadgeIcon/BadgeIcon";
+
+import BadgeIcon from "@/BadgeIcon/BadgeIcon";
 
 interface HighlightBadgeProps {
   type: string;

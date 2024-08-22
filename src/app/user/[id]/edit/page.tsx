@@ -95,7 +95,7 @@ export default function ProfilePage() {
               htmlFor="profileImage"
               className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2"
             >
-              <Image src={"/svg/ic-camera.svg"} alt="camera" width={16} height={16} />
+              <Image src="/svg/ic-camera.svg" alt="camera" width={16} height={16} />
             </label>
             <input
               type="file"
