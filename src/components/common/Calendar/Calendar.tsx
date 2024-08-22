@@ -1,6 +1,17 @@
 import { useState, useCallback } from "react";
 
-import { format, addMonths, subMonths, startOfMonth, startOfWeek, addDays } from "date-fns";
+import {
+  format,
+  addMonths,
+  subMonths,
+  startOfMonth,
+  startOfWeek,
+  addDays,
+  isSameMonth,
+  isSunday,
+  isSaturday,
+  isToday,
+} from "date-fns";
 
 import CalendarHeader from "@/components/common/Calendar/CalendarHeader";
 
@@ -27,24 +38,15 @@ const Calender = () => {
   }, [currentMonth]);
 
   const handleDayText = useCallback(() => {
-    return dayList.map((dayData) => {
-      return (
-        <div
-          key={dayData.toString()}
-          className="flex justify-center items-center w-[44px] h-[44px]"
-          //   css={dayStyle(
-          //     isSameMonth(monthStart, dayData),
-          //     false,
-          //     isSameDay(startDay, dayData),
-          //     isSameDay(endDay, dayData),
-          //   )}
+    return dayList.map((dayData) => (
+      <div key={dayData.toString()} className="flex justify-center items-center w-[44px] h-[44px]">
+        <p
+          className={`${isSameMonth(monthStart, dayData) ? (isSunday(dayData) ? "text-[#ff0000]" : isSaturday(dayData) ? "text-[#0000ff]" : "text-black") : "text-[#999999]"} ${isToday(dayData) && "rounded-full bg-[#0176f9] text-white"} flex justify-center items-center w-[30px] h-[30px] text-semibold-16`}
         >
-          <p className="flex justify-center items-center w-[30px] h-[30px]">
-            {format(dayData, "d")}
-          </p>
-        </div>
-      );
-    });
+          {format(dayData, "d")}
+        </p>
+      </div>
+    ));
   }, [currentMonth]);
 
   return (
@@ -55,7 +57,7 @@ const Calender = () => {
         handleNextMonth={handleNextMonth}
       />
 
-      <div className="grid my-auto grid-cols-7 mx-5">
+      <div className="grid my-auto grid-cols-7 mx-5 mt-4">
         {WEEK_DAY.map((week) => (
           <div key={week} className="flex items-center justify-center w-[44px] h-[44px]">
             {week}
