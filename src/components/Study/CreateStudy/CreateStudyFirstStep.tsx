@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import Input from "@/components/common/Input/Input";
 import Textarea from "@/components/common/Textarea/Textarea";
-import JobSheet from "@/components/Study/CreateStudy/JobSheet/JobSheet";
+import PositionSheet from "@/components/Study/CreateStudy/PositionSheet/PositionSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
@@ -24,8 +24,6 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
-  console.log(createStudyForm.position);
-
   return (
     <div className="flex flex-col gap-9">
       <div>
@@ -34,7 +32,9 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
           className="rounded-lg px-4 py-3 border border-[#c4c4c4] flex justify-between h-[50px]"
           onClick={handleOpen}
         >
-          <p className="text-blue-300 text-regular-14">
+          <p
+            className={`${createStudyForm.position.length === 0 && "text-blue-300"} text-regular-14`}
+          >
             {createStudyForm.position.length === 0
               ? "모집 직군을 선택해주세요."
               : createStudyForm.position.join(", ")}
@@ -70,7 +70,7 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
         <span className={inputLengthTextClassName}>{createStudyForm.introduce.length}/100</span>
       </div>
 
-      <JobSheet
+      <PositionSheet
         isOpen={isOpen}
         onInteractOutside={handleClose}
         createStudyForm={createStudyForm}
