@@ -32,11 +32,13 @@ export async function GET() {
     const supabase = createClient();
     const { data, error } = await supabase.from("onboarding").select("position, styles");
 
-    if (data && !error) {
+    console.log(data);
+
+    if (data && data.length !== 0 && !error) {
       return NextResponse.json({ message: "ok", status: 200, data: data[0] });
     }
 
-    return NextResponse.json({ message: "ok", status: 200 });
+    return NextResponse.json({ message: "ok", status: 200, data: null });
   } catch (error) {
     return NextResponse.json({ message: "error", status: 500 });
   }
