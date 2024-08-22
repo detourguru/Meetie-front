@@ -32,11 +32,17 @@ export default function WalkThroughPage() {
     setwalkThroughNumber(through);
   };
 
+  const handleMoveOnboarding = () => {
+    router.push(PATH.ONBOARDING);
+  };
+
   return (
     <main className="flex flex-col h-screen">
       <article className="relative flex flex-col items-center w-full h-full px-4">
         <div className="absolute top-0 right-0 p-4">
-          <button className="font-normal text-gray-200 uppercase text-medium-14">skip</button>
+          <button onClick={handleMoveOnboarding} className="text-gray-200 text-medium-14">
+            SKIP
+          </button>
         </div>
 
         <OnBoardingTitle textData={EXPLAIN_DATA} index={walkThroughNumber} />
