@@ -3,31 +3,59 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import Button from "@/components/common/Button/Button";
+import { useEffect, useState } from "react";
 
+import Button from "@/components/common/Button/Button";
+import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
+
+import { COMPLETE_DATA, JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
-// import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/client";
 
-  // TODO: fetch 함수 모듈화
-  const response = await fetch("http://localhost:3000/api/onboarding", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  const result = await response.json();
+export default function OnBoardingCompletePage() {
+  const [userName, setUserName] = useState("밋티");
+  const [profile, setProfile] = useState("");
+  const [job, setJob] = useState("");
+  const [styles, setStyles] = useState("");
 
-  // TODO: DB 연결되면 수정 예정
-  // const data: { job: string; purpose: string[]; style: string[]; period: string } = result.data;
-  // const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.job)];
-  // // TODO: 글자 수 길어질 때 어떻게 할지 고민
-  // const styles: string = data.style.map((style: string) => style).join("﹒");
+  useEffect(() => {
+    (async () => {
+      const supabase = createClient();
+      const user = (await supabase.auth.getUser()).data.user;
+      if (!user) {
+        // TODO: 에러 추가
+        return;
+      }
+
+      const { avatar_url, name } = user.user_metadata;
+      setUserName(name);
+      setProfile(avatar_url);
+
+      const res = await fetch("http://localhost:3000/api/onboarding", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await res.json();
+      const data: { job: string; purpose: string[]; style: string[]; period: string } = result.data;
+      const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.job)];
+      setJob(job);
+      // TODO: 글자 수 길어질 때 어떻게 할지 고민
+      const styles: string = data.style.map((style: string) => style).join("﹒");
+      setStyles(styles);
+    })();
+  }, []);
 
   return (
     <main className="flex flex-col h-screen">
       <article className="flex flex-col items-center w-full h-full px-5">
-        {/* <OnBoardingTitle textData={COMPLETE_DATA(name)} index={0} subTextColor="text-gray-200" /> */}
+        <OnBoardingTitle
+          textData={COMPLETE_DATA(userName)}
+          index={0}
+          subTextColor="text-gray-200"
+        />
 
         <div className="relative w-[150px] mt-[77px]">
           <Image
@@ -49,22 +77,21 @@ import { PATH } from "@/constants/path";
                   height={75}
                   alt="meetie master"
                 />
-                {/* TODO: 로그인 기능 추가 후 해당 유저 프로필로 변경 */}
-                <Image
-                  src="/img/img-user-profile.png"
-                  // src={avatar_url}
-                  width={48}
-                  height={48}
-                  alt="profile"
-                  priority
-                  className="absolute top-[25px] z-20"
-                />
+
+                {profile && (
+                  <Image
+                    src={profile}
+                    width={48}
+                    height={48}
+                    alt="profile"
+                    priority
+                    className="absolute top-[25px] z-20 rounded-full"
+                  />
+                )}
               </div>
-              {/* <p className="text-semibold-14 mt-[6.5px]">{name}님</p> */}
-              {/* <p className="text-semibold-10">{job}</p> */}
-              <p className="text-semibold-10">{"dd"}</p>
-              {/* <p className="text-regular-12 mt-[19px]">{styles}</p> */}
-              <p className="text-regular-12 mt-[19px]">{"dd"}</p>
+              <p className="text-semibold-14 mt-[6.5px]">{userName}님</p>
+              <p className="text-semibold-10">{job}</p>
+              <p className="text-regular-12 mt-[19px]">{styles}</p>
             </div>
           </div>
           <Image
