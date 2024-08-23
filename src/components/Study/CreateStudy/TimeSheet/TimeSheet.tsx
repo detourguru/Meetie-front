@@ -29,18 +29,19 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
   return (
     <Sheet open={isOpen}>
       <SheetContent
-        className="rounded-tl-lg rounded-tr-lg pb-8"
+        className="rounded-tl-lg rounded-tr-lg pb-4"
         onInteractOutside={() => {
           onInteractOutside && onInteractOutside();
         }}
       >
-        <SheetHeader className="items-center justify-center pt-[14px] pb-[32px] ">
+        <SheetHeader className="items-center justify-center pt-[14px] pb-[16px] ">
           <SheetTitle>
             <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
           </SheetTitle>
         </SheetHeader>
 
         <div>
+          <p className="px-5 pb-[10px] text-bold-20">시간을 선택해 주세요</p>
           <div className="flex bg-[#f7f7fb] text-regular-28 gap-[80px] justify-center">
             <div className="flex">
               <TimePicker list={NOON_LIST} valueKey="noon" handleChangeTime={handleChangeTime} />
@@ -56,7 +57,14 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
               />
             </div>
           </div>
-          <Button onClick={handleTimeSelect}>완료</Button>
+          <div className="px-5 flex gap-4 pt-[18px]">
+            <Button variant="outline" onClick={onInteractOutside}>
+              <p className="text-bold-16 text-[#adb5bd]">취소</p>
+            </Button>
+            <Button onClick={handleTimeSelect}>
+              <p className="text-bold-16 text-white">완료</p>
+            </Button>
+          </div>
         </div>
       </SheetContent>
     </Sheet>
