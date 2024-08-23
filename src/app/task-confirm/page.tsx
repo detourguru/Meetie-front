@@ -3,12 +3,16 @@ import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
+import TaskConfirmSheet from "@/components/TaskConfirmSheet/TaskConfirmSheet";
 
 import { PATH } from "@/constants/path";
 
 import UserImg from "/public/img/img-user-profile.png";
 
+import { useOverlay } from "@/hooks/common/useOverlay";
+
 export default function Confirm() {
+  const { isOpen, handleOpen, handleClose } = useOverlay();
   return (
     <>
       <Header>
@@ -48,10 +52,14 @@ export default function Confirm() {
             </div>
           </div>
         </section>
-        <section className="h-[170px] flex flex-col items-center justify-center text-[#A9A9A9] text-[15px] bg-[#F9F9F9] border border-[#E9E9E9] rounded-lg drop-shadow-sm mt-2 mb-4">
+        <section
+          onClick={handleOpen}
+          className="h-[170px] flex flex-col items-center justify-center text-[#A9A9A9] text-[15px] bg-[#F9F9F9] border border-[#E9E9E9] rounded-lg drop-shadow-sm mt-2 mb-4"
+        >
           <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
           <span className="mt-2">인증 구역</span>
         </section>
+        <TaskConfirmSheet isOpen={isOpen} onInteractOutside={handleClose} />
         <section>
           <h4 className="text-bold-14 pb-3">기록</h4>
           <textarea
