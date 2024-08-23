@@ -15,7 +15,8 @@ interface BadgeAreaProps {
   badges: BadgesType;
 }
 
-const ICON_SIZE = [70, 88, 95];
+const ICON_WIDTH = [70, 89, 95];
+const ICON_HEIGHT = [80, 85, 95];
 
 const BadgeArea = ({ badges }: BadgeAreaProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
@@ -32,7 +33,13 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
       <section className="flex flex-col mx-5 gap-4">
         <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">{badges.type} 뱃지</header>
-          <Image src="/svg/ic-verified.svg" alt="verified" width={16} height={16} />
+          <Image
+            src="/svg/ic-verified.svg"
+            alt="verified"
+            width={16}
+            height={16}
+            className="w-4 h-4"
+          />
         </div>
 
         <div className="flex justify-between bg-white">
@@ -46,8 +53,8 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
                 src={badge.icon}
                 alt={badge.title}
                 size="lg"
-                width={ICON_SIZE[badge.level - 1]}
-                height={ICON_SIZE[badge.level - 1]}
+                width={ICON_WIDTH[badge.level - 1]}
+                height={ICON_HEIGHT[badge.level - 1]}
               />
               <p className="text-medium-14 text-gray-300">{badge.title}</p>
             </article>

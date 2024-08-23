@@ -12,7 +12,8 @@ interface BadgeSheetProps {
   onInteractOutside?: () => void;
 }
 
-const ICON_WIDTH_AND_HEIGHT = 140;
+const ICON_WIDTH = 140;
+const ICON_HEIGHT = 160;
 
 const BadgeSheet = ({
   isOpen,
@@ -52,8 +53,8 @@ const BadgeSheet = ({
                   src={selectedBadge?.icon ?? ""}
                   alt={selectedBadge?.title ?? ""}
                   size="xl"
-                  width={ICON_WIDTH_AND_HEIGHT}
-                  height={ICON_WIDTH_AND_HEIGHT}
+                  width={ICON_WIDTH}
+                  height={ICON_HEIGHT}
                 />
                 <div className="flex flex-col gap-2 items-center">
                   <div className="p-1 border border-primary-500 rounded-lg">
