@@ -4,6 +4,7 @@ import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
 import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/CalendarSheet";
+import TimeSheet from "@/components/Study/CreateStudy/TimeSheet/TimeSheet";
 import WeekSheet from "@/components/Study/CreateStudy/WeekSheet/WeekSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
@@ -29,6 +30,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
     isOpen: isWeekSheetOpen,
     handleOpen: openWeekSheet,
     handleClose: closeWeekSheet,
+  } = useOverlay();
+
+  const {
+    isOpen: isTimeSheetOpen,
+    handleOpen: openTimeSheet,
+    handleClose: closeTimeSheet,
   } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
@@ -79,7 +86,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
             onClick={openWeekSheet}
             value={createStudyForm.week || ""}
           />
-          <Input placeholder="오전 00시 00분" />
+          <Input placeholder="오전 00시 00분" onClick={openTimeSheet} />
         </div>
       </div>
 
@@ -132,6 +139,8 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         createStudyForm={createStudyForm}
         updateInputValue={updateInputValue}
       />
+
+      <TimeSheet isOpen={isTimeSheetOpen} onInteractOutside={closeTimeSheet} />
     </div>
   );
 };
