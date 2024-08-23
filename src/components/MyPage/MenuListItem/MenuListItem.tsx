@@ -44,7 +44,13 @@ const MenuListItem = ({
       <article className="flex justify-between items-center cursor-pointer">
         <div className="flex gap-2 items-center">
           {menuItemData.icon && (
-            <Image src={menuItemData.icon} alt="study menu" width={15} height={15} />
+            <Image
+              src={menuItemData.icon}
+              alt="study menu"
+              width={15}
+              height={15}
+              className="w-[15px] h-[15px]"
+            />
           )}
           <p
             className={`text-medium-16 text-gray-600 ${isUpdated && "relative after:absolute after:h-2 after:w-2 after:rounded-full after:top-0 after:-right-2 after:bg-red-500"}`}

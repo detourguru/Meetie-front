@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import Avatar from "@/components/common/Avatar/Avatar";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import BadgeCard from "@/components/MyPage/BadgeCard/BadgeCard";
@@ -25,13 +26,7 @@ export default function MyPage() {
       {/* 프로필 카드 */}
       <div className="flex justify-between mt-10 px-4">
         <div className="flex gap-4 items-center">
-          <Image
-            src="/img/img-user-profile.png"
-            alt="profile"
-            width={61}
-            height={61}
-            className="rounded-full"
-          />
+          <Avatar src="/img/img-user-profile.png" />
           <div className="flex flex-col gap-1 items-start">
             <p className="text-medium-16 text-gray-400">디자이너</p>
             <p className="text-bold-20">김서희님</p>
@@ -84,7 +79,13 @@ export default function MyPage() {
         <section className="flex flex-col gap-7 mt-8 mb-12">
           <div className="flex justify-between items-center px-3.5">
             <h3 className="text-bold-18">내 능력 현황</h3>
-            <Image src="svg/ic-thick-arrow-right.svg" alt="next" width={8} height={14} />
+            <Image
+              src="svg/ic-thick-arrow-right.svg"
+              alt="next"
+              width={8}
+              height={14}
+              className="w-2 h-3.5"
+            />
           </div>
           <div className="grid grid-cols-4 px-4">
             <BadgeCard type="댓글" level={3} />
