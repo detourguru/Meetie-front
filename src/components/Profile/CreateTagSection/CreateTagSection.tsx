@@ -32,7 +32,12 @@ const CreateTagSection = ({ hadleCreateTag }: CreateTagSectionProps) => {
         className="w-1/2 flex gap-1.5 items-center py-1.5 px-3 border rounded-lg border-gray-200 text-regular-16 text-gray-300"
       >
         <label>#</label>
-        <input className="w-full outline-none border-b self-end" ref={tagInput} autoFocus />
+        <input
+          className="w-full outline-none border-b self-end"
+          ref={tagInput}
+          autoFocus
+          maxLength={20}
+        />
       </form>
     );
   }
