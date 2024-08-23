@@ -38,6 +38,7 @@ const WeekSheet = ({
                 updateInputValue("week", week);
                 onInteractOutside && onInteractOutside();
               }}
+              key={week}
             >
               <label className="flex flex-col items-center gap-5 w-full h-full py-[18px]">
                 <input

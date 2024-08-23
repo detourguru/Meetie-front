@@ -38,8 +38,6 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
     handleClose: closeTimeSheet,
   } = useOverlay();
 
-  console.log(createStudyForm.time);
-
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
@@ -61,6 +59,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
           <div className="w-[50%] relative">
             <h2 className={inputTitleClassName}>시작일</h2>
             <Input
+              readOnly
               placeholder="날짜 선택"
               onClick={openStartDateCalendar}
               value={convertDate(createStudyForm.startDate) || ""}
@@ -69,6 +68,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
           <div className="w-[50%]">
             <h2 className={inputTitleClassName}>종료일</h2>
             <Input
+              readOnly
               placeholder="날짜 선택"
               onClick={openEndDateCalendar}
               value={convertDate(createStudyForm.endDate) || ""}
@@ -84,11 +84,13 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         <h2 className={inputTitleClassName}>정기 일정</h2>
         <div className="flex gap-3">
           <Input
+            readOnly
             placeholder="날짜 선택"
             onClick={openWeekSheet}
             value={createStudyForm.week || ""}
           />
           <Input
+            readOnly
             placeholder="오전 00시 00분"
             onClick={openTimeSheet}
             value={
@@ -104,9 +106,21 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         <div>
           <h2 className={inputTitleClassName}>스터디 모집 인원</h2>
           <div className="rounded-lg px-4 py-3 border border-[#c4c4c4] flex justify-between h-[50px]">
-            <Image src="/svg/ic-study-minus.svg" alt="minusIcon" width={16} height={16} />
-            <p>1</p>
-            <Image src="/svg/ic-study-plus.svg" alt="plusIcon" width={20} height={20} />
+            <Image
+              src="/svg/ic-study-minus.svg"
+              alt="minusIcon"
+              width={16}
+              height={16}
+              onClick={() => updateInputValue("personCount", createStudyForm.personCount - 1)}
+            />
+            <p>{createStudyForm.personCount}</p>
+            <Image
+              src="/svg/ic-study-plus.svg"
+              alt="plusIcon"
+              width={20}
+              height={20}
+              onClick={() => updateInputValue("personCount", createStudyForm.personCount + 1)}
+            />
           </div>
         </div>
         <span className="text-[#7876e3] text-regular-12">4~8명이 적당한 스터디 인원이에요</span>

@@ -20,7 +20,7 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
       endDate: null,
       time: null,
       week: "",
-      personCount: 0,
+      personCount: 1,
       tagList: [],
     },
   );
