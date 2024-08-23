@@ -2,17 +2,28 @@ import { useState } from "react";
 
 import TimePicker from "./TimePicker/TimePicker";
 
+import Button from "@/components/common/Button/Button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/common/Sheet/Sheet";
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/common";
 
 import type { CommonSheetProps } from "@/types/common";
+import type { CreateStudyUpdateHandlerType } from "@/types/study";
 
-const TimeSheet = ({ isOpen, onInteractOutside }: CommonSheetProps) => {
+interface TimeSheetProps extends CommonSheetProps {
+  updateInputValue: CreateStudyUpdateHandlerType;
+}
+
+const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetProps) => {
   const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
 
   const handleChangeTime = (target: string, value: string) => {
     setSelectTime({ ...selectTime, [target]: value });
+  };
+
+  const handleTimeSelect = () => {
+    updateInputValue("time", selectTime);
+    onInteractOutside && onInteractOutside();
   };
 
   return (
@@ -45,6 +56,7 @@ const TimeSheet = ({ isOpen, onInteractOutside }: CommonSheetProps) => {
               />
             </div>
           </div>
+          <Button onClick={handleTimeSelect}>완료</Button>
         </div>
       </SheetContent>
     </Sheet>

@@ -38,6 +38,8 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
     handleClose: closeTimeSheet,
   } = useOverlay();
 
+  console.log(createStudyForm.time);
+
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 
@@ -86,7 +88,15 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
             onClick={openWeekSheet}
             value={createStudyForm.week || ""}
           />
-          <Input placeholder="오전 00시 00분" onClick={openTimeSheet} />
+          <Input
+            placeholder="오전 00시 00분"
+            onClick={openTimeSheet}
+            value={
+              (createStudyForm.time &&
+                `${createStudyForm.time.noon} ${createStudyForm.time.hour.toString().padStart(2, "0")}시 ${createStudyForm.time.minute.toString().padStart(2, "0")}분`) ||
+              ""
+            }
+          />
         </div>
       </div>
 
@@ -140,7 +150,11 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         updateInputValue={updateInputValue}
       />
 
-      <TimeSheet isOpen={isTimeSheetOpen} onInteractOutside={closeTimeSheet} />
+      <TimeSheet
+        isOpen={isTimeSheetOpen}
+        onInteractOutside={closeTimeSheet}
+        updateInputValue={updateInputValue}
+      />
     </div>
   );
 };
