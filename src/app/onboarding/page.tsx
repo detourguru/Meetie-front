@@ -17,6 +17,8 @@ import { PATH } from "@/constants/path";
 export default function OnBoardingPage() {
   const router = useRouter();
   const [step, setStep] = useState<"job" | "purpose" | "style" | "period">("job");
+
+  // TODO: 객체화 state 사용, hook으로 분리
   const [job, setJob] = useState<string>("");
   const [purpose, setPurpose] = useState<string[]>([]);
   const [style, setStyle] = useState<string[]>([]);
@@ -59,6 +61,7 @@ export default function OnBoardingPage() {
     }
     const data = { job, purpose, style, period };
 
+    // TODO: 함수 모듈화
     try {
       const response = await fetch("http://localhost:3000/api/onboarding", {
         method: "POST",

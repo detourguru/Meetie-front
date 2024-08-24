@@ -11,6 +11,7 @@ export default async function OnBoardingCompletePage() {
   // TODO: 로그인 기능 추가 후 해당 유저 이름으로 변경
   const name = "유의진";
 
+  // TODO: fetch 함수 모듈화
   const response = await fetch("http://localhost:3000/api/onboarding", {
     method: "GET",
     headers: {

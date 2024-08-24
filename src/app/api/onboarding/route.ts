@@ -11,6 +11,7 @@ export async function POST(request: Request) {
 
     return new Response(JSON.stringify({ message: "error", status: 400 }));
   } catch (err) {
+    // TODO: error 구체화
     return new Response(JSON.stringify({ message: "error", status: 500 }));
   }
 }
@@ -29,6 +30,7 @@ export async function GET() {
 
     return new Response(JSON.stringify({ message: "ok", status: 200, data: result }));
   } catch (error) {
+    // TODO: error 구체화
     return new Response(JSON.stringify({ message: "error", status: 500 }));
   }
 }
