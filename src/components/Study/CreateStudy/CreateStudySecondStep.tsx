@@ -39,12 +39,6 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
     handleClose: closeTimeSheet,
   } = useOverlay();
 
-  // const {
-  //   isOpen: isTagSheetOpen,
-  //   handleOpen: openTagSheet,
-  //   handleClose: closeTagSheet,
-  // } = useOverlay();
-
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
 

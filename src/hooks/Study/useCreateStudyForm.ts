@@ -7,7 +7,7 @@ interface UseCreateStudyFormProps {
 }
 
 export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => {
-  const [step, setStep] = useState("second");
+  const [step, setStep] = useState("first");
 
   const [createStudyForm, setCreateStudyForm] = useState(
     initialData ?? {
@@ -24,6 +24,21 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
       tagList: [],
     },
   );
+
+  const firstStepEmpty =
+    createStudyForm.position.length === 0 ||
+    createStudyForm.topic === "" ||
+    createStudyForm.goal === "" ||
+    createStudyForm.introduce === "";
+
+  const secondStepEmpty =
+    createStudyForm.curriculum.length === 0 ||
+    createStudyForm.startDate === null ||
+    createStudyForm.endDate === null ||
+    createStudyForm.time === null ||
+    createStudyForm.week === "";
+
+  const buttonDisabled = step === "first" ? firstStepEmpty : secondStepEmpty;
 
   const handleMoveStep = (step: "first" | "second") => {
     setStep(step);
@@ -46,21 +61,11 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
     [],
   );
 
-  const firstStepEmpty =
-    step === "first" &&
-    (createStudyForm.position.length === 0 ||
-      createStudyForm.topic === "" ||
-      createStudyForm.goal === "" ||
-      createStudyForm.introduce === "");
-
-  const secondStepEmpty = true;
-
   return {
     step,
     createStudyForm,
-    firstStepEmpty,
-    secondStepEmpty,
     updateInputValue,
     handleMoveStep,
+    buttonDisabled,
   };
 };

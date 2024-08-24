@@ -15,7 +15,7 @@ const CreateTag = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) 
       <form
         action={handleSubmit}
         onBlur={handleSubmit}
-        className="w-1/2 flex gap-1.5 items-center py-1 px-3 border rounded-lg border-gray-200 text-regular-16 text-gray-300"
+        className="w-1/2 flex gap-1.5 items-center py-1.5 px-3 border rounded-lg border-gray-200 text-regular-16 text-gray-300"
       >
         <input
           className="w-full outline-none border-b self-end"
@@ -28,7 +28,7 @@ const CreateTag = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) 
   }
   return (
     <button
-      className="w-8 h-8 border border-gray-200 flex justify-center items-center rounded-lg"
+      className="w-9 h-9 border border-gray-200 flex justify-center items-center rounded-lg"
       onClick={handleAddTag}
     >
       <Image src="/svg/ic-header-plus.svg" alt="plusIcon" width={20} height={20} />
