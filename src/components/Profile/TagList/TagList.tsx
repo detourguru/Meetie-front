@@ -7,10 +7,10 @@ import type { UpdateProfileFormType } from "@/types/profile";
 interface TagListProps {
   tags: string[];
   isEdit?: boolean;
-  handleChange?: UpdateProfileFormType;
+  updateProfileForm?: UpdateProfileFormType;
 }
 
-const TagList = ({ tags, isEdit, handleChange }: TagListProps) => {
+const TagList = ({ tags, isEdit, updateProfileForm }: TagListProps) => {
   return (
     <div className="flex flex-col gap-2 px-4 mt-8">
       <p className="text-bold-18">스터디 태그 {isEdit && "추가"}</p>
@@ -21,25 +21,18 @@ const TagList = ({ tags, isEdit, handleChange }: TagListProps) => {
             key={`tag-${index}`}
             title={tag}
             handleDeleteTag={
-              handleChange &&
+              updateProfileForm &&
               (() =>
-                handleChange(
-                  "tags",
+                updateProfileForm(
+                  "tagList",
                   tags.filter((t) => t !== tag),
                 ))
             }
           />
         ))}
 
-        {handleChange && (
-          <CreateTagSection
-            hadleCreateTag={(newTag) =>
-              handleChange(
-                "tags",
-                tags.concat(newTag).filter((t, index) => tags.concat(newTag).indexOf(t) === index),
-              )
-            }
-          />
+        {updateProfileForm && (
+          <CreateTagSection tags={tags} updateProfileForm={updateProfileForm} />
         )}
       </div>
     </div>

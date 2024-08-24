@@ -2,27 +2,20 @@
 
 import Image from "next/image";
 
-import { useRef, useState } from "react";
+import { useCreateTag } from "@/hooks/common/useCreateTag";
+
+import type { UpdateProfileFormType } from "@/types/profile";
 
 interface CreateTagSectionProps {
-  hadleCreateTag: (newTag: string) => void;
+  tags: string[];
+  updateProfileForm: UpdateProfileFormType;
 }
 
-const CreateTagSection = ({ hadleCreateTag }: CreateTagSectionProps) => {
-  const [isCreate, setIsCreate] = useState(false);
-  const tagInput = useRef<HTMLInputElement>(null);
-
-  const handleAddTag = () => {
-    setIsCreate(true);
-  };
-
-  const handleSubmit = () => {
-    if (tagInput.current) {
-      const value = tagInput.current.value;
-      value !== "" && hadleCreateTag(tagInput.current.value);
-    }
-    setIsCreate(false);
-  };
+const CreateTagSection = ({ tags, updateProfileForm }: CreateTagSectionProps) => {
+  const { isCreate, handleAddTag, tagInput, handleSubmit } = useCreateTag({
+    prevTagList: tags,
+    profileUpdateHandler: updateProfileForm,
+  });
 
   if (isCreate) {
     return (

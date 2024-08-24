@@ -20,7 +20,7 @@ export default function CreateStudyPage() {
 
   const buttonDisabled = step === "first" ? firstStepEmpty : secondStepEmpty;
 
-  console.log(createStudyForm);
+  console.log(createStudyForm.tagList);
 
   return (
     <>

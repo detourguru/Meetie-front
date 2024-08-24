@@ -4,6 +4,7 @@ import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
 import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/CalendarSheet";
+import StudyTagList from "@/components/Study/CreateStudy/StudyTagList/StudyTagList";
 import TimeSheet from "@/components/Study/CreateStudy/TimeSheet/TimeSheet";
 import WeekSheet from "@/components/Study/CreateStudy/WeekSheet/WeekSheet";
 
@@ -37,6 +38,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
     handleOpen: openTimeSheet,
     handleClose: closeTimeSheet,
   } = useOverlay();
+
+  // const {
+  //   isOpen: isTagSheetOpen,
+  //   handleOpen: openTagSheet,
+  //   handleClose: closeTagSheet,
+  // } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
   const inputLengthTextClassName = "float-end text-regular-14 text-blue-300 mt-1";
@@ -129,7 +136,8 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
       <div className="flex flex-col gap-3">
         <div>
           <h2 className={inputTitleClassName}>관련 태그</h2>
-          <Input placeholder="태그를 작성해주세요." maxLength={8} />
+
+          <StudyTagList createStudyForm={createStudyForm} updateInputValue={updateInputValue} />
         </div>
         <span className="text-regular-12 text-gray-250">한 개당 최대 8자로 10개까지 가능해요</span>
       </div>

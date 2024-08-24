@@ -3,7 +3,7 @@ export interface ProfileFormType {
   introduce: string;
   profileImage: string;
   badge: string;
-  tags: string[];
+  tagList: string[];
 }
 
 export type UpdateProfileFormType = <Key extends keyof ProfileFormType>(

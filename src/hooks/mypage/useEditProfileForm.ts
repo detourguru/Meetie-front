@@ -13,7 +13,7 @@ export const useEditProfileForm = ({ initialData }: UseEditProfileFormProps) => 
       introduce: "",
       profileImage: "/svg/ic-user.svg",
       badge: "",
-      tags: [],
+      tagList: [],
     },
   );
 

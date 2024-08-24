@@ -78,7 +78,7 @@ export default function ProfilePage() {
 
       <BadgeList isEdit selected={profileForm.badge} handleClick={updateProfileForm} />
 
-      <TagList tags={profileForm.tags} isEdit handleChange={updateProfileForm} />
+      <TagList tags={profileForm.tagList} isEdit updateProfileForm={updateProfileForm} />
 
       {/* TODO: 스터디 공개 여부 구현 */}
       <ExperienceList />
