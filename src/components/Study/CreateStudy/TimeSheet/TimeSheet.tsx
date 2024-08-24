@@ -41,7 +41,6 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
         </SheetHeader>
 
         <div>
-          <h2 className="px-5 pb-[10px] text-semibold-20">시간을 선택해 주세요</h2>
           <div className="flex bg-[#f7f7fb] text-regular-28 gap-[80px] justify-center">
             <div className="flex">
               <TimePicker list={NOON_LIST} valueKey="noon" handleChangeTime={handleChangeTime} />

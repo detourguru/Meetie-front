@@ -52,7 +52,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
           value={createStudyForm.curriculum}
           onChange={(e) => updateInputValue("curriculum", e.target.value)}
         />
-        <span className={inputLengthTextClassName}>0/300</span>
+        <span className={inputLengthTextClassName}>{createStudyForm.curriculum.length}/300</span>
       </div>
 
       <div className="flex flex-col gap-3">
