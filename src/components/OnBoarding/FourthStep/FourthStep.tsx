@@ -1,19 +1,13 @@
-import type { Dispatch, SetStateAction } from "react";
-
 import TagButton from "@/components/common/TagButton/TagButton";
 
 import { PERIODS_DATA } from "@/constants/onBoarding";
 
 interface FourthStepProp {
   clickedPeriod: string;
-  setPeriod: Dispatch<SetStateAction<string>>;
+  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const FourthStep = ({ clickedPeriod, setPeriod }: FourthStepProp) => {
-  const handleClickPeriod = (newPeriod: string) => {
-    clickedPeriod !== newPeriod ? setPeriod(newPeriod) : setPeriod("");
-  };
-
+const FourthStep = ({ clickedPeriod, handleClick }: FourthStepProp) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">
@@ -21,8 +15,9 @@ const FourthStep = ({ clickedPeriod, setPeriod }: FourthStepProp) => {
           <TagButton
             key={`period${index}`}
             hasIcon
+            value={period}
             variant={clickedPeriod && clickedPeriod.includes(period) ? "select" : "default"}
-            onClick={() => handleClickPeriod(period)}
+            onClick={(e) => handleClick(e)}
           >
             {period}
           </TagButton>

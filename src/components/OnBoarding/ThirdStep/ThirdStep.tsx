@@ -1,29 +1,22 @@
-import type { Dispatch, SetStateAction } from "react";
-
 import TagButton from "@/components/common/TagButton/TagButton";
 
 import { STYLES_DATA } from "@/constants/onBoarding";
 
 interface ThirdStepProp {
   clickedStyle: string[];
-  setStyle: Dispatch<SetStateAction<string[]>>;
+  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const ThirdStep = ({ clickedStyle, setStyle }: ThirdStepProp) => {
-  const handleClickStyle = (newStyle: string) => {
-    clickedStyle.includes(newStyle)
-      ? setStyle((prevs) => prevs.filter((prev) => prev !== newStyle))
-      : setStyle((prev) => [...prev, newStyle]);
-  };
-
+const ThirdStep = ({ clickedStyle, handleClick }: ThirdStepProp) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex flex-wrap pt-[60px] gap-2">
         {STYLES_DATA.map((style, index) => (
           <TagButton
             key={`style${index}`}
+            value={style}
             variant={clickedStyle.includes(style) ? "select" : "default"}
-            onClick={() => handleClickStyle(style)}
+            onClick={(e) => handleClick(e)}
           >
             {style}
           </TagButton>

@@ -1,19 +1,13 @@
 import Image from "next/image";
 
-import type { Dispatch, SetStateAction } from "react";
-
 import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
 
 interface FirstStepProp {
   clickedJob: string;
-  setJob: Dispatch<SetStateAction<string>>;
+  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }
 
-const FirstStep = ({ clickedJob, setJob }: FirstStepProp) => {
-  const handleClickJob = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    setJob(e.currentTarget.value);
-  };
-
+const FirstStep = ({ clickedJob, handleClick }: FirstStepProp) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex justify-center items-center w-full gap-[8px] pt-[60px]">
@@ -21,7 +15,7 @@ const FirstStep = ({ clickedJob, setJob }: FirstStepProp) => {
           <button
             key={`jobs${index}`}
             value={job}
-            onClick={(e) => handleClickJob(e)}
+            onClick={handleClick}
             className={`w-[109px] h-[120px] rounded-lg flex flex-col items-center justify-center gap-[20px] ${
               clickedJob === job
                 ? "bg-primary-200 text-primary-500 border border-primary-500 text-medium-16"

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
@@ -35,6 +36,25 @@ export default function OnBoardingPage() {
 
   // TODO: 로그인 기능 추가 후 해당 유저 정보로 수정
   const name = "유의진";
+
+  // TODO: state 객체화 되면 수정
+  const handleStringClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    setValue: Dispatch<SetStateAction<string>>,
+  ) => {
+    setValue(e.currentTarget.value);
+  };
+
+  const handleArrayClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    setValue: Dispatch<SetStateAction<string[]>>,
+  ) => {
+    setValue((prev) =>
+      prev.includes(e.currentTarget.value)
+        ? prev.filter((item) => item !== e.currentTarget.value)
+        : [...prev, e.currentTarget.value],
+    );
+  };
 
   const handlePrevStep = () => {
     step === "job" || setStep(STEPS_DATA[currentStepIndex - 1]);
@@ -85,10 +105,21 @@ export default function OnBoardingPage() {
           subTextColor="text-gray-200"
         />
 
-        {step === "job" && <FirstStep clickedJob={job} setJob={setJob} />}
-        {step === "purpose" && <SecondStep clickedPurpose={purpose} setPurpose={setPurpose} />}
-        {step === "style" && <ThirdStep clickedStyle={style} setStyle={setStyle} />}
-        {step === "period" && <FourthStep clickedPeriod={period} setPeriod={setPeriod} />}
+        {step === "job" && (
+          <FirstStep clickedJob={job} handleClick={(e) => handleStringClick(e, setJob)} />
+        )}
+        {step === "purpose" && (
+          <SecondStep
+            clickedPurpose={purpose}
+            handleClick={(e) => handleArrayClick(e, setPurpose)}
+          />
+        )}
+        {step === "style" && (
+          <ThirdStep clickedStyle={style} handleClick={(e) => handleArrayClick(e, setStyle)} />
+        )}
+        {step === "period" && (
+          <FourthStep clickedPeriod={period} handleClick={(e) => handleStringClick(e, setPeriod)} />
+        )}
       </article>
 
       <div className="mt-auto px-4 pb-[42px]">
