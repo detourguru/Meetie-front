@@ -26,39 +26,25 @@ export default function OnBoardingPage() {
 
   const currentStepIndex = STEPS_DATA.indexOf(step);
 
+  // TODO: state 객체화 되면 수정
+  const isFilled =
+    (step === "job" && job.length !== 0) ||
+    (step === "purpose" && purpose.length !== 0) ||
+    (step === "style" && style.length !== 0) ||
+    (step === "period" && period.length !== 0);
+
   // TODO: 로그인 기능 추가 후 해당 유저 정보로 수정
   const name = "유의진";
-
-  const buttonVariant = () => {
-    if (step === "job" && !job) {
-      return "disabled";
-    } else if (step === "purpose" && purpose.length === 0) {
-      return "disabled";
-    } else if (step === "style" && style.length === 0) {
-      return "disabled";
-    } else if (step === "period" && !period) {
-      return "disabled";
-    }
-
-    return "default";
-  };
 
   const handlePrevStep = () => {
     step === "job" || setStep(STEPS_DATA[currentStepIndex - 1]);
   };
 
   const handleNextStep = () => {
-    if (buttonVariant() === "disabled") {
-      return;
-    }
-
     step === "period" || setStep(STEPS_DATA[currentStepIndex + 1]);
   };
 
   const handlePostOnboardingData = async () => {
-    if (buttonVariant() === "disabled") {
-      return;
-    }
     const data = { job, purpose, style, period };
 
     // TODO: 함수 모듈화
@@ -114,7 +100,7 @@ export default function OnBoardingPage() {
             <span className="text-gray-200 text-bold-16">이전</span>
           </Button>
           <Button
-            variant={buttonVariant()}
+            disabled={!isFilled}
             onClick={step === "period" ? handlePostOnboardingData : handleNextStep}
           >
             <span className="text-white text-bold-16">
