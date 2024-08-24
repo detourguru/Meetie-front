@@ -21,6 +21,7 @@ export default function OnBoardingCompletePage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // TODO: 추후에 리펙토링
     (async () => {
       const supabase = createClient();
       const user = (await supabase.auth.getUser()).data.user;
