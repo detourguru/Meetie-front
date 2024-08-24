@@ -17,7 +17,7 @@ const FourthStep = ({ clickedPeriod, handleClick }: FourthStepProp) => {
             hasIcon
             value={period}
             variant={clickedPeriod && clickedPeriod.includes(period) ? "select" : "default"}
-            onClick={(e) => handleClick(e)}
+            onClick={handleClick}
           >
             {period}
           </TagButton>

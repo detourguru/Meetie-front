@@ -16,7 +16,7 @@ const ThirdStep = ({ clickedStyle, handleClick }: ThirdStepProp) => {
             key={`style${index}`}
             value={style}
             variant={clickedStyle.includes(style) ? "select" : "default"}
-            onClick={(e) => handleClick(e)}
+            onClick={handleClick}
           >
             {style}
           </TagButton>

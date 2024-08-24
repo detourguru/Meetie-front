@@ -17,7 +17,7 @@ const SecondStep = ({ clickedPurpose, handleClick }: SecondStepProp) => {
             value={purpose}
             hasIcon
             variant={clickedPurpose.includes(purpose) ? "select" : "default"}
-            onClick={(e) => handleClick(e)}
+            onClick={handleClick}
           >
             {purpose}
           </TagButton>

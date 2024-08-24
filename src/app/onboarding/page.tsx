@@ -49,10 +49,10 @@ export default function OnBoardingPage() {
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     setValue: Dispatch<SetStateAction<string[]>>,
   ) => {
+    const newValue = e.currentTarget.value;
+
     setValue((prev) =>
-      prev.includes(e.currentTarget.value)
-        ? prev.filter((item) => item !== e.currentTarget.value)
-        : [...prev, e.currentTarget.value],
+      prev.includes(newValue) ? prev.filter((item) => item !== newValue) : [...prev, newValue],
     );
   };
 
