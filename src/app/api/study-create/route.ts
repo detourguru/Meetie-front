@@ -19,3 +19,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: "error", status: 500 });
   }
 }
+
+export async function GET() {
+  try {
+    const supabase = createClient();
+
+    const { data } = await supabase.from("study").select();
+
+    return NextResponse.json({ message: "ok", status: 200, data: data });
+  } catch (error) {
+    return NextResponse.json({ message: "error", status: 500 });
+  }
+}
