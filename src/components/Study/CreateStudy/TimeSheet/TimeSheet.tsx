@@ -22,7 +22,7 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
   };
 
   const handleTimeSelect = () => {
-    updateInputValue("time", selectTime);
+    updateInputValue("time", `${selectTime.noon} ${selectTime.hour} ${selectTime.minute}`);
     onInteractOutside && onInteractOutside();
   };
 

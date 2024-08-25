@@ -7,7 +7,8 @@ export interface CreateStudyFormRequestType {
   startDate: Date | null;
   endDate: Date | null;
   week: string;
-  time: { noon: string; hour: string; minute: string } | null;
+  // time: { noon: string; hour: string; minute: string } | null;
+  time: string | null;
   personCount: number;
   tagList: string[];
 }

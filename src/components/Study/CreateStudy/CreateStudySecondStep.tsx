@@ -94,11 +94,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
             readOnly
             placeholder="오전 00시 00분"
             onClick={openTimeSheet}
-            value={
-              (createStudyForm.time &&
-                `${createStudyForm.time.noon} ${createStudyForm.time.hour.toString().padStart(2, "0")}시 ${createStudyForm.time.minute.toString().padStart(2, "0")}분`) ||
-              ""
-            }
+            // value={
+            //   (createStudyForm.time &&
+            //     `${createStudyForm.time.noon} ${createStudyForm.time.hour.toString().padStart(2, "0")}시 ${createStudyForm.time.minute.toString().padStart(2, "0")}분`) ||
+            //   ""
+            // }
+            value={(createStudyForm.time && `${createStudyForm.time}`) || ""}
           />
         </div>
       </div>
