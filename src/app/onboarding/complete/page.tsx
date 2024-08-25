@@ -41,16 +41,14 @@ export default function OnBoardingCompletePage() {
         },
       });
       const result = await res.json();
-      const data: { position: string; styles: string } | null = result.data;
+      const data: { position: string; styles: string[] } | null = result.data;
 
       if (data) {
         // TODO: job -> position 모두 변경 예정
         const job: string = JOBS_KR_DATA[JOBS_DATA.indexOf(data.position)];
         setJob(job);
         // TODO: 글자 수 길어질 때 어떻게 할지 고민
-        const styles: string = JSON.parse(data.styles)
-          .map((style: string) => style)
-          .join("﹒");
+        const styles = data.styles.join("﹒");
         setStyles(styles);
       }
 
