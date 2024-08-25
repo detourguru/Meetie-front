@@ -9,3 +9,7 @@ export const convertDate = (date: Date | null) => {
 
   return `${format(date, "yyyy.MM.dd")} (${WEEK_DAY[date.getDay()]})`;
 };
+
+export const convertTime = (time: { noon: string; hour: string; minute: string }) => {
+  return `${time.noon} ${time.hour.toString().padStart(2, "0")}시 ${time.minute.toString().padStart(2, "0")}분`;
+};

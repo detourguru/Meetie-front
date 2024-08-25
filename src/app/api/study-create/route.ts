@@ -8,9 +8,7 @@ export async function POST(request: Request) {
 
     const data = await request.json();
 
-    const { error } = await supabase.from("study-create").insert(data);
-
-    console.log(error);
+    const { error } = await supabase.from("study").insert(data);
 
     if (!error) {
       return NextResponse.json({ message: "ok", status: 200 });

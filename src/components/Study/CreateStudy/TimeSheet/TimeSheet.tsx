@@ -7,6 +7,8 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/commo
 
 import { NOON_LIST, HOUR_LIST, MINUTE_LIST } from "@/constants/common";
 
+import { convertTime } from "@/utils/date";
+
 import type { CommonSheetProps } from "@/types/common";
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
 
@@ -22,7 +24,7 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
   };
 
   const handleTimeSelect = () => {
-    updateInputValue("time", `${selectTime.noon} ${selectTime.hour} ${selectTime.minute}`);
+    updateInputValue("time", convertTime(selectTime));
     onInteractOutside && onInteractOutside();
   };
 

@@ -1,4 +1,8 @@
+import { useRouter } from "next/navigation";
+
 import { useState, useCallback } from "react";
+
+import { PATH } from "@/constants/path";
 
 import type { CreateStudyFormRequestType } from "@/types/study";
 
@@ -7,6 +11,8 @@ interface UseCreateStudyFormProps {
 }
 
 export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => {
+  const router = useRouter();
+
   const [step, setStep] = useState("first");
 
   const [createStudyForm, setCreateStudyForm] = useState(
@@ -72,7 +78,7 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
       });
 
       if (res.ok) {
-        console.log("success");
+        router.push(PATH.STUDY_ROOM_LIST);
       }
     } catch (error) {
       console.error(error);
