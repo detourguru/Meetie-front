@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: "http",
         hostname: "*.kakaocdn.net",
       },
+      {
+        protocol: "https",
+        hostname: "*.googleusercontent.com",
+      },
     ],
   },
 };
