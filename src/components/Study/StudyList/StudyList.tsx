@@ -1,26 +1,15 @@
 "use client";
 
-import { useEffect } from "react";
-
 import CheckBox from "@/components/Study/CheckBox";
 import PageConter from "@/components/Study/PageCounter";
 import StudyCard from "@/components/Study/StudyCard";
 
+import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
+
 const StudyList = () => {
-  useEffect(() => {
-    (async () => {
-      const res = await fetch("http://localhost:3000/api/study-create", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  const { studyListData } = useStudyListQuery();
 
-      const result = await res.json();
-
-      console.log(result);
-    })();
-  }, []);
+  console.log(studyListData);
 
   return (
     <article className="mx-4 pb-[80px]">
