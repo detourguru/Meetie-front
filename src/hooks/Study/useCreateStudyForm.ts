@@ -61,11 +61,30 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
     [],
   );
 
+  const handleSubmit = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/api/study-create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(createStudyForm),
+      });
+
+      if (res.ok) {
+        console.log("success");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return {
     step,
     createStudyForm,
     updateInputValue,
     handleMoveStep,
     buttonDisabled,
+    handleSubmit,
   };
 };
