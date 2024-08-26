@@ -5,7 +5,7 @@ import { useState } from "react";
 import Button from "@/components/common/Button/Button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/common/Sheet/Sheet";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/className";
 
 import type { CommonSheetProps } from "@/types/common";
 import type { CreateStudyFormRequestType, CreateStudyUpdateHandlerType } from "@/types/study";

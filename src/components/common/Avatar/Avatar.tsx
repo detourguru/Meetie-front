@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { cva, type VariantProps } from "class-variance-authority";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/className";
 
 const avatarVariants = cva("rounded-[100%] overflow-hidden", {
   variants: {
