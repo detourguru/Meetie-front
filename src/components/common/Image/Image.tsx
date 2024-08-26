@@ -1,6 +1,6 @@
 import { default as NextImage } from "next/image";
 
-import clsx from "clsx";
+import { cn } from "@/lib/utils";
 
 interface ImageProps {
   src: string;
@@ -10,7 +10,7 @@ interface ImageProps {
 }
 
 const Image = ({ className, ...props }: ImageProps) => (
-  <div className={clsx("relative", className)}>
+  <div className={cn("relative", className)}>
     <NextImage {...props} fill sizes="100%" className="object-contain" />
   </div>
 );
