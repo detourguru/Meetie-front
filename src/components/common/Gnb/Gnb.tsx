@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-import { GNB_DATA } from "@/lib/contants";
+import { GNB_DATA } from "@/constants/common";
 
 const Gnb = () => {
   const pathname = usePathname();
