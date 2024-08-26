@@ -4,6 +4,8 @@ import { useState, useCallback } from "react";
 
 import { PATH } from "@/constants/path";
 
+import { usePostStudyMutation } from "@/hooks/api/study/usePostStudyMutation";
+
 import type { CreateStudyFormRequestType } from "@/types/study";
 
 interface UseCreateStudyFormProps {
@@ -11,6 +13,8 @@ interface UseCreateStudyFormProps {
 }
 
 export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => {
+  const { mutate: postStudyMutation } = usePostStudyMutation();
+
   const router = useRouter();
 
   const [step, setStep] = useState("first");
@@ -68,21 +72,11 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
   );
 
   const handleSubmit = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/study-create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(createStudyForm),
-      });
-
-      if (res.ok) {
+    postStudyMutation(createStudyForm, {
+      onSuccess: () => {
         router.push(PATH.STUDY_ROOM_LIST);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+      },
+    });
   };
 
   return {
