@@ -1,18 +1,24 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
+import React, { useState } from "react";
+
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
-import TaskConfirmSheet from "@/components/TaskConfirmSheet/TaskConfirmSheet";
+import TaskConfirmAddItem from "@/components/StudyRoom/TaskConfirmAddItem/TaskConfirmAddItem";
+import TaskConfirmArea from "@/components/StudyRoom/TaskConfirmArea/TaskConfirmArea";
 
 import { PATH } from "@/constants/path";
 
 import UserImg from "/public/img/img-user-profile.png";
 
-import { useOverlay } from "@/hooks/common/useOverlay";
-
 export default function Confirm() {
-  const { isOpen, handleOpen, handleClose } = useOverlay();
+  const [textlength, setTextLength] = useState(0);
+  const handelTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setTextLength(e.target.value.length);
+  };
   return (
     <>
       <Header>
@@ -52,29 +58,18 @@ export default function Confirm() {
             </div>
           </div>
         </section>
-        <section
-          onClick={handleOpen}
-          className="h-[170px] flex flex-col items-center justify-center text-[#A9A9A9] text-[15px] bg-[#F9F9F9] border border-[#E9E9E9] rounded-lg drop-shadow-sm mt-2 mb-4"
-        >
-          <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
-          <span className="mt-2">인증 구역</span>
-        </section>
-        <TaskConfirmSheet isOpen={isOpen} onInteractOutside={handleClose} />
+        <TaskConfirmArea />
         <section>
           <h4 className="text-bold-14 pb-3">기록</h4>
           <textarea
             className="w-full h-[50px] text-[15px] placeholder:text-[#82829B] bg-[#F9F9F9] p-3 border border-[#E9E9E9] rounded-lg resize-none"
             placeholder="과제를 하며 나누고 싶은 생각을 적어보세요."
             maxLength={500}
+            onChange={handelTextChange}
           />
-          <p className="text-[13px] text-[#b7b7b7] text-right">0/500</p>
+          <p className="text-[13px] text-[#b7b7b7] text-right">{textlength}/500</p>
         </section>
-        <section className="flex flex-nowrap gap-3 overflow-x-scroll">
-          <div className="flex flex-col items-center justify-center w-[82px] h-[82px] min-w-[82px] border border-[#D5D5D5] rounded-lg bg-[#F9F9F9]">
-            <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
-            <span className="text-[#797979] text-regular-14 mt-1">0/4</span>
-          </div>
-        </section>
+        <TaskConfirmAddItem />
         <section>
           <Link href={PATH.TASK_CONFIRM_SUCCESS}>
             <Button className="w-full mt-6 mb-3">

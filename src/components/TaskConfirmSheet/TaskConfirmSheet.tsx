@@ -1,12 +1,33 @@
 import Image from "next/image";
 
+import React from "react";
+
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
 interface TaskConfirmSheetProps {
   isOpen: boolean;
   onInteractOutside?: () => void;
+  handleImageUpdate: (uploadImage: string | null) => void;
 }
-const TaskConfirmSheet = ({ isOpen, onInteractOutside }: TaskConfirmSheetProps) => {
+
+const TaskConfirmSheet = ({
+  isOpen,
+  onInteractOutside,
+  handleImageUpdate,
+}: TaskConfirmSheetProps) => {
+  const handelFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        handleImageUpdate(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      handleImageUpdate(null);
+    }
+  };
+
   return (
     <Sheet open={isOpen}>
       <SheetContent
@@ -29,27 +50,25 @@ const TaskConfirmSheet = ({ isOpen, onInteractOutside }: TaskConfirmSheetProps) 
                 <Image src="/svg/ic-calendar-album.svg" alt="album icon" width={30} height={30} />
               </label>
               <span>앨범</span>
-              <input type="file" id="album" hidden />
+              <input onChange={handelFileChange} type="file" accept="image/*" id="album" hidden />
             </div>
+            {/* todo: 카메라 업로드 기능 구현 */}
             <div className="flex flex-col items-center">
               <label
-                htmlFor="cam"
+                htmlFor="camera"
                 className="w-[68px] h-[68px] flex justify-center items-center bg-[#6490DB] rounded-full mb-1"
               >
                 <Image src="/svg/ic-calendar-camera.svg" alt="camera icon" width={30} height={30} />
               </label>
               <span>카메라</span>
-              <input type="file" capture="environment" id="cam" hidden />
+              <input type="file" capture="environment" accept="image/*" id="camera" hidden />
             </div>
+            {/* todo: 링크 업로드 기능 구현 */}
             <div className="flex flex-col items-center">
-              <label
-                htmlFor="link"
-                className="w-[68px] h-[68px] flex justify-center items-center bg-[#5256B5] rounded-full mb-1"
-              >
+              <label className="w-[68px] h-[68px] flex justify-center items-center bg-[#5256B5] rounded-full mb-1">
                 <Image src="/svg/ic-calendar-link.svg" alt="link icon" width={30} height={30} />
               </label>
               <span>링크</span>
-              <input type="text" id="link" hidden />
             </div>
           </div>
         </div>
