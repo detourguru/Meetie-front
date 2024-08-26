@@ -1,11 +1,10 @@
 "use client";
 
-import Image from "next/image";
-
 import { useState } from "react";
 
-import BadgeIcon from "../../BadgeIcon/BadgeIcon";
-import BadgeSheet from "../BadgeSheet/BadgeSheet";
+import Image from "@/components/common/Image/Image";
+import BadgeSheet from "@/components/MyPage/Ability/BadgeSheet/BadgeSheet";
+import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
@@ -33,13 +32,7 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
       <section className="flex flex-col mx-5 gap-4">
         <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">{badges.type} 뱃지</header>
-          <Image
-            src="/svg/ic-verified.svg"
-            alt="verified"
-            width={16}
-            height={16}
-            className="w-4 h-4"
-          />
+          <Image src="/svg/ic-verified.svg" alt="verified" className="w-4 h-4" />
         </div>
 
         <div className="flex justify-between bg-white">

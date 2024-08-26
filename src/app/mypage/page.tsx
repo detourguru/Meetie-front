@@ -1,9 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
+import Image from "@/components/common/Image/Image";
 import BadgeCard from "@/components/MyPage/BadgeCard/BadgeCard";
 import ClockIcon from "@/components/MyPage/ClockIcon";
 import Divider from "@/components/MyPage/dividers/Divider/Divider";
@@ -79,13 +79,7 @@ export default function MyPage() {
         <section className="flex flex-col gap-7 mt-8 mb-12">
           <div className="flex justify-between items-center px-3.5">
             <h3 className="text-bold-18">내 능력 현황</h3>
-            <Image
-              src="svg/ic-thick-arrow-right.svg"
-              alt="next"
-              width={8}
-              height={14}
-              className="w-2 h-3.5"
-            />
+            <Image src="svg/ic-thick-arrow-right.svg" alt="next" className="w-[8px] h-[14px]" />
           </div>
           <div className="grid grid-cols-4 px-4">
             <BadgeCard type="댓글" level={3} />

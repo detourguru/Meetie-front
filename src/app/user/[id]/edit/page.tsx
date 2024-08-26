@@ -1,10 +1,9 @@
 "use client";
 
-import Image from "next/image";
-
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
+import Image from "@/components/common/Image/Image";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
@@ -34,13 +33,7 @@ export default function ProfilePage() {
               htmlFor="profileImage"
               className="absolute rounded-full bg-primary-400 bottom-0 right-0 p-2"
             >
-              <Image
-                src="/svg/ic-camera.svg"
-                alt="camera"
-                width={16}
-                height={16}
-                className="w-4 h-4"
-              />
+              <Image src="/svg/ic-camera.svg" alt="camera" className="w-4 h-4" />
             </label>
             <input
               type="file"

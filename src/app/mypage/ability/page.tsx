@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import Image from "@/components/common/Image/Image";
 import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
 import ClockIcon from "@/components/MyPage/ClockIcon";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
@@ -18,7 +17,7 @@ export default function AbilityPage() {
             <p className="text-regular-12 text-gray-300">축하합니다!</p>
             <p className="text-semibold-14 text-gray-500">새로운 뱃지가 추가 됐어요!</p>
           </div>
-          <Image src="/img/img-megaphone.png" alt="megaphone" width={50} height={50} />
+          <Image src="/img/img-megaphone.png" alt="megaphone" className="w-[50px] h-[50px]" />
         </div>
       </article>
 

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/common/Image/Image";
 
 interface HeaderButtonPropsType {
   handleButtonClick?: () => void;
@@ -44,8 +44,7 @@ const HeaderLeftButton = ({ isCloseIcon, handleButtonClick }: HeaderLeftButtonPr
       <Image
         src={isCloseIcon ? "/svg/ic-header-close.svg" : "/svg/ic-header-left-arrow.svg"}
         alt="leftButtonIcon"
-        width={24}
-        height={24}
+        className="w-[24px] h-[24px]"
       />
     </button>
   );
@@ -54,7 +53,7 @@ const HeaderLeftButton = ({ isCloseIcon, handleButtonClick }: HeaderLeftButtonPr
 const HeaderRightButton = ({ icon, handleButtonClick }: HeaderRightButtonProps) => {
   return (
     <button className="absolute right-3" onClick={handleButtonClick}>
-      <Image src={icon} alt="rightButtonIcon" width={24} height={24} />
+      <Image src={icon} alt="rightButtonIcon" className="w-[24px] h-[24px]" />
     </button>
   );
 };
