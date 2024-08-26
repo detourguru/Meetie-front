@@ -3,6 +3,7 @@ import Image from "next/image";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 // import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
+import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
 export default function StudyRoom() {
@@ -38,11 +39,12 @@ export default function StudyRoom() {
           </section>
         </section>
         {/* tab */}
-        <div className="h-[46px] grid grid-cols-3 items-center bg-white text-[#82829B] text-medium-16 text-center leading-[46px]">
-          <p className="border-b-2 border-primary-500 text-primary-500">캘린더</p>
-          <p>과제</p>
-          <p>채팅</p>
-        </div>
+        <Tabs defaultValue="calendar">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="calendar">캘린더</TabsTrigger>
+            <TabsTrigger value="task">과제</TabsTrigger>
+          </TabsList>
+        </Tabs>
 
         {/* <CalendarTab /> */}
         <TaskTab />
