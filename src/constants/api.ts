@@ -4,4 +4,6 @@ export const END_POINTS = {
   STUDY_LIST: "/api/study-list",
   STUDY: (studyId: string) => `/api/study/${studyId}`,
   POST_STUDY: `/api/study`,
+
+  USER_INFO: "/api/user-info",
 };

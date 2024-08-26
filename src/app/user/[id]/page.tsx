@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import Avatar from "@/components/common/Avatar/Avatar";
@@ -11,7 +13,11 @@ import TagList from "@/components/Profile/TagList/TagList";
 
 import { PATH } from "@/constants/path";
 
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+
 export default function UserProfilePage() {
+  const { userData } = useUserInformationQuery();
+
   return (
     <>
       <Header>
@@ -51,6 +57,8 @@ export default function UserProfilePage() {
           </h3>
         </div>
       </div>
+
+      {JSON.stringify(userData)}
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
