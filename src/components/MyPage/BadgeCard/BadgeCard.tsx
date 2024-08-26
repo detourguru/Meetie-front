@@ -17,7 +17,7 @@ const BadgeCard = ({ level, type, title }: BadgeCardProps) => {
   );
 
   return (
-    <article className="flex flex-col gap-3.5 items-center justify-end bg-white">
+    <article className="flex flex-col gap-3.5 items-center justify-end">
       <BadgeIcon
         src={badge?.icon ?? ""}
         alt={badge?.title ?? ""}

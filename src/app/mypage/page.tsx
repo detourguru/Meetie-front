@@ -76,7 +76,7 @@ export default function MyPage() {
 
       {/* 내 능력 현황 */}
       <Link href={PATH.ABILITY}>
-        <section className="flex flex-col gap-7 mt-8 mb-12">
+        <section className="flex flex-col gap-7 mt-8 mb-12 bg-white">
           <div className="flex justify-between items-center px-3.5">
             <h3 className="text-bold-18">내 능력 현황</h3>
             <Image src="svg/ic-thick-arrow-right.svg" alt="next" className="w-[8px] h-[14px]" />

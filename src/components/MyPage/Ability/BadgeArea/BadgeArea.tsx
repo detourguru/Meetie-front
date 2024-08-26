@@ -29,13 +29,13 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
 
   return (
     <>
-      <section className="flex flex-col mx-5 gap-4">
+      <section className="flex flex-col px-5 gap-4 bg-white">
         <div className="flex gap-1 items-center">
           <header className="text-medium-16 text-gray-500">{badges.type} 뱃지</header>
           <Image src="/svg/ic-verified.svg" alt="verified" className="w-4 h-4" />
         </div>
 
-        <div className="flex justify-between bg-white">
+        <div className="flex justify-between">
           {badges.badges.map((badge, index) => (
             <article
               key={`${badges.type}/${index}`}
