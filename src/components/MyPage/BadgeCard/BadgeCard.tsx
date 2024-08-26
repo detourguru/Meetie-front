@@ -1,6 +1,6 @@
 import { twJoin } from "tailwind-merge";
 
-import BadgeIcon from "../BadgeIcon/BadgeIcon";
+import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 
 import { BADGE_DATA } from "@/constants/badges";
 
