@@ -33,3 +33,7 @@ export interface StudyListType extends CreateStudyFormRequestType {
   isRecruit: boolean;
   createdAt: Date;
 }
+
+export interface GetStudyResponseType extends CommonResponseType {
+  data: StudyListType;
+}

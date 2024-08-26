@@ -2,7 +2,7 @@ import * as React from "react";
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/className";
 
 const tabsVariants = "inline-flex items-center justify-center rounded-lg text-semibold-16";
 

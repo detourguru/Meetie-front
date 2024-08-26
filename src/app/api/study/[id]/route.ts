@@ -20,13 +20,17 @@ export async function POST(request: Request) {
   }
 }
 
-export async function GET() {
+export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
     const supabase = createClient();
 
-    const { data } = await supabase.from("study").select();
+    const { data } = await supabase.from("study").select().eq("studyId", params.id);
 
-    return NextResponse.json({ message: "ok", status: 200, data });
+    if (data) {
+      return NextResponse.json({ message: "ok", status: 200, data: data[0] });
+    }
+
+    return NextResponse.json({ message: "ok", status: 200, data: null });
   } catch (error) {
     return NextResponse.json({ message: "error", status: 500 });
   }
