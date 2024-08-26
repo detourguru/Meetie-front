@@ -37,6 +37,16 @@
             "position": "before"
           },
           {
+            "pattern": "{class-variance-authority*,class-variance-authority*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "{@radix-ui*,@radix-ui*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
             "pattern": "{@storybook*,@storybook*/*}",
             "group": "external",
             "position": "before"

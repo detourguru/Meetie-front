@@ -10,49 +10,31 @@ import MemberList from "../Member/MemberList";
 import PageConter from "../PageCounter";
 import StudyCard from "../StudyCard";
 
-const Tab = () => {
-  const [activeTab, setActiveTab] = useState("study");
-  const [filterActive, setFilterActive] = useState(false);
+import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 
-  function HandleShowSelectedTab(tab: string) {
-    setActiveTab(tab);
-  }
+const ExplorerTab = () => {
+  const [currentTab, setCurrentTab] = useState("study");
+
+  const [filterActive, setFilterActive] = useState(false);
 
   function HandleToggleFilterArea() {
     setFilterActive(!filterActive);
   }
 
-  const isCurrentTabDefault = activeTab === "study" ? true : false;
-
   return (
     <>
-      <ul className="mb-2 text-center text-gray-500 text-semibold-16 flex items-center justify-evenly">
-        <li
-          className={`w-full ${isCurrentTabDefault ? "border-b-2 border-primary-500 text-gray-500" : "text-gray-200"}`}
-        >
-          <a
-            id="study"
-            onClick={(e) => HandleShowSelectedTab(e.currentTarget.id)}
-            href="#"
-            className="inline-block py-4"
-          >
+      <Tabs defaultValue={currentTab}>
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="study" onClick={() => setCurrentTab("study")}>
             스터디 찾기
-          </a>
-        </li>
-        <li
-          className={`w-full ${!isCurrentTabDefault ? "border-b-2 border-primary-500 text-gray-500" : "text-gray-200"}`}
-        >
-          <a
-            id="member"
-            onClick={(e) => HandleShowSelectedTab(e.currentTarget.id)}
-            href="#"
-            className="inline-block p-4"
-          >
+          </TabsTrigger>
+          <TabsTrigger value="member" onClick={() => setCurrentTab("member")}>
             팀원 찾기
-          </a>
-        </li>
-      </ul>
-      {isCurrentTabDefault && (
+          </TabsTrigger>
+        </TabsList>
+      </Tabs>
+
+      {currentTab === "study" && (
         <div className="relative p-4">
           <div className="flex justify-between mb-4">
             <div className="text-nowrap overflow-x-auto no-scrollbar">
@@ -100,7 +82,8 @@ const Tab = () => {
           <StudyCard />
         </div>
       )}
-      {!isCurrentTabDefault && (
+
+      {currentTab === "member" && (
         <div className="relative p-4">
           <div className="flex justify-between items-center mb-4">
             <div>
@@ -195,4 +178,4 @@ const Tab = () => {
   );
 };
 
-export default Tab;
+export default ExplorerTab;
