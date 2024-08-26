@@ -104,7 +104,7 @@ const PositionSheet = ({
             ))}
           </ul>
 
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 justify-center">
             <Button variant="outline" onClick={onInteractOutside}>
               <p className="text-semibold-16 text-[#adb5bd]">취소</p>
             </Button>

@@ -56,7 +56,7 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
               />
             </div>
           </div>
-          <div className="px-5 flex gap-4 pt-[18px]">
+          <div className="px-5 flex gap-4 pt-[18px] justify-center">
             <Button variant="outline" onClick={onInteractOutside}>
               <p className="text-bold-16 text-[#adb5bd]">취소</p>
             </Button>
