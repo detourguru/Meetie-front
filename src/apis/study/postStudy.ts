@@ -9,5 +9,5 @@ export const postStudy = async (createStudyForm: CreateStudyFormRequestType) => 
     headers: { "Content-Type": "application/json" },
   };
 
-  return axiosInstance.post(END_POINTS.STUDY, JSON.stringify(createStudyForm), config);
+  return axiosInstance.post(END_POINTS.STUDY, createStudyForm, config);
 };

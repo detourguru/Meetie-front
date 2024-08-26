@@ -1,3 +1,5 @@
+import type { CommonResponseType } from "@/types/common";
+
 export interface CreateStudyFormRequestType {
   position: string[];
   topic: string;
@@ -21,3 +23,7 @@ export type CreateStudyUpdateHandlerType = <Key extends keyof CreateStudyFormReq
   key: Key,
   value: CreateStudyFormRequestType[Key],
 ) => void;
+
+export interface GetStudyListResponseType extends CommonResponseType {
+  data: CreateStudyFormRequestType[];
+}

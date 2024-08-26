@@ -9,7 +9,7 @@ import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 const StudyList = () => {
   const { studyListData } = useStudyListQuery();
 
-  console.log(studyListData);
+  console.log(studyListData?.data);
 
   return (
     <article className="mx-4 pb-[80px]">

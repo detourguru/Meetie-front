@@ -12,6 +12,9 @@ export const usePostStudyMutation = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY_LIST] });
     },
+    onError: (error) => {
+      console.log(error);
+    },
   });
 
   return postStudyMutation;
