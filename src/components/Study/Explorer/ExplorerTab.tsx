@@ -8,7 +8,7 @@ import Filter from "../Filter";
 import HashTag from "../HashTag";
 import MemberList from "../Member/MemberList";
 import PageConter from "../PageCounter";
-import StudyCard from "../StudyCard";
+// import StudyCard from "../StudyCard";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 
@@ -68,7 +68,7 @@ const ExplorerTab = () => {
               <CheckBox>모집중만 보기</CheckBox>
               <PageConter current={1} total={6} />
             </div>
-            <StudyCard />
+            {/* <StudyCard /> */}
           </div>
           <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
           <div className="flex justify-between">
@@ -79,7 +79,7 @@ const ExplorerTab = () => {
             </h1>
             <PageConter current={1} total={6} />
           </div>
-          <StudyCard />
+          {/* <StudyCard /> */}
         </div>
       )}
 

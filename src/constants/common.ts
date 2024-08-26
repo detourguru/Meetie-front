@@ -28,8 +28,8 @@ export const GNB_DATA = [
   },
   {
     text: "탐색",
-    rootLink: "/study/explorer",
-    link: "/study/explorer",
+    rootLink: "/study-explorer",
+    link: "/study-explorer",
     icon: "/svg/ic-gnb-search.svg",
     disabledIcon: "/svg/ic-gnb-search-disabled.svg",
   },
