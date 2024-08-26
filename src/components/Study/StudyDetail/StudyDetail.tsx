@@ -3,16 +3,17 @@
 import { useParams } from "next/navigation";
 
 import Avatar from "@/components/common/Avatar/Avatar";
+import Divider from "@/components/common/Divider/Divider";
 import Tag from "@/components/common/Tag/Tag";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
+
+import { convertDate, convertDateTime } from "@/utils/date";
 
 const StudyDetail = () => {
   const params = useParams();
 
   const { studyData } = useStudyQuery(String(params.id));
-
-  console.log(studyData.data);
 
   const spanClassName =
     "mr-[14px] after:h-[10px] after:w-[1px] after:bg-blue-300 after:inline-block relative after:absolute after:right-[-8px] after:top-[2px]";
@@ -40,46 +41,48 @@ const StudyDetail = () => {
         <div className="flex flex-col gap-1">
           <h3 className="text-bold-14">김서희</h3>
           <p className="text-regular-12 text-blue-300">
-            <span className={spanClassName}>작성일 24.06.07</span>
-            <span className={spanClassName}>09:41</span>
+            <span className={spanClassName}>
+              작성일{convertDate(new Date(studyData.data.createdAt))}
+            </span>
+            <span className={spanClassName}>
+              {convertDateTime(new Date(studyData.data.createdAt))}
+            </span>
             <span>조회수 33</span>
           </p>
         </div>
       </div>
 
-      <div className="w-full h-[2px] bg-blue-50 mt-[14px]" />
+      <Divider className="h-[2px] bg-blue-50 mt-3.5" />
 
       <div className="mt-10 flex flex-col gap-[28px]">
         <div className={contentBoxClassName}>
-          <h2 className={contentTitleClassName}>스터디 주제</h2>
-          <p className={contentClassName}>콜로소 피그마 UX/UI 디자인 강의 스터디</p>
-        </div>
-        <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>스터디 목표</h2>
-          <p className={contentClassName}>강의 완주 후 학습 네트워킹</p>
+          <p className={contentClassName}>{studyData.data.goal}</p>
         </div>
         <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>스터디 소개</h2>
-          <p className={contentClassName}>
-            디자이너에게 필수적인 피그마 툴 학습을 함께 배우고 강의 내용을 응용하여 UI를 제작해
-            인증하는 방식으로 진행하려고 해요. 피드백을 주고 받으며 학습 내용과 생각을 공유해봐요!
-          </p>
+          <p className={contentClassName}>{studyData.data.introduce}</p>
         </div>
         <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>진행방식과 커리큘럼</h2>
           <p className="text-regular-14 text-gray-450 whitespace-pre-wrap">
-            {`1주차 : 과제 인증, 팔로업\n2주차 : 과제 인증, 팔로업\n3주차 : 과제 활용 UI 제작 및 피드백\n4주차 : 최종 발표 및 피드백`}
+            {studyData.data.curriculum}
           </p>
         </div>
         <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>스터디 인원</h2>
-          <p className={contentClassName}>5명</p>
+          <p className={contentClassName}>{studyData.data.personCount}명</p>
         </div>
         <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>스터디 기간</h2>
           <div>
-            <p className={contentClassName}>2024.06.19 (토) - 07.19(토)</p>
-            <p className={contentClassName}>매주 토요일 오후 1시 - 3시</p>
+            <p className={contentClassName}>
+              {convertDate(new Date(studyData.data.startDate ?? new Date()), true)} -{" "}
+              {convertDate(new Date(studyData.data.endDate ?? new Date()), true)}
+            </p>
+            <p className={contentClassName}>
+              매주 {studyData.data.week}요일 {studyData.data.time}
+            </p>
           </div>
         </div>
       </div>

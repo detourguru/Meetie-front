@@ -2,12 +2,24 @@ import { format } from "date-fns";
 
 import { WEEK_DAY } from "@/constants/common";
 
-export const convertDate = (date: Date | null) => {
+export const convertDate = (date: Date | null, hasWeek?: boolean) => {
   if (!date) {
     return;
   }
 
-  return `${format(date, "yyyy.MM.dd")} (${WEEK_DAY[date.getDay()]})`;
+  if (hasWeek) {
+    return `${format(date, "yyyy.MM.dd")} (${WEEK_DAY[date.getDay()]})`;
+  }
+
+  return format(date, "yyyy.MM.dd");
+};
+
+export const convertDateTime = (date: Date | null) => {
+  if (!date) {
+    return;
+  }
+
+  return format(date, "HH:mm");
 };
 
 export const convertTime = (time: { noon: string; hour: string; minute: string }) => {
