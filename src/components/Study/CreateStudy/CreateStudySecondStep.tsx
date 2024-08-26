@@ -112,7 +112,14 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
               alt="minusIcon"
               width={16}
               height={16}
-              onClick={() => updateInputValue("personCount", createStudyForm.personCount - 1)}
+              onClick={() =>
+                updateInputValue(
+                  "personCount",
+                  createStudyForm.personCount > 1
+                    ? createStudyForm.personCount - 1
+                    : createStudyForm.personCount,
+                )
+              }
             />
             <p>{createStudyForm.personCount}</p>
             <Image
@@ -120,7 +127,14 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
               alt="plusIcon"
               width={20}
               height={20}
-              onClick={() => updateInputValue("personCount", createStudyForm.personCount + 1)}
+              onClick={() =>
+                updateInputValue(
+                  "personCount",
+                  createStudyForm.personCount < 8
+                    ? createStudyForm.personCount + 1
+                    : createStudyForm.personCount,
+                )
+              }
             />
           </div>
         </div>
