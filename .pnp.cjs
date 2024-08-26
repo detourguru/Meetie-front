@@ -29,6 +29,7 @@ const RAW_RUNTIME_STATE =
           ["@commitlint/cli", "npm:19.3.0"],\
           ["@commitlint/config-conventional", "npm:19.2.2"],\
           ["@radix-ui/react-dialog", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:1.1.1"],\
+          ["@radix-ui/react-visually-hidden", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:1.1.0"],\
           ["@supabase/ssr", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:0.5.0"],\
           ["@supabase/supabase-js", "npm:2.45.1"],\
           ["@types/eslint", "npm:8.56.11"],\
@@ -1042,6 +1043,33 @@ const RAW_RUNTIME_STATE =
         ],\
         "packagePeers": [\
           "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@radix-ui/react-visually-hidden", [\
+      ["npm:1.1.0", {\
+        "packageLocation": "./.yarn/cache/@radix-ui-react-visually-hidden-npm-1.1.0-b2806bfd85-db138dd5f3.zip/node_modules/@radix-ui/react-visually-hidden/",\
+        "packageDependencies": [\
+          ["@radix-ui/react-visually-hidden", "npm:1.1.0"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:1.1.0", {\
+        "packageLocation": "./.yarn/__virtual__/@radix-ui-react-visually-hidden-virtual-78023644d1/0/cache/@radix-ui-react-visually-hidden-npm-1.1.0-b2806bfd85-db138dd5f3.zip/node_modules/@radix-ui/react-visually-hidden/",\
+        "packageDependencies": [\
+          ["@radix-ui/react-visually-hidden", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:1.1.0"],\
+          ["@radix-ui/react-primitive", "virtual:61408cb520a6927aac95a9fac5a85aaf93b1d849ec63bb7f06666f504c73a4f9e1050e54ef042ac8458518af09cc5192008e200bafad184bcd6743b80d05d7c4#npm:2.0.0"],\
+          ["@types/react", "npm:18.3.3"],\
+          ["@types/react-dom", "npm:18.3.0"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
           "react"\
         ],\
         "linkType": "HARD"\
@@ -4389,6 +4417,7 @@ const RAW_RUNTIME_STATE =
           ["@commitlint/cli", "npm:19.3.0"],\
           ["@commitlint/config-conventional", "npm:19.2.2"],\
           ["@radix-ui/react-dialog", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:1.1.1"],\
+          ["@radix-ui/react-visually-hidden", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:1.1.0"],\
           ["@supabase/ssr", "virtual:706878fe330ba9a1fb904180129125221d7d53131a18c73490c452b616e08e354ff91ae14c0c9edb7cc3310f4cbb6d16780d4a98d4f2f1c703dad4dd50f5def6#npm:0.5.0"],\
           ["@supabase/supabase-js", "npm:2.45.1"],\
           ["@types/eslint", "npm:8.56.11"],\

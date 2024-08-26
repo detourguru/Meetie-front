@@ -1,7 +1,6 @@
-import BadgeIcon from "../../BadgeIcon/BadgeIcon";
-import AchieveProgressBar from "../AchieveProgressBar/AchieveProgressBar";
-
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/common/Sheet/Sheet";
+import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
+import AchieveProgressBar from "@/components/MyPage/Ability/AchieveProgressBar/AchieveProgressBar";
+import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 
 import type { BadgeType } from "@/types/badge";
 
@@ -24,15 +23,13 @@ const BadgeSheet = ({
   return (
     <Sheet open={isOpen}>
       <SheetContent
-        aria-describedby={undefined}
         className="rounded-tl-lg rounded-tr-lg pb-8 px-1 h-[90%] overflow-scroll hidden-scrollbar"
         onInteractOutside={() => {
           onInteractOutside && onInteractOutside();
         }}
       >
-        <SheetTitle className="hidden" />
-        <SheetHeader className="items-center justify-center py-[14px] sticky top-0 bg-[#f9f9f9]">
-          <div className="w-[34px] h-[5px] rounded-[2.5px] bg-[#bfbfc1]" />
+        <SheetHeader className="items-center justify-center py-[14px] sticky top-0 bg-[#F9F9F9]">
+          <div className="w-[34px] h-[5px] rounded-[2.5px] bg-[#BFBFC1]" />
         </SheetHeader>
 
         <div className="flex flex-col gap-6 mx-8 pb-5 pt-6">
@@ -75,12 +72,10 @@ const BadgeSheet = ({
                 <header className="text-semibold-14 text-gray-600">500XP 모으기</header>
                 <AchieveProgressBar total={500} achievedCount={300} />
               </article>
-
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">피드백 50회 하기</header>
                 <AchieveProgressBar total={50} achievedCount={20} />
               </article>
-
               <article className="flex flex-col gap-1.5">
                 <header className="text-semibold-14 text-gray-600">방장 5회 달성</header>
                 <AchieveProgressBar total={5} achievedCount={5} />
@@ -92,5 +87,4 @@ const BadgeSheet = ({
     </Sheet>
   );
 };
-
 export default BadgeSheet;
