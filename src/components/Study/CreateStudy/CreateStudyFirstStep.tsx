@@ -35,14 +35,14 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
         </div>
       </div>
       <div>
-        <h2 className={inputTitleClassName}>주제</h2>
+        <h2 className={inputTitleClassName}>제목</h2>
         <Input
-          placeholder="스터디의 주제를 작성해주세요."
+          placeholder="스터디의 제목을 작성해주세요."
           maxLength={20}
-          value={createStudyForm.topic}
-          onChange={(e) => updateInputValue("topic", e.target.value)}
+          value={createStudyForm.title}
+          onChange={(e) => updateInputValue("title", e.target.value)}
         />
-        <span className={inputLengthTextClassName}>{createStudyForm.topic.length}/20</span>
+        <span className={inputLengthTextClassName}>{createStudyForm.title.length}/20</span>
       </div>
       <div>
         <h2 className={inputTitleClassName}>목표</h2>

@@ -5,19 +5,26 @@ import Tag from "@/components/common/Tag/Tag";
 
 import { PATH } from "@/constants/path";
 
-const StudyCard = () => {
+import type { StudyListType } from "@/types/study";
+
+interface StudyCardProps {
+  studyData: StudyListType;
+}
+
+const StudyCard = ({ studyData }: StudyCardProps) => {
+  console.log(studyData);
   return (
-    <Link href={PATH.STUDY(1)}>
+    <Link href={PATH.STUDY(studyData.studyId)}>
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
-        <div className="flex justify-between">
-          <span className="text-regular-12 mb-2">개발</span>
+        <div className="flex justify-between mb-3">
+          <h2 className="text-bold-14 text-gray-500">{studyData.title}</h2>
           <Image src="/svg/ic-bookmark.svg" alt="icon" width={24} height={24} />
         </div>
-        <h2 className="text-bold-14 text-gray-500 mb-3">자바 중급 스터디 모집</h2>
-        <div className="flex gap-2 mb-8">
-          <Tag text="북 스터디" isSmall />
-          <Tag text="Javascript" isSmall />
-          <Tag text="백엔드 개발자" isSmall />
+
+        <div className="flex flex-wrap gap-2 mb-6">
+          {studyData.tagList.map((tag) => (
+            <Tag text={tag} isSmall />
+          ))}
         </div>
         <div className="flex justify-between">
           <span className="font-bold text-[12px] text-primary-500">D-13</span>

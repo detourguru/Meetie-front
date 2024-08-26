@@ -22,7 +22,7 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
   const [createStudyForm, setCreateStudyForm] = useState(
     initialData ?? {
       position: [],
-      topic: "",
+      title: "",
       goal: "",
       introduce: "",
       curriculum: "",
@@ -37,7 +37,7 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
 
   const firstStepEmpty =
     createStudyForm.position.length === 0 ||
-    createStudyForm.topic === "" ||
+    createStudyForm.title === "" ||
     createStudyForm.goal === "" ||
     createStudyForm.introduce === "";
 

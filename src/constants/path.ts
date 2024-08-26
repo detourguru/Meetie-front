@@ -21,7 +21,7 @@ export const PATH = {
   STUDY_ROOM_LIST: "/study-room/list",
   STUDY_EXPLORER: "/study-explorer",
   STUDY_CREATE: "/study/create",
-  STUDY: (studyId: number) => `/study/${studyId}`,
+  STUDY: (studyId: string) => `/study/${studyId}`,
   STUDY_REQUEST: (studyId: number) => `/study/${studyId}/request`,
 
   TASK_CONFIRM: "/task-confirm",

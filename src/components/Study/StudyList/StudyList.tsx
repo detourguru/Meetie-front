@@ -9,7 +9,7 @@ import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 const StudyList = () => {
   const { studyListData } = useStudyListQuery();
 
-  console.log(studyListData?.data);
+  console.log(studyListData.data);
 
   return (
     <article className="mx-4 pb-[80px]">
@@ -22,10 +22,9 @@ const StudyList = () => {
         <CheckBox>모집중만 보기</CheckBox>
         <PageConter current={1} total={6} />
       </div>
-      <StudyCard />
-      <StudyCard />
-      <StudyCard />
-      <StudyCard />
+      {studyListData.data.map((studyData) => (
+        <StudyCard studyData={studyData} />
+      ))}
     </article>
   );
 };
