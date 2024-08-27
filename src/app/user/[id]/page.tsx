@@ -11,12 +11,14 @@ import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
+import { BADGE_DATA } from "@/constants/badges";
 import { PATH } from "@/constants/path";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 export default function UserProfilePage({ params }: { params: { id: number } }) {
   const { user } = useUserInformationQuery(params.id);
+  const badge = BADGE_DATA.find((badge) => badge.type === user?.mainBadge)?.badges[2];
 
   return (
     <>
@@ -35,17 +37,14 @@ export default function UserProfilePage({ params }: { params: { id: number } }) 
           <Avatar src={user?.profileImage ?? "/svg/ic-user.svg"} size="lg" outline="primary" />
 
           <div className="flex gap-[6px] items-center">
-            <div className="w-[29px] h-[30px] bg-white">
-              <BadgeIcon
-                src="/svg/ic-badge-meetie-master.svg"
-                alt="profileBadge"
-                size="sm"
-                width={29}
-                height={29}
-              />
-            </div>
+            {badge && (
+              <div className="w-[29px] h-[30px] bg-white">
+                <BadgeIcon src={badge.icon} alt="profileBadge" size="sm" width={29} height={29} />
+              </div>
+            )}
             <h2 className="text-semibold-20">{user?.name}</h2>
           </div>
+          {/* TODO: onboarding position */}
           <h3 className="text-regular-14">기획자</h3>
         </div>
 
