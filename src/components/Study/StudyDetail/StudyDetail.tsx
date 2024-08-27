@@ -15,6 +15,8 @@ const StudyDetail = () => {
 
   const { studyData } = useStudyQuery(String(params.id));
 
+  console.log(studyData.data.joinMemberCount);
+
   const spanClassName =
     "mr-[14px] after:h-[10px] after:w-[1px] after:bg-blue-300 after:inline-block relative after:absolute after:right-[-8px] after:top-[2px]";
   const contentBoxClassName = "flex flex-col gap-2";
@@ -42,7 +44,7 @@ const StudyDetail = () => {
           <h3 className="text-bold-14">김서희</h3>
           <p className="text-regular-12 text-blue-300">
             <span className={spanClassName}>
-              작성일{convertDate(new Date(studyData.data.createdAt))}
+              작성일 {convertDate(new Date(studyData.data.createdAt))}
             </span>
             <span className={spanClassName}>
               {convertDateTime(new Date(studyData.data.createdAt))}
@@ -71,7 +73,7 @@ const StudyDetail = () => {
         </div>
         <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>스터디 인원</h2>
-          <p className={contentClassName}>{studyData.data.personCount}명</p>
+          <p className={contentClassName}>{studyData.data.recruitMemberCount}명</p>
         </div>
         <div className={contentBoxClassName}>
           <h2 className={contentTitleClassName}>스터디 기간</h2>

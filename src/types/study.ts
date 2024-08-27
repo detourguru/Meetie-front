@@ -10,7 +10,7 @@ export interface CreateStudyFormRequestType {
   endDate: Date | null;
   week: string;
   time: string | null;
-  personCount: number;
+  recruitMemberCount: number;
   tagList: string[];
 }
 
@@ -32,6 +32,7 @@ export interface StudyListType extends CreateStudyFormRequestType {
   studyId: string;
   isRecruit: boolean;
   createdAt: Date;
+  joinMemberCount: number;
 }
 
 export interface GetStudyResponseType extends CommonResponseType {

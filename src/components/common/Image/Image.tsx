@@ -1,6 +1,6 @@
 import { default as NextImage } from "next/image";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/utils/className";
 
 interface ImageProps {
   src: string;

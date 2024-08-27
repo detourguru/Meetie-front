@@ -110,14 +110,14 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
               height={16}
               onClick={() =>
                 updateInputValue(
-                  "personCount",
-                  createStudyForm.personCount > 1
-                    ? createStudyForm.personCount - 1
-                    : createStudyForm.personCount,
+                  "recruitMemberCount",
+                  createStudyForm.recruitMemberCount > 1
+                    ? createStudyForm.recruitMemberCount - 1
+                    : createStudyForm.recruitMemberCount,
                 )
               }
             />
-            <p>{createStudyForm.personCount}</p>
+            <p>{createStudyForm.recruitMemberCount}</p>
             <Image
               src="/svg/ic-study-plus.svg"
               alt="plusIcon"
@@ -125,10 +125,10 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
               height={20}
               onClick={() =>
                 updateInputValue(
-                  "personCount",
-                  createStudyForm.personCount < 8
-                    ? createStudyForm.personCount + 1
-                    : createStudyForm.personCount,
+                  "recruitMemberCount",
+                  createStudyForm.recruitMemberCount < 8
+                    ? createStudyForm.recruitMemberCount + 1
+                    : createStudyForm.recruitMemberCount,
                 )
               }
             />
