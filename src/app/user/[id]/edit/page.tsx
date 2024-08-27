@@ -81,7 +81,7 @@ export default function ProfilePage({ params }: { params: { id: number } }) {
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
 
-      <BadgeList isEdit selected={profileForm.badge} handleClick={updateProfileForm} />
+      <BadgeList isEdit selected={profileForm.mainBadge} handleClick={updateProfileForm} />
 
       <TagList tags={profileForm.tagList} isEdit updateProfileForm={updateProfileForm} />
 

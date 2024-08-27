@@ -4,21 +4,21 @@ export interface UserInformationType {
   id: number;
   user_id: string;
   name: string;
-  profile_image: string;
+  profileImage: string;
   introduce: string;
-  main_badge: string;
-  study_tags: string[];
-  study_list: string[];
-  scrap_list: string[];
-  recent_visit: string;
-  information_agreement: boolean;
+  mainBadge: string;
+  tagList: string[];
+  studyList: string[];
+  scrapList: string[];
+  recentVisit: string;
+  informationAgreement: boolean;
 }
 
 export interface ProfileFormType {
   name: string;
   introduce: string;
   profileImage: string;
-  badge: string;
+  mainBadge: string;
   tagList: string[];
 }
 

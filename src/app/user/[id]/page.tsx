@@ -32,7 +32,7 @@ export default function UserProfilePage({ params }: { params: { id: number } }) 
 
       <div className="pt-[68px] px-4 bg-white">
         <div className="flex flex-col items-center gap-2">
-          <Avatar src={user?.profile_image ?? ""} size="lg" outline="primary" />
+          <Avatar src={user?.profileImage ?? ""} size="lg" outline="primary" />
 
           <div className="flex gap-[6px] items-center">
             <div className="w-[29px] h-[30px] bg-white">
@@ -57,7 +57,7 @@ export default function UserProfilePage({ params }: { params: { id: number } }) 
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
-      <TagList tags={user?.study_tags ?? []} />
+      <TagList tags={user?.tagList ?? []} />
       <ExperienceList />
       <EvaluationList />
     </>

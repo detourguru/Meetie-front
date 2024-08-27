@@ -19,17 +19,9 @@ export async function PATCH(request: Request, { params }: { params: { id: number
     const supabase = createClient();
 
     const data = await request.json();
+    console.log(data);
 
-    const { error } = await supabase
-      .from("userinfo")
-      .update({
-        name: data.name,
-        introduce: data.introduce,
-        profile_image: data.profileImage,
-        main_badge: data.badge,
-        study_tags: data.tagList,
-      })
-      .eq("id", params.id);
+    const { error } = await supabase.from("userinfo").update(data).eq("id", params.id);
 
     if (!error) {
       return NextResponse.json({ message: "ok", status: 200 });

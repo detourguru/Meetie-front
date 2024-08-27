@@ -19,9 +19,9 @@ export const useUserInformationQuery = (id?: number) => {
   const initialProfileForm: ProfileFormType = {
     name: user?.name ?? "",
     introduce: user?.introduce ?? "",
-    profileImage: user?.profile_image ?? "",
-    badge: user?.main_badge ?? "",
-    tagList: user?.study_tags ?? [],
+    profileImage: user?.profileImage ?? "",
+    mainBadge: user?.mainBadge ?? "",
+    tagList: user?.tagList ?? [],
   };
 
   return { userId: user?.id, userData, user, initialProfileForm };

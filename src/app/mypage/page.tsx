@@ -32,7 +32,7 @@ export default function MyPage() {
       {/* 프로필 카드 */}
       <div className="flex justify-between mt-10 px-4">
         <div className="flex gap-4 items-center">
-          <Avatar src={user?.profile_image ?? "/svg/id-user.svg"} />
+          <Avatar src={user?.profileImage ?? "/svg/ic-user.svg"} />
           <div className="flex flex-col gap-1 items-start">
             <p className="text-medium-16 text-gray-400">디자이너</p>
             <p className="text-bold-20">{user?.name}</p>
@@ -65,12 +65,12 @@ export default function MyPage() {
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
           {/* TODO: user 정보 없을 경우 redirect */}
           <InformationCard
-            count={2} // TODO: user.study_list.length
+            count={2} // TODO: user.studyList.length
             informationData={INFORMATIONS_DATA.STUDY}
             navigateTo={PATH.STUDY_JOINING_LIST}
           />
           <InformationCard
-            count={9} // TODO: user.scrap_list.length
+            count={9} // TODO: user.scrapList.length
             informationData={INFORMATIONS_DATA.SCRAP}
             navigateTo={PATH.STUDY_INTEREST_LIST}
           />
@@ -120,7 +120,7 @@ export default function MyPage() {
           <header className="text-bold-18">관심 보인 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recent_visit)
+              // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recentVisit)
               navigateTo={PATH.STUDY("test")}
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />

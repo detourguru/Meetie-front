@@ -22,7 +22,7 @@ const HighlightBadge = ({ level, type, selected, handleClick }: HighlightBadgePr
   return (
     <div
       className={`flex flex-col items-center gap-1 px-5 pb-3 pt-1 border-2 rounded-lg bg-primary-50 ${selected ? "border-primary-450" : "border-primary-200"}`}
-      onClick={() => handleClick && handleClick("badge", type)}
+      onClick={() => handleClick && handleClick("mainBadge", type)}
     >
       <div className="w-[73px]">
         <BadgeIcon
