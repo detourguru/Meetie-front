@@ -32,7 +32,7 @@ export default function UserProfilePage({ params }: { params: { id: number } }) 
 
       <div className="pt-[68px] px-4 bg-white">
         <div className="flex flex-col items-center gap-2">
-          <Avatar src={user?.profileImage ?? ""} size="lg" outline="primary" />
+          <Avatar src={user?.profileImage ?? "/svg/ic-user.svg"} size="lg" outline="primary" />
 
           <div className="flex gap-[6px] items-center">
             <div className="w-[29px] h-[30px] bg-white">
