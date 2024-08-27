@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 
 import Avatar from "@/components/common/Avatar/Avatar";
@@ -14,7 +16,11 @@ import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
 
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+
 export default function MyPage() {
+  const { userId, user } = useUserInformationQuery();
+
   return (
     <>
       <Header>
@@ -26,13 +32,14 @@ export default function MyPage() {
       {/* 프로필 카드 */}
       <div className="flex justify-between mt-10 px-4">
         <div className="flex gap-4 items-center">
-          <Avatar src="/img/img-user-profile.png" />
+          <Avatar src={user?.profile_image ?? "/svg/id-user.svg"} />
           <div className="flex flex-col gap-1 items-start">
             <p className="text-medium-16 text-gray-400">디자이너</p>
-            <p className="text-bold-20">김서희님</p>
+            <p className="text-bold-20">{user?.name}</p>
           </div>
         </div>
-        <Link href={PATH.USER_PROFILE(1)} className="self-end">
+        {/* TODO: user 정보가 없을 경우 로그인 페이지로 redirect */}
+        <Link href={PATH.USER_PROFILE(userId ?? 0)} className="self-end">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
             <p className="text-medium-12 text-primary-450">공개용 프로필</p>
           </button>
@@ -56,20 +63,22 @@ export default function MyPage() {
       <div className="flex flex-col gap-3 px-4 mt-9">
         <header className="text-bold-18">내 정보</header>
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
+          {/* TODO: user 정보 없을 경우 redirect */}
           <InformationCard
-            count={2}
+            count={2} // TODO: user.study_list.length
             informationData={INFORMATIONS_DATA.STUDY}
             navigateTo={PATH.STUDY_JOINING_LIST}
           />
           <InformationCard
-            count={9}
+            count={9} // TODO: user.scrap_list.length
             informationData={INFORMATIONS_DATA.SCRAP}
             navigateTo={PATH.STUDY_INTEREST_LIST}
           />
+          {/* TODO: user 친구 리스트 데이터 생성 */}
           <InformationCard
             count={13}
             informationData={INFORMATIONS_DATA.FOLLOW}
-            navigateTo={PATH.USER_FOLLOW_LIST(1)}
+            navigateTo={PATH.USER_FOLLOW_LIST(userId ?? 0)}
           />
         </section>
       </div>
@@ -97,6 +106,7 @@ export default function MyPage() {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">내 스터디</header>
           <ul className="flex flex-col gap-4">
+            {/* TODO: 진행 중인 스터디와 종료된 스터디 구분 필요 */}
             <MenuListItem menuItemData={MENU_ITEMS_DATA.JOINING} isPrimary studyCount={2} />
 
             <MenuListItem menuItemData={MENU_ITEMS_DATA.PAST} studyCount={8} />
@@ -110,7 +120,7 @@ export default function MyPage() {
           <header className="text-bold-18">관심 보인 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              // TODO: 최근 방문한 관심 스터디 ID로 수정
+              // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recent_visit)
               navigateTo={PATH.STUDY("test")}
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
@@ -140,7 +150,7 @@ export default function MyPage() {
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo={PATH.USER_PROFILE_EDIT(1)}
+              navigateTo={PATH.USER_PROFILE_EDIT(user?.id ?? 0)}
               menuItemData={MENU_ITEMS_DATA.PROFIL_EDIT}
             />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />

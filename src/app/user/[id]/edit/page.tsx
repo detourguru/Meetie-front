@@ -12,8 +12,8 @@ import TagList from "@/components/Profile/TagList/TagList";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
-export default function ProfilePage() {
-  const { userId, initialProfileForm } = useUserInformationQuery();
+export default function ProfilePage({ params }: { params: { id: number } }) {
+  const { userId, initialProfileForm } = useUserInformationQuery(params.id);
 
   const { profileForm, handleImageUpload, updateProfileForm, handleSubmit } = useEditProfileForm({
     id: userId,

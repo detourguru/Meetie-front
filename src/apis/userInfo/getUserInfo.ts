@@ -6,13 +6,21 @@ import { createClient } from "@/utils/supabase/client";
 
 import type { GetUserInfoResponseType } from "@/types/userInfo";
 
-export const getUserInfo = async () => {
-  const supabase = createClient();
+export const getUserInfo = async (id?: number) => {
+  let params;
 
-  const user = await supabase.auth.getUser();
+  if (id) {
+    params = `/${id}`;
+  } else {
+    const supabase = createClient();
+
+    const user = await supabase.auth.getUser();
+
+    params = `?user_id=${user.data.user?.id}`;
+  }
 
   const { data } = await axiosInstance.get<GetUserInfoResponseType>(
-    `${END_POINTS.USER_INFO}?user_id=${user.data.user?.id}`,
+    `${END_POINTS.USER_INFO}${params}`,
   );
 
   return data;

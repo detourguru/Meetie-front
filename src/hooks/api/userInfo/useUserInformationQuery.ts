@@ -8,10 +8,10 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetUserInfoResponseType, ProfileFormType } from "@/types/userInfo";
 
-export const useUserInformationQuery = () => {
+export const useUserInformationQuery = (id?: number) => {
   const { data: userData } = useQuery<GetUserInfoResponseType, AxiosError>({
     queryKey: [QUERY_KEYS.USER_INFO],
-    queryFn: () => getUserInfo(),
+    queryFn: () => getUserInfo(id),
   });
 
   const user = userData?.data;

@@ -15,9 +15,8 @@ import { PATH } from "@/constants/path";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
-export default function UserProfilePage() {
-  const { userData } = useUserInformationQuery();
-  const user = userData?.data;
+export default function UserProfilePage({ params }: { params: { id: number } }) {
+  const { user } = useUserInformationQuery(params.id);
 
   return (
     <>
@@ -25,7 +24,7 @@ export default function UserProfilePage() {
         <Header.LeftButton />
         <Header.Title hasButton>오픈 프로필</Header.Title>
         <Header.RightTextButton>
-          <Link href={PATH.USER_PROFILE_EDIT(1)}>
+          <Link href={PATH.USER_PROFILE_EDIT(params.id)}>
             <p className="text-medium-14 text-black">수정</p>
           </Link>
         </Header.RightTextButton>
