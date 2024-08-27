@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Shee
 interface TaskConfirmSheetProps {
   isOpen: boolean;
   onInteractOutside?: () => void;
-  handleImageUpdate: (uploadImage: string | null) => void;
+  handleImageUpdate: (uploadType: string, uploadImage: string | null) => void;
 }
 
 const TaskConfirmSheet = ({
@@ -17,14 +17,15 @@ const TaskConfirmSheet = ({
 }: TaskConfirmSheetProps) => {
   const handelFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
+    const uploadType = e.target.id;
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        handleImageUpdate(reader.result as string);
+        handleImageUpdate(uploadType, reader.result as string);
       };
       reader.readAsDataURL(file);
     } else {
-      handleImageUpdate(null);
+      handleImageUpdate(uploadType, null);
     }
   };
 

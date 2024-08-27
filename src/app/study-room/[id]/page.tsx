@@ -1,31 +1,16 @@
 "use client";
 import Image from "next/image";
 
-import type { ReactNode } from "react";
 import { useState } from "react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
-// import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
-interface TabType {
-  id: string;
-  label: string;
-  content: ReactNode;
-}
-const tabs: TabType[] = [
-  { id: "calTab", label: "캘린더", content: <CalendarTab /> },
-  { id: "taskTab", label: "과제", content: <TaskTab /> },
-  { id: "chatTab", label: "채팅", content: <></> },
-];
 export default function StudyRoom() {
-  const [activeTab, setActiveTab] = useState("calTab");
-  const activeTabClassName = "border-b-2 border-primary-500 text-primary-500";
-  function handleTabClick(tabId: string) {
-    setActiveTab(tabId);
-  }
+  const [currentTab, setCurrentTab] = useState("calendar");
   return (
     <>
       <Header backgroundColor="bg-[#EBE9F5]">
@@ -57,16 +42,18 @@ export default function StudyRoom() {
             </div>
           </section>
         </section>
-        {/* tab */}
         <Tabs defaultValue="calendar">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="calendar">캘린더</TabsTrigger>
-            <TabsTrigger value="task">과제</TabsTrigger>
+            <TabsTrigger value="calendar" onClick={() => setCurrentTab("calendar")}>
+              캘린더
+            </TabsTrigger>
+            <TabsTrigger value="task" onClick={() => setCurrentTab("task")}>
+              과제
+            </TabsTrigger>
           </TabsList>
         </Tabs>
-
-        {/* <CalendarTab /> */}
-        <TaskTab />
+        {currentTab === "calendar" && <CalendarTab />}
+        {currentTab === "task" && <TaskTab />}
       </main>
       <Gnb />
     </>
