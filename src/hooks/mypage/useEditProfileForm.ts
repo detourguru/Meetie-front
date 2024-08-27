@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 
-import type { ProfileFormType, UpdateProfileFormType } from "@/types/profile";
+import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
 
 interface UseEditProfileFormProps {
   initialData?: ProfileFormType;

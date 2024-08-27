@@ -9,7 +9,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get("user_id");
 
-    const { data } = await supabase.from("userinfo").select().eq("user_id", userId);
+    const { data } = await supabase.from("userinfo").select().eq("user_id", userId).single();
 
     return NextResponse.json({ message: "ok", status: 200, data: data });
   } catch (error) {

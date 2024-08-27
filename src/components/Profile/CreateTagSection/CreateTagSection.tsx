@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { useCreateTag } from "@/hooks/common/useCreateTag";
 
-import type { UpdateProfileFormType } from "@/types/profile";
+import type { UpdateProfileFormType } from "@/types/userInfo";
 
 interface CreateTagSectionProps {
   tags: string[];

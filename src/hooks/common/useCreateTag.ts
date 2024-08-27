@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 
-import type { UpdateProfileFormType } from "@/types/profile";
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
+import type { UpdateProfileFormType } from "@/types/userInfo";
 
 interface UseCreateTagProps {
   prevTagList: string[];

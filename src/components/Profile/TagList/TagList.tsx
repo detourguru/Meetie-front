@@ -2,7 +2,7 @@ import CreateTagSection from "../CreateTagSection/CreateTagSection";
 
 import ProfileTag from "@/components/Profile/ProfileTag/ProfileTag";
 
-import type { UpdateProfileFormType } from "@/types/profile";
+import type { UpdateProfileFormType } from "@/types/userInfo";
 
 interface TagListProps {
   tags: string[];

@@ -17,6 +17,7 @@ import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformation
 
 export default function UserProfilePage() {
   const { userData } = useUserInformationQuery();
+  const user = userData?.data;
 
   return (
     <>
@@ -32,7 +33,7 @@ export default function UserProfilePage() {
 
       <div className="pt-[68px] px-4 bg-white">
         <div className="flex flex-col items-center gap-2">
-          <Avatar src="/img/img-user-profile.png" size="lg" outline="primary" />
+          <Avatar src={user?.profile_image ?? ""} size="lg" outline="primary" />
 
           <div className="flex gap-[6px] items-center">
             <div className="w-[29px] h-[30px] bg-white">
@@ -44,25 +45,20 @@ export default function UserProfilePage() {
                 height={29}
               />
             </div>
-            <h2 className="text-semibold-20">제이크</h2>
+            <h2 className="text-semibold-20">{user?.name}</h2>
           </div>
           <h3 className="text-regular-14">기획자</h3>
         </div>
 
         <div className="mt-[30px]">
           <h2 className="text-bold-16">한줄 자기소개</h2>
-          <h3 className="text-regular-14 mt-2">
-            안녕하세요, 개발 관련 글을 꾸준히 쓰고 싶은데 의지가 부족해 스터디 버디들을 구하고
-            싶습니다 화이팅🔥
-          </h3>
+          <h3 className="text-regular-14 mt-2">{user?.introduce}</h3>
         </div>
       </div>
 
-      {JSON.stringify(userData)}
-
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
-      <TagList tags={["강의 완강"]} />
+      <TagList tags={user?.study_tags ?? []} />
       <ExperienceList />
       <EvaluationList />
     </>
