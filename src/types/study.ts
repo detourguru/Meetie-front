@@ -29,7 +29,7 @@ export interface GetStudyListResponseType extends CommonResponseType {
 }
 
 export interface StudyListType extends CreateStudyFormRequestType {
-  studyId: string;
+  id: string;
   isRecruit: boolean;
   createdAt: Date;
   joinMemberCount: number;

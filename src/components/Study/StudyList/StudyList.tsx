@@ -21,7 +21,7 @@ const StudyList = () => {
         <PageConter current={1} total={6} />
       </div>
       {studyListData.data.map((studyData) => (
-        <StudyCard studyData={studyData} key={studyData.studyId} />
+        <StudyCard studyData={studyData} key={studyData.id} />
       ))}
     </article>
   );
