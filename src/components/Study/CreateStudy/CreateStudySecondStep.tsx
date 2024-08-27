@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import Image from "@/components/common/Image/Image";
 import Input from "@/components/common/Input/Input";
 import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
@@ -103,11 +102,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         <div>
           <h2 className={inputTitleClassName}>스터디 모집 인원</h2>
           <div className="rounded-lg px-4 py-3 border border-[#c4c4c4] flex justify-between h-[50px]">
-            <Image
-              src="/svg/ic-study-minus.svg"
-              alt="minusIcon"
-              width={16}
-              height={16}
+            <div
               onClick={() =>
                 updateInputValue(
                   "recruitMemberCount",
@@ -116,13 +111,13 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
                     : createStudyForm.recruitMemberCount,
                 )
               }
-            />
+            >
+              <Image src="/svg/ic-study-minus.svg" alt="minusIcon" className="w-4 h-6" />
+            </div>
+
             <p>{createStudyForm.recruitMemberCount}</p>
-            <Image
-              src="/svg/ic-study-plus.svg"
-              alt="plusIcon"
-              width={20}
-              height={20}
+
+            <div
               onClick={() =>
                 updateInputValue(
                   "recruitMemberCount",
@@ -131,7 +126,9 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
                     : createStudyForm.recruitMemberCount,
                 )
               }
-            />
+            >
+              <Image src="/svg/ic-study-plus.svg" alt="plusIcon" className="w-5 h-5" />
+            </div>
           </div>
         </div>
         <span className="text-[#7876e3] text-regular-12">4~8명이 적당한 스터디 인원이에요</span>

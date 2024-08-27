@@ -1,9 +1,8 @@
-import Image from "next/image";
-
 import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/common/Sheet/Sheet";
+import Image from "@/components/common/Image/Image";
+import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
 import { cn } from "@/utils/className";
 
@@ -69,9 +68,7 @@ const PositionSheet = ({
         }}
       >
         <SheetHeader className="items-center justify-center pt-[14px] pb-[32px] ">
-          <SheetTitle>
-            <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
-          </SheetTitle>
+          <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
         </SheetHeader>
 
         <div className="px-5">
@@ -97,8 +94,7 @@ const PositionSheet = ({
                       : "/svg/ic-study-check-disabled.svg"
                   }
                   alt="checkIcon"
-                  width={27}
-                  height={27}
+                  className="w-[27px] h-[17px]"
                 />
               </li>
             ))}

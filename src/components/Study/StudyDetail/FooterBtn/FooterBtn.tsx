@@ -15,7 +15,7 @@ const FooterBtn = () => {
         </p>
       </div>
       {/* // 테스트용 */}
-      <Link href={PATH.STUDY_REQUEST(1)}>
+      <Link href={PATH.STUDY_REQUEST(1)} scroll={false}>
         <Button variant="disabled" size="md">
           <p className="text-bold-16 text-white">아직 대기 인원이 없습니다</p>
         </Button>

@@ -31,7 +31,7 @@ const CreateStudyFirstStep = ({ createStudyForm, updateInputValue }: CreateStudy
               ? "모집 직군을 선택해주세요."
               : createStudyForm.position.join(", ")}
           </p>
-          <Image src="/svg/ic-study-down-arrow.svg" alt="downArrowIcon" width={16} height={16} />
+          <Image src="/svg/ic-study-down-arrow.svg" alt="downArrowIcon" width={16} height={24} />
         </div>
       </div>
       <div>

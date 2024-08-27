@@ -5,6 +5,7 @@ import React from "react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
+// import Image from "@/components/common/Image/Image";
 import StudyList from "@/components/Study/StudyList/StudyList";
 
 import { PATH } from "@/constants/path";
@@ -40,9 +41,9 @@ export default function Page() {
               <Image
                 className="opacity-75 object-contain"
                 src="/img/img-thinking_face.png"
-                width={70}
-                height={70}
                 alt="thinking face"
+                width={70}
+                height={81}
               />
             </div>
           </div>
@@ -60,15 +61,14 @@ export default function Page() {
               <Image
                 className="opacity-75"
                 src="/img/img-waving_hand.png"
+                alt="waving hand"
                 width={55}
                 height={55}
-                alt="waving hand"
               />
             </div>
           </div>
         </Link>
       </article>
-      {/* 스터디룸 목록 */}
       <StudyList />
 
       <Gnb />

@@ -42,6 +42,7 @@ const WeekSheet = ({
             >
               <label className="flex flex-col items-center gap-5 w-full h-full py-[18px]">
                 <input
+                  readOnly
                   type="checkbox"
                   className="appearance-none w-6 h-6 border border-[#e5e5ec] rounded checked:border-[#0176f9] checked:bg-[#0176f9] checked:bg-[url('/svg/ic-week-check.svg')] checked:bg-no-repeat checked:bg-center"
                   checked={week === createStudyForm.week}

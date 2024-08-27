@@ -12,7 +12,6 @@ interface StudyCardProps {
 }
 
 const StudyCard = ({ studyData }: StudyCardProps) => {
-  console.log(studyData);
   return (
     <Link href={PATH.STUDY(studyData.id)}>
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
@@ -23,7 +22,7 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
 
         <div className="flex flex-wrap gap-2 mb-6">
           {studyData.tagList.map((tag) => (
-            <Tag text={tag} isSmall />
+            <Tag text={tag} isSmall key={tag} />
           ))}
         </div>
         <div className="flex justify-between">
