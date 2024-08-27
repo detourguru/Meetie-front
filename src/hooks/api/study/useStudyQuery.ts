@@ -10,7 +10,7 @@ import type { GetStudyResponseType } from "@/types/study";
 
 export const useStudyQuery = (studyId: string) => {
   const { data: studyData } = useSuspenseQuery<GetStudyResponseType, AxiosError>({
-    queryKey: [QUERY_KEYS.STUDY_LIST],
+    queryKey: [QUERY_KEYS.STUDY],
     queryFn: () => getStudy(studyId),
   });
 
