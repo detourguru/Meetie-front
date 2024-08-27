@@ -7,6 +7,7 @@ import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
+import Tooltip from "@/components/common/Tooltip/Tooltip";
 import StudyList from "@/components/Study/StudyList/StudyList";
 
 import { PATH } from "@/constants/path";

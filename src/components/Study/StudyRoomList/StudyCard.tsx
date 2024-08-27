@@ -12,6 +12,17 @@ interface StudyCardProps {
 }
 
 const StudyCard = ({ studyData }: StudyCardProps) => {
+  const handleTimeStampFormat = (time: Date | null) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      weekday: "long",
+      timeZone: "Asia/Seoul",
+    };
+
+    return time?.toLocaleDateString("ko-KR", options);
+  };
   return (
     <Link href={PATH.STUDY(studyData.id)}>
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
@@ -30,13 +41,14 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
               <Image src="/svg/ic-calandar.svg" alt="icon" width={15} height={15} />
             </div>
             <span className="ml-1 text-regular-12 text-gray-400">
-              2024.05.29 (토) - 2024.06.29 (금)
+              {`${handleTimeStampFormat(studyData.startDate)} - ${handleTimeStampFormat(studyData.endDate)}`}
             </span>
           </div>
           <div className="flex justify-between">
             <div>
               <Image src="/svg/ic-eye.svg" alt="icon" width={14} height={14} />
             </div>
+            {/* TODO: view 받도록 수정 */}
             <span className="ml-1 text-regular-12 text-gray-200">823</span>
           </div>
         </div>
