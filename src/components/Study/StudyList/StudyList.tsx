@@ -2,7 +2,7 @@
 
 import CheckBox from "@/components/Study/CheckBox";
 import PageConter from "@/components/Study/PageCounter";
-import StudyCard from "@/components/Study/StudyCard";
+import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 

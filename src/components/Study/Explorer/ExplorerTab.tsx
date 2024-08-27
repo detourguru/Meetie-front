@@ -10,6 +10,7 @@ import PageConter from "@/components/Study/PageCounter";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 const ExplorerTab = () => {
@@ -106,7 +107,7 @@ const ExplorerTab = () => {
               <Image src="/svg/ic-down-arrow.svg" alt="icon" width={14} height={14} />
             </span>
           </div>
-          <div className="-ml-4 -mr-4 bg-[#F5F5FF]">
+          <div className="mx-4 bg-[#F5F5FF]">
             <div className="p-4 flex justify-end">
               <PageConter current={1} total={4} />
             </div>
