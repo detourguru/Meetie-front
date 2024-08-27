@@ -1,12 +1,23 @@
+import { useRouter } from "next/navigation";
+
 import { useCallback, useState } from "react";
+
+import { PATH } from "@/constants/path";
+
+import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
 
 import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
 
 interface UseEditProfileFormProps {
+  id?: number;
   initialData?: ProfileFormType;
 }
 
-export const useEditProfileForm = ({ initialData }: UseEditProfileFormProps) => {
+export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps) => {
+  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
+
+  const router = useRouter();
+
   const [profileForm, setProfilForm] = useState<ProfileFormType>(
     initialData ?? {
       name: "",
@@ -49,5 +60,18 @@ export const useEditProfileForm = ({ initialData }: UseEditProfileFormProps) => 
     });
   }, []);
 
-  return { profileForm, updateProfileForm, handleImageUpload };
+  const handleSubmit = () => {
+    if (id) {
+      updateUserInfoMutation(
+        { id, updateprofilForm: profileForm },
+        {
+          onSuccess: () => {
+            router.push(PATH.USER_PROFILE(id));
+          },
+        },
+      );
+    }
+  };
+
+  return { profileForm, updateProfileForm, handleImageUpload, handleSubmit };
 };

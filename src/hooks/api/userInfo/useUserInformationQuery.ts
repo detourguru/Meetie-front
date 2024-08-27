@@ -6,7 +6,7 @@ import { getUserInfo } from "@/apis/userInfo/getUserInfo";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
-import type { GetUserInfoResponseType } from "@/types/userInfo";
+import type { GetUserInfoResponseType, ProfileFormType } from "@/types/userInfo";
 
 export const useUserInformationQuery = () => {
   const { data: userData } = useQuery<GetUserInfoResponseType, AxiosError>({
@@ -14,5 +14,15 @@ export const useUserInformationQuery = () => {
     queryFn: () => getUserInfo(),
   });
 
-  return { userData };
+  const user = userData?.data;
+
+  const initialProfileForm: ProfileFormType = {
+    name: user?.name ?? "",
+    introduce: user?.introduce ?? "",
+    profileImage: user?.profile_image ?? "",
+    badge: user?.main_badge ?? "",
+    tagList: user?.study_tags ?? [],
+  };
+
+  return { userId: user?.id, userData, user, initialProfileForm };
 };

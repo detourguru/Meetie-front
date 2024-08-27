@@ -9,10 +9,16 @@ import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
 export default function ProfilePage() {
-  const { profileForm, handleImageUpload, updateProfileForm } = useEditProfileForm({});
+  const { userId, initialProfileForm } = useUserInformationQuery();
+
+  const { profileForm, handleImageUpload, updateProfileForm, handleSubmit } = useEditProfileForm({
+    id: userId,
+    initialData: initialProfileForm,
+  });
 
   return (
     <>
@@ -20,7 +26,7 @@ export default function ProfilePage() {
         <Header.LeftButton />
         <Header.Title hasButton>프로필 수정</Header.Title>
         {/* TODO: 프로필 저장 로직 구현 */}
-        <Header.RightTextButton>
+        <Header.RightTextButton handleButtonClick={handleSubmit}>
           <p className="text-medium-14 text-black">완료</p>
         </Header.RightTextButton>
       </Header>
