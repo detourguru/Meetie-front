@@ -63,7 +63,7 @@ export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps)
   const handleSubmit = () => {
     if (id) {
       updateUserInfoMutation(
-        { id, updateprofilForm: profileForm },
+        { id, updateUserForm: profileForm },
         {
           onSuccess: () => {
             router.push(PATH.USER_PROFILE(id));

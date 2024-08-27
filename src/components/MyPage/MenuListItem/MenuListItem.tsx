@@ -18,6 +18,7 @@ interface MenuListItemProps {
   isPrimary?: boolean;
   navigateTo?: string;
   studyCount?: number;
+  handleUpdateToggle?: () => void;
 }
 
 const MenuListItem = ({
@@ -27,6 +28,7 @@ const MenuListItem = ({
   isPrimary,
   navigateTo,
   studyCount,
+  handleUpdateToggle,
 }: MenuListItemProps) => {
   const router = useRouter();
 
@@ -35,8 +37,9 @@ const MenuListItem = ({
       router.push(menuItemData.navigateTo);
     } else if (navigateTo) {
       router.push(navigateTo);
+    } else if (handleUpdateToggle) {
+      handleUpdateToggle();
     }
-    // TODO: 토글 on/off 구현
   };
 
   return (

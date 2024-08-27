@@ -2,14 +2,14 @@ import { axiosInstance } from "@/apis/axiosInstance";
 
 import { END_POINTS } from "@/constants/api";
 
-import type { ProfileFormType } from "@/types/userInfo";
+import type { ProfileFormType, UserInformationType } from "@/types/userInfo";
 
 export const updateUserInfo = async ({
   id,
-  updateprofilForm: createStudyForm,
+  updateUserForm,
 }: {
   id: number;
-  updateprofilForm: ProfileFormType;
+  updateUserForm: ProfileFormType | Pick<UserInformationType, "informationAgreement">;
 }) => {
   const config = {
     headers: { "Content-Type": "application/json" },
@@ -17,5 +17,5 @@ export const updateUserInfo = async ({
 
   const url = `${END_POINTS.USER_INFO}/${id}`;
 
-  return axiosInstance.patch(url, createStudyForm, config);
+  return axiosInstance.patch(url, updateUserForm, config);
 };

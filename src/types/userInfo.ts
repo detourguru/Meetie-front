@@ -1,17 +1,7 @@
 import type { CommonResponseType } from "./common";
 
-export interface UserInformationType {
-  id: number;
-  user_id: string;
-  name: string;
-  profileImage: string;
-  introduce: string;
-  mainBadge: string;
-  tagList: string[];
-  studyList: string[];
-  scrapList: string[];
-  recentVisit: string;
-  informationAgreement: boolean;
+export interface GetUserInfoResponseType extends CommonResponseType {
+  data: UserInformationType;
 }
 
 export interface ProfileFormType {
@@ -27,6 +17,16 @@ export type UpdateProfileFormType = <Key extends keyof ProfileFormType>(
   value: ProfileFormType[Key],
 ) => void;
 
-export interface GetUserInfoResponseType extends CommonResponseType {
-  data: UserInformationType;
+export interface UserInformationType {
+  id: number;
+  user_id: string;
+  name: string;
+  profileImage: string;
+  introduce: string;
+  mainBadge: string;
+  tagList: string[];
+  studyList: string[];
+  scrapList: string[];
+  recentVisit: string;
+  informationAgreement: boolean;
 }

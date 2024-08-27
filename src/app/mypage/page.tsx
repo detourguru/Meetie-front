@@ -16,10 +16,21 @@ import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
 
+import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 export default function MyPage() {
+  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
   const { userId, user } = useUserInformationQuery();
+
+  const handleChangeInfoAgreement = () => {
+    if (userId) {
+      updateUserInfoMutation({
+        id: userId,
+        updateUserForm: { informationAgreement: !user?.informationAgreement },
+      });
+    }
+  };
 
   return (
     <>
@@ -154,7 +165,11 @@ export default function MyPage() {
               menuItemData={MENU_ITEMS_DATA.PROFIL_EDIT}
             />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.INFORMATION_AGREEMENT} isToggle={true} />
+            <MenuListItem
+              menuItemData={MENU_ITEMS_DATA.INFORMATION_AGREEMENT}
+              isToggle={user?.informationAgreement}
+              handleUpdateToggle={handleChangeInfoAgreement}
+            />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.WITHDRAW} />
           </ul>
         </div>
