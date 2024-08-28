@@ -14,7 +14,5 @@ export const updateUserInfo = async ({ id, updateUserForm }: UpdateUserInfoParam
     headers: { "Content-Type": "application/json" },
   };
 
-  const url = `${END_POINTS.USER_INFO}/${id}`;
-
-  return axiosInstance.patch(url, updateUserForm, config);
+  return axiosInstance.patch(END_POINTS.USER_INFO_BY_ID(id), updateUserForm, config);
 };

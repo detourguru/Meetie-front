@@ -7,21 +7,21 @@ import { createClient } from "@/utils/supabase/client";
 import type { GetUserInfoResponseType } from "@/types/userInfo";
 
 export const getUserInfo = async (id?: number) => {
-  let params;
+  let url;
 
   if (id) {
-    params = `/${id}`;
+    url = END_POINTS.USER_INFO_BY_ID(id);
   } else {
     const supabase = createClient();
 
     const user = await supabase.auth.getUser();
 
-    params = `?user_id=${user.data.user?.id}`;
+    const userId = user.data.user ? user.data.user.id : "";
+
+    url = END_POINTS.USER_INFO(userId);
   }
 
-  const { data } = await axiosInstance.get<GetUserInfoResponseType>(
-    `${END_POINTS.USER_INFO}${params}`,
-  );
+  const { data } = await axiosInstance.get<GetUserInfoResponseType>(url);
 
   return data;
 };
