@@ -1,5 +1,7 @@
 "use client";
 
+import { useParams } from "next/navigation";
+
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
@@ -12,12 +14,10 @@ import TagList from "@/components/Profile/TagList/TagList";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
-interface EditProfileFormProps {
-  id: number;
-}
+const EditProfileForm = () => {
+  const params = useParams();
 
-const EditProfileForm = ({ id }: EditProfileFormProps) => {
-  const { userId, initialProfileForm } = useUserInformationQuery(id);
+  const { userId, initialProfileForm } = useUserInformationQuery(Number(params.id));
 
   const { profileForm, handleImageUpload, updateProfileForm, handleSubmit } = useEditProfileForm({
     id: userId,

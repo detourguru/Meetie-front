@@ -1,5 +1,7 @@
 "use client";
 
+import { useParams } from "next/navigation";
+
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
@@ -12,12 +14,11 @@ import { BADGE_DATA } from "@/constants/badges";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
-interface ProfileBodyProps {
-  id: number;
-}
+const ProfileBody = () => {
+  const params = useParams();
 
-const ProfileBody = ({ id }: ProfileBodyProps) => {
-  const { user } = useUserInformationQuery(id);
+  const { user } = useUserInformationQuery(Number(params.id));
+
   const badge = BADGE_DATA.find((badge) => badge.type === user.mainBadge)?.badges[2];
 
   return (

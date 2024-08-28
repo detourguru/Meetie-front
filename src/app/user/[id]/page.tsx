@@ -7,7 +7,11 @@ import ProfileBody from "@/components/Profile/ProfileBody/ProfileBody";
 
 import { PATH } from "@/constants/path";
 
-export default function UserProfilePage({ params }: { params: { id: number } }) {
+interface UserProfilePageParamsType {
+  params: { id: number };
+}
+
+export default function UserProfilePage({ params }: UserProfilePageParamsType) {
   return (
     <>
       <Header>
@@ -40,7 +44,7 @@ export default function UserProfilePage({ params }: { params: { id: number } }) 
           </div>
         }
       >
-        <ProfileBody id={params.id} />
+        <ProfileBody />
       </Suspense>
     </>
   );

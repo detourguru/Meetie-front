@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import Header from "@/components/common/Header/Header";
 import EditProfileForm from "@/components/Profile/EditProfile/EditProfileForm";
 
-export default function ProfilePage({ params }: { params: { id: number } }) {
+export default function ProfilePage() {
   return (
     <Suspense
       // TODO: loading 컴포넌트로 변경
@@ -17,7 +17,7 @@ export default function ProfilePage({ params }: { params: { id: number } }) {
         </Header>
       }
     >
-      <EditProfileForm id={params.id} />
+      <EditProfileForm />
     </Suspense>
   );
 }
