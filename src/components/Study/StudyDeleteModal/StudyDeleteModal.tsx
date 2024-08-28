@@ -1,12 +1,31 @@
+import { useRouter } from "next/navigation";
+
 import Button from "@/components/common/Button/Button";
 import Modal from "@/components/common/Modal/Modal";
 
+import { PATH } from "@/constants/path";
+
+import { useDeleteStudyMutation } from "@/hooks/api/study/useDeleteStudyMutation";
+
 interface StudyDeleteModalProps {
+  studyId: string;
   isOpen: boolean;
   handleClose: () => void;
 }
 
-const StudyDeleteModal = ({ isOpen, handleClose }: StudyDeleteModalProps) => {
+const StudyDeleteModal = ({ isOpen, studyId, handleClose }: StudyDeleteModalProps) => {
+  const router = useRouter();
+
+  const { mutate: deleteStudyMutation } = useDeleteStudyMutation();
+
+  const handleDeleteStudy = () => {
+    deleteStudyMutation(studyId, {
+      onSuccess: () => {
+        router.push(PATH.STUDY_ROOM_LIST);
+      },
+    });
+  };
+
   return (
     <Modal isOpen={isOpen} handleClose={handleClose} isBackdropClosable={false}>
       <div className="px-4 pt-7 pb-4 w-[300px]">
@@ -17,7 +36,7 @@ const StudyDeleteModal = ({ isOpen, handleClose }: StudyDeleteModalProps) => {
           <Button variant="outline" size="sm" onClick={handleClose}>
             <p className="text-[#adb5bd] text-medium-16">취소</p>
           </Button>
-          <Button size="sm">
+          <Button size="sm" onClick={handleDeleteStudy}>
             <p className="text-medium-16 text-white">삭제하기</p>
           </Button>
         </div>

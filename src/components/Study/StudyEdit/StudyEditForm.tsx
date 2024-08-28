@@ -25,8 +25,6 @@ const StudyEditForm = () => {
 
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
-  console.log(isOpen);
-
   return (
     <>
       <Header>
@@ -56,7 +54,7 @@ const StudyEditForm = () => {
         </Button>
       </div>
 
-      <StudyDeleteModal isOpen={isOpen} handleClose={handleClose} />
+      <StudyDeleteModal isOpen={isOpen} handleClose={handleClose} studyId={String(params.id)} />
     </>
   );
 };

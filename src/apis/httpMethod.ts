@@ -34,3 +34,7 @@ export function POST<Data>(input: string, init?: RequestInit): Promise<Data | vo
 export function PATCH<Data>(input: string, init?: RequestInit): Promise<Data | void> {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init });
 }
+
+export function DELETE<Data>(input: string, init?: RequestInit): Promise<Data | void> {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "DELETE", ...init });
+}
