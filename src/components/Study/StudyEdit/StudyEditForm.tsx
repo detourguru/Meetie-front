@@ -21,6 +21,7 @@ const StudyEditForm = () => {
     useCreateStudyForm({
       initialData: data.data,
       studyId: String(params.id),
+      joinMemberCount: data.data.joinMemberCount,
     });
 
   const { isOpen, handleOpen, handleClose } = useOverlay();
@@ -54,7 +55,12 @@ const StudyEditForm = () => {
         </Button>
       </div>
 
-      <StudyDeleteModal isOpen={isOpen} handleClose={handleClose} studyId={String(params.id)} />
+      <StudyDeleteModal
+        isOpen={isOpen}
+        handleClose={handleClose}
+        studyId={String(params.id)}
+        joinMemberCount={data.data.joinMemberCount}
+      />
     </>
   );
 };

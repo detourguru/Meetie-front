@@ -12,9 +12,14 @@ import type { CreateStudyFormRequestType } from "@/types/study";
 interface UseCreateStudyFormProps {
   initialData?: CreateStudyFormRequestType;
   studyId?: string;
+  joinMemberCount?: number;
 }
 
-export const useCreateStudyForm = ({ initialData, studyId }: UseCreateStudyFormProps) => {
+export const useCreateStudyForm = ({
+  initialData,
+  studyId,
+  joinMemberCount,
+}: UseCreateStudyFormProps) => {
   const { mutate: postStudyMutation } = usePostStudyMutation();
   const { mutate: patchStudyMutation } = usePatchStudyMutation();
 
@@ -85,11 +90,18 @@ export const useCreateStudyForm = ({ initialData, studyId }: UseCreateStudyFormP
   };
 
   const handleEditStudy = async () => {
+    // todo 추후 토스트 메시지나 모달창으로 수정
+    if (joinMemberCount && joinMemberCount > 0) {
+      console.log("참여 멤버가 0명일때만 수정 가능합니다");
+
+      return;
+    }
+
     patchStudyMutation(
       { createStudyForm, studyId: String(studyId) },
       {
         onSuccess: () => {
-          console.log("success");
+          router.push(PATH.STUDY_ROOM_LIST);
         },
       },
     );
