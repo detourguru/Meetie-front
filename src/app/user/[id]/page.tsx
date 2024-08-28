@@ -1,25 +1,13 @@
-"use client";
-
 import Link from "next/link";
 
-import Avatar from "@/components/common/Avatar/Avatar";
-import Divider from "@/components/common/Divider/Divider";
-import Header from "@/components/common/Header/Header";
-import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
-import BadgeList from "@/components/Profile/BadgeList/BadgeList";
-import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
-import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
-import TagList from "@/components/Profile/TagList/TagList";
+import { Suspense } from "react";
 
-import { BADGE_DATA } from "@/constants/badges";
+import Header from "@/components/common/Header/Header";
+import ProfileBody from "@/components/Profile/ProfileBody/ProfileBody";
+
 import { PATH } from "@/constants/path";
 
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
-
 export default function UserProfilePage({ params }: { params: { id: number } }) {
-  const { user } = useUserInformationQuery(params.id);
-  const badge = BADGE_DATA.find((badge) => badge.type === user?.mainBadge)?.badges[2];
-
   return (
     <>
       <Header>
@@ -32,33 +20,28 @@ export default function UserProfilePage({ params }: { params: { id: number } }) 
         </Header.RightTextButton>
       </Header>
 
-      <div className="pt-[68px] px-4 bg-white">
-        <div className="flex flex-col items-center gap-2">
-          <Avatar src={user?.profileImage ?? "/svg/ic-user.svg"} size="lg" outline="primary" />
-
-          <div className="flex gap-[6px] items-center">
-            {badge && (
-              <div className="w-[29px] h-[30px] bg-white">
-                <BadgeIcon src={badge.icon} alt="profileBadge" size="sm" width={29} height={29} />
+      <Suspense
+        // TODO: loading 컴포넌트로 변경
+        fallback={
+          <div className="pt-[68px] px-4 animate-pulse">
+            <div className="flex flex-col items-center gap-2">
+              <div className="w-[98px] h-[98px] rounded-full bg-gray-50" />
+              <div className="flex gap-[6px] items-center">
+                <div className="w-[29px] h-[30px] rounded-full bg-gray-50" />
+                <div className="w-14 h-5 rounded-full bg-gray-50" />
               </div>
-            )}
-            <h2 className="text-semibold-20">{user?.name}</h2>
+              <div className="w-20 h-3.5 rounded-full bg-gray-50" />
+            </div>
+
+            <div className="mt-[30px]">
+              <h2 className="text-bold-16">한줄 자기소개</h2>
+              <div className="w-full h-5 mt-2 rounded-full bg-gray-50" />
+            </div>
           </div>
-          {/* TODO: onboarding position */}
-          <h3 className="text-regular-14">기획자</h3>
-        </div>
-
-        <div className="mt-[30px]">
-          <h2 className="text-bold-16">한줄 자기소개</h2>
-          <h3 className="text-regular-14 mt-2">{user?.introduce}</h3>
-        </div>
-      </div>
-
-      <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
-      <BadgeList />
-      <TagList tags={user?.tagList ?? []} />
-      <ExperienceList />
-      <EvaluationList />
+        }
+      >
+        <ProfileBody id={params.id} />
+      </Suspense>
     </>
   );
 }
