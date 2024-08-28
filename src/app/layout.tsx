@@ -24,12 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${Pretendard.className} w-screen flex justify-center`}>
+      <body className={`${Pretendard.className} w-screen flex justify-center bg-black`}>
         <ClientProvider>
-          <div className="max-w-[375px] w-full h-dvh overflow-y-auto overflow-x-hidden hidden-scrollbar">
+          <div className="max-w-[375px] w-full h-dvh overflow-y-auto overflow-x-hidden hidden-scrollbar bg-white">
             {children}
           </div>
         </ClientProvider>
+        <div id="modal"></div>
       </body>
     </html>
   );

@@ -3,10 +3,13 @@
 import { useParams } from "next/navigation";
 
 import Button from "@/components/common/Button/Button";
+import Header from "@/components/common/Header/Header";
 import CreateStudyFirstStep from "@/components/Study/CreateStudy/CreateStudyFirstStep";
 import CreateStudySecondStep from "@/components/Study/CreateStudy/CreateStudySecondStep";
+import StudyDeleteModal from "@/components/Study/StudyDeleteModal/StudyDeleteModal";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
+import { useOverlay } from "@/hooks/common/useOverlay";
 import { useCreateStudyForm } from "@/hooks/Study/useCreateStudyForm";
 
 const StudyEditForm = () => {
@@ -20,8 +23,19 @@ const StudyEditForm = () => {
       studyId: String(params.id),
     });
 
+  const { isOpen, handleOpen, handleClose } = useOverlay();
+
+  console.log(isOpen);
+
   return (
     <>
+      <Header>
+        <Header.LeftButton />
+        <Header.Title hasButton>스터디 수정</Header.Title>
+        <Header.RightTextButton handleButtonClick={handleOpen}>
+          <p className="text-medium-14 text-[#ff552d]">삭제</p>
+        </Header.RightTextButton>
+      </Header>
       <div className="px-4 pt-[86px] pb-[120px]">
         <CreateStudyFirstStep
           createStudyForm={createStudyForm}
@@ -41,6 +55,8 @@ const StudyEditForm = () => {
           <p className="text-bold-16 text-white">수정하기</p>
         </Button>
       </div>
+
+      <StudyDeleteModal isOpen={isOpen} handleClose={handleClose} />
     </>
   );
 };
