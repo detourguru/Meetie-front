@@ -75,8 +75,8 @@ const StudyDetail = () => {
           <h2 className={contentTitleClassName}>스터디 기간</h2>
           <div>
             <p className={contentClassName}>
-              {convertDate(new Date(data.data.startDate ?? new Date()), true)} -{" "}
-              {convertDate(new Date(data.data.endDate ?? new Date()), true)}
+              {convertDate(data.data.startDate && new Date(data.data.startDate), true)} -{" "}
+              {convertDate(data.data.endDate && new Date(data.data.endDate), true)}
             </p>
             <p className={contentClassName}>
               매주 {data.data.week}요일 {data.data.time}

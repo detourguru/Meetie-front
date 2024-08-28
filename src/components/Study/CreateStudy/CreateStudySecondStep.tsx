@@ -62,7 +62,12 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
               readOnly
               placeholder="날짜 선택"
               onClick={openStartDateCalendar}
-              value={convertDate(createStudyForm.startDate, true) || ""}
+              value={
+                convertDate(
+                  createStudyForm.startDate && new Date(createStudyForm.startDate),
+                  true,
+                ) || ""
+              }
             />
           </div>
           <div className="w-[50%]">
@@ -71,7 +76,10 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
               readOnly
               placeholder="날짜 선택"
               onClick={openEndDateCalendar}
-              value={convertDate(createStudyForm.endDate, true) || ""}
+              value={
+                convertDate(createStudyForm.endDate && new Date(createStudyForm.endDate), true) ||
+                ""
+              }
             />
           </div>
         </div>
