@@ -30,3 +30,7 @@ export function GET<Data>(input: string, init?: RequestInit) {
 export function POST<Data>(input: string, init?: RequestInit): Promise<Data | void> {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init });
 }
+
+export function PATCH<Data>(input: string, init?: RequestInit): Promise<Data | void> {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init });
+}

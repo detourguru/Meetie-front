@@ -4,16 +4,19 @@ import { useState, useCallback } from "react";
 
 import { PATH } from "@/constants/path";
 
+import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
 import { usePostStudyMutation } from "@/hooks/api/study/usePostStudyMutation";
 
 import type { CreateStudyFormRequestType } from "@/types/study";
 
 interface UseCreateStudyFormProps {
   initialData?: CreateStudyFormRequestType;
+  studyId?: string;
 }
 
-export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => {
+export const useCreateStudyForm = ({ initialData, studyId }: UseCreateStudyFormProps) => {
   const { mutate: postStudyMutation } = usePostStudyMutation();
+  const { mutate: patchStudyMutation } = usePatchStudyMutation();
 
   const router = useRouter();
 
@@ -50,6 +53,8 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
 
   const buttonDisabled = step === "first" ? firstStepEmpty : secondStepEmpty;
 
+  const editButtonDisabled = firstStepEmpty || secondStepEmpty;
+
   const handleMoveStep = (step: "first" | "second") => {
     setStep(step);
   };
@@ -79,6 +84,17 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
     });
   };
 
+  const handleEditStudy = async () => {
+    patchStudyMutation(
+      { createStudyForm, studyId: String(studyId) },
+      {
+        onSuccess: () => {
+          console.log("success");
+        },
+      },
+    );
+  };
+
   return {
     step,
     createStudyForm,
@@ -86,5 +102,7 @@ export const useCreateStudyForm = ({ initialData }: UseCreateStudyFormProps) => 
     handleMoveStep,
     buttonDisabled,
     handleSubmit,
+    handleEditStudy,
+    editButtonDisabled,
   };
 };
