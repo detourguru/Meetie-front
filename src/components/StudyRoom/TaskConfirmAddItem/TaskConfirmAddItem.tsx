@@ -7,15 +7,19 @@ import TaskConfirmSheet from "@/components/TaskConfirmSheet/TaskConfirmSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
+interface TaskAddItemProps {
+  type: string;
+  imageUrl: string;
+}
 const TaskConfirmAddItem = () => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
-  const [uploadImage, setUploadImage] = useState<string | null>(null);
-  const [uploadType, setUploadType] = useState<string>("");
+  const [addItems, setAddItems] = useState<TaskAddItemProps[]>([]);
 
   const handleImageUpdate = (uploadType: string, uploadImage: string | null) => {
-    setUploadImage(uploadImage);
-    setUploadType(uploadType);
+    if (uploadImage && addItems.length < 4) {
+      setAddItems((prevItems) => [...prevItems, { type: uploadType, imageUrl: uploadImage }]);
+    }
   };
 
   return (
@@ -25,14 +29,16 @@ const TaskConfirmAddItem = () => {
         onClick={handleOpen}
       >
         <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
-        <span className="text-[#797979] text-regular-14 mt-1">0/4</span>
+        <span className="text-[#797979] text-regular-14 mt-1">{addItems.length}/4</span>
       </div>
       <TaskConfirmSheet
         isOpen={isOpen}
         onInteractOutside={handleClose}
         handleImageUpdate={handleImageUpdate}
       />
-      {uploadImage && <TaskConfirmItem uploadType={uploadType} uploadImage={uploadImage} />}
+      {addItems.map((addItems, index) => (
+        <TaskConfirmItem key={index} uploadType={addItems.type} uploadImage={addItems.imageUrl} />
+      ))}
     </section>
   );
 };

@@ -1,6 +1,10 @@
 import Image from "next/image";
 
-const TaskConfirmItem = ({ uploadType, uploadImage }: string) => {
+interface TaskConfirmItemProps {
+  uploadType: string;
+  uploadImage: string;
+}
+const TaskConfirmItem = ({ uploadType, uploadImage }: TaskConfirmItemProps) => {
   return (
     <div className="relative">
       <div className="w-[82px] h-[82px] absolute top-0 left-0 bg-gray-900/20 flex items-center justify-center rounded-lg">

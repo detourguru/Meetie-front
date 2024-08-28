@@ -11,7 +11,7 @@ const TaskConfirmArea = () => {
 
   const [uploadImage, setUploadImage] = useState<string | null>(null);
 
-  const handleImageUpdate = (uploadImage: string | null) => {
+  const handleImageUpdate = (uploadType: string, uploadImage: string | null) => {
     setUploadImage(uploadImage);
   };
 
