@@ -4,13 +4,12 @@ import { END_POINTS } from "@/constants/api";
 
 import type { UserInformationType } from "@/types/userInfo";
 
-export const updateUserInfo = async ({
-  id,
-  updateUserForm,
-}: {
+interface UpdateUserInfoParamsType {
   id: number;
   updateUserForm: Partial<UserInformationType>;
-}) => {
+}
+
+export const updateUserInfo = async ({ id, updateUserForm }: UpdateUserInfoParamsType) => {
   const config = {
     headers: { "Content-Type": "application/json" },
   };
