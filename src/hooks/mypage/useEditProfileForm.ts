@@ -9,7 +9,7 @@ import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInf
 import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
 
 interface UseEditProfileFormProps {
-  id?: number;
+  id: number;
   initialData?: ProfileFormType;
 }
 
@@ -61,16 +61,14 @@ export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps)
   }, []);
 
   const handleSubmit = () => {
-    if (id) {
-      updateUserInfoMutation(
-        { id, updateUserForm: profileForm },
-        {
-          onSuccess: () => {
-            router.push(PATH.USER_PROFILE(id));
-          },
+    updateUserInfoMutation(
+      { id, updateUserForm: profileForm },
+      {
+        onSuccess: () => {
+          router.push(PATH.USER_PROFILE(id));
         },
-      );
-    }
+      },
+    );
   };
 
   return { profileForm, updateProfileForm, handleImageUpload, handleSubmit };
