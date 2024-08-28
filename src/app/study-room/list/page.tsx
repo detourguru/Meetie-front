@@ -5,7 +5,6 @@ import React from "react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
-// import Image from "@/components/common/Image/Image";
 import StudyList from "@/components/Study/StudyList/StudyList";
 
 import { PATH } from "@/constants/path";
