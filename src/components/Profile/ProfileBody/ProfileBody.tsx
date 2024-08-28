@@ -18,7 +18,7 @@ interface ProfileBodyProps {
 
 const ProfileBody = ({ id }: ProfileBodyProps) => {
   const { user } = useUserInformationQuery(id);
-  const badge = BADGE_DATA.find((badge) => badge.type === user?.mainBadge)?.badges[2];
+  const badge = BADGE_DATA.find((badge) => badge.type === user.mainBadge)?.badges[2];
 
   return (
     <>

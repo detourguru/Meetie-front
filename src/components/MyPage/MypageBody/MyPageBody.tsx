@@ -24,7 +24,7 @@ const MyPageBody = () => {
   const handleChangeInfoAgreement = () => {
     updateUserInfoMutation({
       id: userId,
-      updateUserForm: { informationAgreement: !user?.informationAgreement },
+      updateUserForm: { informationAgreement: !user.informationAgreement },
     });
   };
 
