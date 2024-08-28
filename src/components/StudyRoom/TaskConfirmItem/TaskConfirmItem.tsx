@@ -3,8 +3,9 @@ import Image from "next/image";
 interface TaskConfirmItemProps {
   uploadType: string;
   uploadImage: string;
+  onDelete: () => void;
 }
-const TaskConfirmItem = ({ uploadType, uploadImage }: TaskConfirmItemProps) => {
+const TaskConfirmItem = ({ uploadType, uploadImage, onDelete }: TaskConfirmItemProps) => {
   return (
     <div className="relative">
       <div className="w-[82px] h-[82px] absolute top-0 left-0 bg-gray-900/20 flex items-center justify-center rounded-lg">
@@ -19,7 +20,7 @@ const TaskConfirmItem = ({ uploadType, uploadImage }: TaskConfirmItemProps) => {
           height={82}
         />
       </div>
-      <button className="absolute top-[-7px] right-[-7px] z-50">
+      <button className="absolute top-[-7px] right-[-7px] z-50" onClick={onDelete}>
         <Image src="/svg/ic-confirm-btn-delete.svg" alt="del btn" width={17} height={17} />
       </button>
     </div>

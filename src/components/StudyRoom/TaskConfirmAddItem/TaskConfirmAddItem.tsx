@@ -22,6 +22,10 @@ const TaskConfirmAddItem = () => {
     }
   };
 
+  const handleItemDelete = (index: number) => {
+    setAddItems((prevItems) => prevItems.filter((_, i) => i !== index));
+  };
+
   return (
     <section className="flex flex-nowrap gap-3 overflow-x-scroll pt-2">
       <div
@@ -37,7 +41,12 @@ const TaskConfirmAddItem = () => {
         handleImageUpdate={handleImageUpdate}
       />
       {addItems.map((addItems, index) => (
-        <TaskConfirmItem key={index} uploadType={addItems.type} uploadImage={addItems.imageUrl} />
+        <TaskConfirmItem
+          key={index}
+          uploadType={addItems.type}
+          uploadImage={addItems.imageUrl}
+          onDelete={() => handleItemDelete(index)}
+        />
       ))}
     </section>
   );
