@@ -26,3 +26,7 @@ async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestIni
 export function GET<Data>(input: string, init?: RequestInit) {
   return fetchWrapperWithTokenHandler<Data>(input, init);
 }
+
+export function POST<Data>(input: string, init?: RequestInit): Promise<Data | void> {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init });
+}
