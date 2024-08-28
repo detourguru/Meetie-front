@@ -1,5 +1,4 @@
-import CreateTagSection from "../CreateTagSection/CreateTagSection";
-
+import CreateTagSection from "@/components/Profile/CreateTagSection/CreateTagSection";
 import ProfileTag from "@/components/Profile/ProfileTag/ProfileTag";
 
 import type { UpdateProfileFormType } from "@/types/userInfo";
