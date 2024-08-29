@@ -25,7 +25,7 @@ const CreatePostBody = ({
   return (
     <div className="flex flex-col gap-9">
       <div>
-        <h2 className={inputTitleClassName}>작성 분야</h2>
+        <h2 className={inputTitleClassName}>게시 분야</h2>
         <div
           className="rounded-lg px-4 py-3 border border-[#c4c4c4] flex justify-between items-center h-[50px]"
           onClick={handleOpen}
@@ -34,7 +34,7 @@ const CreatePostBody = ({
             className={`${createPostForm.position.length === 0 && "text-blue-300"} text-regular-14`}
           >
             {createPostForm.position.length === 0
-              ? "작성 분야를 선택해주세요."
+              ? "게시물의 분야를 선택해주세요."
               : createPostForm.position.join(", ")}
           </p>
           <Image src="/svg/ic-study-down-arrow.svg" alt="downArrowIcon" className="w-4 h-6" />
