@@ -69,12 +69,14 @@ const PositionSheet = ({
 
         <div className="px-5">
           <div className="flex items-center justify-between">
-            <h2 className="text-semibold-18">모집 직군</h2>
+            <h2 className="text-semibold-18">게시 분야</h2>
             <button onClick={() => handleSelectAllPosition(selectButtonText)}>
               <span className="text-regular-12 text-gray-250 underline">{selectButtonText}</span>
             </button>
           </div>
-          <h3 className="text-gray-250 text-regular-12 mt-1">모집하고 싶은 직군을 선택해주세요!</h3>
+          <h3 className="text-gray-250 text-regular-12 mt-1">
+            게시물을 작성할 분야를 선택해주세요!
+          </h3>
           <ul className="rounded-lg bg-white border border-[#dfdfdf] mt-2">
             {POSITION_DATA.map((position) => (
               <li
