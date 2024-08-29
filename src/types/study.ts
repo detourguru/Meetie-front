@@ -6,8 +6,8 @@ export interface CreateStudyFormRequestType {
   goal: string;
   introduce: string;
   curriculum: string;
-  startDate: Date | null;
-  endDate: Date | null;
+  startDate: Date;
+  endDate: Date;
   week: string;
   time: string | null;
   recruitMemberCount: number;

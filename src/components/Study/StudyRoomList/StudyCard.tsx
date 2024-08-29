@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import moment from "moment";
+import "moment/locale/ko";
+
 import Tag from "@/components/common/Tag/Tag";
 
 import { PATH } from "@/constants/path";
@@ -12,16 +15,13 @@ interface StudyCardProps {
 }
 
 const StudyCard = ({ studyData }: StudyCardProps) => {
-  const handleTimeStampFormat = (time: Date | null) => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-      weekday: "long",
-      timeZone: "Asia/Seoul",
-    };
-
-    return time?.toLocaleDateString("ko-KR", options);
+  const handleGetDateDiff = (startDate: Date) => {
+    const diff = moment(startDate).diff(moment(), "days");
+    if (diff < 0) {
+      return "모집 종료"; // TODO: 문구확인
+    } else {
+      return `D-${diff}`;
+    }
   };
   return (
     <Link href={PATH.STUDY(studyData.id)}>
@@ -35,13 +35,15 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
           {studyData.tagList?.map((tag) => <Tag text={tag} isSmall key={tag} />)}
         </div>
         <div className="flex justify-between">
-          <span className="font-bold text-[12px] text-primary-500">D-13</span>
+          <span className="font-bold text-[12px] text-primary-500">
+            {handleGetDateDiff(studyData.startDate)}
+          </span>
           <div className="flex justify-between">
             <div>
               <Image src="/svg/ic-calandar.svg" alt="icon" width={15} height={15} />
             </div>
             <span className="ml-1 text-regular-12 text-gray-400">
-              {`${handleTimeStampFormat(studyData.startDate)} - ${handleTimeStampFormat(studyData.endDate)}`}
+              {`${moment(studyData.startDate).format("YYYY-MM-DD [(]ddd[)]")} - ${moment(studyData.endDate).format("YYYY-MM-DD [(]ddd[)]")}`}
             </span>
           </div>
           <div className="flex justify-between">
