@@ -9,15 +9,15 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 
 import type { CreateCommunityPostProps } from "@/types/community";
 
-interface CreateCommunityPostBodyProps extends CreateCommunityPostProps {
+interface CreatePostBodyProps extends CreateCommunityPostProps {
   handleImageUpload: (files: FileList | null) => Promise<string[]>;
 }
 
-const CreateCommunityPostBody = ({
+const CreatePostBody = ({
   createPostForm,
   updateInputValue,
   handleImageUpload,
-}: CreateCommunityPostBodyProps) => {
+}: CreatePostBodyProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
@@ -82,4 +82,4 @@ const CreateCommunityPostBody = ({
     </div>
   );
 };
-export default CreateCommunityPostBody;
+export default CreatePostBody;

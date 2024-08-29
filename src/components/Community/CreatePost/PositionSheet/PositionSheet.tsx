@@ -4,12 +4,12 @@ import Button from "@/components/common/Button/Button";
 import Image from "@/components/common/Image/Image";
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
-import { POSITION_DATA } from "@/constants/common";
-
 import { cn } from "@/utils/className";
 
 import type { CommonSheetProps } from "@/types/common";
 import type { CreateCommunityFormType, CreateCommunityUpdateHandlerType } from "@/types/community";
+
+export const POSITION_DATA = ["기획", "디자인", "개발"];
 
 interface PositionSheetProps extends CommonSheetProps {
   createPostForm: CreateCommunityFormType;
@@ -40,7 +40,7 @@ const PositionSheet = ({
 
   const handleSelectAllPosition = (buttonText: string) => {
     if (buttonText === "전체 선택") {
-      setPositionList(["기획자", "디자이너", "개발자"]);
+      setPositionList(POSITION_DATA);
     } else {
       setPositionList([]);
     }
@@ -76,16 +76,16 @@ const PositionSheet = ({
           </div>
           <h3 className="text-gray-250 text-regular-12 mt-1">모집하고 싶은 직군을 선택해주세요!</h3>
           <ul className="rounded-lg bg-white border border-[#dfdfdf] mt-2">
-            {POSITION_DATA.map((data) => (
+            {POSITION_DATA.map((position) => (
               <li
                 className={cn(listClassName, "border-b border-[#dfdfdf] last-of-type:border-none")}
-                onClick={() => handleSelectPosition(data.position)}
-                key={data.position}
+                onClick={() => handleSelectPosition(position)}
+                key={position}
               >
-                <p>{data.position}</p>
+                <p>{position}</p>
                 <Image
                   src={
-                    positionList.includes(data.position)
+                    positionList.includes(position)
                       ? "/svg/ic-study-check.svg"
                       : "/svg/ic-study-check-disabled.svg"
                   }

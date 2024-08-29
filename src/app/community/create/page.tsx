@@ -2,7 +2,7 @@
 
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
-import CreateCommunityPostBody from "@/components/Community/CreatePost/CreateCommunityPostBody/CreateCommunityPostBody";
+import CreatePostBody from "@/components/Community/CreatePost/CreatePostBody/CreatePostBody";
 
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
@@ -18,7 +18,7 @@ export default function CreateCommunityBoard() {
       </Header>
 
       <div className="px-4 pt-20 pb-[120px]">
-        <CreateCommunityPostBody
+        <CreatePostBody
           createPostForm={createPostForm}
           updateInputValue={updateProfileForm}
           handleImageUpload={handleImageUpload}

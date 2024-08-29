@@ -2,18 +2,6 @@ export const WEEK_DAY = ["일", "월", "화", "수", "목", "금", "토"];
 
 export const NOON_LIST = ["오전", "오후"];
 
-export const POSITION_DATA = [
-  {
-    position: "기획자",
-  },
-  {
-    position: "디자이너",
-  },
-  {
-    position: "개발자",
-  },
-];
-
 export const HOUR_LIST = Array.from({ length: 12 }).map((_, index) => {
   if (index < 10) {
     return "0" + index;
