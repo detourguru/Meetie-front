@@ -7,7 +7,7 @@ import CreateCommunityPostBody from "@/components/Community/CreatePost/CreateCom
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
 export default function CreateCommunityBoard() {
-  const { createPostForm, buttonDisabled, handleSubmit, updateProfileForm } =
+  const { createPostForm, buttonDisabled, handleImageUpload, handleSubmit, updateProfileForm } =
     useCreateCommunityPost({});
 
   return (
@@ -21,6 +21,7 @@ export default function CreateCommunityBoard() {
         <CreateCommunityPostBody
           createPostForm={createPostForm}
           updateInputValue={updateProfileForm}
+          handleImageUpload={handleImageUpload}
         />
       </div>
 

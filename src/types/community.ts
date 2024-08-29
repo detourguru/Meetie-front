@@ -14,3 +14,8 @@ export type CreateCommunityUpdateHandlerType = <Key extends keyof CreateCommunit
   key: Key,
   value: CreateCommunityFormType[Key],
 ) => void;
+
+export interface CreateCommunityPostProps {
+  createPostForm: CreateCommunityFormType;
+  updateInputValue: CreateCommunityUpdateHandlerType;
+}

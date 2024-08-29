@@ -2,20 +2,21 @@ import Image from "next/image";
 
 import Input from "@/components/common/Input/Input";
 import Textarea from "@/components/common/Textarea/Textarea";
+import ImageUploader from "@/components/Community/CreatePost/ImageUploader/ImageUploader";
 import PositionSheet from "@/components/Community/CreatePost/PositionSheet/PositionSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
-import type { CreateCommunityFormType, CreateCommunityUpdateHandlerType } from "@/types/community";
+import type { CreateCommunityPostProps } from "@/types/community";
 
-export interface CreateCommunityPostBodyProps {
-  createPostForm: CreateCommunityFormType;
-  updateInputValue: CreateCommunityUpdateHandlerType;
+interface CreateCommunityPostBodyProps extends CreateCommunityPostProps {
+  handleImageUpload: (files: FileList | null) => Promise<string[]>;
 }
 
 const CreateCommunityPostBody = ({
   createPostForm,
   updateInputValue,
+  handleImageUpload,
 }: CreateCommunityPostBodyProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
@@ -40,6 +41,7 @@ const CreateCommunityPostBody = ({
           <Image src="/svg/ic-study-down-arrow.svg" alt="downArrowIcon" width={16} height={24} />
         </div>
       </div>
+
       <div>
         <h2 className={inputTitleClassName}>제목</h2>
         <Input
@@ -50,9 +52,16 @@ const CreateCommunityPostBody = ({
         />
         <span className={inputLengthTextClassName}>{createPostForm.title.length}/20</span>
       </div>
+
       <div>
         <h2 className={inputTitleClassName}>이미지</h2>
+        <ImageUploader
+          images={createPostForm.images}
+          handleImageUpload={handleImageUpload}
+          updateInputValue={updateInputValue}
+        />
       </div>
+
       <div>
         <h2 className={inputTitleClassName}>내용</h2>
         <Textarea
