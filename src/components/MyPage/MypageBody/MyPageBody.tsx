@@ -39,7 +39,6 @@ const MyPageBody = () => {
             <p className="text-bold-20">{user.name}</p>
           </div>
         </div>
-        {/* TODO: user 정보가 없을 경우 로그인 페이지로 redirect */}
         <Link href={PATH.USER_PROFILE(userId)} className="self-end">
           <button className="border rounded border-primary-200 bg-primary-50 p-2">
             <p className="text-medium-12 text-primary-450">공개용 프로필</p>
@@ -64,7 +63,6 @@ const MyPageBody = () => {
       <div className="flex flex-col gap-3 px-4 mt-9">
         <header className="text-bold-18">내 정보</header>
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
-          {/* TODO: user 정보 없을 경우 redirect */}
           <InformationCard
             count={2} // TODO: user.studyList.length
             informationData={INFORMATIONS_DATA.STUDY}
