@@ -120,7 +120,7 @@ const MyPageBody = () => {
           <ul className="flex flex-col gap-4">
             <MenuListItem
               // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recentVisit)
-              navigateTo={PATH.STUDY(1)}
+              navigateTo={PATH.STUDY("test")}
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
 
