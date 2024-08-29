@@ -63,7 +63,7 @@ const PositionSheet = ({
           onInteractOutside && onInteractOutside();
         }}
       >
-        <SheetHeader className="items-center justify-center pt-[14px] pb-[32px] ">
+        <SheetHeader className="items-center justify-center pt-3.5 pb-8 ">
           <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
         </SheetHeader>
 

@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+import Image from "@/components/common/Image/Image";
 import Input from "@/components/common/Input/Input";
 import Textarea from "@/components/common/Textarea/Textarea";
 import ImageUploader from "@/components/Community/CreatePost/ImageUploader/ImageUploader";
@@ -38,7 +37,7 @@ const CreatePostBody = ({
               ? "작성 분야를 선택해주세요."
               : createPostForm.position.join(", ")}
           </p>
-          <Image src="/svg/ic-study-down-arrow.svg" alt="downArrowIcon" width={16} height={24} />
+          <Image src="/svg/ic-study-down-arrow.svg" alt="downArrowIcon" className="w-4 h-6" />
         </div>
       </div>
 
@@ -82,4 +81,5 @@ const CreatePostBody = ({
     </div>
   );
 };
+
 export default CreatePostBody;

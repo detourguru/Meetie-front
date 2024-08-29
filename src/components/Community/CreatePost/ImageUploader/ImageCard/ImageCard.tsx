@@ -13,10 +13,11 @@ const ImageCard = ({ imageUrl, handleDelete }: ImageCardProps) => {
         src={imageUrl}
         alt="uploaded"
       />
-      <button className="absolute top-[-7px] right-[-7px] z-50" onClick={handleDelete}>
-        <Image src="/svg/ic-confirm-btn-delete.svg" alt="del btn" className="w-[17px] h-[17px]" />
+      <button className="absolute -top-2 -right-2" onClick={handleDelete}>
+        <Image src="/svg/ic-confirm-btn-delete.svg" alt="del btn" className="w-4 h-4" />
       </button>
     </div>
   );
 };
+
 export default ImageCard;

@@ -6,7 +6,7 @@ import CreatePostBody from "@/components/Community/CreatePost/CreatePostBody/Cre
 
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
-export default function CreateCommunityBoard() {
+export default function CreateCommunityPostPage() {
   const { createPostForm, buttonDisabled, handleImageUpload, handleSubmit, updateProfileForm } =
     useCreateCommunityPost({});
 

@@ -27,7 +27,7 @@ const ImageUploader = ({ images, handleImageUpload, updateInputValue }: ImageUpl
   return (
     <section className="flex flex-nowrap gap-3 overflow-x-scroll pt-2 hidden-scrollbar">
       <label
-        className="flex flex-col items-center justify-center w-[82px] h-[82px] min-w-[82px] border border-[#D5D5D5] rounded-lg bg-[#F9F9F9]"
+        className="flex flex-col items-center justify-center h-[82px] min-w-[82px] border border-[#D5D5D5] rounded-lg bg-[#F9F9F9]"
         htmlFor="images"
       >
         <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
@@ -58,4 +58,5 @@ const ImageUploader = ({ images, handleImageUpload, updateInputValue }: ImageUpl
     </section>
   );
 };
+
 export default ImageUploader;
