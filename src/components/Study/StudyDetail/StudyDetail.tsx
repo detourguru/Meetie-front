@@ -22,6 +22,8 @@ const StudyDetail = () => {
   const { userData } = useUserInformationQuery();
   const { userData: ownerUserData } = useUserInformationQuery(data.data.user_id);
 
+  const isOwner = userData.data.id === ownerUserData.data.id;
+
   const spanClassName =
     "mr-[14px] after:h-[10px] after:w-[1px] after:bg-blue-300 after:inline-block relative after:absolute after:right-[-8px] after:top-[2px]";
   const contentBoxClassName = "flex flex-col gap-2";
@@ -32,7 +34,7 @@ const StudyDetail = () => {
     <>
       <Header>
         <Header.LeftButton />
-        {userData.data.id === ownerUserData.data.id && (
+        {isOwner && (
           <Header.RightTextButton>
             <Link href={PATH.STUDY_EDIT(String(params.id))}>
               <p className="text-medium-14 text-black">수정</p>
@@ -106,10 +108,7 @@ const StudyDetail = () => {
         </div>
       </div>
 
-      <FooterBtn
-        joinMemberCount={data.data.joinMemberCount}
-        recruitMemberCount={data.data.recruitMemberCount}
-      />
+      <FooterBtn data={data.data} isOwner={isOwner} userId={userData.data.id} />
     </>
   );
 };

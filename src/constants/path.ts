@@ -23,7 +23,7 @@ export const PATH = {
   STUDY_CREATE: "/study/create",
   STUDY: (studyId: string) => `/study/${studyId}`,
   STUDY_EDIT: (stuydId: string) => `/study/${stuydId}/edit`,
-  STUDY_REQUEST: (studyId: number) => `/study/${studyId}/request`,
+  STUDY_REQUEST: (studyId: string) => `/study/${studyId}/request`,
 
   TASK_CONFIRM: "/task-confirm",
   TASK_CONFIRM_SUCCESS: "/task-confirm/success",

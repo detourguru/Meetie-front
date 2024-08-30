@@ -22,7 +22,7 @@ export const usePatchStudyMutation = () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY_LIST] });
     },
     onError: (error) => {
-      console.log(error);
+      console.error(error);
     },
   });
 
