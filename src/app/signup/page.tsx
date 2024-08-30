@@ -8,26 +8,61 @@ import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
 import { SIGNUP_DATA } from "@/constants/onBoarding";
 
+import { useSignUpForm } from "@/hooks/signup/useSignUpForm";
+
 export default function SignUpPage() {
+  const {
+    signupForm,
+    updateSignUpForm,
+    checkPassword,
+    handleChangeCheckPassword,
+    isCorrectEmail,
+    isCorrectPassword,
+    isMathed,
+    isCompleted,
+    handleSubmit,
+  } = useSignUpForm();
+
   const inputTitleClassName = "text-semibold-16 mb-[10px]";
+  const SpanAlertClassName = "absolute left-0 -bottom-6 text-primary-400 text-regular-12";
+
+  console.log(signupForm);
 
   return (
-    <main className="flex flex-col h-full">
-      <article className="flex flex-col items-center h-full p-4">
-        <OnBoardingTitle textData={SIGNUP_DATA} index={0} />
+    <main className="flex flex-col items-center h-full p-4">
+      <OnBoardingTitle textData={SIGNUP_DATA} index={0} />
 
-        <form className="w-full [&>*]:mb-6 mb-[33px] pt-8">
-          <div>
+      <form onSubmit={handleSubmit} className="flex flex-col justify-between w-full h-full pt-8">
+        <div className="[&>*]:mb-9 ">
+          <div className="relative">
             <h2 className={inputTitleClassName}>이름</h2>
-            <Input type="text" placeholder="이름을 입력해주세요." />
+            <Input
+              type="text"
+              value={signupForm.name}
+              placeholder="이름을 입력해주세요."
+              onChange={(e) => updateSignUpForm("name", e.currentTarget.value)}
+            />
           </div>
-          <div>
+          <div className="relative">
             <h2 className={inputTitleClassName}>이메일</h2>
-            <Input type="email" placeholder="이메일을 입력해주세요." />
+            <Input
+              type="text"
+              value={signupForm.email}
+              placeholder="이메일을 입력해주세요."
+              onChange={(e) => updateSignUpForm("email", e.currentTarget.value)}
+            />
+            {!isCorrectEmail && (
+              <span className={SpanAlertClassName}>올바른 이메일을 입력해주세요</span>
+            )}
           </div>
           <div className="relative">
             <h2 className={inputTitleClassName}>비밀번호</h2>
-            <Input type="password" placeholder="비밀번호를 입력해주세요." />
+            <Input
+              type="password"
+              value={signupForm.password}
+              placeholder="비밀번호를 입력해주세요."
+              onChange={(e) => updateSignUpForm("password", e.currentTarget.value)}
+            />
             <Image
               src="/svg/ic-login-close-eye.svg"
               width={24}
@@ -35,10 +70,20 @@ export default function SignUpPage() {
               alt="close eye"
               className="absolute cursor-pointer right-3 bottom-3"
             />
+            {!isCorrectPassword && (
+              <span className={SpanAlertClassName}>
+                8~20 자리의 영문, 숫자, 특수기호를 포함해주세요
+              </span>
+            )}
           </div>
           <div className="relative">
             <h2 className={inputTitleClassName}>비밀번호 확인</h2>
-            <Input type="password" placeholder="비밀번호를 입력해주세요." />
+            <Input
+              type="password"
+              value={checkPassword}
+              placeholder="비밀번호를 입력해주세요."
+              onChange={(e) => handleChangeCheckPassword(e.currentTarget.value)}
+            />
             <Image
               src="/svg/ic-login-close-eye.svg"
               width={24}
@@ -46,12 +91,13 @@ export default function SignUpPage() {
               alt="close eye"
               className="absolute cursor-pointer right-3 bottom-3"
             />
+            {!isMathed && <span className={SpanAlertClassName}>비밀번호가 일치하지 않습니다.</span>}
           </div>
-        </form>
-        <Button size="xl" disabled className="mt-auto mb-[42px]">
+        </div>
+        <Button type="submit" size="xl" disabled={!isCompleted} className="mt-auto mb-[42px]">
           <span className="text-white">완료</span>
         </Button>
-      </article>
+      </form>
     </main>
   );
 }
