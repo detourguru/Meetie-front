@@ -19,6 +19,7 @@ export async function PATCH(request: Request, { params }: { params: { id: number
     const supabase = createClient();
 
     const data = await request.json();
+    console.log(data);
 
     const { error } = await supabase.from("userinfo").update(data).eq("id", params.id);
 

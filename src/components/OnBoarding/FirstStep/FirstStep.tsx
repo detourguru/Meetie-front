@@ -1,29 +1,31 @@
 import Image from "next/image";
 
-import { JOBS_DATA, JOBS_KR_DATA } from "@/constants/onBoarding";
+import { POSITIONS_DATA, POSITIONS_KR_DATA } from "@/constants/onBoarding";
 
-interface FirstStepProp {
-  clickedJob: string;
-  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}
+import type { OnboardingStepProps } from "@/types/onboarding";
 
-const FirstStep = ({ clickedJob, handleClick }: FirstStepProp) => {
+const FirstStep = ({ clicked: clickedPosition, handleClick }: OnboardingStepProps) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex justify-center items-center w-full gap-[8px] pt-[60px]">
-        {JOBS_DATA.map((job, index) => (
+        {POSITIONS_DATA.map((position, index) => (
           <button
-            key={`jobs${index}`}
-            value={job}
+            key={`positions${index}`}
+            value={position}
             onClick={handleClick}
             className={`w-[109px] h-[120px] rounded-lg flex flex-col items-center justify-center gap-[20px] ${
-              clickedJob === job
+              clickedPosition === position
                 ? "bg-primary-200 text-primary-500 border border-primary-500 text-medium-16"
                 : "bg-gray-50 text-regular-16"
             }`}
           >
-            <Image src={`/svg/ic-onboarding-${job}.svg`} width={24} height={24} alt={job} />
-            <p>{JOBS_KR_DATA[index]}</p>
+            <Image
+              src={`/svg/ic-onboarding-${position}.svg`}
+              width={24}
+              height={24}
+              alt={position}
+            />
+            <p>{POSITIONS_KR_DATA[index]}</p>
           </button>
         ))}
       </div>

@@ -2,12 +2,9 @@ import TagButton from "@/components/common/TagButton/TagButton";
 
 import { PURPOSES_DATA } from "@/constants/onBoarding";
 
-interface SecondStepProp {
-  clickedPurpose: string[];
-  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}
+import type { OnboardingStepProps } from "@/types/onboarding";
 
-const SecondStep = ({ clickedPurpose, handleClick }: SecondStepProp) => {
+const SecondStep = ({ clicked: clickedPurpose, handleClick }: OnboardingStepProps) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="w-full pt-[60px] flex flex-col gap-3 justify-center items-start text-regular-16">

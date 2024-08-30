@@ -2,12 +2,9 @@ import TagButton from "@/components/common/TagButton/TagButton";
 
 import { STYLES_DATA } from "@/constants/onBoarding";
 
-interface ThirdStepProp {
-  clickedStyle: string[];
-  handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-}
+import type { OnboardingStepProps } from "@/types/onboarding";
 
-const ThirdStep = ({ clickedStyle, handleClick }: ThirdStepProp) => {
+const ThirdStep = ({ clicked: clickedStyle, handleClick }: OnboardingStepProps) => {
   return (
     <div className="flex flex-col items-center w-full h-full">
       <div className="flex flex-wrap pt-[60px] gap-2">

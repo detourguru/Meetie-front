@@ -18,11 +18,11 @@ export const QUESTION_DATA = (name: string) => [
   },
 ];
 
-export const STEPS_DATA = ["job", "purpose", "style", "period"] as const;
+export const STEPS_DATA = ["position", "purposes", "styles", "period"] as const;
 
-// job
-export const JOBS_DATA = ["designer", "developer", "planner"];
-export const JOBS_KR_DATA = ["디자이너", "개발자", "기획자"];
+// position
+export const POSITIONS_DATA = ["designer", "developer", "planner"];
+export const POSITIONS_KR_DATA = ["디자이너", "개발자", "기획자"];
 
 // purpose
 export const PURPOSES_DATA = ["자기 개발", "툴 능력 향상", "해당 분야의 네트워킹 확장", "취미"];
