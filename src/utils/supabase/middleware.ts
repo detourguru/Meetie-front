@@ -43,6 +43,7 @@ export async function updateSession(request: NextRequest) {
   if (
     !user &&
     request.nextUrl.pathname !== "/login" &&
+    request.nextUrl.pathname !== "/signup" &&
     request.nextUrl.pathname !== "/" &&
     request.nextUrl.pathname !== "/auth/redirect" &&
     request.nextUrl.pathname !== "/auth/callback"
