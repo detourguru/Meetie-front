@@ -8,15 +8,7 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 
 import type { CreateCommunityPostProps } from "@/types/community";
 
-interface CreatePostBodyProps extends CreateCommunityPostProps {
-  handleImageUpload: (files: FileList | null) => Promise<string[]>;
-}
-
-const CreatePostBody = ({
-  createPostForm,
-  updateInputValue,
-  handleImageUpload,
-}: CreatePostBodyProps) => {
+const CreatePostBody = ({ createPostForm, updateInputValue }: CreateCommunityPostProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const inputTitleClassName = "text-bold-16 mb-[10px]";
@@ -54,11 +46,7 @@ const CreatePostBody = ({
 
       <div>
         <h2 className={inputTitleClassName}>이미지</h2>
-        <ImageUploader
-          images={createPostForm.images}
-          handleImageUpload={handleImageUpload}
-          updateInputValue={updateInputValue}
-        />
+        <ImageUploader images={createPostForm.images} updateInputValue={updateInputValue} />
       </div>
 
       <div>

@@ -1,28 +1,20 @@
 import Image from "next/image";
 
-import type { ChangeEvent } from "react";
-
 import ImageCard from "@/components/Community/CreatePost/ImageUploader/ImageCard/ImageCard";
+
+import { useMultiImageUpload } from "@/hooks/common/useMultiImageUpload";
 
 import type { CreateCommunityUpdateHandlerType } from "@/types/community";
 
 interface ImageUploaderProps {
   updateInputValue: CreateCommunityUpdateHandlerType;
-  handleImageUpload: (files: FileList | null) => Promise<string[]>;
   images: string[];
 }
 
 const MAX_SIZE = 5;
 
-const ImageUploader = ({ images, handleImageUpload, updateInputValue }: ImageUploaderProps) => {
-  const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-    const newImages = images.concat(await handleImageUpload(e.target.files));
-
-    if (newImages.length <= MAX_SIZE) {
-      updateInputValue("images", newImages);
-    }
-    // TODO: 팝업으로 초과 알림
-  };
+const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
+  const { handleImageDelete, handleImageUpload } = useMultiImageUpload({ maxSize: MAX_SIZE });
 
   return (
     <section className="flex flex-nowrap gap-3 overflow-x-scroll pt-2 hidden-scrollbar">
@@ -39,7 +31,9 @@ const ImageUploader = ({ images, handleImageUpload, updateInputValue }: ImageUpl
           multiple
           id="images"
           name="images"
-          onChange={handleChange}
+          onChange={async (e) =>
+            updateInputValue("images", await handleImageUpload(images, e.target.files))
+          }
           className="hidden"
         />
       </label>
@@ -47,12 +41,7 @@ const ImageUploader = ({ images, handleImageUpload, updateInputValue }: ImageUpl
       {images.map((image, index) => (
         <ImageCard
           imageUrl={image}
-          handleDelete={() =>
-            updateInputValue(
-              "images",
-              images.filter((_, idx) => index !== idx),
-            )
-          }
+          handleDelete={() => updateInputValue("images", handleImageDelete(images, index))}
         />
       ))}
     </section>

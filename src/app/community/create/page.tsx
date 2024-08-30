@@ -7,8 +7,9 @@ import CreatePostBody from "@/components/Community/CreatePost/CreatePostBody/Cre
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
 export default function CreateCommunityPostPage() {
-  const { createPostForm, buttonDisabled, handleImageUpload, handleSubmit, updatePostForm } =
-    useCreateCommunityPost({});
+  const { createPostForm, buttonDisabled, handleSubmit, updatePostForm } = useCreateCommunityPost(
+    {},
+  );
 
   return (
     <>
@@ -18,11 +19,7 @@ export default function CreateCommunityPostPage() {
       </Header>
 
       <div className="px-4 pt-20 pb-[100px]">
-        <CreatePostBody
-          createPostForm={createPostForm}
-          updateInputValue={updatePostForm}
-          handleImageUpload={handleImageUpload}
-        />
+        <CreatePostBody createPostForm={createPostForm} updateInputValue={updatePostForm} />
       </div>
 
       <div className="w-[375px] py-3.5 fixed bottom-0 flex justify-center bg-white z-50 border-t border-[#CCCEF0]">
