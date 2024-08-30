@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
+import { default as CustomImage } from "@/components/common/Image/Image";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
 import { PATH } from "@/constants/path";
@@ -41,12 +42,11 @@ export default function LoginPage() {
         <div className="w-full mb-[22px]">
           <div className="relative w-[100px] h-[100px] bg-white -rotate-3 p-0.5">
             <div className="absolute w-[85px] h-[85px] bg-blue-400 mix-blend-hue z-10" />
-            <Image
+            <CustomImage
               src="/svg/ic-login-hand.svg"
-              width={85}
-              height={85}
               alt="hand"
-              className="absolute"
+              priority
+              className="absolute w-[85px] h-[85px]"
             />
           </div>
           <h1 className="text-semibold-24">반가워요!</h1>
@@ -90,17 +90,17 @@ export default function LoginPage() {
         </p>
 
         <div className="flex justify-center items-center gap-[23px]">
-          <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver" />
+          <Image src="/svg/ic-login-naver.svg" width={47} height={46} alt="naver" />
           <Image
             src="/svg/ic-login-kakao.svg"
-            width={46}
+            width={47}
             height={46}
             alt="kakao_login"
             onClick={() => handleSignInWithOAuth("kakao")}
           />
           <Image
             src="/svg/ic-login-google.svg"
-            width={46}
+            width={47}
             height={46}
             alt="google_login"
             onClick={() => handleSignInWithOAuth("google")}
