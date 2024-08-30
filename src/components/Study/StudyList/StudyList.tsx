@@ -1,5 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+import { type StudyListType } from "@/types/study";
+
 import CheckBox from "@/components/Study/CheckBox";
 import PageConter from "@/components/Study/PageCounter";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
@@ -7,7 +11,16 @@ import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 
 const StudyList = () => {
+  const [checked, setChecked] = useState(false);
+  const [filtered, setFiltered] = useState<StudyListType[]>();
+
   const { data } = useStudyListQuery();
+
+  useEffect(() => {}, [checked]);
+
+  const handleChecked = () => {
+    setChecked(!checked);
+  };
 
   return (
     <article className="mx-4 pb-[80px]">
@@ -17,12 +30,11 @@ const StudyList = () => {
         스터디룸
       </h1>
       <div className="flex justify-between mb-[27px]">
-        <CheckBox>모집중만 보기</CheckBox>
-        <PageConter current={1} total={6} />
+        <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
+        <PageConter total={filtered !== undefined ? filtered.length : 0} />
       </div>
-      {data.data.map((studyData) => (
-        <StudyCard studyData={studyData} key={studyData.id} />
-      ))}
+      {filtered &&
+        filtered.map((studyData) => <StudyCard studyData={studyData} key={studyData.id} />)}
     </article>
   );
 };
