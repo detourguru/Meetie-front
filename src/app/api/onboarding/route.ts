@@ -28,7 +28,7 @@ export async function GET() {
     const { data, error } = await supabase.from("onboarding").select("position, styles").single();
 
     if (data && !error) {
-      return NextResponse.json({ message: "ok", status: 200, data: data });
+      return NextResponse.json({ message: "ok", status: 200, data });
     }
 
     return NextResponse.json({ message: "ok", status: 200, data: null });
