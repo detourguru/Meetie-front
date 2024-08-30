@@ -5,7 +5,6 @@ import { Suspense } from "react";
 import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Header from "@/components/common/Header/Header";
-import FooterBtn from "@/components/Study/StudyDetail/FooterBtn/FooterBtn";
 import StudyDetail from "@/components/Study/StudyDetail/StudyDetail";
 
 import { PATH } from "@/constants/path";
@@ -30,7 +29,6 @@ export default function StudyDetailPage({ params }: { params: { id: string } }) 
           <StudyDetail />
         </ServerFetchBoundary>
       </Suspense>
-      <FooterBtn />
     </>
   );
 }

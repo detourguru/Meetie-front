@@ -22,7 +22,7 @@ export default function StudyRequestPage() {
         <StudyRequestCard date="2024년 06월 08일" />
       </div>
 
-      <FooterBtn />
+      <FooterBtn joinMemberCount={1} recruitMemberCount={1} />
     </>
   );
 }
