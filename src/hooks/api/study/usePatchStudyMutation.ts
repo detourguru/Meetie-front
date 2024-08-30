@@ -19,8 +19,7 @@ export const usePatchStudyMutation = (studyId: string) => {
     mutationFn: ({ createStudyForm, studyId }: PatchStudyRequestProps) =>
       PATCH(END_POINTS.STUDY(studyId), createInit(createStudyForm)),
     onSuccess: () => {
-      console.log("success");
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, studyId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY_LIST] });
     },
     onError: (error) => {
