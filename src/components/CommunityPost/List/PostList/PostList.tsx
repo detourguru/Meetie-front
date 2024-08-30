@@ -10,14 +10,17 @@ const PostList = () => {
   return (
     <div className="pb-10">
       <div className="flex flex-col gap-5 my-8">
-        <div className="flex justify-between items-center mx-4">
-          <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mx-4">
+          <div className="flex justify-between items-center">
             <h1 className="text-bold-18 text-gray-600">주제별 테스트</h1>
-            <p className="text-regular-14 text-[#82829B]">
-              서비스 주제에 따른 UI 고민을 테스트로 해결해봐요!
-            </p>
+            <div className="flex items-baseline">
+              <button className="text-regular-14 text-[#82829B] self-start">더보기</button>
+              <Image src="/svg/ic-arrow-right.svg" alt="more" width={20} height={20} />
+            </div>
           </div>
-          <button className="text-regular-14 text-[#82829B] self-start">더보기</button>
+          <p className="text-regular-14 text-[#82829B]">
+            서비스 주제에 따른 UI 고민을 테스트로 해결해봐요!
+          </p>
         </div>
 
         <div className="text-nowrap overflow-x-auto no-scrollbar px-4">

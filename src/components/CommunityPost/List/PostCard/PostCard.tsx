@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "@/components/common/Image/Image";
 
 import { cn } from "@/utils/className";
 import { convertDate } from "@/utils/date";
@@ -28,13 +28,17 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
 
       <div className="w-full h-[120px] rounded-lg border border-[#DCD8EF]">{mainImage}</div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center h-6">
         <div className="flex gap-1">
-          <Image src="/svg/ic-calandar.svg" alt="calendar" width={15} height={15} />
+          <Image
+            src="/svg/ic-community-calendar.svg"
+            alt="calendar"
+            className="w-[15px] h-[15px]"
+          />
           <span className="text-medium-12 text-[#555555]">{convertDate(post.postDate, true)}</span>
         </div>
         <div className="flex gap-1">
-          <Image src="/svg/ic-eye.svg" alt="eye" width={14} height={14} />
+          <Image src="/svg/ic-eye.svg" alt="eye" className="w-3.5 h-3.5" />
           <span className="text-medium-12 text-[#908794]">{post.viewCount}</span>
         </div>
       </div>

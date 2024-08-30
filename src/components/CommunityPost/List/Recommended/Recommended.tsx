@@ -10,7 +10,7 @@ const Recommended = () => {
           <h1 className="text-bold-18 text-gray-600">💡 추천 게시글</h1>
           <p className="text-regular-14 text-[#82829B]">인기 게시글을 확인해보세요!</p>
         </div>
-        <Image src="/svg/ic-refresh.svg" alt="refresh" width={24} height={24} />
+        <Image src="/svg/ic-community-refresh.svg" alt="refresh" width={40} height={40} />
       </div>
 
       <div className="bg-[#E3E3FA] py-5 flex flex-col gap-4">
