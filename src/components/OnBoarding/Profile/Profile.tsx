@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { default as CustomImage } from "@/components/common/Image/Image";
+
 import { POSITIONS_DATA, POSITIONS_KR_DATA } from "@/constants/onBoarding";
 
 import { useOnboardingCompleteQuery } from "@/hooks/api/onboarding/useOnboardingCompleteQuery";
@@ -19,8 +21,8 @@ const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) =
     <div className="relative w-[150px] mt-[77px]">
       <Image
         src="/svg/ic-onboarding-complete-back.svg"
-        width={146}
-        height={204}
+        width={153}
+        height={209}
         alt="back"
         priority
         className="absolute top-0"
@@ -31,11 +33,10 @@ const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) =
         <div className="absolute top-0 flex flex-col items-center justify-center pt-6 whitespace-nowrap">
           <div className="relative w-[80px] h-[80px] flex justify-center bg-gradient-to-tr from-[#FAFAFF]/60 to-[#FAFAFF]/45">
             <div className="absolute w-[80px] h-[80px] bg-[#0017E2] mix-blend-hue z-10" />
-            <Image
-              src="/svg/ic-badge-nanum-master.svg"
-              width={76}
-              height={75}
-              alt="meetie master"
+            <CustomImage
+              src="/svg/ic-profile-badge.svg"
+              alt="profile badge"
+              className="w-[78px] h-[77px]"
             />
             <Image
               src={profileImage}
@@ -43,7 +44,7 @@ const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) =
               height={48}
               alt="profile"
               priority
-              className="absolute top-[25px] z-20 rounded-full"
+              className="absolute top-[24px] z-20 rounded-full"
             />
           </div>
           <p className="text-semibold-14 mt-[6.5px]">{userName}님</p>
