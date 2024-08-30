@@ -61,7 +61,7 @@ const ExplorerTab = () => {
           <div>
             <div className="flex justify-between mb-[27px]">
               <CheckBox>모집중만 보기</CheckBox>
-              <PageConter current={1} total={6} />
+              <PageConter total={6} />
             </div>
             {/* <StudyCard /> */}
           </div>
@@ -72,7 +72,7 @@ const ExplorerTab = () => {
               <br />
               방금 지원했어요
             </h1>
-            <PageConter current={1} total={6} />
+            <PageConter total={6} />
           </div>
           {/* <StudyCard /> */}
         </div>
@@ -108,7 +108,7 @@ const ExplorerTab = () => {
           </div>
           <div className="mx-4 bg-[#F5F5FF]">
             <div className="p-4 flex justify-end">
-              <PageConter current={1} total={4} />
+              <PageConter total={4} />
             </div>
             <MemberList />
           </div>
