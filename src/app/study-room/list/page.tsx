@@ -46,13 +46,16 @@ export default function Page() {
                   바로가기
                 </label>
               </div>
-              <Image
-                className="opacity-75 object-contain"
-                src="/img/img-thinking_face.png"
-                alt="thinking face"
-                width={70}
-                height={81}
-              />
+              <div className="relative">
+                <div className="absolute w-[70px] h-[81px] bg-blue-400 mix-blend-hue z-10" />
+                <Image
+                  className="opacity-75"
+                  src="/img/img-thinking_face.png"
+                  alt="thinking face"
+                  width={70}
+                  height={81}
+                />
+              </div>
             </div>
           </div>
         </Link>
@@ -65,7 +68,8 @@ export default function Page() {
               <h2 className="text-medium-14 text-gray-200">찾으시는 스터디룸이 없으신가요?</h2>
               <h2 className="text-bold-14">쉽고 빠른 스터디룸 개설하기!</h2>
             </div>
-            <div>
+            <div className="relative">
+              <div className="absolute w-[55px] h-[55px] bg-blue-400 mix-blend-hue z-10" />
               <Image
                 className="opacity-75"
                 src="/img/img-waving_hand.png"
