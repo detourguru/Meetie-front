@@ -12,6 +12,7 @@ export interface CreateStudyFormRequestType {
   time: string | null;
   recruitMemberCount: number;
   tagList: string[];
+  user_id: number;
 }
 
 export interface CreateStudyStepProps {

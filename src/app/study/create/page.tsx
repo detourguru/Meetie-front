@@ -6,11 +6,14 @@ import ProgressBar from "@/components/common/ProgressBar/ProgressBar";
 import CreateStudyFirstStep from "@/components/Study/CreateStudy/CreateStudyFirstStep";
 import CreateStudySecondStep from "@/components/Study/CreateStudy/CreateStudySecondStep";
 
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useCreateStudyForm } from "@/hooks/Study/useCreateStudyForm";
 
 export default function CreateStudyPage() {
+  const { userData } = useUserInformationQuery();
+
   const { step, createStudyForm, buttonDisabled, handleMoveStep, updateInputValue, handleSubmit } =
-    useCreateStudyForm({});
+    useCreateStudyForm({ userId: userData.data.id });
 
   return (
     <>

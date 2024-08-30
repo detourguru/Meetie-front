@@ -10,7 +10,7 @@ import type { GetUserInfoResponseType, ProfileFormType } from "@/types/userInfo"
 
 export const useUserInformationQuery = (id?: number) => {
   const { data: userData } = useSuspenseQuery<GetUserInfoResponseType, AxiosError>({
-    queryKey: [QUERY_KEYS.USER_INFO],
+    queryKey: [QUERY_KEYS.USER_INFO, id],
     queryFn: () => getUserInfo(id),
   });
 

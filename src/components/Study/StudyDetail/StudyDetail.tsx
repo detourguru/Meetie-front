@@ -1,13 +1,17 @@
 "use client";
-
+import Link from "next/link";
 import { useParams } from "next/navigation";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
+import Header from "@/components/common/Header/Header";
 import Tag from "@/components/common/Tag/Tag";
 import FooterBtn from "@/components/Study/StudyDetail/FooterBtn/FooterBtn";
 
+import { PATH } from "@/constants/path";
+
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 import { convertDate, convertDateTime } from "@/utils/date";
 
@@ -15,6 +19,8 @@ const StudyDetail = () => {
   const params = useParams();
 
   const { data } = useStudyQuery(String(params.id));
+  const { userData } = useUserInformationQuery();
+  const { userData: ownerUserData } = useUserInformationQuery(data.data.user_id);
 
   const spanClassName =
     "mr-[14px] after:h-[10px] after:w-[1px] after:bg-blue-300 after:inline-block relative after:absolute after:right-[-8px] after:top-[2px]";
@@ -24,6 +30,16 @@ const StudyDetail = () => {
 
   return (
     <>
+      <Header>
+        <Header.LeftButton />
+        {userData.data.id === ownerUserData.data.id && (
+          <Header.RightTextButton>
+            <Link href={PATH.STUDY_EDIT(String(params.id))}>
+              <p className="text-medium-14 text-black">수정</p>
+            </Link>
+          </Header.RightTextButton>
+        )}
+      </Header>
       <div className="px-4 pt-[64px] pb-[138px]">
         <div className="flex items-center gap-[14px]">
           <h1 className="text-semibold-24">{data.data.title}</h1>
@@ -39,9 +55,9 @@ const StudyDetail = () => {
         </div>
 
         <div className="flex gap-2 mt-6">
-          <Avatar src="/img/img-profile-example.png" size="sm" />
+          <Avatar src={ownerUserData.data.profileImage} size="sm" />
           <div className="flex flex-col gap-1">
-            <h3 className="text-bold-14">김서희</h3>
+            <h3 className="text-bold-14">{ownerUserData.data.name}</h3>
             <p className="text-regular-12 text-blue-300">
               <span className={spanClassName}>
                 작성일 {convertDate(new Date(data.data.createdAt))}

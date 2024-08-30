@@ -10,12 +10,14 @@ import { usePostStudyMutation } from "@/hooks/api/study/usePostStudyMutation";
 import type { CreateStudyFormRequestType } from "@/types/study";
 
 interface UseCreateStudyFormProps {
+  userId?: number;
   initialData?: CreateStudyFormRequestType;
   studyId?: string;
   joinMemberCount?: number;
 }
 
 export const useCreateStudyForm = ({
+  userId,
   initialData,
   studyId,
   joinMemberCount,
@@ -40,6 +42,7 @@ export const useCreateStudyForm = ({
       week: "",
       recruitMemberCount: 1,
       tagList: [],
+      user_id: Number(userId),
     },
   );
 
