@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { default as CustomImage } from "@/components/common/Image/Image";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
 import { PATH } from "@/constants/path";
@@ -26,7 +27,7 @@ export default function Home() {
               />
               <Image
                 src="/svg/ic-home-rocket.svg"
-                width={104}
+                width={105}
                 height={160}
                 alt="rocket"
                 className="z-10 absolute top-0 left-[100px]"
@@ -36,28 +37,27 @@ export default function Home() {
                 width={212}
                 height={176}
                 alt="computer"
+                priority
                 className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-[160px]"
               />
-              <Image
+              <CustomImage
                 src="/svg/ic-home-gear.svg"
-                width={77}
-                height={88}
                 alt="gear"
-                className="absolute bottom-0 left-0 blur-[1.5px]"
+                className="absolute bottom-0 left-0 blur-[1.5px] w-[78px] h-[88px]"
               />
               <Image
                 src="/svg/ic-home-message.svg"
-                width={102}
-                height={142}
+                width={103}
+                height={143}
                 alt="message"
                 className="absolute bottom-0 right-0 blur-[1.5px]"
               />
             </div>
 
             <div className="flex justify-center items-center gap-[23px]">
-              <Image src="/svg/ic-login-naver.svg" width={46} height={46} alt="naver_login" />
-              <Image src="/svg/ic-login-kakao.svg" width={46} height={46} alt="kakao_login" />
-              <Image src="/svg/ic-login-google.svg" width={46} height={46} alt="google_login" />
+              <Image src="/svg/ic-login-naver.svg" width={47} height={46} alt="naver_login" />
+              <Image src="/svg/ic-login-kakao.svg" width={47} height={46} alt="kakao_login" />
+              <Image src="/svg/ic-login-google.svg" width={47} height={46} alt="google_login" />
             </div>
           </article>
         </main>
