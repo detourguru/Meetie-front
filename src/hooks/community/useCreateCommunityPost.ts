@@ -40,7 +40,7 @@ export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostPr
     return [];
   };
 
-  const updateProfileForm: CreateCommunityUpdateHandlerType = useCallback((key, value) => {
+  const updatePostForm: CreateCommunityUpdateHandlerType = useCallback((key, value) => {
     setCreatePostForm((prevPostForm) => {
       const data = {
         ...prevPostForm,
@@ -55,5 +55,11 @@ export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostPr
     console.log(createPostForm);
   };
 
-  return { createPostForm, buttonDisabled, handleImageUpload, updateProfileForm, handleSubmit };
+  return {
+    createPostForm,
+    buttonDisabled,
+    handleImageUpload,
+    updatePostForm,
+    handleSubmit,
+  };
 };
