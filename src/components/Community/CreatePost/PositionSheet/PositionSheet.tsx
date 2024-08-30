@@ -4,12 +4,12 @@ import Button from "@/components/common/Button/Button";
 import Image from "@/components/common/Image/Image";
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
+import { POSITION_DATA } from "@/constants/community";
+
 import { cn } from "@/utils/className";
 
 import type { CommonSheetProps } from "@/types/common";
 import type { CreateCommunityFormType, CreateCommunityUpdateHandlerType } from "@/types/community";
-
-export const POSITION_DATA = ["기획", "디자인", "개발"];
 
 interface PositionSheetProps extends CommonSheetProps {
   createPostForm: CreateCommunityFormType;
