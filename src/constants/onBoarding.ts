@@ -54,3 +54,10 @@ export const COMPLETE_DATA = (name: string) => [
     SUBTEXT: ["나와 딱 맞는 스터디를 찾으러 떠나볼까요?"],
   },
 ];
+
+export const SIGNUP_DATA = [
+  {
+    TITLE: { FIRST: "밋티에 오신것을 환영해요", SECOND: "" },
+    SUBTEXT: [""],
+  },
+];
