@@ -21,9 +21,7 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6">
-          {studyData.tagList.map((tag) => (
-            <Tag text={tag} isSmall key={tag} />
-          ))}
+          {studyData.tagList?.map((tag) => <Tag text={tag} isSmall key={tag} />)}
         </div>
         <div className="flex justify-between">
           <span className="font-bold text-[12px] text-primary-500">D-13</span>

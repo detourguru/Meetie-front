@@ -3,13 +3,12 @@ import Image from "next/image";
 
 import { useState } from "react";
 
+import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import CheckBox from "@/components/Study/CheckBox";
 import FilterSheet from "@/components/Study/Explorer/FilterSheet";
 import MemberList from "@/components/Study/Member/MemberList";
 import PageConter from "@/components/Study/PageCounter";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
-
-import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
