@@ -1,8 +1,18 @@
+import { useRouter } from "next/navigation";
+
 import { useCallback, useState } from "react";
+
+import { usePostSignUpMutation } from "../api/signup/usePostSignUpMutation";
+
+import { PATH } from "@/constants/path";
 
 import type { SignUpFormType } from "@/types/signup";
 
 export const useSignUpForm = () => {
+  const router = useRouter();
+
+  const { mutate: PostSignUpMutation } = usePostSignUpMutation();
+
   const [signupForm, setSignupForm] = useState<SignUpFormType>({
     name: "",
     email: "",
@@ -49,8 +59,11 @@ export const useSignUpForm = () => {
     Object.values(signupForm).every((value) => value);
 
   const handleSubmit = async () => {
-    console.log(signupForm);
-    console.log(checkPassword);
+    PostSignUpMutation(signupForm, {
+      onSuccess: () => {
+        router.push(PATH.LOGIN);
+      },
+    });
   };
 
   return {

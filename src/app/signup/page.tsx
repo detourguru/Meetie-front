@@ -26,8 +26,6 @@ export default function SignUpPage() {
   const inputTitleClassName = "text-semibold-16 mb-[10px]";
   const SpanAlertClassName = "absolute left-0 -bottom-6 text-primary-400 text-regular-12";
 
-  console.log(signupForm);
-
   return (
     <main className="flex flex-col items-center h-full p-4">
       <OnBoardingTitle textData={SIGNUP_DATA} index={0} />
