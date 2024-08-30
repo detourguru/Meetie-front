@@ -24,6 +24,9 @@ const StudyDetail = () => {
 
   const isOwner = userData.data.id === ownerUserData.data.id;
 
+  console.log(String(params.id));
+  console.log(data);
+
   const spanClassName =
     "mr-[14px] after:h-[10px] after:w-[1px] after:bg-blue-300 after:inline-block relative after:absolute after:right-[-8px] after:top-[2px]";
   const contentBoxClassName = "flex flex-col gap-2";

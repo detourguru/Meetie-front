@@ -11,7 +11,7 @@ import type { GetStudyResponseType } from "@/types/study";
 export const studyQueryOptions = (
   studyId: string,
 ): UseSuspenseQueryOptions<GetStudyResponseType> => ({
-  queryKey: [QUERY_KEYS.STUDY],
+  queryKey: [QUERY_KEYS.STUDY, studyId],
   queryFn: async () => {
     const study = await GET<GetStudyResponseType>(END_POINTS.STUDY(studyId), createInit());
 

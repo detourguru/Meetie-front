@@ -23,7 +23,7 @@ export const useCreateStudyForm = ({
   joinMemberCount,
 }: UseCreateStudyFormProps) => {
   const { mutate: postStudyMutation } = usePostStudyMutation();
-  const { mutate: patchStudyMutation } = usePatchStudyMutation();
+  const { mutate: patchStudyMutation } = usePatchStudyMutation(String(studyId));
 
   const router = useRouter();
 

@@ -1,8 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { PATCH, createInit } from "@/apis/httpMethod";
-
-import { queryClient } from "@/components/providers/QueryProvider";
 
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
@@ -14,11 +12,15 @@ interface PatchStudyRequestProps {
   studyId: string;
 }
 
-export const usePatchStudyMutation = () => {
+export const usePatchStudyMutation = (studyId: string) => {
+  const queryClient = useQueryClient();
+
   const patchStudyMutation = useMutation({
     mutationFn: ({ createStudyForm, studyId }: PatchStudyRequestProps) =>
       PATCH(END_POINTS.STUDY(studyId), createInit(createStudyForm)),
     onSuccess: () => {
+      console.log("success");
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, studyId] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY_LIST] });
     },
     onError: (error) => {

@@ -7,6 +7,8 @@ function makeQueryClient() {
     defaultOptions: {
       queries: {
         staleTime: DEFAULT_STALE_TIME,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
       },
       dehydrate: {
         shouldDehydrateQuery: (query) =>

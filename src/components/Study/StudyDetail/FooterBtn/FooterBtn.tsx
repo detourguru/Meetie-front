@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 
+import { useState, useCallback, useEffect } from "react";
+
 import Button from "@/components/common/Button/Button";
 
 import { PATH } from "@/constants/path";
@@ -17,13 +19,30 @@ interface FooterBtnProps {
 }
 
 const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
-  const { mutate: patchStudyMutation } = usePatchStudyMutation();
+  const { mutate: patchStudyMutation } = usePatchStudyMutation(data.id);
 
-  const updateData = {
-    ...data,
-    requestMemberList:
-      data.requestMemberList === null ? [userId] : [data.requestMemberList, userId],
-  };
+  const [updateData, setUpdataData] = useState(data);
+
+  const updateValue = useCallback(
+    <Key extends keyof StudyListType>(key: Key, value: StudyListType[Key]) => {
+      setUpdataData((prevData) => {
+        const data = {
+          ...prevData,
+          [key]: value,
+        };
+
+        return data;
+      });
+    },
+    [],
+  );
+
+  const isRequest =
+    data.requestMemberList && data.requestMemberList.some((memberId) => memberId === userId);
+
+  useEffect(() => {
+    updateValue("requestMemberList", [userId]);
+  }, []);
 
   return (
     <div className="fixed bottom-0 bg-white px-4 py-6 flex gap-5 items-center border-t border-[#dddddd]">
@@ -43,11 +62,14 @@ const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
       ) : (
         <Button
           size="md"
+          disabled={isRequest}
           onClick={() =>
             patchStudyMutation({ createStudyForm: updateData, studyId: String(data.id) })
           }
         >
-          <p className="text-bold-16 text-white">스터디 신청하기</p>
+          <p className="text-bold-16 text-white">
+            {isRequest ? "이미 신청된 스터디입니다" : "스터디 신청하기"}
+          </p>
         </Button>
       )}
     </div>
