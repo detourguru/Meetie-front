@@ -12,7 +12,7 @@ const CalendarImage = () => {
       />
       <Image
         src="/svg/ic-walk-through-calendar.svg"
-        width={212}
+        width={213}
         height={194}
         alt="calendar"
         className="absolute top-[97px] left-[84px]"
