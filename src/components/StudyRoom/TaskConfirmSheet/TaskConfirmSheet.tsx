@@ -7,7 +7,7 @@ import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Shee
 interface TaskConfirmSheetProps {
   isOpen: boolean;
   onInteractOutside?: () => void;
-  handleImageUpdate: (uploadType: string, uploadImage: string | null) => void;
+  handleImageUpdate: (uploadType: string, uploadImage: string) => void;
 }
 
 const TaskConfirmSheet = ({
@@ -15,18 +15,17 @@ const TaskConfirmSheet = ({
   onInteractOutside,
   handleImageUpdate,
 }: TaskConfirmSheetProps) => {
-  const handelFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
     const uploadType = e.target.id;
-    if (file) {
+
+    Array.from(files).forEach((file) => {
       const reader = new FileReader();
       reader.onloadend = () => {
         handleImageUpdate(uploadType, reader.result as string);
       };
       reader.readAsDataURL(file);
-    } else {
-      handleImageUpdate(uploadType, null);
-    }
+    });
   };
 
   return (
@@ -39,7 +38,7 @@ const TaskConfirmSheet = ({
         <SheetHeader className="items-center justify-center py-[14px] sticky top-0 bg-[#f9f9f9]">
           <div className="w-[34px] h-[5px] rounded-[2.5px] bg-[#bfbfc1]" />
         </SheetHeader>
-        <div className="w-full h-2/5 px-4 py-5 rounded-t-xl bg-[#F9F9F9] z-20">
+        <div className="w-full h-2/5 px-4 py-5 rounded-t-xl bg-[#F9F9F9]">
           <h3 className="text-regular-18 font-semibold">인증 구역</h3>
           <p className="text-regular-12 text-[#9D9D9D]">인증 방식을 선택해주세요!</p>
           <div className="flex justify-center items-center gap-8 h-4/6 mt-[18px] bg-white border border-[#DFDFDF] rounded-lg">
@@ -51,7 +50,14 @@ const TaskConfirmSheet = ({
                 <Image src="/svg/ic-calendar-album.svg" alt="album icon" width={30} height={30} />
               </label>
               <span>앨범</span>
-              <input onChange={handelFileChange} type="file" accept="image/*" id="album" hidden />
+              <input
+                onChange={handleFileChange}
+                type="file"
+                multiple
+                accept="image/*"
+                id="album"
+                hidden
+              />
             </div>
             {/* todo: 카메라 업로드 기능 구현 */}
             <div className="flex flex-col items-center">

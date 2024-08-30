@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 import TaskConfirmItem from "@/components/StudyRoom/TaskConfirmItem/TaskConfirmItem";
-import TaskConfirmSheet from "@/components/TaskConfirmSheet/TaskConfirmSheet";
+import TaskConfirmSheet from "@/components/StudyRoom/TaskConfirmSheet/TaskConfirmSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
@@ -12,12 +12,13 @@ interface TaskAddItemProps {
   imageUrl: string;
 }
 const TaskConfirmAddItem = () => {
+  const MAX_SIZE = 4;
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const [addItems, setAddItems] = useState<TaskAddItemProps[]>([]);
 
-  const handleImageUpdate = (uploadType: string, uploadImage: string | null) => {
-    if (uploadImage && addItems.length < 4) {
+  const handleImageUpdate = (uploadType: string, uploadImage: string) => {
+    if (addItems.length <= MAX_SIZE) {
       setAddItems((prevItems) => [...prevItems, { type: uploadType, imageUrl: uploadImage }]);
     }
   };
@@ -33,7 +34,9 @@ const TaskConfirmAddItem = () => {
         onClick={handleOpen}
       >
         <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
-        <span className="text-[#797979] text-regular-14 mt-1">{addItems.length}/4</span>
+        <span className="text-[#797979] text-regular-14 mt-1">
+          {addItems.length}/{MAX_SIZE}
+        </span>
       </div>
       <TaskConfirmSheet
         isOpen={isOpen}

@@ -20,7 +20,7 @@ const TaskConfirmItem = ({ uploadType, uploadImage, onDelete }: TaskConfirmItemP
           height={82}
         />
       </div>
-      <button className="absolute top-[-7px] right-[-7px] z-50" onClick={onDelete}>
+      <button className="absolute top-[-7px] right-[-7px]" onClick={onDelete}>
         <Image src="/svg/ic-confirm-btn-delete.svg" alt="del btn" width={17} height={17} />
       </button>
     </div>

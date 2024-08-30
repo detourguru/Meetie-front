@@ -2,16 +2,16 @@ import Image from "next/image";
 
 import { useState } from "react";
 
-import TaskConfirmSheet from "@/components/TaskConfirmSheet/TaskConfirmSheet";
+import TaskConfirmSheet from "@/components/StudyRoom/TaskConfirmSheet/TaskConfirmSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 const TaskConfirmArea = () => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
-  const [uploadImage, setUploadImage] = useState<string | null>(null);
+  const [uploadImage, setUploadImage] = useState<string>("");
 
-  const handleImageUpdate = (uploadType: string, uploadImage: string | null) => {
+  const handleImageUpdate = (uploadType: string, uploadImage: string) => {
     setUploadImage(uploadImage);
   };
 

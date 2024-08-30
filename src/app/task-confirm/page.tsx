@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import React, { useState } from "react";
+import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
