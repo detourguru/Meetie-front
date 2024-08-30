@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import Divider from "@/components/common/Divider/Divider";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
-import HashTag from "@/components/Study/HashTag";
+import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
 import { POSITION_DATA } from "@/constants/community";
 
