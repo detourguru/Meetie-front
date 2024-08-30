@@ -28,27 +28,6 @@ export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps)
     },
   );
 
-  const handleImageUpload = (files: FileList | null): Promise<string> => {
-    return new Promise((resolve) => {
-      const file = files && files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-
-        reader.onload = () => {
-          const result = reader.result as string;
-          resolve(result);
-        };
-
-        reader.onerror = () => {
-          resolve(profileForm.profileImage);
-        };
-      } else {
-        resolve(profileForm.profileImage);
-      }
-    });
-  };
-
   const updateProfileForm: UpdateProfileFormType = useCallback((key, value) => {
     setProfilForm((prevProfileForm) => {
       const data = {
@@ -71,5 +50,5 @@ export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps)
     );
   };
 
-  return { profileForm, updateProfileForm, handleImageUpload, handleSubmit };
+  return { profileForm, updateProfileForm, handleSubmit };
 };

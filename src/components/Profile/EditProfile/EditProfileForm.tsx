@@ -12,6 +12,7 @@ import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import TagList from "@/components/Profile/TagList/TagList";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useSingleImageUpload } from "@/hooks/common/useSiingleImageUpload";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
 const EditProfileForm = () => {
@@ -19,10 +20,11 @@ const EditProfileForm = () => {
 
   const { userId, initialProfileForm } = useUserInformationQuery(Number(params.id));
 
-  const { profileForm, handleImageUpload, updateProfileForm, handleSubmit } = useEditProfileForm({
+  const { profileForm, updateProfileForm, handleSubmit } = useEditProfileForm({
     id: userId,
     initialData: initialProfileForm,
   });
+  const { handleImageUpload } = useSingleImageUpload();
 
   return (
     <>
@@ -51,7 +53,10 @@ const EditProfileForm = () => {
               name="profileImage"
               className="hidden"
               onChange={async (e) =>
-                updateProfileForm("profileImage", await handleImageUpload(e.target.files))
+                updateProfileForm(
+                  "profileImage",
+                  await handleImageUpload(profileForm.profileImage, e.target.files),
+                )
               }
             />
           </div>
