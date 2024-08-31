@@ -4,8 +4,6 @@ import { useCallback, useState } from "react";
 
 import { usePostSignUpMutation } from "../api/signup/usePostSignUpMutation";
 
-import { PATH } from "@/constants/path";
-
 import type { SignUpFormType } from "@/types/signup";
 
 export const useSignUpForm = () => {
@@ -61,7 +59,7 @@ export const useSignUpForm = () => {
   const handleSubmit = async () => {
     PostSignUpMutation(signupForm, {
       onSuccess: () => {
-        router.push(PATH.LOGIN);
+        router.push("http://localhost:3000/auth/redirect");
       },
     });
   };
