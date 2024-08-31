@@ -30,7 +30,7 @@ export default function SignUpPage() {
     <main className="flex flex-col items-center h-full p-4">
       <OnBoardingTitle textData={SIGNUP_DATA} index={0} />
 
-      <form onSubmit={handleSubmit} className="flex flex-col justify-between w-full h-full pt-8">
+      <div className="flex flex-col justify-between w-full h-full pt-8">
         <div className="[&>*]:mb-9 ">
           <div className="relative">
             <h2 className={inputTitleClassName}>이름</h2>
@@ -92,10 +92,16 @@ export default function SignUpPage() {
             {!isMathed && <span className={SpanAlertClassName}>비밀번호가 일치하지 않습니다.</span>}
           </div>
         </div>
-        <Button type="submit" size="xl" disabled={!isCompleted} className="mt-auto mb-[42px]">
+        <Button
+          type="button"
+          size="xl"
+          disabled={!isCompleted}
+          onClick={handleSubmit}
+          className="mt-auto mb-[42px]"
+        >
           <span className="text-white">완료</span>
         </Button>
-      </form>
+      </div>
     </main>
   );
 }
