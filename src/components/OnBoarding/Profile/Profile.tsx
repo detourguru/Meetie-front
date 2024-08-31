@@ -12,7 +12,7 @@ interface OnboardingProfileProps {
 }
 
 const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) => {
-  const { onboardingCompleteData } = useOnboardingCompleteQuery();
+  const { onboardingCompleteData } = useOnboardingCompleteQuery("complete");
 
   const position = POSITIONS_KR_DATA[POSITIONS_DATA.indexOf(onboardingCompleteData.data.position)];
   const styles = onboardingCompleteData.data.styles.slice(0, 2).join("﹒");
@@ -39,7 +39,7 @@ const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) =
               className="w-[78px] h-[77px]"
             />
             <Image
-              src={profileImage}
+              src={profileImage || "/img/img-profile-example.png"}
               width={48}
               height={48}
               alt="profile"

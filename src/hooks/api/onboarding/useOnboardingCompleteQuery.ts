@@ -17,12 +17,12 @@ interface GetOnboardingCompleteResponseType {
   status: number;
 }
 
-export const useOnboardingCompleteQuery = () => {
+export const useOnboardingCompleteQuery = (type: "check" | "complete") => {
   const { data: onboardingCompleteData, isLoading } = useSuspenseQuery<
     GetOnboardingCompleteResponseType,
     AxiosError
   >({
-    queryKey: [QUERY_KEYS.ONBOARDING_COMPLETE],
+    queryKey: [QUERY_KEYS.ONBOARDING_COMPLETE, [type]],
     queryFn: () => getOnboarding(),
   });
 
