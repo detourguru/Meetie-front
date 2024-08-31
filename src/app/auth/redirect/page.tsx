@@ -16,7 +16,7 @@ import { useOnboardingCompleteQuery } from "@/hooks/api/onboarding/useOnboarding
 
 export default function RedirectPage() {
   const router = useRouter();
-  const { isExist } = useOnboardingCompleteQuery();
+  const { isExist } = useOnboardingCompleteQuery("check");
 
   useEffect(() => {
     if (isExist) {

@@ -1,40 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-
-import { useState } from "react";
 
 import Button from "@/components/common/Button/Button";
 import { default as CustomImage } from "@/components/common/Image/Image";
+import Input from "@/components/common/Input/Input";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
-import { PATH } from "@/constants/path";
-
-import { createClient } from "@/utils/supabase/client";
-
-type SocialProviderType = "google" | "kakao";
+import { useLoginForm } from "@/hooks/login/useLoginForm";
 
 export default function LoginPage() {
-  const supabase = createClient();
-
-  const [isCheckedSave, setIsCheckedSave] = useState(false);
-
-  const handleSignInWithOAuth = async (provider: SocialProviderType) => {
-    await supabase.auth.signInWithOAuth({
-      provider,
-      options: {
-        redirectTo: `http://localhost:3000/auth/callback`,
-      },
-    });
-  };
-
-  const handleClickSave = () => {
-    setIsCheckedSave((prev) => !prev);
-  };
-
-  const inputClassName =
-    "py-[14px] px-[16px] text-regular-16 placeholder:text-gray-200 border border-gray-100 rounded-lg w-full outline-none";
+  const {
+    isCheckedSave,
+    loginForm,
+    updateLoginForm,
+    handleClickSave,
+    handleSignInWithOAuth,
+    handleSignInWithEmail,
+  } = useLoginForm();
 
   return (
     <main className="flex flex-col h-full">
@@ -53,10 +36,20 @@ export default function LoginPage() {
           <h1 className="text-semibold-24">밋티에 오신 것을 환영해요</h1>
         </div>
 
-        <form className="w-full [&>*]:mb-3 mb-[33px]">
-          <input type="text" placeholder="hellomeetie@gmail.com" className={inputClassName} />
+        <div className="w-full [&>*]:mb-3 mb-[33px]">
+          <Input
+            type="text"
+            value={loginForm.email}
+            placeholder="hellomeetie@gmail.com"
+            onChange={(e) => updateLoginForm("email", e.currentTarget.value)}
+          />
           <div className="relative">
-            <input type="password" placeholder="************" className={inputClassName} />
+            <Input
+              type="password"
+              value={loginForm.password}
+              placeholder="************"
+              onChange={(e) => updateLoginForm("password", e.currentTarget.value)}
+            />
             <Image
               src="/svg/ic-login-close-eye.svg"
               width={24}
@@ -78,12 +71,10 @@ export default function LoginPage() {
             )}
             아이디 저장
           </button>
-          <Link href={PATH.WALKTHROUGH}>
-            <Button size="xl" className="text-white">
-              로그인
-            </Button>
-          </Link>
-        </form>
+          <Button type="button" size="xl" className="text-white" onClick={handleSignInWithEmail}>
+            로그인
+          </Button>
+        </div>
 
         <p className="text-gray-200 mb-6 text-medium-12 before:w-[153px] before:bg-gray-200 before:h-[1px] before:inline-block before:mb-[3px] before:mr-[10px] after:ml-[10px] after:w-[153px] after:bg-gray-200 after:h-[1px] after:inline-block after:mb-[3px]">
           OR
