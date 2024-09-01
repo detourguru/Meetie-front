@@ -1,8 +1,14 @@
+"use client";
+
 import Image from "next/image";
 
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
+import { useCommunityRecommend } from "@/hooks/community/useCommunityRecommend";
+
 const Recommended = () => {
+  const { scrollIndex, handleScroll, handleRefresh } = useCommunityRecommend();
+
   return (
     <div className="flex flex-col gap-4 my-8">
       <div className="flex justify-between items-center mx-4">
@@ -10,11 +16,20 @@ const Recommended = () => {
           <h1 className="text-bold-18 text-gray-600">💡 추천 게시글</h1>
           <p className="text-regular-14 text-[#82829B]">인기 게시글을 확인해보세요!</p>
         </div>
-        <Image src="/svg/ic-community-refresh.svg" alt="refresh" width={40} height={40} />
+        <Image
+          src="/svg/ic-community-refresh.svg"
+          alt="refresh"
+          width={40}
+          height={40}
+          onClick={handleRefresh}
+        />
       </div>
 
       <div className="bg-[#E3E3FA] py-5 flex flex-col gap-4">
-        <ul className="flex gap-3 overflow-scroll snap-x px-4 hidden-scrollbar">
+        <ul
+          className="flex gap-3 overflow-scroll snap-x snap-mandatory px-4 hidden-scrollbar"
+          onScroll={handleScroll}
+        >
           <PostCard
             className="min-w-[343px] snap-normal snap-center"
             post={{
@@ -62,8 +77,7 @@ const Recommended = () => {
         <div className="flex gap-1.5 justify-center">
           {Array.from({ length: 3 }, (_, index) => (
             <div
-              // TODO: focuse ehls 카드의 index와 동일한 step만 primary-400 나머지 "bg-gray-100"
-              className={"w-1 h-1 rounded-full bg-primary-400"}
+              className={`w-1 h-1 rounded-full ${scrollIndex === index ? "bg-primary-400" : "bg-gray-200"}`}
               key={`button${index}`}
             />
           ))}
