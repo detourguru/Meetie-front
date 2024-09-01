@@ -22,7 +22,7 @@ export default function CreateCommunityPostPage() {
         <CreatePostBody createPostForm={createPostForm} updateInputValue={updatePostForm} />
       </div>
 
-      <div className="w-[375px] py-3.5 fixed bottom-0 flex justify-center bg-white z-50 border-t border-[#CCCEF0]">
+      <div className="w-[375px] py-3.5 fixed bottom-0 left-[50%] translate-x-[-50%] flex justify-center bg-white z-50 border-t border-[#CCCEF0]">
         <Button disabled={buttonDisabled} onClick={handleSubmit} size="xl">
           <p className="text-bold-16 text-white">
             {buttonDisabled ? "내용이 부족해요!" : "게시하기"}
