@@ -22,3 +22,14 @@ export interface CreateCommunityPostProps {
   createPostForm: CreateCommunityFormType;
   updateInputValue: CreateCommunityUpdateHandlerType;
 }
+
+export interface FilterSelectedType {
+  tags: string[];
+  sort: string;
+  date: string;
+}
+
+export type UpdateFilterSelectedTypeHandlerType = <Key extends keyof FilterSelectedType>(
+  key: Key,
+  value: FilterSelectedType[Key],
+) => void;

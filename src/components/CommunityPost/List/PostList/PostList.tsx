@@ -1,12 +1,18 @@
+"use client";
+
 import Image from "next/image";
 
 import Divider from "@/components/common/Divider/Divider";
+import Filter from "@/components/common/Filter/Filter";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
-import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
-import { POSITION_DATA } from "@/constants/community";
+import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
+
+import { useCommunityFilter } from "@/hooks/community/useCommunityFilter";
 
 const PostList = () => {
+  const { filterOption, handleClickTag, updateFilterOption } = useCommunityFilter({});
+
   return (
     <div className="pb-10">
       <div className="flex flex-col gap-5 my-8">
@@ -23,28 +29,32 @@ const PostList = () => {
           </p>
         </div>
 
-        <div className="text-nowrap overflow-x-auto no-scrollbar px-4">
-          <HashTag className="border-primary-500 text-primary-500">전체</HashTag>
-          {POSITION_DATA.map((position, index) => (
-            <HashTag key={`position_${index}`} className="border-gray-100 text-[#82829B]">
-              {position}
-            </HashTag>
-          ))}
-        </div>
+        <Filter>
+          <Filter.FilterTag>
+            <Filter.FilterTagSelect
+              tags={POSITION_DATA}
+              selected={filterOption.tags}
+              handleClick={(tag: string) => updateFilterOption("tags", handleClickTag(tag))}
+              handleClickTotal={() => updateFilterOption("tags", handleClickTag())}
+            />
+          </Filter.FilterTag>
 
-        <div className="flex justify-between mx-4">
-          <span className="text-medium-12">총 2,001건</span>
-          <div className="flex justify-evenly">
-            <span className="flex justify-evenly text-regular-12 mr-4">
-              최신 순
-              <Image src="/svg/ic-down-arrow.svg" alt="icon" width={17} height={17} />
-            </span>
-            <span className="flex justify-evenly text-regular-12">
-              등록일 전체
-              <Image src="/svg/ic-down-arrow.svg" alt="icon" width={17} height={17} />
-            </span>
-          </div>
-        </div>
+          <Filter.FilterOption totalCount={2001}>
+            <Filter.FilterOptionSelect
+              options={SORT_OPTION_DATA}
+              name="sort"
+              value={filterOption.sort}
+              onChange={(e) => updateFilterOption("sort", e.target.value)}
+            />
+
+            <Filter.FilterOptionSelect
+              options={POSTDATE_OPTION_DATA}
+              name="date"
+              value={filterOption.date}
+              onChange={(e) => updateFilterOption("date", e.target.value)}
+            />
+          </Filter.FilterOption>
+        </Filter>
 
         <Divider className="bg-[#F1F2F6]" />
 

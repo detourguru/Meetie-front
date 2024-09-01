@@ -1,3 +1,5 @@
+import type { SelectOptionType } from "@/types/filter";
+
 export const POSITION_DATA = [
   "기획",
   "디자인",
@@ -12,4 +14,42 @@ export const POSITION_DATA = [
   "패션",
   "식음료",
   "팬시/완구",
+];
+
+export const SORT_OPTION_DATA: SelectOptionType[] = [
+  {
+    value: "latest",
+    label: "최신 순",
+  },
+  {
+    value: "view",
+    label: "조회수 순",
+  },
+  {
+    value: "comment",
+    label: "댓글 순",
+  },
+];
+
+export const POSTDATE_OPTION_DATA: SelectOptionType[] = [
+  {
+    value: "all",
+    label: "등록일 전체",
+  },
+  {
+    value: "day",
+    label: "1일",
+  },
+  {
+    value: "week",
+    label: "1주",
+  },
+  {
+    value: "month",
+    label: "1개월",
+  },
+  {
+    value: "year",
+    label: "1년",
+  },
 ];

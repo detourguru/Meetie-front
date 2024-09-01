@@ -1,15 +1,14 @@
 import Image from "next/image";
 
-interface HashTagPropsType extends React.PropsWithChildren {
+interface HashTagPropsType extends React.HTMLAttributes<HTMLSpanElement> {
   close?: boolean;
-  className: string;
 }
 
-const HashTag = ({ close, children, ...props }: HashTagPropsType) => {
-  const spanStyle = props.className;
+const HashTag = ({ close, children, className, ...props }: HashTagPropsType) => {
   return (
     <span
-      className={`inline-block align-middle mb-2 rounded-[5px] border px-[11px] py-[2px] mr-2 text-medium-14 ${spanStyle}`}
+      className={`inline-block align-middle mb-2 rounded-[5px] border px-[11px] py-[2px] mr-2 text-medium-14 ${className}`}
+      {...props}
     >
       {children}
       {close && (
