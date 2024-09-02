@@ -1,12 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { postOnboarding } from "@/apis/onboarding/postOnboarding";
-
-import { queryClient } from "@/components/providers/QueryProvider";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 export const usePostOnboardingMutation = () => {
+  const queryClient = useQueryClient();
+
   const postOnboardingMutation = useMutation({
     mutationFn: postOnboarding,
     onSuccess: () => {

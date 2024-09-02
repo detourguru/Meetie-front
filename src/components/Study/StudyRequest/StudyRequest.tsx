@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 
 import FooterBtn from "@/components/Study/StudyDetail/FooterBtn/FooterBtn";
-import StudyRequestCard from "@/components/Study/StudyRequestCard/StudyRequestCard";
+import StudyRequestCard from "@/components/Study/StudyRequest/StudyRequestCard/StudyRequestCard";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
 
