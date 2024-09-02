@@ -5,14 +5,18 @@ import Tag from "@/components/common/Tag/Tag";
 
 import { PATH } from "@/constants/path";
 
+import { usePatchStudyRequestMutation } from "@/hooks/api/study-request/usePatchStudyRequestMutation";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 interface StudyRequestCardProps {
   userId: number;
+  studyId: string;
 }
 
-const StudyRequestCard = ({ userId }: StudyRequestCardProps) => {
+const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
   const { userData } = useUserInformationQuery(userId);
+  const { mutate: patchStudyRequestMutation } = usePatchStudyRequestMutation();
+
   return (
     <div className="mt-[28px] flex flex-col gap-[18px] mx-4">
       {/* <p className="text-medium-14 text-gray-450">{date}</p> */}
@@ -42,7 +46,10 @@ const StudyRequestCard = ({ userId }: StudyRequestCardProps) => {
             <button className="rounded-2xl bg-[#f1f1f1] w-[46px] h-[30px]">
               <p className="text-medium-14 text-gray-450">거절</p>
             </button>
-            <button className="rounded-2xl bg-primary-400 w-[46px] h-[30px]">
+            <button
+              className="rounded-2xl bg-primary-400 w-[46px] h-[30px]"
+              onClick={() => patchStudyRequestMutation({ studyId, userId })}
+            >
               <p className="text-medium-14 text-white">수락</p>
             </button>
           </div>

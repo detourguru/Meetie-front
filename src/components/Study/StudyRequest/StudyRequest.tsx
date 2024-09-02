@@ -16,7 +16,7 @@ const StudyRequest = () => {
     <>
       <div className="pb-[140px]">
         {data.data.requestMemberList.map((member) => (
-          <StudyRequestCard key={member} userId={member} />
+          <StudyRequestCard key={member} userId={member} studyId={String(params.id)} />
         ))}
       </div>
 

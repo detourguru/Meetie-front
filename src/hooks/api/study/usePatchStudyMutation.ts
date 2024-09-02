@@ -7,7 +7,7 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { CreateStudyFormRequestType } from "@/types/study";
 
-interface PatchStudyRequestProps {
+interface PatchStudyProps {
   createStudyForm: CreateStudyFormRequestType;
   studyId: string;
 }
@@ -16,7 +16,7 @@ export const usePatchStudyMutation = (studyId: string) => {
   const queryClient = useQueryClient();
 
   const patchStudyMutation = useMutation({
-    mutationFn: ({ createStudyForm, studyId }: PatchStudyRequestProps) =>
+    mutationFn: ({ createStudyForm, studyId }: PatchStudyProps) =>
       PATCH(END_POINTS.STUDY(studyId), createInit(createStudyForm)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });

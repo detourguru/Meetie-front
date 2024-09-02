@@ -6,14 +6,25 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   try {
     const supabase = createClient();
 
-    const data = await request.json();
+    const userId = await request.json();
 
-    const { error } = await supabase
+    const requestMemberList: string[] = (
+      await supabase.from("study").select().eq("id", params.id).single()
+    ).data.requestMemberList;
+
+    const updateMemberList = requestMemberList.filter((member) => member !== userId.userId);
+
+    const { error: patchError } = await supabase
       .from("study")
-      .update({ requestMemberList: data })
+      .update({ requestMemberList: updateMemberList })
       .eq("id", params.id);
 
-    if (!error) {
+    const { error: postError } = await supabase
+      .from("study")
+      .update({ joinMemberList: [userId.userId] })
+      .eq("id", params.id);
+
+    if (!patchError && !postError) {
       return NextResponse.json({ message: "ok", status: 200 });
     }
 
