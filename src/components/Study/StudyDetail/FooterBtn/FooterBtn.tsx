@@ -11,9 +11,9 @@ import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
 import type { StudyListType } from "@/types/study";
 
 interface FooterBtnProps {
-  isOwner: boolean;
+  isOwner?: boolean;
   data: StudyListType;
-  userId: number;
+  userId?: number;
 }
 
 const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
@@ -41,11 +41,19 @@ const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
         </p>
       </div>
       {isOwner ? (
-        <Link href={PATH.STUDY_REQUEST(data.id)} scroll={false}>
-          <Button variant="disabled" size="md">
-            <p className="text-bold-16 text-white">아직 대기 인원이 없습니다</p>
-          </Button>
-        </Link>
+        <>
+          {data.requestMemberList.length === 0 ? (
+            <Button variant="disabled" size="md">
+              <p className="text-bold-16 text-white">아직 대기 인원이 없습니다</p>
+            </Button>
+          ) : (
+            <Link href={PATH.STUDY_REQUEST(data.id)} scroll={false}>
+              <Button size="md">
+                <p className="text-bold-16 text-white">대기중인 요청 확인</p>
+              </Button>
+            </Link>
+          )}
+        </>
       ) : (
         <Button
           size="md"

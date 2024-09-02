@@ -1,12 +1,12 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { updateUserInfo } from "@/apis/userInfo/updateUserInfo";
-
-import { queryClient } from "@/components/providers/QueryProvider";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 export const useUpdateUserInfoMutation = () => {
+  const queryClient = useQueryClient();
+
   const updateUserInfoMutation = useMutation({
     mutationFn: updateUserInfo,
     onSuccess: () => {

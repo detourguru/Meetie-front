@@ -1,8 +1,6 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { POST, createInit } from "@/apis/httpMethod";
-
-import { queryClient } from "@/components/providers/QueryProvider";
 
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
@@ -10,6 +8,8 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { CreateStudyFormRequestType } from "@/types/study";
 
 export const usePostStudyMutation = () => {
+  const queryClient = useQueryClient();
+
   const postStudyMutation = useMutation({
     mutationFn: (createStudyForm: CreateStudyFormRequestType) =>
       POST(END_POINTS.POST_STUDY, createInit(createStudyForm)),
