@@ -3,10 +3,10 @@ import Image from "@/components/common/Image/Image";
 import { cn } from "@/utils/className";
 import { convertDate } from "@/utils/date";
 
-import type { CreateCommunityRequestType } from "@/types/community";
+import type { CommunityPostType } from "@/types/community";
 
 interface PostCardProps extends React.LiHTMLAttributes<HTMLLIElement> {
-  post: CreateCommunityRequestType;
+  post: CommunityPostType;
 }
 
 const PostCard = ({ post, className, ...props }: PostCardProps) => {

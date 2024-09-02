@@ -6,4 +6,7 @@ export const QUERY_KEYS = {
 
   USER_INFO: "userInfo",
   ONBOARDING_COMPLETE: "onboardingComplete",
+
+  COMMUNITY_LIST: "communityList",
+  COMMUNITY: "community",
 };

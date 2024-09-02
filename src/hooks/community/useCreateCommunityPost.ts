@@ -1,4 +1,10 @@
+import { useRouter } from "next/navigation";
+
 import { useCallback, useState } from "react";
+
+import { PATH } from "@/constants/path";
+
+import { usePostCommunityMutation } from "@/hooks/api/community/usePostCommunityMutation";
 
 import type { CreateCommunityFormType, CreateCommunityUpdateHandlerType } from "@/types/community";
 
@@ -7,6 +13,10 @@ interface useCreateCommunityPostProps {
 }
 
 export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostProps) => {
+  const { mutate: postCommunityMutation } = usePostCommunityMutation();
+
+  const router = useRouter();
+
   const [createPostForm, setCreatePostForm] = useState<CreateCommunityFormType>(
     initialData ?? {
       position: [],
@@ -32,8 +42,12 @@ export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostPr
     });
   }, []);
 
-  const handleSubmit = () => {
-    console.log(createPostForm);
+  const handleSubmit = async () => {
+    postCommunityMutation(createPostForm, {
+      onSuccess() {
+        router.push(PATH.COMMUNITY_LIST);
+      },
+    });
   };
 
   return {

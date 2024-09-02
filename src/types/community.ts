@@ -1,4 +1,4 @@
-export interface CreateCommunityRequestType {
+export interface CommunityPostType {
   id: number;
   userId: number;
   userPosition: string;
@@ -11,7 +11,7 @@ export interface CreateCommunityRequestType {
 }
 
 export interface CreateCommunityFormType
-  extends Pick<CreateCommunityRequestType, "position" | "title" | "images" | "contents"> {}
+  extends Pick<CommunityPostType, "position" | "title" | "images" | "contents"> {}
 
 export type CreateCommunityUpdateHandlerType = <Key extends keyof CreateCommunityFormType>(
   key: Key,
