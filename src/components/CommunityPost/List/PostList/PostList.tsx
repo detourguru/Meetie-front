@@ -8,10 +8,12 @@ import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
 
+import { useCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
 import { useCommunityFilter } from "@/hooks/community/useCommunityFilter";
 
 const PostList = () => {
   const { filterOption, handleClickTag, updateFilterOption } = useCommunityFilter({});
+  const { communityListData } = useCommunityListQuery();
 
   return (
     <div className="pb-10">
@@ -59,20 +61,9 @@ const PostList = () => {
         <Divider className="bg-[#F1F2F6]" />
 
         <ul className="flex flex-col gap-4 px-4">
-          <PostCard
-            className="border border-[#EAEAEA]"
-            post={{
-              id: 0,
-              userId: 0,
-              userPosition: "디자이너",
-              postDate: new Date(),
-              position: ["디자인"],
-              title: "",
-              images: [],
-              contents: "",
-              viewCount: 100,
-            }}
-          />
+          {communityListData.data.map((post) => (
+            <PostCard className="border border-[#EAEAEA]" post={post} />
+          ))}
         </ul>
       </div>
     </div>

@@ -26,7 +26,11 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
 
       <h2 className="text-bold-16 text-[#434343]">{post.title}</h2>
 
-      <div className="w-full h-[120px] rounded-lg border border-[#DCD8EF]">{mainImage}</div>
+      {mainImage && (
+        <div className="w-full h-[120px] rounded-lg border border-[#DCD8EF]">
+          <Image src={mainImage} alt="main image" className="w-full h-[120px]" />
+        </div>
+      )}
 
       <div className="flex justify-between items-center h-6">
         <div className="flex gap-1">
@@ -35,7 +39,9 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
             alt="calendar"
             className="w-[15px] h-[15px]"
           />
-          <span className="text-medium-12 text-[#555555]">{convertDate(post.postDate, true)}</span>
+          <span className="text-medium-12 text-[#555555]">
+            {convertDate(new Date(post.postDate), true)}
+          </span>
         </div>
         <div className="flex gap-1">
           <Image src="/svg/ic-eye.svg" alt="eye" className="w-3.5 h-3.5" />

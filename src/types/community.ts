@@ -1,8 +1,10 @@
+import type { CommonResponseType } from "@/types/common";
+
 export interface CommunityPostType {
   id: number;
   userId: number;
   userPosition: string;
-  postDate: Date;
+  postDate: string;
   position: string[];
   title: string;
   images: string[];
@@ -21,6 +23,10 @@ export type CreateCommunityUpdateHandlerType = <Key extends keyof CreateCommunit
 export interface CreateCommunityPostProps {
   createPostForm: CreateCommunityFormType;
   updateInputValue: CreateCommunityUpdateHandlerType;
+}
+
+export interface GetCommunityListResponseType extends CommonResponseType {
+  data: CommunityPostType[];
 }
 
 export interface FilterSelectedType {
