@@ -18,11 +18,11 @@ export const POSITION_DATA = [
 
 export const SORT_OPTION_DATA: SelectOptionType[] = [
   {
-    value: "latest",
+    value: "postDate",
     label: "최신 순",
   },
   {
-    value: "view",
+    value: "viewCount",
     label: "조회수 순",
   },
   {

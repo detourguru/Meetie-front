@@ -6,12 +6,12 @@ import { getCommunityList, getRecommendCommunityList } from "@/apis/community/ge
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
-import type { GetCommunityListResponseType } from "@/types/community";
+import type { FilterSelectedType, GetCommunityListResponseType } from "@/types/community";
 
-export const useCommunityListQuery = () => {
+export const useCommunityListQuery = (filterOption: FilterSelectedType) => {
   const { data: communityListData } = useSuspenseQuery<GetCommunityListResponseType, AxiosError>({
     queryKey: [QUERY_KEYS.COMMUNITY_LIST],
-    queryFn: () => getCommunityList(),
+    queryFn: () => getCommunityList(filterOption),
   });
 
   return { communityListData };

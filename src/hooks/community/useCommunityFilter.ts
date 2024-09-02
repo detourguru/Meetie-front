@@ -1,4 +1,10 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+
+import { queryClient } from "@/components/providers/QueryProvider";
+
+import { QUERY_KEYS } from "@/constants/queryKey";
+
+import { useCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
 
 import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/community";
 
@@ -10,10 +16,22 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
   const [filterOption, setFilterOption] = useState<FilterSelectedType>(
     initialData ?? {
       tags: [],
-      sort: "",
+      sort: "postDate",
       date: "all",
     },
   );
+
+  const { communityListData } = useCommunityListQuery(filterOption);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY_LIST] });
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filterOption]);
 
   const handleClickTag = (tag?: string) => {
     if (!tag) {
@@ -38,5 +56,5 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
     });
   }, []);
 
-  return { filterOption, updateFilterOption, handleClickTag };
+  return { communityListData, filterOption, updateFilterOption, handleClickTag };
 };
