@@ -2,6 +2,7 @@ import Image from "next/image";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
+import CreatePostButton from "@/components/CommunityPost/List/CreatePostButton/CreatePostButton";
 import PostList from "@/components/CommunityPost/List/PostList/PostList";
 import Recommended from "@/components/CommunityPost/List/Recommended/Recommended";
 
@@ -24,6 +25,8 @@ export default function CommunityPostListPage() {
       <Recommended />
 
       <PostList />
+
+      <CreatePostButton />
 
       <Gnb />
     </>
