@@ -15,6 +15,7 @@ export const END_POINTS = {
   ONBOARDING: "/api/onboarding",
 
   COMMUNITY_LIST: "/api/community-list",
+  COMMUNITY_LIST_RECOMMEND: "/api/community-list/random",
   COMMUNITY: (communityId: number) => `/api/community/${communityId}`,
   POST_COMMUNITY: "/api/community",
 };

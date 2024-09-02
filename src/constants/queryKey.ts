@@ -8,5 +8,6 @@ export const QUERY_KEYS = {
   ONBOARDING_COMPLETE: "onboardingComplete",
 
   COMMUNITY_LIST: "communityList",
+  COMMUNITY_LIST_RECOMMEND: "communityListRecommend",
   COMMUNITY: "community",
 };

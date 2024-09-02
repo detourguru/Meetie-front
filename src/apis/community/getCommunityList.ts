@@ -9,3 +9,11 @@ export const getCommunityList = async () => {
 
   return data;
 };
+
+export const getRecommendCommunityList = async () => {
+  const { data } = await axiosInstance.get<GetCommunityListResponseType>(
+    END_POINTS.COMMUNITY_LIST_RECOMMEND,
+  );
+
+  return data;
+};

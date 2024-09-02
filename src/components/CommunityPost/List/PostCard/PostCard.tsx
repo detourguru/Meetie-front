@@ -26,11 +26,9 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
 
       <h2 className="text-bold-16 text-[#434343]">{post.title}</h2>
 
-      {mainImage && (
-        <div className="w-full h-[120px] rounded-lg border border-[#DCD8EF]">
-          <Image src={mainImage} alt="main image" className="w-full h-[120px]" />
-        </div>
-      )}
+      <div className="w-full h-[120px] rounded-lg border border-[#DCD8EF]">
+        {mainImage && <Image src={mainImage} alt="main image" className="w-full h-[120px]" />}
+      </div>
 
       <div className="flex justify-between items-center h-6">
         <div className="flex gap-1">

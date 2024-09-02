@@ -7,7 +7,7 @@ import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 import { useCommunityRecommend } from "@/hooks/community/useCommunityRecommend";
 
 const Recommended = () => {
-  const { scrollIndex, handleScroll, handleRefresh } = useCommunityRecommend();
+  const { communityListData, scrollIndex, handleScroll, handleRefresh } = useCommunityRecommend();
 
   return (
     <div className="flex flex-col gap-4 my-8">
@@ -30,52 +30,17 @@ const Recommended = () => {
           className="flex gap-3 overflow-scroll snap-x snap-mandatory px-4 hidden-scrollbar"
           onScroll={handleScroll}
         >
-          <PostCard
-            className="min-w-[343px] snap-normal snap-center"
-            post={{
-              id: 0,
-              userId: 0,
-              userPosition: "디자이너",
-              postDate: "2024-01-01",
-              position: ["디자인"],
-              title: "선호하는 디자인을 선택해주세요! 🙌🏻",
-              images: [],
-              contents: "testtesttest",
-              viewCount: 100,
-            }}
-          />
-          <PostCard
-            className="min-w-[343px] snap-normal snap-center"
-            post={{
-              id: 1,
-              userId: 0,
-              userPosition: "디자이너",
-              postDate: "2024-01-01",
-              position: ["디자인"],
-              title: "선호하는 디자인을 선택해주세요! 🙌🏻",
-              images: [],
-              contents: "",
-              viewCount: 100,
-            }}
-          />
-          <PostCard
-            className="min-w-[343px] snap-normal snap-center"
-            post={{
-              id: 2,
-              userId: 0,
-              userPosition: "디자이너",
-              postDate: "2024-01-01",
-              position: ["디자인"],
-              title: "선호하는 디자인을 선택해주세요! 🙌🏻",
-              images: [],
-              contents: "",
-              viewCount: 100,
-            }}
-          />
+          {communityListData.data.map((post) => (
+            <PostCard
+              key={`recommend_${post.id}`}
+              className="min-w-[343px] snap-normal snap-center"
+              post={post}
+            />
+          ))}
         </ul>
 
         <div className="flex gap-1.5 justify-center">
-          {Array.from({ length: 3 }, (_, index) => (
+          {Array.from({ length: communityListData.data.length }, (_, index) => (
             <div
               className={`w-1 h-1 rounded-full ${scrollIndex === index ? "bg-primary-400" : "bg-gray-200"}`}
               key={`button${index}`}

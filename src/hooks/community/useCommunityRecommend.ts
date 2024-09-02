@@ -1,6 +1,14 @@
 import { useState } from "react";
 
+import { queryClient } from "@/components/providers/QueryProvider";
+
+import { QUERY_KEYS } from "@/constants/queryKey";
+
+import { useRandomCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
+
 export const useCommunityRecommend = () => {
+  const { communityListData } = useRandomCommunityListQuery();
+
   const [scrollIndex, setScrollIndex] = useState(0);
 
   const handleScroll = (e: React.UIEvent<HTMLUListElement>) => {
@@ -12,10 +20,9 @@ export const useCommunityRecommend = () => {
     }
   };
 
-  // TODO: 추천 글 새로 고침 구현
   const handleRefresh = () => {
-    console.log("refresh");
+    queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY_LIST_RECOMMEND] });
   };
 
-  return { scrollIndex, handleScroll, handleRefresh };
+  return { communityListData, scrollIndex, handleScroll, handleRefresh };
 };
