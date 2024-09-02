@@ -36,7 +36,7 @@ const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
       <div className="flex flex-col items-center">
         <p className="text-medium-12 text-blue-300">참여가능인원</p>
         <p className="text-medium-18">
-          <span className="text-primary-500">{data.joinMemberCount}명</span> /{" "}
+          <span className="text-primary-500">{data.joinMemberList.length}명</span> /{" "}
           <span className="text-[#707070]">{data.recruitMemberCount}명</span>
         </p>
       </div>

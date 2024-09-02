@@ -15,7 +15,8 @@ interface StudyRequestCardProps {
 
 const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
   const { userData } = useUserInformationQuery(userId);
-  const { mutate: patchStudyRequestMutation } = usePatchStudyRequestMutation();
+
+  const { mutate: patchStudyRequestMutation } = usePatchStudyRequestMutation(studyId);
 
   return (
     <div className="mt-[28px] flex flex-col gap-[18px] mx-4">
@@ -43,7 +44,10 @@ const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
             </div>
           </div>
           <div className="flex gap-2 h-full">
-            <button className="rounded-2xl bg-[#f1f1f1] w-[46px] h-[30px]">
+            <button
+              className="rounded-2xl bg-[#f1f1f1] w-[46px] h-[30px]"
+              onClick={() => patchStudyRequestMutation({ studyId, userId, isReject: true })}
+            >
               <p className="text-medium-14 text-gray-450">거절</p>
             </button>
             <button

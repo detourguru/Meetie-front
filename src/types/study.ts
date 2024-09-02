@@ -33,7 +33,7 @@ export interface StudyListType extends CreateStudyFormRequestType {
   id: string;
   isRecruit: boolean;
   createdAt: Date;
-  joinMemberCount: number;
+  joinMemberList: string[];
   requestMemberList: number[];
 }
 
