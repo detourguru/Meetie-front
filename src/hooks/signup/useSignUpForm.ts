@@ -5,6 +5,7 @@ import { useCallback, useState } from "react";
 import { usePostSignUpMutation } from "../api/signup/usePostSignUpMutation";
 
 import { PATH } from "@/constants/path";
+import { REGEX } from "@/constants/regex";
 
 import type { SignUpFormType } from "@/types/signup";
 
@@ -40,15 +41,9 @@ export const useSignUpForm = () => {
   };
 
   // 올바른 이메일 확인
-  const isCorrectEmail =
-    !signupForm.email ||
-    /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i.test(
-      signupForm.email,
-    );
+  const isCorrectEmail = !signupForm.email || REGEX.EMAIL.test(signupForm.email);
   // 올바른 비밀번호 확인 (영문 숫자 특수기호 조합 8자리 이상)
-  const isCorrectPassword =
-    !signupForm.password ||
-    /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$/.test(signupForm.password);
+  const isCorrectPassword = !signupForm.password || REGEX.PASSWORD.test(signupForm.password);
   // 비밀번호 확인
   const isMathed = !checkPassword || signupForm.password === checkPassword;
   // 다 채워져 있는 지 확인
