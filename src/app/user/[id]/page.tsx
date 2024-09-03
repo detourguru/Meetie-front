@@ -8,7 +8,7 @@ import ProfileBody from "@/components/Profile/ProfileBody/ProfileBody";
 import { PATH } from "@/constants/path";
 
 interface UserProfilePageParamsType {
-  params: { id: number };
+  params: { id: string };
 }
 
 export default function UserProfilePage({ params }: UserProfilePageParamsType) {

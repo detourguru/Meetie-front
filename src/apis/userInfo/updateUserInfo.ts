@@ -5,7 +5,7 @@ import { END_POINTS } from "@/constants/api";
 import type { UserInformationType } from "@/types/userInfo";
 
 interface UpdateUserInfoParamsType {
-  id: number;
+  id: string;
   updateUserForm: Partial<UserInformationType>;
 }
 

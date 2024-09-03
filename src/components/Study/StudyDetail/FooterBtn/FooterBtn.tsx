@@ -14,7 +14,7 @@ import type { StudyListType } from "@/types/study";
 interface FooterBtnProps {
   isOwner?: boolean;
   data: StudyListType;
-  userId?: number;
+  userId?: string;
   isRequestPage?: boolean;
 }
 

@@ -17,7 +17,7 @@ import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformation
 const ProfileBody = () => {
   const params = useParams();
 
-  const { user } = useUserInformationQuery(Number(params.id));
+  const { user } = useUserInformationQuery(String(params.id));
 
   const badge = BADGE_DATA.find((badge) => badge.type === user.mainBadge)?.badges[2];
 

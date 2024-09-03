@@ -9,7 +9,7 @@ import { usePatchStudyRequestMutation } from "@/hooks/api/study-request/usePatch
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 interface StudyRequestCardProps {
-  userId: number;
+  userId: string;
   studyId: string;
 }
 
@@ -25,7 +25,7 @@ const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
         {/* todo : 클릭시 오픈 프로필 페이지로 이동 */}
         <div className="flex justify-between">
           <div className="flex items-center gap-[10px]">
-            <Link href={PATH.USER_PROFILE(userData.data.id)}>
+            <Link href={PATH.USER_PROFILE(userData.data.user_id)}>
               <Avatar src={userData.data.profileImage} />
             </Link>
             <div>

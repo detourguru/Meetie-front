@@ -8,7 +8,7 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetUserInfoResponseType, ProfileFormType } from "@/types/userInfo";
 
-export const useUserInformationQuery = (id?: number) => {
+export const useUserInformationQuery = (id?: string) => {
   const { data: userData } = useSuspenseQuery<GetUserInfoResponseType, AxiosError>({
     queryKey: [QUERY_KEYS.USER_INFO, id],
     queryFn: () => getUserInfo(id),
@@ -24,5 +24,5 @@ export const useUserInformationQuery = (id?: number) => {
     tagList: user.tagList,
   };
 
-  return { userId: user.id, userData, user, initialProfileForm };
+  return { userId: user.user_id, userData, user, initialProfileForm };
 };

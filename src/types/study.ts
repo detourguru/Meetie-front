@@ -12,7 +12,6 @@ export interface CreateStudyFormRequestType {
   time: string | null;
   recruitMemberCount: number;
   tagList: string[];
-  user_id: number;
 }
 
 export interface CreateStudyStepProps {
@@ -34,7 +33,8 @@ export interface StudyListType extends CreateStudyFormRequestType {
   isRecruit: boolean;
   createdAt: Date;
   joinMemberList: string[];
-  requestMemberList: number[];
+  requestMemberList: string[];
+  user_id: string;
 }
 
 export interface GetStudyResponseType extends CommonResponseType {

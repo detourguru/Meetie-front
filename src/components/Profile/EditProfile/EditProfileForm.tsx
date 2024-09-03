@@ -18,7 +18,7 @@ import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 const EditProfileForm = () => {
   const params = useParams();
 
-  const { userId, initialProfileForm } = useUserInformationQuery(Number(params.id));
+  const { userId, initialProfileForm } = useUserInformationQuery(String(params.id));
 
   const { profileForm, updateProfileForm, handleSubmit } = useEditProfileForm({
     id: userId,

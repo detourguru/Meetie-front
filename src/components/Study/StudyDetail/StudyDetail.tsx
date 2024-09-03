@@ -109,7 +109,7 @@ const StudyDetail = () => {
         </div>
       </div>
 
-      <FooterBtn data={data.data} isOwner={isOwner} userId={userData.data.id} />
+      <FooterBtn data={data.data} isOwner={isOwner} userId={userData.data.user_id} />
     </>
   );
 };

@@ -9,7 +9,7 @@ import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInf
 import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
 
 interface UseEditProfileFormProps {
-  id: number;
+  id: string;
   initialData?: ProfileFormType;
 }
 

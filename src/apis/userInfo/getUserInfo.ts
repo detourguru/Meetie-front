@@ -6,7 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 
 import type { GetUserInfoResponseType } from "@/types/userInfo";
 
-export const getUserInfo = async (id?: number) => {
+export const getUserInfo = async (id?: string) => {
   let url;
 
   if (id) {

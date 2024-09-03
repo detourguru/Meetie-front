@@ -77,7 +77,7 @@ const MyPageBody = () => {
           <InformationCard
             count={13}
             informationData={INFORMATIONS_DATA.FOLLOW}
-            navigateTo={PATH.USER_FOLLOW_LIST(userId ?? 0)}
+            navigateTo={PATH.USER_FOLLOW_LIST(userId ?? "")}
           />
         </section>
       </div>
@@ -149,7 +149,7 @@ const MyPageBody = () => {
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo={PATH.USER_PROFILE_EDIT(user.id)}
+              navigateTo={PATH.USER_PROFILE_EDIT(user.user_id)}
               menuItemData={MENU_ITEMS_DATA.PROFIL_EDIT}
             />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />

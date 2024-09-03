@@ -7,7 +7,7 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 interface PatchStudyRequestProps {
   studyId: string;
-  userId: number;
+  userId: string;
   isReject?: boolean;
 }
 

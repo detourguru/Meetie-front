@@ -6,7 +6,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
   try {
     const supabase = createClient();
 
-    const { data } = await supabase.from("userinfo").select().eq("id", params.id).single();
+    const { data } = await supabase.from("userinfo").select().eq("user_id", params.id).single();
 
     return NextResponse.json({ message: "ok", status: 200, data: data });
   } catch (error) {
@@ -14,13 +14,13 @@ export async function GET(request: Request, { params }: { params: { id: string }
   }
 }
 
-export async function PATCH(request: Request, { params }: { params: { id: number } }) {
+export async function PATCH(request: Request, { params }: { params: { id: string } }) {
   try {
     const supabase = createClient();
 
     const data = await request.json();
 
-    const { error } = await supabase.from("userinfo").update(data).eq("id", params.id);
+    const { error } = await supabase.from("userinfo").update(data).eq("user_id", params.id);
 
     if (!error) {
       return NextResponse.json({ message: "ok", status: 200 });

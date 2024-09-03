@@ -17,7 +17,6 @@ interface UseCreateStudyFormProps {
 }
 
 export const useCreateStudyForm = ({
-  userId,
   initialData,
   studyId,
   joinMemberCount,
@@ -42,7 +41,6 @@ export const useCreateStudyForm = ({
       week: "",
       recruitMemberCount: 1,
       tagList: [],
-      user_id: Number(userId),
     },
   );
 
