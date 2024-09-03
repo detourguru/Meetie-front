@@ -5,6 +5,7 @@ import { format, startOfToday, addDays, differenceInCalendarDays } from "date-fn
 import { ko } from "date-fns/locale";
 
 import Tag from "@/components/common/Tag/Tag";
+import Bookmark from "@/components/Study/Bookmark/Bookmark";
 
 import { PATH } from "@/constants/path";
 
@@ -34,7 +35,7 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
         <div className="flex justify-between mb-3">
           <h2 className="text-bold-14 text-gray-500">{studyData.title}</h2>
-          <Image src="/svg/ic-bookmark.svg" alt="icon" width={24} height={24} />
+          <Bookmark isMarked={studyData.bookmarks ? studyData.bookmarks.isMarked : false} />
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6">

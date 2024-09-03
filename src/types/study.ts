@@ -1,3 +1,4 @@
+import type { BookmarksType } from "@/types/bookmarks";
 import type { CommonResponseType } from "@/types/common";
 
 export interface CreateStudyFormRequestType {
@@ -36,6 +37,7 @@ export interface StudyListType extends CreateStudyFormRequestType {
   requestMemberList: string[];
   user_id: string;
   viewCount: number;
+  bookmarks: BookmarksType;
 }
 
 export interface GetStudyResponseType extends CommonResponseType {

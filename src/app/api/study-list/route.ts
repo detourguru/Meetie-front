@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const asc = Boolean(searchParams.get("asc")) ?? false;
 
-    const query = supabase.from("study").select();
+    const query = supabase.from("study").select(`*, bookmarks(isMarked)`);
 
     if (searchParams.size > 0) {
       const sortFields = ["order", "asc"];
