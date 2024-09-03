@@ -14,8 +14,13 @@ interface OnboardingProfileProps {
 const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) => {
   const { onboardingCompleteData } = useOnboardingCompleteQuery("complete");
 
-  const position = POSITIONS_KR_DATA[POSITIONS_DATA.indexOf(onboardingCompleteData.data.position)];
-  const styles = onboardingCompleteData.data.styles.slice(0, 2).join("﹒");
+  const position =
+    (onboardingCompleteData.data &&
+      POSITIONS_KR_DATA[POSITIONS_DATA.indexOf(onboardingCompleteData.data.position)]) ||
+    "";
+  const styles =
+    (onboardingCompleteData.data && onboardingCompleteData.data.styles.slice(0, 2).join("﹒")) ||
+    "";
 
   return (
     <div className="relative w-[150px] mt-[77px]">
