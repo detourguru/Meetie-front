@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 
+import { useState } from "react";
+
 import Button from "@/components/common/Button/Button";
 import { default as CustomImage } from "@/components/common/Image/Image";
 import Input from "@/components/common/Input/Input";
@@ -18,6 +20,12 @@ export default function LoginPage() {
     handleSignInWithOAuth,
     handleSignInWithEmail,
   } = useLoginForm();
+
+  const [clickedEyes, setClickedEyes] = useState(false);
+
+  const handleClickedEyes = () => {
+    setClickedEyes((prev) => !prev);
+  };
 
   return (
     <main className="flex flex-col h-full">
@@ -45,18 +53,30 @@ export default function LoginPage() {
           />
           <div className="relative">
             <Input
-              type="password"
+              type={clickedEyes ? "text" : "password"}
               value={loginForm.password}
               placeholder="************"
               onChange={(e) => updateLoginForm("password", e.currentTarget.value)}
             />
-            <Image
-              src="/svg/ic-login-close-eye.svg"
-              width={24}
-              height={24}
-              alt="close eye"
-              className="absolute transform -translate-y-1/2 cursor-pointer right-3 top-1/2"
-            />
+            <div onClick={handleClickedEyes}>
+              {clickedEyes ? (
+                <Image
+                  src="/svg/ic-login-open-eye.svg"
+                  width={24}
+                  height={14}
+                  alt="epen eye"
+                  className="absolute transform -translate-y-1/2 cursor-pointer right-3 top-1/2"
+                />
+              ) : (
+                <Image
+                  src="/svg/ic-login-close-eye.svg"
+                  width={24}
+                  height={24}
+                  alt="close eye"
+                  className="absolute transform -translate-y-1/2 cursor-pointer right-3 top-1/2"
+                />
+              )}
+            </div>
           </div>
 
           <button
