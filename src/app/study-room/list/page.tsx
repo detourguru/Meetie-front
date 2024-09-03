@@ -6,9 +6,8 @@ import { Suspense } from "react";
 import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Gnb from "@/components/common/Gnb/Gnb";
-import Header from "@/components/common/Header/Header";
-import Tooltip from "@/components/common/Tooltip/Tooltip";
 import StudyList from "@/components/Study/StudyList/StudyList";
+import StudyRoomListHeader from "@/components/Study/StudyList/StudyRoomListHeader";
 
 import { PATH } from "@/constants/path";
 
@@ -19,12 +18,7 @@ export default function Page() {
 
   return (
     <>
-      <Header>
-        <Header.Title>스터디룸</Header.Title>
-        <Tooltip message="가지고 있는 스터디룸을 확인할 수 있습니다.">
-          <Header.RightButton icon="/svg/ic-header-question.svg" />
-        </Tooltip>
-      </Header>
+      <StudyRoomListHeader />
       <article className="mx-4">
         <div className="mt-[50px] mb-[32px]">
           <h1 className="text-bold-18 mb-2">
