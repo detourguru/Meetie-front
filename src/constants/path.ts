@@ -4,6 +4,9 @@ export const PATH = {
   LOGIN: "/login",
   SIGNUP: "/signup",
 
+  AUTH_REDIRECT: "/auth/redirect",
+  AUTH_CALLBACK: "/auth/callback",
+
   WALKTHROUGH: "/walk-through",
 
   ONBOARDING: "/onboarding",

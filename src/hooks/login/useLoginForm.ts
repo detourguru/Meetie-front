@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 
 import { useCallback, useState } from "react";
 
+import { PATH } from "@/constants/path";
+
 import { createClient } from "@/utils/supabase/client";
 
 interface LoginFormType {
@@ -48,7 +50,7 @@ export const useLoginForm = () => {
     });
 
     if (data && !error) {
-      router.push("http://localhost:3000/auth/redirect");
+      router.push(PATH.AUTH_REDIRECT);
     }
   };
 
@@ -56,7 +58,7 @@ export const useLoginForm = () => {
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `http://localhost:3000/auth/callback`,
+        redirectTo: PATH.AUTH_CALLBACK,
       },
     });
   };
