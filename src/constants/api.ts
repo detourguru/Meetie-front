@@ -12,7 +12,9 @@ export const END_POINTS = {
   POST_STUDY_ROOM: `/api/study-room`,
   STUDY_ROOM: (studyId: string) => `/api/study-room/${studyId}`,
 
-  USER_INFO_BY_ID: (id: string) => `/api/user-info/${id}`,
+  BOOKMARK: (id: string) => `/api/bookmarks/${id}`,
+
+  USER_INFO_BY_ID: (id: number) => `/api/user-info/${id}`,
   USER_INFO: (id: string) => `/api/user-info?user_id=${id}`,
 
   ONBOARDING: "/api/onboarding",

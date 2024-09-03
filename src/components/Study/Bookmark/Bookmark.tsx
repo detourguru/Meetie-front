@@ -2,20 +2,32 @@ import Image from "next/image";
 
 import { useState } from "react";
 
+import { usePatchBookmarkMutation } from "@/hooks/api/bookmarks/usePatchBookmarkMutation";
+
 interface BookmarkProps {
   isMarked: boolean | null;
+  studyId: string;
 }
 
-// 북마크 이미지 toogle
-// 북마크 onCLick 시 통신으로 데이터 수정 & 받아오기
-
-const Bookmark = ({ isMarked }: BookmarkProps) => {
+const Bookmark = ({ isMarked, studyId }: BookmarkProps) => {
   const [marked, setMarked] = useState(isMarked);
+  const { mutate: patchBookmarkMutation } = usePatchBookmarkMutation();
 
   const handleBookmark = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
-    setMarked(!marked);
+    const bookmark = !marked;
+    setMarked(bookmark);
+    handleUpsertBookmark(bookmark);
   };
+
+  const handleUpsertBookmark = (bookmark: boolean | null) => {
+    patchBookmarkMutation({
+      id: studyId,
+      // TODO: userinfo id 받아와서 로그인한 유저 자기 자신의 데이터만 가져오기
+      bookmarkForm: { isMarked: bookmark, study_id: studyId, userinfo_id: 7 },
+    });
+  };
+
   return (
     <div>
       <Image

@@ -35,7 +35,10 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
         <div className="flex justify-between mb-3">
           <h2 className="text-bold-14 text-gray-500">{studyData.title}</h2>
-          <Bookmark isMarked={studyData.bookmarks ? studyData.bookmarks.isMarked : false} />
+          <Bookmark
+            studyId={studyData.id}
+            isMarked={studyData.bookmarks ? studyData.bookmarks.isMarked : false}
+          />
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6">
