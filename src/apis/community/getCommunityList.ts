@@ -1,20 +1,25 @@
-import { axiosInstance } from "@/apis/axiosInstance";
+import { GET, createInit } from "@/apis/httpMethod";
 
 import { END_POINTS } from "@/constants/api";
+import { INITIAL_FILTER_OPTION_DATA } from "@/constants/community";
 
 import type { FilterSelectedType, GetCommunityListResponseType } from "@/types/community";
 
-export const getCommunityList = async (filterOption: FilterSelectedType) => {
-  const { data } = await axiosInstance.get<GetCommunityListResponseType>(
-    END_POINTS.COMMUNITY_LIST(filterOption.tags, filterOption.sort, filterOption.date),
+export const getCommunityList = async (filterOption?: FilterSelectedType) => {
+  const options = filterOption ?? INITIAL_FILTER_OPTION_DATA;
+
+  const data = await GET<GetCommunityListResponseType>(
+    END_POINTS.COMMUNITY_LIST(options.tags, options.sort, options.date),
+    createInit(),
   );
 
   return data;
 };
 
 export const getRecommendCommunityList = async () => {
-  const { data } = await axiosInstance.get<GetCommunityListResponseType>(
+  const data = await GET<GetCommunityListResponseType>(
     END_POINTS.COMMUNITY_LIST_RECOMMEND,
+    createInit(),
   );
 
   return data;

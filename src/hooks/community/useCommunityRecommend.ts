@@ -7,7 +7,7 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import { useRandomCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
 
 export const useCommunityRecommend = () => {
-  const { communityListData } = useRandomCommunityListQuery();
+  const { data: communityListData } = useRandomCommunityListQuery();
 
   const [scrollIndex, setScrollIndex] = useState(0);
 

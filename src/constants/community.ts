@@ -1,3 +1,4 @@
+import type { FilterSelectedType } from "@/types/community";
 import type { SelectOptionType } from "@/types/filter";
 
 export const POSITION_DATA = [
@@ -53,3 +54,9 @@ export const POSTDATE_OPTION_DATA: SelectOptionType[] = [
     label: "1년",
   },
 ];
+
+export const INITIAL_FILTER_OPTION_DATA: FilterSelectedType = {
+  tags: [],
+  sort: "postDate",
+  date: "all",
+};

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { queryClient } from "@/components/providers/QueryProvider";
 
+import { INITIAL_FILTER_OPTION_DATA } from "@/constants/community";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 import { useCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
@@ -14,14 +15,10 @@ interface useCommunityFilterProps {
 
 export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => {
   const [filterOption, setFilterOption] = useState<FilterSelectedType>(
-    initialData ?? {
-      tags: [],
-      sort: "postDate",
-      date: "all",
-    },
+    initialData ?? INITIAL_FILTER_OPTION_DATA,
   );
 
-  const { communityListData } = useCommunityListQuery(filterOption);
+  const { data: communityListData } = useCommunityListQuery(filterOption);
 
   useEffect(() => {
     const timer = setTimeout(() => {
