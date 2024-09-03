@@ -50,10 +50,15 @@ export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostPr
     });
   };
 
+  const handleGoBack = () => {
+    router.back();
+  };
+
   return {
     createPostForm,
     buttonDisabled,
     updatePostForm,
     handleSubmit,
+    handleGoBack,
   };
 };

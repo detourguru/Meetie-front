@@ -7,14 +7,13 @@ import CreatePostBody from "@/components/Community/CreatePost/CreatePostBody/Cre
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
 export default function CreateCommunityPostPage() {
-  const { createPostForm, buttonDisabled, handleSubmit, updatePostForm } = useCreateCommunityPost(
-    {},
-  );
+  const { createPostForm, buttonDisabled, handleSubmit, updatePostForm, handleGoBack } =
+    useCreateCommunityPost({});
 
   return (
     <>
       <Header>
-        <Header.LeftButton />
+        <Header.LeftButton handleButtonClick={handleGoBack} />
         <Header.Title hasButton>게시글 만들기</Header.Title>
       </Header>
 
