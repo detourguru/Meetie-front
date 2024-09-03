@@ -9,6 +9,8 @@ import { useCommunityRecommend } from "@/hooks/community/useCommunityRecommend";
 const Recommended = () => {
   const { communityListData, scrollIndex, handleScroll, handleRefresh } = useCommunityRecommend();
 
+  console.log(communityListData.data.length === 0);
+
   return (
     <div className="flex flex-col gap-4 my-8">
       <div className="flex justify-between items-center mx-4">
@@ -26,27 +28,34 @@ const Recommended = () => {
       </div>
 
       <div className="bg-[#E3E3FA] py-5 flex flex-col gap-4">
-        <ul
-          className="flex gap-3 overflow-scroll snap-x snap-mandatory px-4 hidden-scrollbar"
-          onScroll={handleScroll}
-        >
-          {communityListData.data.map((post) => (
-            <PostCard
-              key={`recommend_${post.id}`}
-              className="min-w-[343px] snap-normal snap-center"
-              post={post}
-            />
-          ))}
-        </ul>
-
-        <div className="flex gap-1.5 justify-center">
-          {Array.from({ length: communityListData.data.length }, (_, index) => (
-            <div
-              className={`w-1 h-1 rounded-full ${scrollIndex === index ? "bg-primary-400" : "bg-gray-200"}`}
-              key={`button${index}`}
-            />
-          ))}
-        </div>
+        {communityListData.data.length > 0 ? (
+          <>
+            <ul
+              className="flex gap-3 overflow-scroll snap-x snap-mandatory px-4 hidden-scrollbar"
+              onScroll={handleScroll}
+            >
+              {communityListData.data.map((post) => (
+                <PostCard
+                  key={`recommend_${post.id}`}
+                  className="min-w-[343px] snap-normal snap-center"
+                  post={post}
+                />
+              ))}
+            </ul>
+            <div className="flex gap-1.5 justify-center">
+              {Array.from({ length: communityListData.data.length }, (_, index) => (
+                <div
+                  className={`w-1 h-1 rounded-full ${scrollIndex === index ? "bg-primary-400" : "bg-gray-200"}`}
+                  key={`button${index}`}
+                />
+              ))}
+            </div>
+          </>
+        ) : (
+          <div className="min-w-[343px] rounded-lg mx-4 px-5 py-6 bg-white text-center">
+            게시글이 존재하지 않습니다.
+          </div>
+        )}
       </div>
     </div>
   );
