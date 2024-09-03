@@ -39,12 +39,12 @@ const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) =
               className="w-[78px] h-[77px]"
             />
             <Image
-              src={profileImage || "/img/img-profile-example.png"}
+              src={profileImage || "/svg/ic-user.svg"}
               width={48}
               height={48}
               alt="profile"
               priority
-              className="absolute top-[24px] z-20 rounded-full"
+              className="absolute top-[24px] z-20 rounded-full bg-gray-100"
             />
           </div>
           <p className="text-semibold-14 mt-[6.5px]">{userName}님</p>
