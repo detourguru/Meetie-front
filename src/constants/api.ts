@@ -5,6 +5,7 @@ export const END_POINTS = {
   STUDY: (studyId: string) => `/api/study/${studyId}`,
   POST_STUDY: `/api/study`,
   STUDY_REQUEST: (studyId: string) => `/api/study/${studyId}/request`,
+  STUDY_REQUEST_ALL: (studyId: string) => `/api/study/${studyId}/request-all`,
 
   USER_INFO_BY_ID: (id: number) => `/api/user-info/${id}`,
   USER_INFO: (id: string) => `/api/user-info?user_id=${id}`,

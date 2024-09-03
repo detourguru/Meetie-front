@@ -20,7 +20,7 @@ const StudyRequest = () => {
         ))}
       </div>
 
-      <FooterBtn data={data.data} />
+      <FooterBtn data={data.data} isRequestPage />
     </>
   );
 };

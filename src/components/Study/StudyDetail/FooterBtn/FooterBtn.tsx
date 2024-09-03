@@ -7,6 +7,7 @@ import Button from "@/components/common/Button/Button";
 import { PATH } from "@/constants/path";
 
 import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
+import { usePatchStudyRequestAllMutation } from "@/hooks/api/study-request/usePatchStudyRequestAllMutation";
 
 import type { StudyListType } from "@/types/study";
 
@@ -14,19 +15,22 @@ interface FooterBtnProps {
   isOwner?: boolean;
   data: StudyListType;
   userId?: number;
+  isRequestPage?: boolean;
 }
 
-const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
+const FooterBtn = ({ isOwner, userId, data, isRequestPage }: FooterBtnProps) => {
   const { mutate: patchStudyMutation } = usePatchStudyMutation(data.id);
+  const { mutate: patchStudyAllMutation } = usePatchStudyRequestAllMutation(data.id);
 
-  const isRequest =
-    data.requestMemberList && data.requestMemberList.some((memberId) => memberId === userId);
+  const isRequest = data.requestMemberList.some((memberId) => memberId === userId);
+
+  const emptyRequestList = data.requestMemberList.length === 0;
 
   const updateData = {
     ...data,
     requestMemberList: isRequest
       ? data.requestMemberList.filter((prevData) => prevData !== userId)
-      : data.requestMemberList === null || data.requestMemberList.length === 0
+      : data.requestMemberList.length === 0
         ? [userId]
         : [data.requestMemberList, userId],
   };
@@ -34,17 +38,28 @@ const FooterBtn = ({ isOwner, userId, data }: FooterBtnProps) => {
   return (
     <div className="fixed bottom-0 bg-white px-4 py-6 flex gap-5 items-center border-t border-[#dddddd]">
       <div className="flex flex-col items-center">
-        <p className="text-medium-12 text-blue-300">참여가능인원</p>
+        <p className="text-medium-12 text-blue-300">{isRequestPage ? "수락" : "참여"}가능인원</p>
         <p className="text-medium-18">
           <span className="text-primary-500">{data.joinMemberList.length}명</span> /{" "}
           <span className="text-[#707070]">{data.recruitMemberCount}명</span>
         </p>
       </div>
-      {isOwner ? (
+
+      {isRequestPage ? (
+        <Button
+          size="md"
+          disabled={emptyRequestList}
+          onClick={() => patchStudyAllMutation({ studyId: String(data.id) })}
+        >
+          <p className="text-bold-16 text-white">
+            {emptyRequestList ? "아직 신청 인원이 없습니다" : "전체 수락하기"}
+          </p>
+        </Button>
+      ) : isOwner ? (
         <>
-          {data.requestMemberList.length === 0 ? (
+          {emptyRequestList ? (
             <Button variant="disabled" size="md">
-              <p className="text-bold-16 text-white">아직 대기 인원이 없습니다</p>
+              <p className="text-bold-16 text-white">아직 신청 인원이 없습니다</p>
             </Button>
           ) : (
             <Link href={PATH.STUDY_REQUEST(data.id)} scroll={false}>

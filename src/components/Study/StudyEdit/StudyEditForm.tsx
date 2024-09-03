@@ -21,7 +21,7 @@ const StudyEditForm = () => {
     useCreateStudyForm({
       initialData: data.data,
       studyId: String(params.id),
-      joinMemberCount: data.data.joinMemberCount,
+      joinMemberCount: data.data.joinMemberList.length,
     });
 
   const { isOpen, handleOpen, handleClose } = useOverlay();
@@ -59,7 +59,7 @@ const StudyEditForm = () => {
         isOpen={isOpen}
         handleClose={handleClose}
         studyId={String(params.id)}
-        joinMemberCount={data.data.joinMemberCount}
+        joinMemberCount={data.data.joinMemberList.length}
       />
     </>
   );
