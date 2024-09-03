@@ -10,7 +10,6 @@ import { usePostStudyMutation } from "@/hooks/api/study/usePostStudyMutation";
 import type { CreateStudyFormRequestType } from "@/types/study";
 
 interface UseCreateStudyFormProps {
-  userId?: number;
   initialData?: CreateStudyFormRequestType;
   studyId?: string;
   joinMemberCount?: number;

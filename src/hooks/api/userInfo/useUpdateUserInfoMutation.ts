@@ -13,7 +13,7 @@ export const useUpdateUserInfoMutation = () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO] });
     },
     onError: (error) => {
-      console.log(error);
+      console.error(error);
     },
   });
 
