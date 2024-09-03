@@ -8,22 +8,14 @@ export async function POST(request: Request) {
 
     const data = await request.json();
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    const { data: userInfo } = await supabase
-      .from("userinfo")
-      .select("id")
-      .eq("user_id", user?.id)
-      .single();
+    const { data: user } = await supabase.from("userinfo").select("user_id").single();
 
     const { data: onboarding } = await supabase.from("onboarding").select("position").single();
 
     const { error } = await supabase.from("community").insert({
       ...data,
-      userId: userInfo?.id,
-      userPosition: onboarding?.position,
+      user_id: user?.user_id,
+      userPosition: onboarding?.position ?? "",
       postDate: new Date(),
     });
 

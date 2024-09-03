@@ -9,8 +9,6 @@ import { useCommunityRecommend } from "@/hooks/community/useCommunityRecommend";
 const Recommended = () => {
   const { communityListData, scrollIndex, handleScroll, handleRefresh } = useCommunityRecommend();
 
-  console.log(communityListData.data.length === 0);
-
   return (
     <div className="flex flex-col gap-4 my-8">
       <div className="flex justify-between items-center mx-4">
