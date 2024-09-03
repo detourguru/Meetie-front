@@ -1,18 +1,22 @@
-import type { AxiosError } from "axios";
-
+import type { UseSuspenseQueryOptions } from "@tanstack/react-query";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { getStudyList } from "@/apis/study/getStudyList";
+import { GET, createInit } from "@/apis/httpMethod";
 
+import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetStudyListResponseType } from "@/types/study";
 
-export const useStudyListQuery = () => {
-  const { data: studyListData } = useSuspenseQuery<GetStudyListResponseType, AxiosError>({
-    queryKey: [QUERY_KEYS.STUDY_LIST],
-    queryFn: () => getStudyList(),
-  });
+export const studyListQueryOptions = (): UseSuspenseQueryOptions<GetStudyListResponseType> => ({
+  queryKey: [QUERY_KEYS.STUDY_LIST],
+  queryFn: async () => {
+    const studyList = await GET<GetStudyListResponseType>(END_POINTS.STUDY_LIST, createInit());
 
-  return { studyListData };
-};
+    return studyList;
+  },
+});
+
+export function useStudyListQuery() {
+  return useSuspenseQuery(studyListQueryOptions());
+}

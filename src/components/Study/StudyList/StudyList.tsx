@@ -7,7 +7,7 @@ import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 
 const StudyList = () => {
-  const { studyListData } = useStudyListQuery();
+  const { data } = useStudyListQuery();
 
   return (
     <article className="mx-4 pb-[80px]">
@@ -20,7 +20,7 @@ const StudyList = () => {
         <CheckBox>모집중만 보기</CheckBox>
         <PageConter current={1} total={6} />
       </div>
-      {studyListData.data.map((studyData) => (
+      {data.data.map((studyData) => (
         <StudyCard studyData={studyData} key={studyData.id} />
       ))}
     </article>

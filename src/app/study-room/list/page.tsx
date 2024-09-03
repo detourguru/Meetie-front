@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import React from "react";
+import { Suspense } from "react";
+
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
@@ -9,7 +11,11 @@ import StudyList from "@/components/Study/StudyList/StudyList";
 
 import { PATH } from "@/constants/path";
 
+import { studyListQueryOptions } from "@/hooks/api/study/useStudyListQuery";
+
 export default function Page() {
+  const serverFetchOptions = [studyListQueryOptions()];
+
   return (
     <>
       <Header>
@@ -68,7 +74,11 @@ export default function Page() {
           </div>
         </Link>
       </article>
-      <StudyList />
+      <Suspense>
+        <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+          <StudyList />
+        </ServerFetchBoundary>
+      </Suspense>
 
       <Gnb />
     </>
