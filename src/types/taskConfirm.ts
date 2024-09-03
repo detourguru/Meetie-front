@@ -1,8 +1,6 @@
 export interface TaskConfirmRequestType {
   taskId: string;
-  confirmImg: string;
   addItems: string[];
-  itemsType: string[];
   contents: string;
   postDate: Date;
 }

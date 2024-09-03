@@ -1,51 +1,58 @@
 import Image from "next/image";
 
+import TaskConfirmItem from "@/components/StudyRoom/TaskConfirmItem/TaskConfirmItem";
 import TaskConfirmSheet from "@/components/StudyRoom/TaskConfirmSheet/TaskConfirmSheet";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 import type { TaskConfirmPostProps } from "@/types/taskConfirm";
 
-interface TaskConfirmAreaProps extends TaskConfirmPostProps {
-  handleImageUpload: (files: FileList | null) => Promise<string[]>;
-}
-
-const TaskConfirmArea = ({
-  taskConfirmForm,
-  updateInputValue,
-  handleImageUpload,
-}: TaskConfirmAreaProps) => {
+const TaskConfirmArea = ({ taskConfirmForm, updateInputValue }: TaskConfirmPostProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
+  const MAX_SIZE = 4;
+  const handleItemDelete = (items: string[], index: number) =>
+    items.filter((_, idx) => index !== idx);
 
   return (
-    <section
-      className="h-[170px] text-[#A9A9A9] text-[15px] bg-[#F9F9F9] border border-[#E9E9E9] rounded-lg drop-shadow-sm mt-2 mb-4 overflow-hidden"
-      onClick={handleOpen}
-    >
-      {taskConfirmForm.confirmImg ? (
-        <Image
-          className="w-full h-fit"
-          src={taskConfirmForm.confirmImg}
-          alt="Uploaded"
-          width={340}
-          height={170}
-        />
+    <section>
+      {taskConfirmForm.addItems.length > 0 ? (
+        <>
+          {taskConfirmForm.addItems.map((item, index) => (
+            <TaskConfirmItem
+              key={index}
+              uploadItem={item}
+              handleItemDelete={() =>
+                updateInputValue("addItems", handleItemDelete(taskConfirmForm.addItems, index))
+              }
+            />
+          ))}
+          {taskConfirmForm.addItems.length < MAX_SIZE && (
+            <div
+              className="flex items-center justify-center bg-[#F9F9F9] border border-[#E9E9E9] w-full h-10 rounded-lg mb-2"
+              onClick={handleOpen}
+            >
+              <Image src="/svg/ic-study-plus.svg" alt="icon" width={25} height={24} />
+            </div>
+          )}
+        </>
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center">
+        <div
+          onClick={handleOpen}
+          className="flex flex-col items-center justify-center h-[170px] text-[#A9A9A9] text-[15px] bg-[#F9F9F9] border border-[#E9E9E9] rounded-lg drop-shadow-sm my-2"
+        >
           <Image src="/svg/ic-calendar-add-btn.svg" alt="icon" width={28} height={28} />
           <span className="mt-2">인증 구역</span>
-          <TaskConfirmSheet
-            isOpen={isOpen}
-            onInteractOutside={handleClose}
-            handleImageUpload={handleImageUpload}
-            updateInputValue={updateInputValue}
-            confirmImg={taskConfirmForm.confirmImg}
-            itemsType={taskConfirmForm.itemsType}
-            addItems={taskConfirmForm.addItems}
-            isAdditem={false}
-          />
         </div>
       )}
+      <p className="text-[13px] text-[#b7b7b7] text-right">
+        {taskConfirmForm.addItems.length}/{MAX_SIZE}
+      </p>
+      <TaskConfirmSheet
+        isOpen={isOpen}
+        onInteractOutside={handleClose}
+        updateInputValue={updateInputValue}
+        addItems={taskConfirmForm.addItems}
+      />
     </section>
   );
 };

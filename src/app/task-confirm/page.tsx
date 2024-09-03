@@ -5,7 +5,6 @@ import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
-import TaskConfirmAddItem from "@/components/StudyRoom/TaskConfirmAddItem/TaskConfirmAddItem";
 import TaskConfirmArea from "@/components/StudyRoom/TaskConfirmArea/TaskConfirmArea";
 
 import { PATH } from "@/constants/path";
@@ -15,8 +14,7 @@ import UserImg from "/public/img/img-user-profile.png";
 import { useTaskConfirmForm } from "@/hooks/task/useTaskConfirmForm";
 
 export default function Confirm() {
-  const { taskConfirmForm, updateTaskConfirmForm, handleImageUpload, handleSubmit } =
-    useTaskConfirmForm({});
+  const { taskConfirmForm, updateTaskConfirmForm, handleSubmit } = useTaskConfirmForm({});
 
   return (
     <>
@@ -59,13 +57,8 @@ export default function Confirm() {
             </div>
           </div>
         </section>
-        <TaskConfirmArea
-          taskConfirmForm={taskConfirmForm}
-          updateInputValue={updateTaskConfirmForm}
-          handleImageUpload={handleImageUpload}
-        />
         <section>
-          <h4 className="text-bold-14 pb-3">기록</h4>
+          <h4 className="text-bold-14 py-3">기록</h4>
           <textarea
             className="w-full h-[50px] text-[15px] placeholder:text-[#82829B] bg-[#F9F9F9] p-3 border border-[#E9E9E9] rounded-lg resize-none"
             placeholder="과제를 하며 나누고 싶은 생각을 적어보세요."
@@ -76,10 +69,9 @@ export default function Confirm() {
             {taskConfirmForm.contents.length}/500
           </p>
         </section>
-        <TaskConfirmAddItem
+        <TaskConfirmArea
           taskConfirmForm={taskConfirmForm}
           updateInputValue={updateTaskConfirmForm}
-          handleImageUpload={handleImageUpload}
         />
         <section>
           <Link href={PATH.TASK_CONFIRM_SUCCESS}>
