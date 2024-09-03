@@ -47,9 +47,6 @@ export const useLoginForm = () => {
       password: loginForm.password,
     });
 
-    console.log(data);
-    console.log(error);
-
     if (data && !error) {
       router.push("http://localhost:3000/auth/redirect");
     }
