@@ -13,6 +13,7 @@ const CommunityBody = () => {
 
   return (
     <>
+      {/* TODO: 공통 컴포넌트 제작 */}
       <div className="px-4 pt-14 pb-1 sticky top-0 bg-white z-20">
         <div className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3">
           <Image src="/svg/ic-community-search.svg" alt="search" width={24} height={24} />
