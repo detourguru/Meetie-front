@@ -27,11 +27,16 @@ export async function GET() {
     const supabase = createClient();
     const { data, error } = await supabase.from("onboarding").select("position, styles").single();
 
-    if (data && !error) {
-      return NextResponse.json({ message: "ok", status: 200, data });
+    if (error) {
+      return NextResponse.json({ message: "error", status: 400 });
     }
 
-    return NextResponse.json({ message: "ok", status: 400, data });
+    // 온보딩을 건너뛰었거나 온보딩을 했는 지의 여부 확인
+    if (!data) {
+      return NextResponse.json({ message: "ok", status: 204, data });
+    }
+
+    return NextResponse.json({ message: "ok", status: 200, data });
   } catch (error) {
     return NextResponse.json({ message: "error", status: 500 });
   }
