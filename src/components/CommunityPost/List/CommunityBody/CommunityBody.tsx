@@ -13,16 +13,18 @@ const CommunityBody = () => {
 
   return (
     <>
-      <div className="flex gap-3 mx-4 mt-14 bg-[#F1F3F5] rounded-lg px-3.5 py-3">
-        <Image src="/svg/ic-community-search.svg" alt="search" width={24} height={24} />
-        <input
-          id="search"
-          name="search"
-          value={filterOption.search}
-          onChange={(e) => updateFilterOption("search", e.target.value)}
-          className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD]"
-          placeholder="관심있는 주제를 검색해보세요"
-        />
+      <div className="px-4 pt-14 pb-1 sticky top-0 bg-white z-20">
+        <div className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3">
+          <Image src="/svg/ic-community-search.svg" alt="search" width={24} height={24} />
+          <input
+            id="search"
+            name="search"
+            value={filterOption.search}
+            onChange={(e) => updateFilterOption("search", e.target.value)}
+            className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD]"
+            placeholder="관심있는 주제를 검색해보세요"
+          />
+        </div>
       </div>
 
       <Recommended />
