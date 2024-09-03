@@ -38,7 +38,7 @@ export const PATH = {
   INQUIRY: "/inquiry",
   NOTI: "/notification",
 
-  COMMUNITY_LIST: "/community-post/list",
+  COMMUNITY_LIST: "/community",
   COMMUNITY_CREATE: "/community/create",
-  COMMUNITY: (id: number) => `/community-post/${id}`,
+  COMMUNITY: (id: number) => `/community/${id}`,
 } as const;

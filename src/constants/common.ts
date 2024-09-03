@@ -35,8 +35,8 @@ export const GNB_DATA = [
   },
   {
     text: "커뮤니티",
-    rootLink: "/community-post/list",
-    link: "/community-post/list",
+    rootLink: "/community",
+    link: "/community",
     icon: "/svg/ic-gnb-community.svg",
     disabledIcon: "/svg/ic-gnb-community-disabled.svg",
   },
