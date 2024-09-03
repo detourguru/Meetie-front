@@ -3,8 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { useState } from "react";
-
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
 import TaskConfirmAddItem from "@/components/StudyRoom/TaskConfirmAddItem/TaskConfirmAddItem";
@@ -14,11 +12,12 @@ import { PATH } from "@/constants/path";
 
 import UserImg from "/public/img/img-user-profile.png";
 
+import { useTaskConfirmForm } from "@/hooks/task/useTaskConfirmForm";
+
 export default function Confirm() {
-  const [textlength, setTextLength] = useState(0);
-  const handelTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setTextLength(e.target.value.length);
-  };
+  const { taskConfirmForm, updateTaskConfirmForm, handleImageUpload, handleSubmit } =
+    useTaskConfirmForm({});
+
   return (
     <>
       <Header>
@@ -34,6 +33,7 @@ export default function Confirm() {
           </div>
           <Image src="/svg/ic-calendar-prev-arrow.svg" alt="icon" width={6} height={12} />
         </section>
+        {/* TODO : (생성된) 과제 내용 불러오기 */}
         <section className="flex items-center gap-3">
           <h3 className="text-medium-18">14일차 과제</h3>
           <span className="px-[6px] py-[3px] text-regular-12 text-[#3F3FFF] border border-primary-500 border-inset rounded-2xl">
@@ -50,6 +50,7 @@ export default function Confirm() {
           </div>
           <div className="absolute flex items-center right-4 bottom-4">
             <span className="text-regular-12 text-[#82829B] mr-1">+2</span>
+            {/* TODO : 스터디원 프로필 이미지 */}
             <div className="w-5 h-5 rounded-full">
               <Image src={UserImg} alt="" width={20} height={20} />
             </div>
@@ -58,25 +59,40 @@ export default function Confirm() {
             </div>
           </div>
         </section>
-        <TaskConfirmArea />
+        <TaskConfirmArea
+          taskConfirmForm={taskConfirmForm}
+          updateInputValue={updateTaskConfirmForm}
+          handleImageUpload={handleImageUpload}
+        />
         <section>
           <h4 className="text-bold-14 pb-3">기록</h4>
           <textarea
             className="w-full h-[50px] text-[15px] placeholder:text-[#82829B] bg-[#F9F9F9] p-3 border border-[#E9E9E9] rounded-lg resize-none"
             placeholder="과제를 하며 나누고 싶은 생각을 적어보세요."
             maxLength={500}
-            onChange={handelTextChange}
+            onChange={(e) => updateTaskConfirmForm("contents", e.target.value)}
           />
-          <p className="text-[13px] text-[#b7b7b7] text-right">{textlength}/500</p>
+          <p className="text-[13px] text-[#b7b7b7] text-right">
+            {taskConfirmForm.contents.length}/500
+          </p>
         </section>
-        <TaskConfirmAddItem />
+        <TaskConfirmAddItem
+          taskConfirmForm={taskConfirmForm}
+          updateInputValue={updateTaskConfirmForm}
+          handleImageUpload={handleImageUpload}
+        />
         <section>
           <Link href={PATH.TASK_CONFIRM_SUCCESS}>
-            <Button className="w-full mt-6 mb-3">
+            <Button className="w-full mt-6 mb-3" onClick={handleSubmit}>
               <span className="text-semibold-16 text-white">인증하기</span>
             </Button>
           </Link>
-          <p className="text-regular-14 text-[#82829B] text-center underline">임시 저장</p>
+          <p
+            className="text-regular-14 text-[#82829B] text-center underline"
+            onClick={handleSubmit}
+          >
+            임시 저장
+          </p>
         </section>
       </main>
     </>

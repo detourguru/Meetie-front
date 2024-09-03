@@ -1,31 +1,45 @@
 import Image from "next/image";
 
-import React from "react";
-
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 
-interface TaskConfirmSheetProps {
-  isOpen: boolean;
-  onInteractOutside?: () => void;
-  handleImageUpdate: (uploadType: string, uploadImage: string) => void;
+import type { CommonSheetProps } from "@/types/common";
+import type { TaskConfirmUpdateHandlerType } from "@/types/taskConfirm";
+
+interface TaskConfirmSheetProps extends CommonSheetProps {
+  handleImageUpload: (files: FileList | null) => Promise<string[]>;
+  updateInputValue: TaskConfirmUpdateHandlerType;
+  confirmImg: string;
+  addItems: string[];
+  itemsType: string[];
+  isAdditem: boolean;
 }
 
 const TaskConfirmSheet = ({
   isOpen,
   onInteractOutside,
-  handleImageUpdate,
+  handleImageUpload,
+  updateInputValue,
+  addItems,
+  itemsType,
+  isAdditem,
 }: TaskConfirmSheetProps) => {
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    const uploadType = e.target.id;
-
-    Array.from(files).forEach((file) => {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        handleImageUpdate(uploadType, reader.result as string);
-      };
-      reader.readAsDataURL(file);
-    });
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    {
+      /* TODO : 이미지 업로드 공통 hook 사용 */
+    }
+    if (isAdditem) {
+      const images = addItems.concat(await handleImageUpload(e.target.files));
+      const types = itemsType.concat(e.target.id);
+      if (images.length <= 4) {
+        updateInputValue("addItems", images);
+        updateInputValue("itemsType", types);
+      }
+    } else {
+      const uploadImg = (await handleImageUpload(e.target.files))[0];
+      const uploadType = [e.target.id];
+      updateInputValue("confirmImg", uploadImg);
+      updateInputValue("itemsType", uploadType);
+    }
   };
 
   return (
