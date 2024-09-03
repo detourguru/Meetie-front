@@ -56,7 +56,7 @@ export const useSignUpForm = () => {
   const handleSubmit = async () => {
     PostSignUpMutation(signupForm, {
       onSuccess: () => {
-        router.push(PATH.AUTH_CALLBACK);
+        router.push(PATH.AUTH_REDIRECT);
       },
     });
   };

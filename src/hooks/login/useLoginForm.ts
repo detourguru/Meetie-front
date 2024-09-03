@@ -58,7 +58,7 @@ export const useLoginForm = () => {
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: PATH.AUTH_CALLBACK,
+        redirectTo: `${process.env.NEXT_PUBLIC_API_BASE_URL}${PATH.AUTH_CALLBACK}`,
       },
     });
   };
