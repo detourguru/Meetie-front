@@ -24,7 +24,7 @@ const Bookmark = ({ isMarked, studyId }: BookmarkProps) => {
     patchBookmarkMutation({
       id: studyId,
       // TODO: userinfo id 받아와서 로그인한 유저 자기 자신의 데이터만 가져오기
-      bookmarkForm: { isMarked: bookmark, study_id: studyId, userinfo_id: 7 },
+      bookmarkForm: { isMarked: bookmark, study_id: studyId, userinfo_userId: 7 },
     });
   };
 

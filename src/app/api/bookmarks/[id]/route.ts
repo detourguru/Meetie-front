@@ -10,9 +10,9 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     console.log(data);
     const { error } = await supabase
       .from("bookmarks")
-      .upsert(data, { onConflict: "study_id" })
+      .upsert(data, { onConflict: "userinfo_userId" })
       .eq("study_id", params.id)
-      .eq("userinfo_id", 7)
+      .eq("userinfo_userId", 7)
       .single();
 
     if (!error) {
