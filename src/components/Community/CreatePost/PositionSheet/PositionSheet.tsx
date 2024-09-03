@@ -57,27 +57,29 @@ const PositionSheet = ({
   return (
     <Sheet open={isOpen}>
       <SheetContent
-        className="rounded-tl-lg rounded-tr-lg pb-8"
+        className="rounded-tl-lg rounded-tr-lg pb-8 h-[90%] overflow-scroll hidden-scrollbar"
         onInteractOutside={() => {
           setPositionList(createPostForm.position);
           onInteractOutside && onInteractOutside();
         }}
       >
-        <SheetHeader className="items-center justify-center pt-3.5 pb-8 ">
+        <SheetHeader className="items-center justify-center pt-3.5 pb-8 sticky top-0 bg-white z-20">
           <div className="w-[34px] h-[5px] rounded-[4px] bg-[#bfbfc1]" />
         </SheetHeader>
 
         <div className="px-5">
-          <div className="flex items-center justify-between">
-            <h2 className="text-semibold-18">게시 분야</h2>
-            <button onClick={() => handleSelectAllPosition(selectButtonText)}>
-              <span className="text-regular-12 text-gray-250 underline">{selectButtonText}</span>
-            </button>
+          <div className="sticky top-[51px] bg-white z-20">
+            <div className="flex items-center justify-between">
+              <h2 className="text-semibold-18">게시 분야</h2>
+              <button onClick={() => handleSelectAllPosition(selectButtonText)}>
+                <span className="text-regular-12 text-gray-250 underline">{selectButtonText}</span>
+              </button>
+            </div>
+            <h3 className="text-gray-250 text-regular-12 mt-1">
+              게시물을 작성할 분야를 선택해주세요!
+            </h3>
           </div>
-          <h3 className="text-gray-250 text-regular-12 mt-1">
-            게시물을 작성할 분야를 선택해주세요!
-          </h3>
-          <ul className="rounded-lg bg-white border border-[#dfdfdf] mt-2">
+          <ul className="rounded-lg bg-white border border-[#dfdfdf] mt-2 mb-12">
             {POSITION_DATA.map((position) => (
               <li
                 className={cn(listClassName, "border-b border-[#dfdfdf] last-of-type:border-none")}
@@ -98,18 +100,21 @@ const PositionSheet = ({
             ))}
           </ul>
 
-          <div className="flex gap-4 mt-4 justify-center">
-            <Button variant="outline" onClick={onInteractOutside}>
-              <p className="text-semibold-16 text-[#adb5bd]">취소</p>
-            </Button>
-            <Button
-              onClick={() => {
-                updateInputValue("position", positionList);
-                onInteractOutside && onInteractOutside();
-              }}
-            >
-              <p className="text-semibold-16 text-white">완료</p>
-            </Button>
+          <div className="w-full fixed bottom-0 left-0 py-2 bg-white z-20">
+            <div className="flex gap-2 justify-center px-3">
+              <Button variant="outline" onClick={onInteractOutside} size="xl">
+                <p className="text-semibold-16 text-[#adb5bd]">취소</p>
+              </Button>
+              <Button
+                size="xl"
+                onClick={() => {
+                  updateInputValue("position", positionList);
+                  onInteractOutside && onInteractOutside();
+                }}
+              >
+                <p className="text-semibold-16 text-white">완료</p>
+              </Button>
+            </div>
           </div>
         </div>
       </SheetContent>
