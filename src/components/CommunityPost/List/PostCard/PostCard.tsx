@@ -1,4 +1,6 @@
-import Image from "@/components/common/Image/Image";
+import Image from "next/image";
+
+import { default as CustomImage } from "@/components/common/Image/Image";
 
 import { cn } from "@/utils/className";
 import { convertDate } from "@/utils/date";
@@ -15,7 +17,9 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
   return (
     <li className={cn("rounded-lg px-5 py-6 flex flex-col gap-2 bg-white", className)} {...props}>
       <div className="flex">
-        <span className="text-regular-12 text-[#434343]">{post.userPosition}</span>
+        <span className="text-regular-12 text-[#434343]">
+          {!post.userPosition ? "미정" : post.userPosition}
+        </span>
         {post.position.map((position, index) => (
           <div className="flex gap-1 items-center ml-1" key={`${post.id}/${position}/${index}`}>
             <div className="w-0.5 h-0.5 rounded-full bg-[#434343]" />
@@ -26,13 +30,21 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
 
       <h2 className="text-bold-16 text-[#434343]">{post.title}</h2>
 
-      <div className="w-full h-[120px] rounded-lg border border-[#DCD8EF]">
-        {mainImage && <Image src={mainImage} alt="main image" className="w-full h-[120px]" />}
+      <div className="w-full h-[120px] relative rounded-lg border border-[#DCD8EF]">
+        {mainImage && (
+          <Image
+            src={mainImage}
+            fill
+            sizes="100%"
+            alt="main image"
+            className="w-full h-full object-cover"
+          />
+        )}
       </div>
 
       <div className="flex justify-between items-center h-6">
         <div className="flex gap-1">
-          <Image
+          <CustomImage
             src="/svg/ic-community-calendar.svg"
             alt="calendar"
             className="w-[15px] h-[15px]"
@@ -42,7 +54,7 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
           </span>
         </div>
         <div className="flex gap-1">
-          <Image src="/svg/ic-eye.svg" alt="eye" className="w-3.5 h-3.5" />
+          <CustomImage src="/svg/ic-eye.svg" alt="eye" className="w-3.5 h-3.5" />
           <span className="text-medium-12 text-[#908794]">{post.viewCount}</span>
         </div>
       </div>
