@@ -2,8 +2,6 @@ import Image from "next/image";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
 
-import { POSITIONS_DATA, POSITIONS_KR_DATA } from "@/constants/onBoarding";
-
 import { useOnboardingCompleteQuery } from "@/hooks/api/onboarding/useOnboardingCompleteQuery";
 
 interface OnboardingProfileProps {
@@ -14,10 +12,7 @@ interface OnboardingProfileProps {
 const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) => {
   const { onboardingCompleteData } = useOnboardingCompleteQuery();
 
-  const position =
-    (onboardingCompleteData.data &&
-      POSITIONS_KR_DATA[POSITIONS_DATA.indexOf(onboardingCompleteData.data.position)]) ||
-    "";
+  const position = (onboardingCompleteData.data && onboardingCompleteData.data.position) || "";
   const styles =
     (onboardingCompleteData.data && onboardingCompleteData.data.styles.slice(0, 2).join("﹒")) ||
     "";
