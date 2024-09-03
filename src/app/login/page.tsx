@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 
-import { useState } from "react";
-
 import Button from "@/components/common/Button/Button";
 import { default as CustomImage } from "@/components/common/Image/Image";
 import Input from "@/components/common/Input/Input";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
+import { usePasswordEyes } from "@/hooks/common/usePasswordEyes";
 import { useLoginForm } from "@/hooks/login/useLoginForm";
 
 export default function LoginPage() {
@@ -21,11 +20,7 @@ export default function LoginPage() {
     handleSignInWithEmail,
   } = useLoginForm();
 
-  const [clickedEyes, setClickedEyes] = useState(false);
-
-  const handleClickedEyes = () => {
-    setClickedEyes((prev) => !prev);
-  };
+  const { clickedEyes, handleClickedEyes } = usePasswordEyes();
 
   return (
     <main className="flex flex-col h-full">
@@ -44,11 +39,12 @@ export default function LoginPage() {
           <h1 className="text-semibold-24">밋티에 오신 것을 환영해요</h1>
         </div>
 
-        <div className="w-full [&>*]:mb-3 mb-[33px]">
+        <form className="w-full [&>*]:mb-3 mb-[33px]">
           <Input
             type="text"
             value={loginForm.email}
             placeholder="hellomeetie@gmail.com"
+            autoComplete="username"
             onChange={(e) => updateLoginForm("email", e.currentTarget.value)}
           />
           <div className="relative">
@@ -56,6 +52,7 @@ export default function LoginPage() {
               type={clickedEyes ? "text" : "password"}
               value={loginForm.password}
               placeholder="************"
+              autoComplete="current-password"
               onChange={(e) => updateLoginForm("password", e.currentTarget.value)}
             />
             <div onClick={handleClickedEyes}>
@@ -94,7 +91,7 @@ export default function LoginPage() {
           <Button type="button" size="xl" className="text-white" onClick={handleSignInWithEmail}>
             로그인
           </Button>
-        </div>
+        </form>
 
         <p className="text-gray-200 mb-6 text-medium-12 before:w-[153px] before:bg-gray-200 before:h-[1px] before:inline-block before:mb-[3px] before:mr-[10px] after:ml-[10px] after:w-[153px] after:bg-gray-200 after:h-[1px] after:inline-block after:mb-[3px]">
           OR
