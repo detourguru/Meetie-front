@@ -8,12 +8,25 @@ import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
 
-import { useCommunityFilter } from "@/hooks/community/useCommunityFilter";
+import type {
+  FilterSelectedType,
+  GetCommunityListResponseType,
+  UpdateFilterSelectedTypeHandlerType,
+} from "@/types/community";
 
-const PostList = () => {
-  const { communityListData, filterOption, handleClickTag, updateFilterOption } =
-    useCommunityFilter({});
+interface PostListProps {
+  communityListData: GetCommunityListResponseType;
+  filterOption: FilterSelectedType;
+  handleClickTag: (tag?: string | undefined) => string[];
+  updateFilterOption: UpdateFilterSelectedTypeHandlerType;
+}
 
+const PostList = ({
+  communityListData,
+  filterOption,
+  handleClickTag,
+  updateFilterOption,
+}: PostListProps) => {
   return (
     <div className="pb-10">
       <div className="flex flex-col gap-5 my-8">

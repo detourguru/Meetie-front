@@ -30,6 +30,7 @@ export interface GetCommunityListResponseType extends CommonResponseType {
 }
 
 export interface FilterSelectedType {
+  search: string;
   tags: string[];
   sort: string;
   date: string;

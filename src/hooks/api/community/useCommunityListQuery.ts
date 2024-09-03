@@ -10,13 +10,13 @@ export const communityListQueryOptions = (
   filterOption?: FilterSelectedType,
 ): UseSuspenseQueryOptions<GetCommunityListResponseType> => ({
   queryKey: [QUERY_KEYS.COMMUNITY_LIST],
-  queryFn: () => getCommunityList(filterOption),
+  queryFn: async () => await getCommunityList(filterOption),
 });
 
 export const randomCommunityListQueryOptions =
   (): UseSuspenseQueryOptions<GetCommunityListResponseType> => ({
     queryKey: [QUERY_KEYS.COMMUNITY_LIST_RECOMMEND],
-    queryFn: () => getRecommendCommunityList(),
+    queryFn: async () => await getRecommendCommunityList(),
   });
 
 export const useCommunityListQuery = (filterOption: FilterSelectedType) => {

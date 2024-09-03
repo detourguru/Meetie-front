@@ -56,6 +56,7 @@ export const POSTDATE_OPTION_DATA: SelectOptionType[] = [
 ];
 
 export const INITIAL_FILTER_OPTION_DATA: FilterSelectedType = {
+  search: "",
   tags: [],
   sort: "postDate",
   date: "all",

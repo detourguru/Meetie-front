@@ -9,6 +9,7 @@ export async function GET(request: Request) {
     let query = supabase.from("community").select();
 
     const { searchParams } = new URL(request.url);
+    const search = searchParams.get("search") ?? "";
     const tags = searchParams.get("tags");
     const sortOption = searchParams.get("sort") ?? "id";
     const dateOption = searchParams.get("date") ?? "all";
@@ -39,6 +40,7 @@ export async function GET(request: Request) {
     }
 
     const { data } = await query
+      .like("title", `%${search}%`)
       .contains("position", positionTags)
       .order(sortOption, { ascending: false });
 

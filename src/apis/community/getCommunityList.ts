@@ -9,7 +9,7 @@ export const getCommunityList = async (filterOption?: FilterSelectedType) => {
   const options = filterOption ?? INITIAL_FILTER_OPTION_DATA;
 
   const data = await GET<GetCommunityListResponseType>(
-    END_POINTS.COMMUNITY_LIST(options.tags, options.sort, options.date),
+    END_POINTS.COMMUNITY_LIST(options.search, options.tags, options.sort, options.date),
     createInit(),
   );
 

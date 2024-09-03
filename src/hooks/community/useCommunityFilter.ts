@@ -53,5 +53,10 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
     });
   }, []);
 
-  return { communityListData, filterOption, updateFilterOption, handleClickTag };
+  return {
+    communityListData,
+    filterOption,
+    updateFilterOption,
+    handleClickTag,
+  };
 };
