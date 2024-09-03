@@ -103,6 +103,7 @@ const FilterOption = ({ totalCount, isPeople, children }: FilterOptionProps) => 
   );
 };
 
+// TODO: mac safari mobile mode 드롭다운 위치 오류 해결
 const FilterOptionSelect = ({ options, ...props }: FilterOptionSelectProps) => {
   return (
     <select className="text-regular-12 text-end" {...props}>
