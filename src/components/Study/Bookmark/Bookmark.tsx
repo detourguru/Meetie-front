@@ -20,11 +20,17 @@ const Bookmark = ({ isMarked, studyId }: BookmarkProps) => {
     handleUpsertBookmark(bookmark);
   };
 
-  const handleUpsertBookmark = (bookmark: boolean | null) => {
+  const handleUpsertBookmark = async (bookmark: boolean | null) => {
+    // TODO: userinfo id 받아와서 로그인한 유저 자기 자신의 데이터만 가져오기
+    const user = { id: "2d1ab35d-6fd9-4fa8-b94d-f45433db4ab0" };
+
     patchBookmarkMutation({
       id: studyId,
-      // TODO: userinfo id 받아와서 로그인한 유저 자기 자신의 데이터만 가져오기
-      bookmarkForm: { isMarked: bookmark, study_id: studyId, userinfo_userId: 7 },
+      bookmarkForm: {
+        isMarked: bookmark,
+        study_id: studyId,
+        userinfo_userId: user ? user.id : "2d1ab35d-6fd9-4fa8-b94d-f45433db4ab0",
+      },
     });
   };
 

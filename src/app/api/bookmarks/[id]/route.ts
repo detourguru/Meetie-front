@@ -7,12 +7,12 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const supabase = createClient();
 
     const data = await request.json();
-    console.log(data);
+
     const { error } = await supabase
       .from("bookmarks")
-      .upsert(data, { onConflict: "userinfo_userId" })
+      .upsert(data, { onConflict: `"study_id", "userinfo_userId"` })
       .eq("study_id", params.id)
-      .eq("userinfo_userId", 7)
+      .eq("userinfo_userId", data.userinfo_userId)
       .single();
 
     if (!error) {
