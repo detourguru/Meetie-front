@@ -65,7 +65,7 @@ export default function SignUpPage() {
           <div className="relative">
             <h2 className={inputTitleClassName}>비밀번호</h2>
             <Input
-              type="password"
+              type={clickedPasswordEyes ? "text" : "password"}
               value={signupForm.password}
               placeholder="비밀번호를 입력해주세요."
               autoComplete="new-password"
@@ -99,7 +99,7 @@ export default function SignUpPage() {
           <div className="relative">
             <h2 className={inputTitleClassName}>비밀번호 확인</h2>
             <Input
-              type="password"
+              type={clickedCheckPasswordEyes ? "text" : "password"}
               value={checkPassword}
               placeholder="비밀번호를 입력해주세요."
               autoComplete="new-password"
