@@ -16,9 +16,10 @@ interface FooterBtnProps {
   data: StudyListType;
   userId?: string;
   isRequestPage?: boolean;
+  isJoin?: boolean;
 }
 
-const FooterBtn = ({ isOwner, userId, data, isRequestPage }: FooterBtnProps) => {
+const FooterBtn = ({ isOwner, userId, data, isRequestPage, isJoin }: FooterBtnProps) => {
   const { mutate: patchStudyMutation } = usePatchStudyMutation(data.id);
   const { mutate: patchStudyAllMutation } = usePatchStudyRequestAllMutation(data.id);
 
@@ -73,12 +74,13 @@ const FooterBtn = ({ isOwner, userId, data, isRequestPage }: FooterBtnProps) => 
         <Button
           size="md"
           variant={isRequest ? "outlinePrimary" : "default"}
+          disabled={isJoin}
           onClick={() =>
             patchStudyMutation({ createStudyForm: updateData, studyId: String(data.id) })
           }
         >
           <p className={`text-bold-16 ${isRequest ? "text-primary-400" : "text-white"}`}>
-            {isRequest ? "신청 취소하기" : "스터디 신청하기"}
+            {isRequest ? "신청 취소하기" : isJoin ? "이미 신청한 스터디입니다" : "스터디 신청하기"}
           </p>
         </Button>
       )}
