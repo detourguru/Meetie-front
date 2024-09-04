@@ -77,7 +77,7 @@ export default function SignUpPage() {
                   src="/svg/ic-login-open-eye.svg"
                   width={24}
                   height={14}
-                  alt="epen eye"
+                  alt="open eye"
                   className="absolute cursor-pointer right-3 bottom-4"
                 />
               ) : (
@@ -111,7 +111,7 @@ export default function SignUpPage() {
                   src="/svg/ic-login-open-eye.svg"
                   width={24}
                   height={14}
-                  alt="epen eye"
+                  alt="open eye"
                   className="absolute cursor-pointer right-3 bottom-4"
                 />
               ) : (
