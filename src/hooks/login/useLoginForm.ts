@@ -50,7 +50,7 @@ export const useLoginForm = () => {
     });
 
     if (data && !error) {
-      router.push(PATH.AUTH_REDIRECT);
+      router.push(PATH.WALKTHROUGH);
     }
   };
 
