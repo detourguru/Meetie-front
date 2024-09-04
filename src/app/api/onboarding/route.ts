@@ -28,12 +28,13 @@ export async function GET() {
     const { data, error } = await supabase.from("onboarding").select("position, styles").single();
 
     if (error) {
-      return NextResponse.json({ message: "error", status: 400 });
-    }
-
-    // 온보딩을 건너뛰었거나 온보딩을 했는 지의 여부 확인
-    if (!data) {
-      return NextResponse.json({ message: "ok", status: 204, data });
+      if (error.code === "PGRST116") {
+        // 온보딩 데이터가 없음
+        return NextResponse.json({ message: "no data found", status: 204, data: null });
+      } else {
+        // 다른 오류
+        return NextResponse.json({ message: error.message, status: 400 });
+      }
     }
 
     return NextResponse.json({ message: "ok", status: 200, data });
