@@ -1,7 +1,7 @@
 import { default as CustomImage } from "@/components/common/Image/Image";
 import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 import LoginForm from "@/components/Login/LoginForm/LoginForm";
-import LoginSocail from "@/components/Login/LoginSocial/LoginSocail";
+import LoginSocial from "@/components/Login/LoginSocial/LoginSocial";
 
 export default function LoginPage() {
   return (
@@ -27,7 +27,7 @@ export default function LoginPage() {
           OR
         </p>
 
-        <LoginSocail />
+        <LoginSocial />
       </article>
 
       <LoginBottom />

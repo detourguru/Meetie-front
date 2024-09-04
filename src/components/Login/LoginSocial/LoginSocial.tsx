@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import { useLoginForm } from "@/hooks/login/useLoginForm";
 
-const LoginSocail = () => {
+const LoginSocial = () => {
   const { handleSignInWithOAuth } = useLoginForm();
 
   return (
@@ -28,4 +28,4 @@ const LoginSocail = () => {
   );
 };
 
-export default LoginSocail;
+export default LoginSocial;
