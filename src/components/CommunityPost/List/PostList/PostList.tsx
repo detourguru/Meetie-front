@@ -1,12 +1,14 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import Divider from "@/components/common/Divider/Divider";
 import Filter from "@/components/common/Filter/Filter";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
+import { PATH } from "@/constants/path";
 
 import type {
   FilterSelectedType,
@@ -76,11 +78,9 @@ const PostList = ({
 
         <ul className="flex flex-col gap-4 px-4">
           {communityListData.data.map((post) => (
-            <PostCard
-              key={`community_post_${post.id}`}
-              className="border border-[#EAEAEA]"
-              post={post}
-            />
+            <Link href={PATH.COMMUNITY(post.id)} key={`community_post_${post.id}`}>
+              <PostCard className="border border-[#EAEAEA]" post={post} />
+            </Link>
           ))}
         </ul>
       </div>

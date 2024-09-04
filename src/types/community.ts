@@ -29,6 +29,10 @@ export interface GetCommunityListResponseType extends CommonResponseType {
   data: CommunityPostType[];
 }
 
+export interface GetCommunityResponseType extends CommonResponseType {
+  data: CommunityPostType;
+}
+
 export interface FilterSelectedType {
   search: string;
   tags: string[];
