@@ -12,7 +12,7 @@ interface OnboardingProfileProps {
 }
 
 const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) => {
-  const { onboardingCompleteData } = useOnboardingCompleteQuery("complete");
+  const { onboardingCompleteData } = useOnboardingCompleteQuery();
 
   const position =
     (onboardingCompleteData.data &&

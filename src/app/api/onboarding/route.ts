@@ -9,14 +9,21 @@ export async function POST(request: Request) {
     const supabase = createClient();
     const postData: OnboardingFormType = await request.json();
 
-    // TODO: 이미 저장된 정보 있는 지 확인
-    const { error } = await supabase.from("onboarding").insert(postData);
+    const { error: postError } = await supabase.from("onboarding").insert(postData);
 
-    if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+    if (postError) {
+      return NextResponse.json({ message: "post error", status: 400 });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    const { error: updateError } = await supabase
+      .from("userinfo")
+      .upsert({ onboardingCheck: true });
+
+    if (updateError) {
+      return NextResponse.json({ message: "update error", status: 400 });
+    }
+
+    return NextResponse.json({ message: "ok", status: 200 });
   } catch (err) {
     return NextResponse.json({ message: "error", status: 500 });
   }
