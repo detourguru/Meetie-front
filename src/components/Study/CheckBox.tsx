@@ -1,9 +1,9 @@
 import { type PropsWithChildren } from "react";
 
-interface checkboxProps extends PropsWithChildren {
-  onClick: () => void;
+interface CheckBoxProps extends PropsWithChildren {
+  onClick?: () => void; // FIXME: 작업하지 않은 페이지에서의 에러 잡기위해 임의로 optional 추가
 }
-const CheckBox = ({ onClick, children }: checkboxProps) => {
+const CheckBox = ({ onClick, children }: CheckBoxProps) => {
   return (
     <>
       <div className="inline-block align-middle">
