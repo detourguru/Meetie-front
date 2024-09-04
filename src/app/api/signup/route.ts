@@ -17,7 +17,7 @@ export async function POST(request: Request) {
           full_name: postData.name,
           name: postData.name,
           // 기본 이미지
-          avatar_url: "/img/-ic-user.svg/",
+          avatar_url: "/svg/ic-user.svg",
         },
       },
     });

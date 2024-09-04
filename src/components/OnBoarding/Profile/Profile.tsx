@@ -44,7 +44,7 @@ const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) =
               className="w-[78px] h-[77px]"
             />
             <Image
-              src={profileImage || "/svg/ic-user.svg"}
+              src={profileImage}
               width={48}
               height={48}
               alt="profile"
