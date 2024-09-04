@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Image from "@/components/common/Image/Image";
+import PostComments from "@/components/Community/ReadPost/PostComments/PostComments";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { useCommunityQuery } from "@/hooks/api/community/useCommunityQuery";
@@ -47,6 +48,8 @@ const PostBody = () => {
         </div>
         <Divider className="bg-[#F1F2F6]" />
       </div>
+
+      <PostComments />
     </>
   );
 };

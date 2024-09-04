@@ -61,3 +61,5 @@ export const INITIAL_FILTER_OPTION_DATA: FilterSelectedType = {
   sort: "postDate",
   date: "all",
 };
+
+export const COMMUNITY_REACT_DATA = ["😊", "🤔", "🤩", "🤣", "👍"];

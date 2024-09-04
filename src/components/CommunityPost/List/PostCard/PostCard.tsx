@@ -66,7 +66,7 @@ const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
           </div>
         ))}
 
-      {isReadMode && <h4 className="text-medium-14 mt-4">{post.contents}</h4>}
+      {isReadMode && <p className="text-medium-14 mt-4">{post.contents}</p>}
 
       {isReadMode ?? (
         <div className="flex justify-between items-center h-6">
