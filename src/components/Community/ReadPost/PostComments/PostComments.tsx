@@ -8,6 +8,7 @@ import CommentCard from "@/components/Community/ReadPost/CommentCard/CommentCard
 import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton";
 
 import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useCreateCommentPost } from "@/hooks/community/comments/useCreateCommentPost";
 
 const PostComments = () => {
@@ -15,6 +16,11 @@ const PostComments = () => {
 
   const { data: commentsData } = useCommentsQuery(Number(id));
   const { inputRef, handleSubmit } = useCreateCommentPost(Number(id));
+  const {
+    userData: {
+      data: { profileImage },
+    },
+  } = useUserInformationQuery();
 
   return (
     <>
@@ -40,10 +46,9 @@ const PostComments = () => {
 
       <div className="px-4 py-5 fixed bottom-0 bg-white z-20 w-[375px]">
         <form className="flex gap-2.5 items-center" onSubmit={handleSubmit}>
-          {/* TODO: userinfo profileImage로 변경 */}
-          <Avatar src="/svg/ic-user.svg" className="w-[32px] h-[32px]" />
+          <Avatar src={profileImage} className="w-[32px] h-[32px]" />
           {/* TODO: 공통 컴포넌트로 변경 */}
-          <div className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3 w-full">
+          <div className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3 flex-1">
             <input
               id="send"
               name="send"
