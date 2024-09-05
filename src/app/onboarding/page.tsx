@@ -87,7 +87,11 @@ export default function OnBoardingPage() {
           <Button variant="outline" size="sm" onClick={handlePrevStep}>
             <span className="text-gray-200 text-bold-16">이전</span>
           </Button>
-          <Button disabled={!isFilled} onClick={step === "period" ? handleSubmit : handleNextStep}>
+          <Button
+            disabled={!isFilled}
+            onClick={step === "period" ? handleSubmit : handleNextStep}
+            className="transition-all duration-200 ease-in-out"
+          >
             <span className="text-white text-bold-16">
               {step === "period"
                 ? onBoardingForm.period

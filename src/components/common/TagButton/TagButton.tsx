@@ -7,7 +7,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/utils/className";
 
 const tagButtonVariants = cva(
-  "rounded-lg inline-flex justify-center items-center gap-[8px] whitespace-nowrap h-[40px] px-[12px] py-[10px] border border-[#d9d9d9]",
+  "rounded-lg inline-flex justify-center items-center gap-[8px] whitespace-nowrap h-[40px] px-[12px] py-[10px] border border-[#d9d9d9] transition-all duration-200 ease-in-out",
   {
     variants: {
       variant: {

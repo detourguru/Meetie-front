@@ -13,10 +13,10 @@ const FirstStep = ({ clicked: clickedPosition, handleClick }: OnboardingStepProp
             key={`positions${index}`}
             value={position}
             onClick={handleClick}
-            className={`w-[109px] h-[120px] rounded-lg flex flex-col items-center justify-center gap-[20px] ${
+            className={`w-[109px] h-[120px] rounded-lg flex flex-col items-center justify-center gap-4 border transition-colors duration-200 ease-in-out ${
               clickedPosition === position
-                ? "bg-primary-200 text-primary-500 border border-primary-500 text-medium-16"
-                : "bg-gray-50 text-regular-16"
+                ? "bg-primary-200 text-primary-500 border-primary-500 text-medium-16"
+                : "bg-gray-50 border-gray-50 text-regular-16"
             }`}
           >
             <Image
