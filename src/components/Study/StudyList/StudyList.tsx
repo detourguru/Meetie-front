@@ -7,6 +7,8 @@ import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 
+import { createClient } from "@/utils/supabase/client";
+
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
 

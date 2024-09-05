@@ -15,9 +15,10 @@ import type { StudyListType } from "@/types/study";
 
 interface StudyCardProps {
   studyData: StudyListType;
+  userId: string;
 }
 
-const StudyCard = ({ studyData }: StudyCardProps) => {
+const StudyCard = ({ studyData, userId }: StudyCardProps) => {
   const { mutate: patchStudyMutation } = usePatchStudyMutation();
 
   const newStartDate = studyData.startDate ?? startOfToday();
@@ -63,7 +64,7 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
         <div className="flex justify-between mb-3">
           <h2 className="text-bold-14 text-gray-500">{studyData.title}</h2>
-          <Bookmark studyId={studyData.id} isMarked={isMarked} />
+          <Bookmark studyId={studyData.id} isMarked={isMarked} userId={userId} />
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6">
