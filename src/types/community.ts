@@ -46,7 +46,9 @@ export type UpdateFilterSelectedTypeHandlerType = <Key extends keyof FilterSelec
 ) => void;
 
 export interface CommunityCommentType {
+  id: number;
   user_id: string;
+  name: string;
   profileImage: string;
   uploadDate: string;
   contents: string;
@@ -54,3 +56,7 @@ export interface CommunityCommentType {
 }
 
 export interface CreateCommentFormType extends Pick<CommunityCommentType, "contents"> {}
+
+export interface GetCommentsResponseType extends CommonResponseType {
+  data: CommunityCommentType[];
+}

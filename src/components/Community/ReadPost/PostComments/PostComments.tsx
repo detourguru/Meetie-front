@@ -1,15 +1,20 @@
 "use client";
 
 import Image from "next/image";
+import { useParams } from "next/navigation";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import CommentCard from "@/components/Community/ReadPost/CommentCard/CommentCard";
 import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton";
 
+import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
 import { useCreateCommentPost } from "@/hooks/community/comments/useCreateCommentPost";
 
 const PostComments = () => {
-  const { inputRef, handleSubmit } = useCreateCommentPost();
+  const { id } = useParams();
+
+  const { data: commentsData } = useCommentsQuery(Number(id));
+  const { inputRef, handleSubmit } = useCreateCommentPost(Number(id));
 
   return (
     <>
@@ -28,9 +33,9 @@ const PostComments = () => {
           <EmojiButton />
         </div>
 
-        <CommentCard />
-        <CommentCard />
-        <CommentCard />
+        {commentsData.data.map((comment) => (
+          <CommentCard key={`comment_${comment.id}`} comment={comment} />
+        ))}
       </div>
 
       <div className="px-4 py-5 fixed bottom-0 bg-white z-20 w-[375px]">

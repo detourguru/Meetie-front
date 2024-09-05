@@ -1,12 +1,9 @@
-import { useParams } from "next/navigation";
-
 import { useRef } from "react";
 
 import { useCommentMutation } from "@/hooks/api/community-comments/useCommentMutation";
 
-export const useCreateCommentPost = () => {
-  const { id } = useParams();
-  const { mutate: postCommentMutation } = useCommentMutation(Number(id));
+export const useCreateCommentPost = (id: number) => {
+  const { mutate: postCommentMutation } = useCommentMutation(id);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
