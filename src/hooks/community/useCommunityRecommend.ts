@@ -10,8 +10,6 @@ export const useCommunityRecommend = () => {
   const queryClient = useQueryClient();
   const { data: communityListData } = useRandomCommunityListQuery();
 
-  console.log(communityListData);
-
   const [scrollIndex, setScrollIndex] = useState(0);
 
   const handleScroll = (e: React.UIEvent<HTMLUListElement>) => {
