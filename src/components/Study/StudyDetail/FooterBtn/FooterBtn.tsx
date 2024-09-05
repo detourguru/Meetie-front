@@ -17,9 +17,17 @@ interface FooterBtnProps {
   userId?: string;
   isRequestPage?: boolean;
   isJoin?: boolean;
+  isRequestEnd?: boolean;
 }
 
-const FooterBtn = ({ isOwner, userId, data, isRequestPage, isJoin }: FooterBtnProps) => {
+const FooterBtn = ({
+  isOwner,
+  userId,
+  data,
+  isRequestPage,
+  isJoin,
+  isRequestEnd,
+}: FooterBtnProps) => {
   const { mutate: patchStudyMutation } = usePatchStudyMutation(data.id);
   const { mutate: patchStudyAllMutation } = usePatchStudyRequestAllMutation(data.id);
 
@@ -58,7 +66,11 @@ const FooterBtn = ({ isOwner, userId, data, isRequestPage, isJoin }: FooterBtnPr
         </Button>
       ) : isOwner ? (
         <>
-          {emptyRequestList ? (
+          {isRequestEnd ? (
+            <Button size="md">
+              <p className="text-bold-16 text-white">스터디 생성하기</p>
+            </Button>
+          ) : emptyRequestList ? (
             <Button variant="disabled" size="md">
               <p className="text-bold-16 text-white">아직 신청 인원이 없습니다</p>
             </Button>
