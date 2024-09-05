@@ -50,6 +50,11 @@ export const useLoginForm = () => {
     });
 
     if (data && !error) {
+      if (isCheckedSave) {
+        localStorage.setItem("savedEmail", loginForm.email);
+      } else {
+        localStorage.removeItem("savedEmail");
+      }
       router.push(PATH.WALKTHROUGH);
     }
   };
