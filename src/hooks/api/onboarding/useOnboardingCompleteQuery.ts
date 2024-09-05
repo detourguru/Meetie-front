@@ -18,7 +18,7 @@ interface GetOnboardingCompleteResponseType {
 }
 
 export const useOnboardingCompleteQuery = () => {
-  const { data: onboardingCompleteData, isLoading } = useSuspenseQuery<
+  const { data: onboardingCompleteData } = useSuspenseQuery<
     GetOnboardingCompleteResponseType,
     AxiosError
   >({
@@ -26,5 +26,5 @@ export const useOnboardingCompleteQuery = () => {
     queryFn: () => getOnboarding(),
   });
 
-  return { onboardingCompleteData, isLoading };
+  return { onboardingCompleteData };
 };
