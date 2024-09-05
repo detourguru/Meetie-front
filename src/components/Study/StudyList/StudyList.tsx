@@ -11,17 +11,27 @@ import { createClient } from "@/utils/supabase/client";
 
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
+  const [userId, setUserId] = useState("");
 
   const queryString = { isRecruit: checked, order: "viewCount" };
   const { data, refetch } = useStudyListQuery(queryString);
+
+  const supabase = createClient();
 
   const handleChecked = () => {
     setChecked((checked) => !checked);
   };
 
   useEffect(() => {
+    const handleGetUserInfo = () => {
+      supabase.auth.getUser().then((userInfo) => {
+        setUserId(userInfo.data.user ? userInfo.data.user.id : "");
+      });
+    };
+
+    handleGetUserInfo();
     refetch();
-  }, [checked]);
+  }, [checked, userId]);
 
   return (
     <article className="mx-4 pb-[80px]">
@@ -35,7 +45,9 @@ const StudyList = () => {
       </div>
       {/* TODO: data 없을때 보여줄 UI 필요 */}
       {data.data &&
-        data.data.map((studyData) => <StudyCard studyData={studyData} key={studyData.id} />)}
+        data.data.map((studyData) => (
+          <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
+        ))}
     </article>
   );
 };

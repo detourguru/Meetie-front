@@ -19,7 +19,7 @@ interface StudyCardProps {
 }
 
 const StudyCard = ({ studyData, userId }: StudyCardProps) => {
-  const { mutate: patchStudyMutation } = usePatchStudyMutation();
+  const { mutate: patchStudyMutation } = usePatchStudyMutation(studyData.id);
 
   const newStartDate = studyData.startDate ?? startOfToday();
   const newEndDate = studyData.endDate ?? addDays(newStartDate, 7); // FIXME: null일 때 임의의 7일 added

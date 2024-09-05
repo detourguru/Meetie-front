@@ -8,7 +8,7 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const asc = Boolean(searchParams.get("asc")) ?? false;
 
-    const query = supabase.from("study").select(`*, bookmarks(isMarked)`);
+    const query = supabase.from("study").select();
 
     if (searchParams.size > 0) {
       const sortFields = ["order", "asc"];
@@ -24,7 +24,7 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const { data } = await query.select();
+    const { data } = await query.select(`*, bookmarks(isMarked)`);
 
     return NextResponse.json({ message: "ok", status: 200, data });
   } catch (error) {
