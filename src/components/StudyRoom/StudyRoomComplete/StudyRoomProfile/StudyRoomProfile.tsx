@@ -1,6 +1,14 @@
 import Image from "next/image";
 
-const StudyRoomProfile = () => {
+import { generateDday } from "@/utils/date";
+
+import type { StudyRoomRequestType } from "@/types/studyRoom";
+
+interface StudyRoomProfileProps {
+  studyRoomData: StudyRoomRequestType;
+}
+
+const StudyRoomProfile = ({ studyRoomData }: StudyRoomProfileProps) => {
   return (
     <div className="relative w-[150px] mt-[77px]">
       <Image
@@ -19,9 +27,9 @@ const StudyRoomProfile = () => {
             <div className="absolute w-[80px] h-[80px] bg-[#0017E2] mix-blend-hue z-10" />
             <Image src="/svg/ic-logo.svg" alt="logo" width={76} height={76} />
           </div>
-          {/* <p className="text-semibold-14 mt-[6.5px]">{userName}님</p>
-          <p className="text-semibold-10">{position}</p>
-          <p className="text-regular-12 mt-[19px]">{styles}</p> */}
+          <p className="text-semibold-14 mt-[6.5px]">{studyRoomData.title}</p>
+          <p className="text-semibold-10">멤버 {studyRoomData.memberList.length}명</p>
+          <p className="text-regular-12 mt-[19px]">{generateDday(studyRoomData.endDate)}</p>
         </div>
       </div>
 

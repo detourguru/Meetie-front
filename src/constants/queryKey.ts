@@ -2,6 +2,7 @@ export const QUERY_KEYS = {
   SIGNUP: "signup",
 
   STUDY_LIST: "studyList",
+  STUDY_ROOM: "studyRoom",
   STUDY: "study",
 
   USER_INFO: "userInfo",

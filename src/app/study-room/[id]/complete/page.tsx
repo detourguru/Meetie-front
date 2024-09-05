@@ -1,9 +1,19 @@
+import { Suspense } from "react";
+
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
+
 import StudyRoomComplete from "@/components/StudyRoom/StudyRoomComplete/StudyRoomComplete";
 
-export default function StudyRoomCompletePage() {
+import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
+
+export default function StudyRoomCompletePage({ params }: { params: { id: string } }) {
+  const serverFetchOptions = [studyRoomQueryOptions(params.id)];
+
   return (
-    <main className="flex flex-col h-screen">
-      <StudyRoomComplete />
-    </main>
+    <Suspense>
+      <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+        <StudyRoomComplete />
+      </ServerFetchBoundary>
+    </Suspense>
   );
 }
