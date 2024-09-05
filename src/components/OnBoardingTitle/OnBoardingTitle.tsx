@@ -1,13 +1,7 @@
-interface TitleDataType {
-  TITLE: {
-    FIRST: string;
-    SECOND: string;
-  };
-  SUBTEXT: string[];
-}
+import type { OnboardingTitleDataType } from "@/types/onboarding";
 
 interface OnBoardingTitleProps {
-  textData: TitleDataType[];
+  textData: OnboardingTitleDataType[];
   index: number;
   subTextColor?: "text-black" | "text-gray-200";
 }
@@ -20,10 +14,13 @@ const OnBoardingTitle = ({
   return (
     <div className="w-full pt-[54px]">
       <div className="mb-[20px]">
-        <h1 className="text-semibold-24">{textData[index].TITLE.FIRST}</h1>
-        <h1 className="text-semibold-24">{textData[index].TITLE.SECOND}</h1>
+        {textData[index].title.map((text, index) => (
+          <h1 key={`titleText${index}`} className="text-semibold-24">
+            {text}
+          </h1>
+        ))}
       </div>
-      {textData[index].SUBTEXT.map((text, index) => (
+      {textData[index].sub.map((text, index) => (
         <p key={`subText${index}`} className={`text-regular-14 ${subTextColor}`}>
           {text}
         </p>
