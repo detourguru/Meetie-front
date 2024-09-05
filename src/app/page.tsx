@@ -2,13 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
-import LoginBottom from "@/components/Login/LoginBottom/LoginBottom";
 
 import { PATH } from "@/constants/path";
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen">
+    <Link href={PATH.LOGIN}>
       <main className="flex flex-col h-full">
         <article className="flex flex-col h-full items-center pt-[104px]">
           <div className="flex flex-col items-center gap-2 mb-[60px]">
@@ -52,18 +51,8 @@ export default function Home() {
               className="absolute bottom-0 right-0 blur-[1.5px]"
             />
           </div>
-
-          <Link href={PATH.LOGIN}>
-            <div className="flex justify-center items-center gap-[23px]">
-              <Image src="/svg/ic-login-naver.svg" width={47} height={46} alt="naver_login" />
-              <Image src="/svg/ic-login-kakao.svg" width={47} height={46} alt="kakao_login" />
-              <Image src="/svg/ic-login-google.svg" width={47} height={46} alt="google_login" />
-            </div>
-          </Link>
         </article>
       </main>
-
-      <LoginBottom />
-    </div>
+    </Link>
   );
 }
