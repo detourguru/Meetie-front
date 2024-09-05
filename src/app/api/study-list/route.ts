@@ -17,7 +17,9 @@ export async function GET(request: NextRequest) {
           // default: createdAt
           query.order(searchParams.get("order") ?? "createdAt", { ascending: asc });
         } else {
-          if (!(value === "false" && key === "iRecruit")) query.eq(key, value);
+          if (!(value === "false" && key === "isRecruit")) {
+            query.eq(key, value);
+          }
         }
       });
     }
