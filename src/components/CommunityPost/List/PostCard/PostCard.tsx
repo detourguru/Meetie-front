@@ -30,7 +30,7 @@ const PostCard = ({ post, className, ...props }: PostCardProps) => {
 
       <h2 className="text-bold-16 text-[#434343]">{post.title}</h2>
 
-      <div className="w-full h-[120px] relative rounded-lg border border-[#DCD8EF]">
+      <div className="w-full h-[120px] relative rounded-lg border border-[#DCD8EF] overflow-hidden">
         {mainImage && (
           <Image
             src={mainImage}
