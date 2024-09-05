@@ -7,18 +7,16 @@ import Avatar from "@/components/common/Avatar/Avatar";
 import CommentCard from "@/components/Community/ReadPost/CommentCard/CommentCard";
 import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton";
 
-import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
-import { useCreateCommentPost } from "@/hooks/community/comments/useCreateCommentPost";
+import { usePostComments } from "@/hooks/community/comments/useCreateCommentPost";
 
 const PostComments = () => {
   const { id } = useParams();
 
-  const { data: commentsData } = useCommentsQuery(Number(id));
-  const { inputRef, handleSubmit } = useCreateCommentPost(Number(id));
+  const { commentsData, inputRef, handleSubmit, handleDelete } = usePostComments(Number(id));
   const {
     userData: {
-      data: { profileImage },
+      data: { profileImage, user_id },
     },
   } = useUserInformationQuery();
 
@@ -32,7 +30,7 @@ const PostComments = () => {
             </div>
             <div className="h-1 w-1 bg-[#9C9C9C] rounded-full" />
             <div>
-              댓글 <span className="text-primary-500">32</span>
+              댓글 <span className="text-primary-500">{commentsData.data.length}</span>
             </div>
           </div>
           {/* TODO: 반응 리스트 온/오프 구현 */}
@@ -40,7 +38,12 @@ const PostComments = () => {
         </div>
 
         {commentsData.data.map((comment) => (
-          <CommentCard key={`comment_${comment.id}`} comment={comment} />
+          <CommentCard
+            key={`comment_${comment.id}`}
+            comment={comment}
+            isOwner={user_id === comment.user_id}
+            handleDelete={() => handleDelete(comment.id)}
+          />
         ))}
       </div>
 
