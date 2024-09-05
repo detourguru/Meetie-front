@@ -25,7 +25,7 @@ const StudyRoomProfile = ({ studyRoomData }: StudyRoomProfileProps) => {
         <div className="absolute top-0 flex flex-col items-center justify-center pt-6 whitespace-nowrap">
           <div className="relative w-[80px] h-[80px] flex justify-center bg-gradient-to-tr from-[#FAFAFF]/60 to-[#FAFAFF]/45">
             <div className="absolute w-[80px] h-[80px] bg-[#0017E2] mix-blend-hue z-10" />
-            <Image src="/svg/ic-logo.svg" alt="logo" width={76} height={76} />
+            <Image src="/svg/ic-logo.svg" alt="logo" width={76} height={80} />
           </div>
           <p className="text-semibold-14 mt-[6.5px]">{studyRoomData.title}</p>
           <p className="text-semibold-10">멤버 {studyRoomData.memberList.length}명</p>

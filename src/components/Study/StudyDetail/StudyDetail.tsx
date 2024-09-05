@@ -23,9 +23,6 @@ const StudyDetail = () => {
   const { userData } = useUserInformationQuery();
   const { userData: ownerUserData } = useUserInformationQuery(data.data.user_id);
 
-  console.log(data.data.recruitMemberCount);
-  console.log(data.data.joinMemberList.length);
-
   const isOwner = userData.data.user_id === ownerUserData.data.user_id;
   const isJoin = data.data.joinMemberList.some((userId) => userId === userData.data.user_id);
   const isRequestEnd = data.data.recruitMemberCount === data.data.joinMemberList.length;

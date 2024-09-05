@@ -6,6 +6,8 @@ import { useParams } from "next/navigation";
 import Button from "@/components/common/Button/Button";
 import StudyRoomProfile from "@/components/StudyRoom/StudyRoomComplete/StudyRoomProfile/StudyRoomProfile";
 
+import { PATH } from "@/constants/path";
+
 import { useStudyRoomQuery } from "@/hooks/api/study-room/useStudyRoomQuery";
 
 const StudyRoomComplete = () => {
@@ -27,7 +29,7 @@ const StudyRoomComplete = () => {
 
         <StudyRoomProfile studyRoomData={data.data} />
 
-        <Link href="#" className="mt-auto mb-[42px]">
+        <Link href={PATH.STUDY_ROOM(data.data.id)} className="mt-auto mb-[42px]">
           <Button size="xl">
             <span className="text-white text-semibold-16">스터디룸 보러가기</span>
           </Button>

@@ -8,6 +8,10 @@ export interface StudyRoomRequestType {
   studyId: string;
 }
 
+export interface StudyRoomType extends StudyRoomRequestType {
+  id: string;
+}
+
 export interface GetStudyRoomResponseType extends CommonResponseType {
-  data: StudyRoomRequestType;
+  data: StudyRoomType;
 }
