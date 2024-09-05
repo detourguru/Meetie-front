@@ -2,7 +2,7 @@ import type { CommonResponseType } from "@/types/common";
 
 export interface CommunityPostType {
   id: number;
-  userId: number;
+  userId: string;
   userPosition: string;
   postDate: string;
   position: string[];
