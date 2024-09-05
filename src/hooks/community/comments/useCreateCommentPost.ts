@@ -1,14 +1,9 @@
 import { useRef } from "react";
 
 import { useCommentMutation } from "@/hooks/api/community-comments/useCommentMutation";
-import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
-import { useDeleteCommentMutation } from "@/hooks/api/community-comments/useDeleteCommentMutaion";
 
-export const usePostComments = (id: number) => {
-  const { data: commentsData } = useCommentsQuery(Number(id));
-
+export const useCreateCommentPost = (id: number) => {
   const { mutate: postCommentMutation } = useCommentMutation(id);
-  const { mutate: deleteCommentMutation } = useDeleteCommentMutation(id);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -21,14 +16,8 @@ export const usePostComments = (id: number) => {
     }
   };
 
-  const handleDelete = (id: number) => {
-    deleteCommentMutation(id);
-  };
-
   return {
-    commentsData,
     inputRef,
     handleSubmit,
-    handleDelete,
   };
 };

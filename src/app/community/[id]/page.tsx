@@ -1,15 +1,19 @@
-import Header from "@/components/common/Header/Header";
-import PostBody from "@/components/Community/ReadPost/PostBody/PostBody";
+import { Suspense } from "react";
 
-export default function CommunityPostPage() {
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
+
+import PostDetail from "@/components/Community/ReadPost/PostDetail/PostDetail";
+
+import { communityQueryOptions } from "@/hooks/api/community/useCommunityQuery";
+
+export default function CommunityPostPage({ params }: { params: { id: number } }) {
+  const serverFetchOptions = [communityQueryOptions(params.id)];
+
   return (
-    <>
-      <Header>
-        <Header.LeftButton />
-        <Header.RightButton icon="/svg/ic-header-more.svg" />
-      </Header>
-
-      <PostBody />
-    </>
+    <Suspense>
+      <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+        <PostDetail />
+      </ServerFetchBoundary>
+    </Suspense>
   );
 }

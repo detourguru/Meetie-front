@@ -33,6 +33,7 @@ const CommentCard = ({ comment, isOwner, handleDelete }: CommentCardProps) => {
             )}
           </div>
           <p className="text-regular-14 text-[#1F1F1F] pb-5">{contents}</p>
+          {/* TODO: 반응 리스트 온/오프 구현 */}
           <EmojiButton size="sm" />
         </div>
       </div>
