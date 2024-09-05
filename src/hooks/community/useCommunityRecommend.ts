@@ -4,7 +4,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
-import { useRandomCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
+import { useRandomCommunityListQuery } from "@/hooks/api/community/useRecommendCommunityListQuery";
 
 export const useCommunityRecommend = () => {
   const queryClient = useQueryClient();

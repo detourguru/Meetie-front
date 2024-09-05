@@ -7,10 +7,8 @@ import Header from "@/components/common/Header/Header";
 import CommunityBody from "@/components/CommunityPost/List/CommunityBody/CommunityBody";
 import CreatePostButton from "@/components/CommunityPost/List/CreatePostButton/CreatePostButton";
 
-import {
-  communityListQueryOptions,
-  RecommendedCommunityListQueryOptions,
-} from "@/hooks/api/community/useCommunityListQuery";
+import { communityListQueryOptions } from "@/hooks/api/community/useCommunityListQuery";
+import { RecommendedCommunityListQueryOptions } from "@/hooks/api/community/useRecommendCommunityListQuery";
 
 export default function CommunityPostListPage() {
   const serverFetchOptions = [communityListQueryOptions(), RecommendedCommunityListQueryOptions()];
