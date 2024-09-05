@@ -8,6 +8,7 @@ import { PATH } from "@/constants/path";
 
 import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
 import { usePatchStudyRequestAllMutation } from "@/hooks/api/study-request/usePatchStudyRequestAllMutation";
+import { useCreateStudyRoom } from "@/hooks/study-room/useCreateStudyRoom";
 
 import type { StudyListType } from "@/types/study";
 
@@ -30,6 +31,16 @@ const FooterBtn = ({
 }: FooterBtnProps) => {
   const { mutate: patchStudyMutation } = usePatchStudyMutation(data.id);
   const { mutate: patchStudyAllMutation } = usePatchStudyRequestAllMutation(data.id);
+
+  const { handleCreateStudyRoom } = useCreateStudyRoom({
+    studyRoomRequest: {
+      memberList: data.joinMemberList,
+      title: data.title,
+      endDate: data.endDate,
+      owner_id: data.user_id,
+      studyId: data.id,
+    },
+  });
 
   const isRequest = data.requestMemberList.some((memberId) => memberId === userId);
 
@@ -67,7 +78,7 @@ const FooterBtn = ({
       ) : isOwner ? (
         <>
           {isRequestEnd ? (
-            <Button size="md">
+            <Button size="md" onClick={handleCreateStudyRoom}>
               <p className="text-bold-16 text-white">스터디 생성하기</p>
             </Button>
           ) : emptyRequestList ? (

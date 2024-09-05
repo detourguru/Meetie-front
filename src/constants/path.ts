@@ -23,6 +23,8 @@ export const PATH = {
 
   STUDY_ROOM_LIST: "/study-room/list",
   STUDY_EXPLORER: "/study-explorer",
+  STUDY_ROOM_COMPLETE: (studyId: string) => `/study-room/${studyId}/complete`,
+
   STUDY_CREATE: "/study/create",
   STUDY: (studyId: string) => `/study/${studyId}`,
   STUDY_EDIT: (stuydId: string) => `/study/${stuydId}/edit`,
