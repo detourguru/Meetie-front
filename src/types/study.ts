@@ -37,7 +37,7 @@ export interface StudyListType extends CreateStudyFormRequestType {
   requestMemberList: string[];
   user_id: string;
   viewCount: number;
-  bookmarks: BookmarksType;
+  bookmarks: BookmarksType[];
 }
 
 export interface GetStudyResponseType extends CommonResponseType {
