@@ -8,15 +8,26 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetStudyListResponseType } from "@/types/study";
 
-export const studyListQueryOptions = (): UseSuspenseQueryOptions<GetStudyListResponseType> => ({
+export interface StudyListParam {
+  isRecruit?: boolean;
+  order?: string;
+  asc?: boolean;
+}
+export const studyListQueryOptions = (
+  param?: StudyListParam,
+): UseSuspenseQueryOptions<GetStudyListResponseType> => ({
   queryKey: [QUERY_KEYS.STUDY_LIST],
   queryFn: async () => {
-    const studyList = await GET<GetStudyListResponseType>(END_POINTS.STUDY_LIST, createInit());
+    const queryString = new URLSearchParams(Object.entries(param ?? {}));
+    const studyList = await GET<GetStudyListResponseType>(
+      END_POINTS.STUDY_LIST + `?${queryString}`,
+      createInit(),
+    );
 
     return studyList;
   },
 });
 
-export function useStudyListQuery() {
-  return useSuspenseQuery(studyListQueryOptions());
+export function useStudyListQuery(param?: StudyListParam) {
+  return useSuspenseQuery(studyListQueryOptions(param));
 }

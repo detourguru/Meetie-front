@@ -2,25 +2,24 @@
 
 import { useEffect, useState } from "react";
 
-import { type StudyListType } from "@/types/study";
-
 import CheckBox from "@/components/Study/CheckBox";
-import PageConter from "@/components/Study/PageCounter";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
-  const [filtered, setFiltered] = useState<StudyListType[]>();
 
-  const { data } = useStudyListQuery();
-
-  useEffect(() => {}, [checked]);
+  const queryString = { isRecruit: checked, order: "viewCount" };
+  const { data, refetch, isLoading } = useStudyListQuery(queryString);
 
   const handleChecked = () => {
     setChecked(!checked);
   };
+
+  useEffect(() => {
+    refetch();
+  }, [checked, isLoading]);
 
   return (
     <article className="mx-4 pb-[80px]">
@@ -31,10 +30,9 @@ const StudyList = () => {
       </h1>
       <div className="flex justify-between mb-[27px]">
         <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
-        <PageConter total={filtered !== undefined ? filtered.length : 0} />
       </div>
-      {filtered &&
-        filtered.map((studyData) => <StudyCard studyData={studyData} key={studyData.id} />)}
+      {data.data &&
+        data.data.map((studyData) => <StudyCard studyData={studyData} key={studyData.id} />)}
     </article>
   );
 };
