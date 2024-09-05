@@ -9,11 +9,11 @@ import CreatePostButton from "@/components/CommunityPost/List/CreatePostButton/C
 
 import {
   communityListQueryOptions,
-  randomCommunityListQueryOptions,
+  RecommendedCommunityListQueryOptions,
 } from "@/hooks/api/community/useCommunityListQuery";
 
 export default function CommunityPostListPage() {
-  const serverFetchOptions = [communityListQueryOptions(), randomCommunityListQueryOptions()];
+  const serverFetchOptions = [communityListQueryOptions(), RecommendedCommunityListQueryOptions()];
 
   return (
     <>

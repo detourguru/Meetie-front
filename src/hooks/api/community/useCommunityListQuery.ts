@@ -1,6 +1,6 @@
 import { type UseSuspenseQueryOptions, useSuspenseQuery } from "@tanstack/react-query";
 
-import { getCommunityList, getRecommendCommunityList } from "@/apis/community/getCommunityList";
+import { getCommunityList, getRecommendedCommunityList } from "@/apis/community/getCommunityList";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
@@ -13,10 +13,10 @@ export const communityListQueryOptions = (
   queryFn: async () => await getCommunityList(filterOption),
 });
 
-export const randomCommunityListQueryOptions =
+export const RecommendedCommunityListQueryOptions =
   (): UseSuspenseQueryOptions<GetCommunityListResponseType> => ({
     queryKey: [QUERY_KEYS.COMMUNITY_LIST_RECOMMEND],
-    queryFn: async () => await getRecommendCommunityList(),
+    queryFn: async () => await getRecommendedCommunityList(),
   });
 
 export const useCommunityListQuery = (filterOption: FilterSelectedType) => {
@@ -24,5 +24,5 @@ export const useCommunityListQuery = (filterOption: FilterSelectedType) => {
 };
 
 export const useRandomCommunityListQuery = () => {
-  return useSuspenseQuery(randomCommunityListQueryOptions());
+  return useSuspenseQuery(RecommendedCommunityListQueryOptions());
 };

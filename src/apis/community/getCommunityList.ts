@@ -16,7 +16,7 @@ export const getCommunityList = async (filterOption?: FilterSelectedType) => {
   return data;
 };
 
-export const getRecommendCommunityList = async () => {
+export const getRecommendedCommunityList = async () => {
   const data = await GET<GetCommunityListResponseType>(
     END_POINTS.COMMUNITY_LIST_RECOMMEND,
     createInit(),

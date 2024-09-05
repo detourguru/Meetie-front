@@ -16,7 +16,7 @@ export const END_POINTS = {
 
   COMMUNITY_LIST: (search: string, tags: string[], sort: string, date: string) =>
     `/api/community-list?search=${search}&tags=${tags.join(",")}&sort=${sort}&date=${date}`,
-  COMMUNITY_LIST_RECOMMEND: "/api/community-list/random",
+  COMMUNITY_LIST_RECOMMEND: "/api/community-list/recommend",
   COMMUNITY: (communityId: number) => `/api/community/${communityId}`,
   POST_COMMUNITY: "/api/community",
 };

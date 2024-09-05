@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { queryClient } from "@/components/providers/QueryProvider";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 import { useRandomCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
 
 export const useCommunityRecommend = () => {
+  const queryClient = useQueryClient();
   const { data: communityListData } = useRandomCommunityListQuery();
 
   const [scrollIndex, setScrollIndex] = useState(0);

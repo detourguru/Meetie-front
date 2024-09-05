@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { queryClient } from "@/components/providers/QueryProvider";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { INITIAL_FILTER_OPTION_DATA } from "@/constants/community";
 import { QUERY_KEYS } from "@/constants/queryKey";
@@ -18,6 +18,7 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
     initialData ?? INITIAL_FILTER_OPTION_DATA,
   );
 
+  const queryClient = useQueryClient();
   const { data: communityListData } = useCommunityListQuery(filterOption);
 
   useEffect(() => {
