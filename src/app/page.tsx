@@ -8,7 +8,7 @@ import { PATH } from "@/constants/path";
 export default function Home() {
   return (
     <Link href={PATH.LOGIN}>
-      <main className="flex flex-col h-full">
+      <main className="flex flex-col h-full bg-gradient-to-b from-primary-100">
         <article className="flex flex-col h-full items-center pt-[104px]">
           <div className="flex flex-col items-center gap-2 mb-[60px]">
             <p className="text-semibold-18">같은 목표로 공부중인 유저</p>

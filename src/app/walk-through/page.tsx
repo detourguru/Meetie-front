@@ -37,7 +37,7 @@ export default function WalkThroughPage() {
   };
 
   return (
-    <main className="flex flex-col h-screen">
+    <main className="flex flex-col h-screen bg-gradient-to-b from-primary-100">
       <article className="relative flex flex-col items-center w-full h-full px-4">
         <div className="absolute top-0 right-0 p-4">
           <button onClick={handleMoveOnboarding} className="text-gray-200 text-medium-14">
