@@ -1,8 +1,10 @@
 import Image from "next/image";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { usePatchBookmarkMutation } from "@/hooks/api/bookmarks/usePatchBookmarkMutation";
+
+import { createClient } from "@/utils/supabase/client";
 
 interface BookmarkProps {
   isMarked: boolean | null;
@@ -13,6 +15,15 @@ const Bookmark = ({ isMarked, studyId }: BookmarkProps) => {
   const [marked, setMarked] = useState(isMarked);
   const { mutate: patchBookmarkMutation } = usePatchBookmarkMutation();
 
+  const supabase = createClient();
+  let userId = "";
+
+  useEffect(() => {
+    supabase.auth.getUser().then((userInfo) => {
+      userId = userInfo.data.user ? userInfo.data.user.id : "";
+    });
+  }, [supabase.auth.getUser()]);
+
   const handleBookmark = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     const bookmark = !marked;
@@ -21,15 +32,12 @@ const Bookmark = ({ isMarked, studyId }: BookmarkProps) => {
   };
 
   const handleUpsertBookmark = async (bookmark: boolean | null) => {
-    // TODO: userinfo id 받아와서 로그인한 유저 자기 자신의 데이터만 가져오기
-    const user = { id: "2d1ab35d-6fd9-4fa8-b94d-f45433db4ab0" };
-
     patchBookmarkMutation({
       id: studyId,
       bookmarkForm: {
         isMarked: bookmark,
         study_id: studyId,
-        userinfo_userId: user ? user.id : "2d1ab35d-6fd9-4fa8-b94d-f45433db4ab0",
+        userinfo_userId: userId,
       },
     });
   };

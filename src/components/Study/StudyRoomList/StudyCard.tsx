@@ -83,7 +83,6 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
             <div>
               <Image src="/svg/ic-eye.svg" alt="icon" width={14} height={14} />
             </div>
-            {/* TODO: view 받도록 수정 */}
             <span className="ml-1 text-regular-12 text-gray-200">{studyData.viewCount}</span>
           </div>
         </div>
