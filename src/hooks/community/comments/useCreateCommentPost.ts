@@ -7,9 +7,12 @@ export const useCreateCommentPost = (id: number) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (event?: React.FormEvent<HTMLFormElement>) => {
+    event && event.preventDefault();
+
     if (inputRef.current) {
       postCommentMutation({ contents: inputRef.current.value });
+      inputRef.current.value = "";
     }
   };
 

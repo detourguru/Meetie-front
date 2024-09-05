@@ -39,7 +39,7 @@ const PostComments = () => {
       </div>
 
       <div className="px-4 py-5 fixed bottom-0 bg-white z-20 w-[375px]">
-        <div className="flex gap-2.5 items-center">
+        <form className="flex gap-2.5 items-center" onSubmit={handleSubmit}>
           {/* TODO: userinfo profileImage로 변경 */}
           <Avatar src="/svg/ic-user.svg" className="w-[32px] h-[32px]" />
           {/* TODO: 공통 컴포넌트로 변경 */}
@@ -56,10 +56,10 @@ const PostComments = () => {
               alt="send"
               width={24}
               height={24}
-              onClick={handleSubmit}
+              onClick={() => handleSubmit()}
             />
           </div>
-        </div>
+        </form>
       </div>
     </>
   );
