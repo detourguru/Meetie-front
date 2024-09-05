@@ -1,6 +1,6 @@
 import { format, differenceInCalendarDays } from "date-fns";
 
-import { WEEK_DAY } from "@/constants/common";
+import { NOON_LIST, WEEK_DAY } from "@/constants/common";
 
 export const convertDate = (date: Date | null, hasWeek?: boolean) => {
   if (!date) {
@@ -20,6 +20,14 @@ export const convertDateTime = (date: Date | null) => {
   }
 
   return format(date, "HH:mm");
+};
+
+export const convertSimpleDateTime = (date: Date | null) => {
+  if (!date) {
+    return;
+  }
+
+  return `${format(date, "M월 d일")} ${NOON_LIST[Math.floor(date.getHours() / 12)]} ${format(date, "h:mm")}`;
 };
 
 export const convertTime = (time: { noon: string; hour: string; minute: string }) => {
