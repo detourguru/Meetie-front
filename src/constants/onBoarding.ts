@@ -18,6 +18,8 @@ export const QUESTION_DATA = (name: string) => [
   },
 ];
 
+export const PROGRESS_WIDTH = ["w-1/4", "w-2/4", "w-3/4", "w-4/4"];
+
 export const STEPS_DATA = ["position", "purposes", "styles", "period"] as const;
 
 // position

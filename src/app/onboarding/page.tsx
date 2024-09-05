@@ -5,12 +5,14 @@ import { useRouter } from "next/navigation";
 import { Suspense } from "react";
 
 import Button from "@/components/common/Button/Button";
+import ProgressBar from "@/components/common/ProgressBar/ProgressBar";
 import FirstStep from "@/components/OnBoarding/FirstStep/FirstStep";
 import FourthStep from "@/components/OnBoarding/FourthStep/FourthStep";
 import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
 import ThirdStep from "@/components/OnBoarding/ThirdStep/ThirdStep";
 import TitleContainer from "@/components/OnBoarding/TitleContainer/TitleContainer";
 
+import { PROGRESS_WIDTH } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
 import { useOnboardingForm } from "@/hooks/onboarding/useOnboardingForm";
@@ -42,6 +44,7 @@ export default function OnBoardingPage() {
         </p>
         <button onClick={handleMoveComplete}>SKIP</button>
       </div>
+      <ProgressBar width={PROGRESS_WIDTH[currentStepIndex]} />
 
       <article className="flex flex-col px-4 h-max">
         <Suspense
