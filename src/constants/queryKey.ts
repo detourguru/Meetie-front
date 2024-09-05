@@ -13,4 +13,5 @@ export const QUERY_KEYS = {
   COMMUNITY: "community",
 
   BOOKMARKS: "bookmarks",
+  COMMUNITY_COMMENTS: "communityComments",
 };

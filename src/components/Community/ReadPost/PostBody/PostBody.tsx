@@ -21,7 +21,7 @@ const PostBody = () => {
     userData: {
       data: { name, profileImage },
     },
-  } = useUserInformationQuery(postData.data.userId);
+  } = useUserInformationQuery(postData.data.user_id);
 
   const { postDate, viewCount } = postData.data;
 
@@ -34,8 +34,7 @@ const PostBody = () => {
             <span className="text-bold-14 text-[#555555]">{name}</span>
             {/* TODO: 참여수 계산 */}
             <span className="text-[#82829B] text-regular-12">
-              작성일 {convertDate(new Date(postDate))} | {convertDateTime(new Date(postDate))} |
-              참여수 101
+              작성일 {convertDate(new Date(postDate))} | {convertDateTime(new Date(postDate))}
             </span>
           </div>
           <div className="flex gap-1 self-end">

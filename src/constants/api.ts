@@ -24,4 +24,5 @@ export const END_POINTS = {
   COMMUNITY_LIST_RECOMMEND: "/api/community-list/recommend",
   COMMUNITY: (communityId: number) => `/api/community/${communityId}`,
   POST_COMMUNITY: "/api/community",
+  COMMUNITY_COMMENTS: (communityId: number) => `/api/community/${communityId}/comments`,
 };

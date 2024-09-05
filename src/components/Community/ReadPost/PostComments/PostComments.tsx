@@ -1,10 +1,16 @@
+"use client";
+
 import Image from "next/image";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import CommentCard from "@/components/Community/ReadPost/CommentCard/CommentCard";
 import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton";
 
+import { useCreateCommentPost } from "@/hooks/community/comments/useCreateCommentPost";
+
 const PostComments = () => {
+  const { inputRef, handleSubmit } = useCreateCommentPost();
+
   return (
     <>
       <div className="mt-4 mb-24">
@@ -36,10 +42,17 @@ const PostComments = () => {
             <input
               id="send"
               name="send"
-              className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
+              ref={inputRef}
               placeholder="생각을 공유해주세요!"
+              className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
             />
-            <Image src="/svg/ic-calendar-send.svg" alt="send" width={24} height={24} />
+            <Image
+              src="/svg/ic-calendar-send.svg"
+              alt="send"
+              width={24}
+              height={24}
+              onClick={handleSubmit}
+            />
           </div>
         </div>
       </div>

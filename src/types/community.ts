@@ -2,7 +2,7 @@ import type { CommonResponseType } from "@/types/common";
 
 export interface CommunityPostType {
   id: number;
-  userId: string;
+  user_id: string;
   userPosition: string;
   postDate: string;
   position: string[];
@@ -44,3 +44,13 @@ export type UpdateFilterSelectedTypeHandlerType = <Key extends keyof FilterSelec
   key: Key,
   value: FilterSelectedType[Key],
 ) => void;
+
+export interface CommunityCommentType {
+  user_id: string;
+  profileImage: string;
+  uploadDate: string;
+  contents: string;
+  emojiList: string[];
+}
+
+export interface CreateCommentFormType extends Pick<CommunityCommentType, "contents"> {}
