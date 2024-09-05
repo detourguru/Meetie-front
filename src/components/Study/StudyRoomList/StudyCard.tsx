@@ -9,6 +9,8 @@ import Bookmark from "@/components/Study/Bookmark/Bookmark";
 
 import { PATH } from "@/constants/path";
 
+import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
+
 import type { StudyListType } from "@/types/study";
 
 interface StudyCardProps {
@@ -16,8 +18,12 @@ interface StudyCardProps {
 }
 
 const StudyCard = ({ studyData }: StudyCardProps) => {
+  const { mutate: patchStudyMutation } = usePatchStudyMutation();
+
   const newStartDate = studyData.startDate ?? startOfToday();
   const newEndDate = studyData.endDate ?? addDays(newStartDate, 7); // FIXME: null일 때 임의의 7일 added
+
+  const isMarked = studyData.bookmarks.length > 0 ? studyData.bookmarks[0].isMarked : false;
 
   const handleGetDateDiff = () => {
     const diff = differenceInCalendarDays(newStartDate, new Date());
@@ -31,9 +37,29 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
     }
   };
 
-  const isMarked = studyData.bookmarks.length > 0 ? studyData.bookmarks[0].isMarked : false;
+  //TODO: 전체 필드 아닌 일부 필드만 업데이트 가능하도록 수정
+  const handleUpdateViewCount = () => {
+    return patchStudyMutation({
+      createStudyForm: {
+        viewCount: studyData.viewCount + 1,
+        position: studyData.position,
+        title: studyData.title,
+        goal: studyData.goal,
+        introduce: studyData.introduce,
+        curriculum: studyData.curriculum,
+        startDate: studyData.startDate,
+        endDate: studyData.endDate,
+        week: studyData.week,
+        time: studyData.title,
+        recruitMemberCount: studyData.recruitMemberCount,
+        tagList: studyData.tagList,
+      },
+      studyId: studyData.id,
+    });
+  };
+
   return (
-    <Link href={PATH.STUDY(studyData.id)}>
+    <Link href={PATH.STUDY(studyData.id)} onClick={handleUpdateViewCount}>
       <div className="mb-4 max-w-full px-4 py-5 rounded-lg bg-white border-2 border-gray-50">
         <div className="flex justify-between mb-3">
           <h2 className="text-bold-14 text-gray-500">{studyData.title}</h2>
