@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { useQueryClient } from "@tanstack/react-query";
-
 import { INITIAL_FILTER_OPTION_DATA } from "@/constants/community";
-import { QUERY_KEYS } from "@/constants/queryKey";
 
 import { useCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
 
@@ -18,12 +15,11 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
     initialData ?? INITIAL_FILTER_OPTION_DATA,
   );
 
-  const queryClient = useQueryClient();
-  const { data: communityListData } = useCommunityListQuery(filterOption);
+  const { data: communityListData, refetch } = useCommunityListQuery(filterOption);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY_LIST] });
+      refetch();
     }, 500);
 
     return () => {
