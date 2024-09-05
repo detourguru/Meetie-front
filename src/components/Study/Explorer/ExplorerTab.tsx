@@ -7,7 +7,6 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import CheckBox from "@/components/Study/CheckBox";
 import FilterSheet from "@/components/Study/Explorer/FilterSheet";
 import MemberList from "@/components/Study/Member/MemberList";
-import PageConter from "@/components/Study/PageCounter";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
@@ -61,7 +60,6 @@ const ExplorerTab = () => {
           <div>
             <div className="flex justify-between mb-[27px]">
               <CheckBox>모집중만 보기</CheckBox>
-              <PageConter total={6} />
             </div>
             {/* <StudyCard /> */}
           </div>
@@ -72,7 +70,6 @@ const ExplorerTab = () => {
               <br />
               방금 지원했어요
             </h1>
-            <PageConter total={6} />
           </div>
           {/* <StudyCard /> */}
         </div>
@@ -107,9 +104,7 @@ const ExplorerTab = () => {
             </span>
           </div>
           <div className="mx-4 bg-[#F5F5FF]">
-            <div className="p-4 flex justify-end">
-              <PageConter total={4} />
-            </div>
+            <div className="p-4 flex justify-end"></div>
             <MemberList />
           </div>
         </div>
