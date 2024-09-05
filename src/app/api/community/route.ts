@@ -16,7 +16,6 @@ export async function POST(request: Request) {
       ...data,
       user_id: user?.user_id,
       userPosition: onboarding?.position ?? "",
-      postDate: new Date(),
     });
 
     if (!error) {
