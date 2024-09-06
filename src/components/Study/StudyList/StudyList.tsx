@@ -31,6 +31,7 @@ const StudyList = () => {
       <div className="flex justify-between mb-[27px]">
         <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
       </div>
+      {/* TODO: data 없을때 보여줄 UI 필요 */}
       {data.data &&
         data.data.map((studyData) => <StudyCard studyData={studyData} key={studyData.id} />)}
     </article>
