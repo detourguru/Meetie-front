@@ -1,18 +1,28 @@
+import type { CommonResponseType } from "@/types/common";
+
 export interface TaskConfirmRequestType {
-  taskId: string;
-  addItems: string[];
   contents: string;
-  postDate: Date;
+  addItems: string[];
 }
 
-export interface TaskConfirmFormType extends Omit<TaskConfirmRequestType, "taskId" | "postDate"> {}
-
-export type TaskConfirmUpdateHandlerType = <Key extends keyof TaskConfirmFormType>(
+export type TaskConfirmUpdateHandlerType = <Key extends keyof TaskConfirmRequestType>(
   key: Key,
-  value: TaskConfirmFormType[Key],
+  value: TaskConfirmRequestType[Key],
 ) => void;
 
 export interface TaskConfirmPostProps {
-  taskConfirmForm: TaskConfirmFormType;
+  taskConfirmForm: TaskConfirmRequestType;
   updateInputValue: TaskConfirmUpdateHandlerType;
+}
+
+export interface TaskConfirmType extends TaskConfirmRequestType {
+  id: string;
+  created_at: Date;
+  user_id: string;
+  // task_id: string;
+  // study_id: string;
+}
+
+export interface GetTaskConfirmResponseType extends CommonResponseType {
+  data: TaskConfirmType;
 }

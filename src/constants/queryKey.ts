@@ -15,4 +15,7 @@ export const QUERY_KEYS = {
 
   BOOKMARKS: "bookmarks",
   COMMUNITY_COMMENTS: "communityComments",
+
+  TASK_CONFIRM: "taskConfirm",
+  TASK_CONFIRM_SUCCESS: "taskConfirmSuccess",
 };

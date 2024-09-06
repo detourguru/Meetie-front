@@ -1,32 +1,50 @@
+import { useRouter } from "next/navigation";
+
 import { useCallback, useState } from "react";
 
-import type { TaskConfirmFormType, TaskConfirmUpdateHandlerType } from "@/types/taskConfirm";
+import { usePostTaskConfirmMutation } from "../api/task/usePostTaskConfirmMutation";
+
+import { PATH } from "@/constants/path";
+
+import type { TaskConfirmRequestType } from "@/types/taskConfirm";
 
 interface useTaskConfirmFormProps {
-  initialData?: TaskConfirmFormType;
+  initialData?: TaskConfirmRequestType;
 }
 
 export const useTaskConfirmForm = ({ initialData }: useTaskConfirmFormProps) => {
-  const [taskConfirmForm, setTaskConfirmForm] = useState<TaskConfirmFormType>(
+  const { mutate: postTaskConfirmMutation } = usePostTaskConfirmMutation();
+
+  const router = useRouter();
+
+  const [taskConfirmForm, setTaskConfirmForm] = useState(
     initialData ?? {
       addItems: [],
       contents: "",
     },
   );
 
-  const updateTaskConfirmForm: TaskConfirmUpdateHandlerType = useCallback((key, value) => {
-    setTaskConfirmForm((prevTaskForm) => {
-      const data = {
-        ...prevTaskForm,
-        [key]: value,
-      };
-      return data;
-    });
-  }, []);
+  const updateInputValue = useCallback(
+    <Key extends keyof TaskConfirmRequestType>(key: Key, value: TaskConfirmRequestType[Key]) => {
+      setTaskConfirmForm((prevTaskConfirmForm) => {
+        const data = {
+          ...prevTaskConfirmForm,
+          [key]: value,
+        };
 
-  const handleSubmit = () => {
-    console.log(taskConfirmForm);
+        return data;
+      });
+    },
+    [],
+  );
+
+  const handleSubmit = async () => {
+    postTaskConfirmMutation(taskConfirmForm, {
+      onSuccess: () => {
+        router.push(PATH.TASK_CONFIRM_SUCCESS);
+      },
+    });
   };
 
-  return { taskConfirmForm, updateTaskConfirmForm, handleSubmit };
+  return { taskConfirmForm, updateInputValue, handleSubmit };
 };

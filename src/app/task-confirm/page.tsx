@@ -1,20 +1,17 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
 import TaskConfirmArea from "@/components/StudyRoom/TaskConfirmArea/TaskConfirmArea";
-
-import { PATH } from "@/constants/path";
 
 import UserImg from "/public/img/img-user-profile.png";
 
 import { useTaskConfirmForm } from "@/hooks/task/useTaskConfirmForm";
 
 export default function Confirm() {
-  const { taskConfirmForm, updateTaskConfirmForm, handleSubmit } = useTaskConfirmForm({});
+  const { taskConfirmForm, updateInputValue, handleSubmit } = useTaskConfirmForm({});
 
   return (
     <>
@@ -63,28 +60,18 @@ export default function Confirm() {
             className="w-full h-[50px] text-[15px] placeholder:text-[#82829B] bg-[#F9F9F9] p-3 border border-[#E9E9E9] rounded-lg resize-none"
             placeholder="과제를 하며 나누고 싶은 생각을 적어보세요."
             maxLength={500}
-            onChange={(e) => updateTaskConfirmForm("contents", e.target.value)}
+            onChange={(e) => updateInputValue("contents", e.target.value)}
           />
           <p className="text-[13px] text-[#b7b7b7] text-right">
             {taskConfirmForm.contents.length}/500
           </p>
         </section>
-        <TaskConfirmArea
-          taskConfirmForm={taskConfirmForm}
-          updateInputValue={updateTaskConfirmForm}
-        />
+        <TaskConfirmArea taskConfirmForm={taskConfirmForm} updateInputValue={updateInputValue} />
         <section>
-          <Link href={PATH.TASK_CONFIRM_SUCCESS}>
-            <Button className="w-full mt-6 mb-3" onClick={handleSubmit}>
-              <span className="text-semibold-16 text-white">인증하기</span>
-            </Button>
-          </Link>
-          <p
-            className="text-regular-14 text-[#82829B] text-center underline"
-            onClick={handleSubmit}
-          >
-            임시 저장
-          </p>
+          <Button className="w-full mt-6 mb-3" onClick={handleSubmit}>
+            <span className="text-semibold-16 text-white">인증하기</span>
+          </Button>
+          <p className="text-regular-14 text-[#82829B] text-center underline">임시 저장</p>
         </section>
       </main>
     </>
