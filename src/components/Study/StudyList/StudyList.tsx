@@ -14,7 +14,7 @@ const StudyList = () => {
   const { data, refetch } = useStudyListQuery(queryString);
 
   const handleChecked = () => {
-    setChecked(!checked);
+    setChecked((checked) => !checked);
   };
 
   useEffect(() => {
