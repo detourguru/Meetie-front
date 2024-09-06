@@ -20,7 +20,7 @@ const StudyCard = ({ studyData }: StudyCardProps) => {
 
   const handleGetDateDiff = () => {
     const diff = differenceInCalendarDays(newStartDate, new Date());
-    // TODO: 문구 확인
+    // FIXME: 추후 공통 함수로 적용
     if (diff < 0) {
       return "모집 종료";
     } else if (diff === 0) {

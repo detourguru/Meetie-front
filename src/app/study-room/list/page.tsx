@@ -47,7 +47,8 @@ export default function Page() {
                   src="/img/img-thinking_face.png"
                   alt="thinking face"
                   width={70}
-                  height={81}
+                  height={70}
+                  priority
                 />
               </div>
             </div>
@@ -70,6 +71,7 @@ export default function Page() {
                 alt="waving hand"
                 width={55}
                 height={55}
+                priority
               />
             </div>
           </div>

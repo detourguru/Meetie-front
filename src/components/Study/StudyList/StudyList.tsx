@@ -11,7 +11,7 @@ const StudyList = () => {
   const [checked, setChecked] = useState(false);
 
   const queryString = { isRecruit: checked, order: "viewCount" };
-  const { data, refetch, isLoading } = useStudyListQuery(queryString);
+  const { data, refetch } = useStudyListQuery(queryString);
 
   const handleChecked = () => {
     setChecked(!checked);
@@ -19,7 +19,7 @@ const StudyList = () => {
 
   useEffect(() => {
     refetch();
-  }, [checked, isLoading]);
+  }, [checked]);
 
   return (
     <article className="mx-4 pb-[80px]">
