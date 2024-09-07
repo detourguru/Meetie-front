@@ -29,10 +29,8 @@ export const usePatchStudyRequestMutation = (studyId: string) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });
     },
     onError: (error) => {
-      if (error instanceof Error) {
-        // 에러 토스트 메시지 + boundary
-        console.error(error);
-      }
+      // 에러 토스트 메시지 + boundary
+      console.error(error);
     },
   });
 

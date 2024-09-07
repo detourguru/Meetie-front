@@ -6,9 +6,15 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   try {
     const supabase = createClient();
 
-    const requestMemberList: string[] = (
+    const { requestMemberList, recruitMemberCount, joinMemberList } = (
       await supabase.from("study").select().eq("id", params.id).single()
-    ).data.requestMemberList;
+    ).data;
+
+    if (recruitMemberCount < requestMemberList.length + joinMemberList.length) {
+      return new Response(JSON.stringify({ error: "모집 인원보다 많습니다" }), {
+        status: 400,
+      });
+    }
 
     const { error: patchError } = await supabase
       .from("study")
@@ -17,7 +23,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
 
     const { error: postError } = await supabase
       .from("study")
-      .update({ joinMemberList: requestMemberList })
+      .update({ joinMemberList: [...joinMemberList, ...requestMemberList] })
       .eq("id", params.id);
 
     if (!patchError && !postError) {
