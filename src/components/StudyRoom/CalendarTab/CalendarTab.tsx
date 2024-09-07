@@ -5,7 +5,7 @@ import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
 
 const CalendarTab = () => {
   return (
-    <>
+    <div className="pb-[120px]">
       <section className="bg-white">
         <section className="px-4 pt-[34px] pb-5">
           <p className="text-bold-18">👍 팀원과의 약속</p>
@@ -24,7 +24,7 @@ const CalendarTab = () => {
         <CalendarSchedule />
       </section>
       <CalendarDeadline />
-    </>
+    </div>
   );
 };
 

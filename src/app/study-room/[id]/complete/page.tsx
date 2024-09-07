@@ -4,10 +4,10 @@ import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import StudyRoomComplete from "@/components/StudyRoom/StudyRoomComplete/StudyRoomComplete";
 
-import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
+import { studyRoomCompleteQueryOptions } from "@/hooks/api/study-room/useStudyRoomCompleteQuery";
 
 export default function StudyRoomCompletePage({ params }: { params: { id: string } }) {
-  const serverFetchOptions = [studyRoomQueryOptions(params.id)];
+  const serverFetchOptions = [studyRoomCompleteQueryOptions(params.id)];
 
   return (
     <Suspense>

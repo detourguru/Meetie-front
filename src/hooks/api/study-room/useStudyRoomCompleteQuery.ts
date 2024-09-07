@@ -8,22 +8,22 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetStudyRoomResponseType } from "@/types/studyRoom";
 
-const getStudyRoom = async (studyRoomId: string) => {
+const getStudyRoomComplete = async (studyId: string) => {
   const data = await GET<GetStudyRoomResponseType>(
-    END_POINTS.STUDY_ROOM(studyRoomId),
+    END_POINTS.STUDY_ROOM_COMPLETE(studyId),
     createInit(),
   );
 
   return data;
 };
 
-export const studyRoomQueryOptions = (
-  studyRoomId: string,
+export const studyRoomCompleteQueryOptions = (
+  studyId: string,
 ): UseSuspenseQueryOptions<GetStudyRoomResponseType> => ({
-  queryKey: [QUERY_KEYS.STUDY_ROOM, Number(studyRoomId)],
-  queryFn: () => getStudyRoom(studyRoomId),
+  queryKey: [QUERY_KEYS.STUDY_ROOM, Number(studyId)],
+  queryFn: () => getStudyRoomComplete(studyId),
 });
 
-export function useStudyRoomQuery(studyId: string) {
-  return useSuspenseQuery(studyRoomQueryOptions(studyId));
+export function useStudyRoomCompleteQuery(studyId: string) {
+  return useSuspenseQuery(studyRoomCompleteQueryOptions(studyId));
 }

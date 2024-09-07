@@ -10,7 +10,8 @@ export const END_POINTS = {
   STUDY_REQUEST_ALL: (studyId: string) => `/api/study/${studyId}/request-all`,
 
   POST_STUDY_ROOM: `/api/study-room`,
-  STUDY_ROOM: (studyId: string) => `/api/study-room/${studyId}`,
+  STUDY_ROOM_COMPLETE: (studyId: string) => `/api/study-room/${studyId}/complete`,
+  STUDY_ROOM: (studyRoomId: string) => `/api/study-room/${studyRoomId}`,
 
   BOOKMARK: (id: string) => `/api/bookmarks/${id}`,
 

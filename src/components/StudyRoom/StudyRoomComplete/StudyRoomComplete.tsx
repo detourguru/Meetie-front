@@ -8,12 +8,12 @@ import StudyRoomProfile from "@/components/StudyRoom/StudyRoomComplete/StudyRoom
 
 import { PATH } from "@/constants/path";
 
-import { useStudyRoomQuery } from "@/hooks/api/study-room/useStudyRoomQuery";
+import { useStudyRoomCompleteQuery } from "@/hooks/api/study-room/useStudyRoomCompleteQuery";
 
 const StudyRoomComplete = () => {
   const params = useParams();
 
-  const { data } = useStudyRoomQuery(String(params.id));
+  const { data } = useStudyRoomCompleteQuery(String(params.id));
 
   return (
     <main className="flex flex-col h-screen">
