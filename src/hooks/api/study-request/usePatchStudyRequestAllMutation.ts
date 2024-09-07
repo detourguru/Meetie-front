@@ -21,7 +21,7 @@ export const usePatchStudyRequestAllMutation = (studyId: string) => {
   const queryClient = useQueryClient();
 
   const patchStudyRequestAllMutation = useMutation({
-    mutationFn: ({ studyId }: PatchStudyAllRequestProps) => patchStudyAllRequest({ studyId }),
+    mutationFn: patchStudyAllRequest,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });
     },

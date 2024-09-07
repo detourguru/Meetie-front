@@ -8,15 +8,17 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetStudyResponseType } from "@/types/study";
 
+const getStudy = async (studyId: string) => {
+  const data = await GET<GetStudyResponseType>(END_POINTS.STUDY(studyId), createInit());
+
+  return data;
+};
+
 export const studyQueryOptions = (
   studyId: string,
 ): UseSuspenseQueryOptions<GetStudyResponseType> => ({
   queryKey: [QUERY_KEYS.STUDY, Number(studyId)],
-  queryFn: async () => {
-    const study = await GET<GetStudyResponseType>(END_POINTS.STUDY(studyId), createInit());
-
-    return study;
-  },
+  queryFn: () => getStudy(studyId),
 });
 
 export function useStudyQuery(studyId: string) {

@@ -12,12 +12,15 @@ interface PatchStudyProps {
   studyId: string;
 }
 
+const patchStudy = async ({ createStudyForm, studyId }: PatchStudyProps) => {
+  return await PATCH(END_POINTS.STUDY(studyId), createInit(createStudyForm));
+};
+
 export const usePatchStudyMutation = (studyId: string) => {
   const queryClient = useQueryClient();
 
   const patchStudyMutation = useMutation({
-    mutationFn: ({ createStudyForm, studyId }: PatchStudyProps) =>
-      PATCH(END_POINTS.STUDY(studyId), createInit(createStudyForm)),
+    mutationFn: patchStudy,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY_LIST] });

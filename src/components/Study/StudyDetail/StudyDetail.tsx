@@ -14,7 +14,7 @@ import { PATH } from "@/constants/path";
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
-import { convertDate, convertDateTime } from "@/utils/date";
+import { convertDate, convertDateTime, generateDday } from "@/utils/date";
 
 const StudyDetail = () => {
   const params = useParams();
@@ -49,7 +49,7 @@ const StudyDetail = () => {
         <div className="flex items-center gap-[14px]">
           <h1 className="text-semibold-24">{data.data.title}</h1>
           <div className="border border-primary-400 rounded-[20px] py-[4px] px-[14px]">
-            <p className="text-medium-12 text-primary-400">D-13</p>
+            <p className="text-medium-12 text-primary-400">{generateDday(data.data.endDate)}</p>
           </div>
         </div>
 

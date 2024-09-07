@@ -8,15 +8,17 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetStudyRoomResponseType } from "@/types/studyRoom";
 
+const getStudyRoom = async (studyId: string) => {
+  const data = await GET<GetStudyRoomResponseType>(END_POINTS.STUDY_ROOM(studyId), createInit());
+
+  return data;
+};
+
 export const studyRoomQueryOptions = (
   studyId: string,
 ): UseSuspenseQueryOptions<GetStudyRoomResponseType> => ({
   queryKey: [QUERY_KEYS.STUDY_ROOM, Number(studyId)],
-  queryFn: async () => {
-    const study = await GET<GetStudyRoomResponseType>(END_POINTS.STUDY_ROOM(studyId), createInit());
-
-    return study;
-  },
+  queryFn: () => getStudyRoom(studyId),
 });
 
 export function useStudyRoomQuery(studyId: string) {
