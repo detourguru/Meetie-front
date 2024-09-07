@@ -8,10 +8,17 @@ export async function POST(request: Request) {
 
     const data = await request.json();
 
-    const { error } = await supabase.from("study_room").insert(data);
+    const { error: createStudyRoomError } = await supabase.from("study_room").insert(data);
 
-    if (!error) {
-      return NextResponse.json({ message: "ok", status: 200, data: data.studyId });
+    if (!createStudyRoomError) {
+      const { error: deleteStudyError } = await supabase
+        .from("study")
+        .delete()
+        .eq("id", data.studyId);
+
+      if (!deleteStudyError) {
+        return NextResponse.json({ message: "ok", status: 200, data: data.studyId });
+      }
     }
 
     return NextResponse.json({ message: "error", status: 400 });
