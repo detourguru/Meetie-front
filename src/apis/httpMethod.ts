@@ -11,8 +11,12 @@ export function createInit<Body extends object>(
   };
 }
 
-async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestInit): Promise<Data> {
+async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestInit, error?: string) {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${uri}`, init);
+
+  if (!response.ok) {
+    throw new Error(error);
+  }
 
   try {
     const data = await response.json();
@@ -27,14 +31,14 @@ export function GET<Data>(input: string, init?: RequestInit) {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "GET", ...init });
 }
 
-export function POST<Data>(input: string, init?: RequestInit): Promise<Data | void> {
+export function POST<Data>(input: string, init?: RequestInit) {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init });
 }
 
-export function PATCH<Data>(input: string, init?: RequestInit): Promise<Data | void> {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init });
+export function PATCH<Data>(input: string, init?: RequestInit, error?: string) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init }, error);
 }
 
-export function DELETE<Data>(input: string, init?: RequestInit): Promise<Data | void> {
+export function DELETE<Data>(input: string, init?: RequestInit) {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "DELETE", ...init });
 }

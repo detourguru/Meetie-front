@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 
-import FooterBtn from "@/components/Study/StudyDetail/FooterBtn/FooterBtn";
+import FooterBtnBox from "@/components/Study/StudyDetail/FooterBtnBox/FooterBtnBox";
 import StudyRequestCard from "@/components/Study/StudyRequest/StudyRequestCard/StudyRequestCard";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
@@ -20,7 +20,7 @@ const StudyRequest = () => {
         ))}
       </div>
 
-      <FooterBtn data={data.data} isRequestPage />
+      <FooterBtnBox data={data.data} isRequestPage />
     </>
   );
 };

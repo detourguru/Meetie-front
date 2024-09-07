@@ -7,7 +7,7 @@ import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
 import Tag from "@/components/common/Tag/Tag";
-import FooterBtn from "@/components/Study/StudyDetail/FooterBtn/FooterBtn";
+import FooterBtnBox from "@/components/Study/StudyDetail/FooterBtnBox/FooterBtnBox";
 
 import { PATH } from "@/constants/path";
 
@@ -111,7 +111,7 @@ const StudyDetail = () => {
         </div>
       </div>
 
-      <FooterBtn
+      <FooterBtnBox
         data={data.data}
         isOwner={isOwner}
         userId={userData.data.user_id}

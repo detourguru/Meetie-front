@@ -2,17 +2,29 @@ import { NextResponse } from "next/server";
 
 import { createClient } from "@/utils/supabase/client";
 
+interface StudyDataType {
+  requestMemberList: string[];
+  recruitMemberCount: number;
+  joinMemberList: string[];
+}
+
 export async function PATCH(request: Request, { params }: { params: { id: string } }) {
   try {
     const supabase = createClient();
 
     const { userId, isReject } = await request.json();
 
-    const requestMemberList: string[] = (
+    const { requestMemberList, recruitMemberCount, joinMemberList }: StudyDataType = (
       await supabase.from("study").select().eq("id", params.id).single()
-    ).data.requestMemberList;
+    ).data;
 
     const updateMemberList = requestMemberList.filter((member) => member !== userId);
+
+    if (recruitMemberCount === joinMemberList.length) {
+      return new Response(JSON.stringify({ error: "인원 초과된 스터디입니다" }), {
+        status: 400,
+      });
+    }
 
     const { error: patchError } = await supabase
       .from("study")
@@ -22,7 +34,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     if (!patchError && !isReject) {
       const { error: postError } = await supabase
         .from("study")
-        .update({ joinMemberList: [userId] })
+        .update({ joinMemberList: [...joinMemberList, userId] })
         .eq("id", params.id);
 
       if (!postError) {

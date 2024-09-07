@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
@@ -46,6 +44,8 @@ const FooterBtn = ({
 
   const emptyRequestList = data.requestMemberList.length === 0;
 
+  const isFullMemberList = data.recruitMemberCount === data.joinMemberList.length;
+
   const updateData = {
     ...data,
     requestMemberList: isRequest
@@ -55,17 +55,15 @@ const FooterBtn = ({
         : [data.requestMemberList, userId],
   };
 
-  return (
-    <div className="fixed bottom-0 bg-white px-4 py-6 flex gap-5 items-center border-t border-[#dddddd]">
-      <div className="flex flex-col items-center">
-        <p className="text-medium-12 text-blue-300">{isRequestPage ? "수락" : "참여"}가능인원</p>
-        <p className="text-medium-18">
-          <span className="text-primary-500">{data.joinMemberList.length}명</span> /{" "}
-          <span className="text-[#707070]">{data.recruitMemberCount}명</span>
-        </p>
-      </div>
-
-      {isRequestPage ? (
+  if (isRequestPage) {
+    if (isFullMemberList) {
+      return (
+        <Button size="md" disabled>
+          <p className="text-bold-16 text-white">인원초과</p>
+        </Button>
+      );
+    } else {
+      return (
         <Button
           size="md"
           disabled={emptyRequestList}
@@ -75,25 +73,35 @@ const FooterBtn = ({
             {emptyRequestList ? "아직 신청 인원이 없습니다" : "전체 수락하기"}
           </p>
         </Button>
-      ) : isOwner ? (
-        <>
-          {isRequestEnd ? (
-            <Button size="md" onClick={handleCreateStudyRoom}>
-              <p className="text-bold-16 text-white">스터디 생성하기</p>
+      );
+    }
+  } else {
+    if (isOwner) {
+      if (isRequestEnd) {
+        return (
+          <Button size="md" onClick={handleCreateStudyRoom}>
+            <p className="text-bold-16 text-white">스터디 생성하기</p>
+          </Button>
+        );
+      }
+
+      if (emptyRequestList) {
+        return (
+          <Button variant="disabled" size="md">
+            <p className="text-bold-16 text-white">아직 신청 인원이 없습니다</p>
+          </Button>
+        );
+      } else {
+        return (
+          <Link href={PATH.STUDY_REQUEST(data.id)} scroll={false}>
+            <Button size="md">
+              <p className="text-bold-16 text-white">대기중인 요청 확인</p>
             </Button>
-          ) : emptyRequestList ? (
-            <Button variant="disabled" size="md">
-              <p className="text-bold-16 text-white">아직 신청 인원이 없습니다</p>
-            </Button>
-          ) : (
-            <Link href={PATH.STUDY_REQUEST(data.id)} scroll={false}>
-              <Button size="md">
-                <p className="text-bold-16 text-white">대기중인 요청 확인</p>
-              </Button>
-            </Link>
-          )}
-        </>
-      ) : (
+          </Link>
+        );
+      }
+    } else {
+      return (
         <Button
           size="md"
           variant={isRequest ? "outlinePrimary" : "default"}
@@ -106,9 +114,9 @@ const FooterBtn = ({
             {isRequest ? "신청 취소하기" : isJoin ? "이미 신청한 스터디입니다" : "스터디 신청하기"}
           </p>
         </Button>
-      )}
-    </div>
-  );
+      );
+    }
+  }
 };
 
 export default FooterBtn;
