@@ -13,7 +13,7 @@ export default function TaskCreatePage() {
     <>
       <Header>
         <Header.LeftButton />
-        <Header.Title hasButton>과제 생성하기</Header.Title>
+        <Header.Title hasButton>과제 생성</Header.Title>
       </Header>
       <div className="flex flex-col gap-6 px-4 pt-16">
         <div>

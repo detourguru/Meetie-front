@@ -11,6 +11,8 @@ export const useCalendar = () => {
 
   const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
 
+  const weekDayList = Array.from({ length: 7 }, (_, index) => addDays(currentMonth, index));
+
   const handlePrevMonth = useCallback(() => {
     if (currentMonth <= nowMonth) {
       setCurrentMonth(nowMonth);
@@ -23,5 +25,5 @@ export const useCalendar = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
   }, [currentMonth]);
 
-  return { currentMonth, monthStart, dayList, handlePrevMonth, handleNextMonth };
+  return { currentMonth, monthStart, dayList, weekDayList, handlePrevMonth, handleNextMonth };
 };

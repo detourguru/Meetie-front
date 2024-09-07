@@ -9,6 +9,7 @@ import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
 import { useStudyRoomQuery } from "@/hooks/api/study-room/useStudyRoomQuery";
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 import { generateDday } from "@/utils/date";
 
@@ -16,6 +17,9 @@ const StudyRoomDetail = () => {
   const params = useParams();
 
   const { data } = useStudyRoomQuery(String(params.id));
+  const { userData } = useUserInformationQuery();
+
+  const isOwner = userData.data.user_id === data.data.owner_id;
 
   const [tab, setTab] = useState("calendar");
 
@@ -62,7 +66,7 @@ const StudyRoomDetail = () => {
       </Tabs>
 
       {tab === "calendar" && <CalendarTab />}
-      {tab === "task" && <TaskTab />}
+      {tab === "task" && <TaskTab isOwner={isOwner} />}
     </main>
   );
 };
