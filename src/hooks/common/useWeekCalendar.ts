@@ -91,5 +91,12 @@ export const useWeekCalendar = () => {
     });
   }, [dateList]);
 
-  return { today, dateList, handleContainerScroll, containerRef, handleTodayClick, selectedDate };
+  return {
+    dateList,
+    handleContainerScroll,
+    containerRef,
+    handleTodayClick,
+    selectedDate,
+    handleSelectedDate,
+  };
 };
