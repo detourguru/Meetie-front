@@ -31,15 +31,26 @@ const SearchSheet = ({
   const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
 
-    handleSearch();
-  };
-
-  const handleSearch = () => {
     const newsearchKeyword = [search].concat(searchKeywords);
     setSearchKeywords(newsearchKeyword.filter((t, index) => newsearchKeyword.indexOf(t) === index));
 
-    updateFilterOption("search", search);
+    handleSearch();
+  };
+
+  const handleSearch = (keyword?: string) => {
+    if (keyword === "") {
+      setSearch(keyword);
+    }
+    updateFilterOption("search", keyword ?? search);
     handleClose();
+  };
+
+  const handleClickSearchTag = (keyword: string, e?: React.MouseEvent<HTMLButtonElement>) => {
+    if (e) {
+      e.stopPropagation();
+
+      setSearchKeywords(searchKeywords.filter((t) => keyword !== t));
+    }
   };
 
   useEffect(() => {
@@ -49,11 +60,12 @@ const SearchSheet = ({
   return (
     <Sheet open={isOpen}>
       <SheetContent className="pb-8 h-full overflow-scroll hidden-scrollbar w-[375px]">
-        <SheetHeader className="h-10 flex justify-center px-3" onClick={handleClose}>
+        <SheetHeader className="h-10 flex justify-center px-3">
           <CustomImage
             src="/svg/ic-header-left-arrow.svg"
             alt="leftButtonIcon"
             className="w-[24px] h-[24px]"
+            handleClick={() => handleSearch("")}
           />
         </SheetHeader>
 
@@ -84,10 +96,10 @@ const SearchSheet = ({
             {searchKeywords.map((keyword, index) => (
               <Tag
                 key={`search_keyword_${index}`}
+                id={keyword}
                 text={keyword}
-                handleDeleteTag={() =>
-                  setSearchKeywords(searchKeywords.filter((t) => keyword !== t))
-                }
+                handleDeleteTag={(e) => handleClickSearchTag(keyword, e)}
+                onClick={(e) => setSearch(e.currentTarget.id)}
               />
             ))}
           </div>

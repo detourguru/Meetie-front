@@ -7,10 +7,11 @@ interface ImageProps {
   alt: string;
   className: string;
   priority?: boolean;
+  handleClick?: () => void;
 }
 
-const Image = ({ className, ...props }: ImageProps) => (
-  <div className={cn("relative", className)}>
+const Image = ({ className, handleClick, ...props }: ImageProps) => (
+  <div className={cn("relative", className)} onClick={handleClick}>
     <NextImage {...props} fill sizes="100%" className="object-contain" />
   </div>
 );
