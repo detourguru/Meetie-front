@@ -47,4 +47,5 @@ export const PATH = {
   COMMUNITY_LIST: "/community",
   COMMUNITY_CREATE: "/community/create",
   COMMUNITY: (id: number) => `/community/${id}`,
+  COMMUNITY_EDIT: (id: number) => `/community/${id}/edit`,
 } as const;

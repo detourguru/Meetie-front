@@ -4,16 +4,19 @@ import { useCallback, useState } from "react";
 
 import { PATH } from "@/constants/path";
 
+import { usePatchCommunityMutation } from "@/hooks/api/community/usePatchCommunityMutation";
 import { usePostCommunityMutation } from "@/hooks/api/community/usePostCommunityMutation";
 
 import type { CreateCommunityFormType, CreateCommunityUpdateHandlerType } from "@/types/community";
 
 interface useCreateCommunityPostProps {
   initialData?: CreateCommunityFormType;
+  postId?: number;
 }
 
-export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostProps) => {
+export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommunityPostProps) => {
   const { mutate: postCommunityMutation } = usePostCommunityMutation();
+  const { mutate: patchCommunityMutation } = usePatchCommunityMutation(Number(postId));
 
   const router = useRouter();
 
@@ -50,6 +53,17 @@ export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostPr
     });
   };
 
+  const handleSubmitModify = async () => {
+    patchCommunityMutation(
+      { createPostForm, postId: Number(postId) },
+      {
+        onSuccess() {
+          router.back();
+        },
+      },
+    );
+  };
+
   const handleGoBack = () => {
     router.back();
   };
@@ -59,6 +73,7 @@ export const useCreateCommunityPost = ({ initialData }: useCreateCommunityPostPr
     buttonDisabled,
     updatePostForm,
     handleSubmit,
+    handleSubmitModify,
     handleGoBack,
   };
 };
