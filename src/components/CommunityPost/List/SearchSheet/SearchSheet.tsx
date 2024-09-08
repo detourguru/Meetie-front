@@ -1,10 +1,12 @@
 import Image from "next/image";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 import Tag from "@/components/common/Tag/Tag";
+
+import { getLocalStorage, setLocalStorage } from "@/utils/storage";
 
 import type { CommonSheetProps } from "@/types/common";
 import type { UpdateFilterSelectedTypeHandlerType } from "@/types/community";
@@ -21,13 +23,28 @@ const SearchSheet = ({
   handleClose,
   updateFilterOption,
 }: SearchSheetProps) => {
-  const [search, setSearch] = useState(searchValue);
+  const savedSearchKeyWords = getLocalStorage<string[]>("savedSearchKeyWords", []);
 
-  const handleSearch = (e?: React.FormEvent<HTMLFormElement>) => {
+  const [search, setSearch] = useState(searchValue);
+  const [searchKeywords, setSearchKeywords] = useState(savedSearchKeyWords);
+
+  const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
+
+    handleSearch();
+  };
+
+  const handleSearch = () => {
+    const newsearchKeyword = [search].concat(searchKeywords);
+    setSearchKeywords(newsearchKeyword.filter((t, index) => newsearchKeyword.indexOf(t) === index));
+
     updateFilterOption("search", search);
     handleClose();
   };
+
+  useEffect(() => {
+    setLocalStorage<string[]>("savedSearchKeyWords", searchKeywords);
+  }, [searchKeywords]);
 
   return (
     <Sheet open={isOpen}>
@@ -42,7 +59,7 @@ const SearchSheet = ({
 
         {/* TODO: 공통 컴포넌트로 변경 */}
         <div className="px-4 pt-4 pb-1 sticky top-0 bg-white z-20">
-          <form className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3" onSubmit={handleSearch}>
+          <form className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3" onSubmit={handleSubmit}>
             <input
               id="search"
               name="search"
@@ -56,7 +73,7 @@ const SearchSheet = ({
               alt="search"
               width={24}
               height={24}
-              onClick={() => handleSearch()}
+              onClick={() => handleSubmit()}
             />
           </form>
         </div>
@@ -64,12 +81,15 @@ const SearchSheet = ({
         <div className="flex flex-col mx-4 gap-2 mt-8">
           <h5>최근 검색어</h5>
           <div className="flex gap-3 flex-wrap">
-            <Tag text="test" handleDeleteTag={() => console.log("h")} />
-            <Tag text="test" handleDeleteTag={() => console.log("h")} />
-            <Tag text="test" handleDeleteTag={() => console.log("h")} />
-            <Tag text="test" handleDeleteTag={() => console.log("h")} />
-            <Tag text="test" handleDeleteTag={() => console.log("h")} />
-            <Tag text="test" handleDeleteTag={() => console.log("h")} />
+            {searchKeywords.map((keyword, index) => (
+              <Tag
+                key={`search_keyword_${index}`}
+                text={keyword}
+                handleDeleteTag={() =>
+                  setSearchKeywords(searchKeywords.filter((t) => keyword !== t))
+                }
+              />
+            ))}
           </div>
         </div>
       </SheetContent>
