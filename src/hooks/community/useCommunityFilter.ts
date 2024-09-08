@@ -18,13 +18,7 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
   const { data: communityListData, refetch } = useCommunityListQuery(filterOption);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      refetch();
-    }, 500);
-
-    return () => {
-      clearTimeout(timer);
-    };
+    refetch();
   }, [filterOption]);
 
   const handleClickTag = (tag?: string) => {
