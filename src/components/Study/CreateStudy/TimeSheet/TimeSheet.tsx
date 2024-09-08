@@ -11,12 +11,19 @@ import { convertTime } from "@/utils/date";
 
 import type { CommonSheetProps } from "@/types/common";
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
+import type { CreateTaskUpdateHandlerType } from "@/types/task";
 
 interface TimeSheetProps extends CommonSheetProps {
-  updateInputValue: CreateStudyUpdateHandlerType;
+  updateInputValue?: CreateStudyUpdateHandlerType;
+  updateTaskInputValue?: CreateTaskUpdateHandlerType;
 }
 
-const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetProps) => {
+const TimeSheet = ({
+  isOpen,
+  onInteractOutside,
+  updateInputValue,
+  updateTaskInputValue,
+}: TimeSheetProps) => {
   const [selectTime, setSelectTime] = useState({ noon: "오전", hour: "00", minute: "00" });
 
   const handleChangeTime = (target: string, value: string) => {
@@ -24,7 +31,8 @@ const TimeSheet = ({ isOpen, onInteractOutside, updateInputValue }: TimeSheetPro
   };
 
   const handleTimeSelect = () => {
-    updateInputValue("time", convertTime(selectTime));
+    updateInputValue && updateInputValue("time", convertTime(selectTime));
+    updateTaskInputValue && updateTaskInputValue("time", convertTime(selectTime));
     onInteractOutside && onInteractOutside();
   };
 

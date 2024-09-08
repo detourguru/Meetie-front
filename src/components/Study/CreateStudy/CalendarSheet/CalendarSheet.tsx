@@ -3,9 +3,11 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/commo
 
 import type { CommonSheetProps } from "@/types/common";
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
+import type { CreateTaskUpdateHandlerType } from "@/types/task";
 
 interface CalendarSheetProps extends CommonSheetProps {
-  updateInputValue: CreateStudyUpdateHandlerType;
+  updateInputValue?: CreateStudyUpdateHandlerType;
+  updateTaskInputValue?: CreateTaskUpdateHandlerType;
   isEndDate?: boolean;
 }
 
@@ -13,6 +15,7 @@ const CalendarSheet = ({
   isOpen,
   onInteractOutside,
   updateInputValue,
+  updateTaskInputValue,
   isEndDate,
 }: CalendarSheetProps) => {
   return (
@@ -30,6 +33,7 @@ const CalendarSheet = ({
         </SheetHeader>
 
         <Calendar
+          updateTaskInputValue={updateTaskInputValue}
           updateInputValue={updateInputValue}
           onInteractOutside={onInteractOutside}
           isEndDate={isEndDate}

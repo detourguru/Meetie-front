@@ -9,14 +9,21 @@ import { WEEK_DAY } from "@/constants/common";
 import { useCalendar } from "@/hooks/common/useCalendar";
 
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
+import type { CreateTaskUpdateHandlerType } from "@/types/task";
 
 interface CalendarProps {
-  updateInputValue: CreateStudyUpdateHandlerType;
+  updateInputValue?: CreateStudyUpdateHandlerType;
+  updateTaskInputValue?: CreateTaskUpdateHandlerType;
   onInteractOutside?: () => void;
   isEndDate?: boolean;
 }
 
-const Calender = ({ updateInputValue, onInteractOutside, isEndDate }: CalendarProps) => {
+const Calender = ({
+  updateInputValue,
+  updateTaskInputValue,
+  onInteractOutside,
+  isEndDate,
+}: CalendarProps) => {
   const { currentMonth, dayList, monthStart, handlePrevMonth, handleNextMonth } = useCalendar();
 
   const handleDayText = useCallback(() => {
@@ -25,7 +32,11 @@ const Calender = ({ updateInputValue, onInteractOutside, isEndDate }: CalendarPr
         key={dayData.toString()}
         className="flex justify-center items-center w-[44px] h-[44px]"
         onClick={() => {
-          isEndDate ? updateInputValue("endDate", dayData) : updateInputValue("startDate", dayData);
+          updateInputValue &&
+            (isEndDate
+              ? updateInputValue("endDate", dayData)
+              : updateInputValue("startDate", dayData));
+          updateTaskInputValue && updateTaskInputValue("endDate", dayData);
 
           onInteractOutside && onInteractOutside();
         }}
