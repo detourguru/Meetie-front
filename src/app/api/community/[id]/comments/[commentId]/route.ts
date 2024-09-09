@@ -9,11 +9,11 @@ export async function DELETE(request: Request, { params }: { params: { commentId
     const { error } = await supabase.from("community_comments").delete().eq("id", params.commentId);
 
     if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json({ message: "ok" }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }

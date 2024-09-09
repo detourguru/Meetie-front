@@ -9,11 +9,11 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const { error } = await supabase.rpc("increment", { row_id: params.id });
 
     if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json({ message: "error" }, { status: 400 });
   } catch (error) {
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }

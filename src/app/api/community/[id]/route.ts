@@ -9,12 +9,12 @@ export async function GET(request: Request, { params }: { params: { id: string }
     const { data } = await supabase.from("community").select().eq("id", params.id).single();
 
     if (data) {
-      return NextResponse.json({ message: "ok", status: 200, data });
+      return NextResponse.json({ message: "ok", data }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "ok", status: 200, data: null });
+    return NextResponse.json({ message: "ok", data: null }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
 
@@ -27,12 +27,12 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const { error } = await supabase.from("community").update(data).eq("id", params.id);
 
     if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json({ message: "error" }, { status: 400 });
   } catch (error) {
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
 
@@ -43,11 +43,11 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
     const { error } = await supabase.from("community").delete().eq("id", params.id);
 
     if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json({ message: "error" }, { status: 400 });
   } catch (error) {
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
