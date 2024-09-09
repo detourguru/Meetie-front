@@ -10,6 +10,7 @@ import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import PositionSheet from "@/components/Profile/PositionSheet/PositionSheet";
+import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
@@ -88,14 +89,6 @@ const EditProfileForm = () => {
           >
             {profileForm.position}
           </button>
-          {/* <input
-            id="position"
-            name="position"
-            type="text"
-            value={profileForm.position}
-            onChange={(e) => updateProfileForm("position", e.target.value)}
-            className="border-2 rounded-md border-gray-100 bg-gray-50 px-4 py-3 focus:outline-none"
-          /> */}
         </div>
 
         <div className="flex flex-col gap-2">
@@ -115,6 +108,8 @@ const EditProfileForm = () => {
       <BadgeList isEdit selected={profileForm.mainBadge} handleClick={updateProfileForm} />
 
       <TagList tags={profileForm.tagList} isEdit updateProfileForm={updateProfileForm} />
+
+      <StyleList styles={profileForm.styles} isEdit updateProfileForm={updateProfileForm} />
 
       {/* TODO: 스터디 공개 여부 구현 */}
       <ExperienceList />

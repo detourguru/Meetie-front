@@ -4,17 +4,19 @@ import Image from "next/image";
 
 import { useCreateTag } from "@/hooks/common/useCreateTag";
 
-import type { UpdateProfileFormType } from "@/types/userInfo";
+import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
 
 interface CreateTagSectionProps {
   tags: string[];
   updateProfileForm: UpdateProfileFormType;
+  type: keyof ProfileFormType;
 }
 
-const CreateTagSection = ({ tags, updateProfileForm }: CreateTagSectionProps) => {
+const CreateTagSection = ({ tags, updateProfileForm, type }: CreateTagSectionProps) => {
   const { isCreate, handleAddTag, tagInput, handleSubmit } = useCreateTag({
     prevTagList: tags,
     profileUpdateHandler: updateProfileForm,
+    type,
   });
 
   if (isCreate) {

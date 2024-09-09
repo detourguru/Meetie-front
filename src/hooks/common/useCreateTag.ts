@@ -1,18 +1,20 @@
-import { useState, useRef } from "react";
+import { useRef, useState } from "react";
 
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
-import type { UpdateProfileFormType } from "@/types/userInfo";
+import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
 
 interface UseCreateTagProps {
   prevTagList: string[];
   studyUpdateHandler?: CreateStudyUpdateHandlerType;
   profileUpdateHandler?: UpdateProfileFormType;
+  type?: keyof ProfileFormType;
 }
 
 export const useCreateTag = ({
   prevTagList,
   studyUpdateHandler,
   profileUpdateHandler,
+  type,
 }: UseCreateTagProps) => {
   const [isCreate, setIsCreate] = useState(false);
 
@@ -31,8 +33,9 @@ export const useCreateTag = ({
             .filter((t, index) => prevTagList.concat(newTag).indexOf(t) === index),
         )
       : profileUpdateHandler &&
+        type &&
         profileUpdateHandler(
-          "tagList",
+          type,
           prevTagList
             .concat(newTag)
             .filter((t, index) => prevTagList.concat(newTag).indexOf(t) === index),
