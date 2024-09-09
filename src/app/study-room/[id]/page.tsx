@@ -7,11 +7,12 @@ import Header from "@/components/common/Header/Header";
 import StudyRoomDetail from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetail";
 
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
+import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
 
 import type { ParamIdType } from "@/types/common";
 
 export default function StudyRoomPage({ params }: ParamIdType) {
-  const serverFetchOptions = [studyRoomQueryOptions(params.id)];
+  const serverFetchOptions = [studyRoomQueryOptions(params.id), taskListQueryOptions(params.id)];
 
   return (
     <>

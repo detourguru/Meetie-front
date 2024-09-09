@@ -5,6 +5,8 @@ export const QUERY_KEYS = {
   STUDY_ROOM: "studyRoom",
   STUDY: "study",
 
+  TASK_LIST: "taskList",
+
   USER_INFO: "userInfo",
   ONBOARDING_COMPLETE: "onboardingComplete",
 

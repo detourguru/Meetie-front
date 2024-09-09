@@ -3,7 +3,9 @@ import CalendarDeadline from "@/components/StudyRoom/CalendarDeadline/CalendarDe
 import CalendarSchedule from "@/components/StudyRoom/CalendarSchedule/CalendarSchedule";
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
 
-const CalendarTab = () => {
+import type { CalendarDateType } from "@/types/common";
+
+const CalendarTab = ({ selectedDate, handleSelectedDate }: CalendarDateType) => {
   return (
     <div className="pb-[120px]">
       <section className="bg-white">
@@ -13,7 +15,7 @@ const CalendarTab = () => {
             #이번 주의 과제와 회의 시간을 확인해 보세요
           </span>
         </section>
-        <CalendarWeek />
+        <CalendarWeek selectedDate={selectedDate} handleSelectedDate={handleSelectedDate} />
         <CalendarCheck />
       </section>
       <section className="px-4 pt-[34px]">

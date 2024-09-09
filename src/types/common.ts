@@ -13,3 +13,15 @@ export interface ParamIdType {
     id: string;
   };
 }
+
+export interface DateType {
+  year: number;
+  month: number;
+  date: number;
+  day: string;
+}
+
+export interface CalendarDateType {
+  selectedDate: DateType;
+  handleSelectedDate: (date: DateType) => void;
+}

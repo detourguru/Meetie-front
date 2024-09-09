@@ -31,4 +31,5 @@ export const END_POINTS = {
   COMMUNITY_VISIT: (communityId: number) => `/api/community/${communityId}/visit`,
 
   POST_TASK: "/api/task",
+  TASK_LIST: (studyRoomId: string) => `/api/task/${studyRoomId}`,
 };

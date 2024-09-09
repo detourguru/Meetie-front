@@ -48,3 +48,10 @@ export const GNB_DATA = [
     disabledIcon: "/svg/ic-gnb-my-disabled.svg",
   },
 ];
+
+export const TODAY = {
+  year: new Date().getFullYear(),
+  month: new Date().getMonth() + 1,
+  date: new Date().getDate(),
+  day: WEEK_DAY[new Date().getDay()],
+};

@@ -1,34 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 
-import { WEEK_DAY } from "@/constants/common";
+import { WEEK_DAY, TODAY } from "@/constants/common";
 
-interface DateType {
-  year: number;
-  month: number;
-  date: number;
-  day: string;
-}
+import type { CalendarDateType, DateType } from "@/types/common";
 
-export const useWeekCalendar = () => {
-  const today = {
-    year: new Date().getFullYear(),
-    month: new Date().getMonth(),
-    date: new Date().getDate(),
-    day: WEEK_DAY[new Date().getDay()],
-  };
-
-  const [selectedDate, setSelectedDate] = useState<DateType>({
-    year: today.year,
-    month: today.month + 1,
-    date: today.date,
-    day: today.day,
-  });
-
+export const useWeekCalendar = ({ selectedDate, handleSelectedDate }: CalendarDateType) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
-
-  const handleSelectedDate = (date: DateType) => {
-    setSelectedDate(date);
-  };
 
   const renderDates = (
     year: number,
@@ -44,7 +21,7 @@ export const useWeekCalendar = () => {
 
       return {
         year: eachDate.getFullYear(),
-        month: eachDate.getMonth() + 1,
+        month: eachDate.getMonth(),
         date: eachDate.getDate(),
         day: WEEK_DAY[eachDate.getDay()],
       };
@@ -53,10 +30,10 @@ export const useWeekCalendar = () => {
     return direction ? rendered : rendered.reverse();
   };
 
-  const prevDates = renderDates(today.year, today.month, today.date, 14, false);
-  const nextDates = renderDates(today.year, today.month, today.date, 14, true);
+  const prevDates = renderDates(TODAY.year, TODAY.month, TODAY.date, 14, false);
+  const nextDates = renderDates(TODAY.year, TODAY.month, TODAY.date, 14, true);
 
-  const [dateList, setDateList] = useState<DateType[]>([...prevDates, today, ...nextDates]);
+  const [dateList, setDateList] = useState<DateType[]>([...prevDates, TODAY, ...nextDates]);
 
   const handleContainerScroll = () => {
     const target = containerRef.current;
@@ -77,9 +54,9 @@ export const useWeekCalendar = () => {
   };
 
   const handleTodayClick = () => {
-    handleSelectedDate(today);
+    handleSelectedDate(TODAY);
 
-    setDateList([...prevDates, today, ...nextDates]);
+    setDateList([...prevDates, TODAY, ...nextDates]);
   };
 
   useEffect(() => {

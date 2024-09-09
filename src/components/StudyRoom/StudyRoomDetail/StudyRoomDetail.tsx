@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import { useParams } from "next/navigation";
 
@@ -8,10 +9,14 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
+import { TODAY } from "@/constants/common";
+
 import { useStudyRoomQuery } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 import { generateDday } from "@/utils/date";
+
+import type { DateType } from "@/types/common";
 
 const StudyRoomDetail = () => {
   const params = useParams();
@@ -22,6 +27,16 @@ const StudyRoomDetail = () => {
   const isOwner = userData.data.user_id === data.data.owner_id;
 
   const [tab, setTab] = useState("calendar");
+  const [selectedDate, setSelectedDate] = useState<DateType>({
+    year: TODAY.year,
+    month: TODAY.month,
+    date: TODAY.date,
+    day: TODAY.day,
+  });
+
+  const handleSelectedDate = (date: DateType) => {
+    setSelectedDate(date);
+  };
 
   return (
     <main>
@@ -65,8 +80,16 @@ const StudyRoomDetail = () => {
         </TabsList>
       </Tabs>
 
-      {tab === "calendar" && <CalendarTab />}
-      {tab === "task" && <TaskTab isOwner={isOwner} />}
+      {tab === "calendar" && (
+        <CalendarTab selectedDate={selectedDate} handleSelectedDate={handleSelectedDate} />
+      )}
+      {tab === "task" && (
+        <TaskTab
+          selectedDate={selectedDate}
+          handleSelectedDate={handleSelectedDate}
+          isOwner={isOwner}
+        />
+      )}
     </main>
   );
 };

@@ -1,14 +1,12 @@
 import { useWeekCalendar } from "@/hooks/common/useWeekCalendar";
 
-const CalendarWeek = () => {
-  const {
-    dateList,
-    handleContainerScroll,
-    containerRef,
-    handleTodayClick,
+import type { CalendarDateType } from "@/types/common";
+
+const CalendarWeek = ({ selectedDate, handleSelectedDate }: CalendarDateType) => {
+  const { dateList, handleContainerScroll, containerRef, handleTodayClick } = useWeekCalendar({
     selectedDate,
     handleSelectedDate,
-  } = useWeekCalendar();
+  });
 
   return (
     <section className="px-4 py-7 bg-[#F9F9F9] border-t-2 border-[#E9E9E9]">

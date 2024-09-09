@@ -1,3 +1,5 @@
+import type { CommonResponseType } from "@/types/common";
+
 export interface CreateTaskFormRequestType {
   title: string;
   confirmType: string;
@@ -10,3 +12,11 @@ export type CreateTaskUpdateHandlerType = <Key extends keyof CreateTaskFormReque
   key: Key,
   value: CreateTaskFormRequestType[Key],
 ) => void;
+
+export interface TaskListType extends CreateTaskFormRequestType {
+  studyRoomId: string;
+}
+
+export interface GetTaskListResponseType extends CommonResponseType {
+  data: TaskListType[];
+}
