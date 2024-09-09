@@ -34,7 +34,7 @@ const PostFooter = ({ profileImage }: PostFooterInterface) => {
             alt="send"
             width={24}
             height={24}
-            onClick={() => handleSubmit()}
+            onClick={handleSubmit}
           />
         </div>
       </form>

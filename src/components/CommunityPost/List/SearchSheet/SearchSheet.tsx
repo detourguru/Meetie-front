@@ -28,7 +28,7 @@ const SearchSheet = ({
   const [search, setSearch] = useState(searchValue);
   const [searchKeywords, setSearchKeywords] = useState(savedSearchKeyWords);
 
-  const handleSubmit = (e?: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e?: React.FormEvent<HTMLFormElement | HTMLImageElement>) => {
     e?.preventDefault();
 
     const newsearchKeyword = [search].concat(searchKeywords);
@@ -85,7 +85,7 @@ const SearchSheet = ({
               alt="search"
               width={24}
               height={24}
-              onClick={() => handleSubmit()}
+              onClick={handleSubmit}
             />
           </form>
         </div>

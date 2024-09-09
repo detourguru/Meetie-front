@@ -7,7 +7,7 @@ export const useCreateCommentPost = (id: number) => {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const handleSubmit = async (event?: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event?: React.FormEvent<HTMLFormElement | HTMLImageElement>) => {
     event && event.preventDefault();
 
     if (inputRef.current) {
