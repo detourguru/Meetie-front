@@ -10,6 +10,10 @@ export interface ProfileFormType {
   profileImage: string;
   mainBadge: string;
   tagList: string[];
+  position: string;
+  purposes: string[];
+  styles: string[];
+  period: string;
 }
 
 export type UpdateProfileFormType = <Key extends keyof ProfileFormType>(
@@ -29,4 +33,8 @@ export interface UserInformationType {
   scrapList: string[];
   recentVisit: string;
   informationAgreement: boolean;
+  position: string;
+  purposes: string[];
+  styles: string[];
+  period: string;
 }

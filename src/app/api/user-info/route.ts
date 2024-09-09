@@ -65,13 +65,9 @@ export async function POST(request: Request) {
     const supabase = createClient();
     const postData = await request.json();
 
-    console.log(postData);
-
     const { error } = await supabase
       .from("userinfo")
       .upsert({ ...postData, onboardingCheck: true });
-
-    console.log("errorororror", error);
 
     if (error) {
       return NextResponse.json({ message: error.message, status: 400 });

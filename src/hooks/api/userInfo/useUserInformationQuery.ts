@@ -22,6 +22,10 @@ export const useUserInformationQuery = (id?: string) => {
     profileImage: user.profileImage,
     mainBadge: user.mainBadge,
     tagList: user.tagList,
+    position: user.position,
+    purposes: user.purposes,
+    styles: user.styles,
+    period: user.period,
   };
 
   return { userId: user.user_id, userData, user, initialProfileForm };

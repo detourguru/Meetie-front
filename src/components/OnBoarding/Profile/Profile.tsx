@@ -2,19 +2,19 @@ import Image from "next/image";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
 
-import { useOnboardingQuery } from "@/hooks/api/onboarding/useOnboardingQuery";
-
 interface OnboardingProfileProps {
   userName: string;
   profileImage: string;
+  position: string;
+  styles: string;
 }
 
-const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) => {
-  const { onboardingData } = useOnboardingQuery();
-
-  const position = (onboardingData && onboardingData.position) || "";
-  const styles = (onboardingData && onboardingData.styles.slice(0, 2).join("﹒")) || "";
-
+const OnboardingProfile = ({
+  userName,
+  profileImage,
+  position,
+  styles,
+}: OnboardingProfileProps) => {
   return (
     <div className="relative w-[150px] mt-[77px]">
       <Image
