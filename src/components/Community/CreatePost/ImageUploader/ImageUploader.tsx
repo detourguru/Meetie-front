@@ -40,6 +40,7 @@ const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
 
       {images.map((image, index) => (
         <ImageCard
+          key={`upload_image_${index}`}
           imageUrl={image}
           handleDelete={() => updateInputValue("images", handleImageDelete(images, index))}
         />
