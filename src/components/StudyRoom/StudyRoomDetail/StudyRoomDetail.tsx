@@ -81,13 +81,18 @@ const StudyRoomDetail = () => {
       </Tabs>
 
       {tab === "calendar" && (
-        <CalendarTab selectedDate={selectedDate} handleSelectedDate={handleSelectedDate} />
+        <CalendarTab
+          selectedDate={selectedDate}
+          handleSelectedDate={handleSelectedDate}
+          studyRoomId={String(params.id)}
+        />
       )}
       {tab === "task" && (
         <TaskTab
           selectedDate={selectedDate}
           handleSelectedDate={handleSelectedDate}
           isOwner={isOwner}
+          studyRoomId={String(params.id)}
         />
       )}
     </main>

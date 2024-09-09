@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useParams } from "next/navigation";
 
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
 import TaskConfirm from "@/components/StudyRoom/TaskConfirm/TaskConfirm";
@@ -12,16 +11,15 @@ import type { CalendarDateType } from "@/types/common";
 
 interface TaskTabProps extends CalendarDateType {
   isOwner: boolean;
+  studyRoomId: string;
 }
 
-const TaskTab = ({ selectedDate, handleSelectedDate, isOwner }: TaskTabProps) => {
-  const params = useParams();
-
+const TaskTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: TaskTabProps) => {
   return (
     <>
       <div className="px-4">
         {isOwner && (
-          <Link href={PATH.TASK_CREATE(String(params.id))}>
+          <Link href={PATH.TASK_CREATE(studyRoomId)}>
             <div className="flex items-center justify-between h-[50px] px-4 bg-[#F7F3FF] border border-[#EBE9F5] rounded-lg mt-5 mb-2">
               <div className="flex items-center gap-3">
                 <span className="text-bold-20">📚</span>
@@ -39,23 +37,25 @@ const TaskTab = ({ selectedDate, handleSelectedDate, isOwner }: TaskTabProps) =>
 
       <CalendarWeek selectedDate={selectedDate} handleSelectedDate={handleSelectedDate} />
 
-      <section className="px-4 pt-[34px]">
-        <h4 className="text-semibold-18">
-          ✍️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}요일
-        </h4>
-        <span className="text-regular-14 text-[#82829B]">
-          #과제 인증을 완료한 팀원들을 확인해 보세요.
-        </span>
-        <TaskConfirm />
-        <Link href={PATH.TASK_CONFIRM}>
-          <button className="w-full h-11 mt-6 mb-[34px] flex items-center justify-center gap-2 border border-dotted border-[#686868] rounded-lg text-regular-14 text-[#82829B]">
-            <Image src="/svg/ic-confirm-plus.svg" alt="icon" width={20} height={20} />
-            과제 인증하기
-          </button>
-        </Link>
-      </section>
+      <div className="px-4 pb-[120px]">
+        <div className="pt-[40px]">
+          <h4 className="text-semibold-18">
+            ✍️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}요일
+          </h4>
+          <span className="text-regular-14 text-[#82829B]">
+            #과제 인증을 완료한 팀원들을 확인해 보세요.
+          </span>
+          <TaskConfirm />
+          <Link href={PATH.TASK_CONFIRM}>
+            <button className="w-full h-11 mt-6 flex items-center justify-center gap-2 border border-dotted border-[#686868] rounded-lg text-regular-14 text-[#82829B]">
+              <Image src="/svg/ic-confirm-plus.svg" alt="icon" width={20} height={20} />
+              과제 인증하기
+            </button>
+          </Link>
+        </div>
 
-      <TaskList studyRoomId={String(params.id)} />
+        <TaskList studyRoomId={studyRoomId} />
+      </div>
     </>
   );
 };

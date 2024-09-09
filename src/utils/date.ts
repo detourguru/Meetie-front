@@ -1,4 +1,4 @@
-import { format, differenceInCalendarDays } from "date-fns";
+import { format, differenceInCalendarDays, differenceInSeconds } from "date-fns";
 
 import { NOON_LIST, WEEK_DAY } from "@/constants/common";
 
@@ -48,4 +48,14 @@ export const generateDday = (nowDate: Date | null) => {
   } else {
     return `D-${diff}`;
   }
+};
+
+export const generateDifferenceSecond = (endDate: Date | null) => {
+  if (!endDate) {
+    return;
+  }
+
+  const diff = differenceInSeconds(endDate, new Date());
+
+  return diff;
 };
