@@ -44,3 +44,17 @@ export interface StudyListType extends CreateStudyFormRequestType {
 export interface GetStudyResponseType extends CommonResponseType {
   data: StudyListType;
 }
+
+export interface StudyListFilterType {
+  isRecruit?: boolean;
+  asc?: boolean;
+  search?: string;
+  tagList?: string[];
+  order?: string;
+  date?: string;
+}
+
+export type UpdateFilterSelectedTypeHandlerType = <Key extends keyof StudyListFilterType>(
+  key: Key,
+  value: StudyListFilterType[Key],
+) => void;

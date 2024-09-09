@@ -5,26 +5,54 @@ import { createClient } from "@/utils/supabase/client";
 export async function GET(request: NextRequest) {
   try {
     const supabase = createClient();
-    const searchParams = request.nextUrl.searchParams;
+
+    const { searchParams } = new URL(request.url);
+    const isRecruit = searchParams.get("isRecruit") ?? "false";
+    const search = searchParams.get("search") ?? "";
+    const tagList = searchParams.get("tagList");
+    const orderOption = searchParams.get("order") ?? "createdAt";
     const asc = Boolean(searchParams.get("asc")) ?? false;
+    const dateOption = searchParams.get("date") ?? "all";
 
-    const query = supabase.from("study").select();
+    const tagArray = tagList ? tagList.split(",") : [];
 
-    if (searchParams.size > 0) {
-      const sortFields = ["order", "asc"];
-      searchParams.forEach((value, key) => {
-        if (sortFields.includes(key)) {
-          // default: createdAt
-          query.order(searchParams.get("order") ?? "createdAt", { ascending: asc });
-        } else {
-          if (!(value === "false" && key === "isRecruit")) {
-            query.eq(key, value);
-          }
-        }
-      });
+    let query = supabase.from("study").select();
+
+    let date: number | null;
+
+    switch (dateOption) {
+      case "day":
+        date = new Date().setHours(0, 0, 0, 0);
+        break;
+      case "week":
+        date = new Date().setDate(new Date().getDate() - 7);
+        break;
+      case "month":
+        date = new Date().setMonth(new Date().getMonth() - 1);
+        break;
+      case "year":
+        date = new Date().setFullYear(new Date().getFullYear() - 1);
+        break;
+      default:
+        date = null;
     }
 
-    const { data } = await query.select(`*, bookmarks(isMarked)`);
+    if (date) {
+      query = query.gte("createdAt", new Date(date).toISOString());
+    }
+
+    if (isRecruit && isRecruit !== "false") {
+      query.eq("isRecruit", true);
+    }
+
+    if (search && search !== "") {
+      query.like("title", search);
+    }
+
+    const { data } = await query
+      .contains("tagList", tagArray)
+      .order(orderOption, { ascending: asc })
+      .select(`*, bookmarks(isMarked)`);
 
     return NextResponse.json({ message: "ok", status: 200, data });
   } catch (error) {

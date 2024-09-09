@@ -1,36 +1,32 @@
 "use client";
 import Image from "next/image";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
+import Filter from "@/components/common/Filter/Filter";
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
-import CheckBox from "@/components/Study/CheckBox";
 import FilterSheet from "@/components/Study/Explorer/FilterSheet";
 import MemberList from "@/components/Study/Member/MemberList";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
-import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
+import { CREATED_AT_OPTION_DATA, SORT_OPTION_DATA } from "@/constants/study";
+
+import { useStudyListFilter } from "@/hooks/api/study/useStudyListFilter";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 const ExplorerTab = () => {
   const [currentTab, setCurrentTab] = useState("study");
-  const [checked, setChecked] = useState(false);
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
-  const queryString = { isRecruit: checked };
-  const { data, refetch } = useStudyListQuery(queryString);
-
+  // 이게 계속 call 되면서 데이터가 정상적으로 조회되지 않음
   const { userId } = useUserInformationQuery();
 
-  const handleChecked = () => {
-    setChecked((checked) => !checked);
-  };
-
-  useEffect(() => {
-    refetch();
-  }, [checked]);
+  const { data, filterOption, handleClickTag, updateFilterOption } = useStudyListFilter({});
+  const TAGS_DATA = data.data
+    ? Array.from(new Set(data.data.map((study) => study.tagList).flat()))
+    : [];
 
   return (
     <>
@@ -49,35 +45,44 @@ const ExplorerTab = () => {
         <div className="relative p-4">
           <div className="flex justify-between mb-4">
             <div className="text-nowrap overflow-x-auto no-scrollbar">
-              <HashTag className="border-primary-500 text-primary-500">전체</HashTag>
-              <HashTag className="border-gray-100 text-[#82829B]">#IT</HashTag>
-              <HashTag className="border-gray-100 text-[#82829B]">#디자이너</HashTag>
-              <HashTag className="border-gray-100 text-[#82829B]">#피그마</HashTag>
-              <HashTag className="border-gray-100 text-[#82829B]">3-5</HashTag>
-              <HashTag className="border-gray-100 text-[#82829B]">#UXUI</HashTag>
+              <div className="relative -mx-4">
+                <Filter>
+                  <Filter.FilterTag>
+                    <Filter.FilterTagSelect
+                      hashtag
+                      tags={TAGS_DATA}
+                      selected={filterOption.tagList ?? []}
+                      handleClick={(tag: string) =>
+                        updateFilterOption("tagList", handleClickTag(tag))
+                      }
+                      handleClickTotal={() => updateFilterOption("tagList", handleClickTag())}
+                    />
+                  </Filter.FilterTag>
+
+                  <Filter.FilterOption totalCount={data.data ? data.data.length : 0}>
+                    <Filter.FilterOptionSelect
+                      options={SORT_OPTION_DATA}
+                      name="order"
+                      value={filterOption.order}
+                      onChange={(e) => updateFilterOption("order", e.target.value)}
+                    />
+
+                    <Filter.FilterOptionSelect
+                      options={CREATED_AT_OPTION_DATA}
+                      name="date"
+                      value={filterOption.date}
+                      onChange={(e) => updateFilterOption("date", e.target.value)}
+                    />
+                  </Filter.FilterOption>
+                </Filter>
+              </div>
             </div>
             <div className="m-1 w-6 h-6 text-gray-500" onClick={handleOpen}>
               <Image src="/svg/ic-filter.svg" alt="icon" width={24} height={24} />
             </div>
           </div>
-          <div className="flex justify-between mb-4">
-            <span className="text-medium-12">총 2,001건</span>
-            <div className="flex justify-evenly">
-              <span className="flex justify-evenly text-regular-12 mr-4">
-                최신 순
-                <Image src="/svg/ic-down-arrow.svg" alt="icon" width={17} height={17} />
-              </span>
-              <span className="flex justify-evenly text-regular-12">
-                등록일 전체
-                <Image src="/svg/ic-down-arrow.svg" alt="icon" width={17} height={17} />
-              </span>
-            </div>
-          </div>
           <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
           <div>
-            <div className="flex justify-between mb-[27px]">
-              <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
-            </div>
             <div className="flex justify-between mb-[27px]">
               <h1 className="text-bold-18">
                 서희님과 비슷한 사용자가

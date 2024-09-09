@@ -6,15 +6,10 @@ import { GET, createInit } from "@/apis/httpMethod";
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
+import type { StudyListFilterType } from "@/types/study";
 import type { GetStudyListResponseType } from "@/types/study";
 
-interface StudyListProps {
-  isRecruit?: boolean;
-  order?: string;
-  asc?: boolean;
-}
-
-const getStudyList = async (param?: StudyListProps) => {
+const getStudyList = async (param?: StudyListFilterType) => {
   const queryString = new URLSearchParams(Object.entries(param ?? {}));
 
   const data = await GET<GetStudyListResponseType>(
@@ -25,12 +20,12 @@ const getStudyList = async (param?: StudyListProps) => {
   return data;
 };
 export const studyListQueryOptions = (
-  param?: StudyListProps,
+  param?: StudyListFilterType,
 ): UseSuspenseQueryOptions<GetStudyListResponseType> => ({
   queryKey: [QUERY_KEYS.STUDY_LIST],
   queryFn: () => getStudyList(param),
 });
 
-export function useStudyListQuery(param?: StudyListProps) {
+export function useStudyListQuery(param?: StudyListFilterType) {
   return useSuspenseQuery(studyListQueryOptions(param));
 }
