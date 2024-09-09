@@ -8,6 +8,7 @@ import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
+import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
 
 import { BADGE_DATA } from "@/constants/badges";
@@ -48,6 +49,7 @@ const ProfileBody = () => {
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
       <TagList tags={user.tagList} />
+      <StyleList styles={user.styles} />
       <ExperienceList />
       <EvaluationList />
     </>
