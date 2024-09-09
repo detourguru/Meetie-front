@@ -14,7 +14,6 @@ export const PATH = {
   MYPAGE: "/mypage",
   ABILITY: "/mypage/ability",
   PASSWORD: "/mypage/password",
-  WITHDRAW: "/mypage/withdraw",
 
   USER_PROFILE: (userId: string) => `/user/${userId}`,
   USER_PROFILE_EDIT: (userId: string) => `/user/${userId}/edit`,
