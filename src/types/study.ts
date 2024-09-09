@@ -47,7 +47,6 @@ export interface GetStudyResponseType extends CommonResponseType {
 
 export interface StudyListFilterType {
   isRecruit?: boolean;
-  asc?: boolean;
   search?: string;
   tagList?: string[];
   order?: string;

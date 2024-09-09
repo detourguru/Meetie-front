@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get("search") ?? "";
     const tagList = searchParams.get("tagList");
     const orderOption = searchParams.get("order") ?? "createdAt";
-    const asc = Boolean(searchParams.get("asc")) ?? false;
     const dateOption = searchParams.get("date") ?? "all";
 
     const tagArray = tagList ? tagList.split(",") : [];
@@ -51,7 +50,7 @@ export async function GET(request: NextRequest) {
 
     const { data } = await query
       .contains("tagList", tagArray)
-      .order(orderOption, { ascending: asc })
+      .order(orderOption, { ascending: false })
       .select(`*, bookmarks(isMarked)`);
 
     return NextResponse.json({ message: "ok", status: 200, data });

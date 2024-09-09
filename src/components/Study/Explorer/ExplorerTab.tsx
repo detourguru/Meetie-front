@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import Filter from "@/components/common/Filter/Filter";
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
-import FilterSheet from "@/components/Study/Explorer/FilterSheet";
 import MemberList from "@/components/Study/Member/MemberList";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
@@ -14,14 +13,10 @@ import { CREATED_AT_OPTION_DATA, SORT_OPTION_DATA } from "@/constants/study";
 
 import { useStudyListFilter } from "@/hooks/api/study/useStudyListFilter";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
-import { useOverlay } from "@/hooks/common/useOverlay";
 
 const ExplorerTab = () => {
   const [currentTab, setCurrentTab] = useState("study");
-  const { isOpen, handleOpen, handleClose } = useOverlay();
-
-  // 이게 계속 call 되면서 데이터가 정상적으로 조회되지 않음
-  const { userId } = useUserInformationQuery();
+  const { user, userId } = useUserInformationQuery();
 
   const { data, filterOption, handleClickTag, updateFilterOption } = useStudyListFilter({});
   const TAGS_DATA = data.data
@@ -42,60 +37,48 @@ const ExplorerTab = () => {
       </Tabs>
 
       {currentTab === "study" && (
-        <div className="relative p-4">
-          <div className="flex justify-between mb-4">
-            <div className="text-nowrap overflow-x-auto no-scrollbar">
-              <div className="relative -mx-4">
-                <Filter>
-                  <Filter.FilterTag>
-                    <Filter.FilterTagSelect
-                      hashtag
-                      tags={TAGS_DATA}
-                      selected={filterOption.tagList ?? []}
-                      handleClick={(tag: string) =>
-                        updateFilterOption("tagList", handleClickTag(tag))
-                      }
-                      handleClickTotal={() => updateFilterOption("tagList", handleClickTag())}
-                    />
-                  </Filter.FilterTag>
+        <div className="p-4">
+          <div className="relative -mx-4 mb-4">
+            <Filter>
+              <Filter.FilterTag>
+                <Filter.FilterTagSelect
+                  hashtag
+                  tags={TAGS_DATA}
+                  selected={filterOption.tagList ?? []}
+                  handleClick={(tag: string) => updateFilterOption("tagList", handleClickTag(tag))}
+                  handleClickTotal={() => updateFilterOption("tagList", handleClickTag())}
+                />
+              </Filter.FilterTag>
 
-                  <Filter.FilterOption totalCount={data.data ? data.data.length : 0}>
-                    <Filter.FilterOptionSelect
-                      options={SORT_OPTION_DATA}
-                      name="order"
-                      value={filterOption.order}
-                      onChange={(e) => updateFilterOption("order", e.target.value)}
-                    />
+              <Filter.FilterOption totalCount={data.data ? data.data.length : 0}>
+                <Filter.FilterOptionSelect
+                  options={SORT_OPTION_DATA}
+                  name="order"
+                  value={filterOption.order}
+                  onChange={(e) => updateFilterOption("order", e.target.value)}
+                />
 
-                    <Filter.FilterOptionSelect
-                      options={CREATED_AT_OPTION_DATA}
-                      name="date"
-                      value={filterOption.date}
-                      onChange={(e) => updateFilterOption("date", e.target.value)}
-                    />
-                  </Filter.FilterOption>
-                </Filter>
-              </div>
-            </div>
-            <div className="m-1 w-6 h-6 text-gray-500" onClick={handleOpen}>
-              <Image src="/svg/ic-filter.svg" alt="icon" width={24} height={24} />
-            </div>
+                <Filter.FilterOptionSelect
+                  options={CREATED_AT_OPTION_DATA}
+                  name="date"
+                  value={filterOption.date}
+                  onChange={(e) => updateFilterOption("date", e.target.value)}
+                />
+              </Filter.FilterOption>
+            </Filter>
           </div>
-          <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
-          <div>
-            <div className="flex justify-between mb-[27px]">
-              <h1 className="text-bold-18">
-                서희님과 비슷한 사용자가
-                <br />
-                방금 지원했어요
-              </h1>
-            </div>
-            {/* TODO: data 없을때 보여줄 UI 필요 */}
-            {data.data &&
-              data.data.map((studyData) => (
-                <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
-              ))}
+          <div className="flex justify-between mb-[27px]">
+            <h1 className="text-bold-18">
+              {user.name}님과 비슷한 사용자가
+              <br />
+              방금 지원했어요
+            </h1>
           </div>
+          {/* TODO: data 없을때 보여줄 UI 필요 */}
+          {data.data &&
+            data.data.map((studyData) => (
+              <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
+            ))}
           <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
         </div>
       )}
@@ -134,7 +117,6 @@ const ExplorerTab = () => {
           </div>
         </div>
       )}
-      <FilterSheet isOpen={isOpen} onInteractOutside={handleClose} />
     </>
   );
 };
