@@ -10,15 +10,18 @@ import Divider from "@/components/MyPage/dividers/Divider/Divider";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
+import WithdrawalModal from "@/components/MyPage/MypageBody/WithdrawalModal/WithdrawalModal";
 
 import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
 
+import { useOverlay } from "@/hooks/common/useOverlay";
 import { useMyPageMenues } from "@/hooks/mypage/useMyPageMenues";
 
 const MyPageBody = () => {
   const { userId, user, handleChangeInfoAgreement, handleMovePage, handleWithdrawal } =
     useMyPageMenues();
+  const { isOpen, handleClose, handleOpen } = useOverlay();
 
   return (
     <>
@@ -150,13 +153,12 @@ const MyPageBody = () => {
               isToggle={user?.informationAgreement}
               handleClickItem={handleChangeInfoAgreement}
             />
-            <MenuListItem
-              menuItemData={MENU_ITEMS_DATA.WITHDRAW}
-              handleClickItem={handleWithdrawal}
-            />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.WITHDRAW} handleClickItem={handleOpen} />
           </ul>
         </div>
       </div>
+
+      <WithdrawalModal isOpen={isOpen} handleClose={handleClose} handleComfirm={handleWithdrawal} />
     </>
   );
 };
