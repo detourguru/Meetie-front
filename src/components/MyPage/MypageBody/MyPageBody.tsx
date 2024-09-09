@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import Avatar from "@/components/common/Avatar/Avatar";
+import ConfirmModal from "@/components/common/ConfirmModal/ConfirmModal";
 import Image from "@/components/common/Image/Image";
 import BadgeCard from "@/components/MyPage/BadgeCard/BadgeCard";
 import ClockIcon from "@/components/MyPage/ClockIcon";
@@ -10,7 +11,6 @@ import Divider from "@/components/MyPage/dividers/Divider/Divider";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
-import WithdrawalModal from "@/components/MyPage/MypageBody/WithdrawalModal/WithdrawalModal";
 
 import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
@@ -158,7 +158,13 @@ const MyPageBody = () => {
         </div>
       </div>
 
-      <WithdrawalModal isOpen={isOpen} handleClose={handleClose} handleComfirm={handleWithdrawal} />
+      <ConfirmModal
+        isOpen={isOpen}
+        handleClose={handleClose}
+        handleConfirm={handleWithdrawal}
+        title="회원 탈퇴"
+        description={`정말 탈퇴하시나요?\n계정을 삭제하면 스터디, 게시글, 댓글 외의 모든 정보가 삭제됩니다.`}
+      />
     </>
   );
 };
