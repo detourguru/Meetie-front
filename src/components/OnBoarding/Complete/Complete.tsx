@@ -12,8 +12,8 @@ const Complete = () => {
     user: { name, profileImage, position, styles },
   } = useUserInformationQuery();
 
-  const userPosition = position || "";
-  const userStyles = (styles && styles.slice(0, 2).join("﹒")) || "";
+  const userStyles = (styles.length > 0 && styles.slice(0, 2).join("﹒")) || "";
+
   return (
     <>
       <OnBoardingTitle textData={COMPLETE_DATA(name)} index={0} subTextColor="text-gray-200" />
@@ -21,7 +21,7 @@ const Complete = () => {
       <OnboardingProfile
         userName={name}
         profileImage={profileImage}
-        position={userPosition}
+        position={position}
         styles={userStyles}
       />
     </>
