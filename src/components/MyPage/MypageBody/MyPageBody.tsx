@@ -163,7 +163,7 @@ const MyPageBody = () => {
         handleClose={handleClose}
         handleConfirm={handleWithdrawal}
         title="회원 탈퇴"
-        description={`정말 탈퇴하시나요?\n계정을 삭제하면 스터디, 게시글, 댓글 외의 모든 정보가 삭제됩니다.`}
+        description={`정말 탈퇴하시나요?\n계정을 삭제하면 스터디, 게시글 외의 모든 정보가 삭제됩니다.`}
       />
     </>
   );
