@@ -16,9 +16,8 @@ interface MenuListItemProps {
   isToggle?: boolean;
   isUpdated?: boolean;
   isPrimary?: boolean;
-  navigateTo?: string;
   studyCount?: number;
-  handleUpdateToggle?: () => void;
+  handleClickItem?: () => void;
 }
 
 const MenuListItem = ({
@@ -26,19 +25,16 @@ const MenuListItem = ({
   isToggle,
   isUpdated,
   isPrimary,
-  navigateTo,
   studyCount,
-  handleUpdateToggle,
+  handleClickItem,
 }: MenuListItemProps) => {
   const router = useRouter();
 
   const handleClick = () => {
     if (menuItemData.navigateTo) {
       router.push(menuItemData.navigateTo);
-    } else if (navigateTo) {
-      router.push(navigateTo);
-    } else if (handleUpdateToggle) {
-      handleUpdateToggle();
+    } else if (handleClickItem) {
+      handleClickItem();
     }
   };
 

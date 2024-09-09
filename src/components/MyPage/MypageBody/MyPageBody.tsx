@@ -14,19 +14,11 @@ import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
 import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
 
-import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useMyPageMenues } from "@/hooks/mypage/useMyPageMenues";
 
 const MyPageBody = () => {
-  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
-  const { userId, user } = useUserInformationQuery();
-
-  const handleChangeInfoAgreement = () => {
-    updateUserInfoMutation({
-      id: userId,
-      updateUserForm: { informationAgreement: !user.informationAgreement },
-    });
-  };
+  const { userId, user, handleChangeInfoAgreement, handleMovePage, handleWithdrawal } =
+    useMyPageMenues();
 
   return (
     <>
@@ -120,7 +112,7 @@ const MyPageBody = () => {
           <ul className="flex flex-col gap-4">
             <MenuListItem
               // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recentVisit)
-              navigateTo={PATH.STUDY("test")}
+              handleClickItem={() => handleMovePage(PATH.STUDY("test"))}
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
 
@@ -149,16 +141,19 @@ const MyPageBody = () => {
           <header className="text-bold-18">계정 정보</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              navigateTo={PATH.USER_PROFILE_EDIT(user.user_id)}
+              handleClickItem={() => handleMovePage(PATH.USER_PROFILE_EDIT(user.user_id))}
               menuItemData={MENU_ITEMS_DATA.PROFIL_EDIT}
             />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />
             <MenuListItem
               menuItemData={MENU_ITEMS_DATA.INFORMATION_AGREEMENT}
               isToggle={user?.informationAgreement}
-              handleUpdateToggle={handleChangeInfoAgreement}
+              handleClickItem={handleChangeInfoAgreement}
             />
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.WITHDRAW} />
+            <MenuListItem
+              menuItemData={MENU_ITEMS_DATA.WITHDRAW}
+              handleClickItem={handleWithdrawal}
+            />
           </ul>
         </div>
       </div>

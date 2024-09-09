@@ -61,6 +61,5 @@ export const MENU_ITEMS_DATA = {
   },
   WITHDRAW: {
     title: "회원 탈퇴",
-    navigateTo: PATH.WITHDRAW,
   },
 };
