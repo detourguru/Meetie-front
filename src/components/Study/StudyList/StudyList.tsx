@@ -6,32 +6,23 @@ import CheckBox from "@/components/Study/CheckBox";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
-
-import { createClient } from "@/utils/supabase/client";
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
-  const [userId, setUserId] = useState("");
 
   const queryString = { isRecruit: checked, order: "viewCount" };
   const { data, refetch } = useStudyListQuery(queryString);
 
-  const supabase = createClient();
+  const { userId } = useUserInformationQuery();
 
   const handleChecked = () => {
     setChecked((checked) => !checked);
   };
 
   useEffect(() => {
-    const handleGetUserInfo = () => {
-      supabase.auth.getUser().then((userInfo) => {
-        setUserId(userInfo.data.user ? userInfo.data.user.id : "");
-      });
-    };
-
-    handleGetUserInfo();
     refetch();
-  }, [checked, userId]);
+  }, [checked]);
 
   return (
     <article className="mx-4 pb-[80px]">

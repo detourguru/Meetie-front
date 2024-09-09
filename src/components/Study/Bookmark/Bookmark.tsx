@@ -16,6 +16,8 @@ const Bookmark = ({ isMarked, studyId, userId }: BookmarkProps) => {
 
   const handleBookmark = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
+    e.stopPropagation();
+
     const bookmark = !marked;
     setMarked(bookmark);
     handleUpsertBookmark(bookmark);
@@ -27,7 +29,7 @@ const Bookmark = ({ isMarked, studyId, userId }: BookmarkProps) => {
       bookmarkForm: {
         isMarked: bookmark,
         study_id: studyId,
-        userinfo_userId: userId,
+        user_id: userId,
       },
     });
   };

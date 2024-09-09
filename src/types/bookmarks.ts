@@ -1,5 +1,5 @@
 export interface BookmarksType {
   isMarked: boolean | null;
-  userinfo_userId: string;
+  user_id: string;
   study_id: string;
 }
