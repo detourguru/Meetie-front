@@ -9,9 +9,11 @@ import Image from "@/components/common/Image/Image";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
 import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
+import PositionSheet from "@/components/Profile/PositionSheet/PositionSheet";
 import TagList from "@/components/Profile/TagList/TagList";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useOverlay } from "@/hooks/common/useOverlay";
 import { useSingleImageUpload } from "@/hooks/common/useSiingleImageUpload";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
@@ -25,6 +27,8 @@ const EditProfileForm = () => {
     initialData: initialProfileForm,
   });
   const { handleImageUpload } = useSingleImageUpload();
+
+  const { isOpen, handleOpen, handleClose } = useOverlay();
 
   return (
     <>
@@ -77,6 +81,24 @@ const EditProfileForm = () => {
         </div>
 
         <div className="flex flex-col gap-2">
+          <p className="font-bold">직무</p>
+          <button
+            onClick={handleOpen}
+            className="border-2 rounded-md border-gray-100 bg-gray-50 px-4 py-3 focus:outline-none"
+          >
+            {profileForm.position}
+          </button>
+          {/* <input
+            id="position"
+            name="position"
+            type="text"
+            value={profileForm.position}
+            onChange={(e) => updateProfileForm("position", e.target.value)}
+            className="border-2 rounded-md border-gray-100 bg-gray-50 px-4 py-3 focus:outline-none"
+          /> */}
+        </div>
+
+        <div className="flex flex-col gap-2">
           <p className="font-bold">자기 소개</p>
           <textarea
             id="introduce"
@@ -97,6 +119,13 @@ const EditProfileForm = () => {
       {/* TODO: 스터디 공개 여부 구현 */}
       <ExperienceList />
       <EvaluationList />
+
+      <PositionSheet
+        isOpen={isOpen}
+        onInteractOutside={handleClose}
+        profileForm={profileForm}
+        updateInputValue={updateProfileForm}
+      />
     </>
   );
 };
