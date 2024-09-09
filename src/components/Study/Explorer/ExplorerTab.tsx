@@ -1,19 +1,36 @@
 "use client";
 import Image from "next/image";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import CheckBox from "@/components/Study/CheckBox";
 import FilterSheet from "@/components/Study/Explorer/FilterSheet";
 import MemberList from "@/components/Study/Member/MemberList";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
+import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
+import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
+import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 const ExplorerTab = () => {
   const [currentTab, setCurrentTab] = useState("study");
+  const [checked, setChecked] = useState(false);
   const { isOpen, handleOpen, handleClose } = useOverlay();
+
+  const queryString = { isRecruit: checked };
+  const { data, refetch } = useStudyListQuery(queryString);
+
+  const { userId } = useUserInformationQuery();
+
+  const handleChecked = () => {
+    setChecked((checked) => !checked);
+  };
+
+  useEffect(() => {
+    refetch();
+  }, [checked]);
 
   return (
     <>
@@ -59,19 +76,22 @@ const ExplorerTab = () => {
           <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
           <div>
             <div className="flex justify-between mb-[27px]">
-              <CheckBox>모집중만 보기</CheckBox>
+              <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
             </div>
-            {/* <StudyCard /> */}
+            <div className="flex justify-between mb-[27px]">
+              <h1 className="text-bold-18">
+                서희님과 비슷한 사용자가
+                <br />
+                방금 지원했어요
+              </h1>
+            </div>
+            {/* TODO: data 없을때 보여줄 UI 필요 */}
+            {data.data &&
+              data.data.map((studyData) => (
+                <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
+              ))}
           </div>
           <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
-          <div className="flex justify-between mb-[27px]">
-            <h1 className="text-bold-18">
-              서희님과 비슷한 사용자가
-              <br />
-              방금 지원했어요
-            </h1>
-          </div>
-          {/* <StudyCard /> */}
         </div>
       )}
 
