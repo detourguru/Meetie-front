@@ -14,6 +14,7 @@ interface FilterProps extends React.PropsWithChildren {}
 interface FilterTagProps extends React.PropsWithChildren {}
 
 interface FilterTagSelectProps {
+  hashtag?: boolean;
   tags: string[];
   selected: string[];
   close?: boolean;
@@ -47,6 +48,7 @@ const FilterTagLeftButton = ({ handleButtonClick }: FilterButtonPropsType) => {
 };
 
 const FilterTagSelect = ({
+  hashtag,
   tags,
   selected,
   close,
@@ -76,7 +78,7 @@ const FilterTagSelect = ({
           close={close}
           onClick={() => handleClick(tag)}
         >
-          {tag}
+          {hashtag ? `#${tag}` : tag}
         </HashTag>
       ))}
     </div>
