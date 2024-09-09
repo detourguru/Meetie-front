@@ -18,7 +18,7 @@ export const END_POINTS = {
   USER_INFO_BY_ID: (id: number) => `/api/user-info/${id}`,
   USER_INFO: (id: string) => `/api/user-info?user_id=${id}`,
 
-  ONBOARDING: "/api/onboarding",
+  ONBOARDING: "/api/user-info",
 
   COMMUNITY_LIST: (search: string, tags: string[], sort: string, date: string) =>
     `/api/community-list?search=${search}&tags=${tags.join(",")}&sort=${sort}&date=${date}`,
