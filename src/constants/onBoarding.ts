@@ -25,6 +25,11 @@ export const STEPS_DATA = ["position", "purposes", "styles", "period"] as const;
 // position
 export const POSITIONS_EN_DATA = ["designer", "developer", "planner"];
 export const POSITIONS_DATA = ["디자이너", "개발자", "기획자"];
+export const POSITIONS_ICONS = [
+  "/svg/ic-onboarding-designer.svg",
+  "/img/img-onboarding-developer.png",
+  "/svg/ic-onboarding-planner.svg",
+];
 
 // purpose
 export const PURPOSES_DATA = ["자기 개발", "툴 능력 향상", "해당 분야의 네트워킹 확장", "취미"];

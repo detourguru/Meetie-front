@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { POSITIONS_DATA, POSITIONS_EN_DATA } from "@/constants/onBoarding";
+import { POSITIONS_DATA, POSITIONS_ICONS } from "@/constants/onBoarding";
 
 import type { OnboardingStepProps } from "@/types/onboarding";
 
@@ -19,12 +19,7 @@ const FirstStep = ({ clicked: clickedPosition, handleClick }: OnboardingStepProp
                 : "bg-gray-50 border-gray-50 text-regular-16"
             }`}
           >
-            <Image
-              src={`/svg/ic-onboarding-${POSITIONS_EN_DATA[index]}.svg`}
-              width={24}
-              height={24}
-              alt={position}
-            />
+            <Image src={POSITIONS_ICONS[index]} width={24} height={24} alt={position} />
             <p>{position}</p>
           </button>
         ))}
