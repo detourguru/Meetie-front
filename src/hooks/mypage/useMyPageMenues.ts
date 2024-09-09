@@ -2,17 +2,16 @@ import { useRouter } from "next/navigation";
 
 import { PATH } from "@/constants/path";
 
+import { useDeleteUserMutation } from "@/hooks/api/userInfo/useDeleteUserMutation";
 import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
-import { createAdminClient } from "@/utils/supabase/admin";
-
 export const useMyPageMenues = () => {
   const router = useRouter();
-  const supabase = createAdminClient();
 
-  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
   const { userId, user } = useUserInformationQuery();
+  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
+  const { mutate: deleteUser } = useDeleteUserMutation();
 
   const handleChangeInfoAgreement = () => {
     updateUserInfoMutation({
@@ -23,11 +22,12 @@ export const useMyPageMenues = () => {
 
   const handleMovePage = (path: string) => router.push(path);
 
-  const handleWithdrawal = async () => {
-    const { error } = await supabase.auth.admin.deleteUser(userId);
-    if (!error) {
-      router.replace(PATH.LOGIN);
-    }
+  const handleWithdrawal = () => {
+    deleteUser(userId, {
+      onSuccess: () => {
+        router.replace(PATH.LOGIN);
+      },
+    });
   };
 
   return { userId, user, handleChangeInfoAgreement, handleMovePage, handleWithdrawal };
