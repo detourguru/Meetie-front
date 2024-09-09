@@ -41,7 +41,6 @@ export async function POST(request: Request, { params }: { params: { id: string 
       ...data,
       user_id: user?.id,
       community_id: Number(params.id),
-      uploadDate: new Date(),
     });
 
     if (!error) {
