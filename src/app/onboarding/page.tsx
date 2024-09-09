@@ -12,7 +12,6 @@ import SecondStep from "@/components/OnBoarding/SecondStep/SecondStep";
 import ThirdStep from "@/components/OnBoarding/ThirdStep/ThirdStep";
 import TitleContainer from "@/components/OnBoarding/TitleContainer/TitleContainer";
 
-import { PROGRESS_WIDTH } from "@/constants/onBoarding";
 import { PATH } from "@/constants/path";
 
 import { useOnboardingForm } from "@/hooks/onboarding/useOnboardingForm";
@@ -42,9 +41,20 @@ export default function OnBoardingPage() {
         <p>
           <span className="text-black">{currentStepIndex + 1}</span>/4
         </p>
+
         <button onClick={handleMoveComplete}>SKIP</button>
       </div>
-      <ProgressBar width={PROGRESS_WIDTH[currentStepIndex]} />
+      <ProgressBar
+        width={
+          currentStepIndex === 0
+            ? "w-1/4"
+            : currentStepIndex === 1
+              ? "w-1/2"
+              : currentStepIndex === 2
+                ? "w-3/4"
+                : "w-full"
+        }
+      />
 
       <article className="flex flex-col px-4 h-max">
         <Suspense
