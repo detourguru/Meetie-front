@@ -1,29 +1,22 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import Header from "@/components/common/Header/Header";
+import LogOutModal from "@/components/MyPage/MyPageHeader/LogOutModal/LogOutModal";
 
-import { PATH } from "@/constants/path";
-
-import { createClient } from "@/utils/supabase/client";
+import { useOverlay } from "@/hooks/common/useOverlay";
 
 const MyPageHeader = () => {
-  const router = useRouter();
-  const supabase = createClient();
-
-  const logOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (!error) {
-      router.replace(PATH.LOGIN);
-    }
-  };
+  const { isOpen, handleClose, handleOpen } = useOverlay();
 
   return (
-    <Header>
-      <Header.Title>마이페이지</Header.Title>
-      <Header.RightButton icon="/svg/ic-logout.svg" handleButtonClick={logOut} />
-    </Header>
+    <>
+      <Header>
+        <Header.Title>마이페이지</Header.Title>
+        <Header.RightButton icon="/svg/ic-logout.svg" handleButtonClick={handleOpen} />
+      </Header>
+
+      <LogOutModal isOpen={isOpen} handleClose={handleClose} />
+    </>
   );
 };
 
