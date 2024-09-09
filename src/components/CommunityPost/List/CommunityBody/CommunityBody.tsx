@@ -25,7 +25,7 @@ const CommunityBody = () => {
             name="search"
             value={filterOption.search}
             readOnly
-            className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD]"
+            className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
             placeholder="관심있는 주제를 검색해보세요"
           />
         </div>
