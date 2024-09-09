@@ -32,7 +32,7 @@ const FooterBtn = ({
 
   const { handleCreateStudyRoom } = useCreateStudyRoom({
     studyRoomRequest: {
-      memberList: data.joinMemberList,
+      memberList: [...data.joinMemberList, data.user_id],
       title: data.title,
       endDate: data.endDate,
       owner_id: data.user_id,

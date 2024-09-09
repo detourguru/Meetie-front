@@ -101,7 +101,7 @@ export const useCreateStudyForm = ({
       { createStudyForm, studyId: String(studyId) },
       {
         onSuccess: () => {
-          router.push(PATH.STUDY_ROOM_LIST);
+          router.push(PATH.STUDY(String(studyId)));
         },
       },
     );
