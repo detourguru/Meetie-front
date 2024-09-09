@@ -1,5 +1,7 @@
 "use client";
 
+import { useParams } from "next/navigation";
+
 import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
 import Input from "@/components/common/Input/Input";
@@ -13,7 +15,11 @@ import { useCreateTaskForm } from "@/hooks/task/useCreateTaskForm";
 import { convertDate } from "@/utils/date";
 
 export default function TaskCreatePage() {
-  const { createTaskForm, updateInputValue } = useCreateTaskForm();
+  const params = useParams();
+
+  const { createTaskForm, updateInputValue, handlePostTask } = useCreateTaskForm({
+    studyRoomId: String(params.id),
+  });
 
   console.log(createTaskForm);
 
@@ -92,7 +98,7 @@ export default function TaskCreatePage() {
       </div>
 
       <div className="fixed bottom-0 bg-white px-4 py-3">
-        <Button size="xl">
+        <Button size="xl" onClick={handlePostTask}>
           <p className="text-semibold-16 text-white">과제 생성</p>
         </Button>
       </div>
