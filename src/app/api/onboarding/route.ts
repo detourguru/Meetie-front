@@ -2,32 +2,30 @@ import { NextResponse } from "next/server";
 
 import { createClient } from "@/utils/supabase/server";
 
-import type { OnboardingFormType } from "@/types/onboarding";
+// export async function POST(request: Request) {
+//   try {
+//     const supabase = createClient();
+//     const postData: OnboardingFormType = await request.json();
 
-export async function POST(request: Request) {
-  try {
-    const supabase = createClient();
-    const postData: OnboardingFormType = await request.json();
+//     const { error: postError } = await supabase.from("onboarding").insert(postData);
 
-    const { error: postError } = await supabase.from("onboarding").insert(postData);
+//     if (postError) {
+//       return NextResponse.json({ message: "post error", status: 400 });
+//     }
 
-    if (postError) {
-      return NextResponse.json({ message: "post error", status: 400 });
-    }
+//     const { error: updateError } = await supabase
+//       .from("userinfo")
+//       .upsert({ onboardingCheck: true });
 
-    const { error: updateError } = await supabase
-      .from("userinfo")
-      .upsert({ onboardingCheck: true });
+//     if (updateError) {
+//       return NextResponse.json({ message: "update error", status: 400 });
+//     }
 
-    if (updateError) {
-      return NextResponse.json({ message: "update error", status: 400 });
-    }
-
-    return NextResponse.json({ message: "ok", status: 200 });
-  } catch (err) {
-    return NextResponse.json({ message: "error", status: 500 });
-  }
-}
+//     return NextResponse.json({ message: "ok", status: 200 });
+//   } catch (err) {
+//     return NextResponse.json({ message: "error", status: 500 });
+//   }
+// }
 
 export async function GET() {
   try {

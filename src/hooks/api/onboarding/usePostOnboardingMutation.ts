@@ -10,7 +10,7 @@ export const usePostOnboardingMutation = () => {
   const postOnboardingMutation = useMutation({
     mutationFn: postOnboarding,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ONBOARDING_COMPLETE] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.ONBOARDING] });
     },
   });
 
