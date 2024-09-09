@@ -1,15 +1,15 @@
 import Image from "@/components/common/Image/Image";
+import AbilityHeader from "@/components/MyPage/Ability/AbilityHeader/AbilityHeader";
 import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
 import ClockIcon from "@/components/MyPage/ClockIcon";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
-import MyPageHeader from "@/components/MyPage/MyPageHeader/MyPageHeader";
 
 import { BADGE_DATA } from "@/constants/badges";
 
 export default function AbilityPage() {
   return (
     <>
-      <MyPageHeader title="내 능력 현황" infoIcon="/svg/ic-header-question.svg" />
+      <AbilityHeader />
 
       <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 mb-5 mt-14 mx-4">
         <div className="flex justify-between items-center">

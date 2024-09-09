@@ -1,17 +1,13 @@
 import { Suspense } from "react";
 
 import Gnb from "@/components/common/Gnb/Gnb";
-import Header from "@/components/common/Header/Header";
 import MyPageBody from "@/components/MyPage/MypageBody/MyPageBody";
+import MyPageHeader from "@/components/MyPage/MyPageHeader/MyPageHeader";
 
 export default function MyPage() {
   return (
     <>
-      <Header>
-        <Header.Title>마이페이지</Header.Title>
-        {/* TODO: alarm 업데이트 여부에 따라 다른 아이콘 표시 "svg/ic-alarm.svg" */}
-        <Header.RightButton icon="/svg/ic-alarm-updated.svg" />
-      </Header>
+      <MyPageHeader />
 
       <Suspense
         fallback={

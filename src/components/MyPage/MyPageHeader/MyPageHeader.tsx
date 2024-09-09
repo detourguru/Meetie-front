@@ -4,23 +4,25 @@ import { useRouter } from "next/navigation";
 
 import Header from "@/components/common/Header/Header";
 
-interface HeaderProps {
-  title: string;
-  infoIcon?: string;
-}
+import { PATH } from "@/constants/path";
 
-const MyPageHeader = ({ title, infoIcon }: HeaderProps) => {
+import { createClient } from "@/utils/supabase/client";
+
+const MyPageHeader = () => {
   const router = useRouter();
+  const supabase = createClient();
 
-  const handleClick = () => {
-    router.back();
+  const logOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (!error) {
+      router.replace(PATH.LOGIN);
+    }
   };
 
   return (
     <Header>
-      <Header.LeftButton handleButtonClick={handleClick} />
-      <Header.Title hasButton>{title}</Header.Title>
-      {infoIcon && <Header.RightButton icon={infoIcon} />}
+      <Header.Title>마이페이지</Header.Title>
+      <Header.RightButton icon="/svg/ic-logout.svg" handleButtonClick={logOut} />
     </Header>
   );
 };
