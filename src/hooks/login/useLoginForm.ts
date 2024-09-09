@@ -20,10 +20,10 @@ export const useLoginForm = () => {
   const supabase = createClient();
 
   const [loginForm, setLoginForm] = useState<LoginFormType>({
-    email: "",
+    email: localStorage.getItem("savedEmail") || "",
     password: "",
   });
-  const [isCheckedSave, setIsCheckedSave] = useState(false);
+  const [isCheckedSave, setIsCheckedSave] = useState(localStorage.getItem("savedEmail") !== null);
 
   const updateLoginForm = useCallback(
     <Key extends keyof LoginFormType>(key: Key, value: LoginFormType[Key]) => {

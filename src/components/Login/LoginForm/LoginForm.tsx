@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 
-import { useEffect } from "react";
-
 import Button from "@/components/common/Button/Button";
 import Input from "@/components/common/Input/Input";
 
@@ -15,13 +13,6 @@ const LoginForm = () => {
     useLoginForm();
 
   const { clickedEyes, handleClickedEyes } = usePasswordEyes();
-
-  useEffect(() => {
-    const savedEmail = localStorage.getItem("savedEmail");
-    if (savedEmail) {
-      updateLoginForm("email", savedEmail);
-    }
-  }, []);
 
   return (
     <form className="w-full [&>*]:mb-3 mb-[33px]">
