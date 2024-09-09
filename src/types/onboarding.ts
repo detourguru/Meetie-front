@@ -5,6 +5,13 @@ export interface OnboardingFormType {
   period: string;
 }
 
+export interface OnboardingType {
+  position: string;
+  purpose?: string[];
+  styles: string[];
+  period?: string;
+}
+
 export interface OnboardingStepProps {
   clicked: string | string[];
   handleClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;

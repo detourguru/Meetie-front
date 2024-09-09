@@ -8,7 +8,6 @@ export const QUERY_KEYS = {
   TASK_LIST: "taskList",
 
   USER_INFO: "userInfo",
-  ONBOARDING_COMPLETE: "onboardingComplete",
 
   COMMUNITY_LIST: "communityList",
   COMMUNITY_LIST_RECOMMEND: "communityListRecommend",

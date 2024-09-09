@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
 
-import { useOnboardingCompleteQuery } from "@/hooks/api/onboarding/useOnboardingCompleteQuery";
+import { useOnboardingQuery } from "@/hooks/api/onboarding/useOnboardingQuery";
 
 interface OnboardingProfileProps {
   userName: string;
@@ -10,12 +10,10 @@ interface OnboardingProfileProps {
 }
 
 const OnboardingProfile = ({ userName, profileImage }: OnboardingProfileProps) => {
-  const { onboardingCompleteData } = useOnboardingCompleteQuery();
+  const { onboardingData } = useOnboardingQuery();
 
-  const position = (onboardingCompleteData.data && onboardingCompleteData.data.position) || "";
-  const styles =
-    (onboardingCompleteData.data && onboardingCompleteData.data.styles.slice(0, 2).join("﹒")) ||
-    "";
+  const position = (onboardingData && onboardingData.position) || "";
+  const styles = (onboardingData && onboardingData.styles.slice(0, 2).join("﹒")) || "";
 
   return (
     <div className="relative w-[150px] mt-[77px]">
