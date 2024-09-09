@@ -27,4 +27,5 @@ export const END_POINTS = {
   COMMUNITY_COMMENTS: (communityId: number) => `/api/community/${communityId}/comments`,
   DELETE_COMMUNITY_COMMENTS: (communityId: number, commentId: number) =>
     `/api/community/${communityId}/comments/${commentId}`,
+  COMMUNITY_VISIT: (communityId: number) => `/api/community/${communityId}/visit`,
 };

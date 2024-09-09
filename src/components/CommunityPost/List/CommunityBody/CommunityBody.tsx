@@ -1,18 +1,34 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import PostList from "@/components/CommunityPost/List/PostList/PostList";
 import Recommended from "@/components/CommunityPost/List/Recommended/Recommended";
 import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet";
 
+import { PATH } from "@/constants/path";
+
+import { usePatchVisitCommunityMutation } from "@/hooks/api/community/usePatchVisitSommunityMutation";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useCommunityFilter } from "@/hooks/community/useCommunityFilter";
 
 const CommunityBody = () => {
+  const router = useRouter();
+
   const { communityListData, filterOption, handleClickTag, updateFilterOption } =
     useCommunityFilter({});
+  const { mutate: patchVisitCommunityMutation } = usePatchVisitCommunityMutation();
+
   const { isOpen, handleClose, handleOpen } = useOverlay();
+
+  const handleClickPostCard = (id: number) => {
+    patchVisitCommunityMutation(id, {
+      onSuccess() {
+        router.push(PATH.COMMUNITY(id));
+      },
+    });
+  };
 
   return (
     <>
@@ -31,13 +47,14 @@ const CommunityBody = () => {
         </div>
       </div>
 
-      <Recommended />
+      <Recommended handleClick={handleClickPostCard} />
 
       <PostList
         communityListData={communityListData}
         filterOption={filterOption}
         handleClickTag={handleClickTag}
         updateFilterOption={updateFilterOption}
+        handleClick={handleClickPostCard}
       />
 
       <SearchSheet

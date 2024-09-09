@@ -1,14 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import Divider from "@/components/common/Divider/Divider";
 import Filter from "@/components/common/Filter/Filter";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
-import { PATH } from "@/constants/path";
 
 import type {
   FilterSelectedType,
@@ -21,6 +19,7 @@ interface PostListProps {
   filterOption: FilterSelectedType;
   handleClickTag: (tag?: string | undefined) => string[];
   updateFilterOption: UpdateFilterSelectedTypeHandlerType;
+  handleClick: (id: number) => void;
 }
 
 const PostList = ({
@@ -28,6 +27,7 @@ const PostList = ({
   filterOption,
   handleClickTag,
   updateFilterOption,
+  handleClick,
 }: PostListProps) => {
   return (
     <div className="pb-10">
@@ -78,9 +78,12 @@ const PostList = ({
 
         <ul className="flex flex-col gap-4 px-4">
           {communityListData.data.map((post) => (
-            <Link href={PATH.COMMUNITY(post.id)} key={`community_post_${post.id}`}>
-              <PostCard className="border border-[#EAEAEA]" post={post} />
-            </Link>
+            <PostCard
+              key={`community_post_${post.id}`}
+              className="border border-[#EAEAEA]"
+              post={post}
+              onClick={() => handleClick(post.id)}
+            />
           ))}
         </ul>
       </div>

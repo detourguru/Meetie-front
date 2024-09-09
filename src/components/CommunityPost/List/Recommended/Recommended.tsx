@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
-import { PATH } from "@/constants/path";
-
 import { useCommunityRecommend } from "@/hooks/community/useCommunityRecommend";
 
-const Recommended = () => {
+interface RecommendedProps {
+  handleClick: (id: number) => void;
+}
+
+const Recommended = ({ handleClick }: RecommendedProps) => {
   const { communityListData, scrollIndex, handleScroll, handleRefresh } = useCommunityRecommend();
 
   return (
@@ -36,9 +37,12 @@ const Recommended = () => {
               onScroll={handleScroll}
             >
               {communityListData.data.map((post) => (
-                <Link href={PATH.COMMUNITY(post.id)} key={`recommend_${post.id}`}>
-                  <PostCard className="min-w-[343px] snap-normal snap-center" post={post} />
-                </Link>
+                <PostCard
+                  key={`recommend_${post.id}`}
+                  className="min-w-[343px] snap-normal snap-center"
+                  post={post}
+                  onClick={() => handleClick(post.id)}
+                />
               ))}
             </ul>
             <div className="flex gap-1.5 justify-center">
