@@ -36,8 +36,7 @@ const ProfileBody = () => {
             )}
             <h2 className="text-semibold-20">{user.name}</h2>
           </div>
-          {/* TODO: onboarding position */}
-          <h3 className="text-regular-14">기획자</h3>
+          <h3 className="text-regular-14">{user.position}</h3>
         </div>
 
         <div className="mt-[30px]">
