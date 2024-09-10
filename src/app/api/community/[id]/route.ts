@@ -2,14 +2,34 @@ import { NextResponse } from "next/server";
 
 import { createClient } from "@/utils/supabase/server";
 
+import type { CommunityEmojiResponseType } from "@/types/community";
+
 export async function GET(request: Request, { params }: { params: { id: string } }) {
   try {
     const supabase = createClient();
 
-    const { data } = await supabase.from("community").select().eq("id", params.id).single();
+    const { data } = await supabase
+      .from("community")
+      .select(`*, community_emoji (id, emoji, user_id, userinfo (profileImage))`)
+      .eq("id", params.id)
+      .single();
+
+    const emojiList: CommunityEmojiResponseType[] = data.community_emoji ?? [];
 
     if (data) {
-      return NextResponse.json({ message: "ok", data }, { status: 200 });
+      return NextResponse.json(
+        {
+          message: "ok",
+          data: {
+            ...data,
+            emojiList: emojiList.map((emoji) => ({
+              ...emoji,
+              profileImage: emoji.userinfo.profileImage,
+            })),
+          },
+        },
+        { status: 200 },
+      );
     }
 
     return NextResponse.json({ message: "ok", data: null }, { status: 200 });

@@ -23,7 +23,7 @@ const PostDetail = () => {
   const { userData: ownerUser } = useUserInformationQuery();
   const { userData: postUser } = useUserInformationQuery(postData.data.user_id);
 
-  const { postDate, viewCount } = postData.data;
+  const { postDate, viewCount, emojiList } = postData.data;
 
   const isOwner = ownerUser.data.user_id === postData.data.user_id;
 
@@ -55,7 +55,7 @@ const PostDetail = () => {
         <Divider className="bg-[#F1F2F6]" />
       </div>
 
-      <PostComments userId={ownerUser.data.user_id} />
+      <PostComments userId={ownerUser.data.user_id} emojiList={emojiList} />
 
       <PostFooter profileImage={ownerUser.data.profileImage} />
     </>

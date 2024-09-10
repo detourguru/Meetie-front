@@ -23,12 +23,15 @@ export const END_POINTS = {
   COMMUNITY_LIST: (search: string, tags: string[], sort: string, date: string) =>
     `/api/community-list?search=${search}&tags=${tags.join(",")}&sort=${sort}&date=${date}`,
   COMMUNITY_LIST_RECOMMEND: "/api/community-list/recommend",
+
   COMMUNITY: (communityId: number) => `/api/community/${communityId}`,
   POST_COMMUNITY: "/api/community",
+  POST_COMMUNITY_EMOJI: (communityId: number) => `/api/community/${communityId}/emoji`,
+  COMMUNITY_VISIT: (communityId: number) => `/api/community/${communityId}/visit`,
+
   COMMUNITY_COMMENTS: (communityId: number) => `/api/community/${communityId}/comments`,
   DELETE_COMMUNITY_COMMENTS: (communityId: number, commentId: number) =>
     `/api/community/${communityId}/comments/${commentId}`,
-  COMMUNITY_VISIT: (communityId: number) => `/api/community/${communityId}/visit`,
 
   POST_TASK: "/api/task",
   TASK_LIST: (studyRoomId: string) => `/api/task-list/${studyRoomId}`,

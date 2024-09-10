@@ -10,6 +10,7 @@ export interface CommunityPostType {
   images: string[];
   contents: string;
   viewCount: number;
+  emojiList: CommunityPostEmojiType[];
 }
 
 export interface CreateCommunityFormType
@@ -47,4 +48,20 @@ export interface CreateCommentFormType extends Pick<CommunityCommentType, "conte
 
 export interface GetCommentsResponseType extends CommonResponseType {
   data: CommunityCommentType[];
+}
+
+export interface CommunityPostEmojiType {
+  id: string;
+  user_id: string;
+  profileImage: string;
+  emoji: string;
+}
+
+export interface CreateCommunityEmojiType extends Pick<CommunityPostEmojiType, "emoji"> {}
+
+export interface CommunityEmojiResponseType {
+  id: number;
+  emoji: string;
+  user_id: string;
+  userinfo: { profileImage: string };
 }

@@ -73,6 +73,7 @@ const config: Config = {
       "semibold-14": ["14px", { lineHeight: "140%", fontWeight: 600 }],
       "semibold-12": ["12px", { lineHeight: "140%", fontWeight: 600 }],
       "semibold-10": ["10px", { lineHeight: "140%", fontWeight: 600 }],
+      "medium-20": ["20px", { lineHeight: "140%", fontWeight: 500 }],
       "medium-18": ["18px", { lineHeight: "140%", fontWeight: 500 }],
       "medium-16": ["16px", { lineHeight: "140%", fontWeight: 500 }],
       "medium-14": ["14px", { lineHeight: "140%", fontWeight: 500 }],

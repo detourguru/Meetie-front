@@ -19,11 +19,11 @@ const emojiButtonVariants = cva("relative bg-[#F3F3F3] border border-[#DDDDDD]",
 });
 
 const emojiListVariants = cva(
-  "absolute z-50 bg-white divide-x divide-gray-100 rounded-lg shadow w-fit px-2 py-0.5 border border-[#DDDDDD]",
+  "absolute z-50 bg-white divide-x divide-gray-100 rounded-lg shadow w-fit border border-[#DDDDDD]",
   {
     variants: {
       position: {
-        default: "-bottom-12",
+        default: "-bottom-9",
         bottomRight: "-bottom-12 right-0",
       },
     },
@@ -38,9 +38,17 @@ export interface EmojiButtonProps
     VariantProps<typeof emojiButtonVariants>,
     VariantProps<typeof emojiListVariants> {
   open?: boolean;
+  handleClick?: (emoji: string) => void;
 }
 
-const EmojiButton = ({ open, className, size, position, ...props }: EmojiButtonProps) => {
+const EmojiButton = ({
+  open,
+  handleClick,
+  className,
+  size,
+  position,
+  ...props
+}: EmojiButtonProps) => {
   return (
     <div className="flex flex-col gap-1 relative">
       <button className={cn(emojiButtonVariants({ size, className }))} type="button" {...props}>
@@ -55,9 +63,12 @@ const EmojiButton = ({ open, className, size, position, ...props }: EmojiButtonP
 
       {open && (
         <div className={cn(emojiListVariants({ position }))}>
-          <ul className="py-2 text-medium-14 flex gap-2 cursor-pointer">
+          <ul className="text-medium-14 flex cursor-pointer">
             {COMMUNITY_REACT_DATA.map((emoji) => (
-              <li onClick={() => console.log(emoji)}>
+              <li
+                onClick={() => handleClick && handleClick(emoji)}
+                className="hover:bg-gray-50 p-1.5"
+              >
                 <span>{emoji}</span>
               </li>
             ))}
