@@ -2,6 +2,8 @@ import { useRouter } from "next/navigation";
 
 import { useCallback, useState } from "react";
 
+import { format } from "date-fns";
+
 import { usePostTaskConfirmMutation } from "../api/task-confirm/usePostTaskConfirmMutation";
 
 import { PATH } from "@/constants/path";
@@ -18,9 +20,11 @@ export const useTaskConfirmForm = ({ taskId }: UseTaskConfirmFormProps) => {
   const router = useRouter();
 
   const [taskConfirmForm, setTaskConfirmForm] = useState({
-    addItems: [],
+    mediaList: [],
     contents: "",
     taskId,
+    referenceDate: format(new Date(), "yyyy-MM-dd"),
+    confirmType: "image",
   });
 
   const updateInputValue = useCallback(

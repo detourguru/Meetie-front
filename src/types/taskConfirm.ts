@@ -2,7 +2,7 @@ import type { CommonResponseType } from "@/types/common";
 
 export interface TaskConfirmRequestType {
   contents: string;
-  addItems: string[];
+  mediaList: string[];
 }
 
 export type TaskConfirmUpdateHandlerType = <Key extends keyof TaskConfirmRequestType>(

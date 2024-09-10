@@ -58,8 +58,14 @@ const TaskConfirmDetail = () => {
         <div className="text-regular-14 text-[#41364A]">
           <pre>{data.data.contents}</pre>
           <div className="flex flex-col gap-4 py-2 rounded-sm overflow-hidden mt-4">
-            {data.data.addItems.map((item, index) => (
-              <Image key={index} src={item} alt="uploaded" width={375} height={220} />
+            {data.data.mediaList.map((item, index) => (
+              <Image
+                key={`image${index}`}
+                src={item}
+                alt={`image${index}`}
+                width={375}
+                height={220}
+              />
             ))}
           </div>
           <p className="text-regular-12 text-[#636363] mt-2">

@@ -18,6 +18,9 @@ const TaskList = ({ studyRoomId, isDeadline }: TaskListProps) => {
           <span className="text-[#E12C78]">{data.data.length}</span>
         </h2>
       </div>
+      <span className="text-regular-14 text-blue-300">
+        {isDeadline ? "#마감이 얼마 남지 않은 과제에요" : "#과제 목록을 확인해보세요"}
+      </span>
 
       {data.data.map((task) => (
         <TaskCard key={task.title} task={task} isDeadline={isDeadline} />

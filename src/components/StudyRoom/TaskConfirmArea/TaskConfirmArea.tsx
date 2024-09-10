@@ -17,18 +17,18 @@ const TaskConfirmArea = ({ taskConfirmForm, updateInputValue }: TaskConfirmPostP
 
   return (
     <section>
-      {taskConfirmForm.addItems.length > 0 ? (
+      {taskConfirmForm.mediaList.length > 0 ? (
         <>
-          {taskConfirmForm.addItems.map((item, index) => (
+          {taskConfirmForm.mediaList.map((item, index) => (
             <TaskConfirmItem
               key={index}
               uploadItem={item}
               handleItemDelete={() =>
-                updateInputValue("addItems", handleItemDelete(taskConfirmForm.addItems, index))
+                updateInputValue("mediaList", handleItemDelete(taskConfirmForm.mediaList, index))
               }
             />
           ))}
-          {taskConfirmForm.addItems.length < MAX_SIZE && (
+          {taskConfirmForm.mediaList.length < MAX_SIZE && (
             <div
               className="flex items-center justify-center bg-[#F9F9F9] border border-[#E9E9E9] w-full h-10 rounded-lg mb-2"
               onClick={handleOpen}
@@ -47,14 +47,14 @@ const TaskConfirmArea = ({ taskConfirmForm, updateInputValue }: TaskConfirmPostP
         </div>
       )}
       <p className="text-[13px] text-[#b7b7b7] text-right">
-        {taskConfirmForm.addItems.length}/{MAX_SIZE}
+        {taskConfirmForm.mediaList.length}/{MAX_SIZE}
       </p>
 
       <TaskConfirmSheet
         isOpen={isOpen}
         onInteractOutside={handleClose}
         updateInputValue={updateInputValue}
-        addItems={taskConfirmForm.addItems}
+        mediaList={taskConfirmForm.mediaList}
       />
     </section>
   );

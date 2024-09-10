@@ -9,14 +9,14 @@ import type { TaskConfirmUpdateHandlerType } from "@/types/taskConfirm";
 
 interface TaskConfirmSheetProps extends CommonSheetProps {
   updateInputValue: TaskConfirmUpdateHandlerType;
-  addItems: string[];
+  mediaList: string[];
 }
 
 const TaskConfirmSheet = ({
   isOpen,
   onInteractOutside,
   updateInputValue,
-  addItems,
+  mediaList,
 }: TaskConfirmSheetProps) => {
   const MAX_SIZE = 4;
 
@@ -50,7 +50,7 @@ const TaskConfirmSheet = ({
                 accept="image/*"
                 multiple
                 onChange={async (e) => {
-                  updateInputValue("addItems", await handleImageUpload(addItems, e.target.files));
+                  updateInputValue("mediaList", await handleImageUpload(mediaList, e.target.files));
                   onInteractOutside && onInteractOutside();
                 }}
                 hidden

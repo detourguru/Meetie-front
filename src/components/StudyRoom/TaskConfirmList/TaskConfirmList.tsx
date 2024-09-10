@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-const TaskConfirm = () => {
+const TaskConfirmList = () => {
   return (
-    <section className="flex pt-8 gap-[10px]">
+    <section className="flex mt-5 gap-[10px]">
       <div className="h-fit mt-3 text-regular-14 pr-[10px] border-r-2 border-primary-500">
         <p>AM</p>
         <p>9:00</p>
@@ -23,4 +23,4 @@ const TaskConfirm = () => {
   );
 };
 
-export default TaskConfirm;
+export default TaskConfirmList;

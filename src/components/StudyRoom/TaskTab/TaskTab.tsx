@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
-import TaskConfirm from "@/components/StudyRoom/TaskConfirm/TaskConfirm";
+import TaskConfirmList from "@/components/StudyRoom/TaskConfirmList/TaskConfirmList";
 import TaskList from "@/components/StudyRoom/TaskTab/TaskList/TaskList";
 
 import { PATH } from "@/constants/path";
@@ -42,16 +42,11 @@ const TaskTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: Tas
           <h4 className="text-semibold-18">
             ✍️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}요일
           </h4>
-          <span className="text-regular-14 text-[#82829B]">
+          <span className="text-regular-14 text-blue-300">
             #과제 인증을 완료한 팀원들을 확인해 보세요.
           </span>
-          <TaskConfirm />
-          {/* <Link href={PATH.TASK_CONFIRM(1)}>
-            <button className="w-full h-11 mt-6 flex items-center justify-center gap-2 border border-dotted border-[#686868] rounded-lg text-regular-14 text-[#82829B]">
-              <Image src="/svg/ic-confirm-plus.svg" alt="icon" width={20} height={20} />
-              과제 인증하기
-            </button>
-          </Link> */}
+
+          <TaskConfirmList />
         </div>
 
         <TaskList studyRoomId={studyRoomId} />
