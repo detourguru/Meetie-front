@@ -8,6 +8,7 @@ import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton
 
 import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
 import { useDeleteCommentMutation } from "@/hooks/api/community-comments/useDeleteCommentMutaion";
+import { useDeleteCommunityEmojiMutation } from "@/hooks/api/community-emoji/useDeleteCommunityEmojiMutation";
 import { usePostCommunityEmojiMutation } from "@/hooks/api/community-emoji/usePostCommunityEmojiMutation";
 import { useOverlay } from "@/hooks/common/useOverlay";
 
@@ -22,6 +23,7 @@ const PostComments = ({ userId, emojiList }: PostCommentsProps) => {
   const { id } = useParams();
 
   const { mutate: postCommunityEmojiMutation } = usePostCommunityEmojiMutation(Number(id));
+  const { mutate: deleteCommunityEmojiMutation } = useDeleteCommunityEmojiMutation(Number(id));
   const { mutate: deleteCommentMutation } = useDeleteCommentMutation(Number(id));
   const { data: commentsData } = useCommentsQuery(Number(id));
 
@@ -49,7 +51,11 @@ const PostComments = ({ userId, emojiList }: PostCommentsProps) => {
           <EmojiButton open={isOpen} onClick={handleToggle} handleClick={handleClick} />
           <div className="flex gap-2.5 flex-1 justify-start overflow-x-scroll hidden-scrollbar h-11 items-center">
             {emojiList.map((emoji) => (
-              <div className="relative" key={`emoji_${emoji.id}`}>
+              <div
+                className="relative"
+                key={`emoji_${emoji.id}`}
+                onClick={() => deleteCommunityEmojiMutation(emoji.id)}
+              >
                 <Avatar src={emoji.profileImage} size="sm" />
                 <div className="absolute text-medium-20 -bottom-1 -right-2.5">{emoji.emoji}</div>
               </div>

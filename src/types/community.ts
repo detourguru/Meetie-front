@@ -41,7 +41,6 @@ export interface CommunityCommentType {
   profileImage: string;
   uploadDate: string;
   contents: string;
-  emojiList: string[];
 }
 
 export interface CreateCommentFormType extends Pick<CommunityCommentType, "contents"> {}
@@ -51,7 +50,7 @@ export interface GetCommentsResponseType extends CommonResponseType {
 }
 
 export interface CommunityPostEmojiType {
-  id: string;
+  id: number;
   user_id: string;
   profileImage: string;
   emoji: string;

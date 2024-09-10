@@ -26,6 +26,8 @@ export const END_POINTS = {
 
   COMMUNITY: (communityId: number) => `/api/community/${communityId}`,
   POST_COMMUNITY: "/api/community",
+  COMMUNITY_EMOJI: (communityId: number, emojiId: number) =>
+    `/api/community/${communityId}/emoji/${emojiId}`,
   POST_COMMUNITY_EMOJI: (communityId: number) => `/api/community/${communityId}/emoji`,
   COMMUNITY_VISIT: (communityId: number) => `/api/community/${communityId}/visit`,
 
