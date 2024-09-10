@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import { useState } from "react";
-
 import { usePatchBookmarkMutation } from "@/hooks/api/bookmarks/usePatchBookmarkMutation";
 
 interface BookmarkProps {
@@ -11,16 +9,12 @@ interface BookmarkProps {
 }
 
 const Bookmark = ({ isMarked, studyId, userId }: BookmarkProps) => {
-  const [marked, setMarked] = useState(isMarked);
   const { mutate: patchBookmarkMutation } = usePatchBookmarkMutation();
 
   const handleBookmark = (e: React.MouseEvent<HTMLImageElement>) => {
     e.preventDefault();
     e.stopPropagation();
-
-    const bookmark = !marked;
-    setMarked(bookmark);
-    handleUpsertBookmark(bookmark);
+    handleUpsertBookmark(!isMarked);
   };
 
   const handleUpsertBookmark = async (bookmark: boolean | null) => {
@@ -38,7 +32,7 @@ const Bookmark = ({ isMarked, studyId, userId }: BookmarkProps) => {
     <div>
       <Image
         onClick={(e) => handleBookmark(e)}
-        src={marked ? "/svg/ic-bookmark-after.svg" : "/svg/ic-bookmark-before.svg"}
+        src={isMarked ? "/svg/ic-bookmark-after.svg" : "/svg/ic-bookmark-before.svg"}
         alt="icon"
         width={24}
         height={24}

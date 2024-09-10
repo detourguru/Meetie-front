@@ -11,4 +11,6 @@ export const QUERY_KEYS = {
   COMMUNITY_LIST: "communityList",
   COMMUNITY_LIST_RECOMMEND: "communityListRecommend",
   COMMUNITY: "community",
+
+  BOOKMARKS: "bookmarks",
 };
