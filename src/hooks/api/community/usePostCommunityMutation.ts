@@ -10,6 +10,7 @@ import type { CreateCommunityFormType } from "@/types/community";
 const postCommunity = async (createCommunityForm: CreateCommunityFormType) => {
   return await POST(END_POINTS.POST_COMMUNITY, createInit(createCommunityForm));
 };
+
 export const usePostCommunityMutation = () => {
   const queryClient = useQueryClient();
 

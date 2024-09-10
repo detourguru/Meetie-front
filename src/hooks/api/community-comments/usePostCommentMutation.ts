@@ -7,13 +7,16 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { CreateCommentFormType } from "@/types/community";
 
+const postComment = async (postId: number, createCommentForm: CreateCommentFormType) => {
+  return await POST(END_POINTS.COMMUNITY_COMMENTS(postId), createInit(createCommentForm));
+};
+
 export const usePostCommentMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const postCommentMutation = useMutation({
-    // TODO: 함수 분리
-    mutationFn: (createCommentForm: CreateCommentFormType) =>
-      POST(END_POINTS.COMMUNITY_COMMENTS(postId), createInit(createCommentForm)),
+    mutationFn: async (createCommentForm: CreateCommentFormType) =>
+      await postComment(postId, createCommentForm),
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMUNITY, postId, QUERY_KEYS.COMMUNITY_COMMENTS],
