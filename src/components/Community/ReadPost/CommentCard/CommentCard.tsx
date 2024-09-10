@@ -12,9 +12,16 @@ interface CommentCardProps {
   isOwner: boolean;
   handleDelete: () => void;
   handlePostEmoji: (emoji: string) => void;
+  handleDeleteEmoji: (emoji: string) => void;
 }
 
-const CommentCard = ({ comment, isOwner, handleDelete, handlePostEmoji }: CommentCardProps) => {
+const CommentCard = ({
+  comment,
+  isOwner,
+  handleDelete,
+  handlePostEmoji,
+  handleDeleteEmoji,
+}: CommentCardProps) => {
   const { name, profileImage, contents, uploadDate, emojiList, selectedEmoji } = comment;
 
   const { isOpen, handleToggle, handleClose } = useOverlay();
@@ -47,11 +54,16 @@ const CommentCard = ({ comment, isOwner, handleDelete, handlePostEmoji }: Commen
 
           <div className="flex gap-2.5 items-center">
             <EmojiButton size="sm" open={isOpen} onClick={handleToggle} handleClick={handleClick} />
-            <div className="flex gap-2.5 flex-1 justify-start items-center">
+            <div className="flex gap-2.5 flex-1 justify-start items-center overflow-x-scroll hidden-scrollbar">
               {emojiList.map((emoji, index) => (
                 <div
-                  className={`p-1 flex gap-1 border rounded-lg items-center bg-[#F3F3F3] ${selectedEmoji.includes(emoji.emoji) ? "border-primary-300" : "border-[#DDDDDD]"}`}
                   key={`comment_emoji_${index}`}
+                  className={`p-1 flex gap-1 border rounded-lg items-center cursor-pointer bg-[#F3F3F3] ${selectedEmoji.includes(emoji.emoji) ? "border-primary-300" : "border-[#DDDDDD]"}`}
+                  onClick={() =>
+                    selectedEmoji.includes(emoji.emoji)
+                      ? handleDeleteEmoji(emoji.emoji)
+                      : handlePostEmoji(emoji.emoji)
+                  }
                 >
                   <div className="text-medium-14">{emoji.emoji}</div>
                   <div className="text-medium-12">{emoji.count}</div>

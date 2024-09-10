@@ -7,6 +7,7 @@ import CommentCard from "@/components/Community/ReadPost/CommentCard/CommentCard
 import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton";
 
 import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
+import { useDeleteCommentEmojiMutation } from "@/hooks/api/community-comments/useDeleteCommentEmojiMutation";
 import { useDeleteCommentMutation } from "@/hooks/api/community-comments/useDeleteCommentMutaion";
 import { usePostCommentEmojiMutation } from "@/hooks/api/community-comments/usePostCommentEmojiMutation";
 import { useDeleteCommunityEmojiMutation } from "@/hooks/api/community-emoji/useDeleteCommunityEmojiMutation";
@@ -25,9 +26,12 @@ const PostComments = ({ userId, emojiList }: PostCommentsProps) => {
   const communityId = Number(id);
 
   const { mutate: postCommunityEmojiMutation } = usePostCommunityEmojiMutation(communityId);
-  const { mutate: postCommentEmojiMutation } = usePostCommentEmojiMutation(communityId);
   const { mutate: deleteCommunityEmojiMutation } = useDeleteCommunityEmojiMutation(communityId);
+
   const { mutate: deleteCommentMutation } = useDeleteCommentMutation(communityId);
+  const { mutate: postCommentEmojiMutation } = usePostCommentEmojiMutation(communityId);
+  const { mutate: deleteCommentEmojiMutation } = useDeleteCommentEmojiMutation(communityId);
+
   const { data: commentsData } = useCommentsQuery(communityId);
 
   const { isOpen, handleToggle, handleClose } = useOverlay();
@@ -75,6 +79,9 @@ const PostComments = ({ userId, emojiList }: PostCommentsProps) => {
           handleDelete={() => deleteCommentMutation(comment.id)}
           handlePostEmoji={(emoji: string) =>
             postCommentEmojiMutation({ commentId: comment.id, emoji })
+          }
+          handleDeleteEmoji={(emoji: string) =>
+            deleteCommentEmojiMutation({ commentId: comment.id, emoji })
           }
         />
       ))}
