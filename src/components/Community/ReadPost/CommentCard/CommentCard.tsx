@@ -61,11 +61,12 @@ const CommentCard = ({
 
           <div className="flex gap-2.5 items-center">
             <EmojiButton size="sm" open={isOpen} onClick={handleToggle} handleClick={handleClick} />
+
             <div className="flex gap-2.5 flex-1 justify-start items-center overflow-x-scroll hidden-scrollbar">
               {emojiList.map((emoji, index) => (
                 <div
                   key={`comment_emoji_${index}`}
-                  className={`p-1 flex gap-1 border rounded-lg items-center cursor-pointer bg-[#F3F3F3] ${selectedEmoji.includes(emoji.emoji) ? "border-primary-300" : "border-[#DDDDDD]"}`}
+                  className={`p-1 flex gap-1 border rounded-lg items-center cursor-pointer bg-[#F3F3F3] hover:bg-primary-200 active:bg-gray-100 ${selectedEmoji.includes(emoji.emoji) ? "border-primary-300" : "border-[#DDDDDD]"}`}
                   onClick={() =>
                     selectedEmoji.includes(emoji.emoji)
                       ? handleDeleteEmoji(emoji.emoji)

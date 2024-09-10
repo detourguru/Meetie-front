@@ -2,9 +2,9 @@
 
 import { useParams } from "next/navigation";
 
-import Avatar from "@/components/common/Avatar/Avatar";
 import CommentCard from "@/components/Community/ReadPost/CommentCard/CommentCard";
 import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton";
+import CommunityEmoji from "@/components/Community/ReadPost/PostComments/CommunityEmoji/CommunityEmoji";
 import PostFooter from "@/components/Community/ReadPost/PostDetail/PostFooter/PostFooter";
 
 import { useDeleteCommentEmojiMutation } from "@/hooks/api/community-comments/useDeleteCommentEmojiMutation";
@@ -39,6 +39,8 @@ const PostComments = ({ user, emojiList }: PostCommentsProps) => {
 
   const { isOpen, handleToggle, handleClose } = useOverlay();
 
+  const ownCommunityEmoji = emojiList.find((emoji) => emoji.user_id === user.user_id);
+
   const handleClick = (emoji: string) => {
     postCommunityEmojiMutation({ emoji });
     handleClose();
@@ -46,7 +48,7 @@ const PostComments = ({ user, emojiList }: PostCommentsProps) => {
 
   return (
     <>
-      <div className="mt-4 mb-24">
+      <div className="mt-4 mb-28">
         <div className="flex flex-col gap-4 px-4 pb-3">
           <div className="text-semibold-12 flex items-center gap-1.5">
             <div>
@@ -61,16 +63,21 @@ const PostComments = ({ user, emojiList }: PostCommentsProps) => {
           <div className="flex gap-2.5 items-center h-11">
             <EmojiButton open={isOpen} onClick={handleToggle} handleClick={handleClick} />
             <div className="flex gap-2.5 flex-1 justify-start overflow-x-scroll hidden-scrollbar h-11 items-center">
-              {emojiList.map((emoji) => (
-                <div
-                  className="relative"
-                  key={`emoji_${emoji.id}`}
+              {ownCommunityEmoji && (
+                <CommunityEmoji
                   onClick={() => deleteCommunityEmojiMutation()}
-                >
-                  <Avatar src={emoji.profileImage} size="sm" />
-                  <div className="absolute text-medium-20 -bottom-1 -right-2.5">{emoji.emoji}</div>
-                </div>
-              ))}
+                  communityEmoji={ownCommunityEmoji}
+                />
+              )}
+              {emojiList
+                .filter((emoji) => emoji.user_id !== user.user_id)
+                .map((emoji) => (
+                  <CommunityEmoji
+                    key={`emoji_${emoji.id}`}
+                    onClick={() => deleteCommunityEmojiMutation()}
+                    communityEmoji={emoji}
+                  />
+                ))}
             </div>
           </div>
         </div>
