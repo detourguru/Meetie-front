@@ -12,7 +12,7 @@ interface TagListProps {
 const TagList = ({ tags, isEdit, updateProfileForm }: TagListProps) => {
   return (
     <div className="flex flex-col gap-2 px-4 mt-8">
-      <p className="text-bold-18">스터디 태그 {isEdit && "추가"}</p>
+      <p className="text-bold-18">스터디 목적 {isEdit && "추가"}</p>
 
       <div className="flex flex-wrap gap-3">
         {tags.map((tag, index) => (
@@ -23,7 +23,7 @@ const TagList = ({ tags, isEdit, updateProfileForm }: TagListProps) => {
               updateProfileForm &&
               (() =>
                 updateProfileForm(
-                  "tagList",
+                  "purposes",
                   tags.filter((t) => t !== tag),
                 ))
             }
@@ -31,7 +31,7 @@ const TagList = ({ tags, isEdit, updateProfileForm }: TagListProps) => {
         ))}
 
         {updateProfileForm && (
-          <CreateTagSection tags={tags} updateProfileForm={updateProfileForm} type="tagList" />
+          <CreateTagSection tags={tags} updateProfileForm={updateProfileForm} type="purposes" />
         )}
       </div>
     </div>

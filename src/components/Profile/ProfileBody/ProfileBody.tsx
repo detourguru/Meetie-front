@@ -47,7 +47,7 @@ const ProfileBody = () => {
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
       <BadgeList />
-      <TagList tags={user.tagList} />
+      <TagList tags={user.purposes} />
       <StyleList styles={user.styles} />
       <ExperienceList />
       <EvaluationList />

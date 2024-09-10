@@ -21,7 +21,6 @@ export const useUserInformationQuery = (id?: string) => {
     introduce: user.introduce,
     profileImage: user.profileImage,
     mainBadge: user.mainBadge,
-    tagList: user.tagList,
     position: user.position,
     purposes: user.purposes,
     styles: user.styles,

@@ -9,7 +9,6 @@ export interface ProfileFormType {
   introduce: string;
   profileImage: string;
   mainBadge: string;
-  tagList: string[];
   position: string;
   purposes: string[];
   styles: string[];

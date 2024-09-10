@@ -107,7 +107,7 @@ const EditProfileForm = () => {
 
       <BadgeList isEdit selected={profileForm.mainBadge} handleClick={updateProfileForm} />
 
-      <TagList tags={profileForm.tagList} isEdit updateProfileForm={updateProfileForm} />
+      <TagList tags={profileForm.purposes} isEdit updateProfileForm={updateProfileForm} />
 
       <StyleList styles={profileForm.styles} isEdit updateProfileForm={updateProfileForm} />
 
