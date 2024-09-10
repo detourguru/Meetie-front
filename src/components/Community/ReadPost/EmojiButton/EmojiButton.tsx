@@ -18,37 +18,14 @@ const emojiButtonVariants = cva("relative bg-[#F3F3F3] border border-[#DDDDDD]",
   },
 });
 
-const emojiListVariants = cva(
-  "absolute z-20 bg-white divide-x divide-gray-100 rounded-lg shadow w-fit border border-[#DDDDDD]",
-  {
-    variants: {
-      position: {
-        default: "-bottom-9",
-        bottomRight: "-bottom-12 right-0",
-      },
-    },
-    defaultVariants: {
-      position: "default",
-    },
-  },
-);
-
 export interface EmojiButtonProps
   extends React.HtmlHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof emojiButtonVariants>,
-    VariantProps<typeof emojiListVariants> {
+    VariantProps<typeof emojiButtonVariants> {
   open: boolean;
   handleClick: (emoji: string) => void;
 }
 
-const EmojiButton = ({
-  open,
-  handleClick,
-  className,
-  size,
-  position,
-  ...props
-}: EmojiButtonProps) => {
+const EmojiButton = ({ open, handleClick, className, size, ...props }: EmojiButtonProps) => {
   return (
     <div className="flex flex-col gap-1 relative">
       <button className={cn(emojiButtonVariants({ size, className }))} type="button" {...props}>
@@ -62,7 +39,7 @@ const EmojiButton = ({
       </button>
 
       {open && (
-        <div className={cn(emojiListVariants({ position }))}>
+        <div className="absolute z-20 bg-white divide-x divide-gray-100 rounded-lg shadow w-fit border border-[#DDDDDD] -bottom-9">
           <ul className="text-medium-14 flex cursor-pointer">
             {COMMUNITY_REACT_DATA.map((emoji, index) => (
               <li
