@@ -8,7 +8,7 @@ interface CommunityEmojiProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
 
 const CommunityEmoji = ({ communityEmoji, ...props }: CommunityEmojiProps) => {
   return (
-    <div className="relative" {...props}>
+    <div className="relative cursor-pointer" {...props}>
       <Avatar src={communityEmoji.profileImage} size="sm" />
       <div className="absolute text-medium-20 -bottom-1 -right-2.5">{communityEmoji.emoji}</div>
     </div>
