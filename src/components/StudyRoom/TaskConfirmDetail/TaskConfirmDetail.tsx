@@ -10,8 +10,6 @@ import Header from "@/components/common/Header/Header";
 import { useTaskConfirmDetailQuery } from "@/hooks/api/task-confirm/useTaskConfirmDetailQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
-import UserImg from "/public/img/img-user-profile.png";
-
 import { convertDate, convertDateTime } from "@/utils/date";
 
 const TaskConfirmDetail = () => {
@@ -26,10 +24,9 @@ const TaskConfirmDetail = () => {
   return (
     <>
       <Header>
-        <Header.Title hasButton={true}>과제 인증</Header.Title>
         <Header.LeftButton />
       </Header>
-      <section className="px-4 pt-14 pb-10">
+      <section className="px-4 pt-14 pb-4">
         <div className="flex justify-between">
           <div className="flex items-center gap-2">
             <Image
@@ -56,36 +53,18 @@ const TaskConfirmDetail = () => {
           </div>
         </div>
       </section>
-      <section className="relative px-5 pt-[70px] pb-5 bg-[#FAFAFA] border-t border-b border-[#E6E6E6]">
-        <div className="absolute top-[-24px] w-[90%] flex justify-between items-center pl-5 pr-4 py-3 bg-[#F7F3FF] border border-[#CAB4FF] rounded-lg">
-          <div className="flex items-center">
-            <div className="w-5 h-5 rounded-full">
-              <Image src={UserImg} alt="user image" width={20} height={20} />
-            </div>
-            <div className="w-5 h-5 rounded-full ml-[-8px]">
-              <Image src={UserImg} alt="user image" width={20} height={20} />
-            </div>
-            <span className="ml-2 text-medium-12 text-[#41364A]">2명이 읽었습니다.</span>
-          </div>
-          <Image src="/svg/ic-calendar-prev-arrow.svg" alt="icon" width={6} height={12} />
-        </div>
+
+      <section className="px-5 pt-[30px] pb-5 bg-[#FAFAFA] border-t border-b border-[#E6E6E6]">
         <div className="text-regular-14 text-[#41364A]">
           <pre>{data.data.contents}</pre>
-          <div className="w-full h-fit py-2 rounded-sm overflow-hidden">
+          <div className="flex flex-col gap-4 py-2 rounded-sm overflow-hidden mt-4">
             {data.data.addItems.map((item, index) => (
-              <Image
-                className="w-full h-auto"
-                key={index}
-                src={item}
-                alt="uploaded"
-                width={375}
-                height={220}
-              />
+              <Image key={index} src={item} alt="uploaded" width={375} height={220} />
             ))}
           </div>
           <p className="text-regular-12 text-[#636363] mt-2">
-            오전 {convertDateTime(new Date(data.data.created_at))} ･
-            {convertDate(new Date(data.data.created_at))} ･ 1일차 과제
+            {convertDate(new Date(data.data.created_at))} ･{" "}
+            {convertDateTime(new Date(data.data.created_at))}
           </p>
         </div>
       </section>

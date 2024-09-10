@@ -19,6 +19,7 @@ const TaskConfirmSheet = ({
   addItems,
 }: TaskConfirmSheetProps) => {
   const MAX_SIZE = 4;
+
   const { handleImageUpload } = useMultiImageUpload({ maxSize: MAX_SIZE });
 
   return (
@@ -48,9 +49,10 @@ const TaskConfirmSheet = ({
                 type="file"
                 accept="image/*"
                 multiple
-                onChange={async (e) =>
-                  updateInputValue("addItems", await handleImageUpload(addItems, e.target.files))
-                }
+                onChange={async (e) => {
+                  updateInputValue("addItems", await handleImageUpload(addItems, e.target.files));
+                  onInteractOutside && onInteractOutside();
+                }}
                 hidden
               />
             </div>

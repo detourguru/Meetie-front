@@ -51,7 +51,7 @@ const TaskConfirm = () => {
       <section>
         <h4 className="text-bold-14 py-3">기록</h4>
         <textarea
-          className="w-full h-[50px] text-[15px] placeholder:text-[#82829B] bg-[#F9F9F9] p-3 border border-[#E9E9E9] rounded-lg resize-none"
+          className="w-full h-[50px] text-[15px] placeholder:text-[#82829B] bg-[#F9F9F9] p-3 border border-[#E9E9E9] rounded-lg resize-none outline-none"
           placeholder="과제를 하며 나누고 싶은 생각을 적어보세요."
           maxLength={500}
           onChange={(e) => updateInputValue("contents", e.target.value)}

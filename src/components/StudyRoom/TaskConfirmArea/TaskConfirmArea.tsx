@@ -9,7 +9,9 @@ import type { TaskConfirmPostProps } from "@/types/taskConfirm";
 
 const TaskConfirmArea = ({ taskConfirmForm, updateInputValue }: TaskConfirmPostProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
+
   const MAX_SIZE = 4;
+
   const handleItemDelete = (items: string[], index: number) =>
     items.filter((_, idx) => index !== idx);
 
@@ -47,6 +49,7 @@ const TaskConfirmArea = ({ taskConfirmForm, updateInputValue }: TaskConfirmPostP
       <p className="text-[13px] text-[#b7b7b7] text-right">
         {taskConfirmForm.addItems.length}/{MAX_SIZE}
       </p>
+
       <TaskConfirmSheet
         isOpen={isOpen}
         onInteractOutside={handleClose}

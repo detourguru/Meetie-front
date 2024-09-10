@@ -8,10 +8,14 @@ export async function POST(request: Request) {
 
     const data = await request.json();
 
-    const { error } = await supabase.from("task_confirm").insert(data);
+    const { data: postData, error } = await supabase
+      .from("task_confirm")
+      .insert(data)
+      .select()
+      .single();
 
     if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok", status: 200, data: postData.id });
     }
 
     return NextResponse.json({ message: "error", status: 400 });

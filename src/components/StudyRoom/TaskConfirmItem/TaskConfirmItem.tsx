@@ -10,7 +10,13 @@ const TaskConfirmItem = ({ uploadItem, handleItemDelete }: TaskConfirmItemProps)
       <button className="absolute top-1 right-1" onClick={handleItemDelete}>
         <Image src="/svg/ic-confirm-btn-delete.svg" alt="del btn" width={17} height={17} />
       </button>
-      <Image className="w-full h-fit" src={uploadItem} alt="Uploaded" width={340} height={170} />
+      <Image
+        className="w-full h-full object-cover"
+        src={uploadItem}
+        alt="Uploaded"
+        width={340}
+        height={170}
+      />
     </div>
   );
 };

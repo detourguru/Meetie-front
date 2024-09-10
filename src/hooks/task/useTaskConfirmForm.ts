@@ -39,8 +39,8 @@ export const useTaskConfirmForm = ({ taskId }: UseTaskConfirmFormProps) => {
 
   const handleSubmit = async () => {
     postTaskConfirmMutation(taskConfirmForm, {
-      onSuccess: () => {
-        router.push(PATH.TASK_CONFIRM_SUCCESS);
+      onSuccess: (result) => {
+        router.push(PATH.TASK_CONFIRM_SUCCESS(result.data));
       },
     });
   };

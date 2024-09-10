@@ -31,8 +31,8 @@ export const PATH = {
   STUDY_REQUEST: (studyId: string) => `/study/${studyId}/request`,
 
   TASK_CONFIRM: (taskId: string) => `/task-confirm/${taskId}`,
-  TASK_CONFIRM_SUCCESS: "/task-confirm/success",
-  TASK_CONFIRM_ID: (taskId: number) => `/task-confirm/${taskId}`,
+  TASK_CONFIRM_SUCCESS: (taskId: string) => `/task-confirm/${taskId}/success`,
+  TASK_CONFIRM_DETAIL: (taskConfirmId: string) => `/task-confirm-detail/${taskConfirmId}`,
   TASK_CREATE: (studyRoomId: string) => `/study-room/${studyRoomId}/task-create`,
 
   // TODO: 페이지 생성 후 PATH 수정
