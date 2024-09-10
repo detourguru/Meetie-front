@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 
+import { COMMUNITY_REACT_DATA } from "@/constants/community";
+
 import { createClient } from "@/utils/supabase/server";
 
 import type { CommentEmojiType, CommunityEmojiResponseType } from "@/types/community";
@@ -21,19 +23,21 @@ export async function GET(request: Request, { params }: { params: { id: string }
         {
           message: "ok",
           data: data.map((comment) => {
-            const emojiReactions = comment.community_comments_emoji.reduce(
-              (acc: { [key: string]: CommentEmojiType }, reaction: CommunityEmojiResponseType) => {
-                if (!acc[reaction.emoji]) {
-                  acc[reaction.emoji] = { emoji: reaction.emoji, count: 0, user_ids: [] };
+            const emojies: CommunityEmojiResponseType[] = comment.community_comments_emoji;
+
+            const emojiReactions = COMMUNITY_REACT_DATA.reduce(
+              (acc: { [key: string]: CommentEmojiType }, reaction: string) => {
+                const emojiList = emojies.filter((emoji) => emoji.emoji === reaction);
+
+                if (emojiList.length) {
+                  acc[reaction] = { emoji: reaction, count: emojiList.length };
                 }
-                acc[reaction.emoji].count += 1;
-                acc[reaction.emoji].user_ids.push(reaction.user_id);
                 return acc;
               },
               {},
             );
 
-            const userSelectedEmoji = comment.community_comments_emoji
+            const userSelectedEmoji = emojies
               .filter((reaction: CommunityEmojiResponseType) => reaction.user_id === user.id)
               .map((emoji: CommunityEmojiResponseType) => emoji.emoji);
 

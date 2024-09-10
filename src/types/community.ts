@@ -71,7 +71,6 @@ export interface CreateCommentEmojiType {
 }
 
 export interface CommentEmojiType {
-  user_ids: string[];
   emoji: string;
   count: number;
 }
