@@ -6,6 +6,7 @@ export const QUERY_KEYS = {
   STUDY: "study",
 
   TASK_LIST: "taskList",
+  TASK: "task",
 
   USER_INFO: "userInfo",
 

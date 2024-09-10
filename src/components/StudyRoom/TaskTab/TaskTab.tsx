@@ -46,12 +46,12 @@ const TaskTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: Tas
             #과제 인증을 완료한 팀원들을 확인해 보세요.
           </span>
           <TaskConfirm />
-          <Link href={PATH.TASK_CONFIRM}>
+          {/* <Link href={PATH.TASK_CONFIRM(1)}>
             <button className="w-full h-11 mt-6 flex items-center justify-center gap-2 border border-dotted border-[#686868] rounded-lg text-regular-14 text-[#82829B]">
               <Image src="/svg/ic-confirm-plus.svg" alt="icon" width={20} height={20} />
               과제 인증하기
             </button>
-          </Link>
+          </Link> */}
         </div>
 
         <TaskList studyRoomId={studyRoomId} />

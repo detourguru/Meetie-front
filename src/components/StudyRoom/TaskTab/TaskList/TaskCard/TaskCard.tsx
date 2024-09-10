@@ -1,7 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
 import Timer from "@/components/StudyRoom/TaskTab/TaskList/TaskCard/Timer/Timer";
+
+import { PATH } from "@/constants/path";
 
 import type { TaskListType } from "@/types/task";
 
@@ -30,9 +33,11 @@ const TaskCard = ({ task, isDeadline }: TaskCardProps) => {
         </div>
       )}
 
-      <Button className="w-full py-[10px] mt-3" variant="secondary">
-        <span className="text-white text-semibold-16">인증하기</span>
-      </Button>
+      <Link href={PATH.TASK_CONFIRM(task.id)}>
+        <Button className="w-full py-[10px] mt-3" variant="secondary">
+          <span className="text-white text-semibold-16">인증하기</span>
+        </Button>
+      </Link>
     </div>
   );
 };

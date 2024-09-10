@@ -4,22 +4,21 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { GET, createInit } from "@/apis/httpMethod";
 
 import { END_POINTS } from "@/constants/api";
+import { QUERY_KEYS } from "@/constants/queryKey";
 
-import type { GetTaskConfirmResponseType } from "@/types/taskConfirm";
+import type { GetTaskResponseType } from "@/types/task";
 
-export const taskConfirmQueryOptions = (
-  taskId: string,
-): UseSuspenseQueryOptions<GetTaskConfirmResponseType> => ({
-  queryKey: [],
-  queryFn: async () => {
-    const task = await GET<GetTaskConfirmResponseType>(
-      END_POINTS.TASK_CONFIRM_ID(taskId),
-      createInit(),
-    );
-    return task;
-  },
+const getTask = async (taskId: string) => {
+  const data = await GET<GetTaskResponseType>(END_POINTS.TASK(taskId), createInit());
+
+  return data;
+};
+
+export const taskQueryOptions = (taskId: string): UseSuspenseQueryOptions<GetTaskResponseType> => ({
+  queryKey: [QUERY_KEYS.TASK, taskId],
+  queryFn: () => getTask(taskId),
 });
 
-export function useTaskConfirmQuery(taskId: string) {
-  return useSuspenseQuery(taskConfirmQueryOptions(taskId));
+export function useTaskQuery(taskId: string) {
+  return useSuspenseQuery(taskQueryOptions(taskId));
 }

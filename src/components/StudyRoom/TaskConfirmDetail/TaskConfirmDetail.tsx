@@ -7,7 +7,7 @@ import ConfirmComment from "../ConfirmComment/ConfirmComment";
 
 import Header from "@/components/common/Header/Header";
 
-import { useTaskConfirmQuery } from "@/hooks/api/task/useTaskQuery";
+import { useTaskConfirmDetailQuery } from "@/hooks/api/task-confirm/useTaskConfirmDetailQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 import UserImg from "/public/img/img-user-profile.png";
@@ -17,7 +17,7 @@ import { convertDate, convertDateTime } from "@/utils/date";
 const TaskConfirmDetail = () => {
   const params = useParams();
 
-  const { data } = useTaskConfirmQuery(String(params.id));
+  const { data } = useTaskConfirmDetailQuery(String(params.id));
   const { userData } = useUserInformationQuery();
   const { userData: AuthorUserData } = useUserInformationQuery(data.data.user_id);
 

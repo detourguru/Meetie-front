@@ -2,18 +2,25 @@ import { Suspense } from "react";
 
 import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
-import TaskConfirmDetail from "@/components/StudyRoom/TaskConfirmDetail/TaskConfirmDetail";
+import Header from "@/components/common/Header/Header";
+import TaskConfirm from "@/components/TaskConfirm/TaskConfirm";
 
-import { taskConfirmQueryOptions } from "@/hooks/api/task/useTaskQuery";
+import { taskQueryOptions } from "@/hooks/api/task/useTaskQuery";
 
-export default function TaskConfirmDetailPage({ params }: { params: { id: string } }) {
-  const serverFetchOptions = [taskConfirmQueryOptions(params.id)];
+import type { ParamIdType } from "@/types/common";
+
+export default function TaskConfirmPage({ params }: ParamIdType) {
+  const serverFetchOptions = [taskQueryOptions(params.id)];
 
   return (
     <>
+      <Header>
+        <Header.Title hasButton>과제 인증</Header.Title>
+        <Header.LeftButton />
+      </Header>
       <Suspense>
         <ServerFetchBoundary fetchOptions={serverFetchOptions}>
-          <TaskConfirmDetail />
+          <TaskConfirm />
         </ServerFetchBoundary>
       </Suspense>
     </>

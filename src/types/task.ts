@@ -15,8 +15,13 @@ export type CreateTaskUpdateHandlerType = <Key extends keyof CreateTaskFormReque
 
 export interface TaskListType extends CreateTaskFormRequestType {
   studyRoomId: string;
+  id: string;
 }
 
 export interface GetTaskListResponseType extends CommonResponseType {
   data: TaskListType[];
+}
+
+export interface GetTaskResponseType extends CommonResponseType {
+  data: TaskListType;
 }

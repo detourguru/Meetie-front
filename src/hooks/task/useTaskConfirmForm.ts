@@ -2,27 +2,26 @@ import { useRouter } from "next/navigation";
 
 import { useCallback, useState } from "react";
 
-import { usePostTaskConfirmMutation } from "../api/task/usePostTaskConfirmMutation";
+import { usePostTaskConfirmMutation } from "../api/task-confirm/usePostTaskConfirmMutation";
 
 import { PATH } from "@/constants/path";
 
 import type { TaskConfirmRequestType } from "@/types/taskConfirm";
 
-interface useTaskConfirmFormProps {
-  initialData?: TaskConfirmRequestType;
+interface UseTaskConfirmFormProps {
+  taskId: string;
 }
 
-export const useTaskConfirmForm = ({ initialData }: useTaskConfirmFormProps) => {
+export const useTaskConfirmForm = ({ taskId }: UseTaskConfirmFormProps) => {
   const { mutate: postTaskConfirmMutation } = usePostTaskConfirmMutation();
 
   const router = useRouter();
 
-  const [taskConfirmForm, setTaskConfirmForm] = useState(
-    initialData ?? {
-      addItems: [],
-      contents: "",
-    },
-  );
+  const [taskConfirmForm, setTaskConfirmForm] = useState({
+    addItems: [],
+    contents: "",
+    taskId,
+  });
 
   const updateInputValue = useCallback(
     <Key extends keyof TaskConfirmRequestType>(key: Key, value: TaskConfirmRequestType[Key]) => {
