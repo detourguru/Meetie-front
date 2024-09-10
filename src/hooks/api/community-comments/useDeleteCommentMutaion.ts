@@ -9,6 +9,7 @@ export const useDeleteCommentMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const deleteCommentMutation = useMutation({
+    // TODO: 함수 분리
     mutationFn: (commentId: number) =>
       DELETE(END_POINTS.DELETE_COMMUNITY_COMMENTS(postId, commentId), createInit()),
     onSuccess: () => {

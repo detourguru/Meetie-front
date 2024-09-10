@@ -11,6 +11,7 @@ export const useDeleteCommentEmojiMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const deleteCommentEmojiMutation = useMutation({
+    // TODO: 함수 분리
     mutationFn: (createEmojiForm: CreateCommentEmojiType) =>
       DELETE(
         END_POINTS.COMMUNITY_COMMENT_EMOJI(

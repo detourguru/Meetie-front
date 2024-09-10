@@ -9,7 +9,7 @@ import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet
 
 import { PATH } from "@/constants/path";
 
-import { usePatchVisitCommunityMutation } from "@/hooks/api/community/usePatchVisitSommunityMutation";
+import { usePatchVisitCommunityMutation } from "@/hooks/api/community/usePatchVisitCommunityMutation";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useCommunityFilter } from "@/hooks/community/useCommunityFilter";
 

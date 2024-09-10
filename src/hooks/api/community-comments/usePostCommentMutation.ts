@@ -11,6 +11,7 @@ export const usePostCommentMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const postCommentMutation = useMutation({
+    // TODO: 함수 분리
     mutationFn: (createCommentForm: CreateCommentFormType) =>
       POST(END_POINTS.COMMUNITY_COMMENTS(postId), createInit(createCommentForm)),
     onSuccess: () => {

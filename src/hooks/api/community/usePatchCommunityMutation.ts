@@ -12,12 +12,15 @@ interface PatchCommunityProps {
   postId: number;
 }
 
+const patchCommunity = async ({ createPostForm, postId }: PatchCommunityProps) => {
+  return await PATCH(END_POINTS.COMMUNITY(postId), createInit(createPostForm));
+};
+
 export const usePatchCommunityMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const patchCommunityMutation = useMutation({
-    mutationFn: ({ createPostForm, postId }: PatchCommunityProps) =>
-      PATCH(END_POINTS.COMMUNITY(postId), createInit(createPostForm)),
+    mutationFn: patchCommunity,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY, postId] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY_LIST] });

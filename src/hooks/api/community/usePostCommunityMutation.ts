@@ -7,12 +7,14 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { CreateCommunityFormType } from "@/types/community";
 
+const postCommunity = async (createCommunityForm: CreateCommunityFormType) => {
+  return await POST(END_POINTS.POST_COMMUNITY, createInit(createCommunityForm));
+};
 export const usePostCommunityMutation = () => {
   const queryClient = useQueryClient();
 
   const postCommunityMutation = useMutation({
-    mutationFn: (createCommunityForm: CreateCommunityFormType) =>
-      POST(END_POINTS.POST_COMMUNITY, createInit(createCommunityForm)),
+    mutationFn: postCommunity,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY_LIST] });
     },

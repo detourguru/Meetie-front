@@ -14,7 +14,15 @@ const EditPost = () => {
 
   const { data: postData } = useCommunityQuery(Number(params.id));
   const { createPostForm, buttonDisabled, handleSubmitModify, updatePostForm, handleGoBack } =
-    useCreateCommunityPost({ initialData: postData.data, postId: Number(params.id) });
+    useCreateCommunityPost({
+      initialData: {
+        title: postData.data.title,
+        position: postData.data.position,
+        contents: postData.data.contents,
+        images: postData.data.images,
+      },
+      postId: Number(params.id),
+    });
 
   return (
     <>

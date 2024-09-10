@@ -11,6 +11,7 @@ export const usePatchCommentiMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const patchCommentiMutation = useMutation({
+    // TODO: 함수 분리
     mutationFn: (createiForm: UpdateCommentFormType) =>
       PATCH(
         END_POINTS.DELETE_COMMUNITY_COMMENTS(postId, createiForm.id),

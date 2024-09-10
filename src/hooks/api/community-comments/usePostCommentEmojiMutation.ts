@@ -11,6 +11,7 @@ export const usePostCommentEmojiMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const postCommentEmojiMutation = useMutation({
+    // TODO: 함수 분리
     mutationFn: (createEmojiForm: CreateCommentEmojiType) =>
       POST(
         END_POINTS.POST_COMMUNITY_COMMENT_EMOJI(postId, createEmojiForm.commentId),

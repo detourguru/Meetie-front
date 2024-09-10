@@ -5,11 +5,15 @@ import { DELETE, createInit } from "@/apis/httpMethod";
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
+const deleteCommunityEmoji = async (postId: number) => {
+  return await DELETE(END_POINTS.COMMUNITY_EMOJI(postId), createInit());
+};
+
 export const useDeleteCommunityEmojiMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const deleteCommunityEmojiMutation = useMutation({
-    mutationFn: () => DELETE(END_POINTS.COMMUNITY_EMOJI(postId), createInit()),
+    mutationFn: async () => await deleteCommunityEmoji(postId),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY, postId] });
     },
