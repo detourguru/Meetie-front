@@ -22,3 +22,19 @@ export async function POST(request: Request, { params }: { params: { id: string 
     return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
+
+export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+  try {
+    const supabase = createClient();
+
+    const { error } = await supabase.from("community_emoji").delete().eq("community_id", params.id);
+
+    if (!error) {
+      return NextResponse.json({ message: "ok" }, { status: 200 });
+    }
+
+    return NextResponse.json({ message: "ok" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ message: "error" }, { status: 500 });
+  }
+}

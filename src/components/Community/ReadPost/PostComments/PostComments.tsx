@@ -65,7 +65,7 @@ const PostComments = ({ user, emojiList }: PostCommentsProps) => {
                 <div
                   className="relative"
                   key={`emoji_${emoji.id}`}
-                  onClick={() => deleteCommunityEmojiMutation(emoji.id)}
+                  onClick={() => deleteCommunityEmojiMutation()}
                 >
                   <Avatar src={emoji.profileImage} size="sm" />
                   <div className="absolute text-medium-20 -bottom-1 -right-2.5">{emoji.emoji}</div>

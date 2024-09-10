@@ -12,7 +12,7 @@ export const usePostCommunityEmojiMutation = (postId: number) => {
 
   const postCommunityEmojiMutation = useMutation({
     mutationFn: (createEmojiForm: CreateCommunityEmojiType) =>
-      POST(END_POINTS.POST_COMMUNITY_EMOJI(postId), createInit(createEmojiForm)),
+      POST(END_POINTS.COMMUNITY_EMOJI(postId), createInit(createEmojiForm)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY, postId] });
     },

@@ -9,8 +9,7 @@ export const useDeleteCommunityEmojiMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const deleteCommunityEmojiMutation = useMutation({
-    mutationFn: (emojiId: number) =>
-      DELETE(END_POINTS.COMMUNITY_EMOJI(postId, emojiId), createInit()),
+    mutationFn: () => DELETE(END_POINTS.COMMUNITY_EMOJI(postId), createInit()),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY, postId] });
     },
