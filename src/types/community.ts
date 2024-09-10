@@ -26,6 +26,22 @@ export interface CreateCommunityPostProps {
   updateInputValue: CreateCommunityUpdateHandlerType;
 }
 
+export interface CommunityPostEmojiType {
+  id: number;
+  user_id: string;
+  profileImage: string;
+  emoji: string;
+}
+
+export interface CreateCommunityEmojiType extends Pick<CommunityPostEmojiType, "emoji"> {}
+
+export interface CommunityEmojiResponseType {
+  id: number;
+  emoji: string;
+  user_id: string;
+  userinfo: { profileImage: string };
+}
+
 export interface GetCommunityListResponseType extends CommonResponseType {
   data: CommunityPostType[];
 }
@@ -41,26 +57,28 @@ export interface CommunityCommentType {
   profileImage: string;
   uploadDate: string;
   contents: string;
+  emojiList: CommentEmojiType[];
+  selectedEmoji: string[];
 }
 
 export interface CreateCommentFormType extends Pick<CommunityCommentType, "contents"> {}
+
+export interface CreateCommentEmojiType {
+  emoji: string;
+  commentId: number;
+}
+
+export interface CommentEmojiType {
+  user_ids: string[];
+  emoji: string;
+  count: number;
+}
 
 export interface GetCommentsResponseType extends CommonResponseType {
   data: CommunityCommentType[];
 }
 
-export interface CommunityPostEmojiType {
-  id: number;
-  user_id: string;
-  profileImage: string;
-  emoji: string;
-}
-
-export interface CreateCommunityEmojiType extends Pick<CommunityPostEmojiType, "emoji"> {}
-
 export interface CommunityEmojiResponseType {
-  id: number;
   emoji: string;
   user_id: string;
-  userinfo: { profileImage: string };
 }

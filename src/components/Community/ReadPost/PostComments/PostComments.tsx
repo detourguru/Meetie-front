@@ -8,6 +8,7 @@ import EmojiButton from "@/components/Community/ReadPost/EmojiButton/EmojiButton
 
 import { useCommentsQuery } from "@/hooks/api/community-comments/useCommentsQuery";
 import { useDeleteCommentMutation } from "@/hooks/api/community-comments/useDeleteCommentMutaion";
+import { usePostCommentEmojiMutation } from "@/hooks/api/community-comments/usePostCommentEmojiMutation";
 import { useDeleteCommunityEmojiMutation } from "@/hooks/api/community-emoji/useDeleteCommunityEmojiMutation";
 import { usePostCommunityEmojiMutation } from "@/hooks/api/community-emoji/usePostCommunityEmojiMutation";
 import { useOverlay } from "@/hooks/common/useOverlay";
@@ -21,11 +22,13 @@ interface PostCommentsProps {
 
 const PostComments = ({ userId, emojiList }: PostCommentsProps) => {
   const { id } = useParams();
+  const communityId = Number(id);
 
-  const { mutate: postCommunityEmojiMutation } = usePostCommunityEmojiMutation(Number(id));
-  const { mutate: deleteCommunityEmojiMutation } = useDeleteCommunityEmojiMutation(Number(id));
-  const { mutate: deleteCommentMutation } = useDeleteCommentMutation(Number(id));
-  const { data: commentsData } = useCommentsQuery(Number(id));
+  const { mutate: postCommunityEmojiMutation } = usePostCommunityEmojiMutation(communityId);
+  const { mutate: postCommentEmojiMutation } = usePostCommentEmojiMutation(communityId);
+  const { mutate: deleteCommunityEmojiMutation } = useDeleteCommunityEmojiMutation(communityId);
+  const { mutate: deleteCommentMutation } = useDeleteCommentMutation(communityId);
+  const { data: commentsData } = useCommentsQuery(communityId);
 
   const { isOpen, handleToggle, handleClose } = useOverlay();
 
@@ -70,6 +73,9 @@ const PostComments = ({ userId, emojiList }: PostCommentsProps) => {
           comment={comment}
           isOwner={userId === comment.user_id}
           handleDelete={() => deleteCommentMutation(comment.id)}
+          handlePostEmoji={(emoji: string) =>
+            postCommentEmojiMutation({ commentId: comment.id, emoji })
+          }
         />
       ))}
     </div>

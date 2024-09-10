@@ -34,6 +34,8 @@ export const END_POINTS = {
   COMMUNITY_COMMENTS: (communityId: number) => `/api/community/${communityId}/comments`,
   DELETE_COMMUNITY_COMMENTS: (communityId: number, commentId: number) =>
     `/api/community/${communityId}/comments/${commentId}`,
+  POST_COMMUNITY_COMMENT_EMOJI: (communityId: number, commentId: number) =>
+    `/api/community/${communityId}/comments/${commentId}/emoji`,
 
   POST_TASK: "/api/task",
   TASK_LIST: (studyRoomId: string) => `/api/task-list/${studyRoomId}`,
