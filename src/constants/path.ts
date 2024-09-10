@@ -30,7 +30,8 @@ export const PATH = {
   STUDY_EDIT: (stuydId: string) => `/study/${stuydId}/edit`,
   STUDY_REQUEST: (studyId: string) => `/study/${studyId}/request`,
 
-  TASK_CONFIRM: (taskId: string) => `/task-confirm/${taskId}`,
+  TASK_CONFIRM: (taskId: string, studyRoomId: string) =>
+    `/task-confirm/${taskId}?studyRoomId=${studyRoomId}`,
   TASK_CONFIRM_SUCCESS: (taskId: string) => `/task-confirm/${taskId}/success`,
   TASK_CONFIRM_DETAIL: (taskConfirmId: string) => `/task-confirm-detail/${taskConfirmId}`,
   TASK_CREATE: (studyRoomId: string) => `/study-room/${studyRoomId}/task-create`,

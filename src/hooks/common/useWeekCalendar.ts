@@ -30,10 +30,19 @@ export const useWeekCalendar = ({ selectedDate, handleSelectedDate }: CalendarDa
     return direction ? rendered : rendered.reverse();
   };
 
-  const prevDates = renderDates(TODAY.year, TODAY.month, TODAY.date, 14, false);
-  const nextDates = renderDates(TODAY.year, TODAY.month, TODAY.date, 14, true);
+  const { year, month, date, day } = TODAY;
 
-  const [dateList, setDateList] = useState<DateType[]>([...prevDates, TODAY, ...nextDates]);
+  const centerDate = {
+    year,
+    month,
+    date,
+    day: WEEK_DAY[day],
+  };
+
+  const prevDates = renderDates(year, month, date, 14, false);
+  const nextDates = renderDates(year, month, date, 14, true);
+
+  const [dateList, setDateList] = useState<DateType[]>([...prevDates, centerDate, ...nextDates]);
 
   const handleContainerScroll = () => {
     const target = containerRef.current;
@@ -54,9 +63,9 @@ export const useWeekCalendar = ({ selectedDate, handleSelectedDate }: CalendarDa
   };
 
   const handleTodayClick = () => {
-    handleSelectedDate(TODAY);
+    handleSelectedDate(centerDate);
 
-    setDateList([...prevDates, TODAY, ...nextDates]);
+    setDateList([...prevDates, centerDate, ...nextDates]);
   };
 
   useEffect(() => {

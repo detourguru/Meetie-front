@@ -12,9 +12,10 @@ import type { TaskConfirmRequestType } from "@/types/taskConfirm";
 
 interface UseTaskConfirmFormProps {
   taskId: string;
+  studyRoomId: string;
 }
 
-export const useTaskConfirmForm = ({ taskId }: UseTaskConfirmFormProps) => {
+export const useTaskConfirmForm = ({ taskId, studyRoomId }: UseTaskConfirmFormProps) => {
   const { mutate: postTaskConfirmMutation } = usePostTaskConfirmMutation();
 
   const router = useRouter();
@@ -25,6 +26,7 @@ export const useTaskConfirmForm = ({ taskId }: UseTaskConfirmFormProps) => {
     taskId,
     referenceDate: format(new Date(), "yyyy-MM-dd"),
     confirmType: "image",
+    studyRoomId,
   });
 
   const updateInputValue = useCallback(

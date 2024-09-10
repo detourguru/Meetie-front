@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useParams } from "next/navigation";
 
 import Button from "@/components/common/Button/Button";
 import TaskConfirmArea from "@/components/StudyRoom/TaskConfirmArea/TaskConfirmArea";
@@ -11,13 +10,17 @@ import TaskConfirmArea from "@/components/StudyRoom/TaskConfirmArea/TaskConfirmA
 import { useTaskQuery } from "@/hooks/api/task/useTaskQuery";
 import { useTaskConfirmForm } from "@/hooks/task/useTaskConfirmForm";
 
-const TaskConfirm = () => {
-  const params = useParams();
+interface TaskConfirmProps {
+  taskId: string;
+  studyRoomId: string;
+}
 
-  const { data } = useTaskQuery(String(params.id));
+const TaskConfirm = ({ taskId, studyRoomId }: TaskConfirmProps) => {
+  const { data } = useTaskQuery(taskId);
 
   const { taskConfirmForm, updateInputValue, handleSubmit } = useTaskConfirmForm({
-    taskId: String(params.id),
+    taskId,
+    studyRoomId,
   });
 
   return (

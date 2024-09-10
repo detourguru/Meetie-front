@@ -35,4 +35,6 @@ export const END_POINTS = {
   TASK: (taskId: string) => `/api/task/${taskId}`,
   TASK_CONFIRM: `/api/task-confirm`,
   TASK_CONFIRM_ID: (taskId: string) => `/api/task-confirm/${taskId}`,
+  TASK_CONFIRM_LIST: (studyRoomId: string, referenceDate: string) =>
+    `/api/task-confirm-list/${studyRoomId}?referenceDate=${referenceDate}`,
 };

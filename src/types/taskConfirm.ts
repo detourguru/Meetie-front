@@ -19,10 +19,12 @@ export interface TaskConfirmType extends TaskConfirmRequestType {
   id: string;
   created_at: Date;
   user_id: string;
-  // task_id: string;
-  // study_id: string;
 }
 
 export interface GetTaskConfirmResponseType extends CommonResponseType {
   data: TaskConfirmType;
+}
+
+export interface GetTaskConfirmListResponseType extends CommonResponseType {
+  data: TaskConfirmType[];
 }

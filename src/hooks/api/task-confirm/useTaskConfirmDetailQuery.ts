@@ -7,17 +7,20 @@ import { END_POINTS } from "@/constants/api";
 
 import type { GetTaskConfirmResponseType } from "@/types/taskConfirm";
 
+const getTaskConfirmDetail = async (taskId: string) => {
+  const data = await GET<GetTaskConfirmResponseType>(
+    END_POINTS.TASK_CONFIRM_ID(taskId),
+    createInit(),
+  );
+
+  return data;
+};
+
 export const taskConfirmDetailQueryOptions = (
   taskId: string,
 ): UseSuspenseQueryOptions<GetTaskConfirmResponseType> => ({
   queryKey: [],
-  queryFn: async () => {
-    const task = await GET<GetTaskConfirmResponseType>(
-      END_POINTS.TASK_CONFIRM_ID(taskId),
-      createInit(),
-    );
-    return task;
-  },
+  queryFn: () => getTaskConfirmDetail(taskId),
 });
 
 export function useTaskConfirmDetailQuery(taskId: string) {

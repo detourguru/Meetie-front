@@ -23,7 +23,7 @@ const TaskList = ({ studyRoomId, isDeadline }: TaskListProps) => {
       </span>
 
       {data.data.map((task) => (
-        <TaskCard key={task.title} task={task} isDeadline={isDeadline} />
+        <TaskCard key={task.title} task={task} isDeadline={isDeadline} studyRoomId={studyRoomId} />
       ))}
     </div>
   );

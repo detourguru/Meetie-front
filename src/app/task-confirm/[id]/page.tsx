@@ -9,7 +9,11 @@ import { taskQueryOptions } from "@/hooks/api/task/useTaskQuery";
 
 import type { ParamIdType } from "@/types/common";
 
-export default function TaskConfirmPage({ params }: ParamIdType) {
+interface TaskConfirmPageProps extends ParamIdType {
+  searchParams: { studyRoomId: string };
+}
+
+export default function TaskConfirmPage({ params, searchParams }: TaskConfirmPageProps) {
   const serverFetchOptions = [taskQueryOptions(params.id)];
 
   return (
@@ -20,7 +24,7 @@ export default function TaskConfirmPage({ params }: ParamIdType) {
       </Header>
       <Suspense>
         <ServerFetchBoundary fetchOptions={serverFetchOptions}>
-          <TaskConfirm />
+          <TaskConfirm taskId={params.id} studyRoomId={searchParams.studyRoomId} />
         </ServerFetchBoundary>
       </Suspense>
     </>

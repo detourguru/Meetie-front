@@ -40,13 +40,14 @@ const TaskTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: Tas
       <div className="px-4 pb-[120px]">
         <div className="pt-[40px]">
           <h4 className="text-semibold-18">
-            ✍️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}요일
+            ✍️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}
+            요일
           </h4>
           <span className="text-regular-14 text-blue-300">
             #과제 인증을 완료한 팀원들을 확인해 보세요.
           </span>
 
-          <TaskConfirmList />
+          <TaskConfirmList selectedDate={selectedDate} studyRoomId={studyRoomId} />
         </div>
 
         <TaskList studyRoomId={studyRoomId} />

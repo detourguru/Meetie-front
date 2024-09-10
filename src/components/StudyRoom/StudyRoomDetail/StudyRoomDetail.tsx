@@ -9,7 +9,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
-import { TODAY } from "@/constants/common";
+import { TODAY, WEEK_DAY } from "@/constants/common";
 
 import { useStudyRoomQuery } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
@@ -27,11 +27,12 @@ const StudyRoomDetail = () => {
   const isOwner = userData.data.user_id === data.data.owner_id;
 
   const [tab, setTab] = useState("calendar");
+
   const [selectedDate, setSelectedDate] = useState<DateType>({
     year: TODAY.year,
     month: TODAY.month,
     date: TODAY.date,
-    day: TODAY.day,
+    day: WEEK_DAY[TODAY.day],
   });
 
   const handleSelectedDate = (date: DateType) => {

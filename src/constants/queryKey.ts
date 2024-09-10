@@ -19,4 +19,5 @@ export const QUERY_KEYS = {
 
   TASK_CONFIRM: "taskConfirm",
   TASK_CONFIRM_SUCCESS: "taskConfirmSuccess",
+  TASK_CONFIRM_LIST: "taskConfirmList",
 };

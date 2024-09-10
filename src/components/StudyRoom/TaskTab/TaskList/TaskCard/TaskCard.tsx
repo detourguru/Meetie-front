@@ -11,9 +11,10 @@ import type { TaskListType } from "@/types/task";
 interface TaskCardProps {
   task: TaskListType;
   isDeadline?: boolean;
+  studyRoomId: string;
 }
 
-const TaskCard = ({ task, isDeadline }: TaskCardProps) => {
+const TaskCard = ({ task, isDeadline, studyRoomId }: TaskCardProps) => {
   return (
     <div className="rounded-lg border border-[#E0DDF1] px-4 py-5 mt-5">
       <div className="flex justify-between items-center">
@@ -38,7 +39,7 @@ const TaskCard = ({ task, isDeadline }: TaskCardProps) => {
         </div>
       )}
 
-      <Link href={PATH.TASK_CONFIRM(task.id)}>
+      <Link href={PATH.TASK_CONFIRM(task.id, studyRoomId)}>
         <Button className="w-full py-[10px] mt-5" variant="secondary">
           <span className="text-white text-semibold-16">인증하기</span>
         </Button>
