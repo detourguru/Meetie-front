@@ -1,21 +1,18 @@
 "use client";
 
 import Image from "next/image";
-import { useParams } from "next/navigation";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 
-import { useCreateCommentPost } from "@/hooks/community/comments/useCreateCommentPost";
-
 interface PostFooterInterface {
   profileImage: string;
+  inputRef: React.RefObject<HTMLInputElement>;
+  handleSubmit: (
+    event?: React.FormEvent<HTMLFormElement | HTMLImageElement> | undefined,
+  ) => Promise<void>;
 }
 
-const PostFooter = ({ profileImage }: PostFooterInterface) => {
-  const params = useParams();
-
-  const { inputRef, handleSubmit } = useCreateCommentPost(Number(params.id));
-
+const PostFooter = ({ profileImage, inputRef, handleSubmit }: PostFooterInterface) => {
   return (
     <div className="px-4 py-5 fixed bottom-0 bg-white z-20 w-[375px]">
       <form className="flex gap-2.5 items-center" onSubmit={handleSubmit}>

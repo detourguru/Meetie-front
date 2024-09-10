@@ -13,7 +13,8 @@ export async function GET(request: Request, { params }: { params: { id: string }
     const { data } = await supabase
       .from("community_comments")
       .select("*, userinfo ( name, profileImage ), community_comments_emoji (emoji, user_id)")
-      .eq("community_id", params.id);
+      .eq("community_id", params.id)
+      .order("uploadDate", { ascending: true });
 
     if (data && user) {
       return NextResponse.json(

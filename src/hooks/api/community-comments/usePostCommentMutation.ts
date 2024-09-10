@@ -7,7 +7,7 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { CreateCommentFormType } from "@/types/community";
 
-export const useCommentMutation = (postId: number) => {
+export const usePostCommentMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
   const postCommentMutation = useMutation({

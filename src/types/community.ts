@@ -63,6 +63,8 @@ export interface CommunityCommentType {
 
 export interface CreateCommentFormType extends Pick<CommunityCommentType, "contents"> {}
 
+export interface UpdateCommentFormType extends Pick<CommunityCommentType, "contents" | "id"> {}
+
 export interface CreateCommentEmojiType {
   emoji: string;
   commentId: number;

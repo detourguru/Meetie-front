@@ -6,7 +6,6 @@ import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Image from "@/components/common/Image/Image";
 import PostComments from "@/components/Community/ReadPost/PostComments/PostComments";
-import PostFooter from "@/components/Community/ReadPost/PostDetail/PostFooter/PostFooter";
 import PostHeader from "@/components/Community/ReadPost/PostDetail/PostHeader/PostHeader";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
@@ -55,9 +54,7 @@ const PostDetail = () => {
         <Divider className="bg-[#F1F2F6]" />
       </div>
 
-      <PostComments userId={ownerUser.data.user_id} emojiList={emojiList} />
-
-      <PostFooter profileImage={ownerUser.data.profileImage} />
+      <PostComments user={ownerUser.data} emojiList={emojiList} />
     </>
   );
 };

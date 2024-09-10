@@ -11,6 +11,7 @@ interface CommentCardProps {
   comment: CommunityCommentType;
   isOwner: boolean;
   handleDelete: () => void;
+  handleUpdate: () => void;
   handlePostEmoji: (emoji: string) => void;
   handleDeleteEmoji: (emoji: string) => void;
 }
@@ -19,6 +20,7 @@ const CommentCard = ({
   comment,
   isOwner,
   handleDelete,
+  handleUpdate,
   handlePostEmoji,
   handleDeleteEmoji,
 }: CommentCardProps) => {
@@ -44,9 +46,14 @@ const CommentCard = ({
               </span>
             </div>
             {isOwner && (
-              <p className="text-medium-12 text-[#ff552d] cursor-pointer" onClick={handleDelete}>
-                삭제
-              </p>
+              <div className="flex gap-3">
+                <p className="text-medium-12 text-blue-500 cursor-pointer" onClick={handleUpdate}>
+                  수정
+                </p>
+                <p className="text-medium-12 text-[#ff552d] cursor-pointer" onClick={handleDelete}>
+                  삭제
+                </p>
+              </div>
             )}
           </div>
 
