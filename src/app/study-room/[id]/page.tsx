@@ -25,7 +25,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
 
   return (
     <>
-      <Header backgroundColor="bg-[#EBE9F5]">
+      <Header>
         <Header.Title>스터디룸</Header.Title>
       </Header>
 

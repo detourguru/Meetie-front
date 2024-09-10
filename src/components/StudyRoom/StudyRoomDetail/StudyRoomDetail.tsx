@@ -42,16 +42,16 @@ const StudyRoomDetail = () => {
   return (
     <main>
       <section className="bg-[#EBE9F5] px-4 pt-10 pb-4">
-        <div className="flex justify-end">
+        {/* <div className="flex justify-end">
           <p className="bg-primary-400 text-regular-12 text-white px-[10px] py-[3px] rounded-l-lg border border-primary-400">
             진행중 3
           </p>
           <p className="bg-white text-regular-12 text-blue-300 px-[10px] py-[3px] rounded-r-lg border border-primary-400">
             진행완료 0
           </p>
-        </div>
+        </div> */}
 
-        <section className="relative flex mt-3 p-4 bg-white border border-[#E9E9E9] border-inset rounded-lg drop-shadow-sm gap-4">
+        <section className="relative flex mt-3 px-4 py-5 bg-white border border-[#E9E9E9] border-inset rounded-lg drop-shadow-sm gap-4">
           <div className="flex justify-center items-center bg-[#F7F3FF] border border-[#EBE9F5] rounded-[7px]">
             <Image src="/svg/ic-calendar-vertical.svg" alt="icon" width={18} height={19} />
           </div>
