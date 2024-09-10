@@ -4,14 +4,14 @@ import { INITIAL_FILTER_OPTION_DATA } from "@/constants/study";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 
-import type { StudyListFilterType, UpdateFilterSelectedTypeHandlerType } from "@/types/study";
+import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/common";
 
 interface useStudyListFilterProps {
-  initialData?: StudyListFilterType;
+  initialData?: FilterSelectedType;
 }
 
 export const useStudyListFilter = ({ initialData }: useStudyListFilterProps) => {
-  const [filterOption, setFilterOption] = useState<StudyListFilterType>(
+  const [filterOption, setFilterOption] = useState<FilterSelectedType>(
     initialData ?? INITIAL_FILTER_OPTION_DATA,
   );
 
@@ -25,10 +25,10 @@ export const useStudyListFilter = ({ initialData }: useStudyListFilterProps) => 
       return [];
     }
 
-    if (filterOption.tagList?.includes(tag)) {
-      return filterOption.tagList?.filter((t) => t !== tag);
+    if (filterOption.tags.includes(tag)) {
+      return filterOption.tags.filter((t) => t !== tag);
     }
-    return filterOption.tagList?.concat(tag);
+    return filterOption.tags.concat(tag);
   };
 
   const updateFilterOption: UpdateFilterSelectedTypeHandlerType = useCallback((key, value) => {

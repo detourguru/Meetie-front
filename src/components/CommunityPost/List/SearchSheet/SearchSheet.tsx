@@ -9,7 +9,7 @@ import Tag from "@/components/common/Tag/Tag";
 import { getLocalStorage, setLocalStorage } from "@/utils/storage";
 
 import type { CommonSheetProps } from "@/types/common";
-import type { UpdateFilterSelectedTypeHandlerType } from "@/types/community";
+import type { UpdateFilterSelectedTypeHandlerType } from "@/types/common";
 
 interface SearchSheetProps extends CommonSheetProps {
   searchValue: string;

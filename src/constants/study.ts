@@ -1,5 +1,5 @@
+import type { FilterSelectedType } from "@/types/common";
 import type { SelectOptionType } from "@/types/filter";
-import type { StudyListFilterType } from "@/types/study";
 
 export const SORT_OPTION_DATA: SelectOptionType[] = [
   {
@@ -35,11 +35,10 @@ export const CREATED_AT_OPTION_DATA: SelectOptionType[] = [
   },
 ];
 
-export const INITIAL_FILTER_OPTION_DATA: StudyListFilterType = {
+export const INITIAL_FILTER_OPTION_DATA: FilterSelectedType = {
   search: "",
-  tagList: [],
-  order: "createdAt",
-  asc: false,
+  tags: [],
+  sort: "createdAt",
   date: "all",
   isRecruit: true,
 };

@@ -9,8 +9,8 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
     const isRecruit = searchParams.get("isRecruit") ?? "false";
     const search = searchParams.get("search") ?? "";
-    const tagList = searchParams.get("tagList");
-    const orderOption = searchParams.get("order") ?? "createdAt";
+    const tagList = searchParams.get("tags");
+    const orderOption = searchParams.get("sort") ?? "createdAt";
     const dateOption = searchParams.get("date") ?? "all";
 
     const tagArray = tagList ? tagList.split(",") : [];
@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     }
 
     if (search && search !== "") {
-      query.like("title", search);
+      query.like("title", `%${search}%`);
     }
 
     const { data } = await query
