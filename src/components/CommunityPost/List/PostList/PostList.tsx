@@ -30,7 +30,7 @@ const PostList = ({
   handleClick,
 }: PostListProps) => {
   return (
-    <div className="pb-[85px]">
+    <div className="pb-[120px]">
       <div className="mt-8">
         <div className="flex flex-col gap-5 sticky top-[108px] bg-white z-10 mb-5">
           <div className="flex flex-col gap-2 mx-4">
