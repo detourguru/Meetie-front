@@ -72,11 +72,7 @@ const PostComments = ({ user, emojiList }: PostCommentsProps) => {
               {emojiList
                 .filter((emoji) => emoji.user_id !== user.user_id)
                 .map((emoji) => (
-                  <CommunityEmoji
-                    key={`emoji_${emoji.id}`}
-                    onClick={() => deleteCommunityEmojiMutation()}
-                    communityEmoji={emoji}
-                  />
+                  <CommunityEmoji key={`emoji_${emoji.id}`} communityEmoji={emoji} />
                 ))}
             </div>
           </div>
