@@ -40,5 +40,4 @@ export const INITIAL_FILTER_OPTION_DATA: FilterSelectedType = {
   tags: [],
   sort: "createdAt",
   date: "all",
-  isRecruit: true,
 };

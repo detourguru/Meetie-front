@@ -13,7 +13,10 @@ import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformation
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
 
-  const { data, refetch } = useStudyListQuery(INITIAL_FILTER_OPTION_DATA);
+  const { data, refetch } = useStudyListQuery({
+    ...INITIAL_FILTER_OPTION_DATA,
+    isRecruit: checked,
+  });
 
   const { userId } = useUserInformationQuery();
 
