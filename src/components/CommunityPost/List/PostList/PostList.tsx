@@ -5,6 +5,7 @@ import Image from "next/image";
 import Divider from "@/components/common/Divider/Divider";
 import Filter from "@/components/common/Filter/Filter";
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
+import PostListSkeleton from "@/components/CommunityPost/List/PostList/PostListSkeleton";
 
 import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
 
@@ -17,6 +18,7 @@ interface PostListProps {
   handleClickTag: (tag?: string | undefined) => string[];
   updateFilterOption: UpdateFilterSelectedTypeHandlerType;
   handleClick: (id: number) => void;
+  isFetching: boolean;
 }
 
 const PostList = ({
@@ -25,11 +27,16 @@ const PostList = ({
   handleClickTag,
   updateFilterOption,
   handleClick,
+  isFetching,
 }: PostListProps) => {
+  if (isFetching) {
+    return <PostListSkeleton />;
+  }
+
   return (
     <div className="pb-[120px]">
       <div className="mt-8">
-        <div className="flex flex-col gap-5 sticky top-[108px] bg-white z-10 mb-5">
+        <div className="flex flex-col gap-5 bg-white z-10 mb-5">
           <div className="flex flex-col gap-2 mx-4">
             <div className="flex justify-between items-center">
               <h1 className="text-bold-18 text-gray-600">주제별 게시글</h1>

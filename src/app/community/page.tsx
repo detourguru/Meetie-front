@@ -5,6 +5,7 @@ import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import CommunityBody from "@/components/CommunityPost/List/CommunityBody/CommunityBody";
+import CommunityBodySkeleton from "@/components/CommunityPost/List/CommunityBody/CommunityBodySkeleton";
 import CreatePostButton from "@/components/CommunityPost/List/CreatePostButton/CreatePostButton";
 
 import { communityListQueryOptions } from "@/hooks/api/community/useCommunityListQuery";
@@ -20,7 +21,7 @@ export default function CommunityPostListPage() {
         <Header.RightButton icon="/svg/ic-header-question.svg" />
       </Header>
 
-      <Suspense>
+      <Suspense fallback={<CommunityBodySkeleton />}>
         <ServerFetchBoundary fetchOptions={serverFetchOptions}>
           <CommunityBody />
         </ServerFetchBoundary>

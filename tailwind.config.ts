@@ -38,6 +38,7 @@ const config: Config = {
         gray: {
           50: "var(--gray-50)",
           100: "var(--gray-100)",
+          150: "var(--gray-150)",
           200: "var(--gray-200)",
           250: "var(--gray-250)",
           300: "var(--gray-300)",
@@ -88,6 +89,7 @@ const config: Config = {
     },
   },
   plugins: [
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     require("tailwindcss-animate"),
     function ({ addUtilities }: PluginAPI) {
       addUtilities({

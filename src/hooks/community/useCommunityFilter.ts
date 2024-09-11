@@ -15,7 +15,7 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
     initialData ?? INITIAL_FILTER_OPTION_DATA,
   );
 
-  const { data: communityListData, refetch } = useCommunityListQuery(filterOption);
+  const { data: communityListData, refetch, isFetching } = useCommunityListQuery(filterOption);
 
   useEffect(() => {
     refetch();
@@ -49,5 +49,6 @@ export const useCommunityFilter = ({ initialData }: useCommunityFilterProps) => 
     filterOption,
     updateFilterOption,
     handleClickTag,
+    isFetching,
   };
 };
