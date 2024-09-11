@@ -12,7 +12,7 @@ const Complete = () => {
     user: { name, profileImage, position, styles },
   } = useUserInformationQuery();
 
-  const userStyles = (styles.length > 0 && styles.slice(0, 2).join("﹒")) || "";
+  const userStyles = (styles.length > 0 && styles.slice(0, 2).join("﹒").slice(0, 11)) || "";
 
   return (
     <>
