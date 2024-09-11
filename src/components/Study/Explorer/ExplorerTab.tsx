@@ -6,10 +6,10 @@ import Image from "next/image";
 
 // import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet";
-// import ToggleSwitch from "@/components/Study/Explorer//ToggleSwitch";
 import StudyFilteredList from "@/components/Study/Explorer/StudyFilteredList";
 // import MemberList from "@/components/Study/Member/MemberList";
 // import HashTag from "@/components/Study/StudyRoomList/HashTag";
+// import ToggleSwitch from "@/components/Study/Explorer//ToggleSwitch";
 
 import { useStudyListFilter } from "@/hooks/api/study/useStudyListFilter";
 import { useOverlay } from "@/hooks/common/useOverlay";
@@ -18,7 +18,9 @@ const ExplorerTab = () => {
   // const [currentTab, setCurrentTab] = useState("study");
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
-  const { data, filterOption, handleClickTag, updateFilterOption } = useStudyListFilter({});
+  const { data, filterOption, handleClickTag, updateFilterOption, isFetching } = useStudyListFilter(
+    {},
+  );
 
   return (
     <>
@@ -53,6 +55,7 @@ const ExplorerTab = () => {
         filterOption={filterOption}
         handleClickTag={handleClickTag}
         updateFilterOption={updateFilterOption}
+        isFetching={isFetching}
       />
 
       {/* {currentTab === "study" && (

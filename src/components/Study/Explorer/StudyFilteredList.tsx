@@ -1,5 +1,6 @@
 import Filter from "@/components/common/Filter/Filter";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
+import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleton";
 
 import { CREATED_AT_OPTION_DATA, SORT_OPTION_DATA } from "@/constants/filter";
 
@@ -13,6 +14,7 @@ interface StudyFilteredListProps {
   filterOption: FilterSelectedType;
   handleClickTag: (tag?: string | undefined) => string[];
   updateFilterOption: UpdateFilterSelectedTypeHandlerType;
+  isFetching: boolean;
 }
 
 const StudyFilteredList = ({
@@ -20,6 +22,7 @@ const StudyFilteredList = ({
   filterOption,
   handleClickTag,
   updateFilterOption,
+  isFetching,
 }: StudyFilteredListProps) => {
   const TAGS_DATA = data.data
     ? Array.from(new Set(data.data.map((study) => study.tagList).flat()))
@@ -66,10 +69,14 @@ const StudyFilteredList = ({
         </h1>
       </div>
       {/* TODO: data 없을때 보여줄 UI 필요 */}
-      {data.data &&
+      {isFetching ? (
+        <StudyCardSkeleton />
+      ) : (
+        data.data &&
         data.data.map((studyData) => (
           <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
-        ))}
+        ))
+      )}
     </div>
   );
 };

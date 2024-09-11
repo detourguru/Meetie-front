@@ -15,7 +15,7 @@ export const useStudyListFilter = ({ initialData }: useStudyListFilterProps) => 
     initialData ?? INITIAL_FILTER_OPTION_DATA,
   );
 
-  const { data: data, refetch } = useStudyListQuery(filterOption);
+  const { data: data, refetch, isFetching } = useStudyListQuery(filterOption);
 
   useEffect(() => {
     refetch();
@@ -48,5 +48,6 @@ export const useStudyListFilter = ({ initialData }: useStudyListFilterProps) => 
     filterOption,
     updateFilterOption,
     handleClickTag,
+    isFetching,
   };
 };
