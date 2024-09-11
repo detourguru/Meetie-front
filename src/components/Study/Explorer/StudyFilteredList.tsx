@@ -1,11 +1,11 @@
 import Filter from "@/components/common/Filter/Filter";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
-import { CREATED_AT_OPTION_DATA, SORT_OPTION_DATA } from "@/constants/study";
+import { CREATED_AT_OPTION_DATA, SORT_OPTION_DATA } from "@/constants/filter";
 
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
-import type { UpdateFilterSelectedTypeHandlerType, FilterSelectedType } from "@/types/common";
+import type { UpdateFilterSelectedTypeHandlerType, FilterSelectedType } from "@/types/filter";
 import type { GetStudyListResponseType } from "@/types/study";
 
 interface StudyFilteredListProps {

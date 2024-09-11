@@ -1,4 +1,4 @@
-import type { FilterSelectedType } from "@/types/common";
+import type { FilterSelectedType } from "@/types/filter";
 import type { SelectOptionType } from "@/types/filter";
 
 export const SORT_OPTION_DATA: SelectOptionType[] = [

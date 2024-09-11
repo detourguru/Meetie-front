@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { INITIAL_FILTER_OPTION_DATA } from "@/constants/study";
+import { INITIAL_FILTER_OPTION_DATA } from "@/constants/filter";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 
-import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/common";
+import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/filter";
 
 interface useStudyListFilterProps {
   initialData?: FilterSelectedType;

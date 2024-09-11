@@ -6,7 +6,7 @@ import { useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet";
-import ToggleSwitch from "@/components/Study/Explorer//ToggleSwitch";
+// import ToggleSwitch from "@/components/Study/Explorer//ToggleSwitch";
 import StudyFilteredList from "@/components/Study/Explorer/StudyFilteredList";
 import MemberList from "@/components/Study/Member/MemberList";
 import HashTag from "@/components/Study/StudyRoomList/HashTag";
@@ -34,7 +34,7 @@ const ExplorerTab = () => {
             placeholder="관심있는 스터디나 팀원을 검색해보세요"
           />
         </div>
-        <ToggleSwitch>원하는 스터디 알림 받기</ToggleSwitch>
+        {/* <ToggleSwitch>원하는 스터디 알림 받기</ToggleSwitch> */}
       </div>
 
       <Tabs defaultValue={currentTab}>

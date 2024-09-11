@@ -8,8 +8,8 @@ import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { POSITION_DATA, SORT_OPTION_DATA, POSTDATE_OPTION_DATA } from "@/constants/community";
 
-import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/common";
 import type { GetCommunityListResponseType } from "@/types/community";
+import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/filter";
 
 interface PostListProps {
   communityListData: GetCommunityListResponseType;

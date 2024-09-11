@@ -4,7 +4,7 @@ import { INITIAL_FILTER_OPTION_DATA } from "@/constants/community";
 
 import { useCommunityListQuery } from "@/hooks/api/community/useCommunityListQuery";
 
-import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/common";
+import type { FilterSelectedType, UpdateFilterSelectedTypeHandlerType } from "@/types/filter";
 
 interface useCommunityFilterProps {
   initialData?: FilterSelectedType;

@@ -33,18 +33,6 @@ export interface GetCommunityResponseType extends CommonResponseType {
   data: CommunityPostType;
 }
 
-export interface FilterSelectedType {
-  search: string;
-  tags: string[];
-  sort: string;
-  date: string;
-}
-
-export type UpdateFilterSelectedTypeHandlerType = <Key extends keyof FilterSelectedType>(
-  key: Key,
-  value: FilterSelectedType[Key],
-) => void;
-
 export interface CommunityCommentType {
   id: number;
   user_id: string;
