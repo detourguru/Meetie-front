@@ -4,6 +4,8 @@ import LoginForm from "@/components/Login/LoginForm/LoginForm";
 import LoginSocial from "@/components/Login/LoginSocial/LoginSocial";
 
 export default function LoginPage() {
+  console.log("process.env.NODE_ENV : ", process.env.NODE_ENV);
+  console.log("process.env.NEXT_PUBLIC_TEST : ", process.env.NEXT_PUBLIC_API_BASE_URL);
   return (
     <main className="flex flex-col h-full">
       <article className="flex flex-col items-center h-full p-4">
