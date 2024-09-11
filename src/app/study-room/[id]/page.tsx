@@ -7,6 +7,7 @@ import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
 import StudyRoomDetail from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetail";
+import StudyRoomDetailSkeleton from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetailSkeleton";
 
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
@@ -30,7 +31,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
         <Header.Title>스터디룸</Header.Title>
       </Header>
 
-      <Suspense>
+      <Suspense fallback={<StudyRoomDetailSkeleton />}>
         <ServerFetchBoundary fetchOptions={serverFetchOptions}>
           <StudyRoomDetail />
         </ServerFetchBoundary>

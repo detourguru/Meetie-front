@@ -5,8 +5,8 @@ import { useParams } from "next/navigation";
 
 import { useState } from "react";
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
-import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
+// import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+// import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
 import { TODAY, WEEK_DAY } from "@/constants/common";
@@ -26,7 +26,7 @@ const StudyRoomDetail = () => {
 
   const isOwner = userData.data.user_id === data.data.owner_id;
 
-  const [tab, setTab] = useState("calendar");
+  // const [tab, setTab] = useState("calendar");
 
   const [selectedDate, setSelectedDate] = useState<DateType>({
     year: TODAY.year,
@@ -70,7 +70,7 @@ const StudyRoomDetail = () => {
         </section>
       </section>
 
-      <Tabs defaultValue={tab}>
+      {/* <Tabs defaultValue={tab}>
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="calendar" onClick={() => setTab("calendar")}>
             캘린더
@@ -79,23 +79,29 @@ const StudyRoomDetail = () => {
             과제
           </TabsTrigger>
         </TabsList>
-      </Tabs>
+      </Tabs> */}
 
-      {tab === "calendar" && (
+      {/* {tab === "calendar" && (
         <CalendarTab
           selectedDate={selectedDate}
           handleSelectedDate={handleSelectedDate}
           studyRoomId={String(params.id)}
         />
-      )}
-      {tab === "task" && (
+      )} */}
+      <TaskTab
+        selectedDate={selectedDate}
+        handleSelectedDate={handleSelectedDate}
+        isOwner={isOwner}
+        studyRoomId={String(params.id)}
+      />
+      {/* {tab === "task" && (
         <TaskTab
           selectedDate={selectedDate}
           handleSelectedDate={handleSelectedDate}
           isOwner={isOwner}
           studyRoomId={String(params.id)}
         />
-      )}
+      )} */}
     </main>
   );
 };

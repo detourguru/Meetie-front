@@ -18,9 +18,18 @@ const TaskConfirmList = ({ studyRoomId, selectedDate }: TaskConfirmListProps) =>
 
   return (
     <div className="flex flex-col gap-5">
-      {taskConfirmData.data.map((data) => (
-        <TaskConfirmItem taskData={data} key={data.id} />
-      ))}
+      {taskConfirmData.data.length === 0 ? (
+        <div className="flex items-center justify-between h-[50px] px-4 bg-[#F7F3FF] border border-[#EBE9F5] rounded-lg mt-5 mb-2">
+          <div className="flex items-center gap-3">
+            <span className="text-bold-20">📕</span>
+            <p className="text-medium-14 text-[#41364A] leading-5">
+              오늘 아직 과제를 인증한 멤버가 없습니다
+            </p>
+          </div>
+        </div>
+      ) : (
+        taskConfirmData.data.map((data) => <TaskConfirmItem taskData={data} key={data.id} />)
+      )}
     </div>
   );
 };

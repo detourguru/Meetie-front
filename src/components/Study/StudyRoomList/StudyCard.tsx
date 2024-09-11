@@ -27,7 +27,7 @@ const StudyCard = ({ studyData, userId }: StudyCardProps) => {
   const isMarked = studyData.bookmarks.length > 0 ? studyData.bookmarks[0].isMarked : false;
 
   const handleGetDateDiff = () => {
-    const diff = differenceInCalendarDays(newStartDate, new Date());
+    const diff = differenceInCalendarDays(newEndDate, new Date());
     // FIXME: 추후 공통 함수로 적용
     if (diff < 0) {
       return "모집 종료";

@@ -14,7 +14,7 @@ const StudyRoomListHeader = () => {
   return (
     <div className="relative">
       <Header>
-        <Header.Title>스터디룸</Header.Title>
+        <Header.Title>스터디 목록</Header.Title>
         <Header.RightButton
           handleButtonClick={handleButtonClick}
           icon="/svg/ic-header-question.svg"
@@ -22,7 +22,7 @@ const StudyRoomListHeader = () => {
         <span
           className={`mt-16 rounded bg-gray-500 p-2 text-regular-14 text-white whitespace-nowrap ${showTooltip ? "" : "hidden"}`}
         >
-          원하는 스터디룸을 찾을 수 있어요!
+          원하는 스터디를 찾을 수 있어요!
         </span>
       </Header>
     </div>

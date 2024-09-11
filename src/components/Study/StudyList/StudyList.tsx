@@ -31,11 +31,7 @@ const StudyList = () => {
 
   return (
     <article className="mx-4 pb-[80px]">
-      <h1 className="text-bold-18 mb-5">
-        지금 떠오르고 있는
-        <br />
-        스터디룸
-      </h1>
+      <h1 className="text-bold-18 mb-5">지금 떠오르고 있는 스터디</h1>
       <div className="flex justify-between mb-[27px]">
         <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
       </div>

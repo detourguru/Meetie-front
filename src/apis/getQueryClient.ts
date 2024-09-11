@@ -9,6 +9,7 @@ function makeQueryClient() {
         staleTime: DEFAULT_STALE_TIME,
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
+        retry: 0,
       },
       dehydrate: {
         shouldDehydrateQuery: (query) =>

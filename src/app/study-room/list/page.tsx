@@ -23,11 +23,11 @@ export default function Page() {
       <article className="mx-4">
         <div className="mt-[50px] mb-[32px]">
           <h1 className="text-bold-18 mb-2">
-            아직 스터디룸이
+            아직 스터디가
             <br />
             존재하지 않아요!
           </h1>
-          <h2 className="text-medium-14 text-gray-200">#원하는 스터디 룸을 탐색해 볼까요?</h2>
+          <h2 className="text-medium-14 text-gray-200">#원하는 스터디를 탐색해 볼까요?</h2>
         </div>
         <Link href={PATH.STUDY_EXPLORER}>
           <div className="h-35 max-w-full p-6 bg-gray-50 rounded-lg mb-[12px]">
@@ -61,8 +61,8 @@ export default function Page() {
         >
           <div className="flex justify-between">
             <div className="my-auto">
-              <h2 className="text-medium-14 text-gray-200">찾으시는 스터디룸이 없으신가요?</h2>
-              <h2 className="text-bold-14">쉽고 빠른 스터디룸 개설하기!</h2>
+              <h2 className="text-medium-14 text-gray-200">찾으시는 스터디가 없으신가요?</h2>
+              <h2 className="text-bold-14">쉽고 빠른 스터디 개설하기!</h2>
             </div>
             <div className="relative">
               <div className="absolute w-[55px] h-[55px] bg-blue-400 mix-blend-hue z-10" />

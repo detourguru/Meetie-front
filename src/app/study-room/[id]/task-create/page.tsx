@@ -21,8 +21,6 @@ export default function TaskCreatePage() {
     studyRoomId: String(params.id),
   });
 
-  console.log(createTaskForm);
-
   const {
     isOpen: isEndDateCalendarOpen,
     handleOpen: openEndDateCalendar,
