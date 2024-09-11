@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 
-import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 import { format } from "date-fns";
+
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import Header from "@/components/common/Header/Header";
