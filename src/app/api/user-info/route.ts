@@ -21,7 +21,7 @@ export async function GET(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const newUserId = "fec5fdee-2a98-4e90-b40e-1c321fd79718";
+    const newUserId = "17cadf4c-48cb-491c-8c78-326d1f116fb4";
 
     const supabase = createClient();
     const supabaseAdmin = createAdminClient();
