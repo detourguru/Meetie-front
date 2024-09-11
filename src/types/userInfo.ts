@@ -27,7 +27,6 @@ export interface UserInformationType {
   profileImage: string;
   introduce: string;
   mainBadge: string;
-  tagList: string[];
   studyList: string[];
   scrapList: string[];
   recentVisit: string;

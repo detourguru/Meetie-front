@@ -17,7 +17,7 @@ export const usePostTaskMutation = (studyRoomId: string) => {
   const postTaskMutation = useMutation({
     mutationFn: postTask,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK_LIST, String(studyRoomId)] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK_LIST, studyRoomId] });
     },
     onError: (error) => {
       console.error(error);

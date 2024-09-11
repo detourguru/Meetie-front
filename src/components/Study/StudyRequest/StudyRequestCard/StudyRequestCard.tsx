@@ -60,7 +60,7 @@ const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
         </div>
         <p className="mt-[10px] text-regular-14 text-gray-450">{userData.data.introduce}</p>
         <div className="flex gap-[10px] mt-3">
-          {userData.data.tagList.map((tag) => (
+          {userData.data.styles.map((tag) => (
             <Tag text={tag} key={tag} />
           ))}
         </div>
