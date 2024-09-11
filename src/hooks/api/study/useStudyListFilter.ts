@@ -16,6 +16,7 @@ export const useStudyListFilter = ({ initialData }: useStudyListFilterProps) => 
   );
 
   const { data: data, refetch } = useStudyListQuery(filterOption);
+
   useEffect(() => {
     refetch();
   }, [filterOption]);

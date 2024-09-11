@@ -6,8 +6,8 @@ import { END_POINTS } from "@/constants/api";
 import { INITIAL_FILTER_OPTION_DATA } from "@/constants/community";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
-import type { FilterSelectedType } from "@/types/common";
 import type { GetCommunityListResponseType } from "@/types/community";
+import type { FilterSelectedType } from "@/types/filter";
 
 const getCommunityList = async (filterOption?: FilterSelectedType) => {
   const options = filterOption ?? INITIAL_FILTER_OPTION_DATA;

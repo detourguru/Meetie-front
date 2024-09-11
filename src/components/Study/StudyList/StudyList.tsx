@@ -5,14 +5,15 @@ import { useEffect, useState } from "react";
 import CheckBox from "@/components/Study/CheckBox";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
 
+import { INITIAL_FILTER_OPTION_DATA } from "@/constants/filter";
+
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
 import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
 
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
 
-  const queryString = { isRecruit: checked, order: "viewCount" };
-  const { data, refetch } = useStudyListQuery(queryString);
+  const { data, refetch } = useStudyListQuery(INITIAL_FILTER_OPTION_DATA);
 
   const { userId } = useUserInformationQuery();
 
