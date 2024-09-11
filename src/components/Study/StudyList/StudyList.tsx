@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import CheckBox from "@/components/Study/CheckBox";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
+import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleton";
 
 import { INITIAL_FILTER_OPTION_DATA } from "@/constants/filter";
 
@@ -13,7 +14,7 @@ import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformation
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
 
-  const { data, refetch } = useStudyListQuery({
+  const { data, refetch, isFetching } = useStudyListQuery({
     ...INITIAL_FILTER_OPTION_DATA,
     isRecruit: checked,
   });
@@ -39,10 +40,15 @@ const StudyList = () => {
         <CheckBox onClick={handleChecked}>모집중만 보기</CheckBox>
       </div>
       {/* TODO: data 없을때 보여줄 UI 필요 */}
-      {data.data &&
+
+      {isFetching ? (
+        <StudyCardSkeleton />
+      ) : (
+        data.data &&
         data.data.map((studyData) => (
           <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
-        ))}
+        ))
+      )}
     </article>
   );
 };

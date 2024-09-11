@@ -7,6 +7,7 @@ import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Gnb from "@/components/common/Gnb/Gnb";
 import StudyList from "@/components/Study/StudyList/StudyList";
+import StudyListSkeleton from "@/components/Study/StudyList/StudyListSkeleton";
 import StudyRoomListHeader from "@/components/Study/StudyList/StudyRoomListHeader";
 
 import { PATH } from "@/constants/path";
@@ -77,7 +78,7 @@ export default function Page() {
           </div>
         </Link>
       </article>
-      <Suspense>
+      <Suspense fallback={<StudyListSkeleton />}>
         <ServerFetchBoundary fetchOptions={serverFetchOptions}>
           <StudyList />
         </ServerFetchBoundary>
