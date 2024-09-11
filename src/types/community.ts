@@ -13,8 +13,10 @@ export interface CommunityPostType {
   emojiList: CommunityPostEmojiType[];
 }
 
-export interface CreateCommunityFormType
-  extends Pick<CommunityPostType, "position" | "title" | "images" | "contents"> {}
+export type CreateCommunityFormType = Pick<
+  CommunityPostType,
+  "position" | "title" | "images" | "contents"
+>;
 
 export type CreateCommunityUpdateHandlerType = <Key extends keyof CreateCommunityFormType>(
   key: Key,
@@ -33,7 +35,7 @@ export interface CommunityPostEmojiType {
   emoji: string;
 }
 
-export interface CreateCommunityEmojiType extends Pick<CommunityPostEmojiType, "emoji"> {}
+export type CreateCommunityEmojiType = Pick<CommunityPostEmojiType, "emoji">;
 
 export interface CommunityEmojiResponseType {
   id: number;
@@ -61,9 +63,9 @@ export interface CommunityCommentType {
   selectedEmoji: string[];
 }
 
-export interface CreateCommentFormType extends Pick<CommunityCommentType, "contents"> {}
+export type CreateCommentFormType = Pick<CommunityCommentType, "contents">;
 
-export interface UpdateCommentFormType extends Pick<CommunityCommentType, "contents" | "id"> {}
+export type UpdateCommentFormType = Pick<CommunityCommentType, "contents" | "id">;
 
 export interface CreateCommentEmojiType {
   emoji: string;

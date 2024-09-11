@@ -87,6 +87,7 @@ const PositionSheet = ({
                 size="xl"
                 onClick={() => {
                   updateInputValue("position", position);
+
                   onInteractOutside && onInteractOutside();
                 }}
               >

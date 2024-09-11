@@ -24,6 +24,7 @@ export async function GET(request: NextRequest, { params }: ParamIdType) {
 
     return NextResponse.json({ message: "ok", status: 200, data: null });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: "error", status: 500 });
   }
 }

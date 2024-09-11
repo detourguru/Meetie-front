@@ -9,9 +9,9 @@ interface FilterButtonPropsType {
   handleButtonClick?: () => void;
 }
 
-interface FilterProps extends React.PropsWithChildren {}
+type FilterProps = React.PropsWithChildren;
 
-interface FilterTagProps extends React.PropsWithChildren {}
+type FilterTagProps = React.PropsWithChildren;
 
 interface FilterTagSelectProps {
   hashtag?: boolean;

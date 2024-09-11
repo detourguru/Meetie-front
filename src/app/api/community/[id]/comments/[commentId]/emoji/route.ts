@@ -19,6 +19,7 @@ export async function POST(request: Request, { params }: { params: { commentId: 
 
     return NextResponse.json({ message: "ok" }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
@@ -42,6 +43,7 @@ export async function DELETE(request: Request, { params }: { params: { commentId
 
     return NextResponse.json({ message: "ok" }, { status: 200 });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }

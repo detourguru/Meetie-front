@@ -61,11 +61,11 @@ export const useOnboardingForm = () => {
   };
 
   const handlePrevStep = () => {
-    step === "position" || setStep(STEPS_DATA[currentStepIndex - 1]);
+    return step === "position" || setStep(STEPS_DATA[currentStepIndex - 1]);
   };
 
   const handleNextStep = () => {
-    step === "period" || setStep(STEPS_DATA[currentStepIndex + 1]);
+    return step === "period" || setStep(STEPS_DATA[currentStepIndex + 1]);
   };
 
   const handleSubmit = async () => {

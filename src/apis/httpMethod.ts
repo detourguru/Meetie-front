@@ -22,6 +22,7 @@ async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestIni
     const data = await response.json();
     return data as Data;
   } catch (error) {
+    console.error(error);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return undefined as any;
   }

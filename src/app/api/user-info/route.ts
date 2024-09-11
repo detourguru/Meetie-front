@@ -14,6 +14,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ message: "ok", status: 200, data: data });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: "error", status: 500 });
   }
 }
@@ -56,6 +57,7 @@ export async function DELETE(request: Request) {
 
     return NextResponse.json({ message: res.statusText }, { status: res.status });
   } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
@@ -74,7 +76,8 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ message: "ok", status: 200 });
-  } catch (err) {
+  } catch (error) {
+    console.error(error);
     return NextResponse.json({ message: "error", status: 500 });
   }
 }
