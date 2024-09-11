@@ -1,27 +1,17 @@
 import Image from "next/image";
 
 interface MemberType {
-  image: string;
   name: string;
   field: string;
   description: string;
 }
 
-const Member = ({ image, name, field, description }: MemberType) => {
+const Member = ({ name, field, description }: MemberType) => {
   return (
     <>
       <div className="p-2 bg-white h-[220px] rounded-lg">
-        <div className="flex justify-end">
-          <Image className="bg-red-50" src={image} alt="icon" width={20} height={20} />
-        </div>
         <div className="flex justify-center">
-          <Image
-            className="bg-black rounded-full"
-            src="/svg/ic-member.svg"
-            alt="icon"
-            width={60}
-            height={60}
-          />
+          <Image src="/svg/ic-user.svg" alt="icon" width={60} height={60} />
         </div>
         <div className="flex flex-col p-2">
           <span className="flex justify-center text-bold-14">{name}</span>

@@ -7,7 +7,7 @@ interface HashTagPropsType extends React.HTMLAttributes<HTMLSpanElement> {
 const HashTag = ({ close, children, className, ...props }: HashTagPropsType) => {
   return (
     <span
-      className={`inline-block align-middle mb-2 rounded-[5px] border px-[11px] py-[2px] mr-2 text-medium-14 ${className}`}
+      className={`inline-block align-middle rounded-[5px] border px-[11px] py-[2px] mr-2 text-medium-14 ${className}`}
       {...props}
     >
       {children}

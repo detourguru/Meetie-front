@@ -28,7 +28,7 @@ const StudyFilteredList = ({
   const { user, userId } = useUserInformationQuery();
 
   return (
-    <div className="p-4">
+    <div className="p-4 pb-[80px]">
       <div className="relative -mx-4 mb-4">
         <Filter>
           <Filter.FilterTag>
@@ -70,7 +70,6 @@ const StudyFilteredList = ({
         data.data.map((studyData) => (
           <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
         ))}
-      <div className="-mr-4 -ml-4 mb-4 bg-[#F2F2F2] h-2"></div>
     </div>
   );
 };

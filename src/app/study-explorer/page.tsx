@@ -23,8 +23,6 @@ export default function Page() {
         </ServerFetchBoundary>
       </Suspense>
 
-      <ExplorerTab />
-
       <Gnb />
     </>
   );

@@ -60,9 +60,8 @@ const ExplorerTab = () => {
       {currentTab === "member" && (
         <div className="relative p-4">
           <div className="flex justify-between items-center mb-4">
-            <div>
-              <Image src="/svg/ic-refresh.svg" alt="icon" width={24} height={24} />
-            </div>
+            <Image src="/svg/ic-refresh.svg" alt="icon" width={24} height={24} />
+
             <div className="text-nowrap ml-2 overflow-x-auto no-scrollbar">
               <HashTag close={true} className="border-primary-500 text-primary-500">
                 직무
