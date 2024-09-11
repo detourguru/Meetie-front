@@ -17,9 +17,9 @@ const TaskConfirmDetail = () => {
 
   const { data } = useTaskConfirmDetailQuery(String(params.id));
   const { userData } = useUserInformationQuery();
-  const { userData: AuthorUserData } = useUserInformationQuery(data.data.user_id);
+  // const { userData: AuthorUserData } = useUserInformationQuery(data.data.user_id);
 
-  const isAuthor = userData.data.user_id === AuthorUserData.data.user_id;
+  // const isAuthor = userData.data.user_id === AuthorUserData.data.user_id;
 
   return (
     <>
@@ -41,7 +41,7 @@ const TaskConfirmDetail = () => {
           <div className="flex items-center">
             <span className="text-regular-14 text-[#525257] mr-2">사진으로 인증됨</span>
             <Image src="/svg/ic-calendar-check-pri.svg" alt="icon" width={13} height={14} />
-            {isAuthor && (
+            {/* {isAuthor && (
               <Image
                 src="/svg/ic-calendar-more.svg"
                 alt="icon"
@@ -49,7 +49,7 @@ const TaskConfirmDetail = () => {
                 width={20}
                 height={4}
               />
-            )}
+            )} */}
           </div>
         </div>
       </section>

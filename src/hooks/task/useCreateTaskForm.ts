@@ -13,7 +13,7 @@ interface UseCreateTaskFormProps {
 }
 
 export const useCreateTaskForm = ({ studyRoomId }: UseCreateTaskFormProps) => {
-  const { mutate: postTaskMutation } = usePostTaskMutation();
+  const { mutate: postTaskMutation } = usePostTaskMutation(studyRoomId);
 
   const router = useRouter();
 
