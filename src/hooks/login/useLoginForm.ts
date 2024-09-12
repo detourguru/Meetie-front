@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { useCallback, useState } from "react";
 
+import { END_POINTS } from "@/constants/api";
 import { PATH } from "@/constants/path";
 
 import { createClient } from "@/utils/supabase/client";
@@ -63,7 +64,7 @@ export const useLoginForm = () => {
     await supabase.auth.signInWithOAuth({
       provider,
       options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_API_BASE_URL}${PATH.AUTH_CALLBACK}`,
+        redirectTo: `${process.env.NEXT_PUBLIC_API_BASE_URL}${END_POINTS.AUTH_CALLBACK}`,
       },
     });
   };
