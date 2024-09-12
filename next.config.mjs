@@ -10,6 +10,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "*.googleusercontent.com",
       },
+      {
+        protocol: "https",
+        hostname: "rxlogxfquswjsszfcjuv.supabase.co",
+        pathname: "/storage/v1/object/public/images/**",
+      },
     ],
   },
 };

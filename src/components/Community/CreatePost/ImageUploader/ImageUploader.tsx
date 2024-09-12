@@ -14,7 +14,10 @@ interface ImageUploaderProps {
 const MAX_SIZE = 5;
 
 const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
-  const { handleImageDelete, handleImageUpload } = useMultiImageUpload({ maxSize: MAX_SIZE });
+  const { handleImageDelete, handleImageUpload } = useMultiImageUpload({
+    maxSize: MAX_SIZE,
+    folderName: "community",
+  });
 
   return (
     <section className="flex flex-nowrap gap-3 overflow-x-scroll pt-2 hidden-scrollbar">
@@ -31,6 +34,7 @@ const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
           multiple
           id="images"
           name="images"
+          accept="image/*"
           onChange={async (e) =>
             updateInputValue("images", await handleImageUpload(images, e.target.files))
           }

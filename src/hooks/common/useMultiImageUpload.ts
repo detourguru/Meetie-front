@@ -1,18 +1,26 @@
+import { createClient } from "@/utils/supabase/client";
+
 interface useMultiImageUploadProps {
   maxSize: number;
+  folderName: string;
 }
 
-export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
-  const getBase64 = (file: File): Promise<string> =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
+export const useMultiImageUpload = ({ maxSize, folderName }: useMultiImageUploadProps) => {
+  const supabase = createClient();
 
-      reader.readAsDataURL(file);
+  const getImageUrl = async (file: File): Promise<string> => {
+    const fileName = `${Date.now()}-${file.name}`;
+    const { data, error } = await supabase.storage
+      .from("images")
+      .upload(`${folderName}/${fileName}`, file);
 
-      reader.onload = () => resolve(reader.result as string);
+    if (error) {
+      return "";
+    }
 
-      reader.onerror = () => reject("");
-    });
+    const res = supabase.storage.from("images").getPublicUrl(data.path);
+    return res.data.publicUrl;
+  };
 
   const handleImageUpload = async (images: string[], files: FileList | null): Promise<string[]> => {
     if (!files) {
@@ -20,7 +28,7 @@ export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
     }
 
     const newImages = images
-      .concat(await Promise.all(Array.from(files).map((image) => getBase64(image))))
+      .concat(await Promise.all(Array.from(files).map((image) => getImageUrl(image))))
       .filter((image) => image !== "");
 
     if (newImages.length <= maxSize) {
