@@ -2,20 +2,19 @@
 
 import Image from "next/image";
 
-// import { useState } from "react";
+import { useState } from "react";
 
-// import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet";
 import StudyFilteredList from "@/components/Study/Explorer/StudyFilteredList";
-// import MemberList from "@/components/Study/Member/MemberList";
-// import HashTag from "@/components/Study/StudyRoomList/HashTag";
-// import ToggleSwitch from "@/components/Study/Explorer//ToggleSwitch";
+import MemberList from "@/components/Study/Member/MemberList";
+import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
 import { useStudyListFilter } from "@/hooks/api/study/useStudyListFilter";
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 const ExplorerTab = () => {
-  // const [currentTab, setCurrentTab] = useState("study");
+  const [currentTab, setCurrentTab] = useState("study");
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
   const { data, filterOption, handleClickTag, updateFilterOption, isFetching } = useStudyListFilter(
@@ -36,10 +35,9 @@ const ExplorerTab = () => {
             placeholder="관심있는 스터디나 팀원을 검색해보세요"
           />
         </div>
-        {/* <ToggleSwitch>원하는 스터디 알림 받기</ToggleSwitch> */}
       </div>
 
-      {/* <Tabs defaultValue={currentTab}>
+      <Tabs defaultValue={currentTab}>
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="study" onClick={() => setCurrentTab("study")}>
             스터디 찾기
@@ -48,21 +46,19 @@ const ExplorerTab = () => {
             팀원 찾기
           </TabsTrigger>
         </TabsList>
-      </Tabs> */}
+      </Tabs>
 
-      <StudyFilteredList
-        data={data}
-        filterOption={filterOption}
-        handleClickTag={handleClickTag}
-        updateFilterOption={updateFilterOption}
-        isFetching={isFetching}
-      />
+      {currentTab === "study" && (
+        <StudyFilteredList
+          data={data}
+          filterOption={filterOption}
+          handleClickTag={handleClickTag}
+          updateFilterOption={updateFilterOption}
+          isFetching={isFetching}
+        />
+      )}
 
-      {/* {currentTab === "study" && (
-        
-      )} */}
-
-      {/* {currentTab === "member" && (
+      {currentTab === "member" && (
         <div className="relative p-4">
           <div className="flex justify-between items-center mb-4">
             <Image src="/svg/ic-refresh.svg" alt="icon" width={24} height={24} />
@@ -94,7 +90,7 @@ const ExplorerTab = () => {
             <MemberList />
           </div>
         </div>
-      )} */}
+      )}
 
       <SearchSheet
         isOpen={isOpen}
