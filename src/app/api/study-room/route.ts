@@ -11,24 +11,22 @@ export async function POST(request: Request) {
     const { error: createStudyRoomError } = await supabase.from("study_room").insert(data);
 
     if (!createStudyRoomError) {
-      // const { error: deleteStudyError } = await supabase
-      //   .from("study")
-      //   .delete()
-      //   .eq("id", data.studyId);
-
       const { error: endDateStudyError } = await supabase
         .from("study")
         .update({ isRecruit: false })
         .eq("id", data.studyId);
 
       if (!endDateStudyError) {
-        return NextResponse.json({ message: "ok", status: 200, data: data.studyId });
+        return NextResponse.json({ message: "ok", data: data.studyId }, { status: 200 });
       }
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json(
+      { message: "error" },
+      { status: 400, statusText: "잘못된 요청입니다" },
+    );
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500, statusText: "서버 오류 발생" });
   }
 }
