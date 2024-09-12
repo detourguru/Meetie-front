@@ -51,7 +51,7 @@ const StudyCard = ({ studyData, userId }: StudyCardProps) => {
         startDate: studyData.startDate,
         endDate: studyData.endDate,
         week: studyData.week,
-        time: studyData.title,
+        time: studyData.time,
         recruitMemberCount: studyData.recruitMemberCount,
         tagList: studyData.tagList,
       },

@@ -33,11 +33,6 @@
             "position": "before"
           },
           {
-            "pattern": "{axios*,axios*/*}",
-            "group": "external",
-            "position": "before"
-          },
-          {
             "pattern": "{class-variance-authority*,class-variance-authority*/*}",
             "group": "external",
             "position": "before"

@@ -12,6 +12,8 @@ export default function CreateStudyPage() {
   const { step, createStudyForm, buttonDisabled, handleMoveStep, updateInputValue, handleSubmit } =
     useCreateStudyForm({});
 
+  console.log(createStudyForm);
+
   return (
     <>
       <Header>
