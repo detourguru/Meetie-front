@@ -11,12 +11,17 @@ export async function POST(request: Request) {
     const { error: createStudyRoomError } = await supabase.from("study_room").insert(data);
 
     if (!createStudyRoomError) {
-      const { error: deleteStudyError } = await supabase
+      // const { error: deleteStudyError } = await supabase
+      //   .from("study")
+      //   .delete()
+      //   .eq("id", data.studyId);
+
+      const { error: endDateStudyError } = await supabase
         .from("study")
-        .delete()
+        .update({ isRecruit: false })
         .eq("id", data.studyId);
 
-      if (!deleteStudyError) {
+      if (!endDateStudyError) {
         return NextResponse.json({ message: "ok", status: 200, data: data.studyId });
       }
     }

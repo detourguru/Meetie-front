@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { format, startOfToday, addDays, differenceInCalendarDays } from "date-fns";
+import { format, startOfToday, addDays } from "date-fns";
 import { ko } from "date-fns/locale";
 
 import Tag from "@/components/common/Tag/Tag";
@@ -10,6 +10,8 @@ import Bookmark from "@/components/Study/Bookmark/Bookmark";
 import { PATH } from "@/constants/path";
 
 import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
+
+import { generateDday } from "@/utils/date";
 
 import type { StudyListType } from "@/types/study";
 
@@ -25,18 +27,6 @@ const StudyCard = ({ studyData, userId }: StudyCardProps) => {
   const newEndDate = studyData.endDate ?? addDays(newStartDate, 7); // FIXME: null일 때 임의의 7일 added
 
   const isMarked = studyData.bookmarks.length > 0 ? studyData.bookmarks[0].isMarked : false;
-
-  const handleGetDateDiff = () => {
-    const diff = differenceInCalendarDays(newEndDate, new Date());
-    // FIXME: 추후 공통 함수로 적용
-    if (diff < 0) {
-      return "모집 종료";
-    } else if (diff === 0) {
-      return "오늘 마감";
-    } else {
-      return `D-${diff}`;
-    }
-  };
 
   //TODO: 전체 필드 아닌 일부 필드만 업데이트 가능하도록 수정
   const handleUpdateViewCount = () => {
@@ -71,7 +61,9 @@ const StudyCard = ({ studyData, userId }: StudyCardProps) => {
           {studyData.tagList?.map((tag) => <Tag text={tag} isSmall key={tag} />)}
         </div>
         <div className="flex justify-between">
-          <span className="font-bold text-[12px] text-primary-500">{handleGetDateDiff()}</span>
+          <span className="font-bold text-[12px] text-primary-500">
+            {!studyData.isRecruit ? "모집 마감" : generateDday(newEndDate)}
+          </span>
           <div className="flex justify-between">
             <div>
               <Image src="/svg/ic-calandar.svg" alt="icon" width={15} height={15} />

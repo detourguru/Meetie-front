@@ -70,7 +70,7 @@ const StudyDetail = () => {
               <span className={spanClassName}>
                 {convertDateTime(new Date(data.data.createdAt))}
               </span>
-              <span>조회수 33</span>
+              <span>조회수 {data.data.viewCount}</span>
             </p>
           </div>
         </div>

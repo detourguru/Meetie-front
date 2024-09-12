@@ -42,7 +42,7 @@ export const generateDday = (nowDate: Date | null) => {
   const diff = differenceInCalendarDays(nowDate, new Date());
 
   if (diff < 0) {
-    return "모집 종료";
+    return "모집 마감";
   } else if (diff === 0) {
     return "오늘 마감";
   } else {
