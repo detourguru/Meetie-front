@@ -23,7 +23,7 @@ export const useMultiImageUpload = ({ maxSize, folderName }: useMultiImageUpload
   };
 
   const handleImageUpload = async (images: string[], files: FileList | null): Promise<string[]> => {
-    if (!files) {
+    if (!files || files.length + images.length > maxSize) {
       return images;
     }
 
@@ -31,12 +31,7 @@ export const useMultiImageUpload = ({ maxSize, folderName }: useMultiImageUpload
       .concat(await Promise.all(Array.from(files).map((image) => getImageUrl(image))))
       .filter((image) => image !== "");
 
-    if (newImages.length <= maxSize) {
-      return newImages;
-    } else {
-      // TODO: 팝업으로 초과 알림
-      return images;
-    }
+    return newImages;
   };
 
   const handleImageDelete = async (images: string[], image: string) => {

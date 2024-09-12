@@ -10,9 +10,19 @@ interface ImageProps {
   handleClick?: () => void;
 }
 
+const BLUR_IMAGE =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UA8AAkUBYdOfF4cAAAAASUVORK5CYII=";
+
 const Image = ({ className, handleClick, ...props }: ImageProps) => (
   <div className={cn("relative", className)} onClick={handleClick}>
-    <NextImage {...props} fill sizes="100%" className="object-contain" />
+    <NextImage
+      {...props}
+      fill
+      sizes="100%"
+      className="object-contain"
+      placeholder="blur"
+      blurDataURL={BLUR_IMAGE}
+    />
   </div>
 );
 
