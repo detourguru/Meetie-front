@@ -39,8 +39,19 @@ export const useMultiImageUpload = ({ maxSize, folderName }: useMultiImageUpload
     }
   };
 
-  const handleImageDelete = (images: string[], index: number) =>
-    images.filter((_, idx) => index !== idx);
+  const handleImageDelete = async (images: string[], image: string) => {
+    const fileName = image.split("images/").pop() ?? "";
+
+    if (fileName) {
+      const { error } = await supabase.storage.from("images").remove([fileName]);
+
+      if (!error) {
+        return images.filter((img) => image !== img);
+      }
+    }
+
+    return images;
+  };
 
   return { handleImageUpload, handleImageDelete };
 };

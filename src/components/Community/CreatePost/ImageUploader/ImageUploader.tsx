@@ -46,7 +46,9 @@ const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
         <ImageCard
           key={`upload_image_${index}`}
           imageUrl={image}
-          handleDelete={() => updateInputValue("images", handleImageDelete(images, index))}
+          handleDelete={async () =>
+            updateInputValue("images", await handleImageDelete(images, image))
+          }
         />
       ))}
     </section>
