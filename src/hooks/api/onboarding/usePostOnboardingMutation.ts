@@ -1,8 +1,15 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { postOnboarding } from "@/apis/onboarding/postOnboarding";
+import { POST, createInit } from "@/apis/httpMethod";
 
+import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
+
+import type { OnboardingFormType } from "@/types/onboarding";
+
+const postOnboarding = async (onboardingForm: OnboardingFormType) => {
+  return await POST(END_POINTS.ONBOARDING, createInit(onboardingForm));
+};
 
 export const usePostOnboardingMutation = () => {
   const queryClient = useQueryClient();

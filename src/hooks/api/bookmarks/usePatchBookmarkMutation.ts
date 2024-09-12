@@ -1,14 +1,26 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { patchBookmarks } from "@/apis/bookmarks/patchBookmarks";
+import { PATCH, createInit } from "@/apis/httpMethod";
 
+import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
+
+import type { BookmarksType } from "@/types/bookmarks";
+
+interface PatchBookmarksParamsType {
+  bookmarkForm: BookmarksType;
+  id: string;
+}
+
+const patchBookmark = async ({ bookmarkForm, id }: PatchBookmarksParamsType) => {
+  return await PATCH(END_POINTS.BOOKMARK(id), createInit(bookmarkForm));
+};
 
 export const usePatchBookmarkMutation = () => {
   const queryClient = useQueryClient();
 
   const patchBookmarkMutation = useMutation({
-    mutationFn: patchBookmarks,
+    mutationFn: patchBookmark,
     onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.STUDY_LIST],
