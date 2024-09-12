@@ -7,6 +7,7 @@ interface OnboardingProfileProps {
   profileImage: string;
   position: string;
   styles: string;
+  isFetching: boolean;
 }
 
 const OnboardingProfile = ({
@@ -14,7 +15,21 @@ const OnboardingProfile = ({
   profileImage,
   position,
   styles,
+  isFetching,
 }: OnboardingProfileProps) => {
+  if (isFetching) {
+    return (
+      <Image
+        src="/svg/ic-onboarding-complete-back.svg"
+        width={153}
+        height={209}
+        alt="back"
+        priority
+        className="absolute top-0"
+      />
+    );
+  }
+
   return (
     <div className="relative w-[150px] mt-[77px]">
       <Image
@@ -26,7 +41,7 @@ const OnboardingProfile = ({
         className="absolute top-0"
       />
 
-      <div className="relative flex justify-center w-full transform animate-tilt backdrop-blur-[2px]">
+      <div className="relative flex justify-center w-full transform animate-tilt backdrop-blur-[2px] delay-300">
         <div className="w-[146px] h-[204px] border border-gray-100 rounded-lg bg-[#FAFAFF]/70" />
         <div className="absolute top-0 flex flex-col items-center justify-center pt-6 whitespace-nowrap">
           <div className="relative w-[80px] h-[80px] flex justify-center bg-gradient-to-tr from-[#FAFAFF]/60 to-[#FAFAFF]/45">

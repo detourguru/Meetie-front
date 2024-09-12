@@ -8,7 +8,7 @@ import { COMPLETE_DATA } from "@/constants/onBoarding";
 import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 const Complete = () => {
-  const { data } = useUserInfoQuery();
+  const { data, isFetching } = useUserInfoQuery();
 
   const { name, profileImage, position, styles } = data.data;
 
@@ -23,6 +23,7 @@ const Complete = () => {
         profileImage={profileImage}
         position={position}
         styles={userStyles}
+        isFetching={isFetching}
       />
     </>
   );
