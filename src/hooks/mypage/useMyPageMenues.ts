@@ -4,14 +4,17 @@ import { PATH } from "@/constants/path";
 
 import { useDeleteUserMutation } from "@/hooks/api/userInfo/useDeleteUserMutation";
 import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 export const useMyPageMenues = () => {
   const router = useRouter();
 
-  const { userId, user } = useUserInformationQuery();
+  const { data: userData } = useUserInfoQuery();
   const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
   const { mutate: deleteUser } = useDeleteUserMutation();
+
+  const userId = userData.data.user_id;
+  const user = userData.data;
 
   const handleChangeInfoAgreement = () => {
     updateUserInfoMutation({

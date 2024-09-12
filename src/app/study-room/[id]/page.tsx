@@ -12,6 +12,7 @@ import StudyRoomDetailSkeleton from "@/components/StudyRoom/StudyRoomDetail/Stud
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
 import { taskConfirmListQueryOptions } from "@/hooks/api/task-confirm/useTaskConfirmListQuery";
+import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import type { ParamIdType } from "@/types/common";
 
@@ -23,6 +24,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
       studyRoomId: params.id,
       referenceDate: format(new Date(), "yyyy-MM-dd"),
     }),
+    userInfoQueryOptions(),
   ];
 
   return (

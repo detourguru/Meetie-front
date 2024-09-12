@@ -6,7 +6,7 @@ import Tag from "@/components/common/Tag/Tag";
 import { PATH } from "@/constants/path";
 
 import { usePatchStudyRequestMutation } from "@/hooks/api/study-request/usePatchStudyRequestMutation";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 interface StudyRequestCardProps {
   userId: string;
@@ -14,7 +14,7 @@ interface StudyRequestCardProps {
 }
 
 const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
-  const { userData } = useUserInformationQuery(userId);
+  const { data: userData } = useUserInfoQuery(userId);
 
   const { mutate: patchStudyRequestMutation } = usePatchStudyRequestMutation(studyId);
 

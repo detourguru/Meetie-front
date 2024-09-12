@@ -9,7 +9,7 @@ import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleto
 import { INITIAL_FILTER_OPTION_DATA } from "@/constants/filter";
 
 import { useStudyListQuery } from "@/hooks/api/study/useStudyListQuery";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
@@ -19,7 +19,7 @@ const StudyList = () => {
     isRecruit: checked,
   });
 
-  const { userId } = useUserInformationQuery();
+  const { data: userData } = useUserInfoQuery();
 
   const handleChecked = () => {
     setChecked((checked) => !checked);
@@ -42,7 +42,7 @@ const StudyList = () => {
       ) : (
         data.data &&
         data.data.map((studyData) => (
-          <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
+          <StudyCard userId={userData.data.user_id} studyData={studyData} key={studyData.id} />
         ))
       )}
     </article>

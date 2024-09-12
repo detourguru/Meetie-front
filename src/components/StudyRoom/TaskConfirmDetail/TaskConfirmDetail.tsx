@@ -8,7 +8,7 @@ import ConfirmComment from "../ConfirmComment/ConfirmComment";
 import Header from "@/components/common/Header/Header";
 
 import { useTaskConfirmDetailQuery } from "@/hooks/api/task-confirm/useTaskConfirmDetailQuery";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import { convertDate, convertDateTime } from "@/utils/date";
 
@@ -16,7 +16,7 @@ const TaskConfirmDetail = () => {
   const params = useParams();
 
   const { data } = useTaskConfirmDetailQuery(String(params.id));
-  const { userData } = useUserInformationQuery();
+  const { data: userData } = useUserInfoQuery();
   // const { userData: AuthorUserData } = useUserInformationQuery(data.data.user_id);
 
   // const isAuthor = userData.data.user_id === AuthorUserData.data.user_id;

@@ -1,7 +1,5 @@
 "use client";
 
-import { useParams } from "next/navigation";
-
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
@@ -13,20 +11,32 @@ import PositionSheet from "@/components/Profile/PositionSheet/PositionSheet";
 import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
 
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useSingleImageUpload } from "@/hooks/common/useSiingleImageUpload";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
 
 const EditProfileForm = () => {
-  const params = useParams();
+  const { data } = useUserInfoQuery();
 
-  const { userId, initialProfileForm } = useUserInformationQuery(String(params.id));
+  const user = data.data;
+
+  const initialData = {
+    name: user.name,
+    introduce: user.name,
+    profileImage: user.profileImage,
+    mainBadge: user.mainBadge,
+    position: user.position,
+    purposes: user.purposes,
+    styles: user.styles,
+    period: user.period,
+  };
 
   const { profileForm, updateProfileForm, handleSubmit } = useEditProfileForm({
-    id: userId,
-    initialData: initialProfileForm,
+    id: data.data.user_id,
+    initialData,
   });
+
   const { handleImageUpload } = useSingleImageUpload();
 
   const { isOpen, handleOpen, handleClose } = useOverlay();

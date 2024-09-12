@@ -13,12 +13,14 @@ import TagList from "@/components/Profile/TagList/TagList";
 
 import { BADGE_DATA } from "@/constants/badges";
 
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 const ProfileBody = () => {
   const params = useParams();
 
-  const { user } = useUserInformationQuery(String(params.id));
+  const { data } = useUserInfoQuery(String(params.id));
+
+  const user = data.data;
 
   const badge = BADGE_DATA.find((badge) => badge.type === user.mainBadge)?.badges[2];
 

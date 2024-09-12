@@ -1,10 +1,15 @@
 import { Suspense } from "react";
 
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
+
 import Gnb from "@/components/common/Gnb/Gnb";
 import MyPageBody from "@/components/MyPage/MypageBody/MyPageBody";
 import MyPageHeader from "@/components/MyPage/MyPageHeader/MyPageHeader";
 
+import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
+
 export default function MyPage() {
+  const serverFetchOptions = [userInfoQueryOptions()];
   return (
     <>
       <MyPageHeader />
@@ -23,7 +28,9 @@ export default function MyPage() {
           </div>
         }
       >
-        <MyPageBody />
+        <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+          <MyPageBody />
+        </ServerFetchBoundary>
       </Suspense>
 
       <Gnb />

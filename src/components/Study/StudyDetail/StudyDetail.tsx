@@ -12,7 +12,7 @@ import FooterBtnBox from "@/components/Study/StudyDetail/FooterBtnBox/FooterBtnB
 import { PATH } from "@/constants/path";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import { convertDate, convertDateTime, generateDday } from "@/utils/date";
 
@@ -20,8 +20,8 @@ const StudyDetail = () => {
   const params = useParams();
 
   const { data } = useStudyQuery(String(params.id));
-  const { userData } = useUserInformationQuery();
-  const { userData: ownerUserData } = useUserInformationQuery(data.data.user_id);
+  const { data: userData } = useUserInfoQuery();
+  const { data: ownerUserData } = useUserInfoQuery(data.data.user_id);
 
   const isOwner = userData.data.user_id === ownerUserData.data.user_id;
   const isJoin = data.data.joinMemberList.some((userId) => userId === userData.data.user_id);

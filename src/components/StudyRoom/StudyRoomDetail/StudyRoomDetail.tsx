@@ -12,7 +12,7 @@ import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 import { TODAY, WEEK_DAY } from "@/constants/common";
 
 import { useStudyRoomQuery } from "@/hooks/api/study-room/useStudyRoomQuery";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import { generateDday } from "@/utils/date";
 
@@ -22,7 +22,7 @@ const StudyRoomDetail = () => {
   const params = useParams();
 
   const { data } = useStudyRoomQuery(String(params.id));
-  const { userData } = useUserInformationQuery();
+  const { data: userData } = useUserInfoQuery();
 
   const isOwner = userData.data.user_id === data.data.owner_id;
 

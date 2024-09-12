@@ -4,7 +4,7 @@ import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleto
 
 import { CREATED_AT_OPTION_DATA, SORT_OPTION_DATA } from "@/constants/filter";
 
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import type { UpdateFilterSelectedTypeHandlerType, FilterSelectedType } from "@/types/filter";
 import type { GetStudyListResponseType } from "@/types/study";
@@ -28,7 +28,7 @@ const StudyFilteredList = ({
     ? Array.from(new Set(data.data.map((study) => study.tagList).flat()))
     : [];
 
-  const { user, userId } = useUserInformationQuery();
+  const { data: userData } = useUserInfoQuery();
 
   return (
     <div className="p-4 pb-[80px]">
@@ -63,7 +63,7 @@ const StudyFilteredList = ({
       </div>
       <div className="flex justify-between mb-[27px]">
         <h1 className="text-bold-18">
-          {user.name}님과 비슷한 사용자가
+          {userData.data.name}님과 비슷한 사용자가
           <br />
           방금 지원했어요
         </h1>
@@ -74,7 +74,7 @@ const StudyFilteredList = ({
       ) : (
         data.data &&
         data.data.map((studyData) => (
-          <StudyCard userId={userId} studyData={studyData} key={studyData.id} />
+          <StudyCard userId={userData.data.user_id} studyData={studyData} key={studyData.id} />
         ))
       )}
     </div>

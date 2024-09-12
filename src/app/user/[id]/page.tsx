@@ -2,16 +2,22 @@ import Link from "next/link";
 
 import { Suspense } from "react";
 
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
+
 import Header from "@/components/common/Header/Header";
 import ProfileBody from "@/components/Profile/ProfileBody/ProfileBody";
 
 import { PATH } from "@/constants/path";
+
+import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 interface UserProfilePageParamsType {
   params: { id: string };
 }
 
 export default function UserProfilePage({ params }: UserProfilePageParamsType) {
+  const serverFetchOptions = [userInfoQueryOptions()];
+
   return (
     <>
       <Header>
@@ -44,7 +50,9 @@ export default function UserProfilePage({ params }: UserProfilePageParamsType) {
           </div>
         }
       >
-        <ProfileBody />
+        <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+          <ProfileBody />
+        </ServerFetchBoundary>
       </Suspense>
     </>
   );

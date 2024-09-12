@@ -5,12 +5,12 @@ import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
 import { COMPLETE_DATA } from "@/constants/onBoarding";
 
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 const Complete = () => {
-  const {
-    user: { name, profileImage, position, styles },
-  } = useUserInformationQuery();
+  const { data } = useUserInfoQuery();
+
+  const { name, profileImage, position, styles } = data.data;
 
   const userStyles = (styles.length > 0 && styles.slice(0, 2).join("﹒").slice(0, 11)) || "";
 

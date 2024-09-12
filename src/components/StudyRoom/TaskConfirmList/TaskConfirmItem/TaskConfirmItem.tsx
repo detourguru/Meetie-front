@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { PATH } from "@/constants/path";
 
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import { convertDateTime } from "@/utils/date";
 
@@ -14,7 +14,7 @@ interface TaskConfirmItemProps {
 }
 
 const TaskConfirmItem = ({ taskData }: TaskConfirmItemProps) => {
-  const { userData } = useUserInformationQuery(taskData.user_id);
+  const { data: userData } = useUserInfoQuery(taskData.user_id);
 
   return (
     <section className="flex mt-5 gap-[10px]">

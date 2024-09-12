@@ -6,9 +6,10 @@ import Header from "@/components/common/Header/Header";
 import StudyRequest from "@/components/Study/StudyRequest/StudyRequest";
 
 import { studyQueryOptions } from "@/hooks/api/study/useStudyQuery";
+import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 export default function StudyRequestPage({ params }: { params: { id: string } }) {
-  const serverFetchOptions = [studyQueryOptions(params.id)];
+  const serverFetchOptions = [studyQueryOptions(params.id), userInfoQueryOptions()];
 
   return (
     <>

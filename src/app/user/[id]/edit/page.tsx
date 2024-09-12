@@ -1,23 +1,19 @@
 import { Suspense } from "react";
 
-import Header from "@/components/common/Header/Header";
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
+
 import EditProfileForm from "@/components/Profile/EditProfile/EditProfileForm";
 
+import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
+
 export default function ProfilePage() {
+  const serverFetchOptions = [userInfoQueryOptions()];
+
   return (
-    <Suspense
-      // TODO: loading 컴포넌트로 변경
-      fallback={
-        <Header>
-          <Header.LeftButton />
-          <Header.Title hasButton>프로필 수정</Header.Title>
-          <Header.RightTextButton>
-            <p className="text-medium-14 text-black">완료</p>
-          </Header.RightTextButton>
-        </Header>
-      }
-    >
-      <EditProfileForm />
+    <Suspense>
+      <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+        <EditProfileForm />
+      </ServerFetchBoundary>
     </Suspense>
   );
 }

@@ -10,7 +10,7 @@ import PostHeader from "@/components/Community/ReadPost/PostDetail/PostHeader/Po
 import PostCard from "@/components/CommunityPost/List/PostCard/PostCard";
 
 import { useCommunityQuery } from "@/hooks/api/community/useCommunityQuery";
-import { useUserInformationQuery } from "@/hooks/api/userInfo/useUserInformationQuery";
+import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 
 import { convertDate, convertDateTime } from "@/utils/date";
 
@@ -19,8 +19,8 @@ const PostDetail = () => {
 
   const { data: postData } = useCommunityQuery(Number(params.id));
 
-  const { userData: ownerUser } = useUserInformationQuery();
-  const { userData: postUser } = useUserInformationQuery(postData.data.user_id);
+  const { data: ownerUser } = useUserInfoQuery();
+  const { data: postUser } = useUserInfoQuery(postData.data.user_id);
 
   const { postDate, viewCount, emojiList } = postData.data;
 
