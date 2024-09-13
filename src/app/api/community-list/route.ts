@@ -44,8 +44,6 @@ export async function GET(request: Request) {
       .contains("position", positionTags)
       .order(sortOption, { ascending: false });
 
-    console.log(error);
-
     if (!error) {
       return NextResponse.json(
         {
