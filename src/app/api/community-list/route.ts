@@ -6,7 +6,7 @@ export async function GET(request: Request) {
   try {
     const supabase = createClient();
 
-    let query = supabase.from("community").select();
+    let query = supabase.from("community").select(`*, userinfo (position)`);
 
     const { searchParams } = new URL(request.url);
     const search = searchParams.get("search") ?? "";
@@ -39,12 +39,24 @@ export async function GET(request: Request) {
       query = query.gte("postDate", new Date(date).toISOString());
     }
 
-    const { data } = await query
+    const { data, error } = await query
       .like("title", `%${search}%`)
       .contains("position", positionTags)
       .order(sortOption, { ascending: false });
 
-    return NextResponse.json({ message: "ok", status: 200, data });
+    console.log(error);
+
+    if (!error) {
+      return NextResponse.json(
+        {
+          message: "ok",
+          data: data.map((data) => ({ ...data, userPosition: data.userinfo.position })),
+        },
+        { status: 200 },
+      );
+    }
+
+    return NextResponse.json({ message: "error" }, { status: 400 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error", status: 500 });
