@@ -10,7 +10,9 @@ export async function GET(request: Request, { params }: { params: { id: string }
 
     const { data } = await supabase
       .from("community")
-      .select(`*, community_emoji (id, emoji, user_id, userinfo (profileImage))`)
+      .select(
+        `*, community_emoji (id, emoji, user_id, userinfo (profileImage)), userinfo (position)`,
+      )
       .eq("id", params.id)
       .single();
 
@@ -26,6 +28,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
               ...emoji,
               profileImage: emoji.userinfo.profileImage,
             })),
+            userPosition: data.userinfo.position,
           },
         },
         { status: 200 },
