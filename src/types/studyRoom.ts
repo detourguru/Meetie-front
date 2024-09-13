@@ -15,3 +15,7 @@ export interface StudyRoomType extends StudyRoomRequestType {
 export interface GetStudyRoomResponseType extends CommonResponseType {
   data: StudyRoomType;
 }
+
+export interface GetStudyRoomListResponseType extends CommonResponseType {
+  data: StudyRoomType[];
+}

@@ -26,7 +26,7 @@ export const taskConfirmListQueryOptions = ({
   studyRoomId,
   referenceDate,
 }: TaskConfirmListQueryOptionsProps): UseSuspenseQueryOptions<GetTaskConfirmListResponseType> => ({
-  queryKey: [QUERY_KEYS.TASK_CONFIRM_LIST, referenceDate],
+  queryKey: [QUERY_KEYS.TASK_CONFIRM_LIST, referenceDate, studyRoomId],
   queryFn: () => getTaskConfirmList(studyRoomId, referenceDate),
 });
 

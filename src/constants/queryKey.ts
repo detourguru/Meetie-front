@@ -3,6 +3,7 @@ export const QUERY_KEYS = {
 
   STUDY_LIST: "studyList",
   STUDY_ROOM: "studyRoom",
+  STUDY_ROOM_LIST: "studyRoomList",
   STUDY: "study",
 
   TASK_LIST: "taskList",

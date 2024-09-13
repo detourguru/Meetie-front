@@ -6,19 +6,28 @@ export async function POST(request: Request) {
   try {
     const supabase = createClient();
 
-    const data = await request.json();
+    const requestData = await request.json();
 
-    const { error: createStudyRoomError } = await supabase.from("study_room").insert(data);
+    const { data } = await supabase.from("study_room").insert(requestData).select().single();
 
-    if (!createStudyRoomError) {
-      const { error: endDateStudyError } = await supabase
-        .from("study")
-        .update({ isRecruit: false })
-        .eq("id", data.studyId);
+    const { error: endDateStudyError } = await supabase
+      .from("study")
+      .update({ isRecruit: false })
+      .eq("id", requestData.studyId);
 
-      if (!endDateStudyError) {
-        return NextResponse.json({ message: "ok", data: data.studyId }, { status: 200 });
-      }
+    requestData.memberList.map(async (member: string) => {
+      const { studyList } = (
+        await supabase.from("userinfo").select().eq("user_id", member).single()
+      ).data;
+
+      await supabase
+        .from("userinfo")
+        .update({ studyList: [...studyList, data.id] })
+        .eq("user_id", member);
+    });
+
+    if (!endDateStudyError) {
+      return NextResponse.json({ message: "ok", data: requestData.studyId }, { status: 200 });
     }
 
     return NextResponse.json(
