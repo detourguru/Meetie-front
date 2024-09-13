@@ -8,9 +8,9 @@ export async function GET() {
 
     const { data } = await supabase.from("community_recommend").select().limit(3);
 
-    return NextResponse.json({ message: "ok", status: 200, data });
+    return NextResponse.json({ message: "ok", data }, { status: 200 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
