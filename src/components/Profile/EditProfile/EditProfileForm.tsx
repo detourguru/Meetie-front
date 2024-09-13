@@ -12,6 +12,7 @@ import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
 
 import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
+import { useGoBack } from "@/hooks/common/useGoBack";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useSingleImageUpload } from "@/hooks/common/useSiingleImageUpload";
 import { useEditProfileForm } from "@/hooks/mypage/useEditProfileForm";
@@ -41,10 +42,12 @@ const EditProfileForm = () => {
 
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
+  const { handleGoBack } = useGoBack();
+
   return (
     <>
       <Header>
-        <Header.LeftButton />
+        <Header.LeftButton handleButtonClick={handleGoBack} />
         <Header.Title hasButton>프로필 수정</Header.Title>
         {/* TODO: 프로필 저장 로직 구현 */}
         <Header.RightTextButton handleButtonClick={handleSubmit}>

@@ -1,22 +1,22 @@
 "use client";
 
-import { useParams } from "next/navigation";
-
 import FooterBtnBox from "@/components/Study/StudyDetail/FooterBtnBox/FooterBtnBox";
 import StudyRequestCard from "@/components/Study/StudyRequest/StudyRequestCard/StudyRequestCard";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
 
-const StudyRequest = () => {
-  const params = useParams();
+interface StudyReqeustProps {
+  studyId: string;
+}
 
-  const { data } = useStudyQuery(String(params.id));
+const StudyRequest = ({ studyId }: StudyReqeustProps) => {
+  const { data } = useStudyQuery(studyId);
 
   return (
     <>
       <div className="pb-[140px]">
         {data.data.requestMemberList.map((member) => (
-          <StudyRequestCard key={member} userId={member} studyId={String(params.id)} />
+          <StudyRequestCard key={member} userId={member} studyId={studyId} />
         ))}
       </div>
 

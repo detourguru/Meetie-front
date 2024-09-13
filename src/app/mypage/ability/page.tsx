@@ -11,7 +11,7 @@ export default function AbilityPage() {
     <>
       <AbilityHeader />
 
-      <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 mb-5 mt-14 mx-4">
+      <article className="border border-blue-500/10 rounded-lg bg-blue-200 px-6 py-3 mb-5 mt-[72px] mx-4">
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-0.5">
             <p className="text-regular-12 text-gray-300">축하합니다!</p>

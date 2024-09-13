@@ -9,6 +9,7 @@ import Header from "@/components/common/Header/Header";
 
 import { useTaskConfirmDetailQuery } from "@/hooks/api/task-confirm/useTaskConfirmDetailQuery";
 import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
+import { useGoBack } from "@/hooks/common/useGoBack";
 
 import { convertDate, convertDateTime } from "@/utils/date";
 
@@ -17,6 +18,8 @@ const TaskConfirmDetail = () => {
 
   const { data } = useTaskConfirmDetailQuery(String(params.id));
   const { data: userData } = useUserInfoQuery();
+
+  const { handleGoBack } = useGoBack();
   // const { userData: AuthorUserData } = useUserInformationQuery(data.data.user_id);
 
   // const isAuthor = userData.data.user_id === AuthorUserData.data.user_id;
@@ -24,9 +27,9 @@ const TaskConfirmDetail = () => {
   return (
     <>
       <Header>
-        <Header.LeftButton />
+        <Header.LeftButton handleButtonClick={handleGoBack} />
       </Header>
-      <section className="px-4 pt-14 pb-4">
+      <section className="px-4 pt-[72px] pb-4">
         <div className="flex justify-between">
           <div className="flex items-center gap-2">
             <Image

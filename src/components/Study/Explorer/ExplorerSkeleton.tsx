@@ -5,7 +5,7 @@ import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleto
 
 const ExplorerSkeleton = () => {
   return (
-    <div className="px-4 pt-14 pb-1">
+    <div className="px-4 pt-[72px] pb-1">
       <Skeleton className="w-full h-[48px]" />
       <Skeleton className="w-full h-[62px] mt-2" />
       <Skeleton className="w-full h-[50px] mt-4 mb-[27px]" />

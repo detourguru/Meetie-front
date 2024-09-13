@@ -8,7 +8,9 @@ import StudyRequest from "@/components/Study/StudyRequest/StudyRequest";
 import { studyQueryOptions } from "@/hooks/api/study/useStudyQuery";
 import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
 
-export default function StudyRequestPage({ params }: { params: { id: string } }) {
+import type { ParamIdType } from "@/types/common";
+
+export default function StudyRequestPage({ params }: ParamIdType) {
   const serverFetchOptions = [studyQueryOptions(params.id), userInfoQueryOptions()];
 
   return (
@@ -18,11 +20,11 @@ export default function StudyRequestPage({ params }: { params: { id: string } })
         <Header.Title hasButton>대기중인 요청</Header.Title>
       </Header>
 
-      <div className="w-full h-[1px] bg-gray-250 mt-10" />
+      <div className="w-full h-[1px] bg-[#dddddd] mt-14" />
 
       <Suspense>
         <ServerFetchBoundary fetchOptions={serverFetchOptions}>
-          <StudyRequest />
+          <StudyRequest studyId={params.id} />
         </ServerFetchBoundary>
       </Suspense>
     </>

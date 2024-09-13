@@ -45,7 +45,7 @@ const StudyRoomDetail = () => {
 
   return (
     <main>
-      <section className="bg-[#EBE9F5] px-4 pt-10 pb-4">
+      <section className="bg-[#EBE9F5] px-4 pt-14 pb-4">
         <div className="flex justify-end mt-4">
           <p className="bg-primary-400 text-regular-12 text-white px-[10px] py-[3px] rounded-l-lg border border-primary-400">
             진행중 {userData.data.studyList.length}

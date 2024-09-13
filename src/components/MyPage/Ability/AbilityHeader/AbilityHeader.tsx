@@ -1,19 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import Header from "@/components/common/Header/Header";
 
-const AbilityHeader = () => {
-  const router = useRouter();
+import { useGoBack } from "@/hooks/common/useGoBack";
 
-  const handleClick = () => {
-    router.back();
-  };
+const AbilityHeader = () => {
+  const { handleGoBack } = useGoBack();
 
   return (
     <Header>
-      <Header.LeftButton handleButtonClick={handleClick} />
+      <Header.LeftButton handleButtonClick={handleGoBack} />
       <Header.Title hasButton>내 능력 현황</Header.Title>
       <Header.RightButton icon="/svg/ic-header-question.svg" />
     </Header>

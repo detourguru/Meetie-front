@@ -25,7 +25,7 @@ interface HeaderRightTextButtonProps extends HeaderButtonPropsType {
 const Header = ({ children, backgroundColor }: HeaderProps) => {
   return (
     <div
-      className={`w-[375px] h-10 flex justify-center items-center fixed top-0 left-[50%] translate-x-[-50%] px-3 z-50 ${backgroundColor ? backgroundColor : "bg-white"}`}
+      className={`w-[375px] h-[56px] flex justify-center items-center fixed top-0 left-[50%] translate-x-[-50%] px-4 z-50 ${backgroundColor ? backgroundColor : "bg-white"}`}
     >
       {children}
     </div>
@@ -34,17 +34,17 @@ const Header = ({ children, backgroundColor }: HeaderProps) => {
 
 const HeaderTitle = ({ children, hasButton }: HeaderProps) => {
   return (
-    <h1 className={`text-bold-18 text-[#212529] ${hasButton ? "mr-0" : "mr-auto"}`}>{children}</h1>
+    <h1 className={`text-bold-20 text-[#212529] ${hasButton ? "mr-0" : "mr-auto"}`}>{children}</h1>
   );
 };
 
 const HeaderLeftButton = ({ isCloseIcon, handleButtonClick }: HeaderLeftButtonProps) => {
   return (
-    <button className="absolute left-3" onClick={handleButtonClick}>
+    <button className="absolute left-4" onClick={handleButtonClick}>
       <Image
         src={isCloseIcon ? "/svg/ic-header-close.svg" : "/svg/ic-header-left-arrow.svg"}
         alt="leftButtonIcon"
-        className="w-[24px] h-[24px]"
+        className="w-[28px] h-[28px]"
       />
     </button>
   );
@@ -52,15 +52,15 @@ const HeaderLeftButton = ({ isCloseIcon, handleButtonClick }: HeaderLeftButtonPr
 
 const HeaderRightButton = ({ icon, handleButtonClick }: HeaderRightButtonProps) => {
   return (
-    <button className="absolute right-3" onClick={handleButtonClick}>
-      <Image src={icon} alt="rightButtonIcon" className="w-[24px] h-[24px]" />
+    <button className="absolute right-4" onClick={handleButtonClick}>
+      <Image src={icon} alt="rightButtonIcon" className="w-[28px] h-[28px]" />
     </button>
   );
 };
 
 const HeaderRightText = ({ nowStep }: { nowStep: number }) => {
   return (
-    <p className="text-medium-12 absolute right-3 text-gray-250">
+    <p className="text-medium-16 absolute right-4 text-gray-250">
       <span className="text-[#313131]">{nowStep}</span> / 2
     </p>
   );
@@ -72,11 +72,11 @@ const HeaderRightTextButton = ({
   handleButtonClick,
 }: HeaderRightTextButtonProps) => {
   return (
-    <button className="absolute right-3" onClick={handleButtonClick}>
+    <button className="absolute right-4" onClick={handleButtonClick}>
       {children ? (
         children
       ) : (
-        <p className={`text-medium-14 ${isComplete ? "text-primary-500" : "text-black"}`}>
+        <p className={`text-medium-16 ${isComplete ? "text-primary-500" : "text-black"}`}>
           {isComplete ? "완료" : "취소"}
         </p>
       )}

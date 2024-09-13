@@ -22,7 +22,7 @@ export default function Page() {
     <>
       <StudyRoomListHeader />
       <article className="mx-4">
-        <div className="mt-[50px] mb-[32px]">
+        <div className="mt-[66px] mb-[32px]">
           <h1 className="text-bold-18 mb-2">
             아직 스터디가
             <br />

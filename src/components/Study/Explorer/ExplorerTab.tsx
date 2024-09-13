@@ -24,7 +24,7 @@ const ExplorerTab = () => {
 
   return (
     <>
-      <div className="px-4 pt-14 pb-1 sticky top-0 bg-white z-20" onClick={handleOpen}>
+      <div className="px-4 pt-[72px] pb-1 sticky top-0 bg-white z-20" onClick={handleOpen}>
         <div className="flex gap-3 bg-[#F1F3F5] rounded-lg px-3.5 py-3 mb-2">
           <Image src="/svg/ic-community-search.svg" alt="search" width={24} height={24} />
           <input

@@ -7,13 +7,14 @@ import Header from "@/components/common/Header/Header";
 import CreatePostBody from "@/components/Community/CreatePost/CreatePostBody/CreatePostBody";
 
 import { useCommunityQuery } from "@/hooks/api/community/useCommunityQuery";
+import { useGoBack } from "@/hooks/common/useGoBack";
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
 const EditPost = () => {
   const params = useParams();
 
   const { data: postData } = useCommunityQuery(Number(params.id));
-  const { createPostForm, buttonDisabled, handleSubmitModify, updatePostForm, handleGoBack } =
+  const { createPostForm, buttonDisabled, handleSubmitModify, updatePostForm } =
     useCreateCommunityPost({
       initialData: {
         title: postData.data.title,
@@ -23,6 +24,8 @@ const EditPost = () => {
       },
       postId: Number(params.id),
     });
+
+  const { handleGoBack } = useGoBack();
 
   return (
     <>

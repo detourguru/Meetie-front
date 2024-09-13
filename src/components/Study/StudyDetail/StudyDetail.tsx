@@ -13,6 +13,7 @@ import { PATH } from "@/constants/path";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
 import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
+import { useGoBack } from "@/hooks/common/useGoBack";
 
 import { convertDate, convertDateTime, generateDday } from "@/utils/date";
 
@@ -22,6 +23,8 @@ const StudyDetail = () => {
   const { data } = useStudyQuery(String(params.id));
   const { data: userData } = useUserInfoQuery();
   const { data: ownerUserData } = useUserInfoQuery(data.data.user_id);
+
+  const { handleGoBack } = useGoBack();
 
   const isOwner = userData.data.user_id === ownerUserData.data.user_id;
   const isJoin = data.data.joinMemberList.some((userId) => userId === userData.data.user_id);
@@ -36,7 +39,7 @@ const StudyDetail = () => {
   return (
     <>
       <Header>
-        <Header.LeftButton />
+        <Header.LeftButton handleButtonClick={handleGoBack} />
         {isOwner && (
           <Header.RightTextButton>
             <Link href={PATH.STUDY_EDIT(String(params.id))}>

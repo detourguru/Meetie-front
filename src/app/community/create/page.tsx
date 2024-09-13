@@ -4,11 +4,15 @@ import Button from "@/components/common/Button/Button";
 import Header from "@/components/common/Header/Header";
 import CreatePostBody from "@/components/Community/CreatePost/CreatePostBody/CreatePostBody";
 
+import { useGoBack } from "@/hooks/common/useGoBack";
 import { useCreateCommunityPost } from "@/hooks/community/useCreateCommunityPost";
 
 export default function CreateCommunityPostPage() {
-  const { createPostForm, buttonDisabled, handleSubmit, updatePostForm, handleGoBack } =
-    useCreateCommunityPost({});
+  const { createPostForm, buttonDisabled, handleSubmit, updatePostForm } = useCreateCommunityPost(
+    {},
+  );
+
+  const { handleGoBack } = useGoBack();
 
   return (
     <>

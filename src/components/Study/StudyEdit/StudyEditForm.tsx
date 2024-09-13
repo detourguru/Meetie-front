@@ -9,6 +9,7 @@ import CreateStudySecondStep from "@/components/Study/CreateStudy/CreateStudySec
 import StudyDeleteModal from "@/components/Study/StudyDeleteModal/StudyDeleteModal";
 
 import { useStudyQuery } from "@/hooks/api/study/useStudyQuery";
+import { useGoBack } from "@/hooks/common/useGoBack";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useCreateStudyForm } from "@/hooks/Study/useCreateStudyForm";
 
@@ -26,10 +27,12 @@ const StudyEditForm = () => {
 
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
+  const { handleGoBack } = useGoBack();
+
   return (
     <>
       <Header>
-        <Header.LeftButton />
+        <Header.LeftButton handleButtonClick={handleGoBack} />
         <Header.Title hasButton>스터디 수정</Header.Title>
         <Header.RightTextButton handleButtonClick={handleOpen}>
           <p className="text-medium-14 text-[#ff552d]">삭제</p>

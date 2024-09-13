@@ -26,7 +26,7 @@ const MyPageBody = () => {
   return (
     <>
       {/* 프로필 카드 */}
-      <div className="flex justify-between mt-10 px-4">
+      <div className="flex justify-between mt-14 px-4">
         <div className="flex gap-4 items-center">
           <Avatar src={user.profileImage} />
           <div className="flex flex-col gap-1 items-start">
