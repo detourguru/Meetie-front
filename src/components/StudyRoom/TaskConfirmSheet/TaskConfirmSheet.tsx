@@ -20,7 +20,7 @@ const TaskConfirmSheet = ({
 }: TaskConfirmSheetProps) => {
   const MAX_SIZE = 4;
 
-  const { handleImageUpload } = useMultiImageUpload({ maxSize: MAX_SIZE, folderName: "task" });
+  const { handleImageUpload } = useMultiImageUpload({ maxSize: MAX_SIZE });
 
   return (
     <Sheet open={isOpen}>

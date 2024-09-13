@@ -16,7 +16,6 @@ const MAX_SIZE = 5;
 const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
   const { handleImageDelete, handleImageUpload } = useMultiImageUpload({
     maxSize: MAX_SIZE,
-    folderName: "community",
   });
 
   return (

@@ -6,9 +6,9 @@ import { PATH } from "@/constants/path";
 
 import { usePatchCommunityMutation } from "@/hooks/api/community/usePatchCommunityMutation";
 import { usePostCommunityMutation } from "@/hooks/api/community/usePostCommunityMutation";
+import { useImageUploader } from "@/hooks/common/useImageUploader";
 
 import type { CreateCommunityFormType, CreateCommunityUpdateHandlerType } from "@/types/community";
-
 interface useCreateCommunityPostProps {
   initialData?: CreateCommunityFormType;
   postId?: number;
@@ -17,6 +17,8 @@ interface useCreateCommunityPostProps {
 export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommunityPostProps) => {
   const { mutate: postCommunityMutation } = usePostCommunityMutation();
   const { mutate: patchCommunityMutation } = usePatchCommunityMutation(Number(postId));
+
+  const { handleUploadImages } = useImageUploader("community");
 
   const router = useRouter();
 
@@ -46,16 +48,25 @@ export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommuni
   }, []);
 
   const handleSubmit = async () => {
-    postCommunityMutation(createPostForm, {
-      onSuccess() {
-        router.push(PATH.COMMUNITY_LIST);
+    postCommunityMutation(
+      { ...createPostForm, images: await handleUploadImages(createPostForm.images) },
+      {
+        onSuccess() {
+          router.push(PATH.COMMUNITY_LIST);
+        },
       },
-    });
+    );
   };
 
   const handleSubmitModify = async () => {
     patchCommunityMutation(
-      { createPostForm, postId: Number(postId) },
+      {
+        createPostForm: {
+          ...createPostForm,
+          images: await handleUploadImages(createPostForm.images),
+        },
+        postId: Number(postId),
+      },
       {
         onSuccess() {
           router.back();

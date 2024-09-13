@@ -1,26 +1,18 @@
-import { createClient } from "@/utils/supabase/client";
-
 interface useMultiImageUploadProps {
   maxSize: number;
-  folderName: string;
 }
 
-export const useMultiImageUpload = ({ maxSize, folderName }: useMultiImageUploadProps) => {
-  const supabase = createClient();
+export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
+  const getBase64 = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
 
-  const getImageUrl = async (file: File): Promise<string> => {
-    const fileName = `${Date.now()}-${file.name}`;
-    const { data, error } = await supabase.storage
-      .from("images")
-      .upload(`${folderName}/${fileName}`, file);
+      reader.readAsDataURL(file);
 
-    if (error) {
-      return "";
-    }
+      reader.onload = () => resolve(reader.result as string);
 
-    const res = supabase.storage.from("images").getPublicUrl(data.path);
-    return res.data.publicUrl;
-  };
+      reader.onerror = () => reject("");
+    });
 
   const handleImageUpload = async (images: string[], files: FileList | null): Promise<string[]> => {
     if (!files || files.length + images.length > maxSize) {
@@ -28,25 +20,14 @@ export const useMultiImageUpload = ({ maxSize, folderName }: useMultiImageUpload
     }
 
     const newImages = images
-      .concat(await Promise.all(Array.from(files).map((image) => getImageUrl(image))))
+      .concat(await Promise.all(Array.from(files).map((image) => getBase64(image))))
       .filter((image) => image !== "");
 
     return newImages;
   };
 
-  const handleImageDelete = async (images: string[], image: string) => {
-    const fileName = image.split("images/").pop() ?? "";
-
-    if (fileName) {
-      const { error } = await supabase.storage.from("images").remove([fileName]);
-
-      if (!error) {
-        return images.filter((img) => image !== img);
-      }
-    }
-
-    return images;
-  };
+  const handleImageDelete = async (images: string[], image: string) =>
+    images.filter((img) => image !== img);
 
   return { handleImageUpload, handleImageDelete };
 };
