@@ -14,9 +14,7 @@ interface ImageUploaderProps {
 const MAX_SIZE = 5;
 
 const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
-  const { handleImageDelete, handleImageUpload } = useMultiImageUpload({
-    maxSize: MAX_SIZE,
-  });
+  const { handleImageDelete, handleImageUpload } = useMultiImageUpload({ maxSize: MAX_SIZE });
 
   return (
     <section className="flex flex-nowrap gap-3 overflow-x-scroll pt-2 hidden-scrollbar">

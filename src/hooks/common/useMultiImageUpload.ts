@@ -27,7 +27,7 @@ export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
   };
 
   const handleImageDelete = (images: string[], index: number) =>
-    images.filter((_, idx) => idx !== index);
+    images.filter((_, idx) => index !== idx);
 
   return { handleImageUpload, handleImageDelete };
 };
