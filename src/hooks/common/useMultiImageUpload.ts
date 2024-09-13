@@ -26,8 +26,8 @@ export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
     return newImages;
   };
 
-  const handleImageDelete = async (images: string[], image: string) =>
-    images.filter((img) => image !== img);
+  const handleImageDelete = (images: string[], index: number) =>
+    images.filter((_, idx) => idx !== index);
 
   return { handleImageUpload, handleImageDelete };
 };
