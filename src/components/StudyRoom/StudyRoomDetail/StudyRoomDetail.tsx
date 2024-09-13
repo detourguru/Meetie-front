@@ -55,7 +55,8 @@ const StudyRoomDetail = () => {
           </p>
         </div>
 
-        <section
+        {/* 사용시 컴포넌트화 */}
+        <div
           className="relative flex mt-3 px-4 py-5 bg-white border border-[#E9E9E9] border-inset rounded-lg drop-shadow-sm gap-4"
           onClick={handleOpen}
         >
@@ -74,7 +75,7 @@ const StudyRoomDetail = () => {
               {generateDday(data.data.endDate)}
             </span>
           </div>
-        </section>
+        </div>
       </section>
 
       {/* <Tabs defaultValue={tab}>
