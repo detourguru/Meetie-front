@@ -4,9 +4,10 @@ import { useCallback, useState } from "react";
 
 import { format } from "date-fns";
 
-import { usePostTaskConfirmMutation } from "../api/task-confirm/usePostTaskConfirmMutation";
-
 import { PATH } from "@/constants/path";
+
+import { usePostTaskConfirmMutation } from "@/hooks/api/task-confirm/usePostTaskConfirmMutation";
+import { useImageUploader } from "@/hooks/common/useImageUploader";
 
 import type { TaskConfirmRequestType } from "@/types/taskConfirm";
 
@@ -17,6 +18,8 @@ interface UseTaskConfirmFormProps {
 
 export const useTaskConfirmForm = ({ taskId, studyRoomId }: UseTaskConfirmFormProps) => {
   const { mutate: postTaskConfirmMutation } = usePostTaskConfirmMutation();
+
+  const { handleUploadImages } = useImageUploader("taskConfirm");
 
   const router = useRouter();
 
@@ -44,11 +47,14 @@ export const useTaskConfirmForm = ({ taskId, studyRoomId }: UseTaskConfirmFormPr
   );
 
   const handleSubmit = async () => {
-    postTaskConfirmMutation(taskConfirmForm, {
-      onSuccess: (result) => {
-        router.push(PATH.TASK_CONFIRM_SUCCESS(result.data));
+    postTaskConfirmMutation(
+      { ...taskConfirmForm, mediaList: await handleUploadImages(taskConfirmForm.mediaList) },
+      {
+        onSuccess: (result) => {
+          router.push(PATH.TASK_CONFIRM_SUCCESS(result.data));
+        },
       },
-    });
+    );
   };
 
   return { taskConfirmForm, updateInputValue, handleSubmit };
