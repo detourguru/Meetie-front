@@ -12,7 +12,6 @@ const ImageCard = ({ imageUrl, handleDelete }: ImageCardProps) => {
         className="w-[82px] h-[82px] border border-[#E9E9E9] rounded-lg"
         src={imageUrl}
         alt="uploaded"
-        priority
       />
       <button className="absolute -top-2 -right-2" onClick={handleDelete}>
         <Image src="/svg/ic-confirm-btn-delete.svg" alt="del btn" className="w-4 h-4" />

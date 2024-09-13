@@ -12,6 +12,9 @@ interface PostCardProps extends React.LiHTMLAttributes<HTMLLIElement> {
   isReadMode?: boolean;
 }
 
+const BLUR_IMAGE =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mN8UA8AAkUBYdOfF4cAAAAASUVORK5CYII=";
+
 const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
   const mainImage = post.images[0];
 
@@ -51,6 +54,8 @@ const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
                   "object-contain",
                   post.images.length > 1 ? "w-auto h-[120px]" : "w-full h-auto",
                 )}
+                placeholder="blur"
+                blurDataURL={BLUR_IMAGE}
               />
             ))}
           </div>
@@ -62,6 +67,8 @@ const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
               sizes="100%"
               alt="main image"
               className="w-full h-full object-cover"
+              placeholder="blur"
+              blurDataURL={BLUR_IMAGE}
             />
           </div>
         ))}
