@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
 
+import { POSITION_DATA } from "@/constants/community";
+
 import { cn } from "@/utils/className";
 import { convertDate } from "@/utils/date";
 
@@ -18,6 +20,9 @@ const BLUR_IMAGE =
 const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
   const mainImage = post.images[0];
 
+  const positionItemClassName = "flex gap-1 items-center ml-1";
+  const markerClassName = "w-0.5 h-0.5 rounded-full bg-[#434343]";
+
   return (
     <li
       className={cn(
@@ -26,23 +31,28 @@ const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
       )}
       {...props}
     >
-      <div className="flex whitespace-nowrap">
-        <span className="text-regular-12 text-[#434343]">
-          {!post.userPosition ? "미정" : post.userPosition}
-        </span>
-        <div
-          className={`flex flex-wrap text-regular-12 text-[#434343] ${!isReadMode && post.position.length > 5 ? "after:content-['...'] after:ml-0.5" : ""}`}
-        >
-          {post.position.map((position, index) => (
-            <div
-              className={`flex gap-1 items-center ml-1  ${!isReadMode ? "[&:nth-child(n+6)]:hidden" : ""}`}
-              key={`${post.id}/${position}/${index}`}
-            >
-              <div className="w-0.5 h-0.5 rounded-full bg-[#434343]" />
-              <span>{position}</span>
-            </div>
-          ))}
-        </div>
+      <div className="flex whitespace-nowrap text-regular-12 text-[#434343] ">
+        <span>{!post.userPosition ? "미정" : post.userPosition}</span>
+        {post.position.length === POSITION_DATA.length ? (
+          <div className={positionItemClassName}>
+            <div className={markerClassName} />
+            <span>전체</span>
+          </div>
+        ) : (
+          <div
+            className={`flex flex-wrap ${!isReadMode && post.position.length > 5 ? "after:content-['...'] after:ml-0.5" : ""}`}
+          >
+            {post.position.map((position, index) => (
+              <div
+                className={cn(positionItemClassName, isReadMode ? "" : "[&:nth-child(n+6)]:hidden")}
+                key={`${post.id}/${position}/${index}`}
+              >
+                <div className={markerClassName} />
+                <span>{position}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <h2 className="text-bold-16 text-[#434343]">{post.title}</h2>
