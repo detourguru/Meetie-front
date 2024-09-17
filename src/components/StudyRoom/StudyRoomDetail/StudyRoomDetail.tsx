@@ -5,8 +5,7 @@ import { useParams } from "next/navigation";
 
 import { useState, Suspense } from "react";
 
-// import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
-// import CalendarTab from "@/components/StudyRoom/CalendarTab/CalendarTab";
+import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
@@ -30,7 +29,7 @@ const StudyRoomDetail = () => {
 
   const isOwner = userData.data.user_id === data.data.owner_id;
 
-  // const [tab, setTab] = useState("calendar");
+  const [tab, setTab] = useState("schedule");
 
   const [selectedDate, setSelectedDate] = useState<DateType>({
     year: TODAY.year,
@@ -78,38 +77,26 @@ const StudyRoomDetail = () => {
         </div>
       </section>
 
-      {/* <Tabs defaultValue={tab}>
+      <Tabs defaultValue={tab}>
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="calendar" onClick={() => setTab("calendar")}>
-            캘린더
+          <TabsTrigger value="schedule" onClick={() => setTab("schedule")}>
+            일정
           </TabsTrigger>
           <TabsTrigger value="task" onClick={() => setTab("task")}>
-            과제
+            채팅
           </TabsTrigger>
         </TabsList>
-      </Tabs> */}
+      </Tabs>
 
-      {/* {tab === "calendar" && (
-        <CalendarTab
-          selectedDate={selectedDate}
-          handleSelectedDate={handleSelectedDate}
-          studyRoomId={String(params.id)}
-        />
-      )} */}
-      <TaskTab
-        selectedDate={selectedDate}
-        handleSelectedDate={handleSelectedDate}
-        isOwner={isOwner}
-        studyRoomId={String(params.id)}
-      />
-      {/* {tab === "task" && (
+      {tab === "schedule" && (
         <TaskTab
           selectedDate={selectedDate}
           handleSelectedDate={handleSelectedDate}
           isOwner={isOwner}
           studyRoomId={String(params.id)}
         />
-      )} */}
+      )}
+
       <Suspense>
         <StudyListSheet
           isOpen={isOpen}

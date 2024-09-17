@@ -2,8 +2,8 @@ import Skeleton from "@/components/common/Skeleton/Skeleton";
 
 const StudyRoomDetailSkeleton = () => {
   return (
-    <div className="px-4 pt-14 pb-4">
-      <Skeleton className="w-full h-[88px]" />
+    <div className="px-4 pt-[72px] pb-4">
+      <Skeleton className="w-full h-[140px]" />
       <Skeleton className="mt-5 mb-2 w-full h-[50px]" />
       <Skeleton className="w-full h-[222px] mt-4" />
       <Skeleton className="w-full mt-4 h-[168px]" />

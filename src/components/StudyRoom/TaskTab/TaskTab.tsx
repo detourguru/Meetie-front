@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import CalendarSchedule from "@/components/StudyRoom/CalendarSchedule/CalendarSchedule";
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
 import TaskConfirmList from "@/components/StudyRoom/TaskConfirmList/TaskConfirmList";
 import TaskList from "@/components/StudyRoom/TaskTab/TaskList/TaskList";
@@ -32,25 +33,29 @@ const TaskTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: Tas
           </Link>
         )}
 
-        <h2 className="text-bold-18 py-4">🗓️ 과제 일정</h2>
+        <h4 className="text-bold-18 py-4">
+          🗓️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}
+          요일
+        </h4>
       </div>
 
       <CalendarWeek selectedDate={selectedDate} handleSelectedDate={handleSelectedDate} />
 
-      <div className="px-4 pb-[120px]">
+      <div className="px-4 pt-[40px] pb-[120px]">
+        <h4 className="text-bold-18">✍️ 다가오는 일정</h4>
+        <span className="text-regular-14 text-blue-300"># 오늘의 일정을 확인해보세요</span>
+
+        <CalendarSchedule />
+        <TaskList studyRoomId={studyRoomId} />
+
         <div className="pt-[40px]">
-          <h4 className="text-semibold-18">
-            ✍️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}
-            요일
-          </h4>
+          <h4 className="text-bold-18">🖊️ 과제 인증 목록</h4>
           <span className="text-regular-14 text-blue-300">
-            #과제 인증을 완료한 팀원들을 확인해 보세요.
+            # 과제 인증을 완료한 팀원들을 확인해 보세요
           </span>
 
           <TaskConfirmList selectedDate={selectedDate} studyRoomId={studyRoomId} />
         </div>
-
-        <TaskList studyRoomId={studyRoomId} />
       </div>
     </>
   );

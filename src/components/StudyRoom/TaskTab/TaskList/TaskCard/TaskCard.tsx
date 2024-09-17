@@ -10,7 +10,6 @@ import type { TaskListType } from "@/types/task";
 
 interface TaskCardProps {
   task: TaskListType;
-  isDeadline?: boolean;
   studyRoomId: string;
 }
 
@@ -35,13 +34,6 @@ const TaskCard = ({ task, studyRoomId }: TaskCardProps) => {
         <Image src="/svg/ic-calendar-clock.svg" alt="icon" width={11} height={12} />
         <Timer endDate={task.endDate} />
       </div>
-
-      {/* {isDeadline && (
-        <div className="w-fit flex items-center gap-1 bg-[#FF2C84]/10 px-2 py-1 rounded-[4px] mt-3">
-          <Image src="/svg/ic-calendar-clock.svg" alt="icon" width={11} height={12} />
-          <Timer endDate={task.endDate} />
-        </div>
-      )} */}
 
       <Link href={PATH.TASK_CONFIRM(task.id, studyRoomId)}>
         <Button className="w-full py-[10px] mt-5" variant="secondary">
