@@ -5,7 +5,8 @@ export const userWalkThoughScroll = () => {
 
   const handleScroll = (e: React.UIEvent<HTMLUListElement>) => {
     const { scrollLeft } = e.currentTarget;
-    const index = Math.floor(scrollLeft / 375);
+    const half = 375 / 2;
+    const index = Math.floor((scrollLeft + half) / 375);
 
     if (index !== walkThroughNumber) {
       setWalkThroughNumber(index);
@@ -14,7 +15,6 @@ export const userWalkThoughScroll = () => {
 
   return {
     walkThroughNumber,
-
     handleScroll,
   };
 };
