@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const CalendarImage = () => {
   return (
-    <>
+    <li className="relative min-w-[375px] snap-always snap-center">
       <Image
         src="/svg/ic-walk-through-badge.svg"
         width={74}
@@ -17,7 +17,7 @@ const CalendarImage = () => {
         alt="calendar"
         className="absolute top-[97px] left-[84px]"
       />
-    </>
+    </li>
   );
 };
 
