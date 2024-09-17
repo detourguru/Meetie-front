@@ -16,7 +16,7 @@ import { convertDate } from "@/utils/date";
 const ScheduleCreate = () => {
   const params = useParams();
 
-  const { createScheduleForm, updateInputValue } = useCreateScheduleForm({
+  const { createScheduleForm, updateInputValue, handlePostSchedule } = useCreateScheduleForm({
     studyRoomId: String(params.id),
   });
 
@@ -68,7 +68,7 @@ const ScheduleCreate = () => {
               onClick={openEndDateCalendar}
               value={
                 convertDate(
-                  createScheduleForm.endDate && new Date(createScheduleForm.endDate),
+                  createScheduleForm.scheduleDate && new Date(createScheduleForm.scheduleDate),
                   true,
                 ) || ""
               }
@@ -84,7 +84,7 @@ const ScheduleCreate = () => {
       </div>
 
       <div className="fixed bottom-0 bg-white px-4 py-3">
-        <Button size="xl">
+        <Button size="xl" onClick={handlePostSchedule}>
           <p className="text-semibold-16 text-white">일정 생성</p>
         </Button>
       </div>

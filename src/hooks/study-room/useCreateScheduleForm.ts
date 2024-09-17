@@ -1,6 +1,12 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { useState, useCallback } from "react";
+
+import { PATH } from "@/constants/path";
+
+import { usePostScheduleMutation } from "@/hooks/api/schedule/usePostScheduleMutation";
 
 import type { CreateScheduleFormRequestType } from "@/types/task";
 
@@ -9,10 +15,14 @@ interface UseCreateScheduleFormProps {
 }
 
 export const useCreateScheduleForm = ({ studyRoomId }: UseCreateScheduleFormProps) => {
+  const { mutate: postScheduleMutation } = usePostScheduleMutation(studyRoomId);
+
+  const router = useRouter();
+
   const [createScheduleForm, setCreateScheduleForm] = useState({
     title: "",
     content: "",
-    endDate: null,
+    scheduleDate: null,
     time: null,
     studyRoomId,
   });
@@ -34,5 +44,13 @@ export const useCreateScheduleForm = ({ studyRoomId }: UseCreateScheduleFormProp
     [],
   );
 
-  return { createScheduleForm, updateInputValue };
+  const handlePostSchedule = async () => {
+    postScheduleMutation(createScheduleForm, {
+      onSuccess: () => {
+        router.push(PATH.STUDY_ROOM(studyRoomId));
+      },
+    });
+  };
+
+  return { createScheduleForm, updateInputValue, handlePostSchedule };
 };

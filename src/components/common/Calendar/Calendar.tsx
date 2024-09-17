@@ -39,7 +39,7 @@ const Calender = ({
               ? updateInputValue("endDate", dayData)
               : updateInputValue("startDate", dayData));
           updateTaskInputValue && updateTaskInputValue("endDate", dayData);
-          updateScheduleInputValue && updateScheduleInputValue("endDate", dayData);
+          updateScheduleInputValue && updateScheduleInputValue("scheduleDate", dayData);
 
           onInteractOutside && onInteractOutside();
         }}

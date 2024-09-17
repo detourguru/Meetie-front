@@ -9,6 +9,8 @@ export const QUERY_KEYS = {
   TASK_LIST: "taskList",
   TASK: "task",
 
+  SCHEDULE_LIST: "scheduleList",
+
   USER_INFO: "userInfo",
 
   COMMUNITY_LIST: "communityList",
