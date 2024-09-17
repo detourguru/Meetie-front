@@ -17,29 +17,33 @@ export const useImageUploader = (folderName: string) => {
     return new File([u8arr], filename, { type: mime ? mime[0] : "" });
   }
 
+  const handleUploadImage = async (image: string, fileName: string) => {
+    if (image.startsWith("https://")) {
+      return image;
+    }
+
+    const file = base64toFile(image, fileName);
+
+    const { data, error: uploadError } = await supabase.storage
+      .from("images")
+      .upload(`${folderName}/${fileName}`, file);
+
+    if (uploadError) {
+      return "";
+    }
+
+    const res = supabase.storage.from("images").getPublicUrl(data.path);
+    return res.data.publicUrl;
+  };
+
   const handleUploadImages = async (imageList: string[]) =>
     await Promise.all(
       imageList.map(async (image, index) => {
-        if (image.startsWith("https://")) {
-          return image;
-        }
-
         const fileName = `${Date.now()}-${index}`;
 
-        const file = base64toFile(image, fileName);
-
-        const { data, error } = await supabase.storage
-          .from("images")
-          .upload(`${folderName}/${fileName}`, file);
-
-        if (error) {
-          return "";
-        }
-
-        const res = supabase.storage.from("images").getPublicUrl(data.path);
-        return res.data.publicUrl;
+        return handleUploadImage(image, fileName);
       }),
     );
 
-  return { handleUploadImages };
+  return { handleUploadImage, handleUploadImages };
 };

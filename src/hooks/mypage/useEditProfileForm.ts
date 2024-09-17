@@ -5,9 +5,9 @@ import { useCallback, useState } from "react";
 import { PATH } from "@/constants/path";
 
 import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
+import { useImageUploader } from "@/hooks/common/useImageUploader";
 
 import type { ProfileFormType, UpdateProfileFormType } from "@/types/userInfo";
-
 interface UseEditProfileFormProps {
   id: string;
   initialData?: ProfileFormType;
@@ -15,6 +15,8 @@ interface UseEditProfileFormProps {
 
 export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps) => {
   const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
+
+  const { handleUploadImage } = useImageUploader("profile");
 
   const router = useRouter();
 
@@ -42,9 +44,15 @@ export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps)
     });
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     updateUserInfoMutation(
-      { id, updateUserForm: profileForm },
+      {
+        id,
+        updateUserForm: {
+          ...profileForm,
+          profileImage: await handleUploadImage(profileForm.profileImage, `${Date.now()}-${id}`),
+        },
+      },
       {
         onSuccess: () => {
           router.push(PATH.USER_PROFILE(id));
