@@ -52,11 +52,16 @@ const config: Config = {
       },
       animation: {
         tilt: "tilt 0.5s ease-in-out forwards",
+        moveUp: "moveUp 0.5s linear forwards",
       },
       keyframes: {
         tilt: {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(12deg)" },
+        },
+        moveUp: {
+          "0%": { transform: "translateY(0) translateX(0) scale(1)" },
+          "100%": { transform: "translateY(-30px) translateX(-20px) scale(0.9)" },
         },
       },
     },

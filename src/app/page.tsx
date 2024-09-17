@@ -25,18 +25,19 @@ export default function Home() {
             />
             <Image
               src="/svg/ic-home-rocket.svg"
-              width={105}
-              height={160}
+              width={143}
+              height={187}
               alt="rocket"
-              className="z-10 absolute top-0 left-[100px]"
+              priority
+              className="z-10 absolute top-0 left-[60px] transform animate-moveUp"
             />
             <Image
               src="/svg/ic-home-computer.svg"
-              width={212}
-              height={176}
+              width={168}
+              height={127}
               alt="computer"
               priority
-              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-[160px]"
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
             />
             <CustomImage
               src="/svg/ic-home-gear.svg"
