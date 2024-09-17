@@ -32,7 +32,7 @@ export const PATH = {
     `/task-confirm/${taskId}?studyRoomId=${studyRoomId}`,
   TASK_CONFIRM_SUCCESS: (taskId: string) => `/task-confirm/${taskId}/success`,
   TASK_CONFIRM_DETAIL: (taskConfirmId: string) => `/task-confirm-detail/${taskConfirmId}`,
-  TASK_CREATE: (studyRoomId: string) => `/study-room/${studyRoomId}/task-create`,
+  SCHEDULE_CREATE: (studyRoomId: string) => `/study-room/${studyRoomId}/create`,
 
   // TODO: 페이지 생성 후 PATH 수정
   STUDY_JOINING_LIST: "/study/joining", // 참여중인 스터디 리스트

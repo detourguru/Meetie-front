@@ -20,7 +20,7 @@ const TaskTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: Tas
     <>
       <div className="px-4">
         {isOwner && (
-          <Link href={PATH.TASK_CREATE(studyRoomId)}>
+          <Link href={PATH.SCHEDULE_CREATE(studyRoomId)}>
             <div className="flex items-center justify-between h-[50px] px-4 bg-[#F7F3FF] border border-[#EBE9F5] rounded-lg mt-5 mb-2">
               <div className="flex items-center gap-3">
                 <span className="text-bold-20">📚</span>

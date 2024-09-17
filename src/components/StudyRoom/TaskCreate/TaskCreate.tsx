@@ -3,26 +3,22 @@
 import { useParams } from "next/navigation";
 
 import Button from "@/components/common/Button/Button";
-import Header from "@/components/common/Header/Header";
 import Input from "@/components/common/Input/Input";
 import Textarea from "@/components/common/Textarea/Textarea";
 import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/CalendarSheet";
 import TimeSheet from "@/components/Study/CreateStudy/TimeSheet/TimeSheet";
 
-import { useGoBack } from "@/hooks/common/useGoBack";
 import { useOverlay } from "@/hooks/common/useOverlay";
 import { useCreateTaskForm } from "@/hooks/task/useCreateTaskForm";
 
 import { convertDate } from "@/utils/date";
 
-export default function TaskCreatePage() {
+const TaskCreate = () => {
   const params = useParams();
 
   const { createTaskForm, updateInputValue, handlePostTask } = useCreateTaskForm({
     studyRoomId: String(params.id),
   });
-
-  const { handleGoBack } = useGoBack();
 
   const {
     isOpen: isEndDateCalendarOpen,
@@ -41,10 +37,6 @@ export default function TaskCreatePage() {
 
   return (
     <>
-      <Header>
-        <Header.LeftButton handleButtonClick={handleGoBack} />
-        <Header.Title hasButton>과제 생성</Header.Title>
-      </Header>
       <div className="flex flex-col gap-6 px-4 pt-20">
         <div>
           <h2 className={inputTitleClassName}>과제 제목</h2>
@@ -118,4 +110,6 @@ export default function TaskCreatePage() {
       />
     </>
   );
-}
+};
+
+export default TaskCreate;
