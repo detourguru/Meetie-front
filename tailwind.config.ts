@@ -52,7 +52,7 @@ const config: Config = {
       },
       animation: {
         tilt: "tilt 0.5s ease-in-out forwards",
-        moveUp: "moveUp 0.5s linear forwards",
+        moveUp: "moveUp 2s linear forwards",
         wave: "wave 2s ease-in-out infinite",
       },
       keyframes: {
