@@ -33,7 +33,16 @@ interface TaskFormRequestType {
   time: string | null;
 }
 
+export interface ScheduleListType extends CreateScheduleFormRequestType {
+  studyRoomId: string;
+  id: string;
+}
+
 export type CreateScheduleUpdateHandlerType = <Key extends keyof CreateScheduleFormRequestType>(
   key: Key,
   value: CreateScheduleFormRequestType[Key],
 ) => void;
+
+export interface GetScheduleListResponseType extends CommonResponseType {
+  data: ScheduleListType[];
+}

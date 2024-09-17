@@ -48,4 +48,5 @@ export const END_POINTS = {
     `/api/task-confirm-list/${studyRoomId}?referenceDate=${referenceDate}`,
 
   POST_SCHEDULE: "/api/schedule",
+  SCHEDULE_LIST: (studyRoomId: string) => `/api/schedule-list/${studyRoomId}`,
 };

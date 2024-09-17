@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
-import Timer from "@/components/StudyRoom/TaskTab/TaskList/TaskCard/Timer/Timer";
+import Timer from "@/components/StudyRoom/ScheduleTab/TaskList/TaskCard/Timer/Timer";
 
 import { PATH } from "@/constants/path";
 

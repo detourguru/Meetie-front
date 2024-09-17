@@ -1,4 +1,4 @@
-import TaskCard from "@/components/StudyRoom/TaskTab/TaskList/TaskCard/TaskCard";
+import TaskCard from "@/components/StudyRoom/ScheduleTab/TaskList/TaskCard/TaskCard";
 
 import { useTaskListQuery } from "@/hooks/api/task/useTaskListQuery";
 

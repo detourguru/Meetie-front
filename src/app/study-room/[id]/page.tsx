@@ -9,6 +9,7 @@ import Header from "@/components/common/Header/Header";
 import StudyRoomDetail from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetail";
 import StudyRoomDetailSkeleton from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetailSkeleton";
 
+import { scheduleListQueryOptions } from "@/hooks/api/schedule/useScheduleListQuery";
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
 import { taskConfirmListQueryOptions } from "@/hooks/api/task-confirm/useTaskConfirmListQuery";
@@ -20,6 +21,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
   const serverFetchOptions = [
     studyRoomQueryOptions(params.id),
     taskListQueryOptions(params.id),
+    scheduleListQueryOptions(params.id),
     taskConfirmListQueryOptions({
       studyRoomId: params.id,
       referenceDate: format(new Date(), "yyyy-MM-dd"),

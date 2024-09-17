@@ -7,8 +7,8 @@ import { useState, Suspense } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import CreateTaskButton from "@/components/StudyRoom/CreateTaskButton/CreateTaskButton";
+import ScheduleTab from "@/components/StudyRoom/ScheduleTab/ScheduleTab";
 import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
-import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
 import { TODAY, WEEK_DAY } from "@/constants/common";
 
@@ -90,7 +90,7 @@ const StudyRoomDetail = () => {
       </Tabs>
 
       {tab === "schedule" && (
-        <TaskTab
+        <ScheduleTab
           selectedDate={selectedDate}
           handleSelectedDate={handleSelectedDate}
           studyRoomId={String(params.id)}
