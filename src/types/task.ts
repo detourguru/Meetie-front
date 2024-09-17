@@ -1,11 +1,7 @@
 import type { CommonResponseType } from "@/types/common";
 
-export interface CreateTaskFormRequestType {
-  title: string;
+export interface CreateTaskFormRequestType extends CreateScheduleFormRequestType {
   confirmType: string;
-  content: string;
-  endDate: Date | null;
-  time: string | null;
 }
 
 export type CreateTaskUpdateHandlerType = <Key extends keyof CreateTaskFormRequestType>(
@@ -25,3 +21,15 @@ export interface GetTaskListResponseType extends CommonResponseType {
 export interface GetTaskResponseType extends CommonResponseType {
   data: TaskListType;
 }
+
+export interface CreateScheduleFormRequestType {
+  title: string;
+  content: string;
+  endDate: Date | null;
+  time: string | null;
+}
+
+export type CreateScheduleUpdateHandlerType = <Key extends keyof CreateScheduleFormRequestType>(
+  key: Key,
+  value: CreateScheduleFormRequestType[Key],
+) => void;

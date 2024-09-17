@@ -9,11 +9,12 @@ import { WEEK_DAY } from "@/constants/common";
 import { useCalendar } from "@/hooks/common/useCalendar";
 
 import type { CreateStudyUpdateHandlerType } from "@/types/study";
-import type { CreateTaskUpdateHandlerType } from "@/types/task";
+import type { CreateScheduleUpdateHandlerType, CreateTaskUpdateHandlerType } from "@/types/task";
 
 interface CalendarProps {
   updateInputValue?: CreateStudyUpdateHandlerType;
   updateTaskInputValue?: CreateTaskUpdateHandlerType;
+  updateScheduleInputValue?: CreateScheduleUpdateHandlerType;
   onInteractOutside?: () => void;
   isEndDate?: boolean;
 }
@@ -21,6 +22,7 @@ interface CalendarProps {
 const Calender = ({
   updateInputValue,
   updateTaskInputValue,
+  updateScheduleInputValue,
   onInteractOutside,
   isEndDate,
 }: CalendarProps) => {
@@ -37,6 +39,7 @@ const Calender = ({
               ? updateInputValue("endDate", dayData)
               : updateInputValue("startDate", dayData));
           updateTaskInputValue && updateTaskInputValue("endDate", dayData);
+          updateScheduleInputValue && updateScheduleInputValue("endDate", dayData);
 
           onInteractOutside && onInteractOutside();
         }}
