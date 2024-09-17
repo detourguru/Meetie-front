@@ -2,8 +2,6 @@
 
 import { useRouter } from "next/navigation";
 
-import { useState } from "react";
-
 import Button from "@/components/common/Button/Button";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 import CalendarImage from "@/components/WalkThrough/CalendarImage/CalendarImage";
@@ -13,22 +11,15 @@ import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
 import { PATH } from "@/constants/path";
 import { EXPLAIN_DATA } from "@/constants/walkThrough";
 
+import { userWalkThoughScroll } from "@/hooks/walk-through/useWalkThoughScroll";
+
 const WalkThrough = () => {
   const router = useRouter();
 
-  const [walkThroughNumber, setWalkThroughNumber] = useState(0);
+  const { walkThroughNumber, handleScroll } = userWalkThoughScroll();
 
   const handleMoveOnboarding = () => {
     router.push(PATH.ONBOARDING);
-  };
-
-  const handleScroll = (e: React.UIEvent<HTMLUListElement>) => {
-    const { scrollLeft } = e.currentTarget;
-    const index = Math.floor(scrollLeft / 343);
-
-    if (index !== walkThroughNumber) {
-      setWalkThroughNumber(index);
-    }
   };
 
   return (
@@ -42,6 +33,7 @@ const WalkThrough = () => {
       <div className="h-[200px] w-full px-4">
         <OnBoardingTitle textData={EXPLAIN_DATA} index={walkThroughNumber} />
       </div>
+
       <ul
         className="w-full h-max flex overflow-x-scroll snap-x snap-mandatory hidden-scrollbar scroll-px-4"
         onScroll={handleScroll}
