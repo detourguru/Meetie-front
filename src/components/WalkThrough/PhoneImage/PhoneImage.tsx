@@ -9,6 +9,7 @@ const PhoneImage = () => {
         height={385}
         alt="ic-phone"
         priority
+        className="animate-wave"
       />
       <Image
         src="/svg/ic-walk-through-gear.svg"

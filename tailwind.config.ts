@@ -53,6 +53,7 @@ const config: Config = {
       animation: {
         tilt: "tilt 0.5s ease-in-out forwards",
         moveUp: "moveUp 0.5s linear forwards",
+        wave: "wave 2s ease-in-out infinite",
       },
       keyframes: {
         tilt: {
@@ -62,6 +63,12 @@ const config: Config = {
         moveUp: {
           "0%": { transform: "translateY(0) translateX(0) scale(1)" },
           "100%": { transform: "translateY(-30px) translateX(-20px) scale(0.9)" },
+        },
+        wave: {
+          "0%, 50%": { transform: "rotate(0deg)", "transform-origin": "center" },
+          "20%": { transform: "rotate(10deg)", "transform-origin": "center" },
+          "30%": { transform: "rotate(0deg)", "transform-origin": "center" },
+          "40%": { transform: "rotate(10deg)", "transform-origin": "center" },
         },
       },
     },
