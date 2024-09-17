@@ -1,5 +1,6 @@
 "use client";
 
+import Pop from "@/components/OnBoarding/Pop/Pop";
 import OnboardingProfile from "@/components/OnBoarding/Profile/Profile";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
@@ -15,7 +16,7 @@ const Complete = () => {
   const userStyles = (styles.length > 0 && styles.slice(0, 2).join("﹒").slice(0, 11)) || "";
 
   return (
-    <>
+    <div className="relative w-full h-full">
       <OnBoardingTitle textData={COMPLETE_DATA(name)} index={0} subTextColor="text-gray-200" />
 
       <OnboardingProfile
@@ -25,7 +26,9 @@ const Complete = () => {
         styles={userStyles}
         isFetching={isFetching}
       />
-    </>
+
+      <Pop />
+    </div>
   );
 };
 

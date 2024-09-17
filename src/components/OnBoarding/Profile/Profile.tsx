@@ -31,7 +31,7 @@ const OnboardingProfile = ({
   }
 
   return (
-    <div className="relative w-[150px] mt-[77px]">
+    <div className="relative w-[150px] mt-[77px] mx-auto">
       <Image
         src="/svg/ic-onboarding-complete-back.svg"
         width={153}
