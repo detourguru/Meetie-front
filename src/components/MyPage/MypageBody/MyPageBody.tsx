@@ -64,7 +64,7 @@ const MyPageBody = () => {
             navigateTo={PATH.STUDY_JOINING_LIST}
           />
           <InformationCard
-            count={9} // TODO: user.scrapList.length
+            count={user.scrapList.length}
             informationData={INFORMATIONS_DATA.BOOKMARK}
             navigateTo={PATH.STUDY_INTEREST_LIST}
           />
@@ -119,7 +119,10 @@ const MyPageBody = () => {
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
 
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.BOOKMARK} studyCount={8} />
+            <MenuListItem
+              menuItemData={MENU_ITEMS_DATA.BOOKMARK}
+              studyCount={user.scrapList.length}
+            />
           </ul>
         </div>
       </div>

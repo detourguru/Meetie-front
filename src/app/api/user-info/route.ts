@@ -10,9 +10,22 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get("user_id");
 
-    const { data } = await supabase.from("userinfo").select().eq("user_id", userId).single();
+    const { data } = await supabase
+      .from("userinfo")
+      .select(`*, bookmarks (id, isMarked)`)
+      .eq("user_id", userId)
+      .single();
 
-    return NextResponse.json({ message: "ok", status: 200, data: data });
+    return NextResponse.json({
+      message: "ok",
+      status: 200,
+      data: {
+        ...data,
+        scrapList: data.bookmarks.filter(
+          (bookmark: { id: string; isMarked: boolean }) => bookmark.isMarked,
+        ),
+      },
+    });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error", status: 500 });

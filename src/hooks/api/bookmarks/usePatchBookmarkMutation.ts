@@ -25,6 +25,9 @@ export const usePatchBookmarkMutation = () => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.STUDY_LIST],
       });
+      queryClient.invalidateQueries({
+        queryKey: [QUERY_KEYS.USER_INFO],
+      });
     },
     onError: (error) => {
       // TODO: 에러시 업데이트 실패 토스트 메시지 추가

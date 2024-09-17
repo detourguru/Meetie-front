@@ -50,7 +50,7 @@ const MenuListItem = ({
           >
             {menuItemData.title}
           </p>
-          {studyCount && (
+          {studyCount !== undefined && (
             <div className={isPrimary ? "w-5 h-5 rounded-full bg-blue-100 text-primary-500" : ""}>
               <p className="text-semibold-16 text-center">{studyCount}</p>
             </div>
