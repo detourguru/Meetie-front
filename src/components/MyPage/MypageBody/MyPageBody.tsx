@@ -65,7 +65,7 @@ const MyPageBody = () => {
           />
           <InformationCard
             count={9} // TODO: user.scrapList.length
-            informationData={INFORMATIONS_DATA.SCRAP}
+            informationData={INFORMATIONS_DATA.BOOKMARK}
             navigateTo={PATH.STUDY_INTEREST_LIST}
           />
           {/* TODO: user 친구 리스트 데이터 생성 */}
@@ -111,7 +111,7 @@ const MyPageBody = () => {
 
         {/* 관심 보인 스터디 */}
         <div className="flex flex-col gap-6">
-          <header className="text-bold-18">관심 보인 스터디</header>
+          <header className="text-bold-18">북마크한 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
               // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recentVisit)
@@ -119,7 +119,7 @@ const MyPageBody = () => {
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
 
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.INTEREST} studyCount={8} />
+            <MenuListItem menuItemData={MENU_ITEMS_DATA.BOOKMARK} studyCount={8} />
           </ul>
         </div>
       </div>

@@ -5,8 +5,8 @@ export const INFORMATIONS_DATA = {
     title: "스터디",
     icon: "/svg/ic-mypage-bookmark.svg",
   },
-  SCRAP: {
-    title: "스크랩",
+  BOOKMARK: {
+    title: "북마크",
     icon: "/svg/ic-mypage-scrap.svg",
   },
   FOLLOW: {
@@ -30,8 +30,8 @@ export const MENU_ITEMS_DATA = {
     title: "최근 방문",
     icon: "/svg/ic-study-recent-visit.svg",
   },
-  INTEREST: {
-    title: "관심 스터디",
+  BOOKMARK: {
+    title: "북마크 스터디",
     icon: "/svg/ic-study-interested.svg",
     navigateTo: PATH.STUDY_INTEREST_LIST,
   },
