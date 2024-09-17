@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useState, Suspense } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+import CreateTaskButton from "@/components/StudyRoom/CreateTaskButton/CreateTaskButton";
 import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
 import TaskTab from "@/components/StudyRoom/TaskTab/TaskTab";
 
@@ -92,7 +93,6 @@ const StudyRoomDetail = () => {
         <TaskTab
           selectedDate={selectedDate}
           handleSelectedDate={handleSelectedDate}
-          isOwner={isOwner}
           studyRoomId={String(params.id)}
         />
       )}
@@ -105,6 +105,8 @@ const StudyRoomDetail = () => {
           studyRoomId={String(params.id)}
         />
       </Suspense>
+
+      {isOwner && <CreateTaskButton studyRoomId={String(params.id)} />}
     </main>
   );
 };
