@@ -26,16 +26,23 @@ const PostCard = ({ post, isReadMode, className, ...props }: PostCardProps) => {
       )}
       {...props}
     >
-      <div className="flex">
+      <div className="flex whitespace-nowrap">
         <span className="text-regular-12 text-[#434343]">
           {!post.userPosition ? "미정" : post.userPosition}
         </span>
-        {post.position.map((position, index) => (
-          <div className="flex gap-1 items-center ml-1" key={`${post.id}/${position}/${index}`}>
-            <div className="w-0.5 h-0.5 rounded-full bg-[#434343]" />
-            <span className="text-regular-12 text-[#434343]">{position}</span>
-          </div>
-        ))}
+        <div
+          className={`flex flex-wrap text-regular-12 text-[#434343] ${!isReadMode && post.position.length > 5 ? "after:content-['...'] after:ml-0.5" : ""}`}
+        >
+          {post.position.map((position, index) => (
+            <div
+              className={`flex gap-1 items-center ml-1  ${!isReadMode ? "[&:nth-child(n+6)]:hidden" : ""}`}
+              key={`${post.id}/${position}/${index}`}
+            >
+              <div className="w-0.5 h-0.5 rounded-full bg-[#434343]" />
+              <span>{position}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <h2 className="text-bold-16 text-[#434343]">{post.title}</h2>
