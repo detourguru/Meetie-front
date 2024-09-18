@@ -17,7 +17,7 @@ export default function MyPage() {
       <Suspense
         fallback={
           // TODO: loading 컴포넌트로 변경
-          <div className="flex justify-between mt-10 px-4 animate-pulse">
+          <div className="flex justify-between mt-[60px] px-4 animate-pulse">
             <div className="flex gap-4 items-center">
               <div className="w-[60px] h-[60px] rounded-full bg-gray-50" />
               <div className="flex flex-col gap-1 items-start">

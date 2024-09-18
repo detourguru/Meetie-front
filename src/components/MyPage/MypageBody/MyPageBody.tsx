@@ -30,7 +30,7 @@ const MyPageBody = () => {
         <div className="flex gap-4 items-center">
           <Avatar src={user.profileImage} />
           <div className="flex flex-col gap-1 items-start">
-            <p className="text-medium-16 text-gray-400">디자이너</p>
+            <p className="text-medium-16 text-gray-400">{user.position}</p>
             <p className="text-bold-20">{user.name}</p>
           </div>
         </div>
