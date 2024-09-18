@@ -24,12 +24,6 @@ const WalkThrough = () => {
 
   return (
     <article className="relative flex flex-col items-center w-full h-full">
-      <div className="absolute top-0 right-0 p-4">
-        <button onClick={handleMoveOnboarding} className="text-gray-200 text-medium-14">
-          SKIP
-        </button>
-      </div>
-
       <div className="h-[200px] w-full px-4">
         <OnBoardingTitle textData={EXPLAIN_DATA} index={walkThroughNumber} />
       </div>
