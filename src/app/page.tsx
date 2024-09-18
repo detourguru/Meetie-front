@@ -29,7 +29,7 @@ export default function Home() {
               height={187}
               alt="rocket"
               priority
-              className="z-10 absolute top-0 left-[60px] transform animate-moveUp"
+              className="z-10 absolute top-0 left-[60px] transform delay-500 animate-moveUp"
             />
             <Image
               src="/svg/ic-home-computer.svg"

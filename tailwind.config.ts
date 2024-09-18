@@ -52,7 +52,7 @@ const config: Config = {
       },
       animation: {
         tilt: "tilt 0.5s ease-in-out forwards",
-        moveUp: "moveUp 1s linear forwards",
+        moveUp: "moveUp 1s ease-in-out forwards",
         fadeIn: "fadeIn 1s ease-in-out forwards",
         scaleUp: "scaleUp 0.8s ease-in-out forwards",
         downUp: "downUp 1.5s ease-in forwards",
@@ -64,7 +64,8 @@ const config: Config = {
         },
         moveUp: {
           "0%": { transform: "translateY(0) translateX(0) scale(1)" },
-          "100%": { transform: "translateY(-30px) translateX(-20px) scale(0.9)" },
+          "40%, 50%": { transform: "translateY(10px) translateX(10px) scale(1)" },
+          "100%": { transform: "translateY(-35px) translateX(-15px) scale(0.9)" },
         },
         fadeIn: {
           "0%": { opacity: "0" },
