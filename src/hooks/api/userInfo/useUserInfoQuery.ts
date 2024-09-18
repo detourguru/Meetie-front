@@ -22,7 +22,7 @@ const getUserInfo = async (id?: string) => {
 
     const userId = user.data.user ? user.data.user.id : "";
 
-    url = END_POINTS.USER_INFO(userId);
+    url = END_POINTS.USER_INFO_BY_ID(userId);
   }
 
   const data = await GET<GetUserInfoResponseType>(url, createInit());

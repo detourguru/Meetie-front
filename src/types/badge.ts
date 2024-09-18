@@ -8,3 +8,7 @@ export interface BadgeType {
   level: number;
   icon: string;
 }
+
+export interface BadgeLevelType {
+  [key: string]: number;
+}

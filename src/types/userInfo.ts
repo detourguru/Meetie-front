@@ -1,3 +1,4 @@
+import type { BadgeLevelType } from "@/types/badge";
 import type { CommonResponseType } from "@/types/common";
 import type { StudyListType } from "@/types/study";
 
@@ -32,6 +33,7 @@ export interface UserInformationType {
   lastStudyList: string[];
   scrapList: StudyListType[];
   recentVisit: string;
+  badges: BadgeLevelType;
   informationAgreement: boolean;
   position: string;
   purposes: string[];
