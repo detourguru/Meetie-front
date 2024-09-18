@@ -10,3 +10,7 @@ interface MessageType {
 export interface GetMessageListResponseType extends CommonResponseType {
   data: MessageType[];
 }
+
+export interface GetMessageResponseType extends CommonResponseType {
+  data: MessageType;
+}

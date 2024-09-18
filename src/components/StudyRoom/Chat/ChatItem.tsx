@@ -1,10 +1,19 @@
 import Avatar from "@/components/common/Avatar/Avatar";
 
+import { useLastMessageQuery } from "@/hooks/api/chat/useLastMessageQuery";
+
+import { convertSimpleDateTime } from "@/utils/date";
+
 interface ChatItemProps {
   handleOpen: () => void;
+  studyRoomId: string;
 }
 
-const ChatItem = ({ handleOpen }: ChatItemProps) => {
+const ChatItem = ({ handleOpen, studyRoomId }: ChatItemProps) => {
+  const { data } = useLastMessageQuery(studyRoomId);
+
+  console.log(data);
+
   return (
     <div className="flex items-center justify-between" onClick={handleOpen}>
       <div className="flex items-center">
@@ -14,17 +23,19 @@ const ChatItem = ({ handleOpen }: ChatItemProps) => {
             팀채팅
           </h5>
           <p className="text-medium-12 text-gray-250 w-[220px] line-clamp-2 text-ellipsis overflow-hidden break-all">
-            반응형 레이아웃 만드는 법 아시나요?
+            {data.data.message}
           </p>
         </div>
       </div>
 
-      {/* <div className="flex flex-col gap-3.5">
-        <p className="text-[#bfbfbf] text-regular-10">오후 6:40</p>
-        <div className="rounded-lg bg-primary-400 flex justify-center items-center py-1 ">
+      <div className="flex flex-col gap-3.5">
+        <p className="text-[#bfbfbf] text-regular-10">
+          {convertSimpleDateTime(new Date(data.data.created_at), "time")}
+        </p>
+        {/* <div className="rounded-lg bg-primary-400 flex justify-center items-center py-1 ">
           <p className="text-bold-12 text-white">12</p>
-        </div>
-      </div> */}
+        </div> */}
+      </div>
     </div>
   );
 };

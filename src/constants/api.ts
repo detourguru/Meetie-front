@@ -51,4 +51,5 @@ export const END_POINTS = {
   SCHEDULE_LIST: (studyRoomId: string) => `/api/schedule-list/${studyRoomId}`,
 
   ALL_MESSAGE: (studyRoomId: string) => `/api/chat/${studyRoomId}`,
+  LAST_MESSAGE: (studyRoomId: string) => `/api/message/${studyRoomId}`,
 };

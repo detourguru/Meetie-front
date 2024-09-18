@@ -25,4 +25,5 @@ export const QUERY_KEYS = {
   TASK_CONFIRM_LIST: "taskConfirmList",
 
   MESSAGES: "messages",
+  LAST_MESSAGE: "lastMessage",
 };

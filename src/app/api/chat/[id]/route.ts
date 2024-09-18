@@ -6,14 +6,6 @@ export async function GET(request: Request, { params }: { params: { id: string }
   try {
     const supabase = createClient();
 
-    const {
-      data: { user },
-    } = await supabase.auth.getUser();
-
-    if (!user) {
-      return;
-    }
-
     const { data } = await supabase
       .from("message")
       .select("*")
@@ -47,7 +39,6 @@ export async function POST(request: Request, { params }: { params: { id: string 
 
     const { error } = await supabase.from("message").insert({
       message: data.message,
-      receiver: user.id,
       sender: user.id,
       studyRoomId: params.id,
     });

@@ -10,6 +10,7 @@ import StudyRoomDetail from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDet
 import StudyRoomDetailSkeleton from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetailSkeleton";
 
 import { allMessageQueryOptions } from "@/hooks/api/chat/useAllMessageQuery";
+import { lastMessageQueryOptions } from "@/hooks/api/chat/useLastMessageQuery";
 import { scheduleListQueryOptions } from "@/hooks/api/schedule/useScheduleListQuery";
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
@@ -29,6 +30,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
     }),
     userInfoQueryOptions(),
     allMessageQueryOptions(params.id),
+    lastMessageQueryOptions(params.id),
   ];
 
   return (
