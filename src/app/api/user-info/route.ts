@@ -33,6 +33,13 @@ export async function GET(request: Request) {
     }
     const { data } = await query;
 
+    const currentDate = new Date().toISOString();
+
+    const [studyList, lastStudyList] = await Promise.all([
+      supabase.from("study_room").select("id").in("id", data.studyList).gt("endDate", currentDate),
+      supabase.from("study_room").select("id").in("id", data.studyList).lte("endDate", currentDate),
+    ]);
+
     return NextResponse.json({
       message: "ok",
       status: 200,
