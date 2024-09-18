@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
@@ -11,37 +11,45 @@ import Message from "@/components/StudyRoom/Chat/Message";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
 
+import { convertSimpleDateTime } from "@/utils/date";
 import { createClient } from "@/utils/supabase/client";
 
 import type { CommonSheetProps } from "@/types/common";
 
 interface ChatRoomProps extends CommonSheetProps {
   studyRoomId: string;
+  userId: string;
 }
 
-const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId }: ChatRoomProps) => {
+const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomProps) => {
   const queryClient = useQueryClient();
+
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const supabase = createClient();
 
-  const [message, setMessage] = useState("message test12312312");
+  const [message, setMessage] = useState("");
 
   const getAllMessagesQuery = useQuery({
     queryKey: ["messages", studyRoomId],
     queryFn: () => getAllMessages(studyRoomId),
   });
 
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [getAllMessagesQuery]);
+
   const sendMessageMutation = useMutation({
     mutationFn: async () => {
       return sendMessage({
         message,
-        chatUserId: "1003d1f0-6ed0-4bbf-937f-945537d387e5",
+        chatUserId: userId,
         studyRoomId,
       });
     },
     onSuccess: () => {
-      setMessage("");
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MESSAGES, studyRoomId] });
+      setMessage("");
     },
   });
 
@@ -68,7 +76,7 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId }: ChatRoomProps) => 
   return (
     <Sheet open={isOpen}>
       <SheetContent className="pb-8 h-full overflow-scroll hidden-scrollbar w-[375px]">
-        <SheetHeader className="h-10 flex justify-center px-3">
+        <SheetHeader className="h-10 flex justify-center px-3 fixed bg-white w-[375px]">
           <CustomImage
             src="/svg/ic-header-left-arrow.svg"
             alt="leftButtonIcon"
@@ -77,20 +85,28 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId }: ChatRoomProps) => 
           />
         </SheetHeader>
 
-        <div className="flex flex-col flex-1 overflow-y-scroll p-2 bg-muted">
+        <div className="flex flex-col gap-3 flex-1 overflow-y-scroll px-2 py-12">
           {getAllMessagesQuery.data &&
-            getAllMessagesQuery.data.map((message) => (
-              <Message key={message.id} message={message.message} isMine={false} />
+            getAllMessagesQuery.data.map((messageData) => (
+              <Message
+                key={messageData.id}
+                message={messageData.message}
+                userId={messageData.sender}
+                isMine={messageData.sender === userId}
+                messageSendTime={convertSimpleDateTime(new Date(messageData.created_at), "time")}
+              />
             ))}
-          {/* <div ref={scrollRef}></div> */}
+          <div ref={scrollRef} />
         </div>
 
-        <div className="w-[375px] fixed bottom-2">
+        <div className="w-[375px] fixed py-2 bottom-0 bg-white">
           <div className="flex items-center gap-3 px-3">
             <input
               type="text"
+              value={message}
               placeholder="메세지 보내기"
               className="w-[300px] rounded-lg border border-[#E9E9E9] bg-[#f3f3f3] p-3.5 py-3 text-sm placeholder-gray-purple focus:outline-none"
+              onChange={(e) => setMessage(e.target.value)}
             />
             <button
               type="button"

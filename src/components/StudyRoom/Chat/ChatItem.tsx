@@ -19,12 +19,12 @@ const ChatItem = ({ handleOpen }: ChatItemProps) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-3.5">
+      {/* <div className="flex flex-col gap-3.5">
         <p className="text-[#bfbfbf] text-regular-10">오후 6:40</p>
         <div className="rounded-lg bg-primary-400 flex justify-center items-center py-1 ">
           <p className="text-bold-12 text-white">12</p>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

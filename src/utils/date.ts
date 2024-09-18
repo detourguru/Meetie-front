@@ -22,9 +22,13 @@ export const convertDateTime = (date: Date | null) => {
   return format(date, "HH:mm");
 };
 
-export const convertSimpleDateTime = (date: Date | null) => {
+export const convertSimpleDateTime = (date: Date | null, type?: string) => {
   if (!date) {
     return;
+  }
+
+  if (type === "time") {
+    return `${NOON_LIST[Math.floor(date.getHours() / 12)]} ${format(date, "h:mm")}`;
   }
 
   return `${format(date, "M월 d일")} ${NOON_LIST[Math.floor(date.getHours() / 12)]} ${format(date, "h:mm")}`;

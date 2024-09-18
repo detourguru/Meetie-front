@@ -5,9 +5,10 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 
 interface ChatTabProps {
   studyRoomId: string;
+  userId: string;
 }
 
-const ChatTab = ({ studyRoomId }: ChatTabProps) => {
+const ChatTab = ({ studyRoomId, userId }: ChatTabProps) => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
   return (
@@ -18,11 +19,14 @@ const ChatTab = ({ studyRoomId }: ChatTabProps) => {
       </div>
       <section className="px-4 py-7 border-t-2 border-[#E9E9E9] flex flex-col gap-5">
         <ChatItem handleOpen={handleOpen} />
-        {/* <ChatItem />
-        <ChatItem /> */}
       </section>
 
-      <ChatRoom isOpen={isOpen} onInteractOutside={handleClose} studyRoomId={studyRoomId} />
+      <ChatRoom
+        isOpen={isOpen}
+        onInteractOutside={handleClose}
+        studyRoomId={studyRoomId}
+        userId={userId}
+      />
     </>
   );
 };

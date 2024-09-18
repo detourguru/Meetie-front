@@ -90,7 +90,7 @@ const StudyRoomDetail = () => {
           />
         </TabsContent>
         <TabsContent value="chat">
-          <ChatTab studyRoomId={String(params.id)} />
+          <ChatTab studyRoomId={String(params.id)} userId={userData.data.user_id} />
         </TabsContent>
       </Tabs>
 
