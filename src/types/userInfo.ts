@@ -1,4 +1,5 @@
-import type { CommonResponseType } from "./common";
+import type { CommonResponseType } from "@/types/common";
+import type { StudyListType } from "@/types/study";
 
 export interface GetUserInfoResponseType extends CommonResponseType {
   data: UserInformationType;
@@ -29,7 +30,7 @@ export interface UserInformationType {
   mainBadge: string;
   studyList: string[];
   lastStudyList: string[];
-  scrapList: string[];
+  scrapList: StudyListType[];
   recentVisit: string;
   informationAgreement: boolean;
   position: string;

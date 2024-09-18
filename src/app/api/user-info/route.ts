@@ -12,27 +12,32 @@ export async function GET(request: Request) {
 
     const { data } = await supabase
       .from("userinfo")
-      .select(`*, bookmarks (id, isMarked)`)
+      .select(`*, bookmarks (study_id, isMarked)`)
       .eq("user_id", userId)
       .single();
 
     const currentDate = new Date().toISOString();
+    const bookmarks = data.bookmarks
+      .filter((bookmark: { study_id: string; isMarked: boolean }) => bookmark.isMarked)
+      .map((bookmark: { study_id: string; isMarked: boolean }) => bookmark.study_id);
 
-    const [studyList, lastStudyList] = await Promise.all([
+    const [studyListData, lastStudyListData, bookmarkStudyList] = await Promise.all([
       supabase.from("study_room").select("id").in("id", data.studyList).gt("endDate", currentDate),
       supabase.from("study_room").select("id").in("id", data.studyList).lte("endDate", currentDate),
+      supabase.from("study").select(`*, bookmarks(isMarked)`).in("id", bookmarks),
     ]);
+
+    const studyList = studyListData.data?.map((study: { id: string }) => study.id) ?? [];
+    const lastStudyList = lastStudyListData.data?.map((study: { id: string }) => study.id) ?? [];
 
     return NextResponse.json({
       message: "ok",
       status: 200,
       data: {
         ...data,
-        studyList: studyList.data,
-        lastStudyList: lastStudyList.data,
-        scrapList: data.bookmarks.filter(
-          (bookmark: { id: string; isMarked: boolean }) => bookmark.isMarked,
-        ),
+        studyList: studyList,
+        lastStudyList: lastStudyList,
+        scrapList: bookmarkStudyList.data,
       },
     });
   } catch (error) {
