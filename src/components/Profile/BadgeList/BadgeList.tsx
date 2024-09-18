@@ -18,15 +18,18 @@ const BadgeList = ({ badges, isEdit, selected, handleClick }: BadgeListProps) =>
       <p className="text-bold-18">{isEdit ? "대표 뱃지 설정" : "하이라이트 뱃지"}</p>
 
       <div className="flex flex-nowrap gap-4 overflow-x-scroll hidden-scrollbar">
-        {BADGE_DATA.map((badge) => (
-          <HighlightBadge
-            key={badge.type}
-            type={badge.type}
-            level={badges[badge.type]}
-            selected={selected === badge.type}
-            handleClick={handleClick}
-          />
-        ))}
+        {BADGE_DATA.map(
+          (badge) =>
+            badges[badge.type] > 0 && (
+              <HighlightBadge
+                key={badge.type}
+                type={badge.type}
+                level={badges[badge.type]}
+                selected={selected === badge.type}
+                handleClick={handleClick}
+              />
+            ),
+        )}
       </div>
     </div>
   );
