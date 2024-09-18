@@ -59,7 +59,7 @@ const MyPageBody = () => {
         <header className="text-bold-18">내 정보</header>
         <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
           <InformationCard
-            count={2} // TODO: user.studyList.length
+            count={user.studyList.length}
             informationData={INFORMATIONS_DATA.STUDY}
             navigateTo={PATH.STUDY_JOINING_LIST}
           />
@@ -100,10 +100,16 @@ const MyPageBody = () => {
         <div className="flex flex-col gap-6">
           <header className="text-bold-18">내 스터디</header>
           <ul className="flex flex-col gap-4">
-            {/* TODO: 진행 중인 스터디와 종료된 스터디 구분 필요 */}
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.JOINING} isPrimary studyCount={2} />
+            <MenuListItem
+              menuItemData={MENU_ITEMS_DATA.JOINING}
+              isPrimary
+              studyCount={user.studyList.length}
+            />
 
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.PAST} studyCount={8} />
+            <MenuListItem
+              menuItemData={MENU_ITEMS_DATA.PAST}
+              studyCount={user.lastStudyList.length}
+            />
           </ul>
         </div>
 

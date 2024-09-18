@@ -28,6 +28,7 @@ export interface UserInformationType {
   introduce: string;
   mainBadge: string;
   studyList: string[];
+  lastStudyList: string[];
   scrapList: string[];
   recentVisit: string;
   informationAgreement: boolean;
