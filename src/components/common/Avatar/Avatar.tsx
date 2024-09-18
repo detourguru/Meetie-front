@@ -13,6 +13,7 @@ const avatarVariants = cva("rounded-[100%] overflow-hidden", {
     },
     size: {
       default: "w-[60px] h-[60px]",
+      md: "w-[50px] h-[50px]",
       sm: "w-[36px] h-[36px]",
       lg: "w-[100px] h-[100px]",
     },

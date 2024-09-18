@@ -1,4 +1,5 @@
 import CalendarWeek from "@/components/StudyRoom/CalendarWeek/CalendarWeek";
+import CreateTaskButton from "@/components/StudyRoom/CreateTaskButton/CreateTaskButton";
 import ScheduleList from "@/components/StudyRoom/ScheduleList/ScheduleList";
 import TaskList from "@/components/StudyRoom/ScheduleTab/TaskList/TaskList";
 import TaskConfirmList from "@/components/StudyRoom/TaskConfirmList/TaskConfirmList";
@@ -7,9 +8,10 @@ import type { CalendarDateType } from "@/types/common";
 
 interface TaskTabProps extends CalendarDateType {
   studyRoomId: string;
+  isOwner: boolean;
 }
 
-const ScheduleTab = ({ studyRoomId, selectedDate, handleSelectedDate }: TaskTabProps) => {
+const ScheduleTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }: TaskTabProps) => {
   return (
     <>
       <div className="px-4">
@@ -26,6 +28,8 @@ const ScheduleTab = ({ studyRoomId, selectedDate, handleSelectedDate }: TaskTabP
         <TaskList studyRoomId={studyRoomId} />
         <TaskConfirmList selectedDate={selectedDate} studyRoomId={studyRoomId} />
       </div>
+
+      {isOwner && <CreateTaskButton studyRoomId={studyRoomId} />}
     </>
   );
 };

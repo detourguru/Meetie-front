@@ -5,8 +5,9 @@ import { useParams } from "next/navigation";
 
 import { useState, Suspense } from "react";
 
-import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
-import CreateTaskButton from "@/components/StudyRoom/CreateTaskButton/CreateTaskButton";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
+// import Chat from "@/components/StudyRoom/Chat/Chat";
+import ChatTab from "@/components/StudyRoom/Chat/ChatTab";
 import ScheduleTab from "@/components/StudyRoom/ScheduleTab/ScheduleTab";
 import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
 
@@ -29,8 +30,6 @@ const StudyRoomDetail = () => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const isOwner = userData.data.user_id === data.data.owner_id;
-
-  const [tab, setTab] = useState("schedule");
 
   const [selectedDate, setSelectedDate] = useState<DateType>({
     year: TODAY.year,
@@ -78,24 +77,23 @@ const StudyRoomDetail = () => {
         </div>
       </section>
 
-      <Tabs defaultValue={tab}>
+      <Tabs defaultValue="schedule">
         <TabsList className="grid w-full grid-cols-2">
-          <TabsTrigger value="schedule" onClick={() => setTab("schedule")}>
-            일정
-          </TabsTrigger>
-          <TabsTrigger value="task" onClick={() => setTab("task")}>
-            채팅
-          </TabsTrigger>
+          <TabsTrigger value="schedule">일정</TabsTrigger>
+          <TabsTrigger value="chat">채팅</TabsTrigger>
         </TabsList>
+        <TabsContent value="schedule">
+          <ScheduleTab
+            selectedDate={selectedDate}
+            handleSelectedDate={handleSelectedDate}
+            studyRoomId={String(params.id)}
+            isOwner={isOwner}
+          />
+        </TabsContent>
+        <TabsContent value="chat">
+          <ChatTab />
+        </TabsContent>
       </Tabs>
-
-      {tab === "schedule" && (
-        <ScheduleTab
-          selectedDate={selectedDate}
-          handleSelectedDate={handleSelectedDate}
-          studyRoomId={String(params.id)}
-        />
-      )}
 
       <Suspense>
         <StudyListSheet
@@ -105,8 +103,6 @@ const StudyRoomDetail = () => {
           studyRoomId={String(params.id)}
         />
       </Suspense>
-
-      {isOwner && <CreateTaskButton studyRoomId={String(params.id)} />}
     </main>
   );
 };
