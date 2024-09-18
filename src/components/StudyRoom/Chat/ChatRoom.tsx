@@ -1,20 +1,12 @@
 import Image from "next/image";
 
-import { useEffect, useState, useRef } from "react";
-
-import { useQueryClient } from "@tanstack/react-query";
-
 import { default as CustomImage } from "@/components/common/Image/Image";
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
 import Message from "@/components/StudyRoom/Chat/Message";
 
-import { QUERY_KEYS } from "@/constants/queryKey";
-
-import { useAllMessageQuery } from "@/hooks/api/chat/useAllMessageQuery";
-import { useSendMessageMutation } from "@/hooks/api/chat/useSendMessageMutation";
+import { useChatRoom } from "@/hooks/study-room/useChatRoom";
 
 import { convertSimpleDateTime } from "@/utils/date";
-import { createClient } from "@/utils/supabase/client";
 
 import type { CommonSheetProps } from "@/types/common";
 
@@ -24,40 +16,8 @@ interface ChatRoomProps extends CommonSheetProps {
 }
 
 const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomProps) => {
-  const queryClient = useQueryClient();
-
-  const { mutate: sendMessageMutation } = useSendMessageMutation(studyRoomId);
-
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const supabase = createClient();
-
-  const [message, setMessage] = useState("");
-  const { data: allMessageData } = useAllMessageQuery(studyRoomId);
-
-  useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [allMessageData]);
-
-  useEffect(() => {
-    const channel = supabase
-      .channel(`chat${studyRoomId}`)
-      .on(
-        "postgres_changes",
-        {
-          event: "INSERT",
-          schema: "public",
-          table: "message",
-        },
-        () => {
-          queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MESSAGES, studyRoomId] });
-        },
-      )
-      .subscribe();
-    return () => {
-      channel.unsubscribe();
-    };
-  }, []);
+  const { message, allMessageData, scrollRef, handleChangeMessage, handleSendMessage } =
+    useChatRoom({ studyRoomId });
 
   return (
     <Sheet open={isOpen}>
@@ -92,21 +52,12 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomPr
               value={message}
               placeholder="메세지 보내기"
               className="w-[300px] rounded-lg border border-[#E9E9E9] bg-[#f3f3f3] p-3.5 py-3 text-sm placeholder-gray-purple focus:outline-none"
-              onChange={(e) => setMessage(e.target.value)}
+              onChange={(e) => handleChangeMessage(e.target.value)}
             />
             <button
               type="button"
               className="w-[50px] h-[50px] bg-primary-400 rounded-2xl flex items-center justify-center"
-              onClick={() =>
-                sendMessageMutation(
-                  { message, studyRoomId },
-                  {
-                    onSuccess: () => {
-                      setMessage("");
-                    },
-                  },
-                )
-              }
+              onClick={handleSendMessage}
             >
               <Image src="/svg/ic-send.svg" alt="sendIcon" width={24} height={24} />
             </button>
