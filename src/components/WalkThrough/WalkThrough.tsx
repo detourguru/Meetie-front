@@ -11,12 +11,12 @@ import PhoneImage from "@/components/WalkThrough/PhoneImage/PhoneImage";
 import { PATH } from "@/constants/path";
 import { EXPLAIN_DATA } from "@/constants/walkThrough";
 
-import { userWalkThoughScroll } from "@/hooks/walk-through/useWalkThoughScroll";
+import { useWalkThoughScroll } from "@/hooks/walk-through/useWalkThoughScroll";
 
 const WalkThrough = () => {
   const router = useRouter();
 
-  const { walkThroughNumber, handleScroll } = userWalkThoughScroll();
+  const { walkThroughNumber, handleScroll } = useWalkThoughScroll();
 
   const handleMoveOnboarding = () => {
     router.push(PATH.ONBOARDING);
@@ -32,9 +32,9 @@ const WalkThrough = () => {
         className="w-full h-max flex overflow-x-scroll snap-x snap-mandatory hidden-scrollbar scroll-px-4"
         onScroll={handleScroll}
       >
-        <PhoneImage />
-        <MegaPhoneImage />
-        <CalendarImage />
+        <PhoneImage isMount={walkThroughNumber === 0} />
+        <MegaPhoneImage isMount={walkThroughNumber === 1} />
+        <CalendarImage isMount={walkThroughNumber === 2} />
       </ul>
 
       <div className="flex gap-4 mt-auto mb-[42px]">

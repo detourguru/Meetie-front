@@ -1,6 +1,8 @@
 import Image from "next/image";
 
-const PhoneImage = () => {
+import type { WalkThroughImageProps } from "@/types/walkThrough";
+
+const PhoneImage = ({ isMount }: WalkThroughImageProps) => {
   return (
     <li className="relative min-w-[375px] snap-always snap-center p-4">
       <Image
@@ -9,7 +11,14 @@ const PhoneImage = () => {
         height={385}
         alt="ic-phone"
         priority
-        className="animate-wave"
+        className={isMount ? "transform delay-200 animate-downUp" : ""}
+      />
+      <Image
+        src="/svg/ic-walk-through-chat.svg"
+        width={110}
+        height={62}
+        alt="walk-through-chat"
+        className={`absolute top-[100px] right-[71px] opacity-0 ${isMount && "transform delay-1000 animate-fadeIn"}`}
       />
       <Image
         src="/svg/ic-walk-through-gear.svg"

@@ -52,8 +52,10 @@ const config: Config = {
       },
       animation: {
         tilt: "tilt 0.5s ease-in-out forwards",
-        moveUp: "moveUp 2s linear forwards",
-        wave: "wave 2s ease-in-out infinite",
+        moveUp: "moveUp 1s linear forwards",
+        fadeIn: "fadeIn 1s ease-in-out forwards",
+        scaleUp: "scaleUp 0.8s ease-in-out forwards",
+        downUp: "downUp 1.5s ease-in forwards",
       },
       keyframes: {
         tilt: {
@@ -64,11 +66,18 @@ const config: Config = {
           "0%": { transform: "translateY(0) translateX(0) scale(1)" },
           "100%": { transform: "translateY(-30px) translateX(-20px) scale(0.9)" },
         },
-        wave: {
-          "0%, 50%": { transform: "rotate(0deg)", "transform-origin": "center" },
-          "20%": { transform: "rotate(10deg)", "transform-origin": "center" },
-          "30%": { transform: "rotate(0deg)", "transform-origin": "center" },
-          "40%": { transform: "rotate(10deg)", "transform-origin": "center" },
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        scaleUp: {
+          "0%": { transform: "scale(1)", "transform-origin": "left bottom" },
+          "100%": { transform: "scale(1.2)", "transform-origin": "left bottom" },
+        },
+        downUp: {
+          "0%": { transform: "translateY(0) translateX(0)" },
+          "40%, 60%": { transform: "translateY(30px) translateX(20px)" },
+          "100%": { transform: "translateY(0px) translateX(20px)" },
         },
       },
     },

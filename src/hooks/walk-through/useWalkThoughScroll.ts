@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const userWalkThoughScroll = () => {
+export const useWalkThoughScroll = () => {
   const [walkThroughNumber, setWalkThroughNumber] = useState(0);
 
   const handleScroll = (e: React.UIEvent<HTMLUListElement>) => {
