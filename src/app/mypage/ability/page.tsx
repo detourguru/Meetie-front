@@ -1,12 +1,18 @@
+import { Suspense } from "react";
+
+import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
+
 import Image from "@/components/common/Image/Image";
 import AbilityHeader from "@/components/MyPage/Ability/AbilityHeader/AbilityHeader";
-import BadgeArea from "@/components/MyPage/Ability/BadgeArea/BadgeArea";
+import BadgeList from "@/components/MyPage/Ability/BadgeList/BadgeList";
 import ClockIcon from "@/components/MyPage/ClockIcon";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 
-import { BADGE_DATA } from "@/constants/badges";
+import { badgeConditionQueryOptions } from "@/hooks/api/userInfo/useBadgeConditionQuery";
 
 export default function AbilityPage() {
+  const serverFetchOptions = [badgeConditionQueryOptions()];
+
   return (
     <>
       <AbilityHeader />
@@ -31,11 +37,16 @@ export default function AbilityPage() {
 
       <ThickDivider />
 
-      <div className="flex flex-col my-8 gap-8">
-        {BADGE_DATA.map((badges, index) => (
-          <BadgeArea badges={badges} key={`badge/${index}`} />
-        ))}
-      </div>
+      <Suspense
+        fallback={
+          // TODO: loading 컴포넌트로 변경
+          <></>
+        }
+      >
+        <ServerFetchBoundary fetchOptions={serverFetchOptions}>
+          <BadgeList />
+        </ServerFetchBoundary>
+      </Suspense>
     </>
   );
 }

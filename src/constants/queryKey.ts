@@ -12,6 +12,7 @@ export const QUERY_KEYS = {
   SCHEDULE_LIST: "scheduleList",
 
   USER_INFO: "userInfo",
+  BADGE_CONDITION: "badgeCondition",
 
   COMMUNITY_LIST: "communityList",
   COMMUNITY_LIST_RECOMMEND: "communityListRecommend",

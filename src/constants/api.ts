@@ -22,6 +22,8 @@ export const END_POINTS = {
 
   ONBOARDING: "/api/user-info",
 
+  BADGE_CONDITION: "/api/badge-condition",
+
   COMMUNITY_LIST: (search: string, tags: string[], sort: string, date: string) =>
     `/api/community-list?search=${search}&tags=${tags.join(",")}&sort=${sort}&date=${date}`,
   COMMUNITY_LIST_RECOMMEND: "/api/community-list/recommend",

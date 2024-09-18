@@ -34,7 +34,7 @@ interface BadgeIconProps extends VariantProps<typeof badgeIconVariants> {
 
 const BadgeIcon = ({ variant, size, ...props }: BadgeIconProps) => {
   const { width, height } = props;
-  const badgeClassName = `w-[${width}px] h-[${height}px]`;
+  const badgeClassName = `w-[${width}px] h-[${height}px] mx-auto`;
 
   return (
     <div className="relative">

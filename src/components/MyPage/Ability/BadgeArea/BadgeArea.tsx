@@ -9,15 +9,15 @@ import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 import { useOverlay } from "@/hooks/common/useOverlay";
 
 import type { BadgeType, BadgesType } from "@/types/badge";
-
 interface BadgeAreaProps {
   badges: BadgesType;
+  level: number;
 }
 
 const ICON_WIDTH = [70, 89, 95];
 const ICON_HEIGHT = [80, 85, 95];
 
-const BadgeArea = ({ badges }: BadgeAreaProps) => {
+const BadgeArea = ({ badges, level }: BadgeAreaProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const [selectedBadge, setselectedBadge] = useState<undefined | BadgeType>();
@@ -48,6 +48,7 @@ const BadgeArea = ({ badges }: BadgeAreaProps) => {
                 size="lg"
                 width={ICON_WIDTH[badge.level - 1]}
                 height={ICON_HEIGHT[badge.level - 1]}
+                variant={badge.level > level ? "tertiary" : "default"}
               />
               <p className="text-medium-14 text-gray-300">{badge.title}</p>
             </article>
