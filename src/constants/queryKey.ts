@@ -26,4 +26,5 @@ export const QUERY_KEYS = {
 
   MESSAGES: "messages",
   LAST_MESSAGE: "lastMessage",
+  UNREAD_MESSAGE_COUNT: "unReadMessageCount",
 };

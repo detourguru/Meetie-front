@@ -14,3 +14,7 @@ export interface GetMessageListResponseType extends CommonResponseType {
 export interface GetMessageResponseType extends CommonResponseType {
   data: MessageType;
 }
+
+export interface GetUnReadMessageCountResponseType extends CommonResponseType {
+  data: number;
+}

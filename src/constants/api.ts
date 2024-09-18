@@ -52,4 +52,5 @@ export const END_POINTS = {
 
   ALL_MESSAGE: (studyRoomId: string) => `/api/chat/${studyRoomId}`,
   LAST_MESSAGE: (studyRoomId: string) => `/api/message/${studyRoomId}`,
+  UNREAD_MESSAGE: (studyRoomId: string) => `/api/message-unread/${studyRoomId}`,
 };

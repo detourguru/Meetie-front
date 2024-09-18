@@ -11,6 +11,7 @@ import StudyRoomDetailSkeleton from "@/components/StudyRoom/StudyRoomDetail/Stud
 
 import { allMessageQueryOptions } from "@/hooks/api/chat/useAllMessageQuery";
 import { lastMessageQueryOptions } from "@/hooks/api/chat/useLastMessageQuery";
+import { unReadMessageCountQueryOptions } from "@/hooks/api/chat/useUnReadMessageCountQuery";
 import { scheduleListQueryOptions } from "@/hooks/api/schedule/useScheduleListQuery";
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
@@ -31,6 +32,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
     userInfoQueryOptions(),
     allMessageQueryOptions(params.id),
     lastMessageQueryOptions(params.id),
+    unReadMessageCountQueryOptions(params.id),
   ];
 
   return (

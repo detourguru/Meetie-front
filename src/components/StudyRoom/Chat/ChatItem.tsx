@@ -1,6 +1,7 @@
 import Avatar from "@/components/common/Avatar/Avatar";
 
 import { useLastMessageQuery } from "@/hooks/api/chat/useLastMessageQuery";
+import { useUnReadMessageCountQuery } from "@/hooks/api/chat/useUnReadMessageCountQuery";
 
 import { convertSimpleDateTime } from "@/utils/date";
 
@@ -11,8 +12,7 @@ interface ChatItemProps {
 
 const ChatItem = ({ handleOpen, studyRoomId }: ChatItemProps) => {
   const { data } = useLastMessageQuery(studyRoomId);
-
-  console.log(data);
+  const { data: unReadCountData } = useUnReadMessageCountQuery(studyRoomId);
 
   return (
     <div className="flex items-center justify-between" onClick={handleOpen}>
@@ -32,9 +32,9 @@ const ChatItem = ({ handleOpen, studyRoomId }: ChatItemProps) => {
         <p className="text-[#bfbfbf] text-regular-10">
           {convertSimpleDateTime(new Date(data.data.created_at), "time")}
         </p>
-        {/* <div className="rounded-lg bg-primary-400 flex justify-center items-center py-1 ">
-          <p className="text-bold-12 text-white">12</p>
-        </div> */}
+        <div className="rounded-lg bg-primary-400 flex justify-center items-center py-1 ">
+          <p className="text-bold-12 text-white">{unReadCountData.data}</p>
+        </div>
       </div>
     </div>
   );

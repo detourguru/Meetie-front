@@ -43,8 +43,6 @@ export async function POST(request: Request, { params }: { params: { id: string 
       studyRoomId: params.id,
     });
 
-    console.log(error);
-
     if (!error) {
       return NextResponse.json({ message: "ok", status: 200 });
     }
