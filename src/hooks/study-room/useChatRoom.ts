@@ -25,6 +25,7 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
   const [message, setMessage] = useState("");
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const sendRef = useRef<HTMLButtonElement>(null);
 
   const handleChangeMessage = (text: string) => {
     setMessage(text);
@@ -39,6 +40,16 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
         },
       },
     );
+  };
+
+  const handleEnterClick = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.nativeEvent.isComposing || e.keyCode === 229) {
+      return;
+    }
+
+    if (e.key === "Enter") {
+      sendRef.current?.click();
+    }
   };
 
   useEffect(() => {
@@ -69,5 +80,14 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
     };
   }, []);
 
-  return { message, allMessageData, scrollRef, handleChangeMessage, handleSendMessage };
+  return {
+    message,
+    allMessageData,
+    scrollRef,
+    sendRef,
+
+    handleChangeMessage,
+    handleSendMessage,
+    handleEnterClick,
+  };
 };

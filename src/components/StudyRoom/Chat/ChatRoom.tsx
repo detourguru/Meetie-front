@@ -16,8 +16,15 @@ interface ChatRoomProps extends CommonSheetProps {
 }
 
 const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomProps) => {
-  const { message, allMessageData, scrollRef, handleChangeMessage, handleSendMessage } =
-    useChatRoom({ studyRoomId });
+  const {
+    message,
+    allMessageData,
+    scrollRef,
+    sendRef,
+    handleChangeMessage,
+    handleSendMessage,
+    handleEnterClick,
+  } = useChatRoom({ studyRoomId });
 
   return (
     <Sheet open={isOpen}>
@@ -53,11 +60,13 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomPr
               placeholder="메세지 보내기"
               className="w-[300px] rounded-lg border border-[#E9E9E9] bg-[#f3f3f3] p-3.5 py-3 text-sm placeholder-gray-purple focus:outline-none"
               onChange={(e) => handleChangeMessage(e.target.value)}
+              onKeyDown={(e) => handleEnterClick(e)}
             />
             <button
               type="button"
               className="w-[50px] h-[50px] bg-primary-400 rounded-2xl flex items-center justify-center"
               onClick={handleSendMessage}
+              ref={sendRef}
             >
               <Image src="/svg/ic-send.svg" alt="sendIcon" width={24} height={24} />
             </button>
