@@ -13,7 +13,7 @@ export async function getUserById(userId: string | null) {
   return data;
 }
 
-export async function getAllMessages({ chatUserId }: { chatUserId: string | null }) {
+export async function getAllMessages(studyRoomId: string) {
   const supabase = createClient();
 
   const {
@@ -27,9 +27,11 @@ export async function getAllMessages({ chatUserId }: { chatUserId: string | null
   const { data } = await supabase
     .from("message")
     .select("*")
-    .or(`receiver.eq.${chatUserId}, receiver.eq.${user.id}`)
-    .or(`sender.eq.${chatUserId}, sender.eq.${user.id}`)
+    .eq("studyRoomId", studyRoomId)
     .order("created_at", { ascending: true });
+
+  // .or(`receiver.eq.${chatUserId}, receiver.eq.${user.id}`)
+  // .or(`sender.eq.${chatUserId}, sender.eq.${user.id}`)
 
   return data;
 }
@@ -37,9 +39,11 @@ export async function getAllMessages({ chatUserId }: { chatUserId: string | null
 export async function sendMessage({
   message,
   chatUserId,
+  studyRoomId,
 }: {
   message: string;
   chatUserId: string | null;
+  studyRoomId: string;
 }) {
   const supabase = createClient();
 
@@ -53,7 +57,7 @@ export async function sendMessage({
 
   const { data, error } = await supabase
     .from("message")
-    .insert({ message: message, receiver: chatUserId, sender: user.id });
+    .insert({ message, receiver: chatUserId, sender: user.id, studyRoomId });
 
   if (error) {
     return null;

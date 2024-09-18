@@ -6,7 +6,6 @@ import { useParams } from "next/navigation";
 import { useState, Suspense } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
-// import Chat from "@/components/StudyRoom/Chat/Chat";
 import ChatTab from "@/components/StudyRoom/Chat/ChatTab";
 import ScheduleTab from "@/components/StudyRoom/ScheduleTab/ScheduleTab";
 import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
@@ -91,7 +90,7 @@ const StudyRoomDetail = () => {
           />
         </TabsContent>
         <TabsContent value="chat">
-          <ChatTab />
+          <ChatTab studyRoomId={String(params.id)} />
         </TabsContent>
       </Tabs>
 

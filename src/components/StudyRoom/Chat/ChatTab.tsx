@@ -3,7 +3,11 @@ import ChatRoom from "@/components/StudyRoom/Chat/ChatRoom";
 
 import { useOverlay } from "@/hooks/common/useOverlay";
 
-const ChatTab = () => {
+interface ChatTabProps {
+  studyRoomId: string;
+}
+
+const ChatTab = ({ studyRoomId }: ChatTabProps) => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
   return (
@@ -18,7 +22,7 @@ const ChatTab = () => {
         <ChatItem /> */}
       </section>
 
-      <ChatRoom isOpen={isOpen} onInteractOutside={handleClose} />
+      <ChatRoom isOpen={isOpen} onInteractOutside={handleClose} studyRoomId={studyRoomId} />
     </>
   );
 };

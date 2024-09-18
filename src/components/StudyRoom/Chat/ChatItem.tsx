@@ -8,10 +8,10 @@ const ChatItem = ({ handleOpen }: ChatItemProps) => {
   return (
     <div className="flex items-center justify-between" onClick={handleOpen}>
       <div className="flex items-center">
-        <Avatar src="/img/img-user-profile.png" size="md" />
+        <Avatar src="/img/img-logo.png" size="md" />
         <div className="flex flex-col ml-4 gap-1.5">
           <h5 className="text-bold-14 w-[220px] text-ellipsis overflow-hidden whitespace-nowrap">
-            제이크
+            팀채팅
           </h5>
           <p className="text-medium-12 text-gray-250 w-[220px] line-clamp-2 text-ellipsis overflow-hidden break-all">
             반응형 레이아웃 만드는 법 아시나요?
