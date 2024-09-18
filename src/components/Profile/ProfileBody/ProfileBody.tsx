@@ -22,7 +22,9 @@ const ProfileBody = () => {
 
   const user = data.data;
 
-  const badge = BADGE_DATA.find((badge) => badge.type === user.mainBadge)?.badges[2];
+  const badge = BADGE_DATA.find((badge) => badge.type === user.mainBadge)?.badges[
+    user.badges[user.mainBadge] - 1
+  ];
 
   return (
     <>
@@ -48,7 +50,7 @@ const ProfileBody = () => {
       </div>
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
-      <BadgeList />
+      <BadgeList badges={user.badges} />
       <TagList tags={user.purposes} />
       <StyleList styles={user.styles} />
       <ExperienceList />

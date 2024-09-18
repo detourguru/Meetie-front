@@ -118,7 +118,12 @@ const EditProfileForm = () => {
 
       <Divider className="bg-[#e9e9e9] mt-5 mb-8" />
 
-      <BadgeList isEdit selected={profileForm.mainBadge} handleClick={updateProfileForm} />
+      <BadgeList
+        badges={user.badges}
+        isEdit
+        selected={profileForm.mainBadge}
+        handleClick={updateProfileForm}
+      />
 
       <TagList tags={profileForm.purposes} isEdit updateProfileForm={updateProfileForm} />
 

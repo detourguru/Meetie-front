@@ -12,7 +12,7 @@ interface BadgeCardProps {
 
 const BadgeCard = ({ level, type, title }: BadgeCardProps) => {
   const widthAndHeight = level === 1 ? 61 : 78;
-  const badge = BADGE_DATA.find((badges) => badges.type === type)?.badges.find(
+  const badge = BADGE_DATA.find((badges) => badges.value === type)?.badges.find(
     (badge) => badge.level === level,
   );
 
