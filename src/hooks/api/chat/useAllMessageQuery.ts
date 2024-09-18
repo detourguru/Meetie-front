@@ -6,11 +6,11 @@ import { GET, createInit } from "@/apis/httpMethod";
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
-import type { GetStudyRoomResponseType } from "@/types/studyRoom";
+import type { GetMessageListResponseType } from "@/types/chat";
 
-const getAllMessage = async (chatUserId: string) => {
-  const data = await GET<GetStudyRoomResponseType>(
-    END_POINTS.ALL_MESSAGE(chatUserId),
+const getAllMessage = async (studyRoomId: string) => {
+  const data = await GET<GetMessageListResponseType>(
+    END_POINTS.ALL_MESSAGE(studyRoomId),
     createInit(),
   );
 
@@ -18,12 +18,12 @@ const getAllMessage = async (chatUserId: string) => {
 };
 
 export const allMessageQueryOptions = (
-  chatUserId: string,
-): UseSuspenseQueryOptions<GetStudyRoomResponseType> => ({
-  queryKey: [QUERY_KEYS.MESSAGES, chatUserId],
-  queryFn: () => getAllMessage(chatUserId),
+  studyRoomId: string,
+): UseSuspenseQueryOptions<GetMessageListResponseType> => ({
+  queryKey: [QUERY_KEYS.MESSAGES, studyRoomId],
+  queryFn: () => getAllMessage(studyRoomId),
 });
 
-export function useAllMessageQuery(chatUserId: string) {
-  return useSuspenseQuery(allMessageQueryOptions(chatUserId));
+export function useAllMessageQuery(studyRoomId: string) {
+  return useSuspenseQuery(allMessageQueryOptions(studyRoomId));
 }

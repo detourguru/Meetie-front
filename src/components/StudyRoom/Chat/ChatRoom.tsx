@@ -2,14 +2,16 @@ import Image from "next/image";
 
 import { useEffect, useState, useRef } from "react";
 
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQueryClient } from "@tanstack/react-query";
 
 import { default as CustomImage } from "@/components/common/Image/Image";
 import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Sheet";
-import { getAllMessages, sendMessage } from "@/components/StudyRoom/Chat/chatAction";
 import Message from "@/components/StudyRoom/Chat/Message";
 
 import { QUERY_KEYS } from "@/constants/queryKey";
+
+import { useAllMessageQuery } from "@/hooks/api/chat/useAllMessageQuery";
+import { useSendMessageMutation } from "@/hooks/api/chat/useSendMessageMutation";
 
 import { convertSimpleDateTime } from "@/utils/date";
 import { createClient } from "@/utils/supabase/client";
@@ -24,34 +26,18 @@ interface ChatRoomProps extends CommonSheetProps {
 const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomProps) => {
   const queryClient = useQueryClient();
 
+  const { mutate: sendMessageMutation } = useSendMessageMutation(studyRoomId);
+
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const supabase = createClient();
 
   const [message, setMessage] = useState("");
-
-  const getAllMessagesQuery = useQuery({
-    queryKey: ["messages", studyRoomId],
-    queryFn: () => getAllMessages(studyRoomId),
-  });
+  const { data: allMessageData } = useAllMessageQuery(studyRoomId);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [getAllMessagesQuery]);
-
-  const sendMessageMutation = useMutation({
-    mutationFn: async () => {
-      return sendMessage({
-        message,
-        chatUserId: userId,
-        studyRoomId,
-      });
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MESSAGES, studyRoomId] });
-      setMessage("");
-    },
-  });
+  }, [allMessageData]);
 
   useEffect(() => {
     const channel = supabase
@@ -86,8 +72,8 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomPr
         </SheetHeader>
 
         <div className="flex flex-col gap-3 flex-1 overflow-y-scroll px-2 py-12">
-          {getAllMessagesQuery.data &&
-            getAllMessagesQuery.data.map((messageData) => (
+          {allMessageData.data &&
+            allMessageData.data.map((messageData) => (
               <Message
                 key={messageData.id}
                 message={messageData.message}
@@ -111,10 +97,18 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomPr
             <button
               type="button"
               className="w-[50px] h-[50px] bg-primary-400 rounded-2xl flex items-center justify-center"
-              onClick={() => sendMessageMutation.mutate()}
+              onClick={() =>
+                sendMessageMutation(
+                  { message, studyRoomId },
+                  {
+                    onSuccess: () => {
+                      setMessage("");
+                    },
+                  },
+                )
+              }
             >
               <Image src="/svg/ic-send.svg" alt="sendIcon" width={24} height={24} />
-              {/* {sendMessageMutation.isPending ? <LoaderIcon /> : <SendIcon />} */}
             </button>
           </div>
         </div>

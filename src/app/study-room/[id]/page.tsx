@@ -9,6 +9,7 @@ import Header from "@/components/common/Header/Header";
 import StudyRoomDetail from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetail";
 import StudyRoomDetailSkeleton from "@/components/StudyRoom/StudyRoomDetail/StudyRoomDetailSkeleton";
 
+import { allMessageQueryOptions } from "@/hooks/api/chat/useAllMessageQuery";
 import { scheduleListQueryOptions } from "@/hooks/api/schedule/useScheduleListQuery";
 import { studyRoomQueryOptions } from "@/hooks/api/study-room/useStudyRoomQuery";
 import { taskListQueryOptions } from "@/hooks/api/task/useTaskListQuery";
@@ -27,6 +28,7 @@ export default function StudyRoomPage({ params }: ParamIdType) {
       referenceDate: format(new Date(), "yyyy-MM-dd"),
     }),
     userInfoQueryOptions(),
+    allMessageQueryOptions(params.id),
   ];
 
   return (
