@@ -2,15 +2,18 @@
 
 import Link from "next/link";
 
+import { Suspense } from "react";
+
 import Avatar from "@/components/common/Avatar/Avatar";
 import ConfirmModal from "@/components/common/ConfirmModal/ConfirmModal";
 import Image from "@/components/common/Image/Image";
 import BadgeCard from "@/components/MyPage/BadgeCard/BadgeCard";
-import ClockIcon from "@/components/MyPage/ClockIcon";
-import Divider from "@/components/MyPage/dividers/Divider/Divider";
+// import ClockIcon from "@/components/MyPage/ClockIcon";
+// import Divider from "@/components/MyPage/dividers/Divider/Divider";
 import ThickDivider from "@/components/MyPage/dividers/ThickDivider/ThickDivider";
 import InformationCard from "@/components/MyPage/InformationCard/InformationCard";
 import MenuListItem from "@/components/MyPage/MenuListItem/MenuListItem";
+import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
 
 import { INFORMATIONS_DATA, MENU_ITEMS_DATA } from "@/constants/mypage";
 import { PATH } from "@/constants/path";
@@ -19,9 +22,22 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 import { useMyPageMenues } from "@/hooks/mypage/useMyPageMenues";
 
 const MyPageBody = () => {
-  const { userId, user, handleChangeInfoAgreement, handleMovePage, handleWithdrawal } =
-    useMyPageMenues();
+  const {
+    userId,
+    user,
+    userStudyList,
+    handleChangeInfoAgreement,
+    handleMovePage,
+    handleWithdrawal,
+  } = useMyPageMenues();
+
   const { isOpen, handleClose, handleOpen } = useOverlay();
+
+  const {
+    isOpen: studyListOpen,
+    handleOpen: handleStudyListOpen,
+    handleClose: handleStudyListClose,
+  } = useOverlay();
 
   return (
     <>
@@ -42,7 +58,7 @@ const MyPageBody = () => {
       </div>
 
       {/* 일정 */}
-      <div className="flex justify-between mt-9 mx-4 border border-primary-200 rounded bg-[#F9F9F9] px-5 py-4">
+      {/* <div className="flex justify-between mt-9 mx-4 border border-primary-200 rounded bg-[#F9F9F9] px-5 py-4">
         <div className="flex gap-3.5 items-center">
           <p className="text-primary-350 text-medium-14 relative after:h-2.5 after:absolute after:top-1 after:ml-3.5 after:border after:border-primary-200">
             피그마 팔로업 회의
@@ -52,7 +68,7 @@ const MyPageBody = () => {
           <ClockIcon color="#A180F4" width="16" height="15" />
           <p className="text-[#645294] text-medium-14">오늘 오후 8:30 PM</p>
         </div>
-      </div>
+      </div> */}
 
       {/* 내 정보 */}
       <div className="flex flex-col gap-3 px-4 mt-9">
@@ -61,7 +77,7 @@ const MyPageBody = () => {
           <InformationCard
             count={user.studyList.length}
             informationData={INFORMATIONS_DATA.STUDY}
-            navigateTo={PATH.STUDY_JOINING_LIST}
+            handleClick={handleStudyListOpen}
           />
           <InformationCard
             count={user.scrapList.length}
@@ -104,23 +120,28 @@ const MyPageBody = () => {
               menuItemData={MENU_ITEMS_DATA.JOINING}
               isPrimary
               studyCount={user.studyList.length}
+              handleClickItem={handleStudyListOpen}
             />
 
             <MenuListItem
               menuItemData={MENU_ITEMS_DATA.PAST}
               studyCount={user.lastStudyList.length}
             />
+            <MenuListItem
+              menuItemData={MENU_ITEMS_DATA.BOOKMARK}
+              studyCount={user.scrapList.length}
+            />
           </ul>
         </div>
 
-        <Divider />
+        {/* <Divider /> */}
 
         {/* 관심 보인 스터디 */}
-        <div className="flex flex-col gap-6">
+        {/* <div className="flex flex-col gap-6">
           <header className="text-bold-18">북마크한 스터디</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem
-              // TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recentVisit)
+              TODO: 최근 방문한 관심 스터디 ID로 수정 (user.recentVisit)
               handleClickItem={() => handleMovePage(PATH.STUDY("test"))}
               menuItemData={MENU_ITEMS_DATA.RECENT_VISIT}
             />
@@ -130,23 +151,23 @@ const MyPageBody = () => {
               studyCount={user.scrapList.length}
             />
           </ul>
-        </div>
+        </div> */}
       </div>
 
       <ThickDivider />
 
       <div className="flex flex-col gap-8 mt-8 mb-16 px-4">
         {/* 고객 센터 */}
-        <div className="flex flex-col gap-6">
+        {/* <div className="flex flex-col gap-6">
           <header className="text-bold-18">고객 센터</header>
           <ul className="flex flex-col gap-4">
             <MenuListItem menuItemData={MENU_ITEMS_DATA.FAQ} />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.INQUIRY} />
             <MenuListItem menuItemData={MENU_ITEMS_DATA.NOTIFICATION} isUpdated />
           </ul>
-        </div>
+        </div> */}
 
-        <Divider />
+        {/* <Divider /> */}
 
         {/* 계정 정보 */}
         <div className="flex flex-col gap-6">
@@ -174,6 +195,15 @@ const MyPageBody = () => {
         title="회원 탈퇴"
         description={`정말 탈퇴하시나요?\n계정을 삭제하면 스터디, 게시글 외의 모든 정보가 삭제됩니다.`}
       />
+
+      <Suspense>
+        <StudyListSheet
+          isOpen={studyListOpen}
+          onInteractOutside={handleStudyListClose}
+          studyList={userStudyList}
+          isMyPage
+        />
+      </Suspense>
     </>
   );
 };

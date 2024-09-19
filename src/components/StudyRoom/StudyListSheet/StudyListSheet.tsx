@@ -5,7 +5,8 @@ import type { CommonSheetProps } from "@/types/common";
 
 interface StudyListSheetProps extends CommonSheetProps {
   studyList: string[];
-  studyRoomId: string;
+  studyRoomId?: string;
+  isMyPage?: boolean;
 }
 
 const StudyListSheet = ({
@@ -13,6 +14,7 @@ const StudyListSheet = ({
   onInteractOutside,
   studyList,
   studyRoomId,
+  isMyPage,
 }: StudyListSheetProps) => {
   return (
     <Sheet open={isOpen}>
@@ -34,7 +36,12 @@ const StudyListSheet = ({
 
           <ul className="rounded-lg bg-white border border-[#dfdfdf] mt-6">
             {studyList.map((studyId) => (
-              <StudyItem key={studyId} studyId={studyId} studyRoomId={studyRoomId} />
+              <StudyItem
+                key={studyId}
+                studyId={studyId}
+                studyRoomId={studyRoomId}
+                isMyPage={isMyPage}
+              />
             ))}
           </ul>
         </div>

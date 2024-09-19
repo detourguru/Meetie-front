@@ -19,7 +19,6 @@ export const MENU_ITEMS_DATA = {
   JOINING: {
     title: "참여 중인 스터디",
     icon: "/svg/ic-joining-study.svg",
-    navigateTo: PATH.STUDY_JOINING_LIST,
   },
   PAST: {
     title: "지난 스터디",

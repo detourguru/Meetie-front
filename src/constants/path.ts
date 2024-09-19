@@ -34,7 +34,6 @@ export const PATH = {
   TASK_CONFIRM_DETAIL: (taskConfirmId: string) => `/task-confirm-detail/${taskConfirmId}`,
   SCHEDULE_CREATE: (studyRoomId: string) => `/study-room/${studyRoomId}/create`,
 
-  STUDY_JOINING_LIST: "/study-room/list/joining", // 참여중인 스터디 리스트
   STUDY_LAST_LIST: "/study-room/list/last", // 종료된 스터디 리스트
   STUDY_INTEREST_LIST: "/study-room/list/bookmark", // 북마크한 관심 스터디 리스트
 

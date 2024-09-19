@@ -15,6 +15,7 @@ export const useMyPageMenues = () => {
 
   const userId = userData.data.user_id;
   const user = userData.data;
+  const userStudyList = userData.data.studyList;
 
   const handleChangeInfoAgreement = () => {
     updateUserInfoMutation({
@@ -33,5 +34,12 @@ export const useMyPageMenues = () => {
     });
   };
 
-  return { userId, user, handleChangeInfoAgreement, handleMovePage, handleWithdrawal };
+  return {
+    userId,
+    user,
+    userStudyList,
+    handleChangeInfoAgreement,
+    handleMovePage,
+    handleWithdrawal,
+  };
 };

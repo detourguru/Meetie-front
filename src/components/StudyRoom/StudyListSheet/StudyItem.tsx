@@ -10,10 +10,11 @@ import { generateDday } from "@/utils/date";
 
 interface StudyItemProps {
   studyId: string;
-  studyRoomId: string;
+  studyRoomId?: string;
+  isMyPage?: boolean;
 }
 
-const StudyItem = ({ studyId, studyRoomId }: StudyItemProps) => {
+const StudyItem = ({ studyId, studyRoomId, isMyPage }: StudyItemProps) => {
   const { data } = useStudyRoomQuery(studyId);
 
   const router = useRouter();
@@ -21,7 +22,7 @@ const StudyItem = ({ studyId, studyRoomId }: StudyItemProps) => {
   return (
     <li
       className="h-[58px] px-4 border-b border-[#dfdfdf] flex justify-between items-center last-of-type:border-none"
-      onClick={() => router.push(PATH.STUDY_ROOM(studyId))}
+      onClick={() => !isMyPage && router.push(PATH.STUDY_ROOM(studyId))}
     >
       <div className="flex flex-col">
         <p className="text-semibold-16">{data.data.title}</p>
@@ -30,7 +31,7 @@ const StudyItem = ({ studyId, studyRoomId }: StudyItemProps) => {
         </p>
       </div>
 
-      {studyRoomId === studyId && (
+      {!isMyPage && studyRoomId === studyId && (
         <Image src="/svg/ic-study-check.svg" alt="checkIcon" className="w-[27px] h-[17px]" />
       )}
     </li>
