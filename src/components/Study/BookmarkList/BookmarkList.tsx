@@ -21,7 +21,12 @@ const BookmarkList = () => {
       <div className="mt-[60px] px-4">
         {userData.data.scrapList &&
           userData.data.scrapList.map((studyData) => (
-            <StudyCard userId={userData.data.user_id} studyData={studyData} key={studyData.id} />
+            <StudyCard
+              userId={userData.data.user_id}
+              studyData={studyData}
+              key={studyData.id}
+              bookMarkData={userData.data.bookmarks}
+            />
           ))}
       </div>
     </>

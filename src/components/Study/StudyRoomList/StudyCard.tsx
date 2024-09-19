@@ -14,19 +14,23 @@ import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
 import { generateDday } from "@/utils/date";
 
 import type { StudyListType } from "@/types/study";
+import type { BookMarkType } from "@/types/userInfo";
 
 interface StudyCardProps {
   studyData: StudyListType;
   userId: string;
+  bookMarkData: BookMarkType[];
 }
 
-const StudyCard = ({ studyData, userId }: StudyCardProps) => {
+const StudyCard = ({ studyData, userId, bookMarkData }: StudyCardProps) => {
   const { mutate: patchStudyMutation } = usePatchStudyMutation(studyData.id);
 
   const newStartDate = studyData.startDate ?? startOfToday();
   const newEndDate = studyData.endDate ?? addDays(newStartDate, 7); // FIXME: null일 때 임의의 7일 added
 
-  const isMarked = studyData.bookmarks.length > 0 ? studyData.bookmarks[0].isMarked : false;
+  const isMarked = bookMarkData.some(
+    (data) => data.isMarked === true && data.study_id === Number(studyData.id),
+  );
 
   //TODO: 전체 필드 아닌 일부 필드만 업데이트 가능하도록 수정
   const handleUpdateViewCount = () => {

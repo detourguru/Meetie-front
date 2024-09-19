@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import CheckBox from "@/components/Study/CheckBox";
 import StudyCard from "@/components/Study/StudyRoomList/StudyCard";
-import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleton";
+// import StudyCardSkeleton from "@/components/Study/StudyRoomList/StudyCardSkeleton";
 
 import { INITIAL_FILTER_OPTION_DATA } from "@/constants/filter";
 
@@ -14,7 +14,7 @@ import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
 const StudyList = () => {
   const [checked, setChecked] = useState(false);
 
-  const { data, refetch, isFetching } = useStudyListQuery({
+  const { data, refetch } = useStudyListQuery({
     ...INITIAL_FILTER_OPTION_DATA,
     isRecruit: checked,
   });
@@ -37,14 +37,15 @@ const StudyList = () => {
       </div>
       {/* TODO: data 없을때 보여줄 UI 필요 */}
 
-      {isFetching ? (
-        <StudyCardSkeleton />
-      ) : (
-        data.data &&
+      {data.data &&
         data.data.map((studyData) => (
-          <StudyCard userId={userData.data.user_id} studyData={studyData} key={studyData.id} />
-        ))
-      )}
+          <StudyCard
+            userId={userData.data.user_id}
+            studyData={studyData}
+            key={studyData.id}
+            bookMarkData={userData.data.bookmarks}
+          />
+        ))}
     </article>
   );
 };

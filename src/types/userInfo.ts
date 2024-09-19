@@ -44,4 +44,10 @@ export interface UserInformationType {
   styles: string[];
   period: string;
   friendsList: string[];
+  bookmarks: BookMarkType[];
+}
+
+export interface BookMarkType {
+  isMarked: boolean;
+  study_id: number;
 }

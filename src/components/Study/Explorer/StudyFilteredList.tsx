@@ -74,7 +74,12 @@ const StudyFilteredList = ({
       ) : (
         data.data &&
         data.data.map((studyData) => (
-          <StudyCard userId={userData.data.user_id} studyData={studyData} key={studyData.id} />
+          <StudyCard
+            userId={userData.data.user_id}
+            studyData={studyData}
+            key={studyData.id}
+            bookMarkData={userData.data.bookmarks}
+          />
         ))
       )}
     </div>
