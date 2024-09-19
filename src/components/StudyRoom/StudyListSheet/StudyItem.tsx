@@ -22,7 +22,7 @@ const StudyItem = ({ studyId, studyRoomId, isMyPage }: StudyItemProps) => {
   return (
     <li
       className="h-[58px] px-4 border-b border-[#dfdfdf] flex justify-between items-center last-of-type:border-none"
-      onClick={() => !isMyPage && router.push(PATH.STUDY_ROOM(studyId))}
+      onClick={() => router.push(PATH.STUDY_ROOM(studyId))}
     >
       <div className="flex flex-col">
         <p className="text-semibold-16">{data.data.title}</p>
