@@ -7,6 +7,7 @@ import { useState, Suspense } from "react";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import ChatTab from "@/components/StudyRoom/Chat/ChatTab";
+import ChatTabSkeleton from "@/components/StudyRoom/Chat/ChatTabSkeleton";
 import ScheduleTab from "@/components/StudyRoom/ScheduleTab/ScheduleTab";
 import StudyListSheet from "@/components/StudyRoom/StudyListSheet/StudyListSheet";
 
@@ -90,7 +91,9 @@ const StudyRoomDetail = () => {
           />
         </TabsContent>
         <TabsContent value="chat">
-          <ChatTab studyRoomId={String(params.id)} userId={userData.data.user_id} />
+          <Suspense fallback={<ChatTabSkeleton />}>
+            <ChatTab studyRoomId={String(params.id)} userId={userData.data.user_id} />
+          </Suspense>
         </TabsContent>
       </Tabs>
 

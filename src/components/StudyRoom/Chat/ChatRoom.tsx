@@ -58,7 +58,7 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomPr
               type="text"
               value={message}
               placeholder="메세지 보내기"
-              className="w-[300px] rounded-lg border border-[#E9E9E9] bg-[#f3f3f3] p-3.5 py-3 text-sm placeholder-gray-purple focus:outline-none"
+              className="w-[300px] rounded-lg border border-[#E9E9E9] bg-[#f3f3f3] p-3.5 py-3 outline-none placeholder:text-blue-300"
               onChange={(e) => handleChangeMessage(e.target.value)}
               onKeyDown={(e) => handleEnterClick(e)}
             />

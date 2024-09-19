@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+
 import ChatItem from "@/components/StudyRoom/Chat/ChatItem";
 import ChatRoom from "@/components/StudyRoom/Chat/ChatRoom";
 
@@ -30,12 +32,14 @@ const ChatTab = ({ studyRoomId, userId }: ChatTabProps) => {
         />
       </section>
 
-      <ChatRoom
-        isOpen={isOpen}
-        onInteractOutside={handleClose}
-        studyRoomId={studyRoomId}
-        userId={userId}
-      />
+      <Suspense>
+        <ChatRoom
+          isOpen={isOpen}
+          onInteractOutside={handleClose}
+          studyRoomId={studyRoomId}
+          userId={userId}
+        />
+      </Suspense>
     </>
   );
 };
