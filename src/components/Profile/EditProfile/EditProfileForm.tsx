@@ -5,8 +5,8 @@ import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
 import Image from "@/components/common/Image/Image";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
-import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
-import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
+// import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
+// import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import PositionSheet from "@/components/Profile/PositionSheet/PositionSheet";
 import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
@@ -130,8 +130,8 @@ const EditProfileForm = () => {
       <StyleList styles={profileForm.styles} isEdit updateProfileForm={updateProfileForm} />
 
       {/* TODO: 스터디 공개 여부 구현 */}
-      <ExperienceList />
-      <EvaluationList />
+      {/* <ExperienceList /> */}
+      {/* <EvaluationList /> */}
 
       <PositionSheet
         isOpen={isOpen}

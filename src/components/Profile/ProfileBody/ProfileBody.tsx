@@ -8,8 +8,8 @@ import Divider from "@/components/common/Divider/Divider";
 import Header from "@/components/common/Header/Header";
 import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
-import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
-import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
+// import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
+// import ExperienceList from "@/components/Profile/ExperienceList/ExperienceList";
 import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
 
@@ -72,8 +72,8 @@ const ProfileBody = () => {
       <BadgeList badges={user.badges} />
       <TagList tags={user.purposes} />
       <StyleList styles={user.styles} />
-      <ExperienceList />
-      <EvaluationList />
+      {/* <ExperienceList /> */}
+      {/* <EvaluationList /> */}
     </>
   );
 };

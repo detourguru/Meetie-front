@@ -11,7 +11,7 @@ interface TagListProps {
 
 const StyleList = ({ styles, isEdit, updateProfileForm }: TagListProps) => {
   return (
-    <div className="flex flex-col gap-2 px-4 mt-8">
+    <div className="flex flex-col gap-2 px-4 mt-8 mb-5">
       <p className="text-bold-18">스터디 스타일 {isEdit && "추가"}</p>
 
       <div className="flex flex-wrap gap-3">
