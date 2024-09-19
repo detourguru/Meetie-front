@@ -40,13 +40,9 @@ export const useSignUpForm = () => {
     setCheckPassword(value);
   };
 
-  // 올바른 이메일 확인
-  const isCorrectEmail = !signupForm.email || REGEX.EMAIL.test(signupForm.email);
-  // 올바른 비밀번호 확인 (영문 숫자 특수기호 조합 8자리 이상)
-  const isCorrectPassword = !signupForm.password || REGEX.PASSWORD.test(signupForm.password);
-  // 비밀번호 확인
-  const isMathed = !checkPassword || signupForm.password === checkPassword;
-  // 다 채워져 있는 지 확인
+  const isCorrectEmail = REGEX.EMAIL.test(signupForm.email);
+  const isCorrectPassword = REGEX.PASSWORD.test(signupForm.password);
+  const isMathed = signupForm.password === checkPassword;
   const isCompleted =
     isMathed &&
     isCorrectEmail &&

@@ -58,7 +58,7 @@ export default function SignUpPage() {
               autoComplete="username"
               onChange={(e) => updateSignUpForm("email", e.currentTarget.value)}
             />
-            {!isCorrectEmail && (
+            {signupForm.email && !isCorrectEmail && (
               <span className={SpanAlertClassName}>올바른 이메일을 입력해주세요</span>
             )}
           </div>
@@ -90,7 +90,7 @@ export default function SignUpPage() {
                 />
               )}
             </div>
-            {!isCorrectPassword && (
+            {signupForm.password && !isCorrectPassword && (
               <span className={SpanAlertClassName}>
                 8~20 자리의 영문, 숫자, 특수기호를 포함해주세요
               </span>
@@ -124,7 +124,9 @@ export default function SignUpPage() {
                 />
               )}
             </div>
-            {!isMathed && <span className={SpanAlertClassName}>비밀번호가 일치하지 않습니다.</span>}
+            {checkPassword && !isMathed && (
+              <span className={SpanAlertClassName}>비밀번호가 일치하지 않습니다.</span>
+            )}
           </div>
         </div>
         <Button
