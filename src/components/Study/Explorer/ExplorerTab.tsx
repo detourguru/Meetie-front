@@ -9,6 +9,7 @@ import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet
 import MemberFilteredList from "@/components/Study/Explorer/MemberFilteredList";
 import StudyFilteredList from "@/components/Study/Explorer/StudyFilteredList";
 
+import { useMemberListFilter } from "@/hooks/api/study/useMemberListFilter";
 import { useStudyListFilter } from "@/hooks/api/study/useStudyListFilter";
 import { useOverlay } from "@/hooks/common/useOverlay";
 
@@ -19,6 +20,12 @@ const ExplorerTab = () => {
   const { data, filterOption, handleClickTag, updateFilterOption, isFetching } = useStudyListFilter(
     {},
   );
+
+  const {
+    data: m_data,
+    filterOption: m_filterOption,
+    updateFilterOption: m_updateFilterOption,
+  } = useMemberListFilter({});
 
   return (
     <>
@@ -31,7 +38,7 @@ const ExplorerTab = () => {
             value={filterOption.search}
             readOnly
             className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
-            placeholder="관심있는 스터디나 팀원을 검색해보세요"
+            placeholder={`관심있는 ${currentTab === "study" ? "스터디" : "멤버"}를 검색해보세요`}
           />
         </div>
       </div>
@@ -58,6 +65,7 @@ const ExplorerTab = () => {
           />
 
           <SearchSheet
+            subject="스터디"
             isOpen={isOpen}
             searchValue={filterOption.search}
             handleClose={handleClose}
@@ -68,7 +76,19 @@ const ExplorerTab = () => {
 
       {currentTab === "member" && (
         <>
-          <MemberFilteredList />
+          <MemberFilteredList
+            data={m_data}
+            filterOption={m_filterOption}
+            updateFilterOption={m_updateFilterOption}
+          />
+
+          <SearchSheet
+            subject="멤버"
+            isOpen={isOpen}
+            searchValue={m_filterOption.search}
+            handleClose={handleClose}
+            updateFilterOption={m_updateFilterOption}
+          />
         </>
       )}
     </>

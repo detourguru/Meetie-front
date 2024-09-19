@@ -6,19 +6,24 @@ import { GET } from "@/apis/httpMethod";
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
+import type { FilterSelectedType } from "@/types/filter";
 import type { GetAllUserInfoResponseType } from "@/types/userInfo";
 
-const getAllUserInfo = async () => {
-  const data = await GET<GetAllUserInfoResponseType>(END_POINTS.ONBOARDING);
+const getAllUserInfo = async (param?: FilterSelectedType) => {
+  const queryString = new URLSearchParams(Object.entries(param ?? {}));
+
+  const data = await GET<GetAllUserInfoResponseType>(END_POINTS.ONBOARDING + `?${queryString}`);
 
   return data;
 };
 
-export const userInfoQueryOptions = (): UseSuspenseQueryOptions<GetAllUserInfoResponseType> => ({
+export const userInfoQueryOptions = (
+  param?: FilterSelectedType,
+): UseSuspenseQueryOptions<GetAllUserInfoResponseType> => ({
   queryKey: [QUERY_KEYS.USER_INFO],
-  queryFn: () => getAllUserInfo(),
+  queryFn: () => getAllUserInfo(param),
 });
 
-export const useAllUserInfoQuery = () => {
-  return useSuspenseQuery(userInfoQueryOptions());
+export const useAllUserInfoQuery = (param?: FilterSelectedType) => {
+  return useSuspenseQuery(userInfoQueryOptions(param));
 };

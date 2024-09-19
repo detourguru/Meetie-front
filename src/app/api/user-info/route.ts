@@ -10,35 +10,33 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get("user_id");
 
-    const { data } = await supabase
-      .from("userinfo")
-      .select(`*, bookmarks (study_id, isMarked)`)
-      .eq("user_id", userId)
-      .single();
+    const query = supabase.from("userinfo").select();
+    const position = searchParams.get("position") ?? "";
+    const styles = searchParams.get("styles") ?? "";
 
-    const currentDate = new Date().toISOString();
-    const bookmarks = data.bookmarks
-      .filter((bookmark: { study_id: string; isMarked: boolean }) => bookmark.isMarked)
-      .map((bookmark: { study_id: string; isMarked: boolean }) => bookmark.study_id);
+    const search = searchParams.get("search") ?? "";
 
-    const [studyListData, lastStudyListData, bookmarkStudyList] = await Promise.all([
-      supabase.from("study_room").select("id").in("id", data.studyList).gt("endDate", currentDate),
-      supabase.from("study_room").select("id").in("id", data.studyList).lte("endDate", currentDate),
-      supabase.from("study").select(`*, bookmarks(isMarked)`).in("id", bookmarks),
-    ]);
+    if (position !== "") {
+      query.eq("position", position);
+    }
 
-    const studyList = studyListData.data?.map((study: { id: string }) => study.id) ?? [];
-    const lastStudyList = lastStudyListData.data?.map((study: { id: string }) => study.id) ?? [];
+    if (styles !== "") {
+      query.contains("styles", [styles]);
+    }
+
+    if (search && search !== "") {
+      query.like("name", `%${search}%`);
+    }
+
+    if (userId) {
+      query.eq("user_id", userId).single();
+    }
+    const { data } = await query;
 
     return NextResponse.json({
       message: "ok",
       status: 200,
-      data: {
-        ...data,
-        studyList: studyList,
-        lastStudyList: lastStudyList,
-        scrapList: bookmarkStudyList.data,
-      },
+      data,
     });
   } catch (error) {
     console.error(error);

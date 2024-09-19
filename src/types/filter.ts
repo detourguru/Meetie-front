@@ -9,6 +9,9 @@ export interface FilterSelectedType {
   sort: string;
   date: string;
   isRecruit?: boolean;
+  position?: string;
+  purpose?: string;
+  styles?: string;
 }
 
 export type UpdateFilterSelectedTypeHandlerType = <Key extends keyof FilterSelectedType>(

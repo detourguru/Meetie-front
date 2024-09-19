@@ -47,7 +47,9 @@ const Member = ({ member }: MemberType) => {
           <span className="flex justify-center text-gray-200 text-regular-10 mb-2 h-2">
             {member.position}
           </span>
-          <span className="flex justify-center text-regular-10 h-7">{member.styles.join("·")}</span>
+          <span className="flex justify-center text-regular-10 h-7 text-nowrap">
+            {member.styles.join("·")}
+          </span>
         </div>
         <div className="flex justify-center">
           <button

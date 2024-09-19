@@ -15,6 +15,7 @@ interface SearchSheetProps extends CommonSheetProps {
   searchValue: string;
   handleClose: () => void;
   updateFilterOption: UpdateFilterSelectedTypeHandlerType;
+  subject?: string;
 }
 
 const SearchSheet = ({
@@ -22,6 +23,7 @@ const SearchSheet = ({
   searchValue,
   handleClose,
   updateFilterOption,
+  subject,
 }: SearchSheetProps) => {
   const savedSearchKeyWords = getLocalStorage<string[]>("savedSearchKeyWords", []);
 
@@ -78,7 +80,7 @@ const SearchSheet = ({
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
-              placeholder="관심있는 주제를 검색해보세요"
+              placeholder={`관심있는 ${subject !== undefined ? subject : "주제"}를 검색해보세요`}
             />
             <Image
               src="/svg/ic-community-search.svg"
