@@ -22,7 +22,7 @@ export const usePatchCommentiMutation = (taskConfirmId: string) => {
       await patchComment(taskConfirmId, createForm),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.TASK, taskConfirmId, QUERY_KEYS.TASK_COMMENTS],
+        queryKey: [QUERY_KEYS.TASK_CONFIRM, taskConfirmId, QUERY_KEYS.TASK_COMMENTS],
       });
     },
     onError: (error) => {

@@ -4,6 +4,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { GET, createInit } from "@/apis/httpMethod";
 
 import { END_POINTS } from "@/constants/api";
+import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { GetTaskCommentResponseType } from "@/types/taskConfirm";
 
@@ -19,7 +20,7 @@ const getTaskComments = async (taskConfirmId: string) => {
 export const taskCommentsQueryOptions = (
   taskConfirmId: string,
 ): UseSuspenseQueryOptions<GetTaskCommentResponseType> => ({
-  queryKey: [],
+  queryKey: [QUERY_KEYS.TASK_CONFIRM, taskConfirmId, QUERY_KEYS.TASK_COMMENTS],
   queryFn: async () => await getTaskComments(taskConfirmId),
 });
 
