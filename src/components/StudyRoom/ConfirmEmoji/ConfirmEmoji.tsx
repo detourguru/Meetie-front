@@ -1,12 +1,16 @@
-import Image from "next/image";
+import Avatar from "@/components/common/Avatar/Avatar";
 
-import UserImg from "/public/img/img-user-profile.png";
+import type { TaskPostEmojiType } from "@/types/taskConfirm";
 
-const ConfirmEmoji = () => {
+interface ConfirmEmojiProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
+  confirmEmoji: TaskPostEmojiType;
+}
+
+const ConfirmEmoji = ({ confirmEmoji, ...props }: ConfirmEmojiProps) => {
   return (
-    <div className="relative w-10 h-10 rounded-full">
-      <Image src={UserImg} alt="user image" width={40} height={40} />
-      <span className="absolute bottom-[-4px] right-[-4px] text-semibold-20">😊</span>
+    <div className="relative cursor-pointer" {...props}>
+      <Avatar src="/svg/ic-user.svg" size="sm" />
+      <div className="absolute text-medium-20 -bottom-1 -right-2.5">{confirmEmoji.emoji}</div>
     </div>
   );
 };

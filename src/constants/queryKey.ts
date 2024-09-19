@@ -26,6 +26,8 @@ export const QUERY_KEYS = {
   TASK_CONFIRM_SUCCESS: "taskConfirmSuccess",
   TASK_CONFIRM_LIST: "taskConfirmList",
 
+  TASK_COMMENTS: "taskComments",
+
   MESSAGES: "messages",
   LAST_MESSAGE: "lastMessage",
   UNREAD_MESSAGE_COUNT: "unReadMessageCount",

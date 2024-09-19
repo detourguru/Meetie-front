@@ -19,6 +19,36 @@ export interface TaskConfirmType extends TaskConfirmRequestType {
   id: string;
   created_at: Date;
   user_id: string;
+  emojiList: TaskPostEmojiType[];
+}
+
+export interface TaskCommentType {
+  id: number;
+  user_id: string;
+  name: string;
+  profileImage: string;
+  create_at: Date;
+  contents: string;
+  emojiList: CommentEmojiType[];
+  selectedEmoji: string[];
+}
+
+export interface TaskPostEmojiType {
+  id: number;
+  user_id: string;
+  profileImage: string;
+  emoji: string;
+}
+
+export type CreateTaskCommentFormType = Pick<TaskCommentType, "contents">;
+
+export type CreateTaskEmojiType = Pick<TaskPostEmojiType, "emoji">;
+
+export interface CreateTaskEmojiResponseType {
+  id: number;
+  emoji: string;
+  user_id: string;
+  userinfo: { profileImage: string };
 }
 
 export interface GetTaskConfirmResponseType extends CommonResponseType {
@@ -27,4 +57,27 @@ export interface GetTaskConfirmResponseType extends CommonResponseType {
 
 export interface GetTaskConfirmListResponseType extends CommonResponseType {
   data: TaskConfirmType[];
+}
+
+export type CreateCommentFormType = Pick<TaskCommentType, "contents">;
+
+export type UpdateCommentFormType = Pick<TaskCommentType, "contents" | "id">;
+
+export interface CreateCommentEmojiType {
+  emoji: string;
+  commentId: number;
+}
+
+export interface CommentEmojiType {
+  emoji: string;
+  count: number;
+}
+
+export interface GetTaskCommentResponseType extends CommonResponseType {
+  data: TaskCommentType[];
+}
+
+export interface TaskEmojiResponseType {
+  emoji: string;
+  user_id: string;
 }
