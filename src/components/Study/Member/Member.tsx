@@ -54,7 +54,7 @@ const Member = ({ member }: MemberType) => {
         <div className="flex justify-center">
           <button
             onClick={(e) => handleAddfriend(e)}
-            className={`w-full border rounded-lg text-regular-12 ${isFriend ? "border-primary-500 text-primary-500" : "border-primary-100 text-primary-100 bg-primary-500"}`}
+            className={`w-full py-1 border rounded-lg text-regular-12 ${isFriend ? "border-primary-500 text-primary-500" : "border-primary-100 text-primary-100 bg-primary-500"}`}
           >
             {isFriend ? "친구 해제하기 -" : "친구 추가하기 +"}
           </button>
