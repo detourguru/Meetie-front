@@ -12,6 +12,7 @@ interface ChatItemProps {
 
 const ChatItem = ({ handleOpen, studyRoomId }: ChatItemProps) => {
   const { data } = useLastMessageQuery(studyRoomId);
+
   const { data: unReadCountData } = useUnReadMessageCountQuery(studyRoomId);
 
   return (
@@ -23,17 +24,17 @@ const ChatItem = ({ handleOpen, studyRoomId }: ChatItemProps) => {
             팀채팅
           </h5>
           <p className="text-medium-12 text-gray-250 w-[220px] line-clamp-2 text-ellipsis overflow-hidden break-all">
-            {data.data.message}
+            {data.data ? data.data.message : "아직 메시지가 없습니다"}
           </p>
         </div>
       </div>
 
       <div className="flex flex-col gap-3.5">
         <p className="text-[#bfbfbf] text-regular-10">
-          {convertSimpleDateTime(new Date(data.data.created_at), "time")}
+          {data.data ? convertSimpleDateTime(new Date(data.data.created_at), "time") : ""}
         </p>
         <div className="rounded-lg bg-primary-400 flex justify-center items-center py-1 ">
-          <p className="text-bold-12 text-white">{unReadCountData.data}</p>
+          {data.data && <p className="text-bold-12 text-white">{unReadCountData.data}</p>}
         </div>
       </div>
     </div>

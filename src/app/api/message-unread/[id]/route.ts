@@ -21,8 +21,6 @@ export async function GET(request: Request, { params }: { params: { id: string }
       .eq("isRead", false)
       .eq("studyRoomId", params.id);
 
-    console.log(data);
-
     if (data) {
       return NextResponse.json({ message: "ok", data: data.length }, { status: 200 });
     }
