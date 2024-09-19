@@ -1,4 +1,8 @@
+"use clinet";
+
 import Link from "next/link";
+
+import { useState } from "react";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 
@@ -15,12 +19,12 @@ interface MemberType {
 
 const Member = ({ member }: MemberType) => {
   const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
-  const { data, refetch } = useUserInfoQuery();
+  const { data, refetch, isError } = useUserInfoQuery();
 
   const id = data.data.user_id;
   const friendsList = data.data.friendsList;
 
-  const isFriend = friendsList.indexOf(member.user_id) > 0;
+  const [isFriend, setIsFriend] = useState(false);
 
   const handleAddfriend = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -33,6 +37,11 @@ const Member = ({ member }: MemberType) => {
           : [...friendsList, member.user_id],
       },
     });
+
+    if (!isError) {
+      setIsFriend((isFriend) => !isFriend);
+    }
+
     refetch();
   };
 
