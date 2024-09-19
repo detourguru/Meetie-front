@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Button from "@/components/common/Button/Button";
+import Pop from "@/components/OnBoarding/Pop/Pop";
 
 import { PATH } from "@/constants/path";
 
@@ -9,7 +10,7 @@ import type { ParamIdType } from "@/types/common";
 
 export default function ConfirmSuccess({ params }: ParamIdType) {
   return (
-    <section className="px-4 flex flex-col items-center pt-52 pb-40">
+    <section className="relative h-full px-4 pt-52 flex flex-col items-center">
       <Image src="/svg/ic-calendar-success.svg" alt="icon" width={93} height={93} />
       <h3 className="text-[28px] font-bold mt-10">과제 인증 완료!</h3>
 
@@ -28,6 +29,7 @@ export default function ConfirmSuccess({ params }: ParamIdType) {
           </Button>
         </Link>
       </div>
+      <Pop />
     </section>
   );
 }
