@@ -37,7 +37,7 @@ const MemberFilteredList = ({
           </Filter.FilterOption>
         </Filter>
       </div>
-      <div className="p-4 mb-10 h-full bg-[#F5F5FF]">
+      <div className="p-4 mb-10 bg-[#F5F5FF]">
         <MemberList />
       </div>
     </>
