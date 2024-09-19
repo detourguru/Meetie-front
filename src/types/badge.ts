@@ -3,6 +3,7 @@ export interface BadgesType {
   type: string;
   title: string;
   description: string;
+  conditions: string[];
   badges: BadgeType[];
 }
 
@@ -10,6 +11,7 @@ export interface BadgeType {
   title: string;
   level: number;
   icon: string;
+  conditions: { [key: string]: number };
 }
 
 export interface BadgeLevelType {

@@ -30,6 +30,23 @@ export const useBadge = () => {
     }
   };
 
+  const getBadgeCondition = (type: string) => {
+    switch (type) {
+      case "communityCommentCount":
+        return communityCommentsCount;
+      case "communityCount":
+        return communityCount;
+      case "ownerCount":
+        return ownerCount;
+      case "taskCount":
+        return taskCount;
+      case "communityEngagementCount":
+        return communityEngagementCount;
+      default:
+        return 0;
+    }
+  };
+
   return {
     communityCommentsCount,
     communityCount,
@@ -37,5 +54,6 @@ export const useBadge = () => {
     ownerCount,
     taskCount,
     getBadgeLevel,
+    getBadgeCondition,
   };
 };

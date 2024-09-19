@@ -1,10 +1,16 @@
+import { COMMENT, FEEDBACK, MEETIE, SHARE } from "@/constants/badges";
+
 // TODO: 과제 댓글 (피드백) 조건 추가
 export const getCommentBadge = (communityCommentCount: number) => {
-  if (communityCommentCount < 5) {
+  const commentCondition = COMMENT.badges.map(
+    (comment) => comment.conditions.communityCommentCount,
+  );
+
+  if (communityCommentCount < commentCondition[0]) {
     return 0;
-  } else if (communityCommentCount < 20) {
+  } else if (communityCommentCount < commentCondition[1]) {
     return 1;
-  } else if (communityCommentCount < 50) {
+  } else if (communityCommentCount < commentCondition[2]) {
     return 2;
   } else {
     return 3;
@@ -13,11 +19,25 @@ export const getCommentBadge = (communityCommentCount: number) => {
 
 // TODO: 친구 수 조건 추가
 export const getNanumBadge = (communityCount: number, communityEngagementCount: number) => {
-  if (communityCount < 5 || communityEngagementCount < 10) {
+  const communityCondition = SHARE.badges.map((nanum) => nanum.conditions.communityCount);
+  const communityEngagementCondition = SHARE.badges.map(
+    (nanum) => nanum.conditions.communityEngagementCount,
+  );
+
+  if (
+    communityCount < communityCondition[0] ||
+    communityEngagementCount < communityEngagementCondition[0]
+  ) {
     return 0;
-  } else if (communityCount < 20 || communityEngagementCount < 50) {
+  } else if (
+    communityCount < communityCondition[0] ||
+    communityEngagementCount < communityEngagementCondition[1]
+  ) {
     return 1;
-  } else if (communityCount < 50 || communityEngagementCount < 100) {
+  } else if (
+    communityCount < communityCondition[0] ||
+    communityEngagementCount < communityEngagementCondition[2]
+  ) {
     return 2;
   } else {
     return 3;
@@ -26,11 +46,14 @@ export const getNanumBadge = (communityCount: number, communityEngagementCount: 
 
 // TODO: 과제 댓글 (피드백) 조건 추가, 과제 횟수를 xp로 변경
 export const getMeetieBadge = (taskCount: number, ownerCount: number) => {
-  if (taskCount < 5 || ownerCount < 1) {
+  const taskCondition = MEETIE.badges.map((meetie) => meetie.conditions.taskCount);
+  const ownerCondition = MEETIE.badges.map((meetie) => meetie.conditions.ownerCount);
+
+  if (taskCount < taskCondition[0] || ownerCount < ownerCondition[0]) {
     return 0;
-  } else if (taskCount < 20 || ownerCount < 3) {
+  } else if (taskCount < taskCondition[1] || ownerCount < ownerCondition[1]) {
     return 1;
-  } else if (taskCount < 50 || ownerCount < 5) {
+  } else if (taskCount < taskCondition[2] || ownerCount < ownerCondition[2]) {
     return 2;
   } else {
     return 3;
@@ -39,11 +62,15 @@ export const getMeetieBadge = (taskCount: number, ownerCount: number) => {
 
 // TODO: 과제 댓글 (피드백), 매너 평가 조건 추가
 export const getFeedbackBadge = (communityEngagementCount: number) => {
-  if (communityEngagementCount < 10) {
+  const communityEngagementCondition = FEEDBACK.badges.map(
+    (feedback) => feedback.conditions.communityEngagementCount,
+  );
+
+  if (communityEngagementCount < communityEngagementCondition[0]) {
     return 0;
-  } else if (communityEngagementCount < 20) {
+  } else if (communityEngagementCount < communityEngagementCondition[1]) {
     return 1;
-  } else if (communityEngagementCount < 50) {
+  } else if (communityEngagementCount < communityEngagementCondition[2]) {
     return 2;
   } else {
     return 3;

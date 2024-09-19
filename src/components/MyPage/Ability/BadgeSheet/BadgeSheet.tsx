@@ -2,6 +2,8 @@ import { Sheet, SheetContent, SheetHeader } from "@/components/common/Sheet/Shee
 import AchieveProgressBar from "@/components/MyPage/Ability/AchieveProgressBar/AchieveProgressBar";
 import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 
+import { CONDITIONS } from "@/constants/badges";
+
 import type { BadgeType } from "@/types/badge";
 
 interface BadgeSheetProps {
@@ -9,8 +11,11 @@ interface BadgeSheetProps {
   selectedBadgeType: string;
   title: string;
   description: string;
-  selectedBadge?: BadgeType;
+  conditions: string[];
+  acheived: boolean;
+  selectedBadge: BadgeType;
   onInteractOutside?: () => void;
+  getCondition: (type: string) => number;
 }
 
 const ICON_WIDTH = 140;
@@ -21,8 +26,11 @@ const BadgeSheet = ({
   selectedBadgeType,
   title,
   description,
+  conditions,
+  acheived,
   selectedBadge,
   onInteractOutside,
+  getCondition,
 }: BadgeSheetProps) => {
   return (
     <Sheet open={isOpen}>
@@ -50,37 +58,40 @@ const BadgeSheet = ({
           <div className="flex flex-col gap-4 rounded-lg bg-white px-9 py-5">
             <div className="flex flex-col items-center gap-4">
               <BadgeIcon
-                src={selectedBadge?.icon ?? ""}
-                alt={selectedBadge?.title ?? ""}
+                src={selectedBadge.icon ?? ""}
+                alt={selectedBadge.title ?? ""}
                 size="xl"
                 width={ICON_WIDTH}
                 height={ICON_HEIGHT}
+                variant={acheived ? "default" : "tertiary"}
               />
               <div className="flex flex-col gap-2 items-center">
                 <div className="p-1 border border-primary-500 rounded-lg">
                   <span className="text-medium-14 text-primary-500">
-                    레벨 {selectedBadge && selectedBadge.level}
+                    레벨 {selectedBadge.level}
                   </span>
                 </div>
-                <h1 className="text-bold-20 text-gray-600">
-                  {selectedBadge && selectedBadge.title}
-                </h1>
+                <h1 className="text-bold-20 text-gray-600">{selectedBadge.title}</h1>
               </div>
             </div>
 
             <div className="flex flex-col gap-[13px]">
-              <article className="flex flex-col gap-1.5">
-                <header className="text-semibold-14 text-gray-600">500XP 모으기</header>
-                <AchieveProgressBar total={500} achievedCount={300} />
-              </article>
-              <article className="flex flex-col gap-1.5">
-                <header className="text-semibold-14 text-gray-600">피드백 50회 하기</header>
-                <AchieveProgressBar total={50} achievedCount={20} />
-              </article>
-              <article className="flex flex-col gap-1.5">
-                <header className="text-semibold-14 text-gray-600">방장 5회 달성</header>
-                <AchieveProgressBar total={5} achievedCount={5} />
-              </article>
+              {selectedBadge &&
+                conditions.map((condition, index) => {
+                  const achievedCount = getCondition(condition);
+                  const totalCount = selectedBadge.conditions[condition];
+                  return (
+                    <article
+                      className="flex flex-col gap-1.5"
+                      key={`${selectedBadgeType}_${index}`}
+                    >
+                      <header className="text-semibold-14 text-gray-600">
+                        {CONDITIONS[condition](totalCount)}
+                      </header>
+                      <AchieveProgressBar total={totalCount} achievedCount={achievedCount} />
+                    </article>
+                  );
+                })}
             </div>
           </div>
         </div>

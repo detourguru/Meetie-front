@@ -12,12 +12,13 @@ import type { BadgeType, BadgesType } from "@/types/badge";
 interface BadgeAreaProps {
   badges: BadgesType;
   level: number;
+  getCondition: (type: string) => number;
 }
 
 const ICON_WIDTH = [70, 89, 95];
 const ICON_HEIGHT = [80, 85, 95];
 
-const BadgeArea = ({ badges, level }: BadgeAreaProps) => {
+const BadgeArea = ({ badges, level, getCondition }: BadgeAreaProps) => {
   const { isOpen, handleOpen, handleClose } = useOverlay();
 
   const [selectedBadge, setselectedBadge] = useState<undefined | BadgeType>();
@@ -56,14 +57,19 @@ const BadgeArea = ({ badges, level }: BadgeAreaProps) => {
         </div>
       </section>
 
-      <BadgeSheet
-        isOpen={isOpen}
-        selectedBadge={selectedBadge}
-        selectedBadgeType={badges.value}
-        title={badges.title}
-        description={badges.description}
-        onInteractOutside={handleClose}
-      />
+      {selectedBadge && (
+        <BadgeSheet
+          isOpen={isOpen}
+          selectedBadge={selectedBadge}
+          selectedBadgeType={badges.value}
+          title={badges.title}
+          description={badges.description}
+          conditions={badges.conditions}
+          acheived={selectedBadge.level <= level}
+          onInteractOutside={handleClose}
+          getCondition={getCondition}
+        />
+      )}
     </>
   );
 };

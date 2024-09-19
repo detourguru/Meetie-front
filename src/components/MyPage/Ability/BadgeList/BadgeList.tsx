@@ -7,12 +7,17 @@ import { BADGE_DATA } from "@/constants/badges";
 import { useBadge } from "@/hooks/mypage/useBadge";
 
 const BadgeList = () => {
-  const { getBadgeLevel } = useBadge();
+  const { getBadgeLevel, getBadgeCondition } = useBadge();
 
   return (
     <div className="flex flex-col my-8 gap-8 mt-[72px]">
       {BADGE_DATA.map((badges, index) => (
-        <BadgeArea badges={badges} key={`badge/${index}`} level={getBadgeLevel(badges.type)} />
+        <BadgeArea
+          badges={badges}
+          key={`badge/${index}`}
+          level={getBadgeLevel(badges.type)}
+          getCondition={getBadgeCondition}
+        />
       ))}
     </div>
   );
