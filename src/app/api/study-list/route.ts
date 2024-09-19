@@ -53,7 +53,11 @@ export async function GET(request: NextRequest) {
       .order(orderOption, { ascending: false })
       .select(`*, bookmarks(isMarked)`);
 
-    return NextResponse.json({ message: "ok", status: 200, data });
+    if (data) {
+      return NextResponse.json({ message: "ok", status: 200, data });
+    }
+
+    return NextResponse.json({ message: "ok", status: 200, data: null });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error", status: 500 });

@@ -22,14 +22,20 @@ const StudyRoomProfile = ({ studyRoomData }: StudyRoomProfileProps) => {
 
       <div className="relative flex justify-center w-full transform animate-tilt backdrop-blur-[2px]">
         <div className="w-[146px] h-[204px] border border-gray-100 rounded-lg bg-[#FAFAFF]/70" />
-        <div className="absolute top-0 flex flex-col items-center justify-center pt-6 whitespace-nowrap">
+        <div className="absolute top-0 flex flex-col items-center justify-center pt-6">
           <div className="relative w-[80px] h-[80px] flex justify-center bg-gradient-to-tr from-[#FAFAFF]/60 to-[#FAFAFF]/45">
             <div className="absolute w-[80px] h-[80px] bg-[#0017E2] mix-blend-hue z-10" />
             <Image src="/svg/ic-logo.svg" alt="logo" width={76} height={80} />
           </div>
-          <p className="text-semibold-14 mt-[6.5px]">{studyRoomData.title}</p>
-          <p className="text-semibold-10">멤버 {studyRoomData.memberList.length}명</p>
-          <p className="text-regular-12 mt-[19px]">{generateDday(studyRoomData.endDate)}</p>
+          <p className="text-semibold-14 mt-[6.5px] max-w-[100px] line-clamp-2 text-ellipsis break-all">
+            {studyRoomData.title}
+          </p>
+          <p className="text-semibold-10 whitespace-nowrap">
+            멤버 {studyRoomData.memberList.length}명
+          </p>
+          <p className="text-regular-12 mt-[10px] whitespace-nowrap">
+            {generateDday(studyRoomData.endDate)}
+          </p>
         </div>
       </div>
 

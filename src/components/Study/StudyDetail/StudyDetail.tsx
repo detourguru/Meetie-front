@@ -50,13 +50,13 @@ const StudyDetail = () => {
       </Header>
 
       <div className="px-4 pt-[64px] pb-[138px]">
-        <div className="flex items-center gap-[14px]">
-          <h1 className="text-semibold-24 max-w-[240px] line-clamp-2 text-ellipsis break-all">
+        <div className="flex items-center justify-between">
+          <h1 className="text-semibold-24 max-w-[270px] line-clamp-2 text-ellipsis break-all">
             {data.data.title}
           </h1>
           <div className="border border-primary-400 rounded-[20px] py-[4px] px-[14px]">
             <p className="text-medium-12 text-primary-400">
-              {data.data.isRecruit ? generateDday(data.data.endDate) : "모집 마감"}
+              {data.data.isRecruit ? generateDday(data.data.startDate) : "모집 마감"}
             </p>
           </div>
         </div>

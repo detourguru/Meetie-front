@@ -66,7 +66,7 @@ const StudyCard = ({ studyData, userId, bookMarkData }: StudyCardProps) => {
         </div>
         <div className="flex justify-between">
           <span className="font-bold text-[12px] text-primary-500">
-            {!studyData.isRecruit ? "모집 마감" : generateDday(newEndDate)}
+            {!studyData.isRecruit ? "모집 마감" : generateDday(newStartDate)}
           </span>
           <div className="flex justify-between">
             <div>
