@@ -16,7 +16,7 @@ export const PATH = {
   USER_PROFILE: (userId: string) => `/user/${userId}`,
   USER_PROFILE_EDIT: (userId: string) => `/user/${userId}/edit`,
   // TODO: 페이지 생성 후 PATH 수정
-  USER_FOLLOW_LIST: (userId: string) => `/user/${userId}/follow-list`,
+  USER_FOLLOW_LIST: (userId: string) => `/user/${userId}/friends-list`,
 
   STUDY_ROOM_LIST: "/study-room/list",
   STUDY_EXPLORER: "/study-explorer",

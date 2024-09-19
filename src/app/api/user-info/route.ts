@@ -8,7 +8,6 @@ export async function GET(request: Request) {
     const supabase = createClient();
 
     const { searchParams } = new URL(request.url);
-    const userId = searchParams.get("user_id");
 
     const query = supabase.from("userinfo").select();
     const position = searchParams.get("position") ?? "";
@@ -28,24 +27,7 @@ export async function GET(request: Request) {
       query.like("name", `%${search}%`);
     }
 
-    if (userId) {
-      query.eq("user_id", userId).single();
-    }
     const { data } = await query;
-
-    const currentDate = new Date().toISOString();
-    const bookmarks = data.bookmarks
-      .filter((bookmark: { study_id: string; isMarked: boolean }) => bookmark.isMarked)
-      .map((bookmark: { study_id: string; isMarked: boolean }) => bookmark.study_id);
-
-    const [studyListData, lastStudyListData, bookmarkStudyList] = await Promise.all([
-      supabase.from("study_room").select("id").in("id", data.studyList).gt("endDate", currentDate),
-      supabase.from("study_room").select("id").in("id", data.studyList).lte("endDate", currentDate),
-      supabase.from("study").select(`*, bookmarks(isMarked)`).in("id", bookmarks),
-    ]);
-
-    const studyList = studyListData.data?.map((study: { id: string }) => study.id) ?? [];
-    const lastStudyList = lastStudyListData.data?.map((study: { id: string }) => study.id) ?? [];
 
     return NextResponse.json({
       message: "ok",

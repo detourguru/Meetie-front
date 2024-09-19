@@ -86,7 +86,7 @@ const MyPageBody = () => {
           />
           {/* TODO: user 친구 리스트 데이터 생성 */}
           <InformationCard
-            count={13}
+            count={user.friendsList.length}
             informationData={INFORMATIONS_DATA.FOLLOW}
             navigateTo={PATH.USER_FOLLOW_LIST(userId ?? "")}
           />
