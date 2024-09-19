@@ -73,7 +73,7 @@ const MyPageBody = () => {
       {/* 내 정보 */}
       <div className="flex flex-col gap-3 px-4 mt-9">
         <header className="text-bold-18">내 정보</header>
-        <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-9 bg-primary-50">
+        <section className="grid grid-cols-3 border border-primary-200 rounded-lg py-5 bg-primary-50">
           <InformationCard
             count={user.studyList.length}
             informationData={INFORMATIONS_DATA.STUDY}
