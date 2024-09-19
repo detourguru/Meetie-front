@@ -62,7 +62,7 @@ const Member = ({ member }: MemberType) => {
             {member.position}
           </span>
           <span className="flex justify-center text-regular-10 h-7 text-nowrap">
-            {member.styles.join("·")}
+            {member.styles.slice(0, 2).join("·")}
           </span>
         </div>
         <div className="flex justify-center">
