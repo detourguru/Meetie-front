@@ -10,7 +10,7 @@ const BadgeList = () => {
   const { getBadgeLevel } = useBadge();
 
   return (
-    <div className="flex flex-col my-8 gap-8">
+    <div className="flex flex-col my-8 gap-8 mt-[72px]">
       {BADGE_DATA.map((badges, index) => (
         <BadgeArea badges={badges} key={`badge/${index}`} level={getBadgeLevel(badges.type)} />
       ))}
