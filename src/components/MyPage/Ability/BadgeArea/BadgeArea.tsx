@@ -60,6 +60,8 @@ const BadgeArea = ({ badges, level }: BadgeAreaProps) => {
         isOpen={isOpen}
         selectedBadge={selectedBadge}
         selectedBadgeType={badges.value}
+        title={badges.title}
+        description={badges.description}
         onInteractOutside={handleClose}
       />
     </>

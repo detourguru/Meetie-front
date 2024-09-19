@@ -1,6 +1,8 @@
 export interface BadgesType {
   value: string;
   type: string;
+  title: string;
+  description: string;
   badges: BadgeType[];
 }
 
