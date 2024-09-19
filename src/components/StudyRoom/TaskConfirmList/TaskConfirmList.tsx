@@ -10,7 +10,7 @@ interface TaskConfirmListProps {
 }
 
 const TaskConfirmList = ({ studyRoomId, selectedDate }: TaskConfirmListProps) => {
-  const referenceDate = `${selectedDate.year}-${selectedDate.month
+  const referenceDate = `${selectedDate.year}-${(selectedDate.month + 1)
     .toString()
     .padStart(2, "0")}-${selectedDate.date.toString().padStart(2, "0")}`;
 

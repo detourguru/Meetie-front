@@ -12,7 +12,7 @@ const ScheduleItem = ({ scheduleData, selectedDate }: ScheduleItemProps) => {
   const isTodaySchedule =
     scheduleData.scheduleDate &&
     new Date(scheduleData.scheduleDate).getFullYear() === selectedDate.year &&
-    new Date(scheduleData.scheduleDate).getMonth() + 1 === selectedDate.month &&
+    new Date(scheduleData.scheduleDate).getMonth() === selectedDate.month &&
     new Date(scheduleData.scheduleDate).getDate() === selectedDate.date;
 
   return (

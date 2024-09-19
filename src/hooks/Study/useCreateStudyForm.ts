@@ -84,7 +84,7 @@ export const useCreateStudyForm = ({
   const handleSubmit = async () => {
     postStudyMutation(createStudyForm, {
       onSuccess: () => {
-        router.push(PATH.STUDY_ROOM_LIST);
+        router.push(PATH.STUDY_EXPLORER);
       },
     });
   };

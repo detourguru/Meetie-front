@@ -74,8 +74,11 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
           schema: "public",
           table: "message",
         },
-        () => {
-          queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MESSAGES, studyRoomId] });
+
+        (payload) => {
+          if (payload.eventType === "INSERT" && !payload.errors) {
+            queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MESSAGES, studyRoomId] });
+          }
         },
       )
       .subscribe();

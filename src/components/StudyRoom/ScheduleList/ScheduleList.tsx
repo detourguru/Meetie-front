@@ -17,7 +17,7 @@ const ScheduleList = ({ studyRoomId, selectedDate }: ScheduleListProps) => {
     (data) =>
       data.scheduleDate &&
       new Date(data.scheduleDate).getFullYear() === selectedDate.year &&
-      new Date(data.scheduleDate).getMonth() + 1 === selectedDate.month &&
+      new Date(data.scheduleDate).getMonth() === selectedDate.month &&
       new Date(data.scheduleDate).getDate() === selectedDate.date,
   );
 

@@ -1,5 +1,3 @@
-import { Suspense } from "react";
-
 import ChatItem from "@/components/StudyRoom/Chat/ChatItem";
 import ChatRoom from "@/components/StudyRoom/Chat/ChatRoom";
 
@@ -33,15 +31,13 @@ const ChatTab = ({ studyRoomId, userId, title }: ChatTabProps) => {
         />
       </section>
 
-      <Suspense>
-        <ChatRoom
-          isOpen={isOpen}
-          onInteractOutside={handleClose}
-          studyRoomId={studyRoomId}
-          userId={userId}
-          title={title}
-        />
-      </Suspense>
+      <ChatRoom
+        isOpen={isOpen}
+        onInteractOutside={handleClose}
+        studyRoomId={studyRoomId}
+        userId={userId}
+        title={title}
+      />
     </>
   );
 };
