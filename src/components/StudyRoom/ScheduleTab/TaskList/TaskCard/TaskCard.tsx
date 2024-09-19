@@ -20,7 +20,7 @@ const TaskCard = ({ task, studyRoomId }: TaskCardProps) => {
         <div>
           <h4 className="text-medium-16">{task.title}</h4>
           <p className="text-medium-12 text-[#82829B]">
-            <span className="text-[#4C4CC7]">{task.content}</span>
+            <span className="text-[#4C4CC7]">{task.confirmType}</span>
           </p>
         </div>
 

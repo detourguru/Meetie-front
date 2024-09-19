@@ -31,16 +31,16 @@ const StudyRequestCard = ({ userId, studyId }: StudyRequestCardProps) => {
             <div>
               <h2 className="text-semibold-16">{userData.data.name}</h2>
               {/* db 수정 필요 */}
-              <h3 className="text-medium-14 text-gray-250">기획자</h3>
-              <p className="text-medium-12 text-gray-250">
-                {/* db 수정 필요 */}
+              <h3 className="text-medium-14 text-gray-250">{userData.data.position}</h3>
+              {/* <p className="text-medium-12 text-gray-250">
+                db 수정 필요
                 <span className="mr-[14px] after:h-[10px] after:w-[1px] after:bg-gray-250 after:inline-block relative after:absolute after:right-[-8px] after:top-[2px]">
                   스터디 <span className="text-[#7876e3]">132회</span>
                 </span>
                 <span>
                   출석률 <span className="text-[#7876e3]">108%</span>
                 </span>
-              </p>
+              </p> */}
             </div>
           </div>
           <div className="flex gap-2 h-full">

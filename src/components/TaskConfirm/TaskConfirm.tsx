@@ -41,12 +41,14 @@ const TaskConfirm = ({ taskId, studyRoomId }: TaskConfirmProps) => {
             진행중
           </span>
         </section>
-        <section className="relative flex p-4 bg-white border border-[#E9E9E9] border-inset rounded-md drop-shadow-sm">
+        <section className="relative flex p-4 bg-white border border-[#E9E9E9] border-inset rounded-md drop-shadow-sm items-center">
           <div className="w-[20px] h-10 flex justify-center items-center mr-4 bg-[#F7F3FF] border border-[#EBE9F5] rounded-[7px]">
             <Image src="/svg/ic-calendar-vertical.svg" alt="icon" width={18} height={19} />
           </div>
           <div>
-            <p className="text-regular-16">{data.data.content}</p>
+            <p className="text-regular-16 max-w-[270px] line-clamp-2 text-ellipsis break-all">
+              {data.data.content}
+            </p>
             <span className="text-regular-12 text-[#82829B]">{data.data.confirmType}</span>
           </div>
           {/* TODO : 스터디원 프로필 이미지

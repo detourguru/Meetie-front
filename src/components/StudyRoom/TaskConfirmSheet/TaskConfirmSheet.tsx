@@ -57,7 +57,7 @@ const TaskConfirmSheet = ({
               />
             </div>
             {/* todo: 카메라 업로드 기능 구현 */}
-            <div className="flex flex-col items-center">
+            {/* <div className="flex flex-col items-center">
               <label
                 htmlFor="camera"
                 className="w-[68px] h-[68px] flex justify-center items-center bg-[#6490DB] rounded-full mb-1"
@@ -66,14 +66,14 @@ const TaskConfirmSheet = ({
               </label>
               <span>카메라</span>
               <input type="file" capture="environment" accept="image/*" id="camera" hidden />
-            </div>
+            </div> */}
             {/* todo: 링크 업로드 기능 구현 */}
-            <div className="flex flex-col items-center">
+            {/* <div className="flex flex-col items-center">
               <label className="w-[68px] h-[68px] flex justify-center items-center bg-[#5256B5] rounded-full mb-1">
                 <Image src="/svg/ic-calendar-link.svg" alt="link icon" width={30} height={30} />
               </label>
               <span>링크</span>
-            </div>
+            </div> */}
           </div>
         </div>
       </SheetContent>

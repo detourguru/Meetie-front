@@ -24,7 +24,13 @@ const TaskConfirmItem = ({ taskData }: TaskConfirmItemProps) => {
       <Link href={PATH.TASK_CONFIRM_DETAIL(taskData.id)}>
         <div className="relative w-full flex flex-col px-[18px] py-[14px] bg-[#FAFAFA] border border-[#EBE9F5] rounded-lg shadow-sm">
           <div className="flex items-center gap-3">
-            <Image src={userData.data.profileImage} alt="userImage" width={24} height={24} />
+            <Image
+              src={userData.data.profileImage}
+              alt="userImage"
+              width={24}
+              height={24}
+              className="rounded-full"
+            />
             <h4 className="text-semibold-16 text-gray-700">{userData.data.name}</h4>
           </div>
 
