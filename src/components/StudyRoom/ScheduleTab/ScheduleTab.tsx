@@ -16,7 +16,7 @@ const ScheduleTab = ({ studyRoomId, selectedDate, handleSelectedDate, isOwner }:
     <>
       <div className="px-4">
         <h4 className="text-bold-18 py-4">
-          🗓️ {selectedDate.month}월 {selectedDate.date}일 {selectedDate.day}
+          🗓️ {selectedDate.month + 1}월 {selectedDate.date}일 {selectedDate.day}
           요일
         </h4>
       </div>

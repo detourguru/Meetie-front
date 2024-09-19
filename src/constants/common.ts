@@ -51,7 +51,7 @@ export const GNB_DATA = [
 
 export const TODAY = {
   year: new Date().getFullYear(),
-  month: new Date().getMonth() + 1,
+  month: new Date().getMonth(),
   date: new Date().getDate(),
   day: new Date().getDay(),
 };

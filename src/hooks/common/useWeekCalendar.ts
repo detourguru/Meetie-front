@@ -33,9 +33,9 @@ export const useWeekCalendar = ({ selectedDate, handleSelectedDate }: CalendarDa
   const { year, month, date, day } = TODAY;
 
   const centerDate = {
-    year,
-    month,
-    date,
+    year: year,
+    month: month,
+    date: date,
     day: WEEK_DAY[day],
   };
 

@@ -1,5 +1,3 @@
-import EmptySchedule from "@/components/StudyRoom/ScheduleList/EmptySchedule/EmptySchedule";
-
 import { convertDate } from "@/utils/date";
 
 import type { DateType } from "@/types/common";
@@ -19,7 +17,7 @@ const ScheduleItem = ({ scheduleData, selectedDate }: ScheduleItemProps) => {
 
   return (
     <>
-      {isTodaySchedule ? (
+      {isTodaySchedule && (
         <div className="flex items-center gap-2 mt-6 px-4 py-3 bg-[#F5F5F5] border border-primary-500 rounded-lg">
           <div>
             <p className="text-medium-10 text-[#434343] text-center">
@@ -38,8 +36,6 @@ const ScheduleItem = ({ scheduleData, selectedDate }: ScheduleItemProps) => {
             </p>
           </div>
         </div>
-      ) : (
-        <EmptySchedule />
       )}
     </>
   );

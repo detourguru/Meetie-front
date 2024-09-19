@@ -12,7 +12,7 @@ const CalendarWeek = ({ selectedDate, handleSelectedDate }: CalendarDateType) =>
     <section className="px-4 py-7 bg-[#F9F9F9] border-t-2 border-[#E9E9E9]">
       <div className="flex justify-between">
         <h4>
-          {selectedDate.year}년 {selectedDate.month}월
+          {selectedDate.year}년 {selectedDate.month + 1}월
         </h4>
         <button className="text-regular-12" onClick={handleTodayClick}>
           오늘로
