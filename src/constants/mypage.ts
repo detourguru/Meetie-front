@@ -23,7 +23,6 @@ export const MENU_ITEMS_DATA = {
   PAST: {
     title: "지난 스터디",
     icon: "/svg/ic-last-study.svg",
-    navigateTo: PATH.STUDY_LAST_LIST,
   },
   RECENT_VISIT: {
     title: "최근 방문",

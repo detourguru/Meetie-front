@@ -26,6 +26,7 @@ const MyPageBody = () => {
     userId,
     user,
     userStudyList,
+    userLastStudyList,
     handleChangeInfoAgreement,
     handleMovePage,
     handleWithdrawal,
@@ -37,6 +38,12 @@ const MyPageBody = () => {
     isOpen: studyListOpen,
     handleOpen: handleStudyListOpen,
     handleClose: handleStudyListClose,
+  } = useOverlay();
+
+  const {
+    isOpen: lastStudyListOpen,
+    handleOpen: handleLastStudyListOpen,
+    handleClose: handleLastStudyListClose,
   } = useOverlay();
 
   return (
@@ -126,6 +133,7 @@ const MyPageBody = () => {
             <MenuListItem
               menuItemData={MENU_ITEMS_DATA.PAST}
               studyCount={user.lastStudyList.length}
+              handleClickItem={handleLastStudyListOpen}
             />
             <MenuListItem
               menuItemData={MENU_ITEMS_DATA.BOOKMARK}
@@ -202,6 +210,14 @@ const MyPageBody = () => {
           onInteractOutside={handleStudyListClose}
           studyList={userStudyList}
           isMyPage
+        />
+
+        <StudyListSheet
+          isOpen={lastStudyListOpen}
+          onInteractOutside={handleLastStudyListClose}
+          studyList={userLastStudyList}
+          isMyPage
+          isLast
         />
       </Suspense>
     </>

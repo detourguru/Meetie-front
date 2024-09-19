@@ -7,6 +7,7 @@ interface StudyListSheetProps extends CommonSheetProps {
   studyList: string[];
   studyRoomId?: string;
   isMyPage?: boolean;
+  isLast?: boolean;
 }
 
 const StudyListSheet = ({
@@ -15,6 +16,7 @@ const StudyListSheet = ({
   studyList,
   studyRoomId,
   isMyPage,
+  isLast,
 }: StudyListSheetProps) => {
   return (
     <Sheet open={isOpen}>
@@ -31,7 +33,8 @@ const StudyListSheet = ({
         </SheetHeader>
         <div className="px-5">
           <h2 className="text-medium-20 text-center">
-            진행 중인 스터디 <span className="text-[#697dd4]">{studyList.length}</span>
+            {!isLast ? "진행 중인" : "지난"} 스터디{" "}
+            <span className="text-[#697dd4]">{studyList.length}</span>
           </h2>
 
           <ul className="rounded-lg bg-white border border-[#dfdfdf] mt-6">
