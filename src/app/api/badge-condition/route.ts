@@ -6,13 +6,15 @@ export async function GET() {
   try {
     const supabase = createClient();
 
+    const id = (await supabase.auth.getUser()).data.user?.id ?? "";
+
     const [ownerCount, taskCount, communityCount, communityCommentsCount, communityEmojiCount] =
       await Promise.all([
-        supabase.from("study_room").select("id", { count: "exact" }),
-        supabase.from("task_confirm").select("id", { count: "exact" }),
-        supabase.from("community").select("id", { count: "exact" }),
-        supabase.from("community_comments").select("id", { count: "exact" }),
-        supabase.from("community_emoji").select("id", { count: "exact" }),
+        supabase.from("study_room").select("id", { count: "exact" }).eq("owner_id", id),
+        supabase.from("task_confirm").select("id", { count: "exact" }).eq("user_id", id),
+        supabase.from("community").select("id", { count: "exact" }).eq("user_id", id),
+        supabase.from("community_comments").select("id", { count: "exact" }).eq("user_id", id),
+        supabase.from("community_emoji").select("id", { count: "exact" }).eq("user_id", id),
       ]);
 
     return NextResponse.json({

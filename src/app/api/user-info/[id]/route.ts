@@ -34,7 +34,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
       supabase.from("study_room").select("id").in("id", data.studyList).lte("endDate", currentDate),
       supabase.from("study").select(`*, bookmarks(isMarked)`).in("id", bookmarks),
 
-      supabase.from("study_room").select("id", { count: "exact" }).eq("user_id", params.id),
+      supabase.from("study_room").select("id", { count: "exact" }).eq("owner_id", params.id),
       supabase.from("task_confirm").select("id", { count: "exact" }).eq("user_id", params.id),
       supabase.from("community").select("id", { count: "exact" }).eq("user_id", params.id),
       supabase.from("community_comments").select("id", { count: "exact" }).eq("user_id", params.id),
