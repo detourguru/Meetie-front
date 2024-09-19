@@ -18,7 +18,7 @@ interface MemberType {
 }
 
 const Member = ({ member }: MemberType) => {
-  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation(member.user_id);
+  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
 
   const { data } = useUserInfoQuery();
 
