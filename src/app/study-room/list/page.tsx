@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
 import Gnb from "@/components/common/Gnb/Gnb";
+import ExistStudy from "@/components/Study/StudyList/ExistStudy";
 import StudyList from "@/components/Study/StudyList/StudyList";
 import StudyListSkeleton from "@/components/Study/StudyList/StudyListSkeleton";
 import StudyRoomListHeader from "@/components/Study/StudyList/StudyRoomListHeader";
@@ -21,15 +22,10 @@ export default function Page() {
   return (
     <>
       <StudyRoomListHeader />
+      <div className="mt-[66px] mb-[32px] bg-[#ebe9f5] px-4 pt-1">
+        <ExistStudy />
+      </div>
       <article className="mx-4">
-        <div className="mt-[66px] mb-[32px]">
-          <h1 className="text-bold-18 mb-2">
-            아직 스터디가
-            <br />
-            존재하지 않아요!
-          </h1>
-          <h2 className="text-medium-14 text-gray-200">#원하는 스터디를 탐색해 볼까요?</h2>
-        </div>
         <Link href={PATH.STUDY_EXPLORER}>
           <div className="h-35 max-w-full p-6 bg-gray-50 rounded-lg mb-[12px]">
             <div className="flex justify-between">
