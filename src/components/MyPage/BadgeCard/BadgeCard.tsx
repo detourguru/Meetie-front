@@ -7,10 +7,9 @@ import { BADGE_DATA } from "@/constants/badges";
 interface BadgeCardProps {
   level: number;
   type: string;
-  title?: string;
 }
 
-const BadgeCard = ({ level, type, title }: BadgeCardProps) => {
+const BadgeCard = ({ level, type }: BadgeCardProps) => {
   const badgeLevel = level < 1 ? 1 : level;
   const widthAndHeight = level < 2 ? 61 : 78;
   const badge = BADGE_DATA.find((badges) => badges.value === type)?.badges.find(
@@ -27,7 +26,7 @@ const BadgeCard = ({ level, type, title }: BadgeCardProps) => {
         variant={level === 0 ? "tertiary" : "default"}
       />
       <div className="flex flex-col gap-2 items-center">
-        <p className="text-semibold-12">{title ? title : type} 뱃지</p>
+        <p className="text-semibold-12">{type} 뱃지</p>
         <div
           className={twJoin(
             `px-2 py-1 rounded-lg text-white text-medium-12`,

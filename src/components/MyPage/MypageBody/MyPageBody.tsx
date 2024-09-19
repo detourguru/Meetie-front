@@ -102,9 +102,9 @@ const MyPageBody = () => {
           </div>
           <div className="grid grid-cols-4 px-4">
             <BadgeCard type="댓글" level={user.badges["comment"]} />
-            <BadgeCard type="나눔" title="토론" level={user.badges["nanum"]} />
-            <BadgeCard type="밋티" title="방장" level={user.badges["meetie"]} />
+            <BadgeCard type="나눔" level={user.badges["nanum"]} />
             <BadgeCard type="피드백" level={user.badges["feedback"]} />
+            <BadgeCard type="밋티" level={user.badges["meetie"]} />
           </div>
         </section>
       </Link>
