@@ -10,7 +10,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
 
     const { error } = await supabase.from("task_emoji").insert({
       ...data,
-      taskConfirmId: Number(params.id),
+      taskConfirmId: String(params.id),
     });
 
     if (!error) {

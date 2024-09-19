@@ -8,13 +8,13 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { CreateTaskCommentFormType } from "@/types/taskConfirm";
 
 const postTaskComment = async (
-  taskConfirmId: number,
+  taskConfirmId: string,
   createCommentForm: CreateTaskCommentFormType,
 ) => {
   return await POST(END_POINTS.TASK_COMMENTS(taskConfirmId), createInit(createCommentForm));
 };
 
-export const usePostTaskCommentMutation = (taskConfirmId: number) => {
+export const usePostTaskCommentMutation = (taskConfirmId: string) => {
   const queryClient = useQueryClient();
 
   const postTaskCommentMutation = useMutation({

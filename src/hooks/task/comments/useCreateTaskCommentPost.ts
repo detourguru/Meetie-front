@@ -4,8 +4,8 @@ import { usePatchCommentiMutation } from "@/hooks/api/task-comments/usePatchComm
 import { usePostTaskCommentMutation } from "@/hooks/api/task-confirm/usePostTaskCommentMutation";
 import { useTaskCommentQuery } from "@/hooks/api/task-confirm/useTaskCommentQuery";
 
-export const useCreateTaskCommentPost = (id: number) => {
-  const [selectedComment, setSelectedComment] = useState(0);
+export const useCreateTaskCommentPost = (id: string) => {
+  const [selectedComment, setSelectedComment] = useState("");
   const { data: commentsData } = useTaskCommentQuery(id);
 
   const { mutate: postCommentMutation } = usePostTaskCommentMutation(id);
@@ -23,11 +23,11 @@ export const useCreateTaskCommentPost = (id: number) => {
         postCommentMutation({ contents: inputRef.current.value });
       }
       inputRef.current.value = "";
-      setSelectedComment(0);
+      setSelectedComment("");
     }
   };
 
-  const handleClickUpdate = (id: number) => {
+  const handleClickUpdate = (id: string) => {
     setSelectedComment(id);
     const comment = commentsData.data.find((comment) => comment.id === id);
     if (comment && inputRef.current) {

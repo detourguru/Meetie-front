@@ -9,7 +9,7 @@ interface ConfirmEmojiProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
 const ConfirmEmoji = ({ confirmEmoji, ...props }: ConfirmEmojiProps) => {
   return (
     <div className="relative cursor-pointer" {...props}>
-      <Avatar src="/svg/ic-user.svg" size="sm" />
+      <Avatar src={confirmEmoji.profileImage} size="sm" />
       <div className="absolute text-medium-20 -bottom-1 -right-2.5">{confirmEmoji.emoji}</div>
     </div>
   );

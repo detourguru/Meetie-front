@@ -7,7 +7,7 @@ import { END_POINTS } from "@/constants/api";
 
 import type { GetTaskCommentResponseType } from "@/types/taskConfirm";
 
-const getTaskComments = async (taskConfirmId: number) => {
+const getTaskComments = async (taskConfirmId: string) => {
   const comments = await GET<GetTaskCommentResponseType>(
     END_POINTS.TASK_COMMENTS(taskConfirmId),
     createInit(),
@@ -17,12 +17,12 @@ const getTaskComments = async (taskConfirmId: number) => {
 };
 
 export const taskCommentsQueryOptions = (
-  taskConfirmId: number,
+  taskConfirmId: string,
 ): UseSuspenseQueryOptions<GetTaskCommentResponseType> => ({
   queryKey: [],
   queryFn: async () => await getTaskComments(taskConfirmId),
 });
 
-export function useTaskCommentQuery(taskConfirmId: number) {
+export function useTaskCommentQuery(taskConfirmId: string) {
   return useSuspenseQuery(taskCommentsQueryOptions(taskConfirmId));
 }

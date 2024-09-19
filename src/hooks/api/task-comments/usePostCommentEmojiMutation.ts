@@ -7,14 +7,14 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { CreateCommentEmojiType } from "@/types/taskConfirm";
 
-const postCommentEmoji = async (taskConfirmId: number, createEmojiForm: CreateCommentEmojiType) => {
+const postCommentEmoji = async (taskConfirmId: string, createEmojiForm: CreateCommentEmojiType) => {
   return await POST(
     END_POINTS.POST_TASK_COMMENT_EMOJI(taskConfirmId, createEmojiForm.commentId),
     createInit(createEmojiForm),
   );
 };
 
-export const usePostCommentEmojiMutation = (taskConfirmId: number) => {
+export const usePostCommentEmojiMutation = (taskConfirmId: string) => {
   const queryClient = useQueryClient();
 
   const postCommentEmojiMutation = useMutation({

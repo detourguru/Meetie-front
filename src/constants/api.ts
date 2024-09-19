@@ -58,9 +58,9 @@ export const END_POINTS = {
   TASK_COMMENTS: (taskConfirmId: number) => `/api/task-confirm/${taskConfirmId}/comments`,
   DELETE_TASK_COMMENTS: (taskConfirmId: number, commentId: number) =>
     `/api/task-confirm/${taskConfirmId}/comments/${commentId}`,
-  TASK_EMOJI: (taskConfirmId: number) => `/api/task-confirm/${taskConfirmId}/emoji`,
-  POST_TASK_COMMENT_EMOJI: (taskConfirmId: number, commentId: number) =>
+  TASK_EMOJI: (taskConfirmId: string) => `/api/task-confirm/${taskConfirmId}/emoji`,
+  POST_TASK_COMMENT_EMOJI: (taskConfirmId: string, commentId: string) =>
     `/api/task-confirm/${taskConfirmId}/comments/${commentId}/emoji`,
-  TASK_COMMENT_EMOJI: (taskConfirmId: number, commentId: number, emoji: string) =>
+  TASK_COMMENT_EMOJI: (taskConfirmId: string, commentId: string, emoji: string) =>
     `/api/task-confirm/${taskConfirmId}/comments/${commentId}/emoji?emoji=${emoji}`,
 };

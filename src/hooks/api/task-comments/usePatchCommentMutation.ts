@@ -7,14 +7,14 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 
 import type { UpdateCommentFormType } from "@/types/taskConfirm";
 
-const patchComment = async (taskConfirmId: number, createForm: UpdateCommentFormType) => {
+const patchComment = async (taskConfirmId: string, createForm: UpdateCommentFormType) => {
   return await PATCH(
     END_POINTS.DELETE_TASK_COMMENTS(taskConfirmId, createForm.id),
     createInit({ contents: createForm.contents }),
   );
 };
 
-export const usePatchCommentiMutation = (taskConfirmId: number) => {
+export const usePatchCommentiMutation = (taskConfirmId: string) => {
   const queryClient = useQueryClient();
 
   const patchCommentiMutation = useMutation({

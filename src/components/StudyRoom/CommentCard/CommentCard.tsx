@@ -24,7 +24,7 @@ const CommentCard = ({
   handlePostEmoji,
   handleDeleteEmoji,
 }: CommentCardProps) => {
-  const { name, profileImage, contents, create_at, emojiList, selectedEmoji } = comment;
+  const { name, profileImage, contents, created_at, emojiList, selectedEmoji } = comment;
 
   const { isOpen, handleToggle, handleClose } = useOverlay();
 
@@ -42,7 +42,7 @@ const CommentCard = ({
             <div className="flex gap-2 items-center">
               <h4 className="text-bold-14 text-[#141414]">{name}</h4>
               <span className="text-medium-10 text-[#898989]">
-                {convertSimpleDateTime(new Date(create_at))}
+                {convertSimpleDateTime(new Date(created_at))}
               </span>
             </div>
             {isOwner && (

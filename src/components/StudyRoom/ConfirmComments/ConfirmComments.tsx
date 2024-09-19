@@ -25,7 +25,7 @@ interface ConfirmCommentsProps {
 
 const ConfirmComments = ({ user, emojiList }: ConfirmCommentsProps) => {
   const { id } = useParams();
-  const taskConfirmId = Number(id);
+  const taskConfirmId = String(id);
 
   const { mutate: postConfirmEmojiMutation } = usePostConfirmEmojiMutation(taskConfirmId);
   const { mutate: deleteConfirmEmojiMutation } = useDeleteConfirmEmojiMutation(taskConfirmId);
@@ -52,11 +52,13 @@ const ConfirmComments = ({ user, emojiList }: ConfirmCommentsProps) => {
         <div className="flex flex-col gap-4 px-4 pb-3">
           <div className="text-semibold-12 flex items-center gap-1.5">
             <div>
-              표정 <span className="text-primary-500">{emojiList.length}</span>
+              표정
+              <span className="text-primary-500">{emojiList.length}</span>
             </div>
             <div className="h-1 w-1 bg-[#9C9C9C] rounded-full" />
             <div>
-              댓글 <span className="text-primary-500">{commentsData.data.length}</span>
+              댓글
+              <span className="text-primary-500">{commentsData.data.length}</span>
             </div>
           </div>
 

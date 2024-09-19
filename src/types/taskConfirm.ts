@@ -23,18 +23,18 @@ export interface TaskConfirmType extends TaskConfirmRequestType {
 }
 
 export interface TaskCommentType {
-  id: number;
+  id: string;
   user_id: string;
   name: string;
   profileImage: string;
-  create_at: Date;
+  created_at: Date;
   contents: string;
   emojiList: CommentEmojiType[];
   selectedEmoji: string[];
 }
 
 export interface TaskPostEmojiType {
-  id: number;
+  id: string;
   user_id: string;
   profileImage: string;
   emoji: string;
@@ -45,7 +45,7 @@ export type CreateTaskCommentFormType = Pick<TaskCommentType, "contents">;
 export type CreateTaskEmojiType = Pick<TaskPostEmojiType, "emoji">;
 
 export interface CreateTaskEmojiResponseType {
-  id: number;
+  id: string;
   emoji: string;
   user_id: string;
   userinfo: { profileImage: string };
@@ -65,7 +65,7 @@ export type UpdateCommentFormType = Pick<TaskCommentType, "contents" | "id">;
 
 export interface CreateCommentEmojiType {
   emoji: string;
-  commentId: number;
+  commentId: string;
 }
 
 export interface CommentEmojiType {

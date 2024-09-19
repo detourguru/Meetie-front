@@ -72,7 +72,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
     const { error } = await supabase.from("task_comments").insert({
       ...data,
       user_id: user?.id,
-      taskConfirmId: Number(params.id),
+      taskConfirmId: String(params.id),
     });
 
     if (!error) {

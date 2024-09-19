@@ -8,20 +8,16 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { CreateCommentEmojiType } from "@/types/taskConfirm";
 
 const deleteCommentEmoji = async (
-  taskConfirmId: number,
+  taskConfirmId: string,
   createEmojiForm: CreateCommentEmojiType,
 ) => {
   return await DELETE(
-    END_POINTS.COMMUNITY_COMMENT_EMOJI(
-      taskConfirmId,
-      createEmojiForm.commentId,
-      createEmojiForm.emoji,
-    ),
+    END_POINTS.TASK_COMMENT_EMOJI(taskConfirmId, createEmojiForm.commentId, createEmojiForm.emoji),
     createInit(),
   );
 };
 
-export const useDeleteCommentEmojiMutation = (taskConfirmId: number) => {
+export const useDeleteCommentEmojiMutation = (taskConfirmId: string) => {
   const queryClient = useQueryClient();
 
   const deleteCommentEmojiMutation = useMutation({
