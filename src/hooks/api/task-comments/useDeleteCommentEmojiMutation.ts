@@ -25,7 +25,7 @@ export const useDeleteCommentEmojiMutation = (taskConfirmId: string) => {
       await deleteCommentEmoji(taskConfirmId, createEmojiForm),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.TASK_CONFIRM, taskConfirmId, QUERY_KEYS.COMMUNITY_COMMENTS],
+        queryKey: [QUERY_KEYS.TASK_CONFIRM, taskConfirmId, QUERY_KEYS.TASK_COMMENTS],
       });
     },
     onError: (error) => {

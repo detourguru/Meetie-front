@@ -15,7 +15,7 @@ export const useDeleteConfirmEmojiMutation = (taskConfirmId: string) => {
   const deleteConfirmEmojiMutation = useMutation({
     mutationFn: async () => await deleteConfirmEmoji(taskConfirmId),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK, taskConfirmId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK_CONFIRM, taskConfirmId] });
     },
     onError: (error) => {
       console.error(error);

@@ -18,7 +18,7 @@ export const usePostConfirmEmojiMutation = (taskConfirmId: string) => {
     mutationFn: async (createEmojiForm: CreateTaskEmojiType) =>
       await postConfirmEmoji(taskConfirmId, createEmojiForm),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK, taskConfirmId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK_CONFIRM, taskConfirmId] });
     },
     onError: (error) => {
       console.log(error);

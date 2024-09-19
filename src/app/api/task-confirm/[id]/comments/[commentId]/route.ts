@@ -25,7 +25,10 @@ export async function PATCH(request: Request, { params }: { params: { commentId:
 
     const data = await request.json();
 
-    const { error } = await supabase.from("task_comments").update(data).eq("id", params.commentId);
+    const { error } = await supabase
+      .from("task_comments")
+      .update({ contents: data.contents })
+      .eq("id", params.commentId);
 
     if (!error) {
       return NextResponse.json({ message: "ok" }, { status: 200 });

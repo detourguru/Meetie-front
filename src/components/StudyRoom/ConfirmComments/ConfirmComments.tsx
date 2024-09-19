@@ -53,12 +53,12 @@ const ConfirmComments = ({ user, emojiList }: ConfirmCommentsProps) => {
           <div className="text-semibold-12 flex items-center gap-1.5">
             <div>
               표정
-              <span className="text-primary-500">{emojiList.length}</span>
+              <span className="text-primary-500"> {emojiList.length}</span>
             </div>
             <div className="h-1 w-1 bg-[#9C9C9C] rounded-full" />
             <div>
               댓글
-              <span className="text-primary-500">{commentsData.data.length}</span>
+              <span className="text-primary-500"> {commentsData.data.length}</span>
             </div>
           </div>
 

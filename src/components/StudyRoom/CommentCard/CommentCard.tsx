@@ -57,7 +57,7 @@ const CommentCard = ({
             )}
           </div>
 
-          <p className="text-regular-14 text-[#1F1F1F] pb-5">{contents}</p>
+          <p className="text-regular-14 text-[#1F1F1F] pb-3">{contents}</p>
 
           <div className="flex gap-2.5 items-center">
             <ConfirmEmojiButton

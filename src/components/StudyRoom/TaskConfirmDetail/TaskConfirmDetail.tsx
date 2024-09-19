@@ -16,6 +16,7 @@ const TaskConfirmDetail = () => {
   const params = useParams();
 
   const { data } = useTaskConfirmDetailQuery(String(params.id));
+
   const { data: userData } = useUserInfoQuery();
   const { data: authUserData } = useUserInfoQuery(data.data.user_id);
 

@@ -10,7 +10,7 @@ export async function POST(request: Request, { params }: { params: { commentId: 
 
     const { error } = await supabase.from("task_comments_emoji").insert({
       emoji: data.emoji,
-      taskConfirmId: String(params.commentId),
+      comment_id: String(params.commentId),
     });
 
     if (!error) {
@@ -36,6 +36,8 @@ export async function DELETE(request: Request, { params }: { params: { commentId
       .delete()
       .eq("comment_id", params.commentId)
       .eq("emoji", emoji);
+
+    console.log(error);
 
     if (!error) {
       return NextResponse.json({ message: "ok" }, { status: 200 });
