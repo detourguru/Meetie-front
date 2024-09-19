@@ -1,35 +1,16 @@
-import Link from "next/link";
-
 import { Suspense } from "react";
 
 import { ServerFetchBoundary } from "@/apis/ServerFetchBoundary";
 
-import Header from "@/components/common/Header/Header";
 import ProfileBody from "@/components/Profile/ProfileBody/ProfileBody";
-
-import { PATH } from "@/constants/path";
 
 import { userInfoQueryOptions } from "@/hooks/api/userInfo/useUserInfoQuery";
 
-interface UserProfilePageParamsType {
-  params: { id: string };
-}
-
-export default function UserProfilePage({ params }: UserProfilePageParamsType) {
+export default function UserProfilePage() {
   const serverFetchOptions = [userInfoQueryOptions()];
 
   return (
     <>
-      <Header>
-        <Header.LeftButton />
-        <Header.Title hasButton>오픈 프로필</Header.Title>
-        <Header.RightTextButton>
-          <Link href={PATH.USER_PROFILE_EDIT(params.id)}>
-            <p className="text-medium-14 text-black">수정</p>
-          </Link>
-        </Header.RightTextButton>
-      </Header>
-
       <Suspense
         // TODO: loading 컴포넌트로 변경
         fallback={

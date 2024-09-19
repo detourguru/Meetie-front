@@ -1,9 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useParams } from "next/navigation";
 
 import Avatar from "@/components/common/Avatar/Avatar";
 import Divider from "@/components/common/Divider/Divider";
+import Header from "@/components/common/Header/Header";
 import BadgeIcon from "@/components/MyPage/BadgeIcon/BadgeIcon";
 import BadgeList from "@/components/Profile/BadgeList/BadgeList";
 import EvaluationList from "@/components/Profile/EvaluationList/EvaluationList";
@@ -12,13 +14,17 @@ import StyleList from "@/components/Profile/StyleList/StyleList";
 import TagList from "@/components/Profile/TagList/TagList";
 
 import { BADGE_DATA } from "@/constants/badges";
+import { PATH } from "@/constants/path";
 
 import { useUserInfoQuery } from "@/hooks/api/userInfo/useUserInfoQuery";
+import { useGoBack } from "@/hooks/common/useGoBack";
 
 const ProfileBody = () => {
   const params = useParams();
 
   const { data } = useUserInfoQuery(String(params.id));
+
+  const { handleGoBack } = useGoBack();
 
   const user = data.data;
 
@@ -28,6 +34,16 @@ const ProfileBody = () => {
 
   return (
     <>
+      <Header>
+        <Header.LeftButton handleButtonClick={handleGoBack} />
+        <Header.Title hasButton>오픈 프로필</Header.Title>
+        <Header.RightTextButton>
+          <Link href={PATH.USER_PROFILE_EDIT(String(params.id))}>
+            <p className="text-medium-14 text-black">수정</p>
+          </Link>
+        </Header.RightTextButton>
+      </Header>
+
       <div className="pt-[68px] px-4 bg-white">
         <div className="flex flex-col items-center gap-2">
           <Avatar src={user.profileImage} size="lg" outline="primary" />
