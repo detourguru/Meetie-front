@@ -17,6 +17,7 @@ const StudyList = () => {
   const { data, refetch } = useStudyListQuery({
     ...INITIAL_FILTER_OPTION_DATA,
     isRecruit: checked,
+    sort: "viewCount",
   });
 
   const { data: userData } = useUserInfoQuery();
@@ -38,14 +39,16 @@ const StudyList = () => {
       {/* TODO: data 없을때 보여줄 UI 필요 */}
 
       {data.data &&
-        data.data.map((studyData) => (
-          <StudyCard
-            userId={userData.data.user_id}
-            studyData={studyData}
-            key={studyData.id}
-            bookMarkData={userData.data.bookmarks}
-          />
-        ))}
+        data.data
+          .slice(0, 5)
+          .map((studyData) => (
+            <StudyCard
+              userId={userData.data.user_id}
+              studyData={studyData}
+              key={studyData.id}
+              bookMarkData={userData.data.bookmarks}
+            />
+          ))}
     </article>
   );
 };
