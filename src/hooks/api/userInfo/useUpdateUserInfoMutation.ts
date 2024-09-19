@@ -22,7 +22,7 @@ export const useUpdateUserInfoMutation = () => {
   const updateUserInfoMutation = useMutation({
     mutationFn: updateUserInfo,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO] });
     },
     onError: (error) => {
       console.error(error);

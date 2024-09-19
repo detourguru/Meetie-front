@@ -24,7 +24,7 @@ const EditProfileForm = () => {
 
   const initialData = {
     name: user.name,
-    introduce: user.name,
+    introduce: user.introduce,
     profileImage: user.profileImage,
     mainBadge: user.mainBadge,
     position: user.position,
