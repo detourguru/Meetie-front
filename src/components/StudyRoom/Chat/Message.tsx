@@ -22,7 +22,7 @@ const Message = ({ isMine, message, userId, messageSendTime }: MessageProps) => 
         {!isMine && <p className="text-regular-12">{data.data.name}</p>}
         <p
           className={cn(
-            "w-[260px] border p-2 rounded-lg h-auto break-all",
+            "max-w-[260px] border p-2 rounded-lg h-auto break-all",
             isMine ? "bg-primary-100" : "bg-white",
           )}
         >
