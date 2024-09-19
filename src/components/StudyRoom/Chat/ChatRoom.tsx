@@ -13,9 +13,10 @@ import type { CommonSheetProps } from "@/types/common";
 interface ChatRoomProps extends CommonSheetProps {
   studyRoomId: string;
   userId: string;
+  title: string;
 }
 
-const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomProps) => {
+const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId, title }: ChatRoomProps) => {
   const {
     message,
     allMessageData,
@@ -29,13 +30,14 @@ const ChatRoom = ({ isOpen, onInteractOutside, studyRoomId, userId }: ChatRoomPr
   return (
     <Sheet open={isOpen}>
       <SheetContent className="pb-8 h-full overflow-scroll hidden-scrollbar w-[375px]">
-        <SheetHeader className="h-10 flex justify-center px-3 fixed bg-white w-[375px]">
+        <SheetHeader className="h-10 flex justify-center flex-row items-center px-3 fixed bg-white w-[375px] space-y-0">
           <CustomImage
             src="/svg/ic-header-left-arrow.svg"
             alt="leftButtonIcon"
-            className="w-[24px] h-[24px]"
+            className="w-[24px] h-[24px] absolute left-4"
             handleClick={onInteractOutside}
           />
+          <p className="text-semibold-16">{title}</p>
         </SheetHeader>
 
         <div className="flex flex-col gap-3 flex-1 overflow-y-scroll px-2 py-12">

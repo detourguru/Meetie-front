@@ -9,9 +9,10 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 interface ChatTabProps {
   studyRoomId: string;
   userId: string;
+  title: string;
 }
 
-const ChatTab = ({ studyRoomId, userId }: ChatTabProps) => {
+const ChatTab = ({ studyRoomId, userId, title }: ChatTabProps) => {
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
   const { mutate: unReadMessageMutation } = usePatchUnReadMessage(studyRoomId);
@@ -38,6 +39,7 @@ const ChatTab = ({ studyRoomId, userId }: ChatTabProps) => {
           onInteractOutside={handleClose}
           studyRoomId={studyRoomId}
           userId={userId}
+          title={title}
         />
       </Suspense>
     </>

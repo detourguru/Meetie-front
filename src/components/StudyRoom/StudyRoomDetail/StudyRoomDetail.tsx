@@ -92,7 +92,11 @@ const StudyRoomDetail = () => {
         </TabsContent>
         <TabsContent value="chat">
           <Suspense fallback={<ChatTabSkeleton />}>
-            <ChatTab studyRoomId={String(params.id)} userId={userData.data.user_id} />
+            <ChatTab
+              studyRoomId={String(params.id)}
+              userId={userData.data.user_id}
+              title={data.data.title}
+            />
           </Suspense>
         </TabsContent>
       </Tabs>
