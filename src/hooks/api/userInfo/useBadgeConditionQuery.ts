@@ -12,7 +12,7 @@ const getBadgeCondition = async () =>
   await GET<GetBadgeConditionType>(END_POINTS.BADGE_CONDITION, createInit());
 
 export const badgeConditionQueryOptions = (): UseSuspenseQueryOptions<GetBadgeConditionType> => ({
-  queryKey: [QUERY_KEYS.BADGE_CONDITION],
+  queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER, QUERY_KEYS.BADGE_CONDITION],
   queryFn: () => getBadgeCondition(),
 });
 

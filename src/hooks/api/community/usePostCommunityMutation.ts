@@ -18,6 +18,7 @@ export const usePostCommunityMutation = () => {
     mutationFn: postCommunity,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY_LIST] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER] });
     },
     onError: (error) => {
       console.log(error);

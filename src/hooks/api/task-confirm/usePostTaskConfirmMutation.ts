@@ -15,6 +15,7 @@ export const usePostTaskConfirmMutation = () => {
       POST(END_POINTS.TASK_CONFIRM, createInit(taskConfirmForm)),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.TASK_CONFIRM_SUCCESS] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER] });
     },
     onError: (error) => {
       console.error(error);

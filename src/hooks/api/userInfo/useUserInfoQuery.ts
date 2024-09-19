@@ -33,7 +33,7 @@ const getUserInfo = async (id?: string) => {
 export const userInfoQueryOptions = (
   id?: string,
 ): UseSuspenseQueryOptions<GetUserInfoResponseType> => ({
-  queryKey: [QUERY_KEYS.USER_INFO, id],
+  queryKey: [QUERY_KEYS.USER_INFO, id ? id : QUERY_KEYS.OWNER_USER],
   queryFn: () => getUserInfo(id),
 });
 

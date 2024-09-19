@@ -19,6 +19,7 @@ export const usePostCommunityEmojiMutation = (postId: number) => {
       await postCommunityEmoji(postId, createEmojiForm),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.COMMUNITY, postId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER] });
     },
     onError: (error) => {
       console.log(error);

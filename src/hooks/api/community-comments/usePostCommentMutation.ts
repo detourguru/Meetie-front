@@ -21,6 +21,7 @@ export const usePostCommentMutation = (postId: number) => {
       queryClient.invalidateQueries({
         queryKey: [QUERY_KEYS.COMMUNITY, postId, QUERY_KEYS.COMMUNITY_COMMENTS],
       });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER] });
     },
     onError: (error) => {
       console.log(error);

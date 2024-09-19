@@ -26,7 +26,7 @@ export const usePatchBookmarkMutation = () => {
         queryKey: [QUERY_KEYS.STUDY_LIST],
       });
       queryClient.invalidateQueries({
-        queryKey: [QUERY_KEYS.USER_INFO],
+        queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER],
       });
     },
     onError: (error) => {
