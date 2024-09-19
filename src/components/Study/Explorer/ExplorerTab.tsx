@@ -66,7 +66,11 @@ const ExplorerTab = () => {
         </>
       )}
 
-      {currentTab === "member" && <MemberFilteredList />}
+      {currentTab === "member" && (
+        <>
+          <MemberFilteredList />
+        </>
+      )}
     </>
   );
 };
