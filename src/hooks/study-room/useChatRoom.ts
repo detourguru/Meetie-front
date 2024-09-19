@@ -5,7 +5,6 @@ import { useQueryClient } from "@tanstack/react-query";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 import { useAllMessageQuery } from "@/hooks/api/chat/useAllMessageQuery";
-import { usePatchUnReadMessage } from "@/hooks/api/chat/usePatchUnReadMessageMutation";
 import { useSendMessageMutation } from "@/hooks/api/chat/useSendMessageMutation";
 
 import { createClient } from "@/utils/supabase/client";
@@ -18,7 +17,6 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
   const { data: allMessageData } = useAllMessageQuery(studyRoomId);
 
   const { mutate: sendMessageMutation } = useSendMessageMutation(studyRoomId);
-  const { mutate: unReadMessageMutation } = usePatchUnReadMessage(studyRoomId);
 
   const queryClient = useQueryClient();
 
@@ -34,6 +32,10 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
   };
 
   const handleSendMessage = () => {
+    if (message === "") {
+      return;
+    }
+
     sendMessageMutation(
       { message, studyRoomId },
       {
@@ -63,8 +65,6 @@ export const useChatRoom = ({ studyRoomId }: UseChatRoomProps) => {
   }, [allMessageData]);
 
   useEffect(() => {
-    unReadMessageMutation(studyRoomId);
-
     const channel = supabase
       .channel(`chat${studyRoomId}`)
       .on(

@@ -22,6 +22,7 @@ export const useSendMessageMutation = (studyRoomId: string) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.MESSAGES, studyRoomId] });
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.LAST_MESSAGE, studyRoomId] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.UNREAD_MESSAGE_COUNT, studyRoomId] });
     },
     onError: (error) => {
       console.error(error);
