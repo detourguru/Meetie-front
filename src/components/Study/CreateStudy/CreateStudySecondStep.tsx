@@ -1,6 +1,6 @@
 import Image from "@/components/common/Image/Image";
 import Input from "@/components/common/Input/Input";
-import Tag from "@/components/common/Tag/Tag";
+// import Tag from "@/components/common/Tag/Tag";
 import Textarea from "@/components/common/Textarea/Textarea";
 import CalendarSheet from "@/components/Study/CreateStudy/CalendarSheet/CalendarSheet";
 import StudyTagList from "@/components/Study/CreateStudy/StudyTagList/StudyTagList";
@@ -151,7 +151,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         <span className="text-regular-12 text-gray-250">한 개당 최대 8자로 10개까지 가능해요</span>
       </div>
 
-      <div>
+      {/* <div>
         <span className="text-regular-14 text-gray-450">준식님 이런 태그는 어떠세요?</span>
         <div className="flex gap-2 mt-2">
           <Tag text="피그마" />
@@ -159,7 +159,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
           <Tag text="UX/UI" />
           <Tag text="온라인 강의" />
         </div>
-      </div>
+      </div> */}
 
       <CalendarSheet
         isOpen={isStartDateCalendarOpen}
