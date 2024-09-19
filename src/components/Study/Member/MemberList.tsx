@@ -14,6 +14,7 @@ const MemberList = () => {
               description={member.styles.join("|")}
               field={member.position}
               key={member.id}
+              user_id={member.user_id}
             />
           ))}
       </div>

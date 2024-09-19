@@ -43,4 +43,5 @@ export interface UserInformationType {
   purposes: string[];
   styles: string[];
   period: string;
+  friendsList: string[];
 }
