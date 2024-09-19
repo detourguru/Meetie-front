@@ -55,8 +55,8 @@ export const END_POINTS = {
   ALL_MESSAGE: (studyRoomId: string) => `/api/chat/${studyRoomId}`,
   LAST_MESSAGE: (studyRoomId: string) => `/api/message/${studyRoomId}`,
   UNREAD_MESSAGE: (studyRoomId: string) => `/api/message-unread/${studyRoomId}`,
-  TASK_COMMENTS: (taskConfirmId: number) => `/api/task-confirm/${taskConfirmId}/comments`,
-  DELETE_TASK_COMMENTS: (taskConfirmId: number, commentId: number) =>
+  TASK_COMMENTS: (taskConfirmId: string) => `/api/task-confirm/${taskConfirmId}/comments`,
+  DELETE_TASK_COMMENTS: (taskConfirmId: string, commentId: string) =>
     `/api/task-confirm/${taskConfirmId}/comments/${commentId}`,
   TASK_EMOJI: (taskConfirmId: string) => `/api/task-confirm/${taskConfirmId}/emoji`,
   POST_TASK_COMMENT_EMOJI: (taskConfirmId: string, commentId: string) =>
