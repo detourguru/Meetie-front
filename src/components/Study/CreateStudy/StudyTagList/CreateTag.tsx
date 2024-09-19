@@ -21,7 +21,7 @@ const CreateTag = ({ createStudyForm, updateInputValue }: CreateStudyStepProps) 
           className="w-full outline-none border-b self-end"
           ref={tagInput}
           autoFocus
-          maxLength={10}
+          maxLength={8}
         />
       </form>
     );

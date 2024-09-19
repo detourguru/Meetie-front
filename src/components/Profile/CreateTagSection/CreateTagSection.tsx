@@ -31,7 +31,7 @@ const CreateTagSection = ({ tags, updateProfileForm, type }: CreateTagSectionPro
           className="w-full outline-none border-b self-end"
           ref={tagInput}
           autoFocus
-          maxLength={20}
+          maxLength={10}
         />
       </form>
     );

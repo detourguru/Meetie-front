@@ -31,7 +31,7 @@ export interface AvatarProps
 }
 
 const Avatar = ({ src, className, outline, size, ...props }: AvatarProps) => {
-  const newSize = size === "sm" ? 36 : size === "lg" ? 100 : 60;
+  const newSize = size === "sm" ? 36 : size === "lg" ? 100 : size === "md" ? 50 : 60;
 
   return (
     <div className={cn(avatarVariants({ outline, size, className }))} {...props}>

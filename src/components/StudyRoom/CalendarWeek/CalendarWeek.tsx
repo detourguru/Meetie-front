@@ -34,8 +34,6 @@ const CalendarWeek = ({ selectedDate, handleSelectedDate }: CalendarDateType) =>
               <span
                 className={`${date.date === selectedDate.date ? "text-primary-500 text-medium-12" : "text-regular-12"}`}
               >
-                {date.month}
-                {date.date}
                 {date.day}
               </span>
               <div

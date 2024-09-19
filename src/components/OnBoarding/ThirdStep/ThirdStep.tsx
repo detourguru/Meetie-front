@@ -19,9 +19,6 @@ const ThirdStep = ({ clicked: clickedStyle, handleClick }: OnboardingStepProps) 
           </TagButton>
         ))}
       </div>
-      <div className="w-full pt-3">
-        <TagButton variant="add" />
-      </div>
     </div>
   );
 };

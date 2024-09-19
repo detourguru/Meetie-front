@@ -103,19 +103,19 @@ export const MEETIE: BadgesType = {
       title: "밋티 뉴비",
       level: 1,
       icon: "/svg/ic-badge-meetie-newbie.svg",
-      conditions: { ownerCount: 5, taskCount: 1 },
+      conditions: { taskCount: 1, ownerCount: 5 },
     },
     {
       title: "밋티 러너",
       level: 2,
       icon: "/svg/ic-badge-meetie-runner.svg",
-      conditions: { ownerCount: 20, taskCount: 3 },
+      conditions: { taskCount: 3, ownerCount: 20 },
     },
     {
       title: "밋티 마스터",
       level: 3,
       icon: "/svg/ic-badge-meetie-master.svg",
-      conditions: { ownerCount: 50, taskCount: 5 },
+      conditions: { taskCount: 5, ownerCount: 50 },
     },
   ],
 };

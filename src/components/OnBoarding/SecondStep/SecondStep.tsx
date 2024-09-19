@@ -19,7 +19,6 @@ const SecondStep = ({ clicked: clickedPurpose, handleClick }: OnboardingStepProp
             {purpose}
           </TagButton>
         ))}
-        <TagButton variant="add" />
       </div>
     </div>
   );
