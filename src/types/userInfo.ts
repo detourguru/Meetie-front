@@ -6,6 +6,10 @@ export interface GetUserInfoResponseType extends CommonResponseType {
   data: UserInformationType;
 }
 
+export interface GetAllUserInfoResponseType extends CommonResponseType {
+  data: UserInformationType[];
+}
+
 export interface ProfileFormType {
   name: string;
   introduce: string;

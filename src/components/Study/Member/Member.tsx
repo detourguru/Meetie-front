@@ -16,7 +16,7 @@ const Member = ({ name, field, description }: MemberType) => {
         <div className="flex flex-col p-2">
           <span className="flex justify-center text-bold-14">{name}</span>
           <span className="flex justify-center text-regular-12 mb-2">{field} | UX.UI</span>
-          <span className="flex justify-center text-bold-12">{description}</span>
+          <span className="flex justify-center text-bold-12 h-10">{description}</span>
         </div>
         <div className="flex justify-center">
           <button className="w-full border rounded-lg border-primary-500 text-primary-500 text-regular-12">

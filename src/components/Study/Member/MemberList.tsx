@@ -1,13 +1,21 @@
-import Member from "./Member";
+import Member from "@/components/Study/Member/Member";
+
+import { useAllUserInfoQuery } from "@/hooks/api/userInfo/useAllUserInfoQuery";
 
 const MemberList = () => {
+  const { data } = useAllUserInfoQuery();
   return (
     <>
-      <div className="p-4 w-full grid grid-rows-2 grid-cols-2 gap-2">
-        <Member name="김선우" field="디자이너 | UX.UI" description="초급·열정있는·파워J" />
-        <Member name="김선우" field="디자이너 | UX.UI" description="초급·열정있는·파워J" />
-        <Member name="김선우" field="디자이너 | UX.UI" description="초급·열정있는·파워J" />
-        <Member name="김선우" field="디자이너 | UX.UI" description="초급·열정있는·파워J" />
+      <div className="p-2 w-full grid grid-rows-2 grid-cols-2 gap-2">
+        {data.data &&
+          data.data.map((member) => (
+            <Member
+              name={member.name}
+              description={member.styles.join("|")}
+              field={member.position}
+              key={member.id}
+            />
+          ))}
       </div>
     </>
   );

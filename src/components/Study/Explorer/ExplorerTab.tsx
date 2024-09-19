@@ -6,9 +6,8 @@ import { useState } from "react";
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/common/Tab/Tab";
 import SearchSheet from "@/components/CommunityPost/List/SearchSheet/SearchSheet";
+import MemberFilteredList from "@/components/Study/Explorer/MemberFilteredList";
 import StudyFilteredList from "@/components/Study/Explorer/StudyFilteredList";
-import MemberList from "@/components/Study/Member/MemberList";
-import HashTag from "@/components/Study/StudyRoomList/HashTag";
 
 import { useStudyListFilter } from "@/hooks/api/study/useStudyListFilter";
 import { useOverlay } from "@/hooks/common/useOverlay";
@@ -49,55 +48,25 @@ const ExplorerTab = () => {
       </Tabs>
 
       {currentTab === "study" && (
-        <StudyFilteredList
-          data={data}
-          filterOption={filterOption}
-          handleClickTag={handleClickTag}
-          updateFilterOption={updateFilterOption}
-          isFetching={isFetching}
-        />
+        <>
+          <StudyFilteredList
+            data={data}
+            filterOption={filterOption}
+            handleClickTag={handleClickTag}
+            updateFilterOption={updateFilterOption}
+            isFetching={isFetching}
+          />
+
+          <SearchSheet
+            isOpen={isOpen}
+            searchValue={filterOption.search}
+            handleClose={handleClose}
+            updateFilterOption={updateFilterOption}
+          />
+        </>
       )}
 
-      {currentTab === "member" && (
-        <div className="relative p-4">
-          <div className="flex justify-between items-center mb-4">
-            <Image src="/svg/ic-refresh.svg" alt="icon" width={24} height={24} />
-
-            <div className="text-nowrap ml-2 overflow-x-auto no-scrollbar">
-              <HashTag close={true} className="border-primary-500 text-primary-500">
-                직무
-              </HashTag>
-              <HashTag close={true} className="border-primary-500 text-primary-500">
-                스터디 목적
-              </HashTag>
-              <HashTag close={true} className="border-primary-500 text-primary-500">
-                작업 스타일
-              </HashTag>
-              <HashTag close={true} className="border-primary-500 text-primary-500">
-                스터디 기간
-              </HashTag>
-            </div>
-          </div>
-          <div className="flex justify-between mb-4">
-            <span className="text-medium-12">총 8명</span>
-            <span className="flex justify-evenly text-regular-12 mr-1">
-              인기순
-              <Image src="/svg/ic-down-arrow.svg" alt="icon" width={14} height={14} />
-            </span>
-          </div>
-          <div className="mx-4 bg-[#F5F5FF]">
-            <div className="p-4 flex justify-end"></div>
-            <MemberList />
-          </div>
-        </div>
-      )}
-
-      <SearchSheet
-        isOpen={isOpen}
-        searchValue={filterOption.search}
-        handleClose={handleClose}
-        updateFilterOption={updateFilterOption}
-      />
+      {currentTab === "member" && <MemberFilteredList />}
     </>
   );
 };
