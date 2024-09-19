@@ -29,6 +29,10 @@ export default function RootLayout({
     <html lang="ko">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <meta
+          name="google-site-verification"
+          content="lmTeKHDH5ONA3g5p0wObanS64S-FSq5cmGJ0JIuLfuU"
+        />
       </head>
       <body className={`${Pretendard.className} w-screen flex justify-center bg-black`}>
         <ClientProvider>
