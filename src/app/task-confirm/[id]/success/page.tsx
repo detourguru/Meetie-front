@@ -14,13 +14,17 @@ export default function ConfirmSuccess({ params }: ParamIdType) {
       <h3 className="text-[28px] font-bold mt-10">과제 인증 완료!</h3>
 
       {/* todo : 추후 구현 */}
-      <p className="text-[28px] text-primary-500 font-bold mb-4">+ 7 XP</p>
-      <span className="text-[#707070] text-regular-14">종합 XP : 235</span>
+      <p className="text-[28px] text-primary-500 font-bold mb-4">+ 1 XP</p>
 
-      <div className="fixed bottom-0 bg-white px-4 py-6">
+      <div className="fixed bottom-0 bg-white px-4 py-6 flex flex-col gap-2">
         <Link href={PATH.TASK_CONFIRM_DETAIL(String(params.id))}>
           <Button size="xl">
             <p className="text-bold-16 text-white">과제 인증 보러가기</p>
+          </Button>
+        </Link>
+        <Link href={PATH.ABILITY}>
+          <Button size="xl" variant="outlinePrimary">
+            <p className="text-bold-16 text-primary-400">뱃지 현황 보러가기</p>
           </Button>
         </Link>
       </div>
