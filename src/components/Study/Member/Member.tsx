@@ -61,10 +61,10 @@ const Member = ({ member }: MemberType) => {
           <span className="flex justify-center text-gray-200 text-regular-10 mb-2 h-2">
             {member.position}
           </span>
-          {member.styles.map((data) => (
-            <span className="text-regular-10">{data}</span>
-          ))}
-          {/* <span className="flex justify-center text-regular-10 h-7">{member.styles.join("·")}</span> */}
+
+          <span className="flex justify-center text-regular-10 text-center">
+            {member.styles[0]}
+          </span>
         </div>
         <div className="flex justify-center">
           <button
