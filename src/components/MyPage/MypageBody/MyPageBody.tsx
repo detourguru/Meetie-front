@@ -22,15 +22,8 @@ import { useOverlay } from "@/hooks/common/useOverlay";
 import { useMyPageMenues } from "@/hooks/mypage/useMyPageMenues";
 
 const MyPageBody = () => {
-  const {
-    userId,
-    user,
-    userStudyList,
-    userLastStudyList,
-    handleChangeInfoAgreement,
-    handleMovePage,
-    handleWithdrawal,
-  } = useMyPageMenues();
+  const { userId, user, userStudyList, userLastStudyList, handleMovePage, handleWithdrawal } =
+    useMyPageMenues();
 
   const { isOpen, handleClose, handleOpen } = useOverlay();
 
@@ -185,12 +178,12 @@ const MyPageBody = () => {
               handleClickItem={() => handleMovePage(PATH.USER_PROFILE_EDIT(user.user_id))}
               menuItemData={MENU_ITEMS_DATA.PROFIL_EDIT}
             />
-            <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />
+            {/* <MenuListItem menuItemData={MENU_ITEMS_DATA.PASSWORD_EDIT} />
             <MenuListItem
               menuItemData={MENU_ITEMS_DATA.INFORMATION_AGREEMENT}
               isToggle={user?.informationAgreement}
               handleClickItem={handleChangeInfoAgreement}
-            />
+            /> */}
             <MenuListItem menuItemData={MENU_ITEMS_DATA.WITHDRAW} handleClickItem={handleOpen} />
           </ul>
         </div>
