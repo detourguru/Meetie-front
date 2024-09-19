@@ -20,7 +20,7 @@ const MemberList = () => {
           {user && user.map((member) => <Member key={member.id} member={member} />)}
         </div>
       ) : (
-        <div className="flex flex-col p-5 w-full">
+        <div className="flex flex-col p-5 w-full h-[calc(100vh-310px)] justify-center">
           <div className="flex justify-center p-4">
             <Image src="/svg/ic-not-found.svg" width={100} height={100} alt="not found" />
           </div>
