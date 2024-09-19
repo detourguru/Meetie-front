@@ -2,8 +2,6 @@ import { useRouter } from "next/navigation";
 
 import { useCallback, useState } from "react";
 
-import { PATH } from "@/constants/path";
-
 import { useUpdateUserInfoMutation } from "@/hooks/api/userInfo/useUpdateUserInfoMutation";
 import { useImageUploader } from "@/hooks/common/useImageUploader";
 
@@ -55,7 +53,7 @@ export const useEditProfileForm = ({ id, initialData }: UseEditProfileFormProps)
       },
       {
         onSuccess: () => {
-          router.push(PATH.USER_PROFILE(id));
+          router.back();
         },
       },
     );
