@@ -22,6 +22,7 @@ import { useGoBack } from "@/hooks/common/useGoBack";
 const ProfileBody = () => {
   const params = useParams();
 
+  const { data: ownerUser } = useUserInfoQuery();
   const { data } = useUserInfoQuery(String(params.id));
 
   const { handleGoBack } = useGoBack();
@@ -37,11 +38,13 @@ const ProfileBody = () => {
       <Header>
         <Header.LeftButton handleButtonClick={handleGoBack} />
         <Header.Title hasButton>오픈 프로필</Header.Title>
-        <Header.RightTextButton>
-          <Link href={PATH.USER_PROFILE_EDIT(String(params.id))}>
-            <p className="text-medium-14 text-black">수정</p>
-          </Link>
-        </Header.RightTextButton>
+        {ownerUser.data.user_id === user.user_id && (
+          <Header.RightTextButton>
+            <Link href={PATH.USER_PROFILE_EDIT(String(params.id))}>
+              <p className="text-medium-14 text-black">수정</p>
+            </Link>
+          </Header.RightTextButton>
+        )}
       </Header>
 
       <div className="pt-[68px] px-4 bg-white">
