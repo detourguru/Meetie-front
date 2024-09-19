@@ -17,7 +17,7 @@ const MemberList = () => {
     <>
       {user.length > 0 ? (
         <div className="p-2 w-full grid grid-rows-2 grid-cols-2 gap-2">
-          {user && user.map((member) => <Member key={member.id} member={member} />)}
+          {user && user.map((member) => <Member key={member.user_id} member={member} />)}
         </div>
       ) : (
         <div className="flex flex-col p-5 w-full h-[calc(100vh-310px)] justify-center">

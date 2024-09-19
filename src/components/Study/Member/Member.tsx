@@ -18,31 +18,36 @@ interface MemberType {
 }
 
 const Member = ({ member }: MemberType) => {
-  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation();
-  const { data, refetch, isError } = useUserInfoQuery();
+  const { mutate: updateUserInfoMutation } = useUpdateUserInfoMutation(member.user_id);
+
+  const { data } = useUserInfoQuery();
 
   const id = data.data.user_id;
   const friendsList = data.data.friendsList;
 
-  const [isFriend, setIsFriend] = useState(false);
+  const isFriendList = data.data.friendsList.some((friend) => friend === member.user_id);
+
+  const [isFriend, setIsFriend] = useState(isFriendList);
 
   const handleAddfriend = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     e.stopPropagation();
-    updateUserInfoMutation({
-      id,
-      updateUserForm: {
-        friendsList: isFriend
-          ? friendsList.filter((friend) => friend !== member.user_id)
-          : [...friendsList, member.user_id],
+
+    updateUserInfoMutation(
+      {
+        id,
+        updateUserForm: {
+          friendsList: isFriend
+            ? friendsList.filter((friend) => friend !== member.user_id)
+            : [...friendsList, member.user_id],
+        },
       },
-    });
-
-    if (!isError) {
-      setIsFriend((isFriend) => !isFriend);
-    }
-
-    refetch();
+      {
+        onSuccess: () => {
+          setIsFriend((isFriend) => !isFriend);
+        },
+      },
+    );
   };
 
   return (
