@@ -52,8 +52,10 @@ const FooterBtn = ({
       ? data.requestMemberList.filter((prevData) => prevData !== userId)
       : data.requestMemberList.length === 0
         ? [userId]
-        : [data.requestMemberList, userId],
+        : [...data.requestMemberList, userId],
   };
+
+  console.log(updateData);
 
   if (isRequestPage) {
     if (isFullMemberList) {

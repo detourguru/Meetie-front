@@ -27,6 +27,8 @@ export async function PATCH(request: Request, { params }: { params: { id: string
 
     const { error } = await supabase.from("study").update(data).eq("id", params.id);
 
+    console.log(error);
+
     if (!error) {
       return NextResponse.json({ message: "ok", status: 200 });
     }
