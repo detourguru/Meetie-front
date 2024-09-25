@@ -19,14 +19,16 @@ const OnboardingProfile = ({
 }: OnboardingProfileProps) => {
   if (isFetching) {
     return (
-      <Image
-        src="/svg/ic-onboarding-complete-back.svg"
-        width={153}
-        height={209}
-        alt="back"
-        priority
-        className="absolute top-0"
-      />
+      <div className="relative w-[150px] mt-[77px] mx-auto">
+        <Image
+          src="/svg/ic-onboarding-complete-back.svg"
+          width={153}
+          height={209}
+          alt="back"
+          priority
+          className="absolute top-0"
+        />
+      </div>
     );
   }
 
