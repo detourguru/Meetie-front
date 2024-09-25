@@ -45,18 +45,31 @@ export const useLoginForm = () => {
   };
 
   const handleSignInWithEmail = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email: loginForm.email,
-      password: loginForm.password,
-    });
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: loginForm.email,
+        password: loginForm.password,
+      });
 
-    if (data && !error) {
-      if (isCheckedSave) {
-        localStorage.setItem("savedEmail", loginForm.email);
-      } else {
-        localStorage.removeItem("savedEmail");
+      // 유저가 없음
+      // 회원가입으로 보내
+      // ?
+
+      // 유저가 있음
+      // 소셜 로그인 계정 => 표시
+      // 일반 계정
+      // 비밀번호 틀림 => 비밀번호 틀렸다고 표시
+
+      if (data && !error) {
+        if (isCheckedSave) {
+          localStorage.setItem("savedEmail", loginForm.email);
+        } else {
+          localStorage.removeItem("savedEmail");
+        }
+        router.push(PATH.WALKTHROUGH);
       }
-      router.push(PATH.WALKTHROUGH);
+    } catch (error) {
+      console.error(error);
     }
   };
 
