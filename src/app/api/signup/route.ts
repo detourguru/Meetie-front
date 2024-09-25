@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { isSupabaseError } from "@/utils/supabase/error";
 import { createClient } from "@/utils/supabase/server";
 
 import type { SignUpFormType } from "@/types/signup";
@@ -16,19 +17,21 @@ export async function POST(request: Request) {
         data: {
           full_name: postData.name,
           name: postData.name,
-          // 기본 이미지
           avatar_url: "/svg/ic-user.svg",
         },
       },
     });
 
-    if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+    if (error) {
+      throw new NextResponse("Error", { status: error.status, statusText: error.message });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    if (isSupabaseError(error)) {
+      return new NextResponse(error.statusText, { status: error.status });
+    }
+
+    return new NextResponse("Unexpected Error", { status: 500 });
   }
 }
