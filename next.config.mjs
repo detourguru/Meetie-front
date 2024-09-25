@@ -24,7 +24,8 @@ const nextConfig = {
 export default withSentryConfig(nextConfig, {
   org: "meetie",
   project: "meetie",
-  silent: !process.env.CI,
+  authToken: process.env.NEXT_PUBLIC_SENTRY_AUTH_TOKEN,
+  silent: false,
   widenClientFileUpload: true,
   reactComponentAnnotation: {
     enabled: true,
