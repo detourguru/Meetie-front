@@ -28,8 +28,8 @@ async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestIni
   }
 }
 
-export function GET<Data>(input: string, init?: RequestInit) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "GET", ...init });
+export function GET<Data>(input: string, init?: RequestInit, error?: string) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "GET", ...init }, error);
 }
 
 export function POST<Data>(input: string, init?: RequestInit) {
