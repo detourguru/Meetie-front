@@ -32,14 +32,14 @@ export function GET<Data>(input: string, init?: RequestInit, error?: string) {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "GET", ...init }, error);
 }
 
-export function POST<Data>(input: string, init?: RequestInit) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init });
+export function POST<Data>(input: string, init?: RequestInit, error?: string) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init }, error);
 }
 
 export function PATCH<Data>(input: string, init?: RequestInit, error?: string) {
   return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init }, error);
 }
 
-export function DELETE<Data>(input: string, init?: RequestInit) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "DELETE", ...init });
+export function DELETE<Data>(input: string, init?: RequestInit, error?: string) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "DELETE", ...init }, error);
 }
