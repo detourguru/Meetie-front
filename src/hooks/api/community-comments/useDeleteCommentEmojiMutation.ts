@@ -11,6 +11,7 @@ const deleteCommentEmoji = async (postId: number, createEmojiForm: CreateComment
   return await DELETE(
     END_POINTS.COMMUNITY_COMMENT_EMOJI(postId, createEmojiForm.commentId, createEmojiForm.emoji),
     createInit(),
+    "커뮤니티 댓글 이모지 삭제 오류",
   );
 };
 

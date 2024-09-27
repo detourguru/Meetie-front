@@ -6,7 +6,11 @@ import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 const deleteComment = async (postId: number, commentId: number) => {
-  return await DELETE(END_POINTS.DELETE_COMMUNITY_COMMENTS(postId, commentId), createInit());
+  return await DELETE(
+    END_POINTS.DELETE_COMMUNITY_COMMENTS(postId, commentId),
+    createInit(),
+    "커뮤니티 댓글 삭제 오류",
+  );
 };
 
 export const useDeleteCommentMutation = (postId: number) => {

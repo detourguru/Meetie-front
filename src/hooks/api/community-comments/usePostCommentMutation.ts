@@ -8,7 +8,11 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { CreateCommentFormType } from "@/types/community";
 
 const postComment = async (postId: number, createCommentForm: CreateCommentFormType) => {
-  return await POST(END_POINTS.COMMUNITY_COMMENTS(postId), createInit(createCommentForm));
+  return await POST(
+    END_POINTS.COMMUNITY_COMMENTS(postId),
+    createInit(createCommentForm),
+    "커뮤니티 댓글 추가 오류",
+  );
 };
 
 export const usePostCommentMutation = (postId: number) => {

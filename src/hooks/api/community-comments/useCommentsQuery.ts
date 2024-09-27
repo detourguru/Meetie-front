@@ -12,6 +12,7 @@ const getCommunityComments = async (postId: number) => {
   const comments = await GET<GetCommentsResponseType>(
     END_POINTS.COMMUNITY_COMMENTS(postId),
     createInit(),
+    "커뮤니티 댓글 조회 오류",
   );
 
   return comments;

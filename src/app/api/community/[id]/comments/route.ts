@@ -54,10 +54,9 @@ export async function GET(request: Request, { params }: { params: { id: string }
       );
     }
 
-    return NextResponse.json({ message: "ok", status: 200, data: null });
+    return NextResponse.json({ error: "커뮤니티 댓글 조회 오류" }, { status: 400 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ error }, { status: 500 });
   }
 }
 
@@ -79,9 +78,8 @@ export async function POST(request: Request, { params }: { params: { id: string 
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "ok" }, { status: 200 });
+    return NextResponse.json({ error: "커뮤니티 댓글 추가 오류" }, { status: 400 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: "error" }, { status: 500 });
+    return NextResponse.json({ error }, { status: 500 });
   }
 }

@@ -17,10 +17,9 @@ export async function POST(request: Request, { params }: { params: { commentId: 
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "ok" }, { status: 200 });
+    return NextResponse.json({ error: "커뮤니티 댓글 이모지 추가 오류" }, { status: 400 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: "error" }, { status: 500 });
+    return NextResponse.json({ error: error }, { status: 500 });
   }
 }
 
@@ -41,9 +40,8 @@ export async function DELETE(request: Request, { params }: { params: { commentId
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "ok" }, { status: 200 });
+    return NextResponse.json({ error: "커뮤니티 댓글 이모지 삭제 오류" }, { status: 400 });
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ message: "error" }, { status: 500 });
+    return NextResponse.json({ error }, { status: 500 });
   }
 }
