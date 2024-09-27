@@ -35,7 +35,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
       );
     }
 
-    return NextResponse.json({ message: "ok", data: null }, { status: 200 });
+    return NextResponse.json({ error: "커뮤니티 게시글 조회 오류" }, { status: 400 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
@@ -54,7 +54,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error" }, { status: 400 });
+    return NextResponse.json({ error: "커뮤니티 게시글 업데이트 오류" }, { status: 400 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
@@ -71,7 +71,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error" }, { status: 400 });
+    return NextResponse.json({ error: "커뮤니티 게시글 삭제 오류" }, { status: 400 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });

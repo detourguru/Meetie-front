@@ -9,7 +9,11 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { GetCommunityResponseType } from "@/types/community";
 
 const getCommunity = async (postId: number) => {
-  const study = await GET<GetCommunityResponseType>(END_POINTS.COMMUNITY(postId), createInit());
+  const study = await GET<GetCommunityResponseType>(
+    END_POINTS.COMMUNITY(postId),
+    createInit(),
+    "커뮤니티 게시글 조회 오류",
+  );
 
   return study;
 };

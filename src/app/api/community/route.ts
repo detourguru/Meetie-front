@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error" }, { status: 400 });
+    return NextResponse.json({ error: "커뮤니티 게시글 추가 오류" }, { status: 400 });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });

@@ -8,7 +8,11 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { CreateCommunityEmojiType } from "@/types/community";
 
 const postCommunityEmoji = async (postId: number, createEmojiForm: CreateCommunityEmojiType) => {
-  return await POST(END_POINTS.COMMUNITY_EMOJI(postId), createInit(createEmojiForm));
+  return await POST(
+    END_POINTS.COMMUNITY_EMOJI(postId),
+    createInit(createEmojiForm),
+    "커뮤니티 이모지 추가 오류",
+  );
 };
 
 export const usePostCommunityEmojiMutation = (postId: number) => {

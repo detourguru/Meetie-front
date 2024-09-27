@@ -6,7 +6,7 @@ import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 const deleteCommunity = async (postId: number) => {
-  return await DELETE(END_POINTS.COMMUNITY(postId), createInit());
+  return await DELETE(END_POINTS.COMMUNITY(postId), createInit(), "커뮤니티 게시글 삭제 오류");
 };
 
 export const useDeleteCommunityMutation = () => {

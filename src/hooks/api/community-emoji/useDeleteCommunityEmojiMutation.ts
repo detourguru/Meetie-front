@@ -6,7 +6,11 @@ import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
 const deleteCommunityEmoji = async (postId: number) => {
-  return await DELETE(END_POINTS.COMMUNITY_EMOJI(postId), createInit());
+  return await DELETE(
+    END_POINTS.COMMUNITY_EMOJI(postId),
+    createInit(),
+    "커뮤니티 이모지 삭제 오류",
+  );
 };
 
 export const useDeleteCommunityEmojiMutation = (postId: number) => {

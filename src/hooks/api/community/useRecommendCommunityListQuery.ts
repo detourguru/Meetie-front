@@ -11,6 +11,7 @@ const getRecommendCommunityList = async () => {
   const data = await GET<GetCommunityListResponseType>(
     END_POINTS.COMMUNITY_LIST_RECOMMEND,
     createInit(),
+    "커뮤니티 랜덤 추천 게시글 리스트 조회 오류",
   );
 
   return data;
