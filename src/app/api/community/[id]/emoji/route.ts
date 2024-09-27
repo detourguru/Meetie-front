@@ -17,9 +17,13 @@ export async function POST(request: Request, { params }: { params: { id: string 
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ error: "커뮤니티 이미지 추가 오류" }, { status: 400 });
+    return NextResponse.json(
+      { message: "error" },
+      { status: 400, statusText: "커뮤니티 이모지 추가 오류" },
+    );
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error(error);
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
 
@@ -33,8 +37,12 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ error: "커뮤니티 이미지 삭제 오류" }, { status: 400 });
+    return NextResponse.json(
+      { message: "error" },
+      { status: 400, statusText: "커뮤니티 이모지 삭제 오류" },
+    );
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error(error);
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }

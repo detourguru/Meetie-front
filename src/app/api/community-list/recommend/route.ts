@@ -12,7 +12,10 @@ export async function GET() {
       return NextResponse.json({ message: "ok", data }, { status: 200 });
     }
 
-    return NextResponse.json({ error: "커뮤니티 추천 랜덤 게시글 조회 오류" }, { status: 400 });
+    return NextResponse.json(
+      { message: "error" },
+      { status: 400, statusText: "커뮤니티 게시글 랜덤 리스트 조회 오류" },
+    );
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });

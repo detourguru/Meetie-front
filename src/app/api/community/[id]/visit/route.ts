@@ -12,8 +12,12 @@ export async function PATCH(request: Request, { params }: { params: { id: string
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ error: "커뮤니티 조회수 증가 오류" }, { status: 400 });
+    return NextResponse.json(
+      { message: "error" },
+      { status: 400, statusText: "커뮤니티 게시글 조회수 증가 오류" },
+    );
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error(error);
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
