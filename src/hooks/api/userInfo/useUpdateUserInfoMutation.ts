@@ -13,7 +13,11 @@ interface UpdateUserInfoParamsType {
 }
 
 const updateUserInfo = async ({ id, updateUserForm }: UpdateUserInfoParamsType) => {
-  return await PATCH(END_POINTS.USER_INFO_BY_ID(id), createInit(updateUserForm));
+  return await PATCH(
+    END_POINTS.USER_INFO_BY_ID(id),
+    createInit(updateUserForm),
+    "유저 정보 업데이트 오류",
+  );
 };
 
 export const useUpdateUserInfoMutation = () => {

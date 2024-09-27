@@ -29,14 +29,16 @@ export async function GET(request: Request) {
 
     const { data } = await query;
 
-    return NextResponse.json({
-      message: "ok",
-      status: 200,
-      data,
-    });
+    return NextResponse.json(
+      {
+        message: "ok",
+        data,
+      },
+      { status: 200 },
+    );
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
 
@@ -51,7 +53,10 @@ export async function DELETE(request: Request) {
     const userId = searchParams.get("user_id");
 
     if (!userId) {
-      return NextResponse.json({ message: "error" }, { status: 400 });
+      return NextResponse.json(
+        { message: "error" },
+        { status: 400, statusText: "유저 정보 조회 오류" },
+      );
     }
 
     const res = await Promise.all([
@@ -67,7 +72,10 @@ export async function DELETE(request: Request) {
         if (!error) {
           return NextResponse.json({ message: "ok" }, { status: 200, statusText: "ok" });
         }
-        return NextResponse.json({ message: "error" }, { status: 400, statusText: "error" });
+        return NextResponse.json(
+          { message: "회원탈퇴 오류" },
+          { status: 400, statusText: "회원탈퇴 오류" },
+        );
       })
       .catch((error) => {
         return NextResponse.json(
@@ -93,12 +101,15 @@ export async function POST(request: Request) {
       .upsert({ ...postData, onboardingCheck: true });
 
     if (error) {
-      return NextResponse.json({ message: error.message, status: 400 });
+      return NextResponse.json(
+        { message: error.message },
+        { status: 400, statusText: "회원가입 오류" },
+      );
     }
 
-    return NextResponse.json({ message: "ok", status: 200 });
+    return NextResponse.json({ message: "ok" }, { status: 200 });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }

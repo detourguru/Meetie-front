@@ -1,7 +1,7 @@
 import type { UseSuspenseQueryOptions } from "@tanstack/react-query";
 import { useSuspenseQuery } from "@tanstack/react-query";
 
-import { GET } from "@/apis/httpMethod";
+import { GET, createInit } from "@/apis/httpMethod";
 
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
@@ -12,7 +12,11 @@ import type { GetAllUserInfoResponseType } from "@/types/userInfo";
 const getAllUserInfo = async (param?: FilterSelectedType) => {
   const queryString = new URLSearchParams(Object.entries(param ?? {}));
 
-  const data = await GET<GetAllUserInfoResponseType>(END_POINTS.ONBOARDING + `?${queryString}`);
+  const data = await GET<GetAllUserInfoResponseType>(
+    END_POINTS.ONBOARDING + `?${queryString}`,
+    createInit(),
+    "전체 유저 조회 오류",
+  );
 
   return data;
 };

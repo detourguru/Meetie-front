@@ -25,7 +25,7 @@ const getUserInfo = async (id?: string) => {
     url = END_POINTS.USER_INFO_BY_ID(userId);
   }
 
-  const data = await GET<GetUserInfoResponseType>(url, createInit());
+  const data = await GET<GetUserInfoResponseType>(url, createInit(), "유저 조회 오류");
 
   return data;
 };

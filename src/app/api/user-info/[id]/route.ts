@@ -47,25 +47,27 @@ export async function GET(request: Request, { params }: { params: { id: string }
     const studyList = studyListData.data?.map((study: { id: string }) => study.id) ?? [];
     const lastStudyList = lastStudyListData.data?.map((study: { id: string }) => study.id) ?? [];
 
-    return NextResponse.json({
-      message: "ok",
-      status: 200,
-      data: {
-        ...data,
-        studyList: studyList,
-        lastStudyList: lastStudyList,
-        scrapList: bookmarkStudyList.data,
-        badges: {
-          comment: getCommentBadge(communityCommentsCount.count ?? 0),
-          nanum: getNanumBadge(communityCount.count ?? 0, communityEngagementCount),
-          meetie: getMeetieBadge(taskCount.count ?? 0, ownerCount.count ?? 0),
-          feedback: getFeedbackBadge(communityEngagementCount),
+    return NextResponse.json(
+      {
+        message: "ok",
+        data: {
+          ...data,
+          studyList: studyList,
+          lastStudyList: lastStudyList,
+          scrapList: bookmarkStudyList.data,
+          badges: {
+            comment: getCommentBadge(communityCommentsCount.count ?? 0),
+            nanum: getNanumBadge(communityCount.count ?? 0, communityEngagementCount),
+            meetie: getMeetieBadge(taskCount.count ?? 0, ownerCount.count ?? 0),
+            feedback: getFeedbackBadge(communityEngagementCount),
+          },
         },
       },
-    });
+      { status: 200 },
+    );
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }
 
@@ -78,12 +80,15 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const { error } = await supabase.from("userinfo").update(data).eq("user_id", params.id);
 
     if (!error) {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok" }, { status: 200 });
     }
 
-    return NextResponse.json({ message: "error", status: 400 });
+    return NextResponse.json(
+      { message: "error" },
+      { status: 400, statusText: "유저 정보 업데이트 오류" },
+    );
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ message: "error", status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500 });
   }
 }

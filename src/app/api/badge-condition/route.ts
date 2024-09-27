@@ -17,18 +17,20 @@ export async function GET() {
         supabase.from("community_emoji").select("id", { count: "exact" }).eq("user_id", id),
       ]);
 
-    return NextResponse.json({
-      message: "ok",
-      status: 200,
-      data: {
-        ownerCount: ownerCount.count ?? 0,
-        taskCount: taskCount.count ?? 0,
-        communityCount: communityCount.count ?? 0,
-        communityCommentsCount: communityCommentsCount.count ?? 0,
-        communityEmojiCount: communityEmojiCount.count ?? 0,
+    return NextResponse.json(
+      {
+        message: "ok",
+        data: {
+          ownerCount: ownerCount.count ?? 0,
+          taskCount: taskCount.count ?? 0,
+          communityCount: communityCount.count ?? 0,
+          communityCommentsCount: communityCommentsCount.count ?? 0,
+          communityEmojiCount: communityEmojiCount.count ?? 0,
+        },
       },
-    });
+      { status: 200 },
+    );
   } catch (error) {
-    return NextResponse.json({ message: error, status: 500 });
+    return NextResponse.json({ message: error }, { status: 500 });
   }
 }
