@@ -23,13 +23,19 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      throw new NextResponse("Error", { status: error.status, statusText: error.message });
+      throw new NextResponse("Error", {
+        status: error.status,
+        statusText: error.message,
+      });
     }
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
     if (isSupabaseError(error)) {
-      return new NextResponse(error.statusText, { status: error.status });
+      return new NextResponse(error.statusText, {
+        status: error.status,
+        statusText: error.statusText,
+      });
     }
 
     return new NextResponse("Unexpected Error", { status: 500 });

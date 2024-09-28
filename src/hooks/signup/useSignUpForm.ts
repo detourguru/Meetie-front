@@ -2,10 +2,10 @@ import { useRouter } from "next/navigation";
 
 import { useCallback, useState } from "react";
 
-import { usePostSignUpMutation } from "../api/signup/usePostSignUpMutation";
-
 import { PATH } from "@/constants/path";
 import { REGEX } from "@/constants/regex";
+
+import { usePostSignUpMutation } from "@/hooks/api/signup/usePostSignUpMutation";
 
 import type { SignUpFormType } from "@/types/signup";
 
@@ -52,7 +52,12 @@ export const useSignUpForm = () => {
   const handleSubmit = async () => {
     PostSignUpMutation(signupForm, {
       onSuccess: () => {
+        console.log("에러안남");
         router.push(PATH.WALKTHROUGH);
+      },
+      onError(error) {
+        console.log("에러났어");
+        console.error(error.message);
       },
     });
   };
