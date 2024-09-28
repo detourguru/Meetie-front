@@ -51,16 +51,24 @@ export const useLoginForm = () => {
         password: loginForm.password,
       });
 
-      // 유저가 없음
-      // 회원가입으로 보내
-      // ?
+      if (error) {
+        const { data: loginData, error: loginError } = await supabase
+          .from("userinfo")
+          .select("email")
+          .eq("email", loginForm.email)
+          .single();
 
-      // 유저가 있음
-      // 소셜 로그인 계정 => 표시
-      // 일반 계정
-      // 비밀번호 틀림 => 비밀번호 틀렸다고 표시
+        // TODO: 소셜 로그인일 경우도 추가해야됨
+        if (loginError) {
+          throw new Error("회원가입을 하세연");
+        }
 
-      if (data && !error) {
+        if (loginData) {
+          throw new Error("비밀번호가 틀렸자나여");
+        }
+      }
+
+      if (data) {
         if (isCheckedSave) {
           localStorage.setItem("savedEmail", loginForm.email);
         } else {
