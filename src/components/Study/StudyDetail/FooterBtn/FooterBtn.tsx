@@ -46,10 +46,6 @@ const FooterBtn = ({
 
   const isFullMemberList = data.recruitMemberCount === data.joinMemberList.length;
 
-  const isEndStudy = data.isRecruit;
-
-  console.log(isEndStudy);
-
   const updateData = {
     ...data,
     requestMemberList: isRequest

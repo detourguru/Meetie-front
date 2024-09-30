@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/nextjs";
+
 export function createInit<Body extends object>(
   body?: Body,
   cache: RequestCache = "no-store",
@@ -15,7 +17,10 @@ async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestIni
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${uri}`, init);
 
   if (!response.ok) {
-    throw new Error(error);
+    Sentry.withScope((scope) => {
+      scope.setLevel("error");
+      Sentry.captureMessage(`[APIError] ${window.location.href} :: ${error}`);
+    });
   }
 
   try {
