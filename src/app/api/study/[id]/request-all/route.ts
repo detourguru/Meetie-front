@@ -11,9 +11,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     ).data;
 
     if (recruitMemberCount < requestMemberList.length + joinMemberList.length) {
-      return new Response(JSON.stringify({ error: "모집 인원보다 많습니다" }), {
-        status: 400,
-      });
+      return NextResponse.json({ message: "error" }, { status: 400 });
     }
 
     const { error: patchError } = await supabase
