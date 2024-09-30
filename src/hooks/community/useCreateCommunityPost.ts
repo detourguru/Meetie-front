@@ -30,6 +30,7 @@ export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommuni
       contents: "",
     },
   );
+  const [isPending, setIsPending] = useState(false);
 
   const buttonDisabled =
     createPostForm.position.length === 0 ||
@@ -48,17 +49,23 @@ export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommuni
   }, []);
 
   const handleSubmit = async () => {
+    setIsPending(true);
     postCommunityMutation(
       { ...createPostForm, images: await handleUploadImages(createPostForm.images) },
       {
         onSuccess() {
           router.push(PATH.COMMUNITY_LIST);
         },
+        onError() {
+          setIsPending(false);
+          // TODO: 토스트 추가
+        },
       },
     );
   };
 
   const handleSubmitModify = async () => {
+    setIsPending(true);
     patchCommunityMutation(
       {
         createPostForm: {
@@ -71,6 +78,10 @@ export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommuni
         onSuccess() {
           router.back();
         },
+        onError() {
+          setIsPending(false);
+          // TODO: 토스트 추가
+        },
       },
     );
   };
@@ -78,6 +89,7 @@ export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommuni
   return {
     createPostForm,
     buttonDisabled,
+    isPending,
     updatePostForm,
     handleSubmit,
     handleSubmitModify,

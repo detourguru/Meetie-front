@@ -14,7 +14,7 @@ const EditPost = () => {
   const params = useParams();
 
   const { data: postData } = useCommunityQuery(Number(params.id));
-  const { createPostForm, buttonDisabled, handleSubmitModify, updatePostForm } =
+  const { createPostForm, buttonDisabled, isPending, handleSubmitModify, updatePostForm } =
     useCreateCommunityPost({
       initialData: {
         title: postData.data.title,
@@ -39,9 +39,9 @@ const EditPost = () => {
       </div>
 
       <div className="w-[375px] py-3.5 fixed bottom-0 left-[50%] translate-x-[-50%] flex justify-center bg-white z-50 border-t border-[#CCCEF0]">
-        <Button disabled={buttonDisabled} onClick={handleSubmitModify} size="xl">
+        <Button disabled={buttonDisabled || isPending} onClick={handleSubmitModify} size="xl">
           <p className="text-bold-16 text-white">
-            {buttonDisabled ? "내용이 부족해요!" : "수정하기"}
+            {buttonDisabled ? "내용이 부족해요!" : isPending ? "게시 중..." : "게시하기"}
           </p>
         </Button>
       </div>
