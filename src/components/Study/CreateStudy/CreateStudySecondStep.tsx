@@ -171,6 +171,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         isOpen={isEndDateCalendarOpen}
         onInteractOutside={closeEndDateCalendar}
         updateInputValue={updateInputValue}
+        startDate={createStudyForm.startDate}
         isEndDate
       />
 

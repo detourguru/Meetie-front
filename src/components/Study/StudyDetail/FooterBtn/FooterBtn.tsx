@@ -46,6 +46,10 @@ const FooterBtn = ({
 
   const isFullMemberList = data.recruitMemberCount === data.joinMemberList.length;
 
+  const isEndStudy = data.isRecruit;
+
+  console.log(isEndStudy);
+
   const updateData = {
     ...data,
     requestMemberList: isRequest
@@ -54,8 +58,6 @@ const FooterBtn = ({
         ? [userId]
         : [...data.requestMemberList, userId],
   };
-
-  console.log(updateData);
 
   if (isRequestPage) {
     if (isFullMemberList) {
@@ -103,20 +105,32 @@ const FooterBtn = ({
         );
       }
     } else {
-      return (
-        <Button
-          size="md"
-          variant={isRequest ? "outlinePrimary" : "default"}
-          disabled={isJoin}
-          onClick={() =>
-            patchStudyMutation({ createStudyForm: updateData, studyId: String(data.id) })
-          }
-        >
-          <p className={`text-bold-16 ${isRequest ? "text-primary-400" : "text-white"}`}>
-            {isRequest ? "신청 취소하기" : isJoin ? "이미 신청한 스터디입니다" : "스터디 신청하기"}
-          </p>
-        </Button>
-      );
+      if (data.isRecruit) {
+        return (
+          <Button
+            size="md"
+            variant={isRequest ? "outlinePrimary" : "default"}
+            disabled={isJoin}
+            onClick={() =>
+              patchStudyMutation({ createStudyForm: updateData, studyId: String(data.id) })
+            }
+          >
+            <p className={`text-bold-16 ${isRequest ? "text-primary-400" : "text-white"}`}>
+              {isRequest
+                ? "신청 취소하기"
+                : isJoin
+                  ? "이미 신청한 스터디입니다"
+                  : "스터디 신청하기"}
+            </p>
+          </Button>
+        );
+      } else {
+        return (
+          <Button size="md" disabled>
+            <p className="text-bold-16 text-white">마감된 스터디입니다</p>
+          </Button>
+        );
+      }
     }
   }
 };

@@ -63,3 +63,46 @@ export const generateDifferenceSecond = (endDate: Date | null) => {
 
   return diff;
 };
+
+export const startDateValidation = (selectedDate: Date | null, today: Date) => {
+  if (!selectedDate) {
+    return false;
+  }
+
+  if (today.getMonth() > selectedDate.getMonth()) {
+    return false;
+  }
+
+  if (today.getMonth() === selectedDate.getMonth() && today.getDate() > selectedDate.getDate()) {
+    return false;
+  }
+
+  return true;
+};
+
+export const endDateValidation = (
+  selectedDate: Date | null,
+  today: Date,
+  startDate?: Date | null,
+) => {
+  if (!startDateValidation(selectedDate, today)) {
+    return false;
+  }
+
+  if (!startDate || !selectedDate) {
+    return;
+  }
+
+  if (startDate.getMonth() > selectedDate.getMonth()) {
+    return false;
+  }
+
+  if (
+    startDate.getMonth() === selectedDate.getMonth() &&
+    startDate.getDate() > selectedDate.getDate()
+  ) {
+    return false;
+  }
+
+  return true;
+};

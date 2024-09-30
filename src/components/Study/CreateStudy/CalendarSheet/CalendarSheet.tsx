@@ -10,6 +10,7 @@ interface CalendarSheetProps extends CommonSheetProps {
   updateTaskInputValue?: CreateTaskUpdateHandlerType;
   updateScheduleInputValue?: CreateScheduleUpdateHandlerType;
   isEndDate?: boolean;
+  startDate?: Date | null;
 }
 
 const CalendarSheet = ({
@@ -19,6 +20,7 @@ const CalendarSheet = ({
   updateTaskInputValue,
   updateScheduleInputValue,
   isEndDate,
+  startDate,
 }: CalendarSheetProps) => {
   return (
     <Sheet open={isOpen}>
@@ -40,6 +42,7 @@ const CalendarSheet = ({
           updateScheduleInputValue={updateScheduleInputValue}
           onInteractOutside={onInteractOutside}
           isEndDate={isEndDate}
+          startDate={startDate}
         />
       </SheetContent>
     </Sheet>

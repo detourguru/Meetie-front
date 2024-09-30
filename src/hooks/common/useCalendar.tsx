@@ -8,6 +8,7 @@ export const useCalendar = () => {
   const monthStart = startOfMonth(currentMonth);
   const startDate = startOfWeek(monthStart);
   const nowMonth = new Date();
+  const [today] = useState(new Date());
 
   const dayList = Array.from({ length: 35 }, (_, index) => addDays(startDate, index));
 
@@ -25,5 +26,13 @@ export const useCalendar = () => {
     setCurrentMonth(addMonths(currentMonth, 1));
   }, [currentMonth]);
 
-  return { currentMonth, monthStart, dayList, weekDayList, handlePrevMonth, handleNextMonth };
+  return {
+    currentMonth,
+    monthStart,
+    dayList,
+    weekDayList,
+    today,
+    handlePrevMonth,
+    handleNextMonth,
+  };
 };
