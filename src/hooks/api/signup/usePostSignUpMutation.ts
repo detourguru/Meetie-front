@@ -13,6 +13,12 @@ const postSignUp = async (signUpForm: SignUpFormType) => {
 export const usePostSignUpMutation = () => {
   const postSignUpMutation = useMutation({
     mutationFn: postSignUp,
+    onSuccess: () => {
+      console.log("성공");
+    },
+    onError: (error) => {
+      console.log("에러남", error.message);
+    },
   });
 
   return postSignUpMutation;

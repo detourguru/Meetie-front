@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 
-import { isSupabaseError } from "@/utils/supabase/error";
 import { createClient } from "@/utils/supabase/server";
 
 import type { SignUpFormType } from "@/types/signup";
@@ -23,7 +22,28 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      throw new NextResponse("Error", {
+      const { data: signupData, error: signupError } = await supabase
+        .from("userinfo")
+        .select("email")
+        .eq("email", postData.email)
+        .single();
+
+      if (signupData) {
+        // return NextResponse.json("Error", {
+        //   status: 400,
+        //   statusText: "Exist User",
+        // });
+        throw new NextResponse("이미 존재하는 사용자입니다.", {
+          status: 400,
+          statusText: "A",
+        });
+      }
+
+      if (signupError) {
+        return NextResponse.json("Error", { status: 422, statusText: "Signup Error" });
+      }
+
+      return NextResponse.json("Error", {
         status: error.status,
         statusText: error.message,
       });
@@ -31,13 +51,8 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ message: "Success" }, { status: 200 });
   } catch (error) {
-    if (isSupabaseError(error)) {
-      return new NextResponse(error.statusText, {
-        status: error.status,
-        statusText: error.statusText,
-      });
-    }
+    console.error("에러?", error);
 
-    return new NextResponse("Unexpected Error", { status: 500 });
+    return NextResponse.json({ message: "error" }, { status: 500, statusText: "이건가?" });
   }
 }

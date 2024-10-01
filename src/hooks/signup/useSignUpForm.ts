@@ -52,12 +52,7 @@ export const useSignUpForm = () => {
   const handleSubmit = async () => {
     PostSignUpMutation(signupForm, {
       onSuccess: () => {
-        console.log("에러안남");
         router.push(PATH.WALKTHROUGH);
-      },
-      onError(error) {
-        console.log("에러났어");
-        console.error(error.message);
       },
     });
   };
