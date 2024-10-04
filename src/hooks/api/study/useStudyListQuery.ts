@@ -15,7 +15,6 @@ const getStudyList = async (param?: FilterSelectedType) => {
   const data = await GET<GetStudyListResponseType>(
     END_POINTS.STUDY_LIST + `?${queryString}`,
     createInit(),
-    "스터디 목록 조회 에러",
   );
 
   return data;
