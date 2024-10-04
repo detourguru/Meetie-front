@@ -28,7 +28,6 @@ export const usePatchStudyRequestMutation = (studyId: string) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });
     },
     onError: (error) => {
-      console.log(error.message);
       if (error.message === "member count error") {
         toast.toast({
           title: "스터디 인원을 초과합니다",

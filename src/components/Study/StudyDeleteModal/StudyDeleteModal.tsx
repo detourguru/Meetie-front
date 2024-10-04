@@ -6,6 +6,7 @@ import Modal from "@/components/common/Modal/Modal";
 import { PATH } from "@/constants/path";
 
 import { useDeleteStudyMutation } from "@/hooks/api/study/useDeleteStudyMutation";
+import { useToast } from "@/hooks/common/useToast";
 
 interface StudyDeleteModalProps {
   studyId: string;
@@ -24,10 +25,13 @@ const StudyDeleteModal = ({
 
   const { mutate: deleteStudyMutation } = useDeleteStudyMutation();
 
+  const toast = useToast();
+
   const handleDeleteStudy = () => {
-    // todo 추후 토스트 메시지나 모달창으로 수정
     if (joinMemberCount > 0) {
-      console.log("참여 멤버가 0명일때만 수정 가능합니다");
+      toast.toast({
+        title: "참여 멤버가 0명일때만 삭제 가능합니다",
+      });
 
       return;
     }

@@ -37,8 +37,6 @@ export async function DELETE(request: Request, { params }: { params: { commentId
       .eq("comment_id", params.commentId)
       .eq("emoji", emoji);
 
-    console.log(error);
-
     if (!error) {
       return NextResponse.json({ message: "ok" }, { status: 200 });
     }

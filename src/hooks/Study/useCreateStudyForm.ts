@@ -6,6 +6,7 @@ import { PATH } from "@/constants/path";
 
 import { usePatchStudyMutation } from "@/hooks/api/study/usePatchStudyMutation";
 import { usePostStudyMutation } from "@/hooks/api/study/usePostStudyMutation";
+import { useToast } from "@/hooks/common/useToast";
 
 import type { CreateStudyFormRequestType } from "@/types/study";
 
@@ -24,6 +25,8 @@ export const useCreateStudyForm = ({
   const { mutate: patchStudyMutation } = usePatchStudyMutation(String(studyId));
 
   const router = useRouter();
+
+  const toast = useToast();
 
   const [step, setStep] = useState("first");
 
@@ -90,9 +93,10 @@ export const useCreateStudyForm = ({
   };
 
   const handleEditStudy = async () => {
-    // todo 추후 토스트 메시지나 모달창으로 수정
     if (joinMemberCount && joinMemberCount > 0) {
-      console.log("참여 멤버가 0명일때만 수정 가능합니다");
+      toast.toast({
+        title: "참여 멤버가 0명일때만 수정 가능합니다",
+      });
 
       return;
     }
