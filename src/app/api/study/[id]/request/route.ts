@@ -36,14 +36,12 @@ export async function PATCH(request: Request, { params }: { params: { id: string
         .eq("id", params.id);
 
       if (!postError) {
-        return NextResponse.json({ message: "ok", status: 200 });
+        return NextResponse.json({ message: "ok" }, { status: 200 });
       }
     } else {
-      return NextResponse.json({ message: "ok", status: 200 });
+      return NextResponse.json({ message: "ok" }, { status: 200 });
     }
-
-    return NextResponse.json({ message: "error", status: 400 });
   } catch (error) {
-    return NextResponse.json({ message: "error", stuats: 500, data: error });
+    return NextResponse.json({ message: "error", data: error }, { status: 500 });
   }
 }

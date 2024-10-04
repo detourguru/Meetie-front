@@ -21,6 +21,8 @@ async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestIni
       scope.setLevel("error");
       Sentry.captureMessage(`[APIError] ${window.location.href} :: ${error}`);
     });
+
+    throw new Error(error);
   }
 
   try {

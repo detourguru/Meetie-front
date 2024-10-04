@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
-import localFont from "next/font/local";
-
 import "@/styles/globals.css";
 
+import localFont from "next/font/local";
+
+import { Toaster } from "@/components/common/Toast/Toaster";
 import { ClientProvider } from "@/components/providers/ClientProvider";
 
 const Pretendard = localFont({
@@ -40,6 +41,7 @@ export default function RootLayout({
             {children}
           </div>
         </ClientProvider>
+        <Toaster />
         <div id="modal"></div>
       </body>
     </html>

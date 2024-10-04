@@ -15,7 +15,7 @@ const patchStudyRequest = async ({ studyId, userId, isReject }: PatchStudyReques
   return await PATCH(
     END_POINTS.STUDY_REQUEST(studyId),
     createInit({ userId, isReject }),
-    "인원 초과된 스터디입니다",
+    "스터디 인원을 초과합니다",
   );
 };
 
