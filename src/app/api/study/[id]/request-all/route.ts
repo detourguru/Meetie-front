@@ -11,7 +11,10 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     ).data;
 
     if (recruitMemberCount < requestMemberList.length + joinMemberList.length) {
-      return NextResponse.json({ message: "error" }, { status: 400 });
+      return NextResponse.json(
+        { message: "error" },
+        { status: 400, statusText: "member count error" },
+      );
     }
 
     const { error: patchError } = await supabase

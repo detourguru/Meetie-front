@@ -12,11 +12,7 @@ interface PatchStudyAllRequestProps {
 }
 
 const patchStudyAllRequest = async ({ studyId }: PatchStudyAllRequestProps) => {
-  return await PATCH(
-    END_POINTS.STUDY_REQUEST_ALL(studyId),
-    createInit(),
-    "스터디 인원을 초과합니다",
-  );
+  return await PATCH(END_POINTS.STUDY_REQUEST_ALL(studyId), createInit());
 };
 
 export const usePatchStudyRequestAllMutation = (studyId: string) => {
@@ -30,9 +26,11 @@ export const usePatchStudyRequestAllMutation = (studyId: string) => {
       queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.STUDY, Number(studyId)] });
     },
     onError: (error) => {
-      toast.toast({
-        title: error.message,
-      });
+      if (error.message === "member count error") {
+        toast.toast({
+          title: "스터디 인원을 초과합니다",
+        });
+      }
     },
   });
 

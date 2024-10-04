@@ -21,13 +21,20 @@ export async function PATCH(request: Request, { params }: { params: { id: string
     const updateMemberList = requestMemberList.filter((member) => member !== userId);
 
     if (recruitMemberCount === joinMemberList.length) {
-      return NextResponse.json({ message: "error" }, { status: 400 });
+      return NextResponse.json(
+        { message: "error" },
+        { status: 400, statusText: "member count error" },
+      );
     }
 
     const { error: patchError } = await supabase
       .from("study")
       .update({ requestMemberList: updateMemberList })
       .eq("id", params.id);
+
+    if (patchError) {
+      return NextResponse.json({ message: "error" }, { status: 400, statusText: "test error" });
+    }
 
     if (!patchError && !isReject) {
       const { error: postError } = await supabase

@@ -13,16 +13,16 @@ export function createInit<Body extends object>(
   };
 }
 
-async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestInit, error?: string) {
+async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestInit) {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}${uri}`, init);
 
   if (!response.ok) {
     Sentry.withScope((scope) => {
       scope.setLevel("error");
-      Sentry.captureMessage(`[APIError] ${window.location.href} :: ${error}`);
+      Sentry.captureMessage(`[APIError] ${window.location.href} :: ${response.statusText}`);
     });
 
-    throw new Error(error);
+    throw new Error(response.statusText);
   }
 
   try {
@@ -35,18 +35,18 @@ async function fetchWrapperWithTokenHandler<Data>(uri: string, init?: RequestIni
   }
 }
 
-export function GET<Data>(input: string, init?: RequestInit, error?: string) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "GET", ...init }, error);
+export function GET<Data>(input: string, init?: RequestInit) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "GET", ...init });
 }
 
-export function POST<Data>(input: string, init?: RequestInit, error?: string) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init }, error);
+export function POST<Data>(input: string, init?: RequestInit) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "POST", ...init });
 }
 
-export function PATCH<Data>(input: string, init?: RequestInit, error?: string) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init }, error);
+export function PATCH<Data>(input: string, init?: RequestInit) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "PATCH", ...init });
 }
 
-export function DELETE<Data>(input: string, init?: RequestInit, error?: string) {
-  return fetchWrapperWithTokenHandler<Data>(input, { method: "DELETE", ...init }, error);
+export function DELETE<Data>(input: string, init?: RequestInit) {
+  return fetchWrapperWithTokenHandler<Data>(input, { method: "DELETE", ...init });
 }
