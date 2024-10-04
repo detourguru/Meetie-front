@@ -7,6 +7,7 @@ import { format, isSameMonth, isSunday, isSaturday, isToday } from "date-fns";
 import { WEEK_DAY } from "@/constants/common";
 
 import { useCalendar } from "@/hooks/common/useCalendar";
+import { useToast } from "@/hooks/common/useToast";
 
 import { startDateValidation, endDateValidation } from "@/utils/date";
 
@@ -33,6 +34,8 @@ const Calender = ({
   const { currentMonth, dayList, monthStart, today, handlePrevMonth, handleNextMonth } =
     useCalendar();
 
+  const toast = useToast();
+
   const handleDayText = useCallback(() => {
     return dayList.map((dayData) => (
       <div
@@ -43,10 +46,14 @@ const Calender = ({
             (isEndDate
               ? endDateValidation(dayData, today, startDate)
                 ? updateInputValue("endDate", dayData)
-                : console.log("종료일은 시작일 이후 날짜만 가능합니다")
+                : toast.toast({
+                    title: "종료일은 시작일 이후 날짜만 가능합니다",
+                  })
               : startDateValidation(dayData, today)
                 ? updateInputValue("startDate", dayData)
-                : console.log("시작일은 오늘 이후 날짜만 가능합니다"));
+                : toast.toast({
+                    title: "시작일은 오늘 이후 날짜만 가능합니다",
+                  }));
 
           updateTaskInputValue && updateTaskInputValue("endDate", dayData);
 
