@@ -15,7 +15,6 @@ const getCommunityList = async (filterOption?: FilterSelectedType) => {
   const data = await GET<GetCommunityListResponseType>(
     END_POINTS.COMMUNITY_LIST(options.search, options.tags, options.sort, options.date),
     createInit(),
-    "커뮤니티 리스트 조회 오류",
   );
 
   return data;

@@ -15,7 +15,6 @@ const getAllUserInfo = async (param?: FilterSelectedType) => {
   const data = await GET<GetAllUserInfoResponseType>(
     END_POINTS.ONBOARDING + `?${queryString}`,
     createInit(),
-    "전체 유저 조회 오류",
   );
 
   return data;

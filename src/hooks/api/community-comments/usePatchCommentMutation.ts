@@ -11,7 +11,6 @@ const patchComment = async (postId: number, createiForm: UpdateCommentFormType) 
   return await PATCH(
     END_POINTS.DELETE_COMMUNITY_COMMENTS(postId, createiForm.id),
     createInit({ contents: createiForm.contents }),
-    "커뮤니티 댓글 업데이트 오류",
   );
 };
 

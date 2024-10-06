@@ -9,7 +9,7 @@ import { QUERY_KEYS } from "@/constants/queryKey";
 import type { GetBadgeConditionType } from "@/types/badge";
 
 const getBadgeCondition = async () =>
-  await GET<GetBadgeConditionType>(END_POINTS.BADGE_CONDITION, createInit(), "뱃지 조건 조회 오류");
+  await GET<GetBadgeConditionType>(END_POINTS.BADGE_CONDITION, createInit());
 
 export const badgeConditionQueryOptions = (): UseSuspenseQueryOptions<GetBadgeConditionType> => ({
   queryKey: [QUERY_KEYS.USER_INFO, QUERY_KEYS.OWNER_USER, QUERY_KEYS.BADGE_CONDITION],

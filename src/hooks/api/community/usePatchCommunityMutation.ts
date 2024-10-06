@@ -13,11 +13,7 @@ interface PatchCommunityProps {
 }
 
 const patchCommunity = async ({ createPostForm, postId }: PatchCommunityProps) => {
-  return await PATCH(
-    END_POINTS.COMMUNITY(postId),
-    createInit(createPostForm),
-    "커뮤니티 게시글 업데이트 오류",
-  );
+  return await PATCH(END_POINTS.COMMUNITY(postId), createInit(createPostForm));
 };
 
 export const usePatchCommunityMutation = (postId: number) => {

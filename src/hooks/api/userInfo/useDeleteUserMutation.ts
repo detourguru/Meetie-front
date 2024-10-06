@@ -5,7 +5,7 @@ import { DELETE, createInit } from "@/apis/httpMethod";
 import { END_POINTS } from "@/constants/api";
 
 const deleteUser = async (userId: string) => {
-  return await DELETE(END_POINTS.USER_INFO(userId), createInit(), "회원 탈퇴 오류");
+  return await DELETE(END_POINTS.USER_INFO(userId), createInit());
 };
 
 export const useDeleteUserMutation = () => {

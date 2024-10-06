@@ -11,7 +11,6 @@ const postCommentEmoji = async (postId: number, createEmojiForm: CreateCommentEm
   return await POST(
     END_POINTS.POST_COMMUNITY_COMMENT_EMOJI(postId, createEmojiForm.commentId),
     createInit(createEmojiForm),
-    "커뮤니티 댓글 이모지 추가 오류",
   );
 };
 
