@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint './src/**/*.{ts,tsx,js,jsx}'",
     "lint:fix": "eslint --fix './src/**/*.{ts,tsx,js,jsx}'",
-    "format": "prettier --write"
+    "format": "prettier --write",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.1",
@@ -35,6 +37,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@playwright/test": "1.41",
     "@tanstack/react-query-devtools": "^5.52.3",
     "@types/eslint": "^8.56.2",
     "@types/node": "^20",
