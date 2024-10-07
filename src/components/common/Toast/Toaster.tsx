@@ -14,6 +14,7 @@ export function Toaster() {
           <Toast
             className="max-w-[335px] h-[52px] rounded-[28px] bg-neutral-800 mb-[24px]"
             key={id}
+            duration={3000}
             {...props}
           >
             <div className="flex">
