@@ -5,6 +5,8 @@ import { POST, createInit } from "@/apis/httpMethod";
 import { END_POINTS } from "@/constants/api";
 import { QUERY_KEYS } from "@/constants/queryKey";
 
+import { useToast } from "@/hooks/common/useToast";
+
 import type { CreateCommentEmojiType } from "@/types/community";
 
 const postCommentEmoji = async (postId: number, createEmojiForm: CreateCommentEmojiType) => {
@@ -17,6 +19,8 @@ const postCommentEmoji = async (postId: number, createEmojiForm: CreateCommentEm
 export const usePostCommentEmojiMutation = (postId: number) => {
   const queryClient = useQueryClient();
 
+  const { toast } = useToast();
+
   const postCommentEmojiMutation = useMutation({
     mutationFn: async (createEmojiForm: CreateCommentEmojiType) =>
       await postCommentEmoji(postId, createEmojiForm),
@@ -26,7 +30,11 @@ export const usePostCommentEmojiMutation = (postId: number) => {
       });
     },
     onError: (error) => {
-      console.log(error);
+      if (error.message === "post community comment emoji error") {
+        toast({
+          title: "이미 등록한 이모지입니다.",
+        });
+      }
     },
   });
 
