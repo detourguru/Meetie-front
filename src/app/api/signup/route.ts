@@ -29,18 +29,14 @@ export async function POST(request: Request) {
         .single();
 
       if (signupData) {
-        // return NextResponse.json("Error", {
-        //   status: 400,
-        //   statusText: "Exist User",
-        // });
-        throw new NextResponse("이미 존재하는 사용자입니다.", {
+        return NextResponse.json("Error", {
           status: 400,
-          statusText: "A",
+          statusText: "Exist User",
         });
       }
 
       if (signupError) {
-        return NextResponse.json("Error", { status: 422, statusText: "Signup Error" });
+        return NextResponse.json("Error", { status: 400, statusText: "Signup Error" });
       }
 
       return NextResponse.json("Error", {
