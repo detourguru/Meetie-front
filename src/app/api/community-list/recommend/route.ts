@@ -14,7 +14,7 @@ export async function GET() {
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 게시글 랜덤 리스트 조회 오류" },
+      { status: 400, statusText: "get random community list error" },
     );
   } catch (error) {
     console.error(error);

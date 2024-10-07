@@ -14,7 +14,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 게시글 조회수 증가 오류" },
+      { status: 400, statusText: "increase community veiw count error" },
     );
   } catch (error) {
     console.error(error);

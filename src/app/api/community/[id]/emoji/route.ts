@@ -35,7 +35,7 @@ export async function DELETE(request: Request, { params }: { params: { id: strin
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 이모지 삭제 오류" },
+      { status: 400, statusText: "delete emoji error" },
     );
   } catch (error) {
     console.error(error);

@@ -19,7 +19,7 @@ export async function POST(request: Request, { params }: { params: { commentId: 
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 댓글 이모지 추가 오류" },
+      { status: 400, statusText: "post community comment emoji error" },
     );
   } catch (error) {
     console.error(error);
@@ -46,7 +46,7 @@ export async function DELETE(request: Request, { params }: { params: { commentId
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 댓글 이모지 삭제 오류" },
+      { status: 400, statusText: "delete community comment emoji error" },
     );
   } catch (error) {
     console.error(error);

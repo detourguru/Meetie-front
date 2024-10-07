@@ -14,7 +14,7 @@ export async function DELETE(request: Request, { params }: { params: { commentId
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 댓글 삭제 오류" },
+      { status: 400, statusText: "delete community comment error" },
     );
   } catch (error) {
     console.error(error);
@@ -39,7 +39,7 @@ export async function PATCH(request: Request, { params }: { params: { commentId:
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 댓글 업데이트 오류" },
+      { status: 400, statusText: "patch community comment error" },
     );
   } catch (error) {
     console.error(error);

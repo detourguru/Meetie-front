@@ -53,10 +53,7 @@ export async function DELETE(request: Request) {
     const userId = searchParams.get("user_id");
 
     if (!userId) {
-      return NextResponse.json(
-        { message: "error" },
-        { status: 400, statusText: "유저 정보 조회 오류" },
-      );
+      return NextResponse.json({ message: "error" }, { status: 400, statusText: "get user error" });
     }
 
     const res = await Promise.all([
@@ -73,8 +70,8 @@ export async function DELETE(request: Request) {
           return NextResponse.json({ message: "ok" }, { status: 200, statusText: "ok" });
         }
         return NextResponse.json(
-          { message: "회원탈퇴 오류" },
-          { status: 400, statusText: "회원탈퇴 오류" },
+          { message: "withdrawal error" },
+          { status: 400, statusText: "withdrawal error" },
         );
       })
       .catch((error) => {
@@ -84,7 +81,10 @@ export async function DELETE(request: Request) {
         );
       });
 
-    return NextResponse.json({ message: res.statusText }, { status: res.status });
+    return NextResponse.json(
+      { message: res.statusText },
+      { status: res.status, statusText: res.statusText },
+    );
   } catch (error) {
     console.error(error);
     return NextResponse.json({ message: "error" }, { status: 500 });
@@ -103,7 +103,7 @@ export async function POST(request: Request) {
     if (error) {
       return NextResponse.json(
         { message: error.message },
-        { status: 400, statusText: "회원가입 오류" },
+        { status: 400, statusText: "sigh up error" },
       );
     }
 

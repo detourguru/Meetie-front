@@ -56,7 +56,7 @@ export async function GET(request: Request, { params }: { params: { id: string }
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 댓글 조회 오류" },
+      { status: 400, statusText: "get community comment error" },
     );
   } catch (error) {
     console.error(error);
@@ -84,7 +84,7 @@ export async function POST(request: Request, { params }: { params: { id: string 
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 댓글 추가 오류" },
+      { status: 400, statusText: "post community comment error" },
     );
   } catch (error) {
     console.error(error);

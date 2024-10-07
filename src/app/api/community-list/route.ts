@@ -56,7 +56,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(
       { message: "error" },
-      { status: 400, statusText: "커뮤니티 게시글 리스트 조회 오류" },
+      { status: 400, statusText: "get community list error" },
     );
   } catch (error) {
     console.error(error);
