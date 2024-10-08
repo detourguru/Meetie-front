@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 
+import type { ButtonProps } from "@/components/common/Button/Button";
 import Button from "@/components/common/Button/Button";
 import mdx from "@/components/common/Button/Button.mdx";
 
@@ -18,30 +19,35 @@ const meta: Meta<typeof Button> = {
       control: { type: "select" },
       options: ["default", "secondary", "outline", "outlinePrimary", "disabled"],
       description: "Button의 배경색 스타일",
+      table: {
+        type: { summary: "default" },
+      },
     },
     size: {
       control: { type: "select" },
       options: ["default", "sm", "md", "lg", "xl"],
       description: "Button의 크기 스타일",
-    },
-    className: {
-      control: "text",
+      table: {
+        type: { summary: "default" },
+      },
     },
     children: {
       control: { type: "text" },
       description: "Button에 표시할 내용",
+      table: {
+        type: { summary: "button" },
+      },
     },
   },
 };
 
 export default meta;
 
-type Story = StoryObj<typeof Button>;
-
-export const Primary: Story = {
+export const Primary: StoryObj<ButtonProps> = {
   args: {
     variant: "default",
     size: "default",
+    children: "button",
   },
 };
 
@@ -119,9 +125,9 @@ export const SizeProps: StoryObj<typeof Button> = {
   ),
 };
 
-export const Secondary: Story = {
-  args: {
-    ...Primary.args,
-    variant: "secondary",
-  },
-};
+// export const Secondary: Story = {
+//   args: {
+//     ...Primary.args,
+//     variant: "secondary",
+//   },
+// };
