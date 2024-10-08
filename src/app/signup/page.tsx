@@ -1,17 +1,21 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import Button from "@/components/common/Button/Button";
 import Input from "@/components/common/Input/Input";
 import OnBoardingTitle from "@/components/OnBoardingTitle/OnBoardingTitle";
 
 import { SIGNUP_DATA } from "@/constants/onBoarding";
+import { PATH } from "@/constants/path";
 
 import { usePasswordEyes } from "@/hooks/common/usePasswordEyes";
 import { useSignUpForm } from "@/hooks/signup/useSignUpForm";
 
 export default function SignUpPage() {
+  const router = useRouter();
+
   const {
     signupForm,
     updateSignUpForm,
@@ -31,11 +35,24 @@ export default function SignUpPage() {
     handleClickedEyes: handleClickedCheckPasswordEyes,
   } = usePasswordEyes();
 
+  const handleBack = () => {
+    router.push(PATH.LOGIN);
+  };
+
   const inputTitleClassName = "text-semibold-16 mb-[10px]";
   const SpanAlertClassName = "absolute left-0 -bottom-6 text-primary-400 text-regular-12";
 
   return (
-    <main className="flex flex-col items-center h-full p-4">
+    <main className="relative flex flex-col items-center h-full p-4">
+      <span className="absolute top-4 left-4">
+        <Image
+          src="/svg/ic-calendar-back-arrow.svg"
+          width={10}
+          height={18}
+          alt="go login page"
+          onClick={handleBack}
+        />
+      </span>
       <OnBoardingTitle textData={SIGNUP_DATA} index={0} />
 
       <form className="flex flex-col justify-between w-full h-full pt-8">
