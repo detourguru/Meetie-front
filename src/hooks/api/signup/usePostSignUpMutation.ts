@@ -3,6 +3,9 @@ import { useMutation } from "@tanstack/react-query";
 import { POST, createInit } from "@/apis/httpMethod";
 
 import { END_POINTS } from "@/constants/api";
+import { SIGNUP_ERROR_MESSAGE } from "@/constants/error";
+
+import { useToast } from "@/hooks/common/useToast";
 
 import type { SignUpFormType } from "@/types/signup";
 
@@ -11,13 +14,12 @@ const postSignUp = async (signUpForm: SignUpFormType) => {
 };
 
 export const usePostSignUpMutation = () => {
+  const toast = useToast();
+
   const postSignUpMutation = useMutation({
     mutationFn: postSignUp,
-    onSuccess: () => {
-      console.log("성공");
-    },
     onError: (error) => {
-      console.log("에러남", error.message);
+      toast.toast({ title: SIGNUP_ERROR_MESSAGE(error.message) });
     },
   });
 

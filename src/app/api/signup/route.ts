@@ -22,33 +22,30 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      const { data: signupData, error: signupError } = await supabase
+      const { data: signupData } = await supabase
         .from("userinfo")
         .select("email")
         .eq("email", postData.email)
         .single();
 
       if (signupData) {
-        return NextResponse.json("Error", {
-          status: 400,
-          statusText: "Exist User",
-        });
+        return NextResponse.json(
+          { message: "error" },
+          {
+            status: 400,
+            statusText: "exist user error",
+          },
+        );
       }
 
-      if (signupError) {
-        return NextResponse.json("Error", { status: 400, statusText: "Signup Error" });
-      }
-
-      return NextResponse.json("Error", {
-        status: error.status,
-        statusText: error.message,
-      });
+      return NextResponse.json({ message: "error" }, { status: 400, statusText: "signup error" });
     }
 
-    return NextResponse.json({ message: "Success" }, { status: 200 });
+    return NextResponse.json({ message: "ok" }, { status: 200 });
   } catch (error) {
-    console.error("에러?", error);
-
-    return NextResponse.json({ message: "error" }, { status: 500, statusText: "이건가?" });
+    return NextResponse.json(
+      { message: "error", data: error },
+      { status: 500, statusText: "server error" },
+    );
   }
 }
