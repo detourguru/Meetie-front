@@ -15,6 +15,8 @@ test("스터디 모집 생성 테스트", async ({ page }) => {
   });
   await test.step("스터디 생성 1단계", async () => {
     await page.goto("/study/create");
+    await page.waitForURL(`**/study/create`);
+
     const nextButton = page.getByText("다음");
     const positionSheetButton = page.getByText("모집 직군을 선택해주세요.");
     const titleInput = page.getByPlaceholder("스터디의 제목을 작성해주세요.");
