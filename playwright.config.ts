@@ -1,14 +1,12 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
-  globalSetup: require.resolve("./src/e2e/global-setup"),
   use: {
     baseURL: "http://localhost:3000/",
-    storageState: "state.json",
   },
   testDir: "./src/e2e",
   fullyParallel: false,
-  // forbidOnly: !!process.env.CI,
+  forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
