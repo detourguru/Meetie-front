@@ -7,9 +7,11 @@ import { useCallback, useState } from "react";
 import { END_POINTS } from "@/constants/api";
 import { PATH } from "@/constants/path";
 
+import { usePostLoginMutation } from "@/hooks/api/login/usePostLoginMutation";
+
 import { createClient } from "@/utils/supabase/client";
 
-interface LoginFormType {
+export interface LoginFormType {
   email: string;
   password: string;
 }
@@ -20,11 +22,14 @@ export const useLoginForm = () => {
   const router = useRouter();
   const supabase = createClient();
 
+  const { mutate: PostLoginMutation } = usePostLoginMutation();
+
   const [loginForm, setLoginForm] = useState<LoginFormType>({
     email: localStorage.getItem("savedEmail") || "",
     password: "",
   });
   const [isCheckedSave, setIsCheckedSave] = useState(localStorage.getItem("savedEmail") !== null);
+  const isCompleted = Object.values(loginForm).every((value) => value);
 
   const updateLoginForm = useCallback(
     <Key extends keyof LoginFormType>(key: Key, value: LoginFormType[Key]) => {
@@ -45,40 +50,16 @@ export const useLoginForm = () => {
   };
 
   const handleSignInWithEmail = async () => {
-    try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: loginForm.email,
-        password: loginForm.password,
-      });
-
-      if (error) {
-        const { data: loginData, error: loginError } = await supabase
-          .from("userinfo")
-          .select("email")
-          .eq("email", loginForm.email)
-          .single();
-
-        // TODO: 소셜 로그인일 경우도 추가해야됨
-        if (loginError) {
-          throw new Error("회원가입을 하세연");
-        }
-
-        if (loginData) {
-          throw new Error("비밀번호가 틀렸자나여");
-        }
-      }
-
-      if (data) {
+    PostLoginMutation(loginForm, {
+      onSuccess: () => {
         if (isCheckedSave) {
           localStorage.setItem("savedEmail", loginForm.email);
         } else {
           localStorage.removeItem("savedEmail");
         }
         router.push(PATH.WALKTHROUGH);
-      }
-    } catch (error) {
-      console.error(error);
-    }
+      },
+    });
   };
 
   const handleSignInWithOAuth = async (provider: SocialProviderType) => {
@@ -93,6 +74,7 @@ export const useLoginForm = () => {
   return {
     isCheckedSave,
     loginForm,
+    isCompleted,
     updateLoginForm,
     handleClickSave,
     handleSignInWithEmail,

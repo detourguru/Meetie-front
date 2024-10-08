@@ -2,6 +2,7 @@ export const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export const END_POINTS = {
   SIGNUP: "/api/signup",
+  LOGIN: "/api/login",
 
   AUTH_CALLBACK: "/api/auth/callback",
 

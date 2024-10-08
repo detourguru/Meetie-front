@@ -9,8 +9,14 @@ import { usePasswordEyes } from "@/hooks/common/usePasswordEyes";
 import { useLoginForm } from "@/hooks/login/useLoginForm";
 
 const LoginForm = () => {
-  const { isCheckedSave, loginForm, updateLoginForm, handleClickSave, handleSignInWithEmail } =
-    useLoginForm();
+  const {
+    isCheckedSave,
+    loginForm,
+    isCompleted,
+    updateLoginForm,
+    handleClickSave,
+    handleSignInWithEmail,
+  } = useLoginForm();
 
   const { clickedEyes, handleClickedEyes } = usePasswordEyes();
 
@@ -67,7 +73,13 @@ const LoginForm = () => {
         </button>
       </div>
 
-      <Button type="button" size="xl" className="text-white" onClick={handleSignInWithEmail}>
+      <Button
+        variant={isCompleted ? "default" : "disabled"}
+        type="button"
+        size="xl"
+        className="text-white"
+        onClick={handleSignInWithEmail}
+      >
         <span className="text-semibold-16">로그인</span>
       </Button>
     </form>

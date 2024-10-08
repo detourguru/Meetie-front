@@ -3,7 +3,7 @@ import { useMutation } from "@tanstack/react-query";
 import { POST, createInit } from "@/apis/httpMethod";
 
 import { END_POINTS } from "@/constants/api";
-import { SIGNUP_ERROR_MESSAGE } from "@/constants/error";
+import { ERROR_MESSAGE } from "@/constants/error";
 
 import { useToast } from "@/hooks/common/useToast";
 
@@ -19,7 +19,7 @@ export const usePostSignUpMutation = () => {
   const postSignUpMutation = useMutation({
     mutationFn: postSignUp,
     onError: (error) => {
-      toast.toast({ title: SIGNUP_ERROR_MESSAGE(error.message) });
+      toast.toast({ title: ERROR_MESSAGE.SIGNUP(error.message) });
     },
   });
 
