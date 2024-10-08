@@ -9,7 +9,6 @@ const LoginSocial = () => {
 
   return (
     <div className="flex justify-center items-center gap-[23px]">
-      <Image src="/svg/ic-login-naver.svg" width={47} height={46} alt="naver" />
       <Image
         src="/svg/ic-login-kakao.svg"
         width={47}
