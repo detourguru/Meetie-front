@@ -3877,7 +3877,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/addon-docs@npm:8.3.5":
+"@storybook/addon-docs@npm:8.3.5, @storybook/addon-docs@npm:^8.3.5":
   version: 8.3.5
   resolution: "@storybook/addon-docs@npm:8.3.5"
   dependencies:
@@ -9864,6 +9864,7 @@ __metadata:
     "@sentry/nextjs": "npm:^8"
     "@sentry/utils": "npm:^8.31.0"
     "@sentry/webpack-plugin": "npm:^2.22.4"
+    "@storybook/addon-docs": "npm:^8.3.5"
     "@storybook/addon-essentials": "npm:^8.3.5"
     "@storybook/addon-interactions": "npm:^8.3.5"
     "@storybook/addon-links": "npm:^8.3.5"
