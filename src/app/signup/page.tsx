@@ -61,6 +61,7 @@ export default function SignUpPage() {
             <h2 className={inputTitleClassName}>이름</h2>
             <Input
               type="text"
+              name="name"
               value={signupForm.name}
               placeholder="이름을 입력해주세요."
               onChange={(e) => updateSignUpForm("name", e.currentTarget.value)}
@@ -70,6 +71,7 @@ export default function SignUpPage() {
             <h2 className={inputTitleClassName}>이메일</h2>
             <Input
               type="text"
+              name="email"
               value={signupForm.email}
               placeholder="이메일을 입력해주세요."
               autoComplete="username"
@@ -83,6 +85,7 @@ export default function SignUpPage() {
             <h2 className={inputTitleClassName}>비밀번호</h2>
             <Input
               type={clickedPasswordEyes ? "text" : "password"}
+              name="password"
               value={signupForm.password}
               placeholder="비밀번호를 입력해주세요."
               autoComplete="new-password"
@@ -117,6 +120,7 @@ export default function SignUpPage() {
             <h2 className={inputTitleClassName}>비밀번호 확인</h2>
             <Input
               type={clickedCheckPasswordEyes ? "text" : "password"}
+              name="passwordCheck"
               value={checkPassword}
               placeholder="비밀번호를 입력해주세요."
               autoComplete="new-password"
