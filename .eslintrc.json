@@ -10,9 +10,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:storybook/recommended"
   ],
-  "plugins": [
-    "import"
-  ],
+  "plugins": ["import"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/no-unused-expressions": "off",
@@ -23,11 +21,7 @@
           "builtin",
           "external",
           "internal",
-          [
-            "sibling",
-            "parent",
-            "index"
-          ],
+          ["sibling", "parent", "index"],
           "type",
           "unknown"
         ],
@@ -68,6 +62,16 @@
             "position": "before"
           },
           {
+            "pattern": "{@testing-library*,@testing-library*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "{vitest*,vitest*/*}",
+            "group": "external",
+            "position": "before"
+          },
+          {
             "pattern": "@/apis/**/*",
             "group": "type",
             "position": "before"
@@ -98,15 +102,17 @@
             "position": "before"
           },
           {
+            "pattern": "@/__test__/**/*",
+            "group": "type",
+            "position": "before"
+          },
+          {
             "pattern": "@/utils/**/*",
             "group": "type",
             "position": "before"
           }
         ],
-        "pathGroupsExcludedImportTypes": [
-          "react",
-          "unknown"
-        ],
+        "pathGroupsExcludedImportTypes": ["react", "unknown"],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
@@ -117,11 +123,7 @@
   },
   "settings": {
     "import/parsers": {
-      "@typescript-eslint/parser": [
-        ".ts",
-        ".tsx",
-        ".js"
-      ]
+      "@typescript-eslint/parser": [".ts", ".tsx", ".js"]
     },
     "import/resolver": {
       "typescript": "./tsconfig.json"
