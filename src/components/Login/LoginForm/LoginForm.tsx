@@ -25,6 +25,7 @@ const LoginForm = () => {
       <Input
         type="text"
         value={loginForm.email}
+        name="email"
         placeholder="hellomeetie@gmail.com"
         autoComplete="username"
         onChange={(e) => updateLoginForm("email", e.currentTarget.value)}
@@ -33,6 +34,7 @@ const LoginForm = () => {
         <Input
           type={clickedEyes ? "text" : "password"}
           value={loginForm.password}
+          name="password"
           placeholder="************"
           autoComplete="current-password"
           onChange={(e) => updateLoginForm("password", e.currentTarget.value)}
@@ -74,9 +76,9 @@ const LoginForm = () => {
       </div>
 
       <Button
-        variant={isCompleted ? "default" : "disabled"}
         type="button"
         size="xl"
+        disabled={!isCompleted}
         className="text-white"
         onClick={handleSignInWithEmail}
       >
