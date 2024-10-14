@@ -26,29 +26,28 @@ test.describe("회원가입 페이지 테스트", () => {
     await submitButton.click();
   });
 
-  test("올바르지 않은 이메일 입력", async ({ page }) => {
+  test("유효성 검사 테스트", async ({ page }) => {
     await page.fill('input[name="name"]', "테스팅");
-    await page.fill('input[name="email"]', "testing@test");
-    await page.fill('input[name="password"]', "test1234@");
-    await page.fill('input[name="passwordCheck"]', "test1234@");
 
-    await expect(page.getByText("올바른 이메일을 입력해주세요")).toBeVisible();
-  });
-  test("올바르지 않은 비밀번호 입력", async ({ page }) => {
-    await page.fill('input[name="name"]', "테스팅");
-    await page.fill('input[name="email"]', "testing@test");
-    await page.fill('input[name="password"]', "test");
-    await page.fill('input[name="passwordCheck"]', "test");
+    await test.step("잘못된 이메일 검사", async () => {
+      await page.fill('input[name="email"]', "testing@test");
 
-    await expect(page.getByText("8~20 자리의 영문, 숫자, 특수기호를 포함해주세요")).toBeVisible();
-  });
-  test("올바르지 않은 비밀번호 확인 입력", async ({ page }) => {
-    await page.fill('input[name="name"]', "테스팅");
-    await page.fill('input[name="email"]', "testing@test");
-    await page.fill('input[name="password"]', "test1234@");
-    await page.fill('input[name="passwordCheck"]', "test2");
+      await expect(page.getByText("올바른 이메일을 입력해주세요")).toBeVisible();
+    });
 
-    await expect(page.getByText("비밀번호가 일치하지 않습니다.")).toBeVisible();
+    await test.step("잘못된 비밀번호 검사", async () => {
+      await page.fill('input[name="password"]', "test");
+      await page.fill('input[name="passwordCheck"]', "test");
+
+      await expect(page.getByText("8~20 자리의 영문, 숫자, 특수기호를 포함해주세요")).toBeVisible();
+    });
+
+    await test.step("잘못된 비밀번호 확인 검사", async () => {
+      await page.fill('input[name="password"]', "test1234@");
+      await page.fill('input[name="passwordCheck"]', "test2");
+
+      await expect(page.getByText("비밀번호가 일치하지 않습니다")).toBeVisible();
+    });
   });
 
   test("회원가입 실패 (이메일 중복)", async ({ page }) => {

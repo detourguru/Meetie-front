@@ -146,7 +146,7 @@ export default function SignUpPage() {
               )}
             </div>
             {checkPassword && !isMathed && (
-              <span className={SpanAlertClassName}>비밀번호가 일치하지 않습니다.</span>
+              <span className={SpanAlertClassName}>비밀번호가 일치하지 않습니다</span>
             )}
           </div>
         </div>
