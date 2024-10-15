@@ -74,9 +74,8 @@ test.describe("커뮤니티 게시글 생성 페이지 테스트", () => {
     if (imgInput) {
       await imgInput.setInputFiles([img1, img2, img3, img4, img5, img6]);
 
-      const uploadedImages = await page.$$('img[alt="uploaded"]');
-
-      expect(uploadedImages.length).toBe(0);
+      const toast = (await page.getByText("이미지는 최대 5개까지 가능합니다.").all())[0];
+      await expect(toast).toBeVisible();
     }
   });
 });

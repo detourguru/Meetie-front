@@ -1,8 +1,12 @@
+import { useToast } from "@/hooks/common/useToast";
+
 interface useMultiImageUploadProps {
   maxSize: number;
 }
 
 export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
+  const { toast } = useToast();
+
   const getBase64 = (file: File): Promise<string> =>
     new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -15,7 +19,11 @@ export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
     });
 
   const handleImageUpload = async (images: string[], files: FileList | null): Promise<string[]> => {
-    if (!files || files.length + images.length > maxSize) {
+    if (!files) {
+      return images;
+    }
+    if (files.length + images.length > maxSize) {
+      toast({ title: "이미지는 최대 5개까지 가능합니다." });
       return images;
     }
 
