@@ -1,18 +1,6 @@
 import { test } from "@playwright/test";
 
 test("스터디 모집 생성 테스트", async ({ page }) => {
-  await test.step("로그인", async () => {
-    await page.goto("/login");
-
-    const idInput = page.getByPlaceholder("hellomeetie@gmail.com");
-    const pwInput = page.getByPlaceholder("************");
-    const loginButton = page.getByText("로그인");
-
-    await idInput.fill("test@email.com");
-    await pwInput.fill("test1234!");
-    await loginButton.click();
-    await page.waitForURL(`**/walk-through`);
-  });
   await test.step("스터디 생성 1단계", async () => {
     await page.goto("/study/create");
     await page.waitForURL(`**/study/create`);
