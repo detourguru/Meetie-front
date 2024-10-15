@@ -2,6 +2,8 @@ import { expect, test } from "@playwright/test";
 
 import { ERROR_MESSAGE } from "@/constants/error";
 
+test.use({ storageState: { cookies: [], origins: [] } });
+
 test.describe("로그인 테스트", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/login");
