@@ -68,6 +68,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
                   true,
                 ) || ""
               }
+              data-testid="startDate"
             />
           </div>
           <div className="w-[50%]">
@@ -80,6 +81,7 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
                 convertDate(createStudyForm.endDate && new Date(createStudyForm.endDate), true) ||
                 ""
               }
+              data-testid="endDate"
             />
           </div>
         </div>
@@ -93,9 +95,10 @@ const CreateStudySecondStep = ({ createStudyForm, updateInputValue }: CreateStud
         <div className="flex gap-3">
           <Input
             readOnly
-            placeholder="날짜 선택"
+            placeholder="요일 선택"
             onClick={openWeekSheet}
             value={createStudyForm.week || ""}
+            data-testid="weekDate"
           />
           <Input
             readOnly

@@ -1,4 +1,4 @@
-import { test } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 
 test("스터디 모집 생성 테스트", async ({ page }) => {
   await test.step("스터디 생성 1단계", async () => {
@@ -22,8 +22,36 @@ test("스터디 모집 생성 테스트", async ({ page }) => {
     await goalInput.fill("스터디 목표입니다.");
     await introduceInput.fill("스터디 소개입니다");
     await nextButton.click();
+  });
+  await test.step("스터디 생성 2단계", async () => {
+    const today = new Date().getDate();
 
-    const test = page.getByText("진행방식과 커리큘럼");
-    await test.click();
+    const curriculumInput = page.getByPlaceholder("커리큘럼을 입력해주세요.");
+    const startDateInput = page.getByTestId("startDate");
+    const endDateInput = page.getByTestId("endDate");
+
+    await curriculumInput.fill("스터디 커리큘럼입니다");
+    await startDateInput.click();
+
+    const startDate = page.getByText(String(today + 7));
+    await startDate.click();
+
+    await endDateInput.click();
+    const endDate = page.getByText(String(today + 12));
+    await endDate.click();
+
+    const weekDateInput = page.getByTestId("weekDate");
+    await weekDateInput.click();
+    await page.getByText("화").click();
+
+    const timeInput = page.getByPlaceholder("오전 00시 00분");
+    await timeInput.click();
+    await page.getByText("완료").click();
+
+    await page.getByText("작성완료").click();
+
+    await page.waitForURL("/study-explorer");
+
+    await expect(page).toHaveURL("/study-explorer");
   });
 });
