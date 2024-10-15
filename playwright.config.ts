@@ -1,8 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
+  globalSetup: require.resolve("./global-setup.ts"),
   use: {
     baseURL: "http://localhost:3000/",
+    storageState: "playwright/store/auth.json",
   },
   testDir: "./src/e2e",
   fullyParallel: false,
