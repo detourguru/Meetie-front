@@ -16,21 +16,17 @@ test("커뮤니티 게시글 생성 페이지 테스트", async ({ page }) => {
   const imgInput = page.getByTitle("images");
 
   await test.step("이미지 추가 개수 초과", async () => {
-    if (imgInput) {
-      await imgInput.setInputFiles([img1, img2, img3, img4, img5, img6]);
+    await imgInput.setInputFiles([img1, img2, img3, img4, img5, img6]);
 
-      const toast = (await page.getByText("이미지는 최대 5개까지 가능합니다.").all())[0];
-      await expect(toast).toBeVisible();
-    }
+    const toast = (await page.getByText("이미지는 최대 5개까지 가능합니다.").all())[0];
+    await expect(toast).toBeVisible();
   });
 
   await test.step("이미지 추가 성공", async () => {
-    if (imgInput) {
-      await imgInput.setInputFiles([img1, img2, img3]);
+    await imgInput.setInputFiles([img1, img2, img3]);
 
-      const files = await imgInput.evaluate((input: HTMLInputElement) => input.files?.length);
-      expect(files).toBe(3);
-    }
+    const files = await imgInput.evaluate((input: HTMLInputElement) => input.files?.length);
+    expect(files).toBe(3);
   });
 
   await test.step("게시글 생성", async () => {
