@@ -50,6 +50,7 @@ test("스터디 모집 생성 테스트", async ({ page }) => {
 
     await page.getByText("작성완료").click();
 
+    await page.waitForResponse("**/api/study");
     await page.waitForURL("/study-explorer");
 
     await expect(page).toHaveURL("/study-explorer");

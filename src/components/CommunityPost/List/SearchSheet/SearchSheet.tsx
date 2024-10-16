@@ -81,6 +81,7 @@ const SearchSheet = ({
               onChange={(e) => setSearch(e.target.value)}
               className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
               placeholder={`관심있는 ${subject !== undefined ? subject : "주제"}를 검색해보세요`}
+              data-testid="searchInput"
             />
             <Image
               src="/svg/ic-community-search.svg"
@@ -88,6 +89,7 @@ const SearchSheet = ({
               width={24}
               height={24}
               onClick={handleSubmit}
+              data-testid="searchButton"
             />
           </form>
         </div>

@@ -12,6 +12,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: "html",
+  timeout: 30 * 1000,
   webServer: {
     command: "yarn dev",
     url: "http://localhost:3000",
