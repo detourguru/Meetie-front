@@ -30,7 +30,7 @@ export const useMultiImageUpload = ({ maxSize }: useMultiImageUploadProps) => {
     const newImages = images
       .concat(await Promise.all(Array.from(files).map((image) => getBase64(image))))
       .filter((image) => image !== "");
-    console.log(newImages.length);
+
     return newImages;
   };
 

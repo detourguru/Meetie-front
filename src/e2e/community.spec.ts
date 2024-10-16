@@ -47,6 +47,9 @@ test.describe("커뮤니티 테스트", async () => {
       await submitButton.click();
 
       await page.waitForResponse("**/api/community");
+      await page.waitForURL("/community");
+
+      await expect(page).toHaveURL("/community");
     });
   });
 
@@ -59,9 +62,14 @@ test.describe("커뮤니티 테스트", async () => {
     const imgCount = post.images.length;
 
     await test.step("수정 페이지 이동", async () => {
-      await page.goto(`/community/${post?.id}/edit`);
+      await page.goto(`/community/${post?.id}`);
+      await page.waitForURL(`**/community/${post?.id}`);
+
+      await page.getByAltText("rightButtonIcon").click();
+      await page.getByText("수정").click();
 
       await page.waitForURL(`**/community/${post?.id}/edit`);
+      await expect(page).toHaveURL(`/community/${post?.id}/edit`);
     });
 
     await test.step("이미지 추가 개수 초과", async () => {
@@ -113,11 +121,13 @@ test.describe("커뮤니티 테스트", async () => {
       await page.getByText("게시하기").click();
 
       await page.waitForResponse(`**/api/community/${post.id}`);
+      await page.waitForURL(`/community/${post.id}`);
+
+      await expect(page).toHaveURL(`/community/${post.id}`);
     });
   });
 
-  test("커뮤니티 게시글 삭제 테스트", async ({ page, request, baseURL }) => {
-    console.log(baseURL);
+  test("커뮤니티 게시글 삭제 테스트", async ({ page, request }) => {
     const ownPosts = await request.get(`/api/community`);
     expect(ownPosts.ok()).toBeTruthy();
 

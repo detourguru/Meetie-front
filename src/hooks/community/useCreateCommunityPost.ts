@@ -76,6 +76,7 @@ export const useCreateCommunityPost = ({ initialData, postId }: useCreateCommuni
       },
       {
         onSuccess() {
+          console.log(2);
           router.back();
         },
         onError() {
