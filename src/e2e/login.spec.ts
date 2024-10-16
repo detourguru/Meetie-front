@@ -1,7 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-import { ERROR_MESSAGE } from "@/constants/error";
-
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe("로그인 테스트", () => {
@@ -44,7 +42,8 @@ test.describe("로그인 테스트", () => {
 
     await page.waitForResponse("**/api/login");
 
-    await expect(page.getByText(ERROR_MESSAGE.LOGIN("not exist user error"))).toBeVisible();
+    const toast = (await page.getByText("존재하지 않는 사용자입니다").all())[0];
+    await expect(toast).toBeVisible();
   });
 
   test("잘못된 비밀번호 검사", async ({ page }) => {
@@ -56,6 +55,7 @@ test.describe("로그인 테스트", () => {
 
     await page.waitForResponse("**/api/login");
 
-    await expect(page.getByText(ERROR_MESSAGE.LOGIN("wrong password error"))).toBeVisible();
+    const toast = (await page.getByText("비밀번호가 잘못되었습니다").all())[0];
+    await expect(toast).toBeVisible();
   });
 });

@@ -1,7 +1,5 @@
 import { expect, test } from "@playwright/test";
 
-import { ERROR_MESSAGE } from "@/constants/error";
-
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.describe("회원가입 페이지 테스트", () => {
@@ -11,6 +9,7 @@ test.describe("회원가입 페이지 테스트", () => {
 
   test("로그인 페이지에서 회원가입 페이지로 이동", async ({ page }) => {
     await page.goto("/login");
+    await page.waitForURL("/login");
 
     const signupButton = page.getByText("회원가입하기");
     await signupButton.click();
@@ -63,6 +62,7 @@ test.describe("회원가입 페이지 테스트", () => {
 
     await page.waitForResponse("**/api/signup");
 
-    await expect(page.getByText(ERROR_MESSAGE.SIGNUP("exist user error"))).toBeVisible();
+    const toast = (await page.getByText("이미 가입된 계정입니다").all())[0];
+    await expect(toast).toBeVisible();
   });
 });
