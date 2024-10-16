@@ -35,7 +35,9 @@ const PostDeleteModal = ({ postId, isOpen, handleClose }: PostDeleteModalProps) 
             <p className="text-[#adb5bd] text-medium-16">취소</p>
           </Button>
           <Button size="sm" onClick={handleDeletePost}>
-            <p className="text-medium-16 text-white">삭제</p>
+            <p className="text-medium-16 text-white" title="confirm delete">
+              삭제
+            </p>
           </Button>
         </div>
       </div>
