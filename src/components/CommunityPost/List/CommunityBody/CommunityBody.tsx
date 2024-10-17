@@ -43,6 +43,7 @@ const CommunityBody = () => {
             readOnly
             className="outline-none bg-[#F1F3F5] text-regular-14 placeholder:text-[#ADB5BD] w-full"
             placeholder="관심있는 주제를 검색해보세요"
+            data-testid="searchSheetOpen"
           />
         </div>
       </div>
