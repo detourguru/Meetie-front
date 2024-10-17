@@ -32,7 +32,6 @@ const ImageUploader = ({ images, updateInputValue }: ImageUploaderProps) => {
           id="images"
           name="images"
           accept="image/*"
-          title="images"
           onChange={async (e) =>
             updateInputValue("images", await handleImageUpload(images, e.target.files))
           }

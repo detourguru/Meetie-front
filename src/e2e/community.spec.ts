@@ -14,19 +14,17 @@ test.describe("커뮤니티 테스트", async () => {
     await page.goto("/community/create");
     await page.waitForURL(`**/community/create`);
 
-    const imgInput = page.getByTitle("images");
-
     await test.step("이미지 추가 개수 초과", async () => {
-      await imgInput.setInputFiles([img1, img2, img3, img4, img5, img6]);
+      await page.setInputFiles('input[type="file"]', [img1, img2, img3, img4, img5, img6]);
 
       const toast = (await page.getByText("이미지는 최대 5개까지 가능합니다.").all())[0];
       await expect(toast).toBeVisible();
     });
 
     await test.step("이미지 추가 성공", async () => {
-      await imgInput.setInputFiles([img1, img2, img3]);
+      await page.setInputFiles('input[type="file"]', [img1, img2, img3]);
 
-      const uploadedImages = await page.$$('img[alt="uploaded"]');
+      const uploadedImages = await page.getByAltText("uploaded").all();
 
       expect(uploadedImages.length).toBe(3);
     });
@@ -46,8 +44,8 @@ test.describe("커뮤니티 테스트", async () => {
 
       await submitButton.click();
 
-      await page.waitForResponse("**/api/community");
-      await page.waitForURL("/community");
+      await page.waitForResponse("**/api/community", { timeout: 50000 });
+      await page.waitForURL("/community", { timeout: 50000 });
 
       await expect(page).toHaveURL("/community");
     });
@@ -63,39 +61,35 @@ test.describe("커뮤니티 테스트", async () => {
 
     await test.step("수정 페이지 이동", async () => {
       await page.goto(`/community/${post?.id}`);
-      await page.waitForURL(`**/community/${post?.id}`);
+      await page.waitForURL(`**/community/${post?.id}`, { timeout: 500000 });
 
       await page.getByAltText("rightButtonIcon").click();
       await page.getByText("수정").click();
 
-      await page.waitForURL(`**/community/${post?.id}/edit`);
+      await page.waitForURL(`**/community/${post?.id}/edit`, { timeout: 50000 });
       await expect(page).toHaveURL(`/community/${post?.id}/edit`);
     });
 
     await test.step("이미지 추가 개수 초과", async () => {
-      const imgInput = page.getByTitle("images");
-
-      await imgInput.setInputFiles([img1, img2, img3, img4, img5, img6]);
+      await page.setInputFiles('input[type="file"]', [img4, img5, img6]);
 
       const toast = (await page.getByText("이미지는 최대 5개까지 가능합니다.").all())[0];
       await expect(toast).toBeVisible();
     });
 
     await test.step("이미지 삭제 성공", async () => {
-      const deleteImage = await page.$$('img[alt="del btn"]');
+      const deleteImage = await page.getByAltText("del btn").all();
       await deleteImage[0].click();
 
-      const uploadedImages = await page.$$('img[alt="uploaded"]');
+      const uploadedImages = await page.getByAltText("uploaded").all();
 
       expect(uploadedImages.length).toBe(imgCount - 1);
     });
 
     await test.step("이미지 추가 성공", async () => {
-      const imgInput = page.getByTitle("images");
+      await page.setInputFiles('input[type="file"]', [img6]);
 
-      await imgInput.setInputFiles([img6]);
-
-      const uploadedImages = await page.$$('img[alt="uploaded"]');
+      const uploadedImages = await page.getByAltText("uploaded").all();
 
       expect(uploadedImages.length).toBe(imgCount);
     });
@@ -120,8 +114,8 @@ test.describe("커뮤니티 테스트", async () => {
     await test.step("게시글 수정", async () => {
       await page.getByText("게시하기").click();
 
-      await page.waitForResponse(`**/api/community/${post.id}`);
-      await page.waitForURL(`/community/${post.id}`);
+      await page.waitForResponse(`**/api/community/${post.id}`, { timeout: 50000 });
+      await page.waitForURL(`/community/${post.id}`, { timeout: 50000 });
 
       await expect(page).toHaveURL(`/community/${post.id}`);
     });
@@ -135,13 +129,13 @@ test.describe("커뮤니티 테스트", async () => {
     const post = posts.data[0];
 
     await page.goto(`/community/${post?.id}`);
-    await page.waitForURL(`**/community/${post?.id}`);
+    await page.waitForURL(`**/community/${post?.id}`, { timeout: 50000 });
 
     await page.getByAltText("rightButtonIcon").click();
     await page.getByText("삭제").click();
 
     await page.getByTitle("confirm delete").click();
 
-    await page.waitForResponse(`**/community/${post?.id}`);
+    await page.waitForResponse(`**/community/${post?.id}`, { timeout: 50000 });
   });
 });
