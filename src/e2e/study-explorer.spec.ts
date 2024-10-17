@@ -3,7 +3,6 @@ import { expect, test } from "@playwright/test";
 test("스터디 탐색 페이지", async ({ page }) => {
   await test.step("스터디 검색 후 클릭 시 스터디 페이지로 이동", async () => {
     await page.goto("/study-explorer");
-    await page.waitForURL("/study-explorer");
 
     await page.getByTestId("searchSheetOpen").click();
 
@@ -21,7 +20,6 @@ test("스터디 탐색 페이지", async ({ page }) => {
 
   await test.step("태그 필터링 후 클릭 시 스터디 페이지로 이동", async () => {
     await page.goto("/study-explorer");
-    await page.waitForURL("/study-explorer");
 
     await page.getByText("#프론트엔드").click();
 
@@ -34,7 +32,6 @@ test("스터디 탐색 페이지", async ({ page }) => {
 
   await test.step("팀원 검색 후 클릭 시 오픈 프로필 페이지로 이동", async () => {
     await page.goto("/study-explorer");
-    await page.waitForURL("/study-explorer");
 
     await page.getByText("팀원 찾기").click();
 

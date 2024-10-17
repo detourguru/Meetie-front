@@ -1,9 +1,8 @@
 import { expect, test } from "@playwright/test";
 
-test("스터디 모집 생성 테스트", async ({ page }) => {
-  await test.step("스터디 생성 1단계", async () => {
+test("스터디 생성 페이지", async ({ page }) => {
+  await test.step("스터디 생성 1단계 작성 후 다음 버튼 클릭시 2단계로 이동", async () => {
     await page.goto("/study/create");
-    await page.waitForURL(`**/study/create`);
 
     const nextButton = page.getByText("다음");
     const positionSheetButton = page.getByText("모집 직군을 선택해주세요.");
@@ -23,7 +22,7 @@ test("스터디 모집 생성 테스트", async ({ page }) => {
     await introduceInput.fill("스터디 소개입니다");
     await nextButton.click();
   });
-  await test.step("스터디 생성 2단계", async () => {
+  await test.step("스터디 생성 2단계 작성 후 작성 완료 클릭 시 스터디 생성 후 탐색 페이지로 이동", async () => {
     const today = new Date().getDate();
 
     const curriculumInput = page.getByPlaceholder("커리큘럼을 입력해주세요.");
@@ -33,11 +32,11 @@ test("스터디 모집 생성 테스트", async ({ page }) => {
     await curriculumInput.fill("스터디 커리큘럼입니다");
     await startDateInput.click();
 
-    const startDate = page.getByText(String(today + 7));
+    const startDate = page.getByText(String(today + 1), { exact: true });
     await startDate.click();
 
     await endDateInput.click();
-    const endDate = page.getByText(String(today + 12));
+    const endDate = page.getByText(String(today + 3), { exact: true });
     await endDate.click();
 
     const weekDateInput = page.getByTestId("weekDate");
