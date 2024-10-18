@@ -46,6 +46,7 @@ const EmojiButton = ({ open, handleClick, className, size, ...props }: EmojiButt
                 key={`react_emoji_${index}`}
                 onClick={() => handleClick && handleClick(emoji)}
                 className="hover:bg-gray-50 active:bg-gray-100 p-1.5"
+                data-testid="emoji-item"
               >
                 <span>{emoji}</span>
               </li>

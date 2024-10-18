@@ -61,12 +61,18 @@ const PostComments = ({ user, emojiList }: PostCommentsProps) => {
           </div>
 
           <div className="flex gap-2.5 items-center h-11">
-            <EmojiButton open={isOpen} onClick={handleToggle} handleClick={handleClick} />
+            <EmojiButton
+              open={isOpen}
+              onClick={handleToggle}
+              handleClick={handleClick}
+              data-testid="emoji-button"
+            />
             <div className="flex gap-2.5 flex-1 justify-start overflow-x-scroll hidden-scrollbar h-11 items-center">
               {ownCommunityEmoji && (
                 <CommunityEmoji
                   onClick={() => deleteCommunityEmojiMutation()}
                   communityEmoji={ownCommunityEmoji}
+                  data-testid="own-emoji"
                 />
               )}
               {emojiList
