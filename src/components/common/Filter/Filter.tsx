@@ -77,6 +77,7 @@ const FilterTagSelect = ({
           className={selected.includes(tag) || close ? selectedTagClassName : tagClassName}
           close={close}
           onClick={() => handleClick(tag)}
+          data-testid="filter-tag"
         >
           {hashtag ? `#${tag}` : tag}
         </HashTag>

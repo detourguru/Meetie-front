@@ -85,6 +85,7 @@ const PostList = ({
               className="border border-[#EAEAEA]"
               post={post}
               onClick={() => handleClick(post.id)}
+              data-testid="topic-post-list"
             />
           ))}
         </ul>
