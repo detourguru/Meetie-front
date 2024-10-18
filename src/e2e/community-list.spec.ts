@@ -23,7 +23,6 @@ test.describe("커뮤니티 리스트 페이지", () => {
     await expect(page).toHaveURL(/\/community\/\d+/);
 
     const header = page.getByRole("heading", { name: "영화 추천해주세요" });
-    await header.waitFor();
     await expect(header).toBeVisible();
   });
 
@@ -41,7 +40,6 @@ test.describe("커뮤니티 리스트 페이지", () => {
     await expect(page).toHaveURL(/\/community\/\d+/);
 
     const header = page.getByRole("heading", { name: "맨시티 vs 아스널" });
-    await header.waitFor();
     await expect(header).toBeVisible();
   });
 });

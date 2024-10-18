@@ -24,7 +24,7 @@ const CreatePostBody = ({ createPostForm, updateInputValue }: CreateCommunityPos
         >
           <p
             className={`${createPostForm.position.length === 0 && "text-blue-300"} text-regular-14`}
-            title="position sheet"
+            dat-testid="position-sheet"
           >
             {createPostForm.position.length === 0
               ? "게시물의 분야를 선택해주세요."
@@ -41,7 +41,7 @@ const CreatePostBody = ({ createPostForm, updateInputValue }: CreateCommunityPos
           maxLength={20}
           value={createPostForm.title}
           onChange={(e) => updateInputValue("title", e.target.value)}
-          title="title"
+          id="title"
         />
         <span className={inputLengthTextClassName}>{createPostForm.title.length}/20</span>
       </div>
@@ -58,7 +58,7 @@ const CreatePostBody = ({ createPostForm, updateInputValue }: CreateCommunityPos
           maxLength={100}
           value={createPostForm.contents}
           onChange={(e) => updateInputValue("contents", e.target.value)}
-          title="contents"
+          id="contents"
         />
         <span className={inputLengthTextClassName}>{createPostForm.contents.length}/100</span>
       </div>

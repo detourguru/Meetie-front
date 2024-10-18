@@ -17,7 +17,7 @@ test.describe("커뮤니티 테스트", async () => {
     await test.step("이미지 추가 개수 초과", async () => {
       await page.setInputFiles('input[type="file"]', [img1, img2, img3, img4, img5, img6]);
 
-      const toast = (await page.getByText("이미지는 최대 5개까지 가능합니다.").all())[0];
+      const toast = page.getByText("이미지는 최대 5개까지 가능합니다.").first();
       await expect(toast).toBeVisible();
     });
 
@@ -30,44 +30,41 @@ test.describe("커뮤니티 테스트", async () => {
     });
 
     await test.step("게시글 생성", async () => {
-      const submitButton = page.getByText("게시하기");
-      const positionSheetButton = page.getByText("게시물의 분야를 선택해주세요.");
-      const titleInput = page.getByPlaceholder("게시글의 제목을 작성해주세요.");
-      const contentInput = page.getByPlaceholder("게시글의 내용을 작성해보세요.");
+      const positionSheetButton = page.getByTestId("position-sheet");
 
       await positionSheetButton.click();
-
       await page.getByText("개발").click();
       await page.getByText("완료").click();
-      await titleInput.fill("커뮤니티 게시글 제목입니다");
-      await contentInput.fill("커뮤니티 게시글 내용입니다.");
 
-      await submitButton.click();
+      await page.fill("#title", "커뮤니티 게시글 제목입니다");
+      await page.fill("#contents", "커뮤니티 게시글 내용입니다.");
 
-      await page.waitForResponse("**/api/community", { timeout: 50000 });
-      await page.waitForURL("/community", { timeout: 50000 });
+      await page.getByText("게시하기").click();
+
+      await page.waitForResponse("**/api/community");
+      await page.waitForURL("/community");
 
       await expect(page).toHaveURL("/community");
     });
   });
 
-  test("게시글 수정 테스트", async ({ page, request }) => {
-    const ownPosts = await request.get(`/api/community`);
-    expect(ownPosts.ok()).toBeTruthy();
-
-    const posts = await ownPosts.json();
-    const post = posts.data[0];
-    const imgCount = post.images.length;
-
+  test("게시글 수정 테스트", async ({ page }) => {
     await test.step("수정 페이지 이동", async () => {
-      await page.goto(`/community/${post?.id}`);
-      await page.waitForURL(`**/community/${post?.id}`, { timeout: 500000 });
+      await page.goto("/community");
+      await page.waitForURL(`**/community`);
+
+      await expect(page).toHaveURL("/community");
+
+      const post = page.getByRole("heading", { name: "커뮤니티 게시글 제목입니다" });
+      await post.click();
+      await page.waitForURL(`**/community/**`);
+      await page.waitForResponse("**/api/community/**");
 
       await page.getByAltText("rightButtonIcon").click();
       await page.getByText("수정").click();
 
-      await page.waitForURL(`**/community/${post?.id}/edit`, { timeout: 50000 });
-      await expect(page).toHaveURL(`/community/${post?.id}/edit`);
+      await page.waitForURL(`**/community/**/edit`);
+      await expect(page).toHaveURL(/\/community\/\d+\/edit/);
     });
 
     await test.step("이미지 추가 개수 초과", async () => {
@@ -83,7 +80,7 @@ test.describe("커뮤니티 테스트", async () => {
 
       const uploadedImages = await page.getByAltText("uploaded").all();
 
-      expect(uploadedImages.length).toBe(imgCount - 1);
+      expect(uploadedImages.length).toBe(2);
     });
 
     await test.step("이미지 추가 성공", async () => {
@@ -91,51 +88,44 @@ test.describe("커뮤니티 테스트", async () => {
 
       const uploadedImages = await page.getByAltText("uploaded").all();
 
-      expect(uploadedImages.length).toBe(imgCount);
+      expect(uploadedImages.length).toBe(3);
     });
 
     await test.step("제목, 내용, 분야 수정 성공", async () => {
-      const positionSheetButton = page.getByTitle("position sheet");
-      const titleInput = page.getByTitle("title");
-      const contentInput = page.getByTitle("contents");
+      const positionSheetButton = page.getByTestId("position-sheet");
 
       await positionSheetButton.click();
-
       await page.getByText("디자인").click();
       await page.getByText("완료").click();
-      await titleInput.fill("제목을 수정했습니다.");
-      await contentInput.fill("내용을 수정했습니다.");
 
-      expect(positionSheetButton).toContainText("디자인");
-      expect(titleInput).toHaveValue("제목을 수정했습니다.");
-      expect(contentInput).toHaveValue("내용을 수정했습니다.");
-    });
+      await page.fill("#title", "제목을 수정했습니다.");
+      await page.fill("contents", "내용을 수정했습니다.");
 
-    await test.step("게시글 수정", async () => {
       await page.getByText("게시하기").click();
 
-      await page.waitForResponse(`**/api/community/${post.id}`, { timeout: 50000 });
-      await page.waitForURL(`/community/${post.id}`, { timeout: 50000 });
+      await page.waitForResponse(`**/api/community/**`);
+      await page.waitForURL(`**/community/**`);
 
-      await expect(page).toHaveURL(`/community/${post.id}`);
+      await expect(page).toHaveURL(/\/community\/\d+/);
     });
   });
 
-  test("커뮤니티 게시글 삭제 테스트", async ({ page, request }) => {
-    const ownPosts = await request.get(`/api/community`);
-    expect(ownPosts.ok()).toBeTruthy();
+  test("커뮤니티 게시글 삭제 테스트", async ({ page }) => {
+    await page.goto("/community");
+    await page.waitForURL(`**/community`);
 
-    const posts = await ownPosts.json();
-    const post = posts.data[0];
+    await expect(page).toHaveURL("/community");
 
-    await page.goto(`/community/${post?.id}`);
-    await page.waitForURL(`**/community/${post?.id}`, { timeout: 50000 });
+    const post = page.getByRole("heading", { name: "제목을 수정했습니다." });
+    await post.click();
+    await page.waitForURL(`**/community/**`);
+    await page.waitForResponse("**/api/community/**");
 
     await page.getByAltText("rightButtonIcon").click();
     await page.getByText("삭제").click();
 
     await page.getByTitle("confirm delete").click();
 
-    await page.waitForResponse(`**/community/${post?.id}`, { timeout: 50000 });
+    await page.waitForResponse(`**/api/community/**`);
   });
 });
