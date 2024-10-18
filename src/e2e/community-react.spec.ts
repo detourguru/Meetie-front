@@ -141,4 +141,56 @@ test.describe("커뮤니티 페이지 댓글 및 이모지 테스트", async () 
       );
     });
   });
+
+  test("댓글 게시글 이모지 테스트", async ({ page }) => {
+    const emojiAddButton = page.getByTestId("comment-emoji-button").first();
+    const emojiListItems = page.getByTestId("emoji-item");
+
+    await test.step("이모지 추가", async () => {
+      await emojiAddButton.click();
+      await emojiListItems.first().click();
+
+      await page.waitForResponse(
+        (response) =>
+          response.url().includes("emoji") &&
+          response.status() === 200 &&
+          response.request().method() === "POST",
+      );
+
+      await page.waitForResponse(
+        (response) =>
+          response.url().includes("comments") &&
+          response.status() === 200 &&
+          response.request().method() === "GET",
+      );
+
+      await expect(page.locator("div.border-primary-300")).toBeVisible();
+    });
+
+    await test.step("중복 이모지 추가 에러", async () => {
+      await emojiAddButton.click();
+      await emojiListItems.first().click();
+
+      await page.waitForResponse(
+        (response) =>
+          response.url().includes("emoji") &&
+          response.status() === 400 &&
+          response.request().method() === "POST",
+      );
+
+      const toast = page.getByText("이미 등록한 이모지입니다.").first();
+      await expect(toast).toBeVisible();
+    });
+
+    await test.step("이모지 삭제", async () => {
+      await page.getByTestId("comment-emoji").first().click();
+
+      await page.waitForResponse(
+        (response) =>
+          response.url().includes("emoji") &&
+          response.status() === 200 &&
+          response.request().method() === "DELETE",
+      );
+    });
+  });
 });

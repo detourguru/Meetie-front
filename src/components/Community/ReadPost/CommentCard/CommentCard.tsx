@@ -60,7 +60,13 @@ const CommentCard = ({
           <p className="text-regular-14 text-[#1F1F1F] pb-5">{contents}</p>
 
           <div className="flex gap-2.5 items-center">
-            <EmojiButton size="sm" open={isOpen} onClick={handleToggle} handleClick={handleClick} />
+            <EmojiButton
+              size="sm"
+              open={isOpen}
+              onClick={handleToggle}
+              handleClick={handleClick}
+              data-testid="comment-emoji-button"
+            />
 
             <div className="flex gap-2.5 flex-1 justify-start items-center overflow-x-scroll hidden-scrollbar">
               {emojiList.map((emoji, index) => (
@@ -72,6 +78,7 @@ const CommentCard = ({
                       ? handleDeleteEmoji(emoji.emoji)
                       : handlePostEmoji(emoji.emoji)
                   }
+                  data-testid="comment-emoji"
                 >
                   <div className="text-medium-14">{emoji.emoji}</div>
                   <div className="text-medium-12">{emoji.count}</div>
