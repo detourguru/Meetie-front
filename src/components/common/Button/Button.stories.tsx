@@ -92,31 +92,31 @@ export const SizeProps: StoryObj<typeof Button> = {
   render: () => (
     <div className="flex flex-col gap-4">
       <div className="flex gap-4 items-center">
-        <p className="text-medium-18 w-[120px]">sm</p>
+        <p className="text-medium-18 w-[160px]">sm(124px)</p>
         <Button size="sm">
           <p className="text-white">button</p>
         </Button>
       </div>
       <div className="flex gap-4 items-center">
-        <p className="text-medium-18 w-[120px]">default</p>
+        <p className="text-medium-18 w-[160px]">default(206px)</p>
         <Button>
           <p className="text-white">button</p>
         </Button>
       </div>
       <div className="flex gap-4 items-center">
-        <p className="text-medium-18 w-[120px]">md</p>
+        <p className="text-medium-18 w-[160px]">md(254px)</p>
         <Button size="md">
           <p className="text-white">button</p>
         </Button>
       </div>
       <div className="flex gap-4 items-center">
-        <p className="text-medium-18 w-[120px]">lg</p>
+        <p className="text-medium-18 w-[160px]">lg(280px)</p>
         <Button size="lg">
           <p className="text-white">button</p>
         </Button>
       </div>
       <div className="flex gap-4 items-center">
-        <p className="text-medium-18 w-[120px]">xl</p>
+        <p className="text-medium-18 w-[160px]">xl(343px)</p>
         <Button size="xl">
           <p className="text-white">button</p>
         </Button>
