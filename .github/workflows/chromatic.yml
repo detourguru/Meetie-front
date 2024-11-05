@@ -5,12 +5,22 @@ on:
     branches:
       - develop
 
+# permissions:
+#   contents: write
+#   pages: write
+#   deployments: write
+#   id-token: write
+#   issues: write
+#   pull-requests: write
+
 jobs:
   chromatic-deployment:
     name: Chromatic
     runs-on: ubuntu-latest
     outputs:
       statis: ${{ job.status }}
+      storybook_url: ${{ steps.chromatic.outputs.storybookUrl }}
+      currnent_time: ${{ steps.current-time.outputs.formattedTime }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,9 +39,24 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ secrets.TOKEN }}
 
-      - name: comment PR
-        uses: thollander/actions-comment-pull-request@v1
+      - name: Get current time
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: "YYYY년 MM월 DD일 HH시 mm분"
+          utcOffset: "+09:00"
+
+  github-bot-storybook:
+    runs-on: ubuntu-latest
+    needs: [chromatic-deployment]
+    steps:
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@v3
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
-          message: "storybook: ${{ steps.chromatic.outputs.storybookUrl }}"
+          comment-tag: ${{ github.event.number }}-storybook
+          message: |
+
+            💄 Storybook: ${{ needs.chromatic-deployment.outputs.storybook_url }}
+            🕖 Update: ${{ needs.chromatic-deployment.outputs.currnent_time }}
