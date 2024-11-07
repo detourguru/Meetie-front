@@ -59,7 +59,7 @@ jobs:
           format: "YYYY년 MM월 DD일 HH시 mm분"
           utcOffset: "+09:00"
 
-  github-bot-storybook:
+  github-storybook-comment:
     runs-on: ubuntu-latest
     needs: [chromatic-deployment]
     steps:
