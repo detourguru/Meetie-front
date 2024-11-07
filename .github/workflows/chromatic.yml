@@ -19,6 +19,27 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18.17.x"
+
+      - name: Set yarn version
+        id: set-version
+        run: |
+          yarn set version 4.1.1
+          echo "YARN_VERSION=$(yarn -v)" >> $GITHUB_OUTPUT
+
+      - name: Yarn cache - PnP
+        uses: actions/cache@v2
+        with:
+          path: |
+            .yarn/cache
+            .pnp.*
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-${{ steps.set-version.outputs.YARN_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}-
+
       - name: Install dependencies
         run: yarn
 
